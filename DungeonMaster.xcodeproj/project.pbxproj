@@ -492,6 +492,7 @@
 				D2A9AF351BFFEAA5009902ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D2A9AF361BFFEAA5009902ED /* Build configuration list for PBXNativeTarget "DungeonMasterTests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +501,7 @@
 				D2A9AF381BFFEAA5009902ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D2A9AF391BFFEAA5009902ED /* Build configuration list for PBXNativeTarget "DungeonMasterUITests" */ = {
 			isa = XCConfigurationList;
@@ -508,6 +510,7 @@
 				D2A9AF3B1BFFEAA5009902ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
