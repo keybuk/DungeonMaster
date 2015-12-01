@@ -65,7 +65,7 @@ public let persistentStoreCoordinator: NSPersistentStoreCoordinator = {
         try persistentStoreCoordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: Model.storeURL, options: options)
     } catch {
         let nserror = error as NSError
-        NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+        print("Unresolved error \(nserror), \(nserror.userInfo)")
         abort()
     }
     return persistentStoreCoordinator
