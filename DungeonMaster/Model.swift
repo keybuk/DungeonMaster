@@ -10,7 +10,9 @@ import Foundation
 import CoreData
 
 public enum Model: String {
-    case Event
+    case Book
+    case Source
+    case Monster
 
     public static let name = "DungeonMaster"
     

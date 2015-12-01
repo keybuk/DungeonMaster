@@ -1,12 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="15B42" minimumToolsVersion="Automatic">
-    <entity name="Event">
-        <attribute name="timeStamp" optional="YES" attributeType="Date">
-            <userInfo/>
-        </attribute>
-        <userInfo/>
+    <entity name="Book" representedClassName=".Book" syncable="YES">
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="sources" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Source" inverseName="book" inverseEntity="Source" syncable="YES"/>
+    </entity>
+    <entity name="Monster" representedClassName="" syncable="YES">
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="source" toMany="YES" deletionRule="Nullify" destinationEntity="Source" inverseName="monster" inverseEntity="Source" syncable="YES"/>
+        <compoundIndexes>
+            <compoundIndex>
+                <index value="name"/>
+            </compoundIndex>
+        </compoundIndexes>
+    </entity>
+    <entity name="Source" representedClassName=".Source" syncable="YES">
+        <attribute name="page" attributeType="Integer 16" syncable="YES"/>
+        <relationship name="book" maxCount="1" deletionRule="Cascade" destinationEntity="Book" inverseName="sources" inverseEntity="Book" syncable="YES"/>
+        <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="source" inverseEntity="Monster" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Event" positionX="261" positionY="189" width="128" height="60"/>
+        <element name="Book" positionX="261" positionY="198" width="128" height="75"/>
+        <element name="Monster" positionX="279" positionY="243" width="128" height="75"/>
+        <element name="Source" positionX="270" positionY="207" width="128" height="90"/>
     </elements>
 </model>
