@@ -624,7 +624,7 @@ The beholder can't repeat an effect until they have all been used, and it can't 
 
 REGIONAL EFFECTS
 
-A region containing a beholder's lair is warped by the creature's'unnatural presence, which creates one or more of the following effects:
+A region containing a beholder's lair is warped by the creature's unnatural presence, which creates one or more of the following effects:
 
 • Creatures within 1 mile of the beholder's lair sometimes feel as if they're being watched when they aren't.
 
@@ -673,8 +673,8 @@ turns, ending the effect on itself on a success.
 4. Slowing Ray. The targeted creature must succeed on a DC 17 Dexterity saving throw. On a failed save, the target's speed is halved for 1 minute. In addition, the creature can't take reactions, and it can take either an action or a bonus action on its turn, not both. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
 5. Enervation Ray. The targeted creature must make a DC 17 Constitution saving throw, taking 36 (8d8) necrotic damage on a failed save, or half as much damage on a successful one.
 6. Telekinetic Ray. If the target is a creature, it must succeed on a DC 17 Strength saving throw or the tyrant moves it up to 30 feet in any direction. The target is restrained by the ray's telekinetic grip until the start of the tyrant's next turn or until the tyrant is incapacitated.
-If the target is an object weighing 300 pounds or less that isn't being worn or carried, it is moved up to 30 feet in any direction. The tyrant can also exert fine control on objects with this ray, such as manipulating a simple toolor opening a door or a container.
-7. Sleep Ray. The targeted creature must succeed on a DC 17 Wisdom saving throw or fall asleep and remain unconscious for 1 minute. The target awakens if it takes damage or another creature takes an action to wake it. Th is ray has no effect on constructs and undead.
+If the target is an object weighing 300 pounds or less that isn't being worn or carried, it is moved up to 30 feet in any direction. The tyrant can also exert fine control on objects with this ray, such as manipulating a simple tool or opening a door or a container.
+7. Sleep Ray. The targeted creature must succeed on a DC 17 Wisdom saving throw or fall asleep and remain unconscious for 1 minute. The target awakens if it takes damage or another creature takes an action to wake it. This ray has no effect on constructs and undead.
 8. Petrification Ray. The targeted creature must make a DC 17 Dexterity saving throw. On a failed save, the creature begins to turn to stone and is restrained. It must repeat the saving throw at the end of its next turn. On a success, the effect ends. On a failure, the creature is petrified until freed by the greater restoration spell or other magic.
 9. Disintegration Ray. If the target is a creature, it must succeed on a DC 17 Dexterity saving throw or take 45 (10d8) force damage. If this damage reduces the creature to 0 hit points, its body becomes a pile of fine gray dust.
 If the target is a Large or smaller nonmagical object or creation of magical force, it is disintegrated without a saving throw. If the target is a Huge or larger object or creation of magical force, this ray disintegrates a 10 foot cube of it.
@@ -1300,7 +1300,7 @@ Melee Weapon Attack: +6 to hit, reach 10 ft., one Medium or smaller creature. Hi
 
 Change Shape.
 The couatl magically polymorphs into a humanoid or beast that has a challenge rating equal to or less than its own, or back into its true form. It reverts to its true form if it dies. Any equipment it is wearing or carrying is absorbed or borne by the new form (the couatl's choice).
-In a new form, the couatl retains its game statistics and ability to speak, but its AC, movement modes, Strength, Dexterity, and other actions are replaced by those of the new form, and it gains any statistics and capabilities (except class features, legendary actions, and lair actions) that the new form has but that it lacks. Ifthe new form has a bite attack, the couatl can use its bite in that form.
+In a new form, the couatl retains its game statistics and ability to speak, but its AC, movement modes, Strength, Dexterity, and other actions are replaced by those of the new form, and it gains any statistics and capabilities (except class features, legendary actions, and lair actions) that the new form has but that it lacks. If the new form has a bite attack, the couatl can use its bite in that form.
 --
 Crawling Claw
 mm 44
@@ -1494,7 +1494,7 @@ The demilich targets up to three creatures that it can see within 10 feet of it.
 
 LEGENDARY ACTIONS
 
-The demilich can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The demilich regains spent legendaryactions at the start of its turn.
+The demilich can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The demilich regains spent legendary actions at the start of its turn.
 
 Flight.
 The demilich flies up to half its flying speed.
@@ -1506,7 +1506,7 @@ Energy Drain (Costs 2 Actions).
 Each creature within 30 feet of the demilich must make a DC 15 Constitution saving throw. On a failed save, the creature's hit point maximum is magically reduced by 10 (3d6). If a creature's hit point maximum is reduced to 0 by this effect, the creature dies. A creature's hit point maximum can be restored with the greater restoration spell or similar magic.
 
 Vile Curse (Costs 3 Actions).
-The demilich targets one creature it can see within 30 feet of it. The target must succeed on a DC 15 Wisdom saving throw or be magically cursed. Until the curse ends, the target has disadvantage on attack rolls and saving throws. The target can repeat the saving throw at the end ofeach of its turns, ending the curse on a success.
+The demilich targets one creature it can see within 30 feet of it. The target must succeed on a DC 15 Wisdom saving throw or be magically cursed. Until the curse ends, the target has disadvantage on attack rolls and saving throws. The target can repeat the saving throw at the end of each of its turns, ending the curse on a success.
 
 LAIR
 
@@ -1610,7 +1610,7 @@ Challenge 5 (1,800 XP)
 
 Innate Spellcasting.
 The barlgura's spellcasting ability is Wisdom (spell save DC 13). The barlgura can innately cast the following spells, requiring no material components:
-1/day each: entangle, phantasmalforce
+1/day each: entangle, phantasmal force
 2/day each: disguise self, invisibility (self only)
 
 Reckless.
@@ -2262,7 +2262,7 @@ Claw.
 Melee Weapon Attack: +8 to hit, reach 10 ft., one target. Hit: 8 (1d8 + 4) slashing damage.
 
 Sting.
-Melee Weapon Attack: +8 to hit, reach 10 ft., one target. Hit: 13 (2d8 + 4) piercing damage plus 17 (5d6) poison damage, and the target must succeed on a DC 14 Constitution saving throw or become poisoned for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itselfon a success.
+Melee Weapon Attack: +8 to hit, reach 10 ft., one target. Hit: 13 (2d8 + 4) piercing damage plus 17 (5d6) poison damage, and the target must succeed on a DC 14 Constitution saving throw or become poisoned for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
 --
 Chain Devil
 mm 72; Devils
@@ -2337,7 +2337,7 @@ Hellish Weapons.
 The erinyes's weapon attacks are magical and deal an extra 13 (3d8) poison damage on a hit (included in the attacks).
 
 Magic Resistance.
-The erinyes has advantage on saving th rows against spells and other magical effects.
+The erinyes has advantage on saving throws against spells and other magical effects.
 
 ACTIONS
 
@@ -3451,11 +3451,11 @@ Frightful Presence.
 Each creature of the dragon's choice that is within 120 feet of the dragon and aware of it must succeed on a DC 19 Wisdom saving throw or become frightened for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to the dragon's Frightful Presence for the next 24 hours.
 
 Poison Breath (Recharge 5–6).
-The dragon exhales poisonous gas in a 90-foot cone. Each creature in that area must make a DC 22 Constitution saving throw, taking 77 (22d6) poison damage on a failed save, or half as much damage on a successfulone.
+The dragon exhales poisonous gas in a 90-foot cone. Each creature in that area must make a DC 22 Constitution saving throw, taking 77 (22d6) poison damage on a failed save, or half as much damage on a successful turnone.
 
 LEGENDARY ACTIONS
 
-The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn.The dragon regains spent legendary actions at the start of its turn.
+The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.
 
 Detect.
 The dragon makes a Wisdom (Perception) check.
@@ -3947,7 +3947,7 @@ Frightful Presence.
 Each creature of the dragon's choice that is within 120 feet of the dragon and aware of it must succeed on a DC 14 Wisdom saving throw or become frightened for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to the dragon's Frightful Presence for the next 24 hours.
 
 Cold Breath (Recharge 5–6).
-The dragon exhales an icy blast in a 60-foot cone. Each creature in that area must make a DC 19 Constitution saving throw, taking 54 (12d8) cold damage on a failed save, or half as much dam age on a successfu l one.
+The dragon exhales an icy blast in a 60-foot cone. Each creature in that area must make a DC 19 Constitution saving throw, taking 54 (12d8) cold damage on a failed save, or half as much dam age on a successful one.
 
 LEGENDARY ACTIONS
 
@@ -4313,7 +4313,7 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 
 LEGENDARY ACTIONS
 
-The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legend ary actions at the start of its turn.
+The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.
 
 Detect.
 The dragon makes a Wisdom (Perception) check.
@@ -4823,7 +4823,7 @@ Frightful Presence.
 Each creature of the dragon's choice that is within 120 feet of the dragon and aware of it must succeed on a DC 21 Wisdom saving throw or become frightened for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to the dragon's Frightful Presence for the next 24 hours.
 
 Breath Weapons (Recharge 5–6).
-The dragan uses one of the following breath weapons.
+The dragon uses one of the following breath weapons.
 Fire Breath. The dragon exhales fire in a 60-foot cone. Each creature in that area must make a DC 21 Dexterity saving throw, taking 66 (12d10) fire damage on a failed save, or half as much damage on a successful one.
 Weakening Breath. The dragon exhales gas in a 60-foot cone. Each creature in that area must succeed on a DC 21 Strength saving throw or have disadvantage on Strength-based attack rolls, Strength checks, and Strength saving throws for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
 
@@ -5048,7 +5048,7 @@ Tail.
 Melee Weapon Attack: +13 to hit, reach 15 ft., one target. Hit: 17 (2d8 + 8) bludgeoning damage.
 
 Frightful Presence.
-Each creature of the dragon's choice that is within 120 feet of the dragon and aware of it must succeed on a DC 18 Wisdom saving throw or become frightened for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it,the creature is immune to the dragon's Frightful Presence for the next 24 hours.
+Each creature of the dragon's choice that is within 120 feet of the dragon and aware of it must succeed on a DC 18 Wisdom saving throw or become frightened for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to the dragon's Frightful Presence for the next 24 hours.
 
 Breath Weapons (Recharge 5–6).
 The dragon uses one of the following breath weapons.
@@ -5865,7 +5865,7 @@ Bite.
 Melee Weapon Attack: +7 to hit, reach 5 ft., one creature. Hit: 1 piercing damage.
 
 Euphoria Breath (Recharge 5–6).
-The dragon exhales a puffof euphoria gas at one creature within 5 feet of it. The target must succeed on a DC 11 Wisdom saving throw, or for 1 minute, the target can't take reactions and must roll a d6 at the start of each of its turns to determine its behavior during the turn:
+The dragon exhales a puff of euphoria gas at one creature within 5 feet of it. The target must succeed on a DC 11 Wisdom saving throw, or for 1 minute, the target can't take reactions and must roll a d6 at the start of each of its turns to determine its behavior during the turn:
 1–4. The target takes no action or bonus action and uses all of its movement to move in a random direction.
 5–6. The target doesn't move, and the only thing it can do on its turn is make a DC 11 Wisdom saving throw, ending the effect on itself on a success.
 --
@@ -6178,10 +6178,10 @@ Earth Glide.
 The dao can burrow through nonmagical, unworked earth and stone. While doing so, the dao doesn't disturb the material it moves through.
 
 Elemental Demise.
-If the dao dies, its body disintegrates into crystalline powder, leaving behind only equipment the dao was wearing or carying.
+If the dao dies, its body disintegrates into crystalline powder, leaving behind only equipment the dao was wearing or carrying.
 
 Innate Spellcasting.
-The dao's innate speilcasting ability is Charisma (spell save DC 14, +6 to hit with spell attacks). It can innately cast the following spells, requiring no material components:
+The dao's innate spellcasting ability is Charisma (spell save DC 14, +6 to hit with spell attacks). It can innately cast the following spells, requiring no material components:
 At will: detect evil and good, detect magic, stone shape
 3/day each: passwall, move earth, tongues
 1/day each: conjure elemental (earth elemental only), gaseous form, invisibility, phantasmal killer, plane shift, wall of stone
@@ -6311,7 +6311,7 @@ Elemental Demise.
 If the marid dies, its body disintegrates into a burst of water and foam, leaving behind only equipment the marid was wearing or carrying.
 
 Innate Spellcasting.
-The marid's innate spellcasting ability is Charisma (spell save DC 16, +8 to hit witn spell attacks). It can innately cast the following spells, requiring no material components:
+The marid's innate spellcasting ability is Charisma (spell save DC 16, +8 to hit with spell attacks). It can innately cast the following spells, requiring no material components:
 At will: create or destroy water, detect evil and good, detect magic, fog cloud, purify food and drink
 3/day each: tongues, water breathing, water walk
 1/day each: conjure elemental (water elemental only), control water, gaseous form, invisibility, plane shift
@@ -6463,7 +6463,7 @@ The giant has advantage on Wisdom (Perception) checks that rely on smell.
 Innate Spellcasting.
 The giant's innate spellcasting ability is Charisma. It can innately cast the following spells, requiring no material components:
 At will: detect magic, fog cloud, light
-3/day each: featherfall, fly, misty step, telekinesis
+3/day each: feather fall, fly, misty step, telekinesis
 1/day each: control weather, gaseous form
 
 ACTIONS
@@ -7776,7 +7776,7 @@ Languages Common, Goblin
 Challenge 1/2 (100 XP)
 
 Martial Advantage.
-Once per turn, the hobgoblin can deal an extra 7 (2d6) damage to a creature it hits with a weapon attack if that creature is within 5 feet of an ally o fthe hobgoblin that isn't incapacitated.
+Once per turn, the hobgoblin can deal an extra 7 (2d6) damage to a creature it hits with a weapon attack if that creature is within 5 feet of an ally of the hobgoblin that isn't incapacitated.
 
 ACTIONS
 
@@ -8227,11 +8227,11 @@ Multiattack.
 The kraken makes three tentacle attacks, each of which it can replace with one use of Fling.
 
 Bite.
-Melee Weapon Attack: +18 to hit, reach 5 ft., one target. Hit: 23 (3d8 + 10) piercing damage. If the target is a Large or smaller creature grappled by the kraken, that creature is swallowed, and the grapple ends. While swallowed, the creature is blinded and restrained, it has total cover against attacks and other effects outside the kraken, and it takes 42 (12d6) acid damage at the start ofeach of the kraken's turns.
+Melee Weapon Attack: +18 to hit, reach 5 ft., one target. Hit: 23 (3d8 + 10) piercing damage. If the target is a Large or smaller creature grappled by the kraken, that creature is swallowed, and the grapple ends. While swallowed, the creature is blinded and restrained, it has total cover against attacks and other effects outside the kraken, and it takes 42 (12d6) acid damage at the start of each of the kraken's turns.
 If the kraken takes 50 damage or more on a single turn from a creature inside it, the kraken must succeed on a DC 25 Constitution saving throw at the end of that turn or regurgitate all swallowed creatures, which fall prone in a space within 10 feet of the kraken. If the kraken dies, a swallowed creature is no longer restrained by it and can escape from the corpse using 15 feet of movement, exiting prone.
 
 Tentacle.
-Melee Weapon Attack: +18 to hit, reach 30 ft., one target. Hit: 20 (3d6 + 10) bludgeoning damage, and the target is grappled (escape DC 18). Until this grapple ends, the target is restrained. The kraken has ten tentacles, each ofwhich can grapple one target.
+Melee Weapon Attack: +18 to hit, reach 30 ft., one target. Hit: 20 (3d6 + 10) bludgeoning damage, and the target is grappled (escape DC 18). Until this grapple ends, the target is restrained. The kraken has ten tentacles, each of which can grapple one target.
 
 Fling.
 One Large or smaller object held or creature grappled by the kraken is thrown up to 60 feet in a random direction and knocked prone. If a thrown target strikes a solid surface, the target takes 3 (1d6) bludgeoning damage for every 10 feet it was thrown. If the target is thrown at another creature, that creature must succeed on a DC 18 Dexterity saving throw or take the same damage and be knocked prone.
@@ -8424,7 +8424,7 @@ Bite.
 Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) piercing damage.
 
 Pincer Staff.
-Melee Weapon Attack: +4 to hit, reach 10 ft., one target. Hit: 5 (1d6 + 2) piercing damage. If the target is a Medium or smaller creature, it is grappled (escape DC 14). Until this grapple ends, the kuo-toa can't use its pincer staffon another target.
+Melee Weapon Attack: +4 to hit, reach 10 ft., one target. Hit: 5 (1d6 + 2) piercing damage. If the target is a Medium or smaller creature, it is grappled (escape DC 14). Until this grapple ends, the kuo-toa can't use its pincer staff on another target.
 --
 Lamia
 mm 201
@@ -8507,7 +8507,7 @@ Cantrips (at will): mage hand, prestidigitation, ray of frost
 6th level (1 slot): disintegrate, globe of invulnerability
 7th level (1 slot): finger of death, plane shift
 8th level (1 slot): dominate monster, power word stun
-9th level (1 slot): powerword kill
+9th level (1 slot): power word kill
 
 Turn Resistance.
 The lich has advantage on saving throws against any effect that turns undead.
@@ -8697,7 +8697,7 @@ Languages Common (can't speak in bear form)
 Challenge 5 (1,800 XP)
 
 Shapechanger.
-The werebear can use its action to polymorph into a Large bear-humanoid hybrid or into a Large bear, or back into its true form, which is humanoid. Its statistics, other than its size amd AC, are the same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts to its true form if it dies.
+The werebear can use its action to polymorph into a Large bear-humanoid hybrid or into a Large bear, or back into its true form, which is humanoid. Its statistics, other than its size and AC, are the same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts to its true form if it dies.
 
 Keen Smell.
 The werebear has advantage on Wisdom (Perception) checks that rely on smell.
@@ -8716,7 +8716,7 @@ Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 13 (2d8 + 4) slash
 Greataxe (Humanoid or Hybrid Form Only).
 Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 10 (1d12 + 4) slashing damage.
 --
-Wearboar
+Wereboar
 mm 209; Lycanthropes
 Medium humanoid (human, shapechanger), neutral evil
 
@@ -8749,7 +8749,7 @@ If the wereboar takes 14 damage or less that would reduce it to 0 hit points, it
 ACTIONS
 
 Multiattack (Humanoid or Hybrid Form Only).
-The wereboar makes two attacks, only one ofwhich can be with its tusks.
+The wereboar makes two attacks, only one of which can be with its tusks.
 
 Maul (Humanoid or Hybrid Form Only).
 Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 10 (2d6 + 3) bludgeoning damage.
@@ -8826,7 +8826,7 @@ Keen Hearing and Smell.
 The weretiger has advantage on Wisdom (Perception) checks that rely on hearing or smell.
 
 Pounce (Tiger or Hybrid Form Only).
-If the weretiger moves at least 15 feet straight toward a creature and then hits it with a attack on the same turn, that target must succeed on a DC 14 Strength saving throw or be knocked prone. If the target is prone, the weretiger can make one bite attack against it as a bonus action.
+If the weretiger moves at least 15 feet straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a DC 14 Strength saving throw or be knocked prone. If the target is prone, the weretiger can make one bite attack against it as a bonus action.
 
 ACTIONS
 
@@ -9705,7 +9705,7 @@ A mummy lord's temple or tomb is warped in any of the following ways by the crea
 
 • Food instantly molders and water instantly evaporates when brought into the lair. Other nonmagical drinks are spoiled—wine turning to vinegar, for instance.
 
-• Divination spells cast within the lair by creatures other than the mummy lord have a 25 percent chance to provide misleading results, as determined by the DM. If a divination spell already has a chance to fail or become unreliable when cast multiple times,that chance increases by 25 percent.
+• Divination spells cast within the lair by creatures other than the mummy lord have a 25 percent chance to provide misleading results, as determined by the DM. If a divination spell already has a chance to fail or become unreliable when cast multiple times, that chance increases by 25 percent.
 
 • A creature that takes treasure from the lair is cursed until the treasure is returned. The cursed target has disadvantage on all saving throws. The curse lasts until removed by a /remove curse/ spell or other magic.
 
@@ -9809,7 +9809,7 @@ The myconid ejects spores at one creature it can see within 5 feet of it. The ta
 Rapport Spores.
 A 20-foot radius of spores extends from the myconid. These spores can go around corners and affect only creatures with an Intelligence of 2 or higher that aren't undead, constructs, or elementals. Affected creatures can communicate telepathically with one another while they are within 30 feet of each other. The effect lasts for 1 hour.
 --
-Myconid Soverign
+Myconid Sovereign
 mm 232; Myconids
 Large plant, lawful neutral
 
@@ -10214,7 +10214,7 @@ A creature within 5 feet of the cube can take an action to pull a creature or ob
 The cube can hold only one Large creature or up to four Medium or smaller creatures inside it at a time.
 
 Transparent.
-Even when the cube is in plain sight, it takes a successful DC 15 Wisdom (Perception) check to spot a cube that has neither moved nor attacked. A creature tbat tries to enter the cube's space while unaware of the cube is surprised by the cube.
+Even when the cube is in plain sight, it takes a successful DC 15 Wisdom (Perception) check to spot a cube that has neither moved nor attacked. A creature that tries to enter the cube's space while unaware of the cube is surprised by the cube.
 
 ACTIONS
 
@@ -10222,7 +10222,7 @@ Pseudopod.
 Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 10 (3d6) acid damage.
 
 Engulf.
-The cube moves up to its speed. While doing so, it can enter Large or smaller creatures spaces. Whenever the cube enters a creature's space, the creature must make a DC 12 Dexterity saving throw.
+The cube moves up to its speed. While doing so, it can enter Large or smaller creatures' spaces. Whenever the cube enters a creature's space, the creature must make a DC 12 Dexterity saving throw.
 On a successful save, the creature can choose to be pushed 5 feet back or to the side of the cube. A creature that chooses not to be pushed suffers the consequences of a failed saving throw.
 On a failed save, the cube enters the creature's space, and the creature takes 10 (3d6) acid damage and is engulfed. The engulfed creature can't breathe, is restrained, and takes 21 (6d6) acid damage at the start of each of the cube's turns. When the cube moves, the engulfed creature moves with it.
 An engulfed creature can try to escape by taking an action to make a DC 12 Strength check. On a success, the creature escapes and enters a space of its choice within 5 feet of the cube.
@@ -11357,7 +11357,7 @@ Whenever the shambling mound is subjected to lightning damage, it takes no damag
 ACTIONS
 
 Multiattack.
-The shambling mound makes two slam attacks. If both attacks hit a Medium or smaller target, the target is grappled (escape DC 14), and the shambling mound uses its Engulfon it.
+The shambling mound makes two slam attacks. If both attacks hit a Medium or smaller target, the target is grappled (escape DC 14), and the shambling mound uses its Engulf on it.
 
 Slam.
 Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 13 (2d8 + 4) bludgeoning damage.
@@ -11832,9 +11832,9 @@ Cantrips (at will): sacred flame, spare the dying, thaumaturgy
 1st level (4 slots): command, detect evil and good, detect magic
 2nd level (3 slots): lesser restoration, zone of truth
 3rd level (3 slots): dispel magic, tongues
-4th level (3 slots): banishment, freedom ofmovement
+4th level (3 slots): banishment, freedom ofm ovement
 5th level (2 slots): flame strike, greater restoration
-6th level (1 slot): heroes'feast
+6th level (1 slot): heroes' feast
 
 ACTIONS
 
@@ -11893,7 +11893,7 @@ Magic Weapons.
 The sphinx's weapon attacks are magical.
 
 Spellcasting.
-The sphinx is a 9th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 17, +9 to hit with spell attacks). It requires no material cormponents to cast its spells. The sphinx has the following wizard spells prepared:
+The sphinx is a 9th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 17, +9 to hit with spell attacks). It requires no material components to cast its spells. The sphinx has the following wizard spells prepared:
 Cantrips (at will): mage hand, minor illusion, prestidigitation
 1st level (4 slots): detect magic, identify, shield
 2nd level (3 slots): darkness, locate object, suggestion
@@ -12186,7 +12186,7 @@ Rock.
 Ranged Weapon Attack: +10 to hit, range 60/180 ft., one target. Hit: 28 (4d10 + 6) bludgeoning damage.
 
 Animate Trees (1/Day).
-The treant magically animates one or two trees it can see within 60 feet of it. These trees have the same statistics as a treant, except they have Intelligence and Charisma scores of 1, they can't speak, and they have only the Slam action option. An animated tree acts as an ally of the treant. The tree remains animate for 1 day or until it dies ; until the treant dies or is more than 120 feet from the tree; or until the treant takes a bonus action to turn it back into an inanimate tree. The tree then takes root if possible.
+The treant magically animates one or two trees it can see within 60 feet of it. These trees have the same statistics as a treant, except they have Intelligence and Charisma scores of 1, they can't speak, and they have only the Slam action option. An animated tree acts as an ally of the treant. The tree remains animate for 1 day or until it dies; until the treant dies or is more than 120 feet from the tree; or until the treant takes a bonus action to turn it back into an inanimate tree. The tree then takes root if possible.
 --
 Troglodyte
 mm 290
@@ -13327,7 +13327,7 @@ Challenge 1/2 (100 XP)
 ACTIONS
 
 Multiattack.
-The ape makes two  st attacks.
+The ape makes two fist attacks.
 
 Fist.
 Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) bludgeoning damage.
