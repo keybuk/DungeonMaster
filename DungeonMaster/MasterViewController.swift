@@ -85,7 +85,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         // Set the batch size to a suitable number.
         fetchRequest.fetchBatchSize = 20
         
-        let sortDescriptor = NSSortDescriptor(key: "name", ascending: false)        
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         // Edit the section name key path and cache name if appropriate.
