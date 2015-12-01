@@ -4,8 +4,28 @@
         <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="sources" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Source" inverseName="book" inverseEntity="Source" syncable="YES"/>
     </entity>
-    <entity name="Monster" representedClassName="" syncable="YES">
+    <entity name="Monster" representedClassName=".Monster" syncable="YES">
+        <attribute name="armorClass" attributeType="String" syncable="YES"/>
+        <attribute name="challenge" attributeType="String" syncable="YES"/>
+        <attribute name="charisma" attributeType="String" syncable="YES"/>
+        <attribute name="conditionImmunities" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="constitution" attributeType="String" syncable="YES"/>
+        <attribute name="damageImmunities" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="damageResistances" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="damageVulnerabilities" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dexterity" attributeType="String" syncable="YES"/>
+        <attribute name="hitPoints" attributeType="String" syncable="YES"/>
+        <attribute name="intelligence" attributeType="String" syncable="YES"/>
+        <attribute name="languages" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="savingThrows" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="senses" attributeType="String" syncable="YES"/>
+        <attribute name="sizeTypeAlignment" attributeType="String" syncable="YES"/>
+        <attribute name="skills" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="speed" attributeType="String" syncable="YES"/>
+        <attribute name="strength" attributeType="String" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wisdom" attributeType="String" syncable="YES"/>
         <relationship name="source" toMany="YES" deletionRule="Nullify" destinationEntity="Source" inverseName="monster" inverseEntity="Source" syncable="YES"/>
         <compoundIndexes>
             <compoundIndex>
@@ -21,7 +41,7 @@
     </entity>
     <elements>
         <element name="Book" positionX="261" positionY="198" width="128" height="75"/>
-        <element name="Monster" positionX="279" positionY="243" width="128" height="75"/>
+        <element name="Monster" positionX="279" positionY="243" width="128" height="375"/>
         <element name="Source" positionX="270" positionY="207" width="128" height="105"/>
     </elements>
 </model>
