@@ -13,6 +13,7 @@ public final class Source: NSManagedObject {
 
     @NSManaged var book: Book
     @NSManaged var page: Int16
+    @NSManaged var section: String?
     @NSManaged var monster: Monster
 
     public convenience init(book: Book, page: Int16, monster: Monster, inManagedObjectContext context: NSManagedObjectContext) {

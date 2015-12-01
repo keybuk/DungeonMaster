@@ -15,12 +15,13 @@
     </entity>
     <entity name="Source" representedClassName=".Source" syncable="YES">
         <attribute name="page" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="section" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="book" maxCount="1" deletionRule="Cascade" destinationEntity="Book" inverseName="sources" inverseEntity="Book" syncable="YES"/>
         <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="source" inverseEntity="Monster" syncable="YES"/>
     </entity>
     <elements>
         <element name="Book" positionX="261" positionY="198" width="128" height="75"/>
         <element name="Monster" positionX="279" positionY="243" width="128" height="75"/>
-        <element name="Source" positionX="270" positionY="207" width="128" height="90"/>
+        <element name="Source" positionX="270" positionY="207" width="128" height="105"/>
     </elements>
 </model>
