@@ -1,0 +1,29 @@
+Quipper
+mm 335; Miscellaneous Creatures|dmbr 41
+Tiny beast, unaligned
+
+Armor Class 13
+Hit Points 1 (1d4 - 1)
+Speed 0 ft., swim 40 ft.
+
+STR 2 (-4)
+DEX 16 (+3)
+CON 9 (-1)
+INT 1 (-5)
+WIS 7 (-2)
+CHA 2 (-4)
+
+Senses darkvision 60 ft., passive Perception 8
+Languages -
+Challenge 0 (10 XP)
+
+Blood Frenzy.
+The quipper has advantage on melee attack rolls against any creature that doesn't have all its hit points.
+
+Water Breathing.
+The quipper can breathe only underwater.
+
+ACTIONS
+
+Bite.
+Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 1 piercing damage.

@@ -1,0 +1,23 @@
+Lizard
+mm 332; Miscellaneous Creatures|dmbr 34
+Tiny beast, unaligned
+
+Armor Class 10
+Hit Points 2 (1d4)
+Speed 20 ft., climb 20 ft.
+
+STR 2 (-4)
+DEX 11 (+0)
+CON 10 (+0)
+INT 1 (-5)
+WIS 8 (-1)
+CHA 3 (-4)
+
+Senses darkvision 30 ft., passive Perception 9
+Languages -
+Challenge 0 (10 XP)
+
+ACTIONS
+
+Bite.
+Melee Weapon Attack: +0 to hit, reach 5 ft., one target. Hit: 1 piercing damage.

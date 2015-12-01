@@ -1,0 +1,27 @@
+Cat
+mm 320; Miscellaneous Creatures|dmbr 14
+Tiny beast, unaligned
+
+Armor Class 12
+Hit Points 2 (1d4)
+Speed 40 ft., climb 30 ft.
+
+STR 3 (-4)
+DEX 15 (+2)
+CON 10 (+0)
+INT 3 (-4)
+WIS 12 (+1)
+CHA 7 (-2)
+
+Skills Perception +3, Stealth +4
+Senses passive Perception 13
+Languages -
+Challenge 0 (10 XP)
+
+Keen Smell.
+The cat has advantage on Wisdom (Perception) checks that rely on smell.
+
+ACTIONS
+
+Claws.
+Melee Weapon Attack: +0 to hit, reach 5 ft., one target. Hit: 1 slashing damage.

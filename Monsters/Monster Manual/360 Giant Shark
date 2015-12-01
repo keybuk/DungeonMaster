@@ -1,0 +1,27 @@
+Giant Shark
+mm 328; Miscellaneous Creatures|dmbr 28
+Huge beast, unaligned
+
+Armor Class 13 (natural armor)
+Hit Points 126 (11d12 + 55)
+Speed 0 ft., swim 50 ft.
+
+STR 23 (+6)
+DEX 11 (+0)
+CON 21 (+5)
+INT 1 (-5)
+WIS 10 (+0)
+CHA 5 (-3)
+
+Skills Perception +3
+Senses blindsight 60 ft., passive Perception 13
+Languages -
+Challenge 5 (1,800 XP)
+
+Blood Frenzy.
+The shark has advantage on melee attack rolls against any creature that doesn't have all its hit points. Water Breathing. The shark can breathe only underwater.
+
+ACTIONS
+
+Bite.
+Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 22 (3d10 + 6) piercing damage.
