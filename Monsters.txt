@@ -338,7 +338,7 @@ Languages -
 Challenge 1/4 (50 XP)
 
 Antimagic Susceptibility.
-The sword is incapacitated while in the area of an /antimagic field/. if targeted by /dispel magic/, the sword must succeed on a Constitution saving throw against the caster's spell save DC or fall unconscious for 1 minute.
+The sword is incapacitated while in the area of an /antimagic field/. If targeted by /dispel magic/, the sword must succeed on a Constitution saving throw against the caster's spell save DC or fall unconscious for 1 minute.
 
 False Appearance.
 While the sword remains motionless and isn't flying, it is indistinguishable from a normal sword.
@@ -473,7 +473,7 @@ Detect Life.
 The banshee can magically sense the presence of living creatures up to 5 miles away. She knows the general direction they're in but not their exact locations.
 
 Incorporeal Movement.
-The banshee can move through other creatures and objects as if they were difficult terrain. She takes 5 (1d10) force damage if she ends turn inside an object.
+The banshee can move through other creatures and objects as if they were difficult terrain. She takes 5 (1d10) force damage if she ends her turn inside an object.
 
 ACTIONS
 
@@ -667,8 +667,7 @@ Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 14 (4d6) piercing 
 Eye Rays.
 The death tyrant shoots three of the following magical eye rays at random (reroll duplicates), choosing one to three targets it can see within 120 feet of it:
 1. Charm Ray. The targeted creature must succeed on a DC 17 Wisdom saving throw or be charmed by the tyrant for 1 hour, or until the beholder harms the creature.
-2. Paralyzing Ray. The targeted creature must succeed on a DC 17 Constitution saving throw or be paralyzed for 1 minute. The target can repeat the saving throw at the end of each of its
-turns, ending the effect on itself on a success.
+2. Paralyzing Ray. The targeted creature must succeed on a DC 17 Constitution saving throw or be paralyzed for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
 3. Fear Ray. The targeted creature must succeed on a DC 17 Wisdom saving throw or be frightened for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
 4. Slowing Ray. The targeted creature must succeed on a DC 17 Dexterity saving throw. On a failed save, the target's speed is halved for 1 minute. In addition, the creature can't take reactions, and it can take either an action or a bonus action on its turn, not both. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
 5. Enervation Ray. The targeted creature must make a DC 17 Constitution saving throw, taking 36 (8d8) necrotic damage on a failed save, or half as much damage on a successful one.
@@ -684,7 +683,7 @@ LEGENDARY ACTIONS
 
 The death tyrant can take 3 legendary actions, using the Eye Ray option below. It can take only one legendary action at a time and only at the end of another creature's turn. The tyrant regains spent legendary actions at the start of its turn.
 
-Eye ray.
+Eye Ray.
 The death tyrant uses one random eye ray.
 
 LAIR
@@ -1017,7 +1016,8 @@ The AC of the cambion includes its Charisma bonus.
 
 Innate Spellcasting.
 The cambion's spellcasting ability is Charisma (spell save DC 14). The cambion can innately cast the following spells, requiring no material components:
-3/day each: alter self, command, detect magic 1/day: plane shift (self only)
+3/day each: alter self, command, detect magic
+1/day: plane shift (self only)
 
 ACTIONS
 
@@ -1771,7 +1771,7 @@ Languages Abyssal
 Challenge 17 (18,000 XP)
 
 Charge.
-If the goristro moves at least 15 feet straight toward a target and then hits it with a gore attack on the same turn, the target takes an extra 38 (7d10) piercing damage. If the target is a creature, it must succeed on a DC saving throw or be pushed up to 20 feet away and knocked prone.
+If the goristro moves at least 15 feet straight toward a target and then hits it with a gore attack on the same turn, the target takes an extra 38 (7d10) piercing damage. If the target is a creature, it must succeed on a DC 21 Strength saving throw or be pushed up to 20 feet away and knocked prone.
 
 Labyrinthine Recall.
 The goristro can perfectly recall any path it has traveled.
@@ -2512,7 +2512,7 @@ Devil's Sight.
 Magical darkness doesn't impede the lemure's darkvision.
 
 Hellish Rejuvenation.
-A lemure that dies in the Nine Hells comes back to life with all its hit points in 1d10 days unless it is killed by a good aligned creature with a /bless/ spell cast on that creature or its remains are sprinkled with holy water.
+A lemure that dies in the Nine Hells comes back to life with all its hit points in 1d10 days unless it is killed by a good-aligned creature with a /bless/ spell cast on that creature or its remains are sprinkled with holy water.
 
 ACTIONS
 
@@ -3451,7 +3451,7 @@ Frightful Presence.
 Each creature of the dragon's choice that is within 120 feet of the dragon and aware of it must succeed on a DC 19 Wisdom saving throw or become frightened for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to the dragon's Frightful Presence for the next 24 hours.
 
 Poison Breath (Recharge 5–6).
-The dragon exhales poisonous gas in a 90-foot cone. Each creature in that area must make a DC 22 Constitution saving throw, taking 77 (22d6) poison damage on a failed save, or half as much damage on a successful turnone.
+The dragon exhales poisonous gas in a 90-foot cone. Each creature in that area must make a DC 22 Constitution saving throw, taking 77 (22d6) poison damage on a failed save, or half as much damage on a successful one.
 
 LEGENDARY ACTIONS
 
@@ -3670,7 +3670,7 @@ Tail.
 Melee Weapon Attack: +17 to hit, reach 20 ft., one target. Hit: 19 (2d8 + 10) bludgeoning damage.
 
 Frightful Presence.
-Each creature of the dragon's choice that is within 120 feet of the dragon and aware of it must succeed on a DC 21 Wisdom saving throw or become frightened for 1 minute. A creature can r peat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to the dragon's Frightful Presence for the next 24 hours.
+Each creature of the dragon's choice that is within 120 feet of the dragon and aware of it must succeed on a DC 21 Wisdom saving throw or become frightened for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to the dragon's Frightful Presence for the next 24 hours.
 
 Fire Breath (Recharge 5–6).
 The dragon exhales fire in a 90-foot cone. Each creature in that area must make a DC 24 Dexterity saving throw, taking 91 (26d6) fire damage on a failed save, or half as much damage on a successful one.
@@ -3947,7 +3947,7 @@ Frightful Presence.
 Each creature of the dragon's choice that is within 120 feet of the dragon and aware of it must succeed on a DC 14 Wisdom saving throw or become frightened for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to the dragon's Frightful Presence for the next 24 hours.
 
 Cold Breath (Recharge 5–6).
-The dragon exhales an icy blast in a 60-foot cone. Each creature in that area must make a DC 19 Constitution saving throw, taking 54 (12d8) cold damage on a failed save, or half as much dam age on a successful one.
+The dragon exhales an icy blast in a 60-foot cone. Each creature in that area must make a DC 19 Constitution saving throw, taking 54 (12d8) cold damage on a failed save, or half as much damage on a successful one.
 
 LEGENDARY ACTIONS
 
@@ -4162,6 +4162,27 @@ Melee Weapon Attack: +11 to hit, reach 5 ft., one target. Hit: 13 (2d6 + 6) slas
 
 Tail.
 Melee Weapon Attack: +11 to hit, reach 15 ft., one target. Hit: 15 (2d8 + 6) bludgeoning damage.
+
+Frightful Presence.
+Each creature of the dragon's choice that is within 120 feet of the dragon and aware of it must succeed on a DC 16 Wisdom saving throw or become frightened for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to the dragon's Frightful Presence for the next 24 hours.
+
+Breath Weapons (Recharge 5–6).
+The dragon uses one of the following breath weapons.
+Fire Breath. The dragon exhales fire in an 60-foot line that is 5 feet wide. Each creature in that line must make a DC 18 Dexterity saving throw, taking 49 (13d6) fire damage on a failed save, or half as much damage on a successful one.
+Sleep Breath. The dragon exhales sleep gas in a 60-foot cone. Each creature in that area must succeed on a DC 18 Constitution saving throw or fall unconscious for 10 minutes. This effect ends for a creature if the creature takes damage or someone uses an action to wake it.
+
+LEGENDARY ACTIONS
+
+The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.
+
+Detect.
+The dragon makes a Wisdom (Perception) check.
+
+Tail Attack.
+The dragon makes a tail attack.
+
+Wing Attack (Costs 2 Actions).
+The dragon beats its wings. Each creature within 10 feet of the dragon must succeed on a DC 19 Dexterity saving throw or take 13 (2d6 + 6) bludgeoning damage and be knocked prone. The dragon can then fly up to half its flying speed.
 
 LAIR
 
@@ -4627,7 +4648,6 @@ On initiative count 20 (losing initiative ties), the dragon takes a lair action 
 
 • The dragon chooses a 10-foot-square area on the ground that it can see within 120 feet of it. The ground in that area turns into 3-foot-deep mud. Each creature on the ground in that area when the mud appears must succeed on a DC 15 Dexterity saving throw or sink into the mud and become restrained. A creature can take an action to attempt a DC 15 Strength check, freeing itself or another creature within its reach and ending the restrained condition on a success. Moving 1 foot in the mud costs 2 feet of movement. On initiative count 20 on the next round, the mud hardens, and the Strength DC to work free increases to 20.
 
-
 REGIONAL EFFECTS
 
 The region containing a legendary copper dragon's lair is warped by the dragon's magic, which creates one or more of the following effects:
@@ -5070,9 +5090,7 @@ Tail Attack.
 The dragon makes a tail attack.
 
 Wing Attack (Costs 2 Actions).
-The dragon beats its wings.
-
-Each creature with in 10 feet of the dragon must succeed on a DC 21 Dexterity saving throw or take 15 (2d6 + 8) bludgeoning damage and be knocked prone. The dragon can then fly up to half its flying speed.
+The dragon beats its wings. Each creature within 10 feet of the dragon must succeed on a DC 21 Dexterity saving throw or take 15 (2d6 + 8) bludgeoning damage and be knocked prone. The dragon can then fly up to half its flying speed.
 
 LAIR
 
@@ -5264,7 +5282,7 @@ Dryad
 mm 121
 Medium fey, neutral
 
-Armor Class 11 (16 with /barkskin/)
+Armor Class 11 (16 with barkskin)
 Hit Points 22 (5d8)
 Speed 30 ft.
 
@@ -5442,7 +5460,7 @@ Languages Ignan
 Challenge 5 (1,800 XP)
 
 Fire Form.
-The elemental can move through a space as narrow as 1 inch wide without squeezing. A creature that touches the elemental or hits it with a melee attack while within 5 feet of it takes 5 (1d10) fire damage. In addition, the elemental can enter a hostile creature's space and stop there  The first time it enters a creature's space on a turn, that creature takes 5 (1d10) fire damage and catches fire; until someone takes an action to douse the fire, the creature takes 5 (1d10) fire damage at the start of each of its turns.
+The elemental can move through a space as narrow as 1 inch wide without squeezing. A creature that touches the elemental or hits it with a melee attack while within 5 feet of it takes 5 (1d10) fire damage. In addition, the elemental can enter a hostile creature's space and stop there. The first time it enters a creature's space on a turn, that creature takes 5 (1d10) fire damage and catches fire; until someone takes an action to douse the fire, the creature takes 5 (1d10) fire damage at the start of each of its turns.
 
 Illumination.
 The elemental sheds bright light in a 30-foot radius and dim light in an additional 30 feet.
@@ -5666,7 +5684,9 @@ Spellcasting.
 The drow is a 10th-level spellcaster. Her spellcasting ability is Wisdom (save DC 14, +6 to hit with spell attacks). The drow has the following cleric spells prepared:
 Cantrips (at will): guidance, poison spray, resistance, spare the dying, thaumaturgy
 1st level (4 slots): animal friendship, cure wounds, detect poison and disease, ray of sickness
-2nd level (3 slots): lesser restoration, protection from poison, web 3rd level (3 slots): conjure animals (2 giant spiders), dispel magic 4th level (3 slots): divination, freedom of movement
+2nd level (3 slots): lesser restoration, protection from poison, web
+3rd level (3 slots): conjure animals (2 giant spiders), dispel magic
+4th level (3 slots): divination, freedom of movement
 5th level (2 slots): insect plague, mass cure wounds
 
 Sunlight Sensitivity.
@@ -6659,7 +6679,7 @@ Ranged Weapon Attack: +14 to hit, range 60/240 ft., one target. Hit: 35 (4d12 + 
 Lightning Strike (Recharge 5–6).
 The giant hurls a magical lightning bolt at a point it can see within 500 feet of it. Each creature within 10 feet of that point must make a DC 17 Dexterity saving throw, taking 54 (12d8) lightning damage on a failed save, or half as much damage on a successful one.
 --
-Gibbering Monster
+Gibbering Mouther
 mm 157
 Medium aberration, neutral
 
@@ -6683,8 +6703,7 @@ Aberrant Ground.
 The ground in a 10-foot radius around the mouther is doughlike difficult terrain. Each creature that starts its turn in that area must succeed on a DC 10 Strength saving throw or have its speed reduced to 0 until the start of its next turn.
 
 Gibbering.
-The mouther babbles incoherently while it can see any creature and isn't incapacitated. Each creature that starts its turn within 20 feet of the mouther and can hear the gibbering must succeed on a DC 10 Wisdom saving throw.
-On a failure, the creature can't take reactions until the start of its next turn and rolls a d8 to determine what it does its turn. On a 1 to 4, the creature does nothing. On a 5 or 6, the creature takes no action or bonus action and uses all its movement to move in a randomly determined direction. On a 7 or 8, the creature makes a melee attack against a randomly determined creature within its reach or does nothing if it can't make such an attack.
+The mouther babbles incoherently while it can see any creature and isn't incapacitated. Each creature that starts its turn within 20 feet of the mouther and can hear the gibbering must succeed on a DC 10 Wisdom saving throw. On a failure, the creature can't take reactions until the start of its next turn and rolls a d8 to determine what it does during its turn. On a 1 to 4, the creature does nothing. On a 5 or 6, the creature takes no action or bonus action and uses all its movement to move in a randomly determined direction. On a 7 or 8, the creature makes a melee attack against a randomly determined creature within its reach or does nothing if it can't make such an attack.
 
 ACTIONS
 
@@ -6692,7 +6711,7 @@ Multiattack.
 The gibbering mouther makes one bite attack and, if it can, uses its Blinding Spittle.
 
 Bites.
-Melee Weapon Attack: +2 to hit, reach 5 ft., one creature. Hit: 17 (5d6) piercing damage. If the target is Medium or smaller, it must succeed on a DC 10 Strength saving throw or be knocked prone. if the target is killed by this damage, it is absorbed into the mouther.
+Melee Weapon Attack: +2 to hit, reach 5 ft., one creature. Hit: 17 (5d6) piercing damage. If the target is Medium or smaller, it must succeed on a DC 10 Strength saving throw or be knocked prone. If the target is killed by this damage, it is absorbed into the mouther.
 
 Blinding Spittle (Recharge 5–6).
 The mouther spits a chemical glob at a point it can see within 15 feet of it. The glob explodes in a blinding flash of light on impact. Each creature within 5 feet of the flash must succeed on a DC 13 Dexterity saving throw or be blinded until the end of the mouther's next turn.
@@ -8081,7 +8100,7 @@ The jackalwere has advantage on an attack roll against a creature if at least on
 
 ACTIONS
 
-Bite (jackal or Hybrid Form Only).
+Bite (Jackal or Hybrid Form Only).
 Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) piercing damage.
 
 Scimitar (Human or Hybrid Form Only).
@@ -8278,8 +8297,8 @@ The region containing a kraken's lair is warped by the creature's blasphemous pr
 
 When the kraken dies, all of these regional effects fade immediately.
 --
-Kua-toa
-mm 199; Kua-toa
+Kuo-toa
+mm 199; Kuo-toa
 Medium humanoid (kuo-toa), neutral evil
 
 Armor Class 13 (natural armor, shield)
@@ -8326,9 +8345,9 @@ REACTIONS
 Sticky Shield.
 When a creature misses the kuo-toa with a melee weapon attack, the kuo-toa uses its sticky shield to catch the weapon. The attacker must succeed on a DC 11 Strength saving throw, or the weapon becomes stuck to the kuo-toa's shield. If the weapon's wielder can't or won't let go of the weapon, the wielder is grappled while the weapon is stuck. While stuck, the weapon can't be used. A creature can pull the weapon free by taking an action to make a DC 11 Strength check and succeeding.
 --
-Kua-toa Archpriest
-mm 200; Kua-toa
-Medium humanoid (kua-toa), neutral evil
+Kuo-toa Archpriest
+mm 200; Kuo-toa
+Medium humanoid (kuo-toa), neutral evil
 
 Armor Class 13 (natural armor)
 Hit Points 97 (13d8 + 39)
@@ -8378,8 +8397,8 @@ Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) bludge
 Unarmed Strike.
 Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) bludgeoning damage.
 --
-Kua-toa Whip
-mm 200; Kua-toa
+Kuo-toa Whip
+mm 200; Kuo-toa
 Medium humanoid (kuo-toa), neutral evil
 
 Armor Class 11 (natural armor)
@@ -8790,7 +8809,7 @@ Multiattack (Humanoid or Hybrid Form Only).
 The wererat makes two attacks, only one of which can be a bite.
 
 Bite (Rat or Hybrid Form Only).
-Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) piercing damage. If the target is a humanoid, it must succeed on a DC 11 Constitution saving throw or be cursed with were rat lycanthropy.
+Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) piercing damage. If the target is a humanoid, it must succeed on a DC 11 Constitution saving throw or be cursed with wererat lycanthropy.
 
 Shortsword (Humanoid or Hybrid Form Only).
 Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6 + 2) piercing damage.
@@ -8867,7 +8886,7 @@ Languages Common (can't speak in wolf form)
 Challenge 3 (700 XP)
 
 Shapechanger.
-The werewolf can use its action to polymorph into a wolf-humanoid hybrid or into a wolf, or back into its true form, which is humanoid. Its statistics, other than its AC, are the same in each form. Any equipment it is wearing or carrying isn't transformed. It revert to its true form if it dies.
+The werewolf can use its action to polymorph into a wolf-humanoid hybrid or into a wolf, or back into its true form, which is humanoid. Its statistics, other than its AC, are the same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts to its true form if it dies.
 
 Keen Hearing and Smell.
 The werewolf has advantage on Wisdom (Perception) checks that rely on hearing or smell.
@@ -10257,7 +10276,7 @@ Any nonmagical weapon made of metal that hits the ooze corrodes. After dealing d
 The ooze can eat through 2-inch-thick, nonmagical metal in 1 round.
 
 False Appearance.
-While the ooze remains motionless, indistinguishable from an oily pool or wet rock.
+While the ooze remains motionless, it is indistinguishable from an oily pool or wet rock.
 
 ACTIONS
 
@@ -11101,7 +11120,7 @@ Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 3 (1d4 + 1) slashi
 --
 Sahuagin Baron
 mm 264; Sahuagin
-Large humanoid, lawful evil
+Large humanoid (sahuagin), lawful evil
 
 Armor Class 16 (breastplate)
 Hit Points 76 (9d10 + 27)
@@ -11832,7 +11851,7 @@ Cantrips (at will): sacred flame, spare the dying, thaumaturgy
 1st level (4 slots): command, detect evil and good, detect magic
 2nd level (3 slots): lesser restoration, zone of truth
 3rd level (3 slots): dispel magic, tongues
-4th level (3 slots): banishment, freedom ofm ovement
+4th level (3 slots): banishment, freedom of movement
 5th level (2 slots): flame strike, greater restoration
 6th level (1 slot): heroes' feast
 
@@ -13491,7 +13510,10 @@ Languages -
 Challenge 0 (10 XP)
 
 Echolocation.
-The bat can't use its blindsight while deafened. Keen Hearing. The bat has advantage on Wisdom (Perception) checks that rely on hearing.
+The bat can't use its blindsight while deafened.
+
+Keen Hearing.
+The bat has advantage on Wisdom (Perception) checks that rely on hearing.
 
 ACTIONS
 
@@ -14128,7 +14150,10 @@ Languages -
 Challenge 1/4 (50 XP)
 
 Echolocation.
-The bat can't use its blindsight while deafened. Keen Hearing. The bat has advantage on Wisdom (Perception) checks that rely on hearing.
+The bat can't use its blindsight while deafened.
+
+Keen Hearing.
+The bat has advantage on Wisdom (Perception) checks that rely on hearing.
 
 ACTIONS
 
@@ -14692,7 +14717,10 @@ Languages -
 Challenge 5 (1,800 XP)
 
 Blood Frenzy.
-The shark has advantage on melee attack rolls against any creature that doesn't have all its hit points. Water Breathing. The shark can breathe only underwater.
+The shark has advantage on melee attack rolls against any creature that doesn't have all its hit points.
+
+Water Breathing.
+The shark can breathe only underwater.
 
 ACTIONS
 
@@ -16180,7 +16208,7 @@ CHA 16 (+3)
 
 Saving Throws Int +9, Wis +6
 Skills Arcana +13, History +13
-Damage Resistance damage from spells; nonmagical bludgeoning, piercing, and slashing (from /stoneskin/)
+Damage Resistance damage from spells; nonmagical bludgeoning, piercing, and slashing (from stoneskin)
 Senses passive Perception 12
 Languages any six languages
 Challenge 12 (8,400 XP)
@@ -16384,7 +16412,7 @@ Senses passive Perception 10
 Languages any one language (usually Common)
 Challenge 1/8 (25 XP)
 
-Devotion.
+Dark Devotion.
 The cultist has advantage on saving throws against being charmed or frightened.
 
 ACTIONS
@@ -16433,7 +16461,7 @@ Druid
 mm 346; Nonplayer Characters
 Medium humanoid (any race), any alignment
 
-Armor Class 11 (16 with /barkskin/)
+Armor Class 11 (16 with barkskin)
 Hit Points 27 (5d8 + 5)
 Speed 30 ft.
 
@@ -16563,7 +16591,7 @@ Heavy Crossbow.
 Ranged Weapon Attack: +2 to hit, range 100/400 ft., one target. Hit: 5 (1d10) piercing damage.
 
 Leadership (Recharges after a Short or Long Rest).
-For 1 minute, the knight can utter a special command or warning whenever a non hostile creature that it can see within 30 feet of it makes an attack roll or a saving throw. The creature can add a d4 to its roll provided it can hear and understand the knight. A creature can benefit from only one Leadership die at a time. This effect ends if the knight is incapacitated.
+For 1 minute, the knight can utter a special command or warning whenever a nonhostile creature that it can see within 30 feet of it makes an attack roll or a saving throw. The creature can add a d4 to its roll provided it can hear and understand the knight. A creature can benefit from only one Leadership die at a time. This effect ends if the knight is incapacitated.
 
 REACTIONS
 
@@ -16574,7 +16602,7 @@ Mage
 mm 347; Nonplayer Characters|dmbr 55
 Medium humanoid (any race), any alignment
 
-Armor Class 12 (15 with /mage armor/)
+Armor Class 12 (15 with mage armor)
 Hit Points 40 (9d8)
 Speed 30 ft.
 
@@ -16660,7 +16688,7 @@ As a bonus action, the priest can expend a spell slot to cause its melee weapon 
 
 Spellcasting.
 The priest is a 5th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 13, +5 to hit with spell attacks). The priest has the following cleric spells prepared:
-Cantrips (at will): fight, sacred flame, thaumaturgy
+Cantrips (at will): light, sacred flame, thaumaturgy
 1st level (4 slots): cure wounds, guiding bolt, sanctuary
 2nd level (3 slots): lesser restoration, spiritual weapon
 3rd level (2 slots): dispel magic, spirit guardians
