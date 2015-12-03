@@ -53,6 +53,7 @@ protocol DiceOrModifier {
     
     var value: Int { get }
     var sign: JoiningSign { get }
+    var averageValue: Int { get }
     
 }
 
@@ -68,6 +69,9 @@ struct Dice: DiceOrModifier, Equatable {
     /// Sign preceeding this.
     let sign: JoiningSign
     
+    /// Average value of the set of dice.
+    let averageValue: Int
+    
     init(multiplier: Int, sides: Int, sign: JoiningSign = .None) throws {
         guard multiplier > 0 else { throw DieError.InvalidMultiplier }
         var values = [Die]()
@@ -80,6 +84,7 @@ struct Dice: DiceOrModifier, Equatable {
         self.values = values
         self.value = value
         self.sign = sign
+        self.averageValue = Int(Double(multiplier) * Double(sides + 1) / 2.0)
     }
 
 }
@@ -104,9 +109,13 @@ struct Modifier: DiceOrModifier, Equatable {
     /// Sign preceeding this.
     let sign: JoiningSign
     
+    /// "Average value" of the modifier, which is the same as its value.
+    let averageValue: Int
+    
     init(value: Int, sign: JoiningSign = .None) {
         self.value = value
         self.sign = sign
+        self.averageValue = value
     }
 
 }
@@ -133,9 +142,13 @@ struct DiceCombo: Equatable {
     /// Total value of all dice and modifiers.
     let value: Int
     
+    /// Average value of the sets of dice, added to the modifiers.
+    let averageValue: Int
+
     init(description: String) throws {
         var values = [DiceOrModifier]()
         var value = 0
+        var averageValue = 0
         
         var numeric = ""
         var multiplier = 0
@@ -157,7 +170,7 @@ struct DiceCombo: Equatable {
 
             values.append(newValue)
             value += sign == .Minus ? -newValue.value : newValue.value
-
+            averageValue += sign == .Minus ? -newValue.averageValue : newValue.averageValue
             numeric = ""
             multiplier = 0
             sign = .None
@@ -193,6 +206,7 @@ struct DiceCombo: Equatable {
 
         self.values = values
         self.value = value
+        self.averageValue = averageValue
     }
     
 }

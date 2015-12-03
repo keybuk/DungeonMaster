@@ -91,6 +91,9 @@ class DiceTest: XCTestCase {
         
         XCTAssertEqual(dice.value, dice.values[0].value)
         XCTAssertEqual(combo.value, dice.value)
+        
+        XCTAssertEqual(dice.averageValue, 2)
+        XCTAssertEqual(combo.averageValue, dice.averageValue)
     }
 
     func testLargeMultiplierCombo() {
@@ -111,6 +114,9 @@ class DiceTest: XCTestCase {
         
         XCTAssertEqual(dice.value, expectedValue)
         XCTAssertEqual(combo.value, dice.value)
+        
+        XCTAssertEqual(dice.averageValue, 35)
+        XCTAssertEqual(combo.averageValue, dice.averageValue)
     }
 
     func testLargeDiceCombo() {
@@ -131,6 +137,9 @@ class DiceTest: XCTestCase {
         
         XCTAssertEqual(dice.value, expectedValue)
         XCTAssertEqual(combo.value, dice.value)
+        
+        XCTAssertEqual(dice.averageValue, 101)
+        XCTAssertEqual(combo.averageValue, dice.averageValue)
     }
 
     func testLargeMultiplierAndDiceCombo() {
@@ -151,6 +160,9 @@ class DiceTest: XCTestCase {
         
         XCTAssertEqual(dice.value, expectedValue)
         XCTAssertEqual(combo.value, dice.value)
+        
+        XCTAssertEqual(dice.averageValue, 1010)
+        XCTAssertEqual(combo.averageValue, dice.averageValue)
     }
 
     func testComboWithModifier() {
@@ -165,14 +177,17 @@ class DiceTest: XCTestCase {
         XCTAssertEqual(dice.values[0].sides, 4)
         
         XCTAssertEqual(dice.value, dice.values[0].value)
+        XCTAssertEqual(dice.averageValue, 2)
 
         XCTAssertTrue(combo.values[1] is Modifier, "Expected modifier")
         
         let modifier = combo.values[1] as! Modifier
         XCTAssertEqual(modifier.value, 4)
         XCTAssertEqual(modifier.sign, JoiningSign.Plus)
+        XCTAssertEqual(modifier.averageValue, 4)
 
         XCTAssertEqual(combo.value, dice.value + modifier.value)
+        XCTAssertEqual(combo.averageValue, dice.averageValue + modifier.averageValue)
     }
 
     func testComboWithModifierWithoutSpaces() {
@@ -187,14 +202,17 @@ class DiceTest: XCTestCase {
         XCTAssertEqual(dice.values[0].sides, 4)
         
         XCTAssertEqual(dice.value, dice.values[0].value)
-        
+        XCTAssertEqual(dice.averageValue, 2)
+
         XCTAssertTrue(combo.values[1] is Modifier, "Expected modifier")
         
         let modifier = combo.values[1] as! Modifier
         XCTAssertEqual(modifier.value, 4)
         XCTAssertEqual(modifier.sign, JoiningSign.Plus)
-        
+        XCTAssertEqual(modifier.averageValue, 4)
+
         XCTAssertEqual(combo.value, dice.value + modifier.value)
+        XCTAssertEqual(combo.averageValue, dice.averageValue + modifier.averageValue)
     }
 
     func testComboWithNegativeModifier() {
@@ -209,14 +227,17 @@ class DiceTest: XCTestCase {
         XCTAssertEqual(dice.values[0].sides, 4)
         
         XCTAssertEqual(dice.value, dice.values[0].value)
-        
+        XCTAssertEqual(dice.averageValue, 2)
+
         XCTAssertTrue(combo.values[1] is Modifier, "Expected modifier")
         
         let modifier = combo.values[1] as! Modifier
         XCTAssertEqual(modifier.value, 4)
         XCTAssertEqual(modifier.sign, JoiningSign.Minus)
-        
+        XCTAssertEqual(modifier.averageValue, 4)
+
         XCTAssertEqual(combo.value, dice.value - modifier.value)
+        XCTAssertEqual(combo.averageValue, dice.averageValue - modifier.averageValue)
     }
 
     func testComboWithTwoDiceSets() {
@@ -231,7 +252,8 @@ class DiceTest: XCTestCase {
         XCTAssertEqual(dice1.values[0].sides, 4)
         
         XCTAssertEqual(dice1.value, dice1.values[0].value)
-        
+        XCTAssertEqual(dice1.averageValue, 2)
+
         XCTAssertTrue(combo.values[1] is Dice, "Expected dice")
         
         let dice2 = combo.values[1] as! Dice
@@ -241,8 +263,10 @@ class DiceTest: XCTestCase {
         XCTAssertEqual(dice2.values[1].sides, 6)
 
         XCTAssertEqual(dice2.value, dice2.values[0].value + dice2.values[1].value)
-        
+        XCTAssertEqual(dice2.averageValue, 7)
+
         XCTAssertEqual(combo.value, dice1.value + dice2.value)
+        XCTAssertEqual(combo.averageValue, dice1.averageValue + dice2.averageValue)
     }
 
     func testComboWithTwoDiceSetsAroundModifier() {
@@ -257,12 +281,14 @@ class DiceTest: XCTestCase {
         XCTAssertEqual(dice1.values[0].sides, 4)
         
         XCTAssertEqual(dice1.value, dice1.values[0].value)
-        
+        XCTAssertEqual(dice1.averageValue, 2)
+
         XCTAssertTrue(combo.values[1] is Modifier, "Expected modifier")
         
         let modifier = combo.values[1] as! Modifier
         XCTAssertEqual(modifier.value, 1)
         XCTAssertEqual(modifier.sign, JoiningSign.Plus)
+        XCTAssertEqual(modifier.averageValue, 1)
 
         XCTAssertTrue(combo.values[2] is Dice, "Expected dice")
         
@@ -273,8 +299,10 @@ class DiceTest: XCTestCase {
         XCTAssertEqual(dice2.values[1].sides, 6)
         
         XCTAssertEqual(dice2.value, dice2.values[0].value + dice2.values[1].value)
-        
+        XCTAssertEqual(dice2.averageValue, 7)
+
         XCTAssertEqual(combo.value, dice1.value + modifier.value + dice2.value)
+        XCTAssertEqual(combo.averageValue, dice1.averageValue + modifier.averageValue + dice2.averageValue)
     }
 
     func testInvalidComboWithInvalidDice() {
