@@ -52,7 +52,7 @@ enum JoiningSign {
 struct Dice: Equatable {
     
     /// Set of individual die rolled, empty for a constant modifier.
-    let values: [Die]
+    let dice: [Die]
     
     /// Total value of all dice.
     let value: Int
@@ -65,21 +65,21 @@ struct Dice: Equatable {
     
     init(multiplier: Int, sides: Int, sign: JoiningSign = .None) throws {
         guard multiplier > 0 else { throw DieError.InvalidMultiplier }
-        var values = [Die]()
+        var dice = [Die]()
         var value = 0
         for _ in 0..<multiplier {
             let die = try Die(sides: sides)
-            values.append(die)
+            dice.append(die)
             value += die.value
         }
-        self.values = values
+        self.dice = dice
         self.value = value
         self.sign = sign
         self.averageValue = Int(Double(multiplier) * Double(sides + 1) / 2.0)
     }
     
     init(value: Int, sign: JoiningSign = .None) {
-        self.values = []
+        self.dice = []
         self.value = value
         self.sign = sign
         self.averageValue = value
@@ -89,10 +89,10 @@ struct Dice: Equatable {
 }
 
 func ==(lhs: Dice, rhs: Dice) -> Bool {
-    guard lhs.values.count == rhs.values.count else { return false }
+    guard lhs.dice.count == rhs.dice.count else { return false }
     guard lhs.value == rhs.value else { return false }
-    for (ldice, rdice) in zip(lhs.values, rhs.values) {
-        if ldice.value != rdice.value {
+    for (ldice, rdice) in zip(lhs.dice, rhs.dice) {
+        if ldice != rdice {
             return false
         }
     }
@@ -100,19 +100,19 @@ func ==(lhs: Dice, rhs: Dice) -> Bool {
 }
 
 
-/**
-    Combination of dice and modifiers used for attacks.
-
-    Example descriptions:
-
-    - 4d8
-    - 2d4 - 1
-    - 2d6 + 4 + 3d8
-*/
+/// Combination of dice and modifiers used for attacks.
+///
+/// Example descriptions:
+///
+/// - 4d8
+/// - 2d4 - 1
+/// - 2d6 + 4 + 3d8
+///
+/// Descriptions are turned into an array of Dice.
 struct DiceCombo: Equatable {
     
     /// Dice objects representing groups of rolled dice, or constant modifiers.
-    let values: [Dice]
+    let dice: [Dice]
     
     /// Total value of all dice and modifiers.
     let value: Int
@@ -121,7 +121,7 @@ struct DiceCombo: Equatable {
     let averageValue: Int
 
     init(description: String) throws {
-        var values = [Dice]()
+        var dice = [Dice]()
         var value = 0
         var averageValue = 0
         
@@ -130,30 +130,30 @@ struct DiceCombo: Equatable {
         var sign = JoiningSign.None
 
         func addValue() throws {
-            guard values.count == 0 || sign != .None else { throw DieError.InvalidString }
-            guard values.count > 0 || sign == .None else { throw DieError.InvalidString }
+            guard dice.count == 0 || sign != .None else { throw DieError.InvalidString }
+            guard dice.count > 0 || sign == .None else { throw DieError.InvalidString }
 
             guard let intValue = Int(numeric) else { throw DieError.InvalidString }
 
-            let dice: Dice
+            let newDice: Dice
             if multiplier > 0 {
-                dice = try Dice(multiplier: multiplier, sides: intValue, sign: sign)
+                newDice = try Dice(multiplier: multiplier, sides: intValue, sign: sign)
             } else  {
-                dice = Dice(value: intValue, sign: sign)
+                newDice = Dice(value: intValue, sign: sign)
             }
 
-            values.append(dice)
+            dice.append(newDice)
             
             switch sign {
             case .None:
-                value = dice.value
-                averageValue = dice.averageValue
+                value = newDice.value
+                averageValue = newDice.averageValue
             case .Plus:
-                value += dice.value
-                averageValue += dice.averageValue
+                value += newDice.value
+                averageValue += newDice.averageValue
             case .Minus:
-                value -= dice.value
-                averageValue -= dice.averageValue
+                value -= newDice.value
+                averageValue -= newDice.averageValue
             }
             
             numeric = ""
@@ -184,7 +184,7 @@ struct DiceCombo: Equatable {
         
         try addValue()
 
-        self.values = values
+        self.dice = dice
         self.value = value
         self.averageValue = averageValue
     }
@@ -192,9 +192,9 @@ struct DiceCombo: Equatable {
 }
 
 func ==(lhs: DiceCombo, rhs: DiceCombo) -> Bool {
-    guard lhs.values.count == rhs.values.count else { return false }
-    for (ldice, rdice) in zip(lhs.values, rhs.values) {
-        if ldice.value != rdice.value {
+    guard lhs.dice.count == rhs.dice.count else { return false }
+    for (ldice, rdice) in zip(lhs.dice, rhs.dice) {
+        if ldice != rdice {
             return false
         }
     }
