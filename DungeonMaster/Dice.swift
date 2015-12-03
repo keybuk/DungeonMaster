@@ -130,7 +130,6 @@ struct DiceCombo: Equatable {
         var sign = JoiningSign.None
 
         func addValue() throws {
-            guard numeric != "" else { return }
             guard values.count == 0 || sign != .None else { throw DieError.InvalidString }
             guard values.count > 0 || sign == .None else { throw DieError.InvalidString }
 
@@ -167,28 +166,23 @@ struct DiceCombo: Equatable {
             case "0"..."9":
                 numeric.append(c)
             case "d":
+                guard multiplier == 0 else { throw DieError.InvalidString }
                 guard let intValue = Int(numeric) else { throw DieError.InvalidString }
                 if intValue == 0 { throw DieError.InvalidMultiplier }
                 multiplier = intValue
                 numeric = ""
             case "+":
-                guard sign == .None else { throw DieError.InvalidString }
                 try addValue()
                 sign = .Plus
             case "-":
-                guard sign == .None else { throw DieError.InvalidString }
                 try addValue()
                 sign = .Minus
-            case " ":
-                try addValue()
             default:
                 throw DieError.InvalidString
             }
         }
         
         try addValue()
-        guard sign == .None else { throw DieError.InvalidString }
-        guard values.count > 0 else { throw DieError.InvalidString }
 
         self.values = values
         self.value = value

@@ -82,9 +82,7 @@ class DiceTest: XCTestCase {
         let combo = try! DiceCombo(description: "1d4")
         XCTAssertEqual(combo.values.count, 1)
 
-        XCTAssertTrue(combo.values[0] is Dice, "Expected dice")
-
-        let dice = combo.values[0] as! Dice
+        let dice = combo.values[0]
         XCTAssertEqual(dice.sign, JoiningSign.None)
         XCTAssertEqual(dice.values.count, 1)
         XCTAssertEqual(dice.values[0].sides, 4)
@@ -100,9 +98,7 @@ class DiceTest: XCTestCase {
         let combo = try! DiceCombo(description: "10d6")
         XCTAssertEqual(combo.values.count, 1)
 
-        XCTAssertTrue(combo.values[0] is Dice, "Expected dice")
-
-        let dice = combo.values[0] as! Dice
+        let dice = combo.values[0]
         XCTAssertEqual(dice.sign, JoiningSign.None)
         XCTAssertEqual(dice.values.count, 10)
 
@@ -122,10 +118,8 @@ class DiceTest: XCTestCase {
     func testLargeDiceCombo() {
         let combo = try! DiceCombo(description: "2d100")
         XCTAssertEqual(combo.values.count, 1)
-        
-        XCTAssertTrue(combo.values[0] is Dice, "Expected dice")
-        
-        let dice = combo.values[0] as! Dice
+
+        let dice = combo.values[0]
         XCTAssertEqual(dice.sign, JoiningSign.None)
         XCTAssertEqual(dice.values.count, 2)
         
@@ -146,9 +140,7 @@ class DiceTest: XCTestCase {
         let combo = try! DiceCombo(description: "20d100")
         XCTAssertEqual(combo.values.count, 1)
         
-        XCTAssertTrue(combo.values[0] is Dice, "Expected dice")
-        
-        let dice = combo.values[0] as! Dice
+        let dice = combo.values[0]
         XCTAssertEqual(dice.sign, JoiningSign.None)
         XCTAssertEqual(dice.values.count, 20)
         
@@ -166,28 +158,6 @@ class DiceTest: XCTestCase {
     }
 
     func testComboWithModifier() {
-        let combo = try! DiceCombo(description: "1d4 + 4")
-        XCTAssertEqual(combo.values.count, 2)
-        
-        let dice = combo.values[0]
-        XCTAssertEqual(dice.sign, JoiningSign.None)
-        XCTAssertEqual(dice.values.count, 1)
-        XCTAssertEqual(dice.values[0].sides, 4)
-        
-        XCTAssertEqual(dice.value, dice.values[0].value)
-        XCTAssertEqual(dice.averageValue, 2)
-
-        let modifier = combo.values[1]
-        XCTAssertEqual(modifier.values.count, 0)
-        XCTAssertEqual(modifier.value, 4)
-        XCTAssertEqual(modifier.sign, JoiningSign.Plus)
-        XCTAssertEqual(modifier.averageValue, 4)
-
-        XCTAssertEqual(combo.value, dice.value + modifier.value)
-        XCTAssertEqual(combo.averageValue, dice.averageValue + modifier.averageValue)
-    }
-
-    func testComboWithModifierWithoutSpaces() {
         let combo = try! DiceCombo(description: "1d4+4")
         XCTAssertEqual(combo.values.count, 2)
         
@@ -210,7 +180,7 @@ class DiceTest: XCTestCase {
     }
 
     func testComboWithNegativeModifier() {
-        let combo = try! DiceCombo(description: "1d4 - 4")
+        let combo = try! DiceCombo(description: "1d4-4")
         XCTAssertEqual(combo.values.count, 2)
         
         let dice = combo.values[0]
@@ -232,7 +202,7 @@ class DiceTest: XCTestCase {
     }
 
     func testComboWithTwoDiceSets() {
-        let combo = try! DiceCombo(description: "1d4 + 2d6")
+        let combo = try! DiceCombo(description: "1d4+2d6")
         XCTAssertEqual(combo.values.count, 2)
         
         let dice1 = combo.values[0]
@@ -257,7 +227,7 @@ class DiceTest: XCTestCase {
     }
 
     func testComboWithTwoDiceSetsAroundModifier() {
-        let combo = try! DiceCombo(description: "1d4 + 1 + 2d6")
+        let combo = try! DiceCombo(description: "1d4+1+2d6")
         XCTAssertEqual(combo.values.count, 3)
         
         let dice1 = combo.values[0]
@@ -273,8 +243,6 @@ class DiceTest: XCTestCase {
         XCTAssertEqual(modifier.value, 1)
         XCTAssertEqual(modifier.sign, JoiningSign.Plus)
         XCTAssertEqual(modifier.averageValue, 1)
-
-        XCTAssertTrue(combo.values[2] is Dice, "Expected dice")
         
         let dice2 = combo.values[2]
         XCTAssertEqual(dice2.sign, JoiningSign.Plus)
@@ -313,7 +281,7 @@ class DiceTest: XCTestCase {
 
     func testInvalidComboWithLeadingSign() {
         do {
-            let _ = try DiceCombo(description: "+ 2d4")
+            let _ = try DiceCombo(description: "+2d4")
         } catch DieError.InvalidString {
             return
         } catch {
@@ -324,7 +292,7 @@ class DiceTest: XCTestCase {
 
     func testInvalidComboWithTrailingSign() {
         do {
-            let _ = try DiceCombo(description: "2d4 +")
+            let _ = try DiceCombo(description: "2d4+")
         } catch DieError.InvalidString {
             return
         } catch {
@@ -344,9 +312,9 @@ class DiceTest: XCTestCase {
         XCTFail("Expected exception to be thrown")
     }
 
-    func testInvalidComboWithMissingSignBetweenDice() {
+    func testInvalidComboWithMissingSign() {
         do {
-            let _ = try DiceCombo(description: "2d4 3d4")
+            let _ = try DiceCombo(description: "2d3d4")
         } catch DieError.InvalidString {
             return
         } catch {
@@ -355,20 +323,9 @@ class DiceTest: XCTestCase {
         XCTFail("Expected exception to be thrown")
     }
     
-    func testInvalidComboWithMissingSignBetweenMultipliers() {
-        do {
-            let _ = try DiceCombo(description: "5 10")
-        } catch DieError.InvalidString {
-            return
-        } catch {
-            XCTFail("Expected DieError.InvalidString to be thrown")
-        }
-        XCTFail("Expected exception to be thrown")
-    }
-
     func testInvalidComboWithMultipleSigns() {
         do {
-            let _ = try DiceCombo(description: "2d4 + - 4")
+            let _ = try DiceCombo(description: "2d4+-4")
         } catch DieError.InvalidString {
             return
         } catch {
@@ -390,7 +347,7 @@ class DiceTest: XCTestCase {
     
     func testInvalidSpaceString() {
         do {
-            let _ = try DiceCombo(description: " ")
+            let _ = try DiceCombo(description: "2d4 + 1")
         } catch DieError.InvalidString {
             return
         } catch {
