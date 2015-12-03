@@ -13,6 +13,8 @@
 		D23435F41C0D617C00108D5F /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23435F31C0D617C00108D5F /* Monster.swift */; };
 		D23435F61C0D634100108D5F /* Importer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23435F51C0D634100108D5F /* Importer.swift */; };
 		D23435F81C0D670F00108D5F /* Monsters.txt in Resources */ = {isa = PBXBuildFile; fileRef = D23435F71C0D670F00108D5F /* Monsters.txt */; };
+		D23435FB1C0FEFA000108D5F /* Dice.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23435FA1C0FEFA000108D5F /* Dice.swift */; };
+		D23435FD1C0FF84F00108D5F /* DiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23435FC1C0FF84F00108D5F /* DiceTest.swift */; };
 		D2A9AF0A1BFFEAA5009902ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A9AF091BFFEAA5009902ED /* AppDelegate.swift */; };
 		D2A9AF0D1BFFEAA5009902ED /* DungeonMaster.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2A9AF0B1BFFEAA5009902ED /* DungeonMaster.xcdatamodeld */; };
 		D2A9AF0F1BFFEAA5009902ED /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A9AF0E1BFFEAA5009902ED /* MasterViewController.swift */; };
@@ -48,6 +50,8 @@
 		D23435F31C0D617C00108D5F /* Monster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
 		D23435F51C0D634100108D5F /* Importer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Importer.swift; sourceTree = "<group>"; };
 		D23435F71C0D670F00108D5F /* Monsters.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Monsters.txt; sourceTree = SOURCE_ROOT; };
+		D23435FA1C0FEFA000108D5F /* Dice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dice.swift; sourceTree = "<group>"; };
+		D23435FC1C0FF84F00108D5F /* DiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiceTest.swift; sourceTree = "<group>"; };
 		D2A9AF061BFFEAA5009902ED /* DungeonMaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DungeonMaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2A9AF091BFFEAA5009902ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2A9AF0C1BFFEAA5009902ED /* DungeonMaster.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DungeonMaster.xcdatamodel; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 				D23435F31C0D617C00108D5F /* Monster.swift */,
 				D23435F51C0D634100108D5F /* Importer.swift */,
 				D23435F71C0D670F00108D5F /* Monsters.txt */,
+				D23435FA1C0FEFA000108D5F /* Dice.swift */,
 			);
 			path = DungeonMaster;
 			sourceTree = "<group>";
@@ -135,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				D2A9AF231BFFEAA5009902ED /* DungeonMasterTests.swift */,
+				D23435FC1C0FF84F00108D5F /* DiceTest.swift */,
 				D2A9AF251BFFEAA5009902ED /* Info.plist */,
 			);
 			path = DungeonMasterTests;
@@ -283,6 +289,7 @@
 			files = (
 				D23435F41C0D617C00108D5F /* Monster.swift in Sources */,
 				D23435F21C0D608B00108D5F /* Source.swift in Sources */,
+				D23435FB1C0FEFA000108D5F /* Dice.swift in Sources */,
 				D23435F61C0D634100108D5F /* Importer.swift in Sources */,
 				D23435EC1C0D5A3D00108D5F /* Model.swift in Sources */,
 				D2A9AF0D1BFFEAA5009902ED /* DungeonMaster.xcdatamodeld in Sources */,
@@ -297,6 +304,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D23435FD1C0FF84F00108D5F /* DiceTest.swift in Sources */,
 				D2A9AF241BFFEAA5009902ED /* DungeonMasterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
