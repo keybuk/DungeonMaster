@@ -169,9 +169,7 @@ class DiceTest: XCTestCase {
         let combo = try! DiceCombo(description: "1d4 + 4")
         XCTAssertEqual(combo.values.count, 2)
         
-        XCTAssertTrue(combo.values[0] is Dice, "Expected dice")
-        
-        let dice = combo.values[0] as! Dice
+        let dice = combo.values[0]
         XCTAssertEqual(dice.sign, JoiningSign.None)
         XCTAssertEqual(dice.values.count, 1)
         XCTAssertEqual(dice.values[0].sides, 4)
@@ -179,9 +177,8 @@ class DiceTest: XCTestCase {
         XCTAssertEqual(dice.value, dice.values[0].value)
         XCTAssertEqual(dice.averageValue, 2)
 
-        XCTAssertTrue(combo.values[1] is Modifier, "Expected modifier")
-        
-        let modifier = combo.values[1] as! Modifier
+        let modifier = combo.values[1]
+        XCTAssertEqual(modifier.values.count, 0)
         XCTAssertEqual(modifier.value, 4)
         XCTAssertEqual(modifier.sign, JoiningSign.Plus)
         XCTAssertEqual(modifier.averageValue, 4)
@@ -194,9 +191,7 @@ class DiceTest: XCTestCase {
         let combo = try! DiceCombo(description: "1d4+4")
         XCTAssertEqual(combo.values.count, 2)
         
-        XCTAssertTrue(combo.values[0] is Dice, "Expected dice")
-        
-        let dice = combo.values[0] as! Dice
+        let dice = combo.values[0]
         XCTAssertEqual(dice.sign, JoiningSign.None)
         XCTAssertEqual(dice.values.count, 1)
         XCTAssertEqual(dice.values[0].sides, 4)
@@ -204,9 +199,8 @@ class DiceTest: XCTestCase {
         XCTAssertEqual(dice.value, dice.values[0].value)
         XCTAssertEqual(dice.averageValue, 2)
 
-        XCTAssertTrue(combo.values[1] is Modifier, "Expected modifier")
-        
-        let modifier = combo.values[1] as! Modifier
+        let modifier = combo.values[1]
+        XCTAssertEqual(modifier.values.count, 0)
         XCTAssertEqual(modifier.value, 4)
         XCTAssertEqual(modifier.sign, JoiningSign.Plus)
         XCTAssertEqual(modifier.averageValue, 4)
@@ -219,9 +213,7 @@ class DiceTest: XCTestCase {
         let combo = try! DiceCombo(description: "1d4 - 4")
         XCTAssertEqual(combo.values.count, 2)
         
-        XCTAssertTrue(combo.values[0] is Dice, "Expected dice")
-        
-        let dice = combo.values[0] as! Dice
+        let dice = combo.values[0]
         XCTAssertEqual(dice.sign, JoiningSign.None)
         XCTAssertEqual(dice.values.count, 1)
         XCTAssertEqual(dice.values[0].sides, 4)
@@ -229,9 +221,8 @@ class DiceTest: XCTestCase {
         XCTAssertEqual(dice.value, dice.values[0].value)
         XCTAssertEqual(dice.averageValue, 2)
 
-        XCTAssertTrue(combo.values[1] is Modifier, "Expected modifier")
-        
-        let modifier = combo.values[1] as! Modifier
+        let modifier = combo.values[1]
+        XCTAssertEqual(modifier.values.count, 0)
         XCTAssertEqual(modifier.value, 4)
         XCTAssertEqual(modifier.sign, JoiningSign.Minus)
         XCTAssertEqual(modifier.averageValue, 4)
@@ -244,9 +235,7 @@ class DiceTest: XCTestCase {
         let combo = try! DiceCombo(description: "1d4 + 2d6")
         XCTAssertEqual(combo.values.count, 2)
         
-        XCTAssertTrue(combo.values[0] is Dice, "Expected dice")
-        
-        let dice1 = combo.values[0] as! Dice
+        let dice1 = combo.values[0]
         XCTAssertEqual(dice1.sign, JoiningSign.None)
         XCTAssertEqual(dice1.values.count, 1)
         XCTAssertEqual(dice1.values[0].sides, 4)
@@ -254,9 +243,7 @@ class DiceTest: XCTestCase {
         XCTAssertEqual(dice1.value, dice1.values[0].value)
         XCTAssertEqual(dice1.averageValue, 2)
 
-        XCTAssertTrue(combo.values[1] is Dice, "Expected dice")
-        
-        let dice2 = combo.values[1] as! Dice
+        let dice2 = combo.values[1]
         XCTAssertEqual(dice2.sign, JoiningSign.Plus)
         XCTAssertEqual(dice2.values.count, 2)
         XCTAssertEqual(dice2.values[0].sides, 6)
@@ -273,9 +260,7 @@ class DiceTest: XCTestCase {
         let combo = try! DiceCombo(description: "1d4 + 1 + 2d6")
         XCTAssertEqual(combo.values.count, 3)
         
-        XCTAssertTrue(combo.values[0] is Dice, "Expected dice")
-        
-        let dice1 = combo.values[0] as! Dice
+        let dice1 = combo.values[0]
         XCTAssertEqual(dice1.sign, JoiningSign.None)
         XCTAssertEqual(dice1.values.count, 1)
         XCTAssertEqual(dice1.values[0].sides, 4)
@@ -283,16 +268,15 @@ class DiceTest: XCTestCase {
         XCTAssertEqual(dice1.value, dice1.values[0].value)
         XCTAssertEqual(dice1.averageValue, 2)
 
-        XCTAssertTrue(combo.values[1] is Modifier, "Expected modifier")
-        
-        let modifier = combo.values[1] as! Modifier
+        let modifier = combo.values[1]
+        XCTAssertEqual(modifier.values.count, 0)
         XCTAssertEqual(modifier.value, 1)
         XCTAssertEqual(modifier.sign, JoiningSign.Plus)
         XCTAssertEqual(modifier.averageValue, 1)
 
         XCTAssertTrue(combo.values[2] is Dice, "Expected dice")
         
-        let dice2 = combo.values[2] as! Dice
+        let dice2 = combo.values[2]
         XCTAssertEqual(dice2.sign, JoiningSign.Plus)
         XCTAssertEqual(dice2.values.count, 2)
         XCTAssertEqual(dice2.values[0].sides, 6)

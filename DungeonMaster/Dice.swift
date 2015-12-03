@@ -48,19 +48,10 @@ enum JoiningSign {
     case Minus
 }
 
-/// Protocol for representing a set of dice, or a modifier, in a dice roll.
-protocol DiceOrModifier {
-    
-    var value: Int { get }
-    var sign: JoiningSign { get }
-    var averageValue: Int { get }
-    
-}
-
 /// Multiple dice with rolled values.
-struct Dice: DiceOrModifier, Equatable {
+struct Dice: Equatable {
     
-    /// Set of individual die rolled.
+    /// Set of individual die rolled, empty for a constant modifier.
     let values: [Die]
     
     /// Total value of all dice.
@@ -86,42 +77,26 @@ struct Dice: DiceOrModifier, Equatable {
         self.sign = sign
         self.averageValue = Int(Double(multiplier) * Double(sides + 1) / 2.0)
     }
+    
+    init(value: Int, sign: JoiningSign = .None) {
+        self.values = []
+        self.value = value
+        self.sign = sign
+        self.averageValue = value
+    }
+
 
 }
 
 func ==(lhs: Dice, rhs: Dice) -> Bool {
     guard lhs.values.count == rhs.values.count else { return false }
+    guard lhs.value == rhs.value else { return false }
     for (ldice, rdice) in zip(lhs.values, rhs.values) {
         if ldice.value != rdice.value {
             return false
         }
     }
     return true
-}
-
-
-/// Constant modifier value in dice combo.
-struct Modifier: DiceOrModifier, Equatable {
-    
-    /// Constant modifier value.
-    let value: Int
-    
-    /// Sign preceeding this.
-    let sign: JoiningSign
-    
-    /// "Average value" of the modifier, which is the same as its value.
-    let averageValue: Int
-    
-    init(value: Int, sign: JoiningSign = .None) {
-        self.value = value
-        self.sign = sign
-        self.averageValue = value
-    }
-
-}
-
-func ==(lhs: Modifier, rhs: Modifier) -> Bool {
-    return lhs.value == rhs.value
 }
 
 
@@ -136,8 +111,8 @@ func ==(lhs: Modifier, rhs: Modifier) -> Bool {
 */
 struct DiceCombo: Equatable {
     
-    /// Individual sets of dice or modifiers, as parsed.
-    let values: [DiceOrModifier]
+    /// Dice objects representing groups of rolled dice, or constant modifiers.
+    let values: [Dice]
     
     /// Total value of all dice and modifiers.
     let value: Int
@@ -146,7 +121,7 @@ struct DiceCombo: Equatable {
     let averageValue: Int
 
     init(description: String) throws {
-        var values = [DiceOrModifier]()
+        var values = [Dice]()
         var value = 0
         var averageValue = 0
         
@@ -161,16 +136,27 @@ struct DiceCombo: Equatable {
 
             guard let intValue = Int(numeric) else { throw DieError.InvalidString }
 
-            let newValue: DiceOrModifier
+            let dice: Dice
             if multiplier > 0 {
-                newValue = try Dice(multiplier: multiplier, sides: intValue, sign: sign)
+                dice = try Dice(multiplier: multiplier, sides: intValue, sign: sign)
             } else  {
-                newValue = Modifier(value: intValue, sign: sign)
+                dice = Dice(value: intValue, sign: sign)
             }
 
-            values.append(newValue)
-            value += sign == .Minus ? -newValue.value : newValue.value
-            averageValue += sign == .Minus ? -newValue.averageValue : newValue.averageValue
+            values.append(dice)
+            
+            switch sign {
+            case .None:
+                value = dice.value
+                averageValue = dice.averageValue
+            case .Plus:
+                value += dice.value
+                averageValue += dice.averageValue
+            case .Minus:
+                value -= dice.value
+                averageValue -= dice.averageValue
+            }
+            
             numeric = ""
             multiplier = 0
             sign = .None
