@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-public func importIfNeeded(managedObjectContext: NSManagedObjectContext) {
+func importIfNeeded(managedObjectContext: NSManagedObjectContext) {
     let fetchRequest = NSFetchRequest()
     let entity = NSEntityDescription.entity(Model.Book, inManagedObjectContext: managedObjectContext)
     fetchRequest.entity = entity

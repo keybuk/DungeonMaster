@@ -9,12 +9,12 @@
 import Foundation
 import CoreData
 
-public enum Model: String {
+enum Model: String {
     case Book
     case Source
     case Monster
 
-    public static let name = "DungeonMaster"
+    static let name = "DungeonMaster"
     
     static var URL: NSURL {
         get {
@@ -39,7 +39,7 @@ public enum Model: String {
 
 extension NSEntityDescription {
     
-    public class func entity(model: Model, inManagedObjectContext context: NSManagedObjectContext) -> NSEntityDescription {
+    class func entity(model: Model, inManagedObjectContext context: NSManagedObjectContext) -> NSEntityDescription {
         return NSEntityDescription.entityForName(model.rawValue, inManagedObjectContext: context)!
     }
     
@@ -47,14 +47,14 @@ extension NSEntityDescription {
 
 extension NSFetchRequest {
     
-    public convenience init(entity: Model) {
+    convenience init(entity: Model) {
         self.init(entityName: entity.rawValue)
     }
     
 }
 
 
-public let persistentStoreCoordinator: NSPersistentStoreCoordinator = {
+let persistentStoreCoordinator: NSPersistentStoreCoordinator = {
     let options: [NSObject: AnyObject]? = [
         NSMigratePersistentStoresAutomaticallyOption : true,
         NSInferMappingModelAutomaticallyOption : true
@@ -71,14 +71,14 @@ public let persistentStoreCoordinator: NSPersistentStoreCoordinator = {
     return persistentStoreCoordinator
 }()
 
-public let managedObjectContext: NSManagedObjectContext = {
+let managedObjectContext: NSManagedObjectContext = {
     let managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
     managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator
     return managedObjectContext
 }()
 
 
-public func childManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType = .MainQueueConcurrencyType, mergeType: NSMergePolicyType = .MergeByPropertyObjectTrumpMergePolicyType) -> NSManagedObjectContext {
+func childManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType = .MainQueueConcurrencyType, mergeType: NSMergePolicyType = .MergeByPropertyObjectTrumpMergePolicyType) -> NSManagedObjectContext {
     let context = NSManagedObjectContext(concurrencyType: concurrencyType)
     context.parentContext = managedObjectContext
     context.mergePolicy = NSMergePolicy(mergeType: mergeType)

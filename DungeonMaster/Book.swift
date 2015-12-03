@@ -9,12 +9,12 @@
 import Foundation
 import CoreData
 
-public final class Book: NSManagedObject {
+final class Book: NSManagedObject {
     
     @NSManaged var name: String
     @NSManaged var sources: NSSet
     
-    public convenience init(name: String, inManagedObjectContext context: NSManagedObjectContext) {
+    convenience init(name: String, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Book, inManagedObjectContext: context)
         self.init(entity: entity, insertIntoManagedObjectContext: context)
         

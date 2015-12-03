@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-public final class Monster: NSManagedObject {
+final class Monster: NSManagedObject {
     
     @NSManaged var name: String
     @NSManaged var sizeTypeAlignment: String
@@ -34,7 +34,7 @@ public final class Monster: NSManagedObject {
     @NSManaged var text: String
     @NSManaged var sources: NSSet
     
-    public convenience init(name: String, inManagedObjectContext context: NSManagedObjectContext) {
+    convenience init(name: String, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Monster, inManagedObjectContext: context)
         self.init(entity: entity, insertIntoManagedObjectContext: context)
         
