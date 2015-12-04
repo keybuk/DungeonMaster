@@ -22,8 +22,16 @@ func importIfNeeded() {
     }
     
     print("Importing data from \(plistVersion), replacing \(dataVersion)")
-    try! NSFileManager.defaultManager().removeItemAtURL(Model.storeURL)
-
+    do {
+        try NSFileManager.defaultManager().removeItemAtURL(Model.storeURL)
+    } catch NSCocoaError.FileNoSuchFileError {
+        // Ignore removing non-existant database.
+    } catch {
+        let nserror = error as NSError
+        NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+        abort()
+    }
+    
     // Import books.
     var books = [Book]()
     let bookDatas = data["books"] as! NSArray
