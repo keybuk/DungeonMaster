@@ -1,47 +1,113 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="15B42" minimumToolsVersion="Automatic">
+    <entity name="Action" representedClassName=".Action" syncable="YES">
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="text" attributeType="String" syncable="YES"/>
+        <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="actions" inverseEntity="Monster" syncable="YES"/>
+    </entity>
     <entity name="Book" representedClassName=".Book" syncable="YES">
         <attribute name="name" attributeType="String" syncable="YES"/>
-        <relationship name="sources" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Source" inverseName="book" inverseEntity="Source" syncable="YES"/>
+        <relationship name="sources" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Source" inverseName="book" inverseEntity="Source" syncable="YES"/>
+    </entity>
+    <entity name="Lair" representedClassName=".Lair" syncable="YES">
+        <attribute name="lairActionsLimit" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lairActionsText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lairTraitsDuration" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lairTraitsText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="regionalEffectsDuration" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="regionalEffectsText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="text" attributeType="String" syncable="YES"/>
+        <relationship name="lairActions" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="LairAction" inverseName="lair" inverseEntity="LairAction" syncable="YES"/>
+        <relationship name="lairTraits" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="LairTrait" inverseName="lair" inverseEntity="LairTrait" syncable="YES"/>
+        <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="lair" inverseEntity="Monster" syncable="YES"/>
+        <relationship name="regionalEffects" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="RegionalEffect" inverseName="lair" inverseEntity="RegionalEffect" syncable="YES"/>
+    </entity>
+    <entity name="LairAction" representedClassName=".LairAction" syncable="YES">
+        <attribute name="text" attributeType="String" syncable="YES"/>
+        <relationship name="lair" maxCount="1" deletionRule="Nullify" destinationEntity="Lair" inverseName="lairActions" inverseEntity="Lair" syncable="YES"/>
+    </entity>
+    <entity name="LairTrait" representedClassName=".LairTrait" syncable="YES">
+        <attribute name="text" attributeType="String" syncable="YES"/>
+        <relationship name="lair" maxCount="1" deletionRule="Nullify" destinationEntity="Lair" inverseName="lairTraits" inverseEntity="Lair" syncable="YES"/>
+    </entity>
+    <entity name="LegendaryAction" representedClassName=".LegendaryAction" syncable="YES">
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="text" attributeType="String" syncable="YES"/>
+        <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="legendaryActions" inverseEntity="Monster" syncable="YES"/>
     </entity>
     <entity name="Monster" representedClassName=".Monster" syncable="YES">
         <attribute name="armorClass" attributeType="String" syncable="YES"/>
+        <attribute name="cha" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="challenge" attributeType="String" syncable="YES"/>
         <attribute name="charisma" attributeType="String" syncable="YES"/>
+        <attribute name="con" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="conditionImmunities" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="constitution" attributeType="String" syncable="YES"/>
         <attribute name="damageImmunities" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="damageResistances" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="damageVulnerabilities" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dex" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="dexterity" attributeType="String" syncable="YES"/>
         <attribute name="hitPoints" attributeType="String" syncable="YES"/>
+        <attribute name="hp" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="hpDice" attributeType="String" syncable="YES"/>
+        <attribute name="int" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="intelligence" attributeType="String" syncable="YES"/>
-        <attribute name="languages" attributeType="String" syncable="YES"/>
+        <attribute name="languages" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="passivePerception" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="savingThrows" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="senses" attributeType="String" syncable="YES"/>
         <attribute name="sizeTypeAlignment" attributeType="String" syncable="YES"/>
         <attribute name="skills" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="speed" attributeType="String" syncable="YES"/>
+        <attribute name="str" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="strength" attributeType="String" syncable="YES"/>
-        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wis" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="wisdom" attributeType="String" syncable="YES"/>
-        <relationship name="source" toMany="YES" deletionRule="Nullify" destinationEntity="Source" inverseName="monster" inverseEntity="Source" syncable="YES"/>
+        <relationship name="actions" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Action" inverseName="monster" inverseEntity="Action" syncable="YES"/>
+        <relationship name="lair" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Lair" inverseName="monster" inverseEntity="Lair" syncable="YES"/>
+        <relationship name="legendaryActions" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="LegendaryAction" inverseName="monster" inverseEntity="LegendaryAction" syncable="YES"/>
+        <relationship name="reactions" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Reaction" inverseName="monster" inverseEntity="Reaction" syncable="YES"/>
+        <relationship name="sources" toMany="YES" deletionRule="Cascade" destinationEntity="Source" inverseName="monster" inverseEntity="Source" syncable="YES"/>
+        <relationship name="traits" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Trait" inverseName="monster" inverseEntity="Trait" syncable="YES"/>
         <compoundIndexes>
             <compoundIndex>
                 <index value="name"/>
             </compoundIndex>
         </compoundIndexes>
     </entity>
+    <entity name="Reaction" representedClassName=".Reaction" syncable="YES">
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="text" attributeType="String" syncable="YES"/>
+        <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="reactions" inverseEntity="Monster" syncable="YES"/>
+    </entity>
+    <entity name="RegionalEffect" representedClassName=".RegionalEffect" syncable="YES">
+        <attribute name="text" attributeType="String" syncable="YES"/>
+        <relationship name="lair" maxCount="1" deletionRule="Nullify" destinationEntity="Lair" inverseName="regionalEffects" inverseEntity="Lair" syncable="YES"/>
+    </entity>
     <entity name="Source" representedClassName=".Source" syncable="YES">
         <attribute name="page" attributeType="Integer 16" syncable="YES"/>
         <attribute name="section" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="book" maxCount="1" deletionRule="Cascade" destinationEntity="Book" inverseName="sources" inverseEntity="Book" syncable="YES"/>
-        <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="source" inverseEntity="Monster" syncable="YES"/>
+        <relationship name="book" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="sources" inverseEntity="Book" syncable="YES"/>
+        <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="sources" inverseEntity="Monster" syncable="YES"/>
+    </entity>
+    <entity name="Trait" representedClassName=".Trait" syncable="YES">
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="text" attributeType="String" syncable="YES"/>
+        <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="traits" inverseEntity="Monster" syncable="YES"/>
     </entity>
     <elements>
         <element name="Book" positionX="261" positionY="198" width="128" height="75"/>
-        <element name="Monster" positionX="279" positionY="243" width="128" height="375"/>
+        <element name="Monster" positionX="279" positionY="243" width="128" height="570"/>
         <element name="Source" positionX="270" positionY="207" width="128" height="105"/>
+        <element name="Action" positionX="270" positionY="351" width="128" height="90"/>
+        <element name="Trait" positionX="288" positionY="369" width="128" height="90"/>
+        <element name="Reaction" positionX="315" positionY="387" width="128" height="90"/>
+        <element name="LegendaryAction" positionX="324" positionY="396" width="128" height="90"/>
+        <element name="Lair" positionX="342" positionY="405" width="128" height="210"/>
+        <element name="LairAction" positionX="297" positionY="351" width="128" height="75"/>
+        <element name="LairTrait" positionX="306" positionY="360" width="128" height="75"/>
+        <element name="RegionalEffect" positionX="315" positionY="369" width="128" height="75"/>
     </elements>
 </model>

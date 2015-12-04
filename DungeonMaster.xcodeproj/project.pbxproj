@@ -7,12 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D2116A461C10EBEB001EDBBA /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2116A451C10EBEB001EDBBA /* Action.swift */; };
+		D2116A481C10ECAE001EDBBA /* Trait.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2116A471C10ECAE001EDBBA /* Trait.swift */; };
+		D2116A4A1C10ECBC001EDBBA /* Reaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2116A491C10ECBC001EDBBA /* Reaction.swift */; };
+		D2116A4C1C10ECC9001EDBBA /* LegendaryAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2116A4B1C10ECC9001EDBBA /* LegendaryAction.swift */; };
+		D2116A4F1C10F377001EDBBA /* Lair.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2116A4E1C10F377001EDBBA /* Lair.swift */; };
+		D2116A511C10F4CE001EDBBA /* LairAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2116A501C10F4CE001EDBBA /* LairAction.swift */; };
+		D2116A531C10F4E9001EDBBA /* LairTrait.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2116A521C10F4E9001EDBBA /* LairTrait.swift */; };
+		D2116A551C10F4F8001EDBBA /* RegionalEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2116A541C10F4F8001EDBBA /* RegionalEffect.swift */; };
+		D2116A571C10F791001EDBBA /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2116A561C10F791001EDBBA /* Data.plist */; };
 		D23435EC1C0D5A3D00108D5F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23435EB1C0D5A3D00108D5F /* Model.swift */; };
 		D23435EE1C0D5F9E00108D5F /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23435ED1C0D5F9E00108D5F /* Book.swift */; };
 		D23435F21C0D608B00108D5F /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23435F01C0D608B00108D5F /* Source.swift */; };
 		D23435F41C0D617C00108D5F /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23435F31C0D617C00108D5F /* Monster.swift */; };
 		D23435F61C0D634100108D5F /* Importer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23435F51C0D634100108D5F /* Importer.swift */; };
-		D23435F81C0D670F00108D5F /* Monsters.txt in Resources */ = {isa = PBXBuildFile; fileRef = D23435F71C0D670F00108D5F /* Monsters.txt */; };
 		D23435FB1C0FEFA000108D5F /* Dice.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23435FA1C0FEFA000108D5F /* Dice.swift */; };
 		D23435FD1C0FF84F00108D5F /* DiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23435FC1C0FF84F00108D5F /* DiceTest.swift */; };
 		D2A9AF0A1BFFEAA5009902ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A9AF091BFFEAA5009902ED /* AppDelegate.swift */; };
@@ -44,12 +52,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D2116A451C10EBEB001EDBBA /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		D2116A471C10ECAE001EDBBA /* Trait.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trait.swift; sourceTree = "<group>"; };
+		D2116A491C10ECBC001EDBBA /* Reaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reaction.swift; sourceTree = "<group>"; };
+		D2116A4B1C10ECC9001EDBBA /* LegendaryAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegendaryAction.swift; sourceTree = "<group>"; };
+		D2116A4E1C10F377001EDBBA /* Lair.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lair.swift; sourceTree = "<group>"; };
+		D2116A501C10F4CE001EDBBA /* LairAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LairAction.swift; sourceTree = "<group>"; };
+		D2116A521C10F4E9001EDBBA /* LairTrait.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LairTrait.swift; sourceTree = "<group>"; };
+		D2116A541C10F4F8001EDBBA /* RegionalEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionalEffect.swift; sourceTree = "<group>"; };
+		D2116A561C10F791001EDBBA /* Data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Data.plist; path = ../Data.plist; sourceTree = "<group>"; };
 		D23435EB1C0D5A3D00108D5F /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		D23435ED1C0D5F9E00108D5F /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		D23435F01C0D608B00108D5F /* Source.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
 		D23435F31C0D617C00108D5F /* Monster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
 		D23435F51C0D634100108D5F /* Importer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Importer.swift; sourceTree = "<group>"; };
-		D23435F71C0D670F00108D5F /* Monsters.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Monsters.txt; sourceTree = SOURCE_ROOT; };
 		D23435FA1C0FEFA000108D5F /* Dice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dice.swift; sourceTree = "<group>"; };
 		D23435FC1C0FF84F00108D5F /* DiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiceTest.swift; sourceTree = "<group>"; };
 		D2A9AF061BFFEAA5009902ED /* DungeonMaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DungeonMaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +110,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D2116A581C10FE74001EDBBA /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				D2A9AF0B1BFFEAA5009902ED /* DungeonMaster.xcdatamodeld */,
+				D23435EB1C0D5A3D00108D5F /* Model.swift */,
+				D23435ED1C0D5F9E00108D5F /* Book.swift */,
+				D23435F01C0D608B00108D5F /* Source.swift */,
+				D23435F31C0D617C00108D5F /* Monster.swift */,
+				D2116A471C10ECAE001EDBBA /* Trait.swift */,
+				D2116A451C10EBEB001EDBBA /* Action.swift */,
+				D2116A491C10ECBC001EDBBA /* Reaction.swift */,
+				D2116A4B1C10ECC9001EDBBA /* LegendaryAction.swift */,
+				D2116A4E1C10F377001EDBBA /* Lair.swift */,
+				D2116A501C10F4CE001EDBBA /* LairAction.swift */,
+				D2116A521C10F4E9001EDBBA /* LairTrait.swift */,
+				D2116A541C10F4F8001EDBBA /* RegionalEffect.swift */,
+				D23435F51C0D634100108D5F /* Importer.swift */,
+			);
+			name = "Data Model";
+			sourceTree = "<group>";
+		};
 		D2A9AEFD1BFFEAA5009902ED = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +154,7 @@
 		D2A9AF081BFFEAA5009902ED /* DungeonMaster */ = {
 			isa = PBXGroup;
 			children = (
+				D2116A581C10FE74001EDBBA /* Data Model */,
 				D2A9AF091BFFEAA5009902ED /* AppDelegate.swift */,
 				D2A9AF0E1BFFEAA5009902ED /* MasterViewController.swift */,
 				D2A9AF101BFFEAA5009902ED /* DetailViewController.swift */,
@@ -124,13 +162,7 @@
 				D2A9AF151BFFEAA5009902ED /* Assets.xcassets */,
 				D2A9AF171BFFEAA5009902ED /* LaunchScreen.storyboard */,
 				D2A9AF1A1BFFEAA5009902ED /* Info.plist */,
-				D2A9AF0B1BFFEAA5009902ED /* DungeonMaster.xcdatamodeld */,
-				D23435EB1C0D5A3D00108D5F /* Model.swift */,
-				D23435ED1C0D5F9E00108D5F /* Book.swift */,
-				D23435F01C0D608B00108D5F /* Source.swift */,
-				D23435F31C0D617C00108D5F /* Monster.swift */,
-				D23435F51C0D634100108D5F /* Importer.swift */,
-				D23435F71C0D670F00108D5F /* Monsters.txt */,
+				D2116A561C10F791001EDBBA /* Data.plist */,
 				D23435FA1C0FEFA000108D5F /* Dice.swift */,
 			);
 			path = DungeonMaster;
@@ -260,7 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2A9AF191BFFEAA5009902ED /* LaunchScreen.storyboard in Resources */,
-				D23435F81C0D670F00108D5F /* Monsters.txt in Resources */,
+				D2116A571C10F791001EDBBA /* Data.plist in Resources */,
 				D2A9AF161BFFEAA5009902ED /* Assets.xcassets in Resources */,
 				D2A9AF141BFFEAA5009902ED /* Main.storyboard in Resources */,
 			);
@@ -288,14 +320,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				D23435F41C0D617C00108D5F /* Monster.swift in Sources */,
+				D2116A511C10F4CE001EDBBA /* LairAction.swift in Sources */,
+				D2116A461C10EBEB001EDBBA /* Action.swift in Sources */,
 				D23435F21C0D608B00108D5F /* Source.swift in Sources */,
 				D23435FB1C0FEFA000108D5F /* Dice.swift in Sources */,
 				D23435F61C0D634100108D5F /* Importer.swift in Sources */,
+				D2116A4F1C10F377001EDBBA /* Lair.swift in Sources */,
+				D2116A4C1C10ECC9001EDBBA /* LegendaryAction.swift in Sources */,
 				D23435EC1C0D5A3D00108D5F /* Model.swift in Sources */,
 				D2A9AF0D1BFFEAA5009902ED /* DungeonMaster.xcdatamodeld in Sources */,
 				D23435EE1C0D5F9E00108D5F /* Book.swift in Sources */,
+				D2116A4A1C10ECBC001EDBBA /* Reaction.swift in Sources */,
 				D2A9AF0A1BFFEAA5009902ED /* AppDelegate.swift in Sources */,
+				D2116A551C10F4F8001EDBBA /* RegionalEffect.swift in Sources */,
 				D2A9AF0F1BFFEAA5009902ED /* MasterViewController.swift in Sources */,
+				D2116A481C10ECAE001EDBBA /* Trait.swift in Sources */,
+				D2116A531C10F4E9001EDBBA /* LairTrait.swift in Sources */,
 				D2A9AF111BFFEAA5009902ED /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

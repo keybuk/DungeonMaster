@@ -16,13 +16,12 @@ final class Source: NSManagedObject {
     @NSManaged var section: String?
     @NSManaged var monster: Monster
 
-    convenience init(book: Book, page: Int16, monster: Monster, inManagedObjectContext context: NSManagedObjectContext) {
+    convenience init(book: Book, page: Int16, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Source, inManagedObjectContext: context)
         self.init(entity: entity, insertIntoManagedObjectContext: context)
         
         self.book = book
         self.page = page
-        self.monster = monster
     }
 
 }

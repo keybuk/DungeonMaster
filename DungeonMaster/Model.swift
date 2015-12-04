@@ -13,6 +13,14 @@ enum Model: String {
     case Book
     case Source
     case Monster
+    case Trait
+    case Action
+    case Reaction
+    case LegendaryAction
+    case Lair
+    case LairAction
+    case LairTrait
+    case RegionalEffect
 
     static let name = "DungeonMaster"
     

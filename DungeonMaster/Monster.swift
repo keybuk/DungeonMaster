@@ -12,6 +12,22 @@ import CoreData
 final class Monster: NSManagedObject {
     
     @NSManaged var name: String
+    @NSManaged var sources: NSSet
+    
+    // Hit Points and dice expression to generate.
+    @NSManaged var hp: Int16
+    @NSManaged var hpDice: String
+
+    // Parsed ability scores, saving throws, skills, and passive Perception.
+    @NSManaged var str: Int16
+    @NSManaged var dex: Int16
+    @NSManaged var con: Int16
+    @NSManaged var int: Int16
+    @NSManaged var wis: Int16
+    @NSManaged var cha: Int16
+    @NSManaged var passivePerception: Int16
+    
+    // Original stat block text.
     @NSManaged var sizeTypeAlignment: String
     @NSManaged var armorClass: String
     @NSManaged var hitPoints: String
@@ -29,10 +45,14 @@ final class Monster: NSManagedObject {
     @NSManaged var damageImmunities: String?
     @NSManaged var conditionImmunities: String?
     @NSManaged var senses: String
-    @NSManaged var languages: String
+    @NSManaged var languages: String?
     @NSManaged var challenge: String
-    @NSManaged var text: String
-    @NSManaged var sources: NSSet
+    
+    @NSManaged var traits: NSOrderedSet
+    @NSManaged var actions: NSOrderedSet
+    @NSManaged var reactions: NSOrderedSet
+    @NSManaged var legendaryActions: NSOrderedSet
+    @NSManaged var lair: Lair?
     
     convenience init(name: String, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Monster, inManagedObjectContext: context)
@@ -40,5 +60,5 @@ final class Monster: NSManagedObject {
         
         self.name = name
     }
-    
+
 }

@@ -9,173 +9,137 @@
 import Foundation
 import CoreData
 
-func importIfNeeded(managedObjectContext: NSManagedObjectContext) {
-    let fetchRequest = NSFetchRequest()
-    let entity = NSEntityDescription.entity(Model.Book, inManagedObjectContext: managedObjectContext)
-    fetchRequest.entity = entity
+func importIfNeeded() {
+    let filename = NSBundle.mainBundle().pathForResource("Data", ofType: "plist")!
+    let data = NSDictionary(contentsOfFile: filename)!
 
-    do {
-        let books = try managedObjectContext.executeFetchRequest(fetchRequest)
-        if books.count == 0 {
-            importIntoContext(managedObjectContext)
-        }
-    } catch {
-        let nserror = error as NSError
-        print("Unresolved error \(nserror), \(nserror.userInfo)")
-        abort()
+    let defaults = NSUserDefaults.standardUserDefaults()
+    let dataVersion = defaults.objectForKey("DataVersion") as? Int
+    let plistVersion = data["version"] as? Int
+    
+    if dataVersion != nil && dataVersion == plistVersion {
+        return
     }
-}
-
-
-enum NextLine {
-    case Name
-    case Source
-    case SizeTypeAlignment
-    case EndOfIntro
-    case BasicStats
-    case AbilityScores
-    case AdvancedStats
-    case Text
-}
-
-func importIntoContext(managedObjectContext: NSManagedObjectContext) {
-    let filename = NSBundle.mainBundle().pathForResource("Monsters", ofType: "txt")!
-    let data = try! String(contentsOfFile: filename, encoding: NSUTF8StringEncoding)
     
-    let mm = Book(name: "Monster Manual", inManagedObjectContext: managedObjectContext)
-    let mmTag = "mm "
+    print("Importing data from \(plistVersion), replacing \(dataVersion)")
+    try! NSFileManager.defaultManager().removeItemAtURL(Model.storeURL)
 
-    let dmbr = Book(name: "Dungeon Master's Basic Rules Version 0.3", inManagedObjectContext: managedObjectContext)
-    let dmbrTag = "dmbr "
+    // Import books.
+    var books = [Book]()
+    let bookDatas = data["books"] as! NSArray
+    for bookData in bookDatas {
+        let name = bookData["name"] as! String
+        let book = Book(name: name, inManagedObjectContext: managedObjectContext)
+        books.append(book)
+    }
     
-    var nextLine = NextLine.Name
-    var monster: Monster?
-    data.enumerateLines {
-        line, stop in
+    // Import monsters.
+    let monsterDatas = data["monsters"] as! NSArray
+    for monsterData in monsterDatas {
+        let name = monsterData["name"] as! String
+        let monster = Monster(name: name, inManagedObjectContext: managedObjectContext)
         
-        switch nextLine {
-        case .Name:
-            monster = Monster(name: line, inManagedObjectContext: managedObjectContext)
-            print("Monster '\(monster!.name)'")
-            nextLine = .Source
-        case .Source:
-            for sourceTextEntry in line.componentsSeparatedByString("|") {
-                let sourceTextParts = sourceTextEntry.componentsSeparatedByString("; ")
-                let sourceText = sourceTextParts[0]
-                
-                var book: Book! = nil
-                var page: Int16! = nil
-                if sourceText.hasPrefix(mmTag) {
-                    book = mm
-                    page = Int16(sourceText.substringFromIndex(sourceText.startIndex.advancedBy(mmTag.characters.count)))
-                } else if sourceText.hasPrefix(dmbrTag) {
-                    book = dmbr
-                    page = Int16(sourceText.substringFromIndex(sourceText.startIndex.advancedBy(dmbrTag.characters.count)))
-                } else {
-                    print("Bad book tag: \(sourceText)")
-                    abort()
-                }
+        var sources = [Source]()
+        let sourceDatas = monsterData["sources"] as! [NSDictionary]
+        for sourceData in sourceDatas {
+            let bookIndex = sourceData["book"]!.integerValue
+            let book = books[bookIndex]
 
-                print("  \(book.name) page #\(page)")
+            let page = sourceData["page"]!.integerValue
+            
+            let source = Source(book: book, page: Int16(page), inManagedObjectContext: managedObjectContext)
+            
+            if let section = sourceData["section"] as? String {
+                source.section = section
+            }
 
-                let source = Source(book: book, page: page, monster: monster!, inManagedObjectContext: managedObjectContext)
-                if sourceTextParts.count > 1 {
-                    source.section = sourceTextParts[1]
-                }
+            sources.append(source)
+        }
+        monster.sources = NSSet(array: sources)
+        
+        let info = monsterData["info"] as! [String: AnyObject]
+        monster.setValuesForKeysWithDictionary(info)
+        
+        var traits = [Trait]()
+        let traitDatas = monsterData["traits"] as! [NSDictionary]
+        for traitData in traitDatas {
+            let name = traitData["name"] as! String
+            let text = traitData["text"] as! String
+            let trait = Trait(name: name, text: text, inManagedObjectContext: managedObjectContext)
+            traits.append(trait)
+        }
+        monster.traits = NSOrderedSet(array: traits)
+        
+        var actions = [Action]()
+        let actionDatas = monsterData["actions"] as! [NSDictionary]
+        for actionData in actionDatas {
+            let name = actionData["name"] as! String
+            let text = actionData["text"] as! String
+            let action = Action(name: name, text: text, inManagedObjectContext: managedObjectContext)
+            actions.append(action)
+        }
+        monster.actions = NSOrderedSet(array: actions)
+
+        var reactions = [Reaction]()
+        let reactionDatas = monsterData["reactions"] as! [NSDictionary]
+        for reactionData in reactionDatas {
+            let name = reactionData["name"] as! String
+            let text = reactionData["text"] as! String
+            let reaction = Reaction(name: name, text: text, inManagedObjectContext: managedObjectContext)
+            reactions.append(reaction)
+        }
+        monster.reactions = NSOrderedSet(array: reactions)
+
+        var legendaryActions = [LegendaryAction]()
+        let legendaryActionDatas = monsterData["legendaryActions"] as! [NSDictionary]
+        for legendaryActionData in legendaryActionDatas {
+            let name = legendaryActionData["name"] as! String
+            let text = legendaryActionData["text"] as! String
+            let legendaryAction = LegendaryAction(name: name, text: text, inManagedObjectContext: managedObjectContext)
+            legendaryActions.append(legendaryAction)
+        }
+        monster.legendaryActions = NSOrderedSet(array: legendaryActions)
+        
+        if let lairData = monsterData["lair"] as? NSDictionary {
+            let lair = Lair(inManagedObjectContext: managedObjectContext)
+
+            let info = lairData["info"] as! [String: AnyObject]
+            lair.setValuesForKeysWithDictionary(info)
+            
+            var lairActions = [LairAction]()
+            let lairActionTexts = lairData["lairActions"] as! [String]
+            for text in lairActionTexts {
+                let lairAction = LairAction(text: text, inManagedObjectContext: managedObjectContext)
+                lairActions.append(lairAction)
             }
-            nextLine = .SizeTypeAlignment
-        case .SizeTypeAlignment:
-            monster!.sizeTypeAlignment = line
-            nextLine = .EndOfIntro
-        case .EndOfIntro:
-            if line != "" {
-                print("Unexpected line!")
-                abort()
+            lair.lairActions = NSOrderedSet(array: lairActions)
+
+            var lairTraits = [LairTrait]()
+            let lairTraitsTexts = lairData["lairTraits"] as! [String]
+            for text in lairTraitsTexts {
+                let lairTrait = LairTrait(text: text, inManagedObjectContext: managedObjectContext)
+                lairTraits.append(lairTrait)
             }
-            nextLine = .BasicStats
-        case .BasicStats:
-            let acTag = "Armor Class "
-            let hpTag = "Hit Points "
-            let sTag = "Speed "
-            if line == "" {
-                nextLine = .AbilityScores
-            } else if line.hasPrefix(acTag) {
-                monster!.armorClass = line.substringFromIndex(line.startIndex.advancedBy(acTag.characters.count))
-            } else if line.hasPrefix(hpTag) {
-                monster!.hitPoints = line.substringFromIndex(line.startIndex.advancedBy(hpTag.characters.count))
-            } else if line.hasPrefix(sTag) {
-                monster!.speed = line.substringFromIndex(line.startIndex.advancedBy(sTag.characters.count))
-            } else {
-                print("Bad basic stats line: \(line)")
-                abort()
+            lair.lairTraits = NSOrderedSet(array: lairTraits)
+
+            var regionalEffects = [RegionalEffect]()
+            let regionalEffectsTexts = lairData["regionalEffects"] as! [String]
+            for text in regionalEffectsTexts {
+                let regionalEffect = RegionalEffect(text: text, inManagedObjectContext: managedObjectContext)
+                regionalEffects.append(regionalEffect)
             }
-        case .AbilityScores:
-            if line == "" {
-                nextLine = .AdvancedStats
-            } else if line.hasPrefix("STR ") {
-                monster!.strength = line.substringFromIndex(line.startIndex.advancedBy(4))
-            } else if line.hasPrefix("DEX ") {
-                monster!.dexterity = line.substringFromIndex(line.startIndex.advancedBy(4))
-            } else if line.hasPrefix("CON ") {
-                monster!.constitution = line.substringFromIndex(line.startIndex.advancedBy(4))
-            } else if line.hasPrefix("INT ") {
-                monster!.intelligence = line.substringFromIndex(line.startIndex.advancedBy(4))
-            } else if line.hasPrefix("WIS ") {
-                monster!.wisdom = line.substringFromIndex(line.startIndex.advancedBy(4))
-            } else if line.hasPrefix("CHA ") {
-                monster!.charisma = line.substringFromIndex(line.startIndex.advancedBy(4))
-            } else {
-                print("Bad ability scores line: \(line)")
-                abort()
-            }
-        case .AdvancedStats:
-            let stTag = "Saving Throws "
-            let skTag = "Skills "
-            let dvTag = "Damage Vulnerabilities "
-            let drTag = "Damage Resistances "
-            let drTag2 = "Damage Resistance "
-            let diTag = "Damage Immunities "
-            let ciTag = "Condition Immunities "
-            let seTag = "Senses "
-            let lTag = "Languages "
-            let cTag = "Challenge "
-            if line == "" {
-                nextLine = .Text
-            } else if line.hasPrefix(stTag) {
-                monster!.savingThrows = line.substringFromIndex(line.startIndex.advancedBy(stTag.characters.count))
-            } else if line.hasPrefix(skTag) {
-                monster!.skills = line.substringFromIndex(line.startIndex.advancedBy(skTag.characters.count))
-            } else if line.hasPrefix(seTag) {
-                monster!.senses = line.substringFromIndex(line.startIndex.advancedBy(seTag.characters.count))
-            } else if line.hasPrefix(dvTag) {
-                monster!.damageVulnerabilities = line.substringFromIndex(line.startIndex.advancedBy(dvTag.characters.count))
-            } else if line.hasPrefix(drTag) {
-                monster!.damageResistances = line.substringFromIndex(line.startIndex.advancedBy(drTag.characters.count))
-            } else if line.hasPrefix(drTag2) {
-                monster!.damageResistances = line.substringFromIndex(line.startIndex.advancedBy(drTag2.characters.count))
-            } else if line.hasPrefix(diTag) {
-                monster!.damageImmunities = line.substringFromIndex(line.startIndex.advancedBy(diTag.characters.count))
-            } else if line.hasPrefix(ciTag) {
-                monster!.conditionImmunities = line.substringFromIndex(line.startIndex.advancedBy(ciTag.characters.count))
-            } else if line.hasPrefix(lTag) {
-                monster!.languages = line.substringFromIndex(line.startIndex.advancedBy(lTag.characters.count))
-            } else if line.hasPrefix(cTag) {
-                monster!.challenge = line.substringFromIndex(line.startIndex.advancedBy(cTag.characters.count))
-            } else {
-                print("Bad advanced stats line: \(line)")
-                abort()
-            }
-        case .Text:
-            if line == "--" {
-                nextLine = .Name
-            } else {
-                monster!.text += line + "\n"
-            }
+            lair.regionalEffects = NSOrderedSet(array: regionalEffects)
+
+
+            monster.lair = lair
         }
     }
 
     do {
         try managedObjectContext.save()
+
+        defaults.setObject(plistVersion, forKey: "DataVersion")
+        defaults.synchronize()
     } catch {
         // Replace this implementation with code to handle the error appropriately.
         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.

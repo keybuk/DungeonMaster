@@ -182,51 +182,163 @@ class DetailViewController: UIViewController {
                 text.appendAttributedString(NSAttributedString(string: "\(monster.senses)\n", attributes: statsValueStyle))
 
                 text.appendAttributedString(NSAttributedString(string: "Languages ", attributes: statsLabelStyle))
-                text.appendAttributedString(NSAttributedString(string: "\(monster.languages)\n", attributes: statsValueStyle))
+                if let languages = monster.languages {
+                    text.appendAttributedString(NSAttributedString(string: "\(languages)\n", attributes: statsValueStyle))
+                } else {
+                    text.appendAttributedString(NSAttributedString(string: "—\n", attributes: statsValueStyle))
+                }
 
                 text.appendAttributedString(NSAttributedString(string: "Challenge ", attributes: statsLabelStyle))
                 text.appendAttributedString(NSAttributedString(string: "\(monster.challenge)\n", attributes: statsValueStyle))
-
-                var nextIsName = true
-                var lastWasText = false
-                var suppressNames = false
-                var resumeNamesAfterText = false
-                monster.text.enumerateLines {
-                    line, stop in
+                
+                for trait in monster.traits {
+                    let trait = trait as! Trait
                     
-                    if line == "" {
-                        if !suppressNames {
-                            nextIsName = true
-                        }
-                        lastWasText = false
-                    } else if line == line.uppercaseString {
-                        text.appendAttributedString(NSAttributedString(string: "\(line.capitalizedString)\n", attributes: titleStyle))
-                        if line != "ACTIONS" && line != "REACTIONS" {
-                            suppressNames = true
-                            nextIsName = false
-                            if line == "LEGENDARY ACTIONS" {
-                                resumeNamesAfterText = true
-                            }
-                        }
-                    } else if nextIsName {
-                        text.appendAttributedString(NSAttributedString(string: "\(line) ", attributes: featureNameStyle))
-                        nextIsName = false
-                    } else {
-                        if lastWasText {
-                            text.appendAttributedString(NSAttributedString(string: "\(line)\n", attributes: featureContinuedStyle))
-                        } else {
-                            text.appendAttributedString(NSAttributedString(string: "\(line)\n", attributes: featureTextStyle))
-                        }
-                        lastWasText = true
-                        if resumeNamesAfterText {
-                            suppressNames = false
-                            resumeNamesAfterText = false
-                        }
+                    text.appendAttributedString(NSAttributedString(string: "\(trait.name). ", attributes: featureNameStyle))
+                    
+                    var attributes = featureTextStyle
+                    trait.text.enumerateLines { line, stop in
+                        text.appendAttributedString(NSAttributedString(string: "\(line)\n", attributes: attributes))
+                        attributes = featureContinuedStyle
                     }
-                 
                 }
 
+                if monster.actions.count > 0 {
+                    text.appendAttributedString(NSAttributedString(string: "Actions\n", attributes: titleStyle))
                 
+                    for action in monster.actions {
+                        let action = action as! Action
+                        
+                        text.appendAttributedString(NSAttributedString(string: "\(action.name). ", attributes: featureNameStyle))
+                        
+                        var attributes = featureTextStyle
+                        action.text.enumerateLines { line, stop in
+                            text.appendAttributedString(NSAttributedString(string: "\(line)\n", attributes: attributes))
+                            attributes = featureContinuedStyle
+                        }
+                    }
+                }
+                
+                if monster.reactions.count > 0 {
+                    text.appendAttributedString(NSAttributedString(string: "Reactions\n", attributes: titleStyle))
+                
+                    for reaction in monster.reactions {
+                        let reaction = reaction as! Reaction
+                        
+                        text.appendAttributedString(NSAttributedString(string: "\(reaction.name). ", attributes: featureNameStyle))
+                        
+                        var attributes = featureTextStyle
+                        reaction.text.enumerateLines { line, stop in
+                            text.appendAttributedString(NSAttributedString(string: "\(line)\n", attributes: attributes))
+                            attributes = featureContinuedStyle
+                        }
+                    }
+                }
+
+                if monster.legendaryActions.count > 0 {
+                    text.appendAttributedString(NSAttributedString(string: "Legendary Actions\n", attributes: titleStyle))
+                
+                    for legendaryAction in monster.legendaryActions {
+                        let legendaryAction = legendaryAction as! LegendaryAction
+                        
+                        text.appendAttributedString(NSAttributedString(string: "\(legendaryAction.name). ", attributes: featureNameStyle))
+                        
+                        var attributes = featureTextStyle
+                        legendaryAction.text.enumerateLines { line, stop in
+                            text.appendAttributedString(NSAttributedString(string: "\(line)\n", attributes: attributes))
+                            attributes = featureContinuedStyle
+                        }
+                    }
+                }
+                
+                if let lair = monster.lair {
+                    text.appendAttributedString(NSAttributedString(string: "Lair\n", attributes: titleStyle))
+
+                    var attributes = featureTextStyle
+                    lair.text.enumerateLines { line, stop in
+                        text.appendAttributedString(NSAttributedString(string: "\(line)\n", attributes: attributes))
+                        attributes = featureContinuedStyle
+                    }
+
+                    if lair.lairActions.count > 0 {
+                        text.appendAttributedString(NSAttributedString(string: "Lair Actions\n", attributes: titleStyle))
+                        
+                        attributes = featureTextStyle
+                        lair.lairActionsText?.enumerateLines { line, stop in
+                            text.appendAttributedString(NSAttributedString(string: "\(line)\n", attributes: attributes))
+                            attributes = featureContinuedStyle
+                        }
+
+                        for lairAction in lair.lairActions {
+                            let lairAction = lairAction as! LairAction
+                            
+                            attributes = featureTextStyle
+                            lairAction.text.enumerateLines { line, stop in
+                                text.appendAttributedString(NSAttributedString(string: "\(line)\n", attributes: attributes))
+                                attributes = featureContinuedStyle
+                            }
+                        }
+                        
+                        attributes = featureTextStyle
+                        lair.lairActionsLimit?.enumerateLines { line, stop in
+                            text.appendAttributedString(NSAttributedString(string: "\(line)\n", attributes: attributes))
+                            attributes = featureContinuedStyle
+                        }
+                    }
+                    
+                    if lair.lairTraits.count > 0 {
+                        text.appendAttributedString(NSAttributedString(string: "Lair Traits\n", attributes: titleStyle))
+                    
+                        attributes = featureTextStyle
+                        lair.lairTraitsText?.enumerateLines { line, stop in
+                            text.appendAttributedString(NSAttributedString(string: "\(line)\n", attributes: attributes))
+                            attributes = featureContinuedStyle
+                        }
+
+                        for lairTrait in lair.lairTraits {
+                            let lairTrait = lairTrait as! LairTrait
+                            
+                            var attributes = featureTextStyle
+                            lairTrait.text.enumerateLines { line, stop in
+                                text.appendAttributedString(NSAttributedString(string: "\(line)\n", attributes: attributes))
+                                attributes = featureContinuedStyle
+                            }
+                        }
+                        
+                        attributes = featureTextStyle
+                        lair.lairTraitsDuration?.enumerateLines { line, stop in
+                            text.appendAttributedString(NSAttributedString(string: "\(line)\n", attributes: attributes))
+                            attributes = featureContinuedStyle
+                        }
+                    }
+                    
+                    if lair.regionalEffects.count > 0 {
+                        text.appendAttributedString(NSAttributedString(string: "Regional Effects\n", attributes: titleStyle))
+
+                        attributes = featureTextStyle
+                        lair.regionalEffectsText?.enumerateLines { line, stop in
+                            text.appendAttributedString(NSAttributedString(string: "\(line)\n", attributes: attributes))
+                            attributes = featureContinuedStyle
+                        }
+
+                        for regionalEffect in lair.regionalEffects {
+                            let regionalEffect = regionalEffect as! RegionalEffect
+                            
+                            var attributes = featureTextStyle
+                            regionalEffect.text.enumerateLines { line, stop in
+                                text.appendAttributedString(NSAttributedString(string: "\(line)\n", attributes: attributes))
+                                attributes = featureContinuedStyle
+                            }
+                        }
+                        
+                        attributes = featureTextStyle
+                        lair.regionalEffectsDuration?.enumerateLines { line, stop in
+                            text.appendAttributedString(NSAttributedString(string: "\(line)\n", attributes: attributes))
+                            attributes = featureContinuedStyle
+                        }
+                    }
+                }
+
                 textView.attributedText = text
                 textView.scrollRangeToVisible(NSRange(location: 0, length: 0))
         }
