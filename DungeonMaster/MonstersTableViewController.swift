@@ -209,7 +209,7 @@ extension MonstersTableViewController: UISearchResultsUpdating {
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         let text = searchController.searchBar.text!
-        _fetchedResultsController?.fetchRequest.predicate = NSPredicate(format: "name CONTAINS[cd] %@", text)
+        _fetchedResultsController?.fetchRequest.predicate = NSPredicate(format: "name CONTAINS[cd] %@ OR type CONTAINS[cd] %@ OR ANY tags.name CONTAINS[cd] %@", text, text, text)
             
         do {
             try _fetchedResultsController!.performFetch()

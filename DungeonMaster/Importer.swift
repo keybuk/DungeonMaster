@@ -41,11 +41,26 @@ func importIfNeeded() {
         books.append(book)
     }
     
+    var tags = [String:Tag]()
+    
     // Import monsters.
     let monsterDatas = data["monsters"] as! NSArray
     for monsterData in monsterDatas {
         let name = monsterData["name"] as! String
         let monster = Monster(name: name, inManagedObjectContext: managedObjectContext)
+        
+        var monsterTags = [Tag]()
+        let tagNames = monsterData["tags"] as! [String]
+        for tagName in tagNames {
+            if let tag = tags[tagName] {
+                monsterTags.append(tag)
+            } else {
+                let tag = Tag(name: tagName, inManagedObjectContext: managedObjectContext)
+                tags[tagName] = tag
+                monsterTags.append(tag)
+            }
+        }
+        monster.tags = NSSet(array: monsterTags)
         
         var sources = [Source]()
         let sourceDatas = monsterData["sources"] as! [NSDictionary]

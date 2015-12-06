@@ -8,6 +8,15 @@ import time
 import monster
 import plistlib
 
+size_expr = r'Tiny|Small|Medium|Large|Huge|Gargantuan'
+type_expr = r'aberration|beast|celestial|construct|dragon|elemental|fey|fiend|giant|humanoid|monstrosity|ooze|plant|undead'
+
+SIZE_TYPE_TAG_RE  = re.compile(
+	r'^(?:(' + size_expr + r') (' + type_expr + r')'
+	r'|(' + size_expr + r') (swarm of (?:' + size_expr + r') (?:' + type_expr + r')s))' +
+	r'(?: \(([^)]+)\))?, ')
+
+
 HIT_POINTS_RE = re.compile(r'^(\d+) \(([^)]*)\)$')
 ABILITY_RE = re.compile(r'^(\d+) \(([+-]\d+)\)$')
 SENSES_RE = re.compile(r'^(?:.*, )?passive Perception (\d+)$')
@@ -23,6 +32,7 @@ class Exporter(monster.MonsterParser):
 
 		self.name = None
 		self.sources = []
+		self.tags = []
 		self.info = {}
 		self.traits = []
 		self.actions = []
@@ -34,6 +44,7 @@ class Exporter(monster.MonsterParser):
 		object = {
 			"name": unicode(self.name, 'utf8'),
 			"sources": self.sources,
+			"tags": self.tags,
 			"info": self.info,
 			"traits": self.traits,
 			"actions": self.actions,
@@ -67,6 +78,21 @@ class Exporter(monster.MonsterParser):
 
 	def handle_size_type_alignment(self, line):
 		self.info['sizeTypeAlignment'] = line
+
+		match = SIZE_TYPE_TAG_RE.match(line)
+		if match is None:
+			self.error("Size/Type/Alignment didn't match expected format: %s", line)
+
+		(size, type, swarm_size, swarm_type, tags) = match.groups()
+		if swarm_size is not None or swarm_type is not None:
+			size = swarm_size
+			type = swarm_type
+
+		self.info['sizeValue'] = size
+		self.info['type'] = type
+
+		if tags is not None:
+			self.tags.extend(tags.split(", "))
 
 	def handle_armor_class(self, line):
 		self.info['armorClass'] = line

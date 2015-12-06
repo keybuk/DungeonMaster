@@ -13,6 +13,7 @@ enum Model: String {
     case Book
     case Source
     case Monster
+    case Tag
     case Trait
     case Action
     case Reaction

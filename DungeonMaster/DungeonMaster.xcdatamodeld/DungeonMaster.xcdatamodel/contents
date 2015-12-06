@@ -59,10 +59,12 @@
         <attribute name="savingThrows" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="senses" attributeType="String" syncable="YES"/>
         <attribute name="sizeTypeAlignment" attributeType="String" syncable="YES"/>
+        <attribute name="sizeValue" attributeType="String" syncable="YES"/>
         <attribute name="skills" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="speed" attributeType="String" syncable="YES"/>
         <attribute name="str" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="strength" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="wis" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="wisdom" attributeType="String" syncable="YES"/>
         <relationship name="actions" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Action" inverseName="monster" inverseEntity="Action" syncable="YES"/>
@@ -70,6 +72,7 @@
         <relationship name="legendaryActions" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="LegendaryAction" inverseName="monster" inverseEntity="LegendaryAction" syncable="YES"/>
         <relationship name="reactions" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Reaction" inverseName="monster" inverseEntity="Reaction" syncable="YES"/>
         <relationship name="sources" toMany="YES" deletionRule="Cascade" destinationEntity="Source" inverseName="monster" inverseEntity="Source" syncable="YES"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="monsters" inverseEntity="Tag" syncable="YES"/>
         <relationship name="traits" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Trait" inverseName="monster" inverseEntity="Trait" syncable="YES"/>
         <compoundIndexes>
             <compoundIndex>
@@ -92,22 +95,27 @@
         <relationship name="book" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="sources" inverseEntity="Book" syncable="YES"/>
         <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="sources" inverseEntity="Monster" syncable="YES"/>
     </entity>
+    <entity name="Tag" syncable="YES">
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="monsters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Monster" inverseName="tags" inverseEntity="Monster" syncable="YES"/>
+    </entity>
     <entity name="Trait" representedClassName=".Trait" syncable="YES">
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="text" attributeType="String" syncable="YES"/>
         <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="traits" inverseEntity="Monster" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Book" positionX="261" positionY="198" width="128" height="75"/>
-        <element name="Monster" positionX="279" positionY="243" width="128" height="570"/>
-        <element name="Source" positionX="270" positionY="207" width="128" height="105"/>
-        <element name="Action" positionX="270" positionY="351" width="128" height="90"/>
-        <element name="Trait" positionX="288" positionY="369" width="128" height="90"/>
-        <element name="Reaction" positionX="315" positionY="387" width="128" height="90"/>
-        <element name="LegendaryAction" positionX="324" positionY="396" width="128" height="90"/>
-        <element name="Lair" positionX="342" positionY="405" width="128" height="210"/>
-        <element name="LairAction" positionX="297" positionY="351" width="128" height="75"/>
-        <element name="LairTrait" positionX="306" positionY="360" width="128" height="75"/>
-        <element name="RegionalEffect" positionX="315" positionY="369" width="128" height="75"/>
+        <element name="Action" positionX="261" positionY="360" width="128" height="90"/>
+        <element name="Book" positionX="-261" positionY="198" width="128" height="75"/>
+        <element name="Lair" positionX="385" positionY="666" width="128" height="208"/>
+        <element name="LairAction" positionX="567" positionY="630" width="128" height="75"/>
+        <element name="LairTrait" positionX="567" positionY="717" width="128" height="75"/>
+        <element name="LegendaryAction" positionX="261" positionY="558" width="128" height="90"/>
+        <element name="Monster" positionX="79" positionY="198" width="128" height="613"/>
+        <element name="Reaction" positionX="261" positionY="459" width="128" height="90"/>
+        <element name="RegionalEffect" positionX="565" positionY="801" width="128" height="75"/>
+        <element name="Source" positionX="-92" positionY="198" width="128" height="105"/>
+        <element name="Trait" positionX="261" positionY="261" width="128" height="90"/>
+        <element name="Tag" positionX="-92" positionY="432" width="128" height="73"/>
     </elements>
 </model>

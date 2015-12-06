@@ -13,7 +13,31 @@ final class Monster: NSManagedObject {
     
     @NSManaged var name: String
     @NSManaged var sources: NSSet
+    @NSManaged var tags: NSSet
     
+    // Size is a wrapped enum object.
+    @NSManaged var sizeValue: String
+
+    enum Size: String {
+        case Tiny
+        case Small
+        case Medium
+        case Large
+        case Huge
+        case Gargantuan
+    }
+
+    var size: Size {
+        get {
+            return Size(rawValue: sizeValue)!
+        }
+        set {
+            sizeValue = size.rawValue
+        }
+    }
+    
+    @NSManaged var type: String
+
     // Hit Points and dice expression to generate.
     @NSManaged var hp: Int16
     @NSManaged var hpDice: String
