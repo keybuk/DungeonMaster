@@ -12,12 +12,10 @@ import CoreData
 class MonstersTableViewController: UITableViewController {
     
     var searchController: UISearchController?
+    var hiddenBooks: Set<Book>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
 
         // Search Controller; can't create these in IB yet.
         searchController = UISearchController(searchResultsController: nil)
@@ -54,6 +52,27 @@ class MonstersTableViewController: UITableViewController {
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
+        } else if segue.identifier == "BooksPopoverSegue" {
+            let booksTableViewController = (segue.destinationViewController as! UINavigationController).topViewController as! BooksTableViewController
+            booksTableViewController.hiddenBooks = hiddenBooks
+        }
+    }
+    
+    @IBAction func unwindFromBooks(segue: UIStoryboardSegue) {
+        let booksTableViewController = segue.sourceViewController as! BooksTableViewController
+        if booksTableViewController.hiddenBooks != hiddenBooks {
+            hiddenBooks = booksTableViewController.hiddenBooks
+            updateFetchedResults()
+            
+            let defaults = NSUserDefaults.standardUserDefaults()
+            if hiddenBooks != nil {
+                let bookNames = hiddenBooks!.map { book -> String in
+                    return book.name
+                }
+                defaults.setObject(bookNames, forKey: "HiddenBooks")
+            } else {
+                defaults.removeObjectForKey("HiddenBooks")
+            }
         }
     }
 
@@ -64,6 +83,25 @@ class MonstersTableViewController: UITableViewController {
             return _fetchedResultsController!
         }
         
+        // Load previously saved hidden books. Handled here rather than in viewDidLoad because this happens first, and reloading data straight after would be ugly.
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let hiddenBookNames = defaults.objectForKey("HiddenBooks") as? [String] {
+            let fetchRequest = NSFetchRequest()
+            let entity = NSEntityDescription.entity(Model.Book, inManagedObjectContext: managedObjectContext)
+            fetchRequest.entity = entity
+            
+            fetchRequest.predicate = NSPredicate(format: "name in %@", hiddenBookNames)
+            
+            do {
+                let books = try managedObjectContext.executeFetchRequest(fetchRequest) as! [Book]
+                hiddenBooks = Set<Book>(books)
+            } catch {
+                let error = error as NSError
+                print("Unresolved error \(error), \(error.userInfo)")
+                abort()
+            }
+        }
+
         let fetchRequest = NSFetchRequest()
         let entity = NSEntityDescription.entity(Model.Monster, inManagedObjectContext: managedObjectContext)
         fetchRequest.entity = entity
@@ -74,6 +112,8 @@ class MonstersTableViewController: UITableViewController {
         // Sorting by name is enough for section handling by initial to work.
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        fetchRequest.predicate = fetchResultsPredicate()
         
         // Edit the section name key path and cache name if appropriate.
         // nil for section name key path means "no sections".
@@ -92,6 +132,44 @@ class MonstersTableViewController: UITableViewController {
         return _fetchedResultsController!
     }
     var _fetchedResultsController: NSFetchedResultsController?
+    
+    func fetchResultsPredicate(search search: String? = nil) -> NSPredicate? {
+        var booksPredicate: NSPredicate?
+        var searchPredicate: NSPredicate?
+        
+        if let hiddenBooks = hiddenBooks {
+            booksPredicate = NSPredicate(format: "SUBQUERY(sources, $s, $s.book IN %@).@count < sources.@count", hiddenBooks)
+        }
+        
+        if let search = search {
+            searchPredicate = NSPredicate(format: "name CONTAINS[cd] %@ OR type CONTAINS[cd] %@ OR ANY tags.name CONTAINS[cd] %@", search, search, search)
+        }
+        
+        if booksPredicate != nil && searchPredicate != nil {
+            return NSCompoundPredicate(andPredicateWithSubpredicates: [booksPredicate!, searchPredicate!])
+        } else if booksPredicate != nil {
+            return booksPredicate
+        } else if searchPredicate != nil {
+            return searchPredicate
+        } else {
+            return nil
+        }
+    }
+
+    func updateFetchedResults(search search: String? = nil) {
+        _fetchedResultsController?.fetchRequest.predicate = fetchResultsPredicate(search: search)
+        
+        do {
+            try _fetchedResultsController!.performFetch()
+        } catch {
+            let error = error as NSError
+            print("Unresolved error \(error), \(error.userInfo)")
+            abort()
+        }
+        
+        tableView.reloadData()
+    }
+
 }
 
 // MARK: UITableViewDataSource
@@ -189,17 +267,7 @@ extension MonstersTableViewController: UISearchControllerDelegate {
     
     func didDismissSearchController(searchController: UISearchController) {
         // Reset the table back to no search predicate, and reload the data.
-        _fetchedResultsController?.fetchRequest.predicate = nil
-        
-        do {
-            try _fetchedResultsController!.performFetch()
-        } catch {
-            let error = error as NSError
-            print("Unresolved error \(error), \(error.userInfo)")
-            abort()
-        }
-
-        tableView.reloadData()
+        updateFetchedResults()
     }
     
 }
@@ -209,17 +277,7 @@ extension MonstersTableViewController: UISearchResultsUpdating {
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         let text = searchController.searchBar.text!
-        _fetchedResultsController?.fetchRequest.predicate = NSPredicate(format: "name CONTAINS[cd] %@ OR type CONTAINS[cd] %@ OR ANY tags.name CONTAINS[cd] %@", text, text, text)
-            
-        do {
-            try _fetchedResultsController!.performFetch()
-        } catch {
-            let error = error as NSError
-            print("Unresolved error \(error), \(error.userInfo)")
-            abort()
-        }
-        
-        tableView.reloadData()
+        updateFetchedResults(search: text)
     }
     
 }

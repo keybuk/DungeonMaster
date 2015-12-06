@@ -60,6 +60,72 @@
             </objects>
             <point key="canvasLocation" x="709" y="129"/>
         </scene>
+        <!--Books-->
+        <scene sceneID="Xuf-yB-rBn">
+            <objects>
+                <tableViewController id="iAV-mq-ZLx" customClass="BooksTableViewController" customModule="DungeonMaster" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Vrh-c7-eky">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BooksTableViewCell" textLabel="via-jB-g3H" style="IBUITableViewCellStyleDefault" id="uud-8O-cFU">
+                                <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uud-8O-cFU" id="rGg-tT-uQe">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="via-jB-g3H">
+                                            <rect key="frame" x="15" y="0.0" width="570" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="iAV-mq-ZLx" id="CdD-xi-MeQ"/>
+                            <outlet property="delegate" destination="iAV-mq-ZLx" id="qKV-Wf-U2f"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Books" id="VdR-0w-ni4">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="X9v-UN-tsn">
+                            <connections>
+                                <segue destination="59Y-la-xli" kind="unwind" unwindAction="unwindFromBooks:" id="1PM-fM-5TW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="98u-x2-6P7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="59Y-la-xli" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1529" y="-1548"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="c6W-jn-lIe">
+            <objects>
+                <navigationController id="UmQ-Z7-aAB" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4KW-KK-mLD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="iAV-mq-ZLx" kind="relationship" relationship="rootViewController" id="DZ8-u4-Jjq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rPM-3V-nLR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="709" y="-1548"/>
+        </scene>
         <!--Monsters-->
         <scene sceneID="WFH-Ar-e0T">
             <objects>
@@ -99,7 +165,15 @@
                             <outlet property="delegate" destination="RFK-ss-fCA" id="QLD-Hi-qZF"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Monsters" id="jFU-9A-zdf"/>
+                    <navigationItem key="navigationItem" title="Monsters" id="jFU-9A-zdf">
+                        <barButtonItem key="leftBarButtonItem" title="Books" id="EyY-wN-ZSw">
+                            <connections>
+                                <segue destination="UmQ-Z7-aAB" kind="popoverPresentation" identifier="BooksPopoverSegue" popoverAnchorBarButtonItem="EyY-wN-ZSw" id="uNJ-lW-gUX">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchDisplayController" destination="BBw-Eg-GbE" id="wpz-hf-5Xp"/>
                     </connections>
