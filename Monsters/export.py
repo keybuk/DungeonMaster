@@ -100,11 +100,16 @@ class Exporter(monster.MonsterParser):
 
 		match = ALIGNMENT_RE.match(alignment_text)
 		if match is None:
+			# TODO: Handle "any alignment", "any X alignment" with a set of alignments.
+			# Can handle the Empyrean & Cloud Giant %age case with a set and weights.
 			self.warning("Alignment didn't match expected format: %s" % alignment_text)
 		else:
 			self.info['alignmentValue'] = alignment_text
 
 	def handle_armor_class(self, line):
+		# TODO: should be able to parse into an AC, and a list of armor types
+		# Remember to explode (X with SPELL).
+		# Will still need to handle ", X while prone" and ", X (Y) in X or hybrid form"
 		self.info['armorClass'] = line
 
 	def handle_hit_points(self, line):
@@ -120,11 +125,11 @@ class Exporter(monster.MonsterParser):
 		if match is None:
 			self.error("Hit Points dice expression didn't match expected format: %s" % dice)
 
-
 		self.info['hp'] = int(hp)
 		self.info['hpDice'] = dice.replace(" ", "")
 
 	def handle_speed(self, line):
+		# TODO: should be largely parseable
 		self.info['speed'] = line
 
 	def handle_str(self, line):
@@ -161,9 +166,11 @@ class Exporter(monster.MonsterParser):
 		self.info[scoreKey] = int(score)
 
 	def handle_saving_throws(self, line):
+		# TODO: Should be easy to parse
 		self.info['savingThrows'] = line
 
 	def handle_skills(self, line):
+		# TODO: easy to parse, except for the stealth/blindness case.
 		self.info['skills'] = line
 
 	def handle_damage_vulnerabilities(self, line):
@@ -179,6 +186,7 @@ class Exporter(monster.MonsterParser):
 		self.info['conditionImmunities'] = line
 
 	def handle_senses(self, line):
+		# TODO: easy to parse
 		self.info['senses'] = line
 
 		match = SENSES_RE.match(line)
@@ -189,10 +197,12 @@ class Exporter(monster.MonsterParser):
 		self.info['passivePerception'] = int(passive)
 
 	def handle_languages(self, line):
+		# TODO: easy to parse
 		if line != "-":
 			self.info['languages'] = line
 
 	def handle_challenge(self, line):
+		# TODO: easy to parse
 		self.info['challenge'] = line
 
 	def add_action(self, list, name, lines):
