@@ -34,8 +34,8 @@ class MonstersTableViewController: UITableViewController {
         super.viewWillAppear(animated)
 
         // Shift the table down to hide the search bar.
-        tableView.contentOffset.y = tableView.tableHeaderView!.frame.size.height
-}
+        tableView.contentOffset.y += searchController!.searchBar.frame.size.height
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -122,7 +122,7 @@ extension MonstersTableViewController {
             return monster.nameInitial
         }
     }
-
+    
     // MARK: Rows
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
