@@ -19,14 +19,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         // Override point for customization after application launch.
         importIfNeeded()
 
-        let splitViewController = self.window!.rootViewController as! UISplitViewController
-        let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
-        navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
-        splitViewController.delegate = self
-
-        let masterNavigationController = splitViewController.viewControllers[0] as! UINavigationController
-        let controller = masterNavigationController.topViewController as! MasterViewController
-        controller.managedObjectContext = managedObjectContext
+        // Set up the split view controller, and place the display button in the top-left for certain devices.
+        if let splitViewController = self.window!.rootViewController as? UISplitViewController {
+            let navigationController = splitViewController.viewControllers.last as! UINavigationController
+            splitViewController.delegate = self
+            
+            navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
+        }
+        
         return true
     }
 

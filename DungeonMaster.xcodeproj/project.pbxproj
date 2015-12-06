@@ -23,9 +23,9 @@
 		D23435F61C0D634100108D5F /* Importer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23435F51C0D634100108D5F /* Importer.swift */; };
 		D23435FB1C0FEFA000108D5F /* Dice.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23435FA1C0FEFA000108D5F /* Dice.swift */; };
 		D23435FD1C0FF84F00108D5F /* DiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23435FC1C0FF84F00108D5F /* DiceTest.swift */; };
+		D2511FF81C12B1AD00A09F0B /* MonstersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2511FF71C12B1AD00A09F0B /* MonstersTableViewController.swift */; };
 		D2A9AF0A1BFFEAA5009902ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A9AF091BFFEAA5009902ED /* AppDelegate.swift */; };
 		D2A9AF0D1BFFEAA5009902ED /* DungeonMaster.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2A9AF0B1BFFEAA5009902ED /* DungeonMaster.xcdatamodeld */; };
-		D2A9AF0F1BFFEAA5009902ED /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A9AF0E1BFFEAA5009902ED /* MasterViewController.swift */; };
 		D2A9AF111BFFEAA5009902ED /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A9AF101BFFEAA5009902ED /* DetailViewController.swift */; };
 		D2A9AF141BFFEAA5009902ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2A9AF121BFFEAA5009902ED /* Main.storyboard */; };
 		D2A9AF161BFFEAA5009902ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2A9AF151BFFEAA5009902ED /* Assets.xcassets */; };
@@ -68,10 +68,10 @@
 		D23435F51C0D634100108D5F /* Importer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Importer.swift; sourceTree = "<group>"; };
 		D23435FA1C0FEFA000108D5F /* Dice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dice.swift; sourceTree = "<group>"; };
 		D23435FC1C0FF84F00108D5F /* DiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiceTest.swift; sourceTree = "<group>"; };
+		D2511FF71C12B1AD00A09F0B /* MonstersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonstersTableViewController.swift; sourceTree = "<group>"; };
 		D2A9AF061BFFEAA5009902ED /* DungeonMaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DungeonMaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2A9AF091BFFEAA5009902ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2A9AF0C1BFFEAA5009902ED /* DungeonMaster.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DungeonMaster.xcdatamodel; sourceTree = "<group>"; };
-		D2A9AF0E1BFFEAA5009902ED /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		D2A9AF101BFFEAA5009902ED /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		D2A9AF131BFFEAA5009902ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D2A9AF151BFFEAA5009902ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -156,7 +156,7 @@
 			children = (
 				D2116A581C10FE74001EDBBA /* Data Model */,
 				D2A9AF091BFFEAA5009902ED /* AppDelegate.swift */,
-				D2A9AF0E1BFFEAA5009902ED /* MasterViewController.swift */,
+				D2511FF71C12B1AD00A09F0B /* MonstersTableViewController.swift */,
 				D2A9AF101BFFEAA5009902ED /* DetailViewController.swift */,
 				D2A9AF121BFFEAA5009902ED /* Main.storyboard */,
 				D2A9AF151BFFEAA5009902ED /* Assets.xcassets */,
@@ -326,6 +326,7 @@
 				D23435FB1C0FEFA000108D5F /* Dice.swift in Sources */,
 				D23435F61C0D634100108D5F /* Importer.swift in Sources */,
 				D2116A4F1C10F377001EDBBA /* Lair.swift in Sources */,
+				D2511FF81C12B1AD00A09F0B /* MonstersTableViewController.swift in Sources */,
 				D2116A4C1C10ECC9001EDBBA /* LegendaryAction.swift in Sources */,
 				D23435EC1C0D5A3D00108D5F /* Model.swift in Sources */,
 				D2A9AF0D1BFFEAA5009902ED /* DungeonMaster.xcdatamodeld in Sources */,
@@ -333,7 +334,6 @@
 				D2116A4A1C10ECBC001EDBBA /* Reaction.swift in Sources */,
 				D2A9AF0A1BFFEAA5009902ED /* AppDelegate.swift in Sources */,
 				D2116A551C10F4F8001EDBBA /* RegionalEffect.swift in Sources */,
-				D2A9AF0F1BFFEAA5009902ED /* MasterViewController.swift in Sources */,
 				D2116A481C10ECAE001EDBBA /* Trait.swift in Sources */,
 				D2116A531C10F4E9001EDBBA /* LairTrait.swift in Sources */,
 				D2A9AF111BFFEAA5009902ED /* DetailViewController.swift in Sources */,

@@ -54,6 +54,10 @@ final class Monster: NSManagedObject {
     @NSManaged var legendaryActions: NSOrderedSet
     @NSManaged var lair: Lair?
     
+    var nameInitial: String {
+        return String(name.characters.first!)
+    }
+
     convenience init(name: String, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Monster, inManagedObjectContext: context)
         self.init(entity: entity, insertIntoManagedObjectContext: context)
