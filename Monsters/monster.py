@@ -29,6 +29,9 @@ class MonsterParser(object):
 	def error(self, *args):
 		return ParseException(self.filename, self.lineno, *args)
 
+	def warning(self, *args):
+		print >>sys.stderr, "%s:%d:warning: %s" % (self.filename, self.lineno, args[0])
+
 	def parse(self):
 		line = self.next_line(error_message="Expected name")
 		self.handle_name(line)

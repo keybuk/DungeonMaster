@@ -33,6 +33,8 @@
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral good</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -148,6 +150,8 @@ Whenever the charmed target takes damage, the target can repeat the saving throw
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>17 (natural armor)</string>
 				<key>cha</key>
@@ -323,6 +327,8 @@ In a new form, the deva retains its game statistics and ability to speak, but it
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful good</string>
 				<key>armorClass</key>
 				<string>17 (natural armor)</string>
 				<key>cha</key>
@@ -452,6 +458,8 @@ At will: detect evil and good
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful good</string>
 				<key>armorClass</key>
 				<string>19 (natural armor)</string>
 				<key>cha</key>
@@ -600,6 +608,8 @@ At will: detect evil and good, invisibility (self only)
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful good</string>
 				<key>armorClass</key>
 				<string>21 (natural armor)</string>
 				<key>cha</key>
@@ -750,6 +760,8 @@ At will: detect evil and good, invisibility (self only)
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>18 (natural armor)</string>
 				<key>cha</key>
@@ -859,6 +871,8 @@ At will: detect evil and good, invisibility (self only)
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>17 (natural armor)</string>
 				<key>cha</key>
@@ -970,6 +984,8 @@ At will: detect evil and good, invisibility (self only)
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -1085,6 +1101,8 @@ At will: detect evil and good, invisibility (self only)
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>14 (natural armor), 11 while prone</string>
 				<key>cha</key>
@@ -1170,6 +1188,8 @@ At will: detect evil and good, invisibility (self only)
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful neutral</string>
 				<key>armorClass</key>
 				<string>17 (natural armor, shield)</string>
 				<key>cha</key>
@@ -1293,6 +1313,8 @@ At will: detect evil and good, invisibility (self only)
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -1406,6 +1428,8 @@ At will: detect evil and good, invisibility (self only)
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>15 (natural armor)</string>
 				<key>cha</key>
@@ -1530,6 +1554,8 @@ If the behir takes 30 damage or more on a single turn from the swallowed creatur
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>17 (natural armor)</string>
 				<key>cha</key>
@@ -1639,6 +1665,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>18 (natural armor)</string>
 				<key>cha</key>
@@ -1794,6 +1822,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>19 (natural armor)</string>
 				<key>cha</key>
@@ -1949,6 +1979,8 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful neutral</string>
 				<key>armorClass</key>
 				<string>14 (natural armor)</string>
 				<key>cha</key>
@@ -2060,6 +2092,8 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>12 (natural armor)</string>
 				<key>cha</key>
@@ -2151,6 +2185,8 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>13 (natural armor)</string>
 				<key>cha</key>
@@ -2264,6 +2300,8 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>12 (natural armor)</string>
 				<key>cha</key>
@@ -2369,6 +2407,8 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>16 (hide armor, shield)</string>
 				<key>cha</key>
@@ -2491,6 +2531,8 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>17 (chain shirt, shield)</string>
 				<key>cha</key>
@@ -2607,6 +2649,8 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>17 (natural armor)</string>
 				<key>cha</key>
@@ -2712,6 +2756,8 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>15 (hide armor, shield)</string>
 				<key>cha</key>
@@ -2963,6 +3009,8 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>13 (natural armor)</string>
 				<key>cha</key>
@@ -3080,6 +3128,8 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral good</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -3205,6 +3255,8 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>14 (natural armor)</string>
 				<key>cha</key>
@@ -3312,6 +3364,8 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>16 (natural armor)</string>
 				<key>cha</key>
@@ -3443,6 +3497,8 @@ A duplicate has the cloaker's AC and uses its saving throws. If an attack hits a
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic neutral</string>
 				<key>armorClass</key>
 				<string>14 (natural armor)</string>
 				<key>cha</key>
@@ -3550,6 +3606,8 @@ A duplicate has the cloaker's AC and uses its saving throws. If an attack hits a
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>11</string>
 				<key>cha</key>
@@ -3654,6 +3712,8 @@ In a new form, the couatl retains its game statistics and ability to speak, but 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful good</string>
 				<key>armorClass</key>
 				<string>19 (natural armor)</string>
 				<key>cha</key>
@@ -3768,6 +3828,8 @@ At will: detect evil and good, detect magic, detect thoughts
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -3877,6 +3939,8 @@ At will: detect evil and good, detect magic, detect thoughts
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic neutral</string>
 				<key>armorClass</key>
 				<string>14 (natural armor)</string>
 				<key>cha</key>
@@ -3984,6 +4048,8 @@ A creature can detach the darkmantle by making a successful DC 13 Strength check
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>11</string>
 				<key>cha</key>
@@ -4095,6 +4161,8 @@ A creature can detach the darkmantle by making a successful DC 13 Strength check
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>20 (plate, shield)</string>
 				<key>cha</key>
@@ -4223,6 +4291,8 @@ A creature can detach the darkmantle by making a successful DC 13 Strength check
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>20 (natural armor)</string>
 				<key>cha</key>
@@ -4406,6 +4476,8 @@ In its crypt, a demilich has access to lair actions and additional uses for its 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>19 (natural armor)</string>
 				<key>cha</key>
@@ -4540,6 +4612,8 @@ In its crypt, a demilich has access to lair actions and additional uses for its 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>15 (natural armor)</string>
 				<key>cha</key>
@@ -4660,6 +4734,8 @@ In its crypt, a demilich has access to lair actions and additional uses for its 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>15 (natural armor)</string>
 				<key>cha</key>
@@ -4796,6 +4872,8 @@ In its crypt, a demilich has access to lair actions and additional uses for its 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>11 (natural armor)</string>
 				<key>cha</key>
@@ -4904,6 +4982,8 @@ In its crypt, a demilich has access to lair actions and additional uses for its 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>17 (natural armor)</string>
 				<key>cha</key>
@@ -5034,6 +5114,8 @@ At will: darkness, detect magic, dispel magic
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>19 (natural armor)</string>
 				<key>cha</key>
@@ -5170,6 +5252,8 @@ At will: darkness, detect magic, dispel magic
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>16 (natural armor)</string>
 				<key>cha</key>
@@ -5280,6 +5364,8 @@ At will: darkness, detect magic, dispel magic
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>9</string>
 				<key>cha</key>
@@ -5394,6 +5480,8 @@ At will: darkness, detect magic, dispel magic
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>18 (natural armor)</string>
 				<key>cha</key>
@@ -5540,6 +5628,8 @@ At will: darkness, detect magic, dispel magic
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>18 (natural armor)</string>
 				<key>cha</key>
@@ -5656,6 +5746,8 @@ At will: darkness, detect magic, dispel magic
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>13</string>
 				<key>cha</key>
@@ -5767,6 +5859,8 @@ At will: darkness, detect magic, dispel magic
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>13</string>
 				<key>cha</key>
@@ -5911,6 +6005,8 @@ At will: darkness, detect magic, dispel magic
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>15 (natural armor)</string>
 				<key>cha</key>
@@ -6029,6 +6125,8 @@ While in mist form, the yochlol can enter a creature's space and stop there. Eac
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>15 (natural armor)</string>
 				<key>cha</key>
@@ -6180,6 +6278,8 @@ At will: detect thoughts, web
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>15 (natural armor)</string>
 				<key>cha</key>
@@ -6310,6 +6410,8 @@ At will: detect thoughts, web
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>13 (natural armor)</string>
 				<key>cha</key>
@@ -6438,6 +6540,8 @@ At will: detect thoughts, web
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>19 (natural armor)</string>
 				<key>cha</key>
@@ -6563,6 +6667,8 @@ Each animated chain is an object with AC 20, 20 hit points, resistance to pierci
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>16 (natural armor)</string>
 				<key>cha</key>
@@ -6691,6 +6797,8 @@ Each animated chain is an object with AC 20, 20 hit points, resistance to pierci
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>18 (plate)</string>
 				<key>cha</key>
@@ -6825,6 +6933,8 @@ Each animated chain is an object with AC 20, 20 hit points, resistance to pierci
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>18 (natural armor)</string>
 				<key>cha</key>
@@ -6961,6 +7071,8 @@ The wall lasts for 1 minute or until the devil is incapacitated or dies. The wal
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>18 (natural armor)</string>
 				<key>cha</key>
@@ -7077,6 +7189,8 @@ The wall lasts for 1 minute or until the devil is incapacitated or dies. The wal
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>13</string>
 				<key>cha</key>
@@ -7194,6 +7308,8 @@ The wall lasts for 1 minute or until the devil is incapacitated or dies. The wal
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>7</string>
 				<key>cha</key>
@@ -7326,6 +7442,8 @@ The wall lasts for 1 minute or until the devil is incapacitated or dies. The wal
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>19 (natural armor)</string>
 				<key>cha</key>
@@ -7468,6 +7586,8 @@ At will: detect magic, fireball
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>13 (natural armor)</string>
 				<key>cha</key>
@@ -7594,6 +7714,8 @@ At will: detect magic, fireball
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>13 (natural armor)</string>
 				<key>cha</key>
@@ -7695,6 +7817,8 @@ At will: detect magic, fireball
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>15 (natural armor)</string>
 				<key>cha</key>
@@ -7788,6 +7912,8 @@ At will: detect magic, fireball
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>13 (natural armor)</string>
 				<key>cha</key>
@@ -7889,6 +8015,8 @@ At will: detect magic, fireball
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>13 (natural armor)</string>
 				<key>cha</key>
@@ -7996,6 +8124,8 @@ At will: detect magic, fireball
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>13 (natural armor)</string>
 				<key>cha</key>
@@ -8107,6 +8237,8 @@ At will: detect magic, fireball
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>13 (natural armor)</string>
 				<key>cha</key>
@@ -8208,6 +8340,8 @@ At will: detect magic, fireball
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>13 (natural armor)</string>
 				<key>cha</key>
@@ -8317,6 +8451,8 @@ At will: detect magic, fireball
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral</string>
 				<key>armorClass</key>
 				<string>14</string>
 				<key>cha</key>
@@ -8463,6 +8599,8 @@ At will: detect magic, fireball
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>19 (natural armor)</string>
 				<key>cha</key>
@@ -8608,6 +8746,8 @@ At will: detect magic, fireball
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>18 (natural armor)</string>
 				<key>cha</key>
@@ -8751,6 +8891,8 @@ At will: detect magic, fireball
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>22 (natural armor)</string>
 				<key>cha</key>
@@ -8906,6 +9048,8 @@ At will: detect magic, fireball
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>19 (natural armor)</string>
 				<key>cha</key>
@@ -9077,6 +9221,8 @@ At will: detect magic, fireball
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>18 (natural armor)</string>
 				<key>cha</key>
@@ -9184,6 +9330,8 @@ At will: detect magic, fireball
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>17 (natural armor)</string>
 				<key>cha</key>
@@ -9315,6 +9463,8 @@ At will: detect magic, fireball
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>22 (natural armor)</string>
 				<key>cha</key>
@@ -9464,6 +9614,8 @@ At will: detect magic, fireball
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>19 (natural armor)</string>
 				<key>cha</key>
@@ -9632,6 +9784,8 @@ A blue dragon will collapse the caverns that make up its lair if that lair is in
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>18 (natural armor)</string>
 				<key>cha</key>
@@ -9733,6 +9887,8 @@ A blue dragon will collapse the caverns that make up its lair if that lair is in
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>17 (natural armor)</string>
 				<key>cha</key>
@@ -9858,6 +10014,8 @@ A blue dragon will collapse the caverns that make up its lair if that lair is in
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>21 (natural armor)</string>
 				<key>cha</key>
@@ -10015,6 +10173,8 @@ A blue dragon will collapse the caverns that make up its lair if that lair is in
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>19 (natural armor)</string>
 				<key>cha</key>
@@ -10191,6 +10351,8 @@ Each 10-foot-cube of thickets has AC 5, 30 hit points, resistance to bludgeoning
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>18 (natural armor)</string>
 				<key>cha</key>
@@ -10306,6 +10468,8 @@ Each 10-foot-cube of thickets has AC 5, 30 hit points, resistance to bludgeoning
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>17 (natural armor)</string>
 				<key>cha</key>
@@ -10439,6 +10603,8 @@ Each 10-foot-cube of thickets has AC 5, 30 hit points, resistance to bludgeoning
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>22 (natural armor)</string>
 				<key>cha</key>
@@ -10588,6 +10754,8 @@ Each 10-foot-cube of thickets has AC 5, 30 hit points, resistance to bludgeoning
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>19 (natural armor)</string>
 				<key>cha</key>
@@ -10762,6 +10930,8 @@ Throughout the lair complex, servants erect monuments to the dragon's power, tel
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>18 (natural armor)</string>
 				<key>cha</key>
@@ -10863,6 +11033,8 @@ Throughout the lair complex, servants erect monuments to the dragon's power, tel
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>17 (natural armor)</string>
 				<key>cha</key>
@@ -10988,6 +11160,8 @@ Throughout the lair complex, servants erect monuments to the dragon's power, tel
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>20 (natural armor)</string>
 				<key>cha</key>
@@ -11143,6 +11317,8 @@ Throughout the lair complex, servants erect monuments to the dragon's power, tel
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>18 (natural armor)</string>
 				<key>cha</key>
@@ -11318,6 +11494,8 @@ If the dragon wishes to move through a wall, it can do so without slowing down. 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>17 (natural armor)</string>
 				<key>cha</key>
@@ -11425,6 +11603,8 @@ If the dragon wishes to move through a wall, it can do so without slowing down. 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>16 (natural armor)</string>
 				<key>cha</key>
@@ -11559,6 +11739,8 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic good</string>
 				<key>armorClass</key>
 				<string>20 (natural armor)</string>
 				<key>cha</key>
@@ -11710,6 +11892,8 @@ Sleep Breath. The dragon exhales sleep gas in a 60-foot cone. Each creature in t
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic good</string>
 				<key>armorClass</key>
 				<string>18 (natural armor)</string>
 				<key>cha</key>
@@ -11877,6 +12061,8 @@ Sleep Breath. The dragon exhales sleep gas in a 30-foot cone. Each creature in t
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic good</string>
 				<key>armorClass</key>
 				<string>17 (natural armor)</string>
 				<key>cha</key>
@@ -11980,6 +12166,8 @@ Sleep Breath. The dragon exhales sleep gas in a 15-foot cone. Each creature in t
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic good</string>
 				<key>armorClass</key>
 				<string>16 (natural armor)</string>
 				<key>cha</key>
@@ -12114,6 +12302,8 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful good</string>
 				<key>armorClass</key>
 				<string>22 (natural armor)</string>
 				<key>cha</key>
@@ -12278,6 +12468,8 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful good</string>
 				<key>armorClass</key>
 				<string>19 (natural armor)</string>
 				<key>cha</key>
@@ -12451,6 +12643,8 @@ Repulsion Breath. The dragon exhales repulsion energy in a 30-foot cone. Each cr
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful good</string>
 				<key>armorClass</key>
 				<string>18 (natural armor)</string>
 				<key>cha</key>
@@ -12560,6 +12754,8 @@ Repulsion Breath. The dragon exhales repulsion energy in a 30-foot cone. Each cr
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful good</string>
 				<key>armorClass</key>
 				<string>17 (natural armor)</string>
 				<key>cha</key>
@@ -12700,6 +12896,8 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic good</string>
 				<key>armorClass</key>
 				<string>21 (natural armor)</string>
 				<key>cha</key>
@@ -12851,6 +13049,8 @@ Slowing Breath. The dragon exhales gas in a 60-foot cone. Each creature in that 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic good</string>
 				<key>armorClass</key>
 				<string>18 (natural armor)</string>
 				<key>cha</key>
@@ -13018,6 +13218,8 @@ Slowing Breath. The dragon exhales gas in a 30-foot cone. Each creature in that 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic good</string>
 				<key>armorClass</key>
 				<string>17 (natural armor)</string>
 				<key>cha</key>
@@ -13121,6 +13323,8 @@ Slowing Breath. The dragon exhales gas in a 15-foot cone. Each creature in that 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic good</string>
 				<key>armorClass</key>
 				<string>16 (natural armor)</string>
 				<key>cha</key>
@@ -13255,6 +13459,8 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful good</string>
 				<key>armorClass</key>
 				<string>22 (natural armor)</string>
 				<key>cha</key>
@@ -13419,6 +13625,8 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful good</string>
 				<key>armorClass</key>
 				<string>19 (natural armor)</string>
 				<key>cha</key>
@@ -13592,6 +13800,8 @@ Weakening Breath. The dragon exhales gas in a 30-foot cone. Each creature in tha
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful good</string>
 				<key>armorClass</key>
 				<string>18 (natural armor)</string>
 				<key>cha</key>
@@ -13701,6 +13911,8 @@ Weakening Breath. The dragon exhales gas in a 15-foot cone. Each creature in tha
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful good</string>
 				<key>armorClass</key>
 				<string>17 (natural armor)</string>
 				<key>cha</key>
@@ -13841,6 +14053,8 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful good</string>
 				<key>armorClass</key>
 				<string>22 (natural armor)</string>
 				<key>cha</key>
@@ -13999,6 +14213,8 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful good</string>
 				<key>armorClass</key>
 				<string>19 (natural armor)</string>
 				<key>cha</key>
@@ -14166,6 +14382,8 @@ Paralyzing Breath. The dragon exhales paralyzing gas in a 30-foot cone. Each cre
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful good</string>
 				<key>armorClass</key>
 				<string>18 (natural armor)</string>
 				<key>cha</key>
@@ -14269,6 +14487,8 @@ Paralyzing Breath. The dragon exhales paralyzing gas in a 15-foot cone. Each cre
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful good</string>
 				<key>armorClass</key>
 				<string>17 (natural armor)</string>
 				<key>cha</key>
@@ -14388,6 +14608,8 @@ Paralyzing Breath. The dragon exhales paralyzing gas in a 15-foot cone. Each cre
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral</string>
 				<key>armorClass</key>
 				<string>20 (natural armor)</string>
 				<key>cha</key>
@@ -14503,6 +14725,8 @@ Paralyzing Breath. The dragon exhales paralyzing gas in a 15-foot cone. Each cre
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>19 (natural armor)</string>
 				<key>cha</key>
@@ -14632,6 +14856,8 @@ The dryad can have no more than one humanoid and up to three beasts charmed at a
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral</string>
 				<key>armorClass</key>
 				<string>11 (16 with barkskin)</string>
 				<key>cha</key>
@@ -14766,6 +14992,8 @@ At will: druidcraft
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>16 (scale mail, shield)</string>
 				<key>cha</key>
@@ -14881,6 +15109,8 @@ If the saving throw is successful, the target takes half the bludgeoning damage 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral</string>
 				<key>armorClass</key>
 				<string>15</string>
 				<key>cha</key>
@@ -14994,6 +15224,8 @@ If the saving throw is successful, the target takes half the bludgeoning damage 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral</string>
 				<key>armorClass</key>
 				<string>17 (natural armor)</string>
 				<key>cha</key>
@@ -15115,6 +15347,8 @@ If the saving throw is successful, the target takes half the bludgeoning damage 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral</string>
 				<key>armorClass</key>
 				<string>13</string>
 				<key>cha</key>
@@ -15247,6 +15481,8 @@ The elemental can grapple one Large creature or up to two Medium or smaller crea
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral</string>
 				<key>armorClass</key>
 				<string>14 (natural armor)</string>
 				<key>cha</key>
@@ -15366,6 +15602,8 @@ The elemental can grapple one Large creature or up to two Medium or smaller crea
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>15 (chain shirt)</string>
 				<key>cha</key>
@@ -15490,6 +15728,8 @@ At will: dancing lights
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>18 (studded leather, shield)</string>
 				<key>cha</key>
@@ -15616,6 +15856,8 @@ At will: dancing lights
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>12 (15 with mage armor)</string>
 				<key>cha</key>
@@ -15752,6 +15994,8 @@ Cantrips (at will): mage hand, minor illusion, poison spray, ray of frost
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>16 (scale mail)</string>
 				<key>cha</key>
@@ -16040,6 +16284,8 @@ At will: greater restoration, pass without trace, water breathing, water walk
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>13 (natural armor)</string>
 				<key>cha</key>
@@ -16157,6 +16403,8 @@ At will: greater restoration, pass without trace, water breathing, water walk
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>12 (natural armor)</string>
 				<key>cha</key>
@@ -16266,6 +16514,8 @@ At will: greater restoration, pass without trace, water breathing, water walk
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic good</string>
 				<key>armorClass</key>
 				<string>15</string>
 				<key>cha</key>
@@ -16392,6 +16642,8 @@ Violet, 1/day: polymorph</string>
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>13</string>
 				<key>cha</key>
@@ -16527,6 +16779,8 @@ Cantrip (at will): mage hand
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful good</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -16655,6 +16909,8 @@ The transformed creature can repeat the saving throw whenever it finishes a long
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>14 (natural armor)</string>
 				<key>cha</key>
@@ -16744,6 +17000,8 @@ The transformed creature can repeat the saving throw whenever it finishes a long
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>5</string>
 				<key>cha</key>
@@ -16842,6 +17100,8 @@ Spores invade an infected creature's system, killing the creature in a number of
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>5</string>
 				<key>cha</key>
@@ -16949,6 +17209,8 @@ Spores invade an infected creature's system, killing the creature in a number of
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>5</string>
 				<key>cha</key>
@@ -17050,6 +17312,8 @@ Spores invade an infected creature's system, killing the creature in a number of
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral</string>
 				<key>armorClass</key>
 				<string>16 (natural armor)</string>
 				<key>cha</key>
@@ -17167,6 +17431,8 @@ Spores invade an infected creature's system, killing the creature in a number of
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>15 (natural armor)</string>
 				<key>cha</key>
@@ -17284,6 +17550,8 @@ Spores invade an infected creature's system, killing the creature in a number of
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>18 (natural armor)</string>
 				<key>cha</key>
@@ -17417,6 +17685,8 @@ A creature can use its action to free a creature restrained by the whirlwind, in
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic good</string>
 				<key>armorClass</key>
 				<string>17 (natural armor)</string>
 				<key>cha</key>
@@ -17537,6 +17807,8 @@ At will: detect evil and good, detect magic, thunderwave
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>17 (natural armor)</string>
 				<key>cha</key>
@@ -17657,6 +17929,8 @@ At will: detect magic
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic neutral</string>
 				<key>armorClass</key>
 				<string>17 (natural armor)</string>
 				<key>cha</key>
@@ -17907,6 +18181,8 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>13</string>
 				<key>cha</key>
@@ -18020,6 +18296,8 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -18251,6 +18529,8 @@ At will: detect magic, fog cloud, light
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>18 (plate)</string>
 				<key>cha</key>
@@ -18364,6 +18644,8 @@ At will: detect magic, fog cloud, light
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>15 (patchwork armor)</string>
 				<key>cha</key>
@@ -18477,6 +18759,8 @@ At will: detect magic, fog cloud, light
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>13 (natural armor)</string>
 				<key>cha</key>
@@ -18586,6 +18870,8 @@ At will: detect magic, fog cloud, light
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral</string>
 				<key>armorClass</key>
 				<string>17 (natural armor)</string>
 				<key>cha</key>
@@ -18709,6 +18995,8 @@ At will: detect magic, fog cloud, light
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic good</string>
 				<key>armorClass</key>
 				<string>16 (scale mail)</string>
 				<key>cha</key>
@@ -18832,6 +19120,8 @@ At will: detect magic, feather fall, levitate, light
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral</string>
 				<key>armorClass</key>
 				<string>9</string>
 				<key>cha</key>
@@ -18937,6 +19227,8 @@ At will: detect magic, feather fall, levitate, light
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>17 (half plate)</string>
 				<key>cha</key>
@@ -19043,6 +19335,8 @@ At will: mage hand (the hand is invisible)
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>18 (plate)</string>
 				<key>cha</key>
@@ -19150,6 +19444,8 @@ At will: mage hand (the hand is invisible)
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful neutral</string>
 				<key>armorClass</key>
 				<string>14</string>
 				<key>cha</key>
@@ -19264,6 +19560,8 @@ At will: mage hand (the hand is invisible)
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful neutral</string>
 				<key>armorClass</key>
 				<string>17</string>
 				<key>cha</key>
@@ -19385,6 +19683,8 @@ At will: mage hand (the hand is invisible)
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>15 (hide armor, shield)</string>
 				<key>cha</key>
@@ -19511,6 +19811,8 @@ At will: mage hand (the hand is invisible)
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>15 (chain shirt)</string>
 				<key>cha</key>
@@ -19619,6 +19921,8 @@ At will: mage hand (the hand is invisible)
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>14 (hide armor)</string>
 				<key>cha</key>
@@ -19723,6 +20027,8 @@ At will: mage hand (the hand is invisible)
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral good</string>
 				<key>armorClass</key>
 				<string>15 (chain shirt)</string>
 				<key>cha</key>
@@ -19841,6 +20147,8 @@ At will: nondetection (self only)
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>15 (leather armor, shield)</string>
 				<key>cha</key>
@@ -19957,6 +20265,8 @@ At will: nondetection (self only)
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>17 (chain shirt, shield)</string>
 				<key>cha</key>
@@ -20073,6 +20383,8 @@ At will: nondetection (self only)
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>14 (natural armor)</string>
 				<key>cha</key>
@@ -20202,6 +20514,8 @@ At will: nondetection (self only)
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral</string>
 				<key>armorClass</key>
 				<string>9</string>
 				<key>cha</key>
@@ -20356,6 +20670,8 @@ The golem's creator, if within 60 feet of the berserk golem, can try to calm it 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>20 (natural armor)</string>
 				<key>cha</key>
@@ -20485,6 +20801,8 @@ The golem's creator, if within 60 feet of the berserk golem, can try to calm it 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>17 (natural armor)</string>
 				<key>cha</key>
@@ -20614,6 +20932,8 @@ The golem's creator, if within 60 feet of the berserk golem, can try to calm it 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>19 (natural armor)</string>
 				<key>cha</key>
@@ -20722,6 +21042,8 @@ The target is also grappled (escape DC 15). If the target is Medium or smaller, 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -20827,6 +21149,8 @@ The target is also grappled (escape DC 15). If the target is Medium or smaller, 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral</string>
 				<key>armorClass</key>
 				<string>14 (natural armor)</string>
 				<key>cha</key>
@@ -20944,6 +21268,8 @@ The target is also grappled (escape DC 15). If the target is Medium or smaller, 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral</string>
 				<key>armorClass</key>
 				<string>18 (natural armor)</string>
 				<key>cha</key>
@@ -21049,6 +21375,8 @@ The target is also grappled (escape DC 15). If the target is Medium or smaller, 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -21148,6 +21476,8 @@ The target is also grappled (escape DC 15). If the target is Medium or smaller, 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>11</string>
 				<key>cha</key>
@@ -21271,6 +21601,8 @@ The changes wrought by this effect fail to hold up to physical inspection. For e
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>17 (natural armor)</string>
 				<key>cha</key>
@@ -21399,6 +21731,8 @@ At will: dancing lights, minor illusion, vicious mockery</string>
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>17 (natural armor)</string>
 				<key>cha</key>
@@ -21521,6 +21855,8 @@ The changes wrought by this effect fail to hold up to physical inspection. For e
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>14 (natural armor)</string>
 				<key>cha</key>
@@ -21769,6 +22105,8 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>11</string>
 				<key>cha</key>
@@ -21868,6 +22206,8 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>15 (natural armor)</string>
 				<key>cha</key>
@@ -21983,6 +22323,8 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral</string>
 				<key>armorClass</key>
 				<string>20 (plate, shield)</string>
 				<key>cha</key>
@@ -22102,6 +22444,8 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>11</string>
 				<key>cha</key>
@@ -22207,6 +22551,8 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>18 (chain mail, shield)</string>
 				<key>cha</key>
@@ -22327,6 +22673,8 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>17 (half plate)</string>
 				<key>cha</key>
@@ -22447,6 +22795,8 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>20 (plate, shield)</string>
 				<key>cha</key>
@@ -22551,6 +22901,8 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral</string>
 				<key>armorClass</key>
 				<string>13 (natural armor)</string>
 				<key>cha</key>
@@ -22654,6 +23006,8 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral</string>
 				<key>armorClass</key>
 				<string>15 (natural armor)</string>
 				<key>cha</key>
@@ -22761,6 +23115,8 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>15 (natural armor)</string>
 				<key>cha</key>
@@ -22899,6 +23255,8 @@ If the host body drops to 0 hit points, the intellect devourer must leave it. A 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -23004,6 +23362,8 @@ If the host body drops to 0 hit points, the intellect devourer must leave it. A 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral</string>
 				<key>armorClass</key>
 				<string>14</string>
 				<key>cha</key>
@@ -23123,6 +23483,8 @@ If the host body drops to 0 hit points, the intellect devourer must leave it. A 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -23239,6 +23601,8 @@ If the host body drops to 0 hit points, the intellect devourer must leave it. A 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic neutral</string>
 				<key>armorClass</key>
 				<string>13</string>
 				<key>cha</key>
@@ -23347,6 +23711,8 @@ If the host body drops to 0 hit points, the intellect devourer must leave it. A 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>13</string>
 				<key>cha</key>
@@ -23455,6 +23821,8 @@ If the host body drops to 0 hit points, the intellect devourer must leave it. A 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -23588,6 +23956,8 @@ If the kraken takes 50 damage or more on a single turn from a creature inside it
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>18 (natural armor)</string>
 				<key>cha</key>
@@ -23759,6 +24129,8 @@ If the kraken takes 50 damage or more on a single turn from a creature inside it
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>13 (natural armor, shield)</string>
 				<key>cha</key>
@@ -23893,6 +24265,8 @@ If the kraken takes 50 damage or more on a single turn from a creature inside it
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>13 (natural armor)</string>
 				<key>cha</key>
@@ -24033,6 +24407,8 @@ Cantrips (at will): guidance, sacred flame, thaumaturgy
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>11 (natural armor)</string>
 				<key>cha</key>
@@ -24175,6 +24551,8 @@ Cantrips (at will): sacred flame, thaumaturgy
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>13 (natural armor)</string>
 				<key>cha</key>
@@ -24476,6 +24854,8 @@ Cantrips (at will): mage hand, prestidigitation, ray of frost
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral</string>
 				<key>armorClass</key>
 				<string>15 (natural armor, shield)</string>
 				<key>cha</key>
@@ -24598,6 +24978,8 @@ Cantrips (at will): mage hand, prestidigitation, ray of frost
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral</string>
 				<key>armorClass</key>
 				<string>13 (natural armor)</string>
 				<key>cha</key>
@@ -24724,6 +25106,8 @@ Cantrips (at will): druidcraft, produce flame, thorn whip
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>15 (natural armor)</string>
 				<key>cha</key>
@@ -24850,6 +25234,8 @@ Cantrips (at will): druidcraft, produce flame, thorn whip
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral good</string>
 				<key>armorClass</key>
 				<string>10 in humanoid form, 11 (natural armor) in bear and hybrid form</string>
 				<key>cha</key>
@@ -24969,6 +25355,8 @@ Cantrips (at will): druidcraft, produce flame, thorn whip
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>10 in humanoid form, 11 (natural armor) in boar or hybrid form</string>
 				<key>cha</key>
@@ -25100,6 +25488,8 @@ Cantrips (at will): druidcraft, produce flame, thorn whip
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -25231,6 +25621,8 @@ Cantrips (at will): druidcraft, produce flame, thorn whip
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -25362,6 +25754,8 @@ Cantrips (at will): druidcraft, produce flame, thorn whip
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>11 in humanoid form, 12 (natural armor) in wolf or hybrid form</string>
 				<key>cha</key>
@@ -25475,6 +25869,8 @@ Cantrips (at will): druidcraft, produce flame, thorn whip
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic neutral</string>
 				<key>armorClass</key>
 				<string>14 (natural armor)</string>
 				<key>cha</key>
@@ -25596,6 +25992,8 @@ Cantrips (at will): druidcraft, produce flame, thorn whip
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>14 (natural armor)</string>
 				<key>cha</key>
@@ -25713,6 +26111,8 @@ Cantrips (at will): druidcraft, produce flame, thorn whip
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>15 (natural armor)</string>
 				<key>cha</key>
@@ -25822,6 +26222,8 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -25937,6 +26339,8 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>11</string>
 				<key>cha</key>
@@ -26058,6 +26462,8 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>11</string>
 				<key>cha</key>
@@ -26179,6 +26585,8 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>11</string>
 				<key>cha</key>
@@ -26292,6 +26700,8 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -26405,6 +26815,8 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>10</string>
 				<key>cha</key>
@@ -26510,6 +26922,8 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral</string>
 				<key>armorClass</key>
 				<string>11</string>
 				<key>cha</key>
@@ -26630,6 +27044,8 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>13 (natural armor)</string>
 				<key>cha</key>
@@ -26729,6 +27145,8 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral</string>
 				<key>armorClass</key>
 				<string>12 (natural armor)</string>
 				<key>cha</key>
@@ -26857,6 +27275,8 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>15 (breastplate)</string>
 				<key>cha</key>
@@ -26968,6 +27388,8 @@ At will: detect thoughts, levitate
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>14 (natural armor)</string>
 				<key>cha</key>
@@ -27087,6 +27509,8 @@ At will: detect thoughts, levitate
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful neutral</string>
 				<key>armorClass</key>
 				<string>15 (natural armor)</string>
 				<key>cha</key>
@@ -27200,6 +27624,8 @@ At will: detect thoughts, levitate
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful neutral</string>
 				<key>armorClass</key>
 				<string>15 (natural armor)</string>
 				<key>cha</key>
@@ -27313,6 +27739,8 @@ At will: detect thoughts, levitate
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful neutral</string>
 				<key>armorClass</key>
 				<string>15 (natural armor)</string>
 				<key>cha</key>
@@ -27426,6 +27854,8 @@ At will: detect thoughts, levitate
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful neutral</string>
 				<key>armorClass</key>
 				<string>16 (natural armor)</string>
 				<key>cha</key>
@@ -27541,6 +27971,8 @@ At will: detect thoughts, levitate
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful neutral</string>
 				<key>armorClass</key>
 				<string>16 (natural armor)</string>
 				<key>cha</key>
@@ -27656,6 +28088,8 @@ At will: detect thoughts, levitate
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>11 (natural armor)</string>
 				<key>cha</key>
@@ -27773,6 +28207,8 @@ At will: detect thoughts, levitate
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>17 (natural armor)</string>
 				<key>cha</key>
@@ -27963,6 +28399,8 @@ Cantrips (at will): sacred flame, thaumaturgy
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful neutral</string>
 				<key>armorClass</key>
 				<string>10</string>
 				<key>cha</key>
@@ -28068,6 +28506,8 @@ Cantrips (at will): sacred flame, thaumaturgy
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>13 (natural armor)</string>
 				<key>cha</key>
@@ -28171,6 +28611,8 @@ Cantrips (at will): sacred flame, thaumaturgy
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful neutral</string>
 				<key>armorClass</key>
 				<string>12 (natural armor)</string>
 				<key>cha</key>
@@ -28300,6 +28742,8 @@ Cantrips (at will): sacred flame, thaumaturgy
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful neutral</string>
 				<key>armorClass</key>
 				<string>13 (natural armor)</string>
 				<key>cha</key>
@@ -28399,6 +28843,8 @@ Cantrips (at will): sacred flame, thaumaturgy
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>15 (natural armor)</string>
 				<key>cha</key>
@@ -28508,6 +28954,8 @@ Cantrips (at will): mage hand, minor illusion, ray of frost
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>15 (natural armor)</string>
 				<key>cha</key>
@@ -28627,6 +29075,8 @@ Cantrips (at will): mage hand, minor illusion, ray of frost
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful good</string>
 				<key>armorClass</key>
 				<string>18 (natural armor)</string>
 				<key>cha</key>
@@ -28747,6 +29197,8 @@ Cantrips (at will): mending, sacred flame, thaumaturgy
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>13 (natural armor)</string>
 				<key>cha</key>
@@ -28866,6 +29318,8 @@ Cantrips (at will): mending, sacred flame, thaumaturgy
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>15 (natural armor)</string>
 				<key>cha</key>
@@ -28973,6 +29427,8 @@ Cantrips (at will): mending, sacred flame, thaumaturgy
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>11 (hide armor)</string>
 				<key>cha</key>
@@ -29181,6 +29637,8 @@ Cantrips (at will): mending, sacred flame, thaumaturgy
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>16 (chain mail)</string>
 				<key>cha</key>
@@ -29292,6 +29750,8 @@ At will: darkness, invisibility
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>7</string>
 				<key>cha</key>
@@ -29417,6 +29877,8 @@ An engulfed creature can try to escape by taking an action to make a DC 12 Stren
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>6</string>
 				<key>cha</key>
@@ -29521,6 +29983,8 @@ The cube can hold only one Large creature or up to four Medium or smaller creatu
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>8</string>
 				<key>cha</key>
@@ -29633,6 +30097,8 @@ The ooze can eat through 2-inch-thick, nonmagical metal in 1 round.</string>
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>8</string>
 				<key>cha</key>
@@ -29756,6 +30222,8 @@ The ooze can eat through 2-inch-thick, nonmagical metal in 1 round.</string>
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>13 (hide armor)</string>
 				<key>cha</key>
@@ -29878,6 +30346,8 @@ The ooze can eat through 2-inch-thick, nonmagical metal in 1 round.</string>
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>16 (chain mail)</string>
 				<key>cha</key>
@@ -29984,6 +30454,8 @@ The ooze can eat through 2-inch-thick, nonmagical metal in 1 round.</string>
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>16 (ring mail, shield)</string>
 				<key>cha</key>
@@ -30109,6 +30581,8 @@ Cantrips (at-will): guidance, resistance, thaumaturgy
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>18 (plate)</string>
 				<key>cha</key>
@@ -30225,6 +30699,8 @@ Cantrips (at-will): guidance, resistance, thaumaturgy
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral</string>
 				<key>armorClass</key>
 				<string>14 (natural armor)</string>
 				<key>cha</key>
@@ -30332,6 +30808,8 @@ Cantrips (at-will): guidance, resistance, thaumaturgy
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>13 (natural armor)</string>
 				<key>cha</key>
@@ -30431,6 +30909,8 @@ Cantrips (at-will): guidance, resistance, thaumaturgy
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic good</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -30540,6 +31020,8 @@ Cantrips (at-will): guidance, resistance, thaumaturgy
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>13 (natural armor)</string>
 				<key>cha</key>
@@ -30649,6 +31131,8 @@ Cantrips (at-will): guidance, resistance, thaumaturgy
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>15 (natural armor)</string>
 				<key>cha</key>
@@ -30748,6 +31232,8 @@ Cantrips (at-will): guidance, resistance, thaumaturgy
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral good</string>
 				<key>armorClass</key>
 				<string>15</string>
 				<key>cha</key>
@@ -30857,6 +31343,8 @@ At will: druidcraft
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral good</string>
 				<key>armorClass</key>
 				<string>13 (natural armor)</string>
 				<key>cha</key>
@@ -30977,6 +31465,8 @@ If the worm takes 30 damage or more on a single turn from a creature inside it, 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>18 (natural armor)</string>
 				<key>cha</key>
@@ -31076,6 +31566,8 @@ If the worm takes 30 damage or more on a single turn from a creature inside it, 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic neutral</string>
 				<key>armorClass</key>
 				<string>13 (natural armor)</string>
 				<key>cha</key>
@@ -31182,6 +31674,8 @@ If the worm takes 30 damage or more on a single turn from a creature inside it, 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>16 (natural armor)</string>
 				<key>cha</key>
@@ -31290,6 +31784,8 @@ At will: detect thoughts, disguise self, mage hand, minor illusion
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>14 (natural armor)</string>
 				<key>cha</key>
@@ -31392,6 +31888,8 @@ If the remorhaz takes 30 damage or more on a single turn from a creature inside 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>17 (natural armor)</string>
 				<key>cha</key>
@@ -31499,6 +31997,8 @@ If the remorhaz takes 30 damage or more on a single turn from a creature inside 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral</string>
 				<key>armorClass</key>
 				<string>13 (leather armor)</string>
 				<key>cha</key>
@@ -31630,6 +32130,8 @@ If the remorhaz takes 30 damage or more on a single turn from a creature inside 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>15 (natural armor)</string>
 				<key>cha</key>
@@ -31743,6 +32245,8 @@ If the remorhaz takes 30 damage or more on a single turn from a creature inside 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>20 (natural armor)</string>
 				<key>cha</key>
@@ -31855,6 +32359,8 @@ If the object touched is either metal armor or a metal shield being worn or carr
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>14 (natural armor)</string>
 				<key>cha</key>
@@ -31970,6 +32476,8 @@ If the object touched is either metal armor or a metal shield being worn or carr
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>12 (natural armor)</string>
 				<key>cha</key>
@@ -32092,6 +32600,8 @@ If the object touched is either metal armor or a metal shield being worn or carr
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>12 (natural armor)</string>
 				<key>cha</key>
@@ -32230,6 +32740,8 @@ Cantrips (at will): guidance, thaumaturgy
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>16 (breastplate)</string>
 				<key>cha</key>
@@ -32354,6 +32866,8 @@ Cantrips (at will): guidance, thaumaturgy
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>14 (natural armor)</string>
 				<key>cha</key>
@@ -32467,6 +32981,8 @@ Cantrips (at will): guidance, thaumaturgy
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>15 (natural armor)</string>
 				<key>cha</key>
@@ -32586,6 +33102,8 @@ Cantrips (at will): guidance, thaumaturgy
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic neutral</string>
 				<key>armorClass</key>
 				<string>14 (leather armor)</string>
 				<key>cha</key>
@@ -32699,6 +33217,8 @@ Cantrips (at will): guidance, thaumaturgy
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>11</string>
 				<key>cha</key>
@@ -32801,6 +33321,8 @@ If a non-evil humanoid dies from this attack, a new shadow rises from the corpse
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -32926,6 +33448,8 @@ If a non-evil humanoid dies from this attack, a new shadow rises from the corpse
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>15 (natural armor)</string>
 				<key>cha</key>
@@ -33031,6 +33555,8 @@ If a non-evil humanoid dies from this attack, a new shadow rises from the corpse
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>17 (natural armor)</string>
 				<key>cha</key>
@@ -33152,6 +33678,8 @@ If a non-evil humanoid dies from this attack, a new shadow rises from the corpse
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>13 (armor scraps)</string>
 				<key>cha</key>
@@ -33259,6 +33787,8 @@ If a non-evil humanoid dies from this attack, a new shadow rises from the corpse
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>12 (natural armor)</string>
 				<key>cha</key>
@@ -33360,6 +33890,8 @@ If a non-evil humanoid dies from this attack, a new shadow rises from the corpse
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>13 (barding scraps)</string>
 				<key>cha</key>
@@ -33467,6 +33999,8 @@ If the disease is cured before the tadpole's emergence, the unborn slaad is disi
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic neutral</string>
 				<key>armorClass</key>
 				<string>14 (natural armor)</string>
 				<key>cha</key>
@@ -33572,6 +34106,8 @@ If the disease is cured before the tadpole's emergence, the unborn slaad is disi
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic neutral</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -33683,6 +34219,8 @@ If the disease is cured before the tadpole's emergence, the unborn slaad is disi
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic neutral</string>
 				<key>armorClass</key>
 				<string>15 (natural armor)</string>
 				<key>cha</key>
@@ -33812,6 +34350,8 @@ If the disease is cured before the tadpole's emergence, the unborn slaad is disi
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic neutral</string>
 				<key>armorClass</key>
 				<string>16 (natural armor)</string>
 				<key>cha</key>
@@ -33951,6 +34491,8 @@ At will: detect magic, detect thoughts, mage hand
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic neutral</string>
 				<key>armorClass</key>
 				<string>18 (natural armor)</string>
 				<key>cha</key>
@@ -34096,6 +34638,8 @@ At will: detect magic, detect thoughts, invisibility (self only), mage hand, maj
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>18 (natural armor)</string>
 				<key>cha</key>
@@ -34223,6 +34767,8 @@ At will: detect magic, detect thoughts, invisibility (self only), mage hand, maj
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -34343,6 +34889,8 @@ Third Roar. Each creature makes a DC 18 Constitution saving throw. On a failed s
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful neutral</string>
 				<key>armorClass</key>
 				<string>17 (natural armor)</string>
 				<key>cha</key>
@@ -34489,6 +35037,8 @@ Cantrips (at will): sacred flame, spare the dying, thaumaturgy
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful neutral</string>
 				<key>armorClass</key>
 				<string>17 (natural armor)</string>
 				<key>cha</key>
@@ -34669,6 +35219,8 @@ Cantrips (at will): mage hand, minor illusion, prestidigitation
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral good</string>
 				<key>armorClass</key>
 				<string>15 (leather armor)</string>
 				<key>cha</key>
@@ -34759,6 +35311,8 @@ The stirge can detach itself by spending 5 feet of its movement. It does so afte
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>14 (natural armor)</string>
 				<key>cha</key>
@@ -34869,6 +35423,8 @@ The fiend can have only one target charmed at a time. If it charms another, the 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>15 (natural armor)</string>
 				<key>cha</key>
@@ -35010,6 +35566,8 @@ If the tarrasque takes 60 damage or more on a single turn from a creature inside
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>25 (natural armor)</string>
 				<key>cha</key>
@@ -35156,6 +35714,8 @@ If the tarrasque takes 60 damage or more on a single turn from a creature inside
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic neutral</string>
 				<key>armorClass</key>
 				<string>15 (natural armor)</string>
 				<key>cha</key>
@@ -35276,6 +35836,8 @@ If the tarrasque takes 60 damage or more on a single turn from a creature inside
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic good</string>
 				<key>armorClass</key>
 				<string>16 (natural armor)</string>
 				<key>cha</key>
@@ -35391,6 +35953,8 @@ If the tarrasque takes 60 damage or more on a single turn from a creature inside
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>11 (natural armor)</string>
 				<key>cha</key>
@@ -35511,6 +36075,8 @@ If the tarrasque takes 60 damage or more on a single turn from a creature inside
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>15 (natural armor)</string>
 				<key>cha</key>
@@ -35630,6 +36196,8 @@ If the tarrasque takes 60 damage or more on a single turn from a creature inside
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>18 (natural armor)</string>
 				<key>cha</key>
@@ -35755,6 +36323,8 @@ Unless surprised, a creature can avert its eyes to avoid the saving throw at the
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful good</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -35940,6 +36510,8 @@ Each time the vampire or the vampire's companions do anything harmful to the tar
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
 				<key>armorClass</key>
 				<string>16 (natural armor)</string>
 				<key>cha</key>
@@ -36133,6 +36705,8 @@ Sunlight Hypersensitivity. The vampire takes 20 radiant damage when it starts it
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>15 (natural armor)</string>
 				<key>cha</key>
@@ -36250,6 +36824,8 @@ Sunlight Hypersensitivity. The vampire takes 20 radiant damage when it starts it
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral</string>
 				<key>armorClass</key>
 				<string>13</string>
 				<key>cha</key>
@@ -36374,6 +36950,8 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>14 (studded leather)</string>
 				<key>cha</key>
@@ -36487,6 +37065,8 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>19</string>
 				<key>cha</key>
@@ -36610,6 +37190,8 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>13</string>
 				<key>cha</key>
@@ -36733,6 +37315,8 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>13 (natural armor)</string>
 				<key>cha</key>
@@ -36838,6 +37422,8 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral</string>
 				<key>armorClass</key>
 				<string>19 (natural armor)</string>
 				<key>cha</key>
@@ -36959,6 +37545,8 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>12 (natural armor)</string>
 				<key>cha</key>
@@ -37094,6 +37682,8 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
 				<key>armorClass</key>
 				<string>15 (natural armor)</string>
 				<key>cha</key>
@@ -37229,6 +37819,8 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>15 (natural armor)</string>
 				<key>cha</key>
@@ -37341,6 +37933,8 @@ At will: animal friendship (snakes only)
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -37479,6 +38073,8 @@ Type 3: Human head and upper body with a serpentine lower body instead of legs</
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>11</string>
 				<key>cha</key>
@@ -37595,6 +38191,8 @@ At will: animal friendship (snakes only)
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>17 (natural armor)</string>
 				<key>cha</key>
@@ -37747,6 +38345,8 @@ Cantrips (at will): fire bolt, mage hand, minor illusion, prestidigitation
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>18 (natural armor)</string>
 				<key>cha</key>
@@ -37883,6 +38483,8 @@ Cantrips (at will): fire bolt, mage hand, minor illusion, prestidigitation
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>18 (natural armor)</string>
 				<key>cha</key>
@@ -38018,6 +38620,8 @@ At will: darkness, detect magic, dispel magic, invisibility (self only), mirror 
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>19 (natural armor)</string>
 				<key>cha</key>
@@ -38137,6 +38741,8 @@ At will: alter self, clairvoyance, darkness, detect magic, detect thoughts, disp
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>8</string>
 				<key>cha</key>
@@ -38244,6 +38850,8 @@ At will: alter self, clairvoyance, darkness, detect magic, detect thoughts, disp
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>8</string>
 				<key>cha</key>
@@ -38356,6 +38964,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>15 (natural armor)</string>
 				<key>cha</key>
@@ -38469,6 +39079,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -38564,6 +39176,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>9</string>
 				<key>cha</key>
@@ -38669,6 +39283,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>13 (natural armor)</string>
 				<key>cha</key>
@@ -38774,6 +39390,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>11</string>
 				<key>cha</key>
@@ -38867,6 +39485,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -38966,6 +39586,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>10</string>
 				<key>cha</key>
@@ -39065,6 +39687,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -39182,6 +39806,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>11 (natural armor)</string>
 				<key>cha</key>
@@ -39289,6 +39915,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>lawful good</string>
 				<key>armorClass</key>
 				<string>13</string>
 				<key>cha</key>
@@ -39392,6 +40020,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -39499,6 +40129,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>11 (natural armor)</string>
 				<key>cha</key>
@@ -39616,6 +40248,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>11 (natural armor)</string>
 				<key>cha</key>
@@ -39717,6 +40351,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>9</string>
 				<key>cha</key>
@@ -39810,6 +40446,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -39917,6 +40555,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -40010,6 +40650,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>11 (natural armor)</string>
 				<key>cha</key>
@@ -40111,6 +40753,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>12 (natural armor)</string>
 				<key>cha</key>
@@ -40218,6 +40862,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -40319,6 +40965,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>13</string>
 				<key>cha</key>
@@ -40412,6 +41060,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>14 (natural armor)</string>
 				<key>cha</key>
@@ -40519,6 +41169,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>10</string>
 				<key>cha</key>
@@ -40612,6 +41264,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -40719,6 +41373,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>12 (natural armor)</string>
 				<key>cha</key>
@@ -40824,6 +41480,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>10</string>
 				<key>cha</key>
@@ -40923,6 +41581,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>14</string>
 				<key>cha</key>
@@ -41016,6 +41676,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>11</string>
 				<key>cha</key>
@@ -41135,6 +41797,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -41242,6 +41906,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>10</string>
 				<key>cha</key>
@@ -41341,6 +42007,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>13</string>
 				<key>cha</key>
@@ -41446,6 +42114,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>12 (natural armor)</string>
 				<key>cha</key>
@@ -41551,6 +42221,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>13 (natural armor)</string>
 				<key>cha</key>
@@ -41650,6 +42322,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -41745,6 +42419,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>15 (natural armor)</string>
 				<key>cha</key>
@@ -41858,6 +42534,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>14 (natural armor)</string>
 				<key>cha</key>
@@ -41971,6 +42649,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral good</string>
 				<key>armorClass</key>
 				<string>13</string>
 				<key>cha</key>
@@ -42080,6 +42760,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>14 (natural armor)</string>
 				<key>cha</key>
@@ -42183,6 +42865,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>13 (natural armor)</string>
 				<key>cha</key>
@@ -42289,6 +42973,8 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>11</string>
 				<key>cha</key>
@@ -42396,6 +43082,8 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>11 (natural armor)</string>
 				<key>cha</key>
@@ -42501,6 +43189,8 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -42602,6 +43292,8 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>12 (natural armor)</string>
 				<key>cha</key>
@@ -42701,6 +43393,8 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>11</string>
 				<key>cha</key>
@@ -42814,6 +43508,8 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -42923,6 +43619,8 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>14</string>
 				<key>cha</key>
@@ -43018,6 +43716,8 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -43135,6 +43835,8 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>15 (natural armor)</string>
 				<key>cha</key>
@@ -43228,6 +43930,8 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>13 (natural armor)</string>
 				<key>cha</key>
@@ -43333,6 +44037,8 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>13 (natural armor)</string>
 				<key>cha</key>
@@ -43446,6 +44152,8 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>14 (natural armor)</string>
 				<key>cha</key>
@@ -43566,6 +44274,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>11</string>
 				<key>cha</key>
@@ -43683,6 +44393,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>10</string>
 				<key>cha</key>
@@ -43792,6 +44504,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -43885,6 +44599,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>13</string>
 				<key>cha</key>
@@ -43986,6 +44702,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>13</string>
 				<key>cha</key>
@@ -44099,6 +44817,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>10</string>
 				<key>cha</key>
@@ -44204,6 +44924,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>13</string>
 				<key>cha</key>
@@ -44305,6 +45027,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>12 (natural armor)</string>
 				<key>cha</key>
@@ -44412,6 +45136,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>11</string>
 				<key>cha</key>
@@ -44513,6 +45239,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -44620,6 +45348,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>12 (natural armor)</string>
 				<key>cha</key>
@@ -44739,6 +45469,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -44858,6 +45590,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>10</string>
 				<key>cha</key>
@@ -44957,6 +45691,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>13 (natural armor)</string>
 				<key>cha</key>
@@ -45056,6 +45792,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -45157,6 +45895,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>10</string>
 				<key>cha</key>
@@ -45268,6 +46008,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -45381,6 +46123,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>11</string>
 				<key>cha</key>
@@ -45494,6 +46238,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -45601,6 +46347,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>13 (natural armor)</string>
 				<key>cha</key>
@@ -45714,6 +46462,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>13</string>
 				<key>cha</key>
@@ -45819,6 +46569,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>12 (natural armor)</string>
 				<key>cha</key>
@@ -45920,6 +46672,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>10</string>
 				<key>cha</key>
@@ -46013,6 +46767,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>13</string>
 				<key>cha</key>
@@ -46118,6 +46874,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>10</string>
 				<key>cha</key>
@@ -46217,6 +46975,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -46318,6 +47078,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>12 (natural armor)</string>
 				<key>cha</key>
@@ -46425,6 +47187,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>11 (natural armor)</string>
 				<key>cha</key>
@@ -46524,6 +47288,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>10</string>
 				<key>cha</key>
@@ -46623,6 +47389,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -46730,6 +47498,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>11 (natural armor)</string>
 				<key>cha</key>
@@ -46817,6 +47587,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>11</string>
 				<key>cha</key>
@@ -46916,6 +47688,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -47029,6 +47803,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -47144,6 +47920,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>12 (natural armor)</string>
 				<key>cha</key>
@@ -47247,6 +48025,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>14</string>
 				<key>cha</key>
@@ -47350,6 +48130,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>13</string>
 				<key>cha</key>
@@ -47465,6 +48247,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>10</string>
 				<key>cha</key>
@@ -47574,6 +48358,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -47685,6 +48471,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>12</string>
 				<key>cha</key>
@@ -47792,6 +48580,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>10</string>
 				<key>cha</key>
@@ -47899,6 +48689,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>11</string>
 				<key>cha</key>
@@ -47998,6 +48790,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>13</string>
 				<key>cha</key>
@@ -48105,6 +48899,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>13 (natural armor)</string>
 				<key>cha</key>
@@ -48222,6 +49018,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
 				<key>armorClass</key>
 				<string>13 (natural armor)</string>
 				<key>cha</key>
@@ -48329,6 +49127,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>info</key>
 			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
 				<key>armorClass</key>
 				<string>13 (natural armor)</string>
 				<key>cha</key>
@@ -50725,7 +51525,7 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 		</dict>
 	</array>
 	<key>version</key>
-	<integer>1449458214</integer>
+	<integer>1449468931</integer>
 </dict>
 </plist>
 

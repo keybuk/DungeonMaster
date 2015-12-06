@@ -37,6 +37,31 @@ final class Monster: NSManagedObject {
     }
     
     @NSManaged var type: String
+    
+    // Alignment is a wrapped enum object.
+    @NSManaged var alignmentValue: String?
+    
+    enum Alignment: String {
+        case Unaligned = "unaligned"
+        case LawfulGood = "lawful good"
+        case LawfulNeutral = "lawful neutral"
+        case LawfulEvil = "lawful evil"
+        case NeutralGood = "neutral good"
+        case Neutral = "neutral"
+        case NeutralEvil = "neutral evil"
+        case ChaoticGood = "chaotic good"
+        case ChaoticNeutral = "chaotic neutral"
+        case ChaoticEvil = "chaotic evil"
+    }
+    
+    var alignment: Alignment? {
+        get {
+            return alignmentValue != nil ? Alignment(rawValue: alignmentValue!) : nil
+        }
+        set {
+            alignmentValue = alignment != nil ? alignment!.rawValue : nil
+        }
+    }
 
     // Hit Points and dice expression to generate.
     @NSManaged var hp: Int16

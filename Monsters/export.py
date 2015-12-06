@@ -14,7 +14,11 @@ type_expr = r'aberration|beast|celestial|construct|dragon|elemental|fey|fiend|gi
 SIZE_TYPE_TAG_RE  = re.compile(
 	r'^(?:(' + size_expr + r') (' + type_expr + r')'
 	r'|(' + size_expr + r') (swarm of (?:' + size_expr + r') (?:' + type_expr + r')s))' +
-	r'(?: \(([^)]+)\))?, ')
+	r'(?: \(([^)]+)\))?, (.*)')
+
+ALIGNMENT_RE = re.compile(
+	r'^(?:unaligned|neutral' +
+	r'|neutral (?:good|evil)|(?:lawful|chaotic) (?:good|neutral|evil))$')
 
 
 HIT_POINTS_RE = re.compile(r'^(\d+) \(([^)]*)\)$')
@@ -83,7 +87,7 @@ class Exporter(monster.MonsterParser):
 		if match is None:
 			self.error("Size/Type/Alignment didn't match expected format: %s", line)
 
-		(size, type, swarm_size, swarm_type, tags) = match.groups()
+		(size, type, swarm_size, swarm_type, tags, alignment_text) = match.groups()
 		if swarm_size is not None or swarm_type is not None:
 			size = swarm_size
 			type = swarm_type
@@ -93,6 +97,12 @@ class Exporter(monster.MonsterParser):
 
 		if tags is not None:
 			self.tags.extend(tags.split(", "))
+
+		match = ALIGNMENT_RE.match(alignment_text)
+		if match is None:
+			self.warning("Alignment didn't match expected format: %s" % alignment_text)
+		else:
+			self.info['alignmentValue'] = alignment_text
 
 	def handle_armor_class(self, line):
 		self.info['armorClass'] = line
