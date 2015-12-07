@@ -204,7 +204,9 @@ class MonsterParser(object):
 		line = self.file.readline()
 		if len(line):
 			self.lineno += 1
-			return line.rstrip("\r\n")
+			line = line.rstrip("\r\n")
+			self.check_line(line)
+			return line
 		elif error_message is not None:
 			raise self.error(error)
 		else:
@@ -250,6 +252,8 @@ class MonsterParser(object):
 		if len(lines) and all:
 			raise self.error("Expected each of %s in block" % ", ".join(sorted(lines.keys())))
 
+	def check_line(self, line):
+		pass
 
 	def handle_name(self, name):
 		pass

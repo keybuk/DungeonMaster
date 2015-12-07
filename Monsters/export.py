@@ -26,6 +26,7 @@ ABILITY_RE = re.compile(r'^(\d+) \(([+-]\d+)\)$')
 SENSES_RE = re.compile(r'^(?:.*, )?passive Perception (\d+)$')
 
 DICE_RE = re.compile(r'^(?:[1-9][0-9]*(?:d(?:2|4|6|8|10|12|20|100))?(?: *[+-] *(?=[^ ]))?)+$')
+DICE_ANYWHERE_RE = re.compile(r'(?:[1-9][0-9]*(?:d(?:2|4|6|8|10|12|20|100))?(?: *[+-] *(?=[^ ]))?)+')
 SPELL_RE = re.compile(r'/([a-z ]+)/')
 
 CHALLENGE_RE = re.compile(r'^([0-9/]+) \(([0-9,]+)(?: XP)?\)$')
@@ -45,6 +46,36 @@ class Exporter(monster.MonsterParser):
 		self.reactions = []
 		self.legendary_actions = []
 		self.lair = None
+
+	def check_line(self, line):
+		if " ," in line:
+			raise self.error("Space before comma: %s" % line)
+		if " ." in line:
+			raise self.error("Space before period: %s" % line)
+		if "·" in line:
+			raise self.error("Bad space marker: %s" % line)
+		if "’" in line:
+			raise self.error("Bad quote: %s" % line)
+		if " o f " in line or "ofthe" in line or "ofit" in line or "ofa" in line:
+			raise self.error("Spotted o f, ofthe, ofit, or ofa: %s" % line)
+		if "e ects" in line:
+			raise self.error("Spotted missing ff: %s" % line)
+		if " y " in line or " ies " in line or "amo uage" in line:
+			raise self.error("Spotted missing fl: %s" % line)
+		if "igni cant" in line or " ist " in line or " re " in line:
+			raise self.error("Spotted missing fi: %s" % line)
+		if "i cult" in line:
+			raise self.error("Spotted missing ffi: %s" % line)
+
+		if re.search(r'[0-9]-[0-9]', line):
+			raise self.error("Spotted dash that should be en-dash: %s", line)
+
+		if re.search('r[0-9][lIJSO]|[lIJSO][0-9]|[lJSO][JSO]+|[lI]d[0-9]', line):
+			raise self.error("Suspicious number-like form: %s" % line)
+
+		for part in DICE_ANYWHERE_RE.split(line):
+			if "- " in part:
+				raise self.error("Probable bad hyphenation: %s" % line)
 
 	def object(self):
 		object = {
