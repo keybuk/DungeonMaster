@@ -87,7 +87,7 @@
         <relationship name="lair" maxCount="1" deletionRule="Nullify" destinationEntity="Lair" inverseName="regionalEffects" inverseEntity="Lair" syncable="YES"/>
     </entity>
     <entity name="Source" representedClassName=".Source" syncable="YES">
-        <attribute name="page" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="pageValue" attributeType="Integer 16" syncable="YES"/>
         <attribute name="section" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="book" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="sources" inverseEntity="Book" syncable="YES"/>
         <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="sources" inverseEntity="Monster" syncable="YES"/>

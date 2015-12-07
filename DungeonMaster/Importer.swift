@@ -71,7 +71,7 @@ func importIfNeeded() {
 
             let page = sourceData["page"]!.integerValue
             
-            let source = Source(book: book, page: Int16(page), inManagedObjectContext: managedObjectContext)
+            let source = Source(book: book, page: page, inManagedObjectContext: managedObjectContext)
             
             if let section = sourceData["section"] as? String {
                 source.section = section

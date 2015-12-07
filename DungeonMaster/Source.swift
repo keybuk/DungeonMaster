@@ -12,11 +12,20 @@ import CoreData
 final class Source: NSManagedObject {
 
     @NSManaged var book: Book
-    @NSManaged var page: Int16
+    @NSManaged var pageValue: Int16
     @NSManaged var section: String?
     @NSManaged var monster: Monster
 
-    convenience init(book: Book, page: Int16, inManagedObjectContext context: NSManagedObjectContext) {
+    var page: Int {
+        get {
+            return Int(pageValue)
+        }
+        set {
+            pageValue = Int16(page)
+        }
+    }
+    
+    convenience init(book: Book, page: Int, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Source, inManagedObjectContext: context)
         self.init(entity: entity, insertIntoManagedObjectContext: context)
         
