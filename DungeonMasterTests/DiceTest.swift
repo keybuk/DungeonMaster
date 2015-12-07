@@ -86,12 +86,15 @@ class DiceTest: XCTestCase {
         XCTAssertEqual(dice.sign, JoiningSign.None)
         XCTAssertEqual(dice.dice.count, 1)
         XCTAssertEqual(dice.dice[0].sides, 4)
-        
+        XCTAssertEqual(dice.description, "1d4")
+
         XCTAssertEqual(dice.value, dice.dice[0].value)
         XCTAssertEqual(combo.value, dice.value)
         
         XCTAssertEqual(dice.averageValue, 2)
         XCTAssertEqual(combo.averageValue, dice.averageValue)
+        
+        XCTAssertEqual(combo.description, "1d4")
     }
 
     func testLargeMultiplierCombo() {
@@ -108,11 +111,15 @@ class DiceTest: XCTestCase {
             expectedValue += dice.dice[i].value
         }
         
+        XCTAssertEqual(dice.description, "10d6")
+
         XCTAssertEqual(dice.value, expectedValue)
         XCTAssertEqual(combo.value, dice.value)
         
         XCTAssertEqual(dice.averageValue, 35)
         XCTAssertEqual(combo.averageValue, dice.averageValue)
+        
+        XCTAssertEqual(combo.description, "10d6")
     }
 
     func testLargeDiceCombo() {
@@ -129,11 +136,15 @@ class DiceTest: XCTestCase {
             expectedValue += dice.dice[i].value
         }
         
+        XCTAssertEqual(dice.description, "2d100")
+        
         XCTAssertEqual(dice.value, expectedValue)
         XCTAssertEqual(combo.value, dice.value)
         
         XCTAssertEqual(dice.averageValue, 101)
         XCTAssertEqual(combo.averageValue, dice.averageValue)
+        
+        XCTAssertEqual(combo.description, "2d100")
     }
 
     func testLargeMultiplierAndDiceCombo() {
@@ -150,11 +161,15 @@ class DiceTest: XCTestCase {
             expectedValue += dice.dice[i].value
         }
         
+        XCTAssertEqual(dice.description, "20d100")
+        
         XCTAssertEqual(dice.value, expectedValue)
         XCTAssertEqual(combo.value, dice.value)
         
         XCTAssertEqual(dice.averageValue, 1010)
         XCTAssertEqual(combo.averageValue, dice.averageValue)
+        
+        XCTAssertEqual(combo.description, "20d100")
     }
 
     func testComboWithModifier() {
@@ -165,7 +180,8 @@ class DiceTest: XCTestCase {
         XCTAssertEqual(dice.sign, JoiningSign.None)
         XCTAssertEqual(dice.dice.count, 1)
         XCTAssertEqual(dice.dice[0].sides, 4)
-        
+        XCTAssertEqual(dice.description, "1d4")
+
         XCTAssertEqual(dice.value, dice.dice[0].value)
         XCTAssertEqual(dice.averageValue, 2)
 
@@ -174,9 +190,12 @@ class DiceTest: XCTestCase {
         XCTAssertEqual(modifier.value, 4)
         XCTAssertEqual(modifier.sign, JoiningSign.Plus)
         XCTAssertEqual(modifier.averageValue, 4)
+        XCTAssertEqual(modifier.description, "4")
 
         XCTAssertEqual(combo.value, dice.value + modifier.value)
         XCTAssertEqual(combo.averageValue, dice.averageValue + modifier.averageValue)
+        
+        XCTAssertEqual(combo.description, "1d4 + 4")
     }
 
     func testComboWithNegativeModifier() {
@@ -187,7 +206,8 @@ class DiceTest: XCTestCase {
         XCTAssertEqual(dice.sign, JoiningSign.None)
         XCTAssertEqual(dice.dice.count, 1)
         XCTAssertEqual(dice.dice[0].sides, 4)
-        
+        XCTAssertEqual(dice.description, "1d4")
+
         XCTAssertEqual(dice.value, dice.dice[0].value)
         XCTAssertEqual(dice.averageValue, 2)
 
@@ -196,9 +216,12 @@ class DiceTest: XCTestCase {
         XCTAssertEqual(modifier.value, 4)
         XCTAssertEqual(modifier.sign, JoiningSign.Minus)
         XCTAssertEqual(modifier.averageValue, 4)
+        XCTAssertEqual(modifier.description, "4")
 
         XCTAssertEqual(combo.value, dice.value - modifier.value)
         XCTAssertEqual(combo.averageValue, dice.averageValue - modifier.averageValue)
+        
+        XCTAssertEqual(combo.description, "1d4 - 4")
     }
 
     func testComboWithTwoDiceSets() {
@@ -209,7 +232,8 @@ class DiceTest: XCTestCase {
         XCTAssertEqual(dice1.sign, JoiningSign.None)
         XCTAssertEqual(dice1.dice.count, 1)
         XCTAssertEqual(dice1.dice[0].sides, 4)
-        
+        XCTAssertEqual(dice1.description, "1d4")
+
         XCTAssertEqual(dice1.value, dice1.dice[0].value)
         XCTAssertEqual(dice1.averageValue, 2)
 
@@ -218,12 +242,15 @@ class DiceTest: XCTestCase {
         XCTAssertEqual(dice2.dice.count, 2)
         XCTAssertEqual(dice2.dice[0].sides, 6)
         XCTAssertEqual(dice2.dice[1].sides, 6)
+        XCTAssertEqual(dice2.description, "2d6")
 
         XCTAssertEqual(dice2.value, dice2.dice[0].value + dice2.dice[1].value)
         XCTAssertEqual(dice2.averageValue, 7)
 
         XCTAssertEqual(combo.value, dice1.value + dice2.value)
         XCTAssertEqual(combo.averageValue, dice1.averageValue + dice2.averageValue)
+        
+        XCTAssertEqual(combo.description, "1d4 + 2d6")
     }
 
     func testComboWithTwoDiceSetsAroundModifier() {
@@ -234,7 +261,8 @@ class DiceTest: XCTestCase {
         XCTAssertEqual(dice1.sign, JoiningSign.None)
         XCTAssertEqual(dice1.dice.count, 1)
         XCTAssertEqual(dice1.dice[0].sides, 4)
-        
+        XCTAssertEqual(dice1.description, "1d4")
+
         XCTAssertEqual(dice1.value, dice1.dice[0].value)
         XCTAssertEqual(dice1.averageValue, 2)
 
@@ -243,18 +271,22 @@ class DiceTest: XCTestCase {
         XCTAssertEqual(modifier.value, 1)
         XCTAssertEqual(modifier.sign, JoiningSign.Plus)
         XCTAssertEqual(modifier.averageValue, 1)
-        
+        XCTAssertEqual(modifier.description, "1")
+
         let dice2 = combo.dice[2]
         XCTAssertEqual(dice2.sign, JoiningSign.Plus)
         XCTAssertEqual(dice2.dice.count, 2)
         XCTAssertEqual(dice2.dice[0].sides, 6)
         XCTAssertEqual(dice2.dice[1].sides, 6)
-        
+        XCTAssertEqual(dice2.description, "2d6")
+
         XCTAssertEqual(dice2.value, dice2.dice[0].value + dice2.dice[1].value)
         XCTAssertEqual(dice2.averageValue, 7)
 
         XCTAssertEqual(combo.value, dice1.value + modifier.value + dice2.value)
         XCTAssertEqual(combo.averageValue, dice1.averageValue + modifier.averageValue + dice2.averageValue)
+        
+        XCTAssertEqual(combo.description, "1d4 + 1 + 2d6")
     }
 
     func testInvalidComboWithInvalidDice() {

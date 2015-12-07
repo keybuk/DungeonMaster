@@ -49,7 +49,7 @@ enum JoiningSign {
 }
 
 /// Multiple dice with rolled values.
-struct Dice: Equatable {
+struct Dice: Equatable, CustomStringConvertible {
     
     /// Set of individual die rolled, empty for a constant modifier.
     let dice: [Die]
@@ -62,6 +62,14 @@ struct Dice: Equatable {
     
     /// Average value of the set of dice.
     let averageValue: Int
+    
+    var description: String {
+        if dice.count > 0 {
+            return String(format: "%dd%d", dice.count, dice[0].sides)
+        } else {
+            return String(format: "%d", value)
+        }
+    }
     
     init(multiplier: Int, sides: Int, sign: JoiningSign = .None) throws {
         guard multiplier > 0 else { throw DieError.InvalidMultiplier }
@@ -84,7 +92,6 @@ struct Dice: Equatable {
         self.sign = sign
         self.averageValue = value
     }
-
 
 }
 
@@ -109,7 +116,7 @@ func ==(lhs: Dice, rhs: Dice) -> Bool {
 /// - 2d6 + 4 + 3d8
 ///
 /// Descriptions are turned into an array of Dice.
-struct DiceCombo: Equatable {
+struct DiceCombo: Equatable, CustomStringConvertible {
     
     /// Dice objects representing groups of rolled dice, or constant modifiers.
     let dice: [Dice]
@@ -119,6 +126,23 @@ struct DiceCombo: Equatable {
     
     /// Average value of the sets of dice, added to the modifiers.
     let averageValue: Int
+    
+    var description: String {
+        var parts = [String]()
+        for dice in self.dice {
+            switch dice.sign {
+            case .None:
+                break
+            case .Plus:
+                parts.append(" + ")
+            case .Minus:
+                parts.append(" - ")
+            }
+            parts.append(dice.description)
+        }
+        
+        return parts.joinWithSeparator("")
+    }
 
     init(description: String) throws {
         var dice = [Dice]()
