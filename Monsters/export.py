@@ -326,9 +326,21 @@ def main():
 		{
 			"name": "The Rise of Tiamat Online Supplement",
 			"type": 2,
+		},
+		{
+			"name": "Princes of the Apocalypse",
+			"type": 1,
+		}
+		{
+			"name": "Princes of the Apocalypse Online Supplement",
+			"type": 2,
+		},
+		{
+			"name": "Out of the Abyss",
+			"type": 1,
 		}
 	]
-	bookTags = [ "mm", "dmbr", "hotdq", "hotdqs", "trot", "trots" ]
+	bookTags = [ "mm", "dmbr", "hotdq", "hotdqs", "trot", "trots", "pota", "potas", ]
 
 	monsters = []
 	for filename in monster.local_files():
