@@ -18,6 +18,12 @@
 		</dict>
 		<dict>
 			<key>name</key>
+			<string>Lost Mine of Phandelver</string>
+			<key>type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>name</key>
 			<string>Hoard of the Dragon Queen</string>
 			<key>type</key>
 			<integer>1</integer>
@@ -40,9 +46,2400 @@
 			<key>type</key>
 			<integer>2</integer>
 		</dict>
+		<dict>
+			<key>name</key>
+			<string>Princes of the Apocalypse</string>
+			<key>type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Princes of the Apocalypse Online Supplement</string>
+			<key>type</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Out of the Abyss</string>
+			<key>type</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>monsters</key>
 	<array>
+		<dict>
+			<key>actions</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Bite</string>
+					<key>text</key>
+					<string>Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d6 + 1) piercing damage.</string>
+				</dict>
+			</array>
+			<key>info</key>
+			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
+				<key>armorClass</key>
+				<string>13 (natural armor)</string>
+				<key>cha</key>
+				<integer>6</integer>
+				<key>challenge</key>
+				<string>1/2 (100 XP)</string>
+				<key>charisma</key>
+				<string>6 (-2)</string>
+				<key>con</key>
+				<integer>14</integer>
+				<key>constitution</key>
+				<string>14 (+2)</string>
+				<key>cr</key>
+				<real>0.5</real>
+				<key>damageResistances</key>
+				<string>poison</string>
+				<key>dex</key>
+				<integer>15</integer>
+				<key>dexterity</key>
+				<string>15 (+2)</string>
+				<key>hitPoints</key>
+				<string>22 (4d6 + 8)</string>
+				<key>hp</key>
+				<integer>22</integer>
+				<key>hpDice</key>
+				<string>4d6+8</string>
+				<key>int</key>
+				<integer>4</integer>
+				<key>intelligence</key>
+				<string>4 (-3)</string>
+				<key>languages</key>
+				<string>understands Draconic but can't speak it</string>
+				<key>name</key>
+				<string>Ambush Drake</string>
+				<key>passivePerception</key>
+				<integer>14</integer>
+				<key>senses</key>
+				<string>darkvision 60 ft., passive Perception 14</string>
+				<key>sizeTypeAlignment</key>
+				<string>Medium dragon, unaligned</string>
+				<key>sizeValue</key>
+				<string>Medium</string>
+				<key>skills</key>
+				<string>Perception +4, Stealth +4</string>
+				<key>speed</key>
+				<string>30 ft.</string>
+				<key>str</key>
+				<integer>13</integer>
+				<key>strength</key>
+				<string>13 (+1)</string>
+				<key>type</key>
+				<string>dragon</string>
+				<key>wis</key>
+				<integer>11</integer>
+				<key>wisdom</key>
+				<string>11 (+0)</string>
+				<key>xp</key>
+				<integer>100</integer>
+			</dict>
+			<key>legendaryActions</key>
+			<array>
+			</array>
+			<key>name</key>
+			<string>Ambush Drake</string>
+			<key>reactions</key>
+			<array>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>3</integer>
+					<key>page</key>
+					<integer>88</integer>
+				</dict>
+			</array>
+			<key>tags</key>
+			<array>
+			</array>
+			<key>traits</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Pack Tactics</string>
+					<key>text</key>
+					<string>The drake has advantage on an attack roll against a creature if at least one of the drake's allies is within 5 feet of the creature and the ally isn't incapacitated.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Surprise Attack</string>
+					<key>text</key>
+					<string>If the drake surprises a creature and hits it with an attack during the first round of combat, the target takes an extra 7 (2d6) damage from the attack.</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>actions</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Dagger</string>
+					<key>text</key>
+					<string>Melee or Ranged Weapon Attack: +5 to hit, reach 5 ft. or ranged 20 ft./60 ft., one target. Hit: 5 (1d4 + 3) piercing damage.</string>
+				</dict>
+			</array>
+			<key>info</key>
+			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
+				<key>armorClass</key>
+				<string>13 (16 with mage armor)</string>
+				<key>cha</key>
+				<integer>11</integer>
+				<key>challenge</key>
+				<string>4 (1,100)</string>
+				<key>charisma</key>
+				<string>11 (+0)</string>
+				<key>con</key>
+				<integer>14</integer>
+				<key>constitution</key>
+				<string>14 (+2)</string>
+				<key>cr</key>
+				<real>4.0</real>
+				<key>dex</key>
+				<integer>16</integer>
+				<key>dexterity</key>
+				<string>16 (+3)</string>
+				<key>hitPoints</key>
+				<string>39 (6d8 + 12)</string>
+				<key>hp</key>
+				<integer>39</integer>
+				<key>hpDice</key>
+				<string>6d8+12</string>
+				<key>int</key>
+				<integer>16</integer>
+				<key>intelligence</key>
+				<string>16 (+3)</string>
+				<key>languages</key>
+				<string>Common, Draconic, Infernal, Primordial, Thayan</string>
+				<key>name</key>
+				<string>Azbara Jos</string>
+				<key>passivePerception</key>
+				<integer>11</integer>
+				<key>savingThrows</key>
+				<string>Int +5, Wis +3</string>
+				<key>senses</key>
+				<string>passive Perception 11</string>
+				<key>sizeTypeAlignment</key>
+				<string>Medium humanoid (human), lawful evil</string>
+				<key>sizeValue</key>
+				<string>Medium</string>
+				<key>skills</key>
+				<string>Arcana +5, Deception +2, Insight +3, Stealth +5</string>
+				<key>speed</key>
+				<string>30 ft.</string>
+				<key>str</key>
+				<integer>9</integer>
+				<key>strength</key>
+				<string>9 (-1)</string>
+				<key>type</key>
+				<string>humanoid</string>
+				<key>wis</key>
+				<integer>13</integer>
+				<key>wisdom</key>
+				<string>13 (+1)</string>
+				<key>xp</key>
+				<integer>1100</integer>
+			</dict>
+			<key>legendaryActions</key>
+			<array>
+			</array>
+			<key>name</key>
+			<string>Azbara Jos</string>
+			<key>reactions</key>
+			<array>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>3</integer>
+					<key>page</key>
+					<integer>88</integer>
+				</dict>
+			</array>
+			<key>tags</key>
+			<array>
+				<string>human</string>
+			</array>
+			<key>traits</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Special Equipment</string>
+					<key>text</key>
+					<string>Azbara has two scrolls of mage armor.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Potent Cantrips</string>
+					<key>text</key>
+					<string>When Azbara casts an evocation cantrip and misses, or the target succeeds on its saving throw, the target still takes half the cantrip's damage but suffers no other effect.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Sculpt Spells</string>
+					<key>text</key>
+					<string>When Azbara casts an evocation spell that affects other creatures that he can see, he can choose a number of them equal to 1 + the spell's level to succeed on their saving throws against the spell. Those creatures take no damage if they would normally take half damage from the spell.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Spellcasting</string>
+					<key>text</key>
+					<string>Azbara is a 6th-level spellcaster that uses Intelligence as his spellcasting ability (spell save DC 13, +5 to hit with spell attacks). Azbara has the following spells prepared from the wizard spell list:
+Cantrips (at will): mage hand, prestidigitation, ray of frost, shocking grasp
+1st level (4 slots): fog cloud, magic missile, shield, thunderwave 2nd level (3 slots): invisibility, misty step, scorching ray
+3rd level (3 slots): counterspell, dispel magic, fireball</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>actions</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Multiattack</string>
+					<key>text</key>
+					<string>Blagothkus attacks twice with his morningstar.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Morningstar</string>
+					<key>text</key>
+					<string>Melee Weapon Attack: +10 to hit, reach 10 ft., one target. Hit: 21 (3d8 + 8) piercing damage.</string>
+				</dict>
+			</array>
+			<key>info</key>
+			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
+				<key>armorClass</key>
+				<string>17 (splint)</string>
+				<key>cha</key>
+				<integer>15</integer>
+				<key>challenge</key>
+				<string>9 (5,000 XP)</string>
+				<key>charisma</key>
+				<string>15 (+2)</string>
+				<key>con</key>
+				<integer>20</integer>
+				<key>constitution</key>
+				<string>20 (+5)</string>
+				<key>cr</key>
+				<real>9.0</real>
+				<key>dex</key>
+				<integer>13</integer>
+				<key>dexterity</key>
+				<string>13 (+1)</string>
+				<key>hitPoints</key>
+				<string>138 (12d12 + 60)</string>
+				<key>hp</key>
+				<integer>138</integer>
+				<key>hpDice</key>
+				<string>12d12+60</string>
+				<key>int</key>
+				<integer>16</integer>
+				<key>intelligence</key>
+				<string>16 (+3)</string>
+				<key>languages</key>
+				<string>Common, Draconic, Giant</string>
+				<key>name</key>
+				<string>Blagothkus</string>
+				<key>passivePerception</key>
+				<integer>16</integer>
+				<key>savingThrows</key>
+				<string>Con +9, Wis +6, Cha +6</string>
+				<key>senses</key>
+				<string>passive Perception 16</string>
+				<key>sizeTypeAlignment</key>
+				<string>Huge giant (cloud giant), neutral evil</string>
+				<key>sizeValue</key>
+				<string>Huge</string>
+				<key>skills</key>
+				<string>Arcana +7, Insight +6, Intimidation +6, Perception +6</string>
+				<key>speed</key>
+				<string>40 ft.</string>
+				<key>str</key>
+				<integer>26</integer>
+				<key>strength</key>
+				<string>26 (+8)</string>
+				<key>type</key>
+				<string>giant</string>
+				<key>wis</key>
+				<integer>15</integer>
+				<key>wisdom</key>
+				<string>15 (+2)</string>
+				<key>xp</key>
+				<integer>5000</integer>
+			</dict>
+			<key>legendaryActions</key>
+			<array>
+			</array>
+			<key>name</key>
+			<string>Blagothkus</string>
+			<key>reactions</key>
+			<array>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>3</integer>
+					<key>page</key>
+					<integer>89</integer>
+				</dict>
+			</array>
+			<key>tags</key>
+			<array>
+				<string>cloud giant</string>
+			</array>
+			<key>traits</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Keen Smell</string>
+					<key>text</key>
+					<string>Blagothkus has advantage on Wisdom (Perception) checks that rely on smell.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Innate Spellcasting</string>
+					<key>text</key>
+					<string>Blagothkus can innately cast the following spells (spell save DC 15), requiring no material components:
+3/day each: fog cloud, levitate</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Spellcasting</string>
+					<key>text</key>
+					<string>Blagothkus is a 5th-level spellcaster that uses Intelligence as his spellcasting ability (spell save DC 15, +7 to hit with spell attacks). Blagothkus has the following spells prepared from the wizard spell list:
+Cantrips (at will): light, mage hand, prestidigitation
+1st level (4 slots): detect magic, identify, magic missile, shield 2nd level (3 slots): gust of wind, misty step, shatter
+3rd level (2 slots): fly, lightning bolt</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>actions</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Multiattack</string>
+					<key>text</key>
+					<string>Othelstan attacks twice with his flail or spear, or makes two ranged attacks with his spears.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Flail</string>
+					<key>text</key>
+					<string>Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 8 (1d8 + 4) bludgeoning damage.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Spear</string>
+					<key>text</key>
+					<string>Melee or Ranged Weapon Attack: +7 to hit, reach 5 ft. or ranged 20 ft./60 ft., one target. Hit: 7 (1d6 + 4) piercing damage.</string>
+				</dict>
+			</array>
+			<key>info</key>
+			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
+				<key>armorClass</key>
+				<string>19 (splint, shield)</string>
+				<key>cha</key>
+				<integer>12</integer>
+				<key>challenge</key>
+				<string>5 (1,800)</string>
+				<key>charisma</key>
+				<string>12 (+1)</string>
+				<key>con</key>
+				<integer>16</integer>
+				<key>constitution</key>
+				<string>16 (+3)</string>
+				<key>cr</key>
+				<real>5.0</real>
+				<key>dex</key>
+				<integer>10</integer>
+				<key>dexterity</key>
+				<string>10 (+0)</string>
+				<key>hitPoints</key>
+				<string>93 (11d10 + 33)</string>
+				<key>hp</key>
+				<integer>93</integer>
+				<key>hpDice</key>
+				<string>11d10+33</string>
+				<key>int</key>
+				<integer>13</integer>
+				<key>intelligence</key>
+				<string>13 (+1)</string>
+				<key>languages</key>
+				<string>Common, Draconic, Giant</string>
+				<key>name</key>
+				<string>Captain Othelstan</string>
+				<key>passivePerception</key>
+				<integer>15</integer>
+				<key>savingThrows</key>
+				<string>Str +7, Con +6</string>
+				<key>senses</key>
+				<string>passive Perception 15</string>
+				<key>sizeTypeAlignment</key>
+				<string>Medium humanoid (human), lawful evil</string>
+				<key>sizeValue</key>
+				<string>Medium</string>
+				<key>skills</key>
+				<string>Athletics +7, Intimidation +4, Perception +5, Religion +4</string>
+				<key>speed</key>
+				<string>30 ft.</string>
+				<key>str</key>
+				<integer>19</integer>
+				<key>strength</key>
+				<string>19 (+4)</string>
+				<key>type</key>
+				<string>humanoid</string>
+				<key>wis</key>
+				<integer>14</integer>
+				<key>wisdom</key>
+				<string>14 (+2)</string>
+				<key>xp</key>
+				<integer>1800</integer>
+			</dict>
+			<key>legendaryActions</key>
+			<array>
+			</array>
+			<key>name</key>
+			<string>Captain Othelstan</string>
+			<key>reactions</key>
+			<array>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>3</integer>
+					<key>page</key>
+					<integer>89</integer>
+				</dict>
+			</array>
+			<key>tags</key>
+			<array>
+				<string>human</string>
+			</array>
+			<key>traits</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Action Surge (Recharges when Othelstan Finishes a Short or Long Rest)</string>
+					<key>text</key>
+					<string>On his turn, Othelstan can take one additional action.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Tiamat's Blessing of Retribution</string>
+					<key>text</key>
+					<string>When Othelstan takes damage that reduces him to 0 hit points, he immediately regains 20 hit points. If he has 20 hit points or fewer at the end of his next turn, he dies.</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>actions</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Multiattack</string>
+					<key>text</key>
+					<string>The dragonclaw attacks twice with its scimitar.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Scimitar</string>
+					<key>text</key>
+					<string>Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) slashing damage.</string>
+				</dict>
+			</array>
+			<key>info</key>
+			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
+				<key>armorClass</key>
+				<string>14 (leather armor)</string>
+				<key>cha</key>
+				<integer>12</integer>
+				<key>challenge</key>
+				<string>1 (200 XP)</string>
+				<key>charisma</key>
+				<string>12 (+1)</string>
+				<key>con</key>
+				<integer>13</integer>
+				<key>constitution</key>
+				<string>13 (+1)</string>
+				<key>cr</key>
+				<real>1.0</real>
+				<key>dex</key>
+				<integer>16</integer>
+				<key>dexterity</key>
+				<string>16 (+3)</string>
+				<key>hitPoints</key>
+				<string>16 (3d8 + 3)</string>
+				<key>hp</key>
+				<integer>16</integer>
+				<key>hpDice</key>
+				<string>3d8+3</string>
+				<key>int</key>
+				<integer>11</integer>
+				<key>intelligence</key>
+				<string>11 (+0)</string>
+				<key>languages</key>
+				<string>Common, Draconic</string>
+				<key>name</key>
+				<string>Dragonclaw</string>
+				<key>passivePerception</key>
+				<integer>10</integer>
+				<key>savingThrows</key>
+				<string>Wis +2</string>
+				<key>senses</key>
+				<string>passive Perception 10</string>
+				<key>sizeTypeAlignment</key>
+				<string>Medium humanoid (human), neutral evil</string>
+				<key>sizeValue</key>
+				<string>Medium</string>
+				<key>skills</key>
+				<string>Deception +3, Stealth +5</string>
+				<key>speed</key>
+				<string>30 ft.</string>
+				<key>str</key>
+				<integer>9</integer>
+				<key>strength</key>
+				<string>9 (-1)</string>
+				<key>type</key>
+				<string>humanoid</string>
+				<key>wis</key>
+				<integer>10</integer>
+				<key>wisdom</key>
+				<string>10 (+0)</string>
+				<key>xp</key>
+				<integer>200</integer>
+			</dict>
+			<key>legendaryActions</key>
+			<array>
+			</array>
+			<key>name</key>
+			<string>Dragonclaw</string>
+			<key>reactions</key>
+			<array>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>3</integer>
+					<key>page</key>
+					<integer>89</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>5</integer>
+					<key>page</key>
+					<integer>89</integer>
+				</dict>
+			</array>
+			<key>tags</key>
+			<array>
+				<string>human</string>
+			</array>
+			<key>traits</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Dragon Fanatic</string>
+					<key>text</key>
+					<string>The dragonclaw has advantage on saving throws against being charmed or frightened. While the dragonclaw can see a dragon or higher-ranking Cult of the Dragon cultist friendly to it, the dragonclaw ignores the effects of being charmed or frightened.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Fanatical Advantage</string>
+					<key>text</key>
+					<string>Once per turn, if the dragonclaw makes a weapon attack with advantage on the attack roll and hits, it deals an extra 7 (2d6) damage.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Pack Tactics</string>
+					<key>text</key>
+					<string>The dragonclaw has advantage on an attack roll against a creature if at least one of the dragonclaw's allies is within 5 feet of the creature and the ally isn't incapacitated.</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>actions</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Multiattack</string>
+					<key>text</key>
+					<string>Dralmorrer attacks twice, either with his longsword or dagger.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Longsword</string>
+					<key>text</key>
+					<string>Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 8 (1d8 + 4) slashing damage.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Dagger</string>
+					<key>text</key>
+					<string>Melee or Ranged Weapon Attack: +6 to hit, reach 5 ft. or ranged 20 ft./60 ft., one target. Hit: 6 (1d4 + 4) piercing damage.</string>
+				</dict>
+			</array>
+			<key>info</key>
+			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
+				<key>armorClass</key>
+				<string>16 (studded leather armor, shield)</string>
+				<key>cha</key>
+				<integer>8</integer>
+				<key>challenge</key>
+				<string>3 (700 XP)</string>
+				<key>charisma</key>
+				<string>8 (-1)</string>
+				<key>con</key>
+				<integer>14</integer>
+				<key>constitution</key>
+				<string>14 (+2)</string>
+				<key>cr</key>
+				<real>3.0</real>
+				<key>dex</key>
+				<integer>14</integer>
+				<key>dexterity</key>
+				<string>14 (+2)</string>
+				<key>hitPoints</key>
+				<string>52 (7d10 + 14)</string>
+				<key>hp</key>
+				<integer>52</integer>
+				<key>hpDice</key>
+				<string>7d10+14</string>
+				<key>int</key>
+				<integer>16</integer>
+				<key>intelligence</key>
+				<string>16 (+3)</string>
+				<key>languages</key>
+				<string>Common, Bullywug, Draconic, Elvish, Goblin, Sylvan</string>
+				<key>name</key>
+				<string>Dralmorrer Borngray</string>
+				<key>passivePerception</key>
+				<integer>12</integer>
+				<key>savingThrows</key>
+				<string>Str +6, Con +4</string>
+				<key>senses</key>
+				<string>darkvision 60 ft., passive Perception 12</string>
+				<key>sizeTypeAlignment</key>
+				<string>Medium humanoid (high-elf), neutral evil</string>
+				<key>sizeValue</key>
+				<string>Medium</string>
+				<key>skills</key>
+				<string>Arcana +5, Deception +1, Insight +2, Perception +2, Religion +5</string>
+				<key>speed</key>
+				<string>30 ft.</string>
+				<key>str</key>
+				<integer>18</integer>
+				<key>strength</key>
+				<string>18 (+4)</string>
+				<key>type</key>
+				<string>humanoid</string>
+				<key>wis</key>
+				<integer>10</integer>
+				<key>wisdom</key>
+				<string>10 (+0)</string>
+				<key>xp</key>
+				<integer>700</integer>
+			</dict>
+			<key>legendaryActions</key>
+			<array>
+			</array>
+			<key>name</key>
+			<string>Dralmorrer Borngray</string>
+			<key>reactions</key>
+			<array>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>3</integer>
+					<key>page</key>
+					<integer>90</integer>
+				</dict>
+			</array>
+			<key>tags</key>
+			<array>
+				<string>high-elf</string>
+			</array>
+			<key>traits</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Fey Ancestry</string>
+					<key>text</key>
+					<string>Dralmorrer has advantage on saving throws against being charmed, and magic can't put him to sleep.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Spellcasting</string>
+					<key>text</key>
+					<string>Dralmorrer is a 7th-level spellcaster that uses Intelligence as his spellcasting ability (spell save DC 13, +5 to hit with spell attacks). Dralmorrer has the following spells prepared from the wizard spell list:
+Cantrips (at will): fire bolt, prestidigitation, shocking grasp
+1st level (4 slots): longstrider, magic missile, shield, thunderwave 2nd level (2 slots): magic weapon, misty step</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>War Magic</string>
+					<key>text</key>
+					<string>When Dralmorrer uses his action to cast a cantrip, he can also take a bonus action to make one weapon attack.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Weapon Bond</string>
+					<key>text</key>
+					<string>Provided his longsword is on the same plane, Dralmorrer can take a bonus action to teleport it to his hand.</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>actions</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Multiattack</string>
+					<key>text</key>
+					<string>Frulam attacks twice with her halberd.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Halberd</string>
+					<key>text</key>
+					<string>Melee Weapon Attack: +5 to hit, reach 10 ft., one target. Hit: 7 (1d10 + 2) bludgeoning damage.</string>
+				</dict>
+			</array>
+			<key>info</key>
+			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
+				<key>armorClass</key>
+				<string>16 (chain mail)</string>
+				<key>cha</key>
+				<integer>15</integer>
+				<key>challenge</key>
+				<string>2 (450 XP)</string>
+				<key>charisma</key>
+				<string>15 (+2)</string>
+				<key>con</key>
+				<integer>13</integer>
+				<key>constitution</key>
+				<string>13 (+1)</string>
+				<key>cr</key>
+				<real>2.0</real>
+				<key>dex</key>
+				<integer>10</integer>
+				<key>dexterity</key>
+				<string>10 (+0)</string>
+				<key>hitPoints</key>
+				<string>44 (8d8 + 8)</string>
+				<key>hp</key>
+				<integer>44</integer>
+				<key>hpDice</key>
+				<string>8d8+8</string>
+				<key>int</key>
+				<integer>11</integer>
+				<key>intelligence</key>
+				<string>11 (+0)</string>
+				<key>languages</key>
+				<string>Common, Draconic, Infernal</string>
+				<key>name</key>
+				<string>Frulam Mondath</string>
+				<key>passivePerception</key>
+				<integer>14</integer>
+				<key>savingThrows</key>
+				<string>Wis +6, Cha +4</string>
+				<key>senses</key>
+				<string>passive Perception 14</string>
+				<key>sizeTypeAlignment</key>
+				<string>Medium humanoid (human), lawful evil</string>
+				<key>sizeValue</key>
+				<string>Medium</string>
+				<key>skills</key>
+				<string>Deception +4, History +2, Religion +2</string>
+				<key>speed</key>
+				<string>30 ft.</string>
+				<key>str</key>
+				<integer>14</integer>
+				<key>strength</key>
+				<string>14 (+2)</string>
+				<key>type</key>
+				<string>humanoid</string>
+				<key>wis</key>
+				<integer>18</integer>
+				<key>wisdom</key>
+				<string>18 (+4)</string>
+				<key>xp</key>
+				<integer>450</integer>
+			</dict>
+			<key>legendaryActions</key>
+			<array>
+			</array>
+			<key>name</key>
+			<string>Frulam Mondath</string>
+			<key>reactions</key>
+			<array>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>3</integer>
+					<key>page</key>
+					<integer>90</integer>
+				</dict>
+			</array>
+			<key>tags</key>
+			<array>
+				<string>human</string>
+			</array>
+			<key>traits</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Spellcasting</string>
+					<key>text</key>
+					<string>Frulam is a 5th-level spellcaster that uses Wisdom as her spellcasting ability (spell save DC 14, +6 to hit with spell attacks). Frulam has the following spells prepared from the cleric spell list:
+Cantrips (at will): light, sacred flame, thaumaturgy
+1st level (4 slots): command, curewounds, healing word, sanctuary
+2nd level (3 slots): calm emotions, hold person, spiritual weapon
+3rd level (2 slots): mass healing word, spirit guardians</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>actions</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Multiattack</string>
+					<key>text</key>
+					<string>The drake attacks twice, once with its bite and once with its tail.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Bite</string>
+					<key>text</key>
+					<string>Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8 + 3) piercing damage.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Tail</string>
+					<key>text</key>
+					<string>Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) bludgeoning damage.</string>
+				</dict>
+			</array>
+			<key>info</key>
+			<dict>
+				<key>alignmentValue</key>
+				<string>unaligned</string>
+				<key>armorClass</key>
+				<string>14 (natural armor)</string>
+				<key>cha</key>
+				<integer>7</integer>
+				<key>challenge</key>
+				<string>2 (450 XP)</string>
+				<key>charisma</key>
+				<string>7 (-2)</string>
+				<key>con</key>
+				<integer>16</integer>
+				<key>constitution</key>
+				<string>16 (+3)</string>
+				<key>cr</key>
+				<real>2.0</real>
+				<key>damageResistances</key>
+				<string>lightning</string>
+				<key>dex</key>
+				<integer>11</integer>
+				<key>dexterity</key>
+				<string>11 (+0)</string>
+				<key>hitPoints</key>
+				<string>52 (7d8 + 21)</string>
+				<key>hp</key>
+				<integer>52</integer>
+				<key>hpDice</key>
+				<string>7d8+21</string>
+				<key>int</key>
+				<integer>4</integer>
+				<key>intelligence</key>
+				<string>4 (-3)</string>
+				<key>languages</key>
+				<string>understands Draconic but can't speak it</string>
+				<key>name</key>
+				<string>Guard Drake</string>
+				<key>passivePerception</key>
+				<integer>12</integer>
+				<key>senses</key>
+				<string>darkvision 60 ft., passive Perception 12</string>
+				<key>sizeTypeAlignment</key>
+				<string>Medium dragon, unaligned</string>
+				<key>sizeValue</key>
+				<string>Medium</string>
+				<key>skills</key>
+				<string>Perception +2</string>
+				<key>speed</key>
+				<string>30 ft.</string>
+				<key>str</key>
+				<integer>16</integer>
+				<key>strength</key>
+				<string>16 (+3)</string>
+				<key>type</key>
+				<string>dragon</string>
+				<key>wis</key>
+				<integer>10</integer>
+				<key>wisdom</key>
+				<string>10 (+0)</string>
+				<key>xp</key>
+				<integer>450</integer>
+			</dict>
+			<key>legendaryActions</key>
+			<array>
+			</array>
+			<key>name</key>
+			<string>Guard Drake</string>
+			<key>reactions</key>
+			<array>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>3</integer>
+					<key>page</key>
+					<integer>91</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>5</integer>
+					<key>page</key>
+					<integer>90</integer>
+				</dict>
+			</array>
+			<key>tags</key>
+			<array>
+			</array>
+			<key>traits</key>
+			<array>
+			</array>
+		</dict>
+		<dict>
+			<key>actions</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Multiattack</string>
+					<key>text</key>
+					<string>Jamna attacks twice with her shortswords.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Shortsword</string>
+					<key>text</key>
+					<string>Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) piercing damage, or 9 (1d6 + 3 plus 1d6) piercing damage if the target is Medium or larger.</string>
+				</dict>
+			</array>
+			<key>info</key>
+			<dict>
+				<key>alignmentValue</key>
+				<string>neutral</string>
+				<key>armorClass</key>
+				<string>15 (leather armor)</string>
+				<key>cha</key>
+				<integer>12</integer>
+				<key>challenge</key>
+				<string>1 (200 XP)</string>
+				<key>charisma</key>
+				<string>12 (+1)</string>
+				<key>con</key>
+				<integer>14</integer>
+				<key>constitution</key>
+				<string>14 (+2)</string>
+				<key>cr</key>
+				<real>1.0</real>
+				<key>dex</key>
+				<integer>17</integer>
+				<key>dexterity</key>
+				<string>17 (+3)</string>
+				<key>hitPoints</key>
+				<string>22 (4d6 + 8)</string>
+				<key>hp</key>
+				<integer>22</integer>
+				<key>hpDice</key>
+				<string>4d6+8</string>
+				<key>int</key>
+				<integer>15</integer>
+				<key>intelligence</key>
+				<string>15 (+2)</string>
+				<key>languages</key>
+				<string>Common, Gnomish, Goblin, Sylvan</string>
+				<key>name</key>
+				<string>Jamna Gleamsilver</string>
+				<key>passivePerception</key>
+				<integer>14</integer>
+				<key>savingThrows</key>
+				<string>Dex +5, Int +4</string>
+				<key>senses</key>
+				<string>darkvision 60 ft., passive Perception 14</string>
+				<key>sizeTypeAlignment</key>
+				<string>Small humanoid (gnome), neutral</string>
+				<key>sizeValue</key>
+				<string>Small</string>
+				<key>skills</key>
+				<string>Acrobatics +5, Deception +3, Insight +2, Perception +4, Persuasion +3, Stealth +7</string>
+				<key>speed</key>
+				<string>25 ft.</string>
+				<key>str</key>
+				<integer>8</integer>
+				<key>strength</key>
+				<string>8 (-1)</string>
+				<key>type</key>
+				<string>humanoid</string>
+				<key>wis</key>
+				<integer>10</integer>
+				<key>wisdom</key>
+				<string>10 (+0)</string>
+				<key>xp</key>
+				<integer>200</integer>
+			</dict>
+			<key>legendaryActions</key>
+			<array>
+			</array>
+			<key>name</key>
+			<string>Jamna Gleamsilver</string>
+			<key>reactions</key>
+			<array>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>3</integer>
+					<key>page</key>
+					<integer>91</integer>
+				</dict>
+			</array>
+			<key>tags</key>
+			<array>
+				<string>gnome</string>
+			</array>
+			<key>traits</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Cunning Action</string>
+					<key>text</key>
+					<string>Jamna can take a bonus action to take the Dash, Disengage, or Hide action.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Gnome Cunning</string>
+					<key>text</key>
+					<string>Jamna has advantage on Intelligence, Wisdom, and Charisma saving throws against magic.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Spellcasting</string>
+					<key>text</key>
+					<string>Jamna is a 4th-level spellcaster that uses Intelligence as her spellcasting ability (spell save DC 12, +4 to hit with spell attacks). Jamna has the following spells prepared from the wizard spell list:
+Cantrips (at will): mage hand, minor illusion, prestidigitation, ray of frost
+1st level (3 slots): charm person, color spray, disguise self, longstrider</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>actions</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Multiattack</string>
+					<key>text</key>
+					<string>Langdedrosa attacks twice, either with his greatsword or spear.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Greatsword</string>
+					<key>text</key>
+					<string>Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 11 (2d6 + 4) slashing damage.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Spear</string>
+					<key>text</key>
+					<string>Melee or Ranged Weapon Attack: +6 to hit, reach 5 ft. or ranged 20 ft./60 ft., one target. Hit: 7 (1d6 + 4) piercing damage.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Lightning Breath (Recharge 5–6)</string>
+					<key>text</key>
+					<string>Langdedrosa breathes lightning in a 30-foot line that is 5 feet wide. Each creature in the line must make a DC 13 Dexterity saving throw, taking 22 (4d10) lightning damage on a failed save, or half as much damage on a successful one.</string>
+				</dict>
+			</array>
+			<key>info</key>
+			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
+				<key>armorClass</key>
+				<string>17 (splint)</string>
+				<key>cha</key>
+				<integer>12</integer>
+				<key>challenge</key>
+				<string>4 (1,100 XP)</string>
+				<key>charisma</key>
+				<string>12 (+1)</string>
+				<key>con</key>
+				<integer>16</integer>
+				<key>constitution</key>
+				<string>16 (+3)</string>
+				<key>cr</key>
+				<real>4.0</real>
+				<key>damageResistances</key>
+				<string>lightning</string>
+				<key>dex</key>
+				<integer>13</integer>
+				<key>dexterity</key>
+				<string>13 (+1)</string>
+				<key>hitPoints</key>
+				<string>57 (6d12 + 18)</string>
+				<key>hp</key>
+				<integer>57</integer>
+				<key>hpDice</key>
+				<string>6d12+18</string>
+				<key>int</key>
+				<integer>10</integer>
+				<key>intelligence</key>
+				<string>10 (+0)</string>
+				<key>languages</key>
+				<string>Common, Draconic</string>
+				<key>name</key>
+				<string>Langdedrosa Cyanwrath</string>
+				<key>passivePerception</key>
+				<integer>14</integer>
+				<key>savingThrows</key>
+				<string>Str +6, Con +5</string>
+				<key>senses</key>
+				<string>blindsight 10 ft., darkvision 60 ft., passive Perception 14</string>
+				<key>sizeTypeAlignment</key>
+				<string>Medium humanoid (half-dragon), lawful evil</string>
+				<key>sizeValue</key>
+				<string>Medium</string>
+				<key>skills</key>
+				<string>Athletics +6, Intimidation +3, Perception +4</string>
+				<key>speed</key>
+				<string>30 ft.</string>
+				<key>str</key>
+				<integer>19</integer>
+				<key>strength</key>
+				<string>19 (+4)</string>
+				<key>type</key>
+				<string>humanoid</string>
+				<key>wis</key>
+				<integer>14</integer>
+				<key>wisdom</key>
+				<string>14 (+2)</string>
+				<key>xp</key>
+				<integer>1100</integer>
+			</dict>
+			<key>legendaryActions</key>
+			<array>
+			</array>
+			<key>name</key>
+			<string>Langdedrosa Cyanwrath</string>
+			<key>reactions</key>
+			<array>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>3</integer>
+					<key>page</key>
+					<integer>91</integer>
+				</dict>
+			</array>
+			<key>tags</key>
+			<array>
+				<string>half-dragon</string>
+			</array>
+			<key>traits</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Action Surge (Recharges when Langdedrosa Finishes a Short or Long Rest)</string>
+					<key>text</key>
+					<string>On his turn, Langdedrosa can take one additional action.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Improved Critical</string>
+					<key>text</key>
+					<string>Langdedrosa's weapon attacks score a critical hit on a roll of 19 or 20.</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>actions</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Multiattack</string>
+					<key>text</key>
+					<string>Pharblex attacks twice, once with his bite and once with his spear.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Bite</string>
+					<key>text</key>
+					<string>Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) piercing damage.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Spear</string>
+					<key>text</key>
+					<string>Melee or Ranged Weapon Attack: +5 to hit, reach 5 ft. or ranged 20 ft./60 ft., one target. Hit: 5 (1d6 + 2) piercing damage.</string>
+				</dict>
+			</array>
+			<key>info</key>
+			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
+				<key>armorClass</key>
+				<string>15 (studded leather armor, shield)</string>
+				<key>cha</key>
+				<integer>7</integer>
+				<key>challenge</key>
+				<string>3 (700 XP)</string>
+				<key>charisma</key>
+				<string>7 (-2)</string>
+				<key>con</key>
+				<integer>18</integer>
+				<key>constitution</key>
+				<string>18 (+4)</string>
+				<key>cr</key>
+				<real>3.0</real>
+				<key>dex</key>
+				<integer>12</integer>
+				<key>dexterity</key>
+				<string>12 (+1)</string>
+				<key>hitPoints</key>
+				<string>59 (7d8 + 28)</string>
+				<key>hp</key>
+				<integer>59</integer>
+				<key>hpDice</key>
+				<string>7d8+28</string>
+				<key>int</key>
+				<integer>11</integer>
+				<key>intelligence</key>
+				<string>11 (+0)</string>
+				<key>languages</key>
+				<string>Common, Bullywug</string>
+				<key>name</key>
+				<string>Pharblex Spattergoo</string>
+				<key>passivePerception</key>
+				<integer>15</integer>
+				<key>savingThrows</key>
+				<string>Str +4, Con +6</string>
+				<key>senses</key>
+				<string>passive Perception 15</string>
+				<key>sizeTypeAlignment</key>
+				<string>Medium humanoid (bullywug), chaotic evil</string>
+				<key>sizeValue</key>
+				<string>Medium</string>
+				<key>skills</key>
+				<string>Perception +5, Religion +2, Stealth +3</string>
+				<key>speed</key>
+				<string>20 ft., swim 40 ft.</string>
+				<key>str</key>
+				<integer>15</integer>
+				<key>strength</key>
+				<string>15 (+2)</string>
+				<key>type</key>
+				<string>humanoid</string>
+				<key>wis</key>
+				<integer>16</integer>
+				<key>wisdom</key>
+				<string>16 (+3)</string>
+				<key>xp</key>
+				<integer>700</integer>
+			</dict>
+			<key>legendaryActions</key>
+			<array>
+			</array>
+			<key>name</key>
+			<string>Pharblex Spattergoo</string>
+			<key>reactions</key>
+			<array>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>3</integer>
+					<key>page</key>
+					<integer>91</integer>
+				</dict>
+			</array>
+			<key>tags</key>
+			<array>
+				<string>bullywug</string>
+			</array>
+			<key>traits</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Amphibious</string>
+					<key>text</key>
+					<string>Pharblex can breathe air and water.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Poison Strike (3/Day)</string>
+					<key>text</key>
+					<string>Once per turn, when Pharblex hits with a melee attack, he can expend a use of this trait to deal an extra 9 (2d8) poison damage.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Spellcasting</string>
+					<key>text</key>
+					<string>Pharblex is a 6th-level spellcaster that uses Wisdom as his spellcasting ability (spell save DC 13, +5 to hit with spell attacks). Pharblex has the following spells prepared from the druid spell list:
+Cantrips (at will): druidcraft, guidance, poison cloud
+1st level (4 slots): cure wounds, entangle, healing word,
+thunderwave
+2nd level (3 slots): barkskin, beast sense, spikegrowth
+3rd level (3 slots): plant growth, water walk</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Standing Leap</string>
+					<key>text</key>
+					<string>As part of his movement and without a running start, Pharblex can long jump up to 20 feet and high jump up to 10 feet.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Swamp Camouflage</string>
+					<key>text</key>
+					<string>Pharblex has advantage on Dexterity (Stealth) checks made to hide in swampy terrain.</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>actions</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Quarterstaff</string>
+					<key>text</key>
+					<string>Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d8) bludgeoning damage.</string>
+				</dict>
+			</array>
+			<key>info</key>
+			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
+				<key>armorClass</key>
+				<string>13 (16 with mage armor)</string>
+				<key>cha</key>
+				<integer>10</integer>
+				<key>challenge</key>
+				<string>6 (2,300 XP)</string>
+				<key>charisma</key>
+				<string>10 (+0)</string>
+				<key>con</key>
+				<integer>14</integer>
+				<key>constitution</key>
+				<string>14 (+2)</string>
+				<key>cr</key>
+				<real>6.0</real>
+				<key>dex</key>
+				<integer>16</integer>
+				<key>dexterity</key>
+				<string>16 (+3)</string>
+				<key>hitPoints</key>
+				<string>71 (11d8 + 22)</string>
+				<key>hp</key>
+				<integer>71</integer>
+				<key>hpDice</key>
+				<string>11d8+22</string>
+				<key>int</key>
+				<integer>18</integer>
+				<key>intelligence</key>
+				<string>18 (+4)</string>
+				<key>languages</key>
+				<string>Common, Draconic, Infernal, Primordial, Thayan</string>
+				<key>name</key>
+				<string>Rath Modar</string>
+				<key>passivePerception</key>
+				<integer>12</integer>
+				<key>savingThrows</key>
+				<string>Int +7, Wis +5</string>
+				<key>senses</key>
+				<string>passive Perception 12</string>
+				<key>sizeTypeAlignment</key>
+				<string>Medium humanoid (human), lawful evil</string>
+				<key>sizeValue</key>
+				<string>Medium</string>
+				<key>skills</key>
+				<string>Arcana +7, Deception +3, Insight +5, Stealth +6</string>
+				<key>speed</key>
+				<string>30 ft.</string>
+				<key>str</key>
+				<integer>11</integer>
+				<key>strength</key>
+				<string>11 (+0)</string>
+				<key>type</key>
+				<string>humanoid</string>
+				<key>wis</key>
+				<integer>14</integer>
+				<key>wisdom</key>
+				<string>14 (+2)</string>
+				<key>xp</key>
+				<integer>2300</integer>
+			</dict>
+			<key>legendaryActions</key>
+			<array>
+			</array>
+			<key>name</key>
+			<string>Rath Modar</string>
+			<key>reactions</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Illusory Self (Recharges when Rath Finishes a Short or Long Rest)</string>
+					<key>text</key>
+					<string>When a creature Rath can see makes an attack roll against him, he can interpose an illusory duplicate between the attacker and him. The attack automatically misses Rath, then the illusion dissipates.</string>
+				</dict>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>3</integer>
+					<key>page</key>
+					<integer>92</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>5</integer>
+					<key>page</key>
+					<integer>91</integer>
+				</dict>
+			</array>
+			<key>tags</key>
+			<array>
+				<string>human</string>
+			</array>
+			<key>traits</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Special Equipment</string>
+					<key>text</key>
+					<string>Rath has a staff of fire, and scrolls of dimension door, featherfall, and fireball.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Spellcasting</string>
+					<key>text</key>
+					<string>Rath is an 11th-level spellcaster who uses Intelligence as his spellcasting ability (spell save DC 15, +7 to hit with spell attacks). Rath has the following spells prepared from the wizard spell list:
+Cantrips (at will): fire bolt, minor illusion, prestidigitation, shocking grasp
+1st level (4 slots): chromatic orb, color spray, mage armor, magic missile
+2nd level (3 slots): detect thoughts, mirror image, phantasmal force
+3rd level (3 slots): counterspell, fireball, major image
+4th level (3 slots): confusion, greater invisibility
+5th level (2 slots): mislead, seeming
+6th level (1 slot): globe ofinvulnerability</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>actions</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Greatsword (Hazirawn)</string>
+					<key>text</key>
+					<string>Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 13 (2d6 + 6) slashing damage plus 7 (2d6) necrotic damage. If the target is a creature, it can't regain hit points for 1 minute. The target can make a DC 15 Constitution saving throw at the end of each of its turns, ending this effect early on a success.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Caustic Bolt</string>
+					<key>text</key>
+					<string>Ranged Spell Attack: +8 to hit, range 90 ft., one target. Hit: 18 (4d8) acid damage.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Acid Breath (Recharge 5–6)</string>
+					<key>text</key>
+					<string>Rezmir breathes acid in a 30-foot line that is 5 feet wide. Each creature in the line must make a DC 14 Dexterity saving throw, taking 22 (5d8) acid damage on a failed save, or half as much damage on a successful one.</string>
+				</dict>
+			</array>
+			<key>info</key>
+			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
+				<key>armorClass</key>
+				<string>13 (15 with the Black Dragon Mask)</string>
+				<key>cha</key>
+				<integer>14</integer>
+				<key>challenge</key>
+				<string>7 (2,900 XP)</string>
+				<key>charisma</key>
+				<string>14 (+2)</string>
+				<key>con</key>
+				<integer>16</integer>
+				<key>conditionImmunities</key>
+				<string>charmed, frightened</string>
+				<key>constitution</key>
+				<string>16 (+3)</string>
+				<key>cr</key>
+				<real>7.0</real>
+				<key>damageImmunities</key>
+				<string>acid</string>
+				<key>dex</key>
+				<integer>16</integer>
+				<key>dexterity</key>
+				<string>16 (+3)</string>
+				<key>hitPoints</key>
+				<string>90 (12d8 + 36)</string>
+				<key>hp</key>
+				<integer>90</integer>
+				<key>hpDice</key>
+				<string>12d8+36</string>
+				<key>int</key>
+				<integer>15</integer>
+				<key>intelligence</key>
+				<string>15 (+2)</string>
+				<key>languages</key>
+				<string>Common, Draconic, Infernal, Giant, Netherese</string>
+				<key>name</key>
+				<string>Rezmir</string>
+				<key>passivePerception</key>
+				<integer>11</integer>
+				<key>savingThrows</key>
+				<string>Dex +6, Wis +4</string>
+				<key>senses</key>
+				<string>blindsight 10 ft., darkvision 120 ft., passive Perception 11</string>
+				<key>sizeTypeAlignment</key>
+				<string>Medium humanoid (half-black dragon), neutral evil</string>
+				<key>sizeValue</key>
+				<string>Medium</string>
+				<key>skills</key>
+				<string>Arcana +5, Stealth +9</string>
+				<key>speed</key>
+				<string>30 ft.</string>
+				<key>str</key>
+				<integer>18</integer>
+				<key>strength</key>
+				<string>18 (+4)</string>
+				<key>type</key>
+				<string>humanoid</string>
+				<key>wis</key>
+				<integer>12</integer>
+				<key>wisdom</key>
+				<string>12 (+1)</string>
+				<key>xp</key>
+				<integer>2900</integer>
+			</dict>
+			<key>legendaryActions</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>2 Actions</string>
+					<key>text</key>
+					<string>A 15-foot radius of magical darkness extends from a point Rezmir can see within 60 feet of her and spreads around corners. The darkness lasts as long as Rezmir maintains concentration, up to 1 minute. A creature with darkvision can't see through this darkness, and no natural light can illuminate it. If any of the area overlaps with an area of light created by a spell of 2nd level or lower, the spell creating the light is dispelled.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>1 Action</string>
+					<key>text</key>
+					<string>Rezmir makes one melee attack.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>1 Action</string>
+					<key>text</key>
+					<string>Rezmir takes the Hide action.</string>
+				</dict>
+			</array>
+			<key>name</key>
+			<string>Rezmir</string>
+			<key>reactions</key>
+			<array>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>3</integer>
+					<key>page</key>
+					<integer>93</integer>
+				</dict>
+			</array>
+			<key>tags</key>
+			<array>
+				<string>half-black dragon</string>
+			</array>
+			<key>traits</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Special Equipment</string>
+					<key>text</key>
+					<string>Rezmir has the /Black Dragon Mask/, /Hazirawn/, and an insignia of claws.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Amphibious</string>
+					<key>text</key>
+					<string>Rezmir can breathe air and water.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Dark Advantage</string>
+					<key>text</key>
+					<string>Once per turn, Rezmir can deal an extra 10 (3d6) damage when she hits with a weapon attack, provided Rezmir has advantage on the attack roll.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Draconic Majesty</string>
+					<key>text</key>
+					<string>While wearing no armor and wearing the /Black Dragon Mask/, Rezmir adds her Charisma bonus to her AC (included).</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Immolation</string>
+					<key>text</key>
+					<string>When Rezmir is reduced to 0 hit points, her body disintegrates into a pile of ash.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Legendary Resistance (1/Day)</string>
+					<key>text</key>
+					<string>If Rezmir fails a saving throw while wearing the /Black Dragon Mask/, she can choose to succeed instead.</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>actions</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Spear</string>
+					<key>text</key>
+					<string>Melee or Ranged Weapon Attack: +5 to hit, reach 5 ft. or ranged 20 ft./60 ft., one target. Hit: 6 (1d6 + 2) piercing damage.</string>
+				</dict>
+			</array>
+			<key>info</key>
+			<dict>
+				<key>alignmentValue</key>
+				<string>lawful evil</string>
+				<key>armorClass</key>
+				<string>18 (+1 scale mail, shield)</string>
+				<key>cha</key>
+				<integer>16</integer>
+				<key>challenge</key>
+				<string>5 (1,800 XP)</string>
+				<key>charisma</key>
+				<string>16 (+3)</string>
+				<key>con</key>
+				<integer>14</integer>
+				<key>constitution</key>
+				<string>14 (+2)</string>
+				<key>cr</key>
+				<real>5.0</real>
+				<key>dex</key>
+				<integer>12</integer>
+				<key>dexterity</key>
+				<string>12 (+1)</string>
+				<key>hitPoints</key>
+				<string>58 (9d8 + 18)</string>
+				<key>hp</key>
+				<integer>58</integer>
+				<key>hpDice</key>
+				<string>9d8+18</string>
+				<key>int</key>
+				<integer>10</integer>
+				<key>intelligence</key>
+				<string>10 (+0)</string>
+				<key>languages</key>
+				<string>Common, Draconic, Elvish, Infernal</string>
+				<key>name</key>
+				<string>Talis the White</string>
+				<key>passivePerception</key>
+				<integer>16</integer>
+				<key>savingThrows</key>
+				<string>Wis +6, Cha +6</string>
+				<key>senses</key>
+				<string>darkvision 60 ft., passive Perception 16</string>
+				<key>sizeTypeAlignment</key>
+				<string>Medium humanoid (half-elf), lawful evil</string>
+				<key>sizeValue</key>
+				<string>Medium</string>
+				<key>skills</key>
+				<string>Deception +6, Insight +6, Perception +6, Persuasion +6</string>
+				<key>speed</key>
+				<string>30 ft.</string>
+				<key>str</key>
+				<integer>14</integer>
+				<key>strength</key>
+				<string>14 (+2)</string>
+				<key>type</key>
+				<string>humanoid</string>
+				<key>wis</key>
+				<integer>16</integer>
+				<key>wisdom</key>
+				<string>16 (+3)</string>
+				<key>xp</key>
+				<integer>1800</integer>
+			</dict>
+			<key>legendaryActions</key>
+			<array>
+			</array>
+			<key>name</key>
+			<string>Talis the White</string>
+			<key>reactions</key>
+			<array>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>3</integer>
+					<key>page</key>
+					<integer>93</integer>
+				</dict>
+			</array>
+			<key>tags</key>
+			<array>
+				<string>half-elf</string>
+			</array>
+			<key>traits</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Special Equipment</string>
+					<key>text</key>
+					<string>Talis has /+1 scale mail and a wand of winter/.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Fey Ancestry</string>
+					<key>text</key>
+					<string>Talis has advantage on saving throws against being charmed, and magic can't put her to sleep.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Spellcasting</string>
+					<key>text</key>
+					<string>Talis is a 9th-level spellcaster that uses Wisdom as her spellcasting ability (spell save DC 14, +6 to hit with spell attacks). Talis has the following spells prepared from the cleric spell list:
+Cantrips (at will): guidance, resistance, thaumaturgy
+1st level (4 slots): command, cure wounds, healing word, inflict wounds
+2nd level (3 slots): blindness/deafness, lesser restoration, spiritual
+weapon (spear)
+3rd level (3 slots): dispel magic, mass healing word, sending
+4th level (3 slots): death ward, freedom of movement
+5th level (1 slot): insect plague</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Winter Strike (3/Day)</string>
+					<key>text</key>
+					<string>Once per turn, when Talis hits with a melee attack, she can expend a use of this trait to deal an extra 9 (2d8) cold damage.</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>actions</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Quarterstaff</string>
+					<key>text</key>
+					<string>Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 3 (1d8 - 1) bludgeoning damage.</string>
+				</dict>
+			</array>
+			<key>info</key>
+			<dict>
+				<key>armorClass</key>
+				<string>12</string>
+				<key>cha</key>
+				<integer>11</integer>
+				<key>challenge</key>
+				<string>1 (200 XP)</string>
+				<key>charisma</key>
+				<string>11 (+0)</string>
+				<key>con</key>
+				<integer>11</integer>
+				<key>constitution</key>
+				<string>11 (+0)</string>
+				<key>cr</key>
+				<real>1.0</real>
+				<key>dex</key>
+				<integer>14</integer>
+				<key>dexterity</key>
+				<string>14 (+2)</string>
+				<key>hitPoints</key>
+				<string>22 (5d8)</string>
+				<key>hp</key>
+				<integer>22</integer>
+				<key>hpDice</key>
+				<string>5d8</string>
+				<key>int</key>
+				<integer>17</integer>
+				<key>intelligence</key>
+				<string>17 (+3)</string>
+				<key>languages</key>
+				<string>Common, Draconic, Dwarvish, Elvish</string>
+				<key>name</key>
+				<string>Evil Mage</string>
+				<key>passivePerception</key>
+				<integer>11</integer>
+				<key>savingThrows</key>
+				<string>Int +5, Wis +3</string>
+				<key>senses</key>
+				<string>passive Perception 11</string>
+				<key>sizeTypeAlignment</key>
+				<string>Medium humanoid (human), any alignment</string>
+				<key>sizeValue</key>
+				<string>Medium</string>
+				<key>skills</key>
+				<string>Arcana +5, History +5</string>
+				<key>speed</key>
+				<string>30 ft.</string>
+				<key>str</key>
+				<integer>9</integer>
+				<key>strength</key>
+				<string>9 (-1)</string>
+				<key>type</key>
+				<string>humanoid</string>
+				<key>wis</key>
+				<integer>12</integer>
+				<key>wisdom</key>
+				<string>12 (+1)</string>
+				<key>xp</key>
+				<integer>200</integer>
+			</dict>
+			<key>legendaryActions</key>
+			<array>
+			</array>
+			<key>name</key>
+			<string>Evil Mage</string>
+			<key>reactions</key>
+			<array>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>2</integer>
+					<key>page</key>
+					<integer>57</integer>
+				</dict>
+			</array>
+			<key>tags</key>
+			<array>
+				<string>human</string>
+			</array>
+			<key>traits</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Spellcasting</string>
+					<key>text</key>
+					<string>The mage is a 4th-level spellcaster that uses Intelligence as its spellcasting ability (spell save DC 13, +5 to hit with spell attacks). The mage knows the following spells from the wizard's spell list:
+Cantrips (at will): light, mage hand, shocking grasp
+1st level (4 slots): charm person, magic missile
+2nd level (3 slots): hold person, misty step</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>actions</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Life Drain</string>
+					<key>text</key>
+					<string>Melee Weapon Attack: +5 to hit, reach 5 ft., one creature. Hit: 16 (3d8 + 3) necrotic damage, and the target must succeed on a DC 13 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. If this attack reduces the target's hit point maximum to 0, the target dies. This reduction to the target's hit point maximum lasts until the target finishes a long rest.</string>
+				</dict>
+			</array>
+			<key>info</key>
+			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
+				<key>armorClass</key>
+				<string>13</string>
+				<key>cha</key>
+				<integer>15</integer>
+				<key>challenge</key>
+				<string>3 (700 XP)</string>
+				<key>charisma</key>
+				<string>15 (+2)</string>
+				<key>con</key>
+				<integer>16</integer>
+				<key>conditionImmunities</key>
+				<string>charmed, grappled, paralyzed, petrified, poisoned, prone, restrained</string>
+				<key>constitution</key>
+				<string>16 (+3)</string>
+				<key>cr</key>
+				<real>3.0</real>
+				<key>damageImmunities</key>
+				<string>necrotic, poison</string>
+				<key>damageResistances</key>
+				<string>acid, cold, fire, lightning, thunder; bludgeoning, piercing, and slashing from nonmagical weapons that aren't silvered</string>
+				<key>dex</key>
+				<integer>16</integer>
+				<key>dexterity</key>
+				<string>16 (+3)</string>
+				<key>hitPoints</key>
+				<string>45 (6d8 + 18)</string>
+				<key>hp</key>
+				<integer>45</integer>
+				<key>hpDice</key>
+				<string>6d8+18</string>
+				<key>int</key>
+				<integer>12</integer>
+				<key>intelligence</key>
+				<string>12 (+1)</string>
+				<key>languages</key>
+				<string>Common, Infernal</string>
+				<key>name</key>
+				<string>Mormesk the Wraith</string>
+				<key>passivePerception</key>
+				<integer>12</integer>
+				<key>senses</key>
+				<string>darkvision 60 ft., passive Perception 12</string>
+				<key>sizeTypeAlignment</key>
+				<string>Medium undead, neutral evil</string>
+				<key>sizeValue</key>
+				<string>Medium</string>
+				<key>speed</key>
+				<string>0 ft., fly 60 ft.</string>
+				<key>str</key>
+				<integer>6</integer>
+				<key>strength</key>
+				<string>6 (-2)</string>
+				<key>type</key>
+				<string>undead</string>
+				<key>wis</key>
+				<integer>14</integer>
+				<key>wisdom</key>
+				<string>14 (+2)</string>
+				<key>xp</key>
+				<integer>700</integer>
+			</dict>
+			<key>legendaryActions</key>
+			<array>
+			</array>
+			<key>name</key>
+			<string>Mormesk the Wraith</string>
+			<key>reactions</key>
+			<array>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>2</integer>
+					<key>page</key>
+					<integer>59</integer>
+				</dict>
+			</array>
+			<key>tags</key>
+			<array>
+			</array>
+			<key>traits</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Incorporeal Movement</string>
+					<key>text</key>
+					<string>The wraith can move through an object or another creature, but can't stop there.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Sunlight Sensitivity</string>
+					<key>text</key>
+					<string></string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>While in sunlight, the wraith has disadvantage on attack rolls and on Wisdom (Perception) checks that rely on sight</string>
+					<key>text</key>
+					<string></string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>actions</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Spider Staff</string>
+					<key>text</key>
+					<string>Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 2 (1d6 - 1) bludgeoning damage plus 3 (1d6) poison damage.</string>
+				</dict>
+			</array>
+			<key>info</key>
+			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
+				<key>armorClass</key>
+				<string>11 (14 with mage armor)</string>
+				<key>cha</key>
+				<integer>13</integer>
+				<key>challenge</key>
+				<string>2 (450 XP)</string>
+				<key>charisma</key>
+				<string>13 (+1)</string>
+				<key>con</key>
+				<integer>10</integer>
+				<key>constitution</key>
+				<string>10 (+0)</string>
+				<key>cr</key>
+				<real>2.0</real>
+				<key>dex</key>
+				<integer>13</integer>
+				<key>dexterity</key>
+				<string>13 (+1)</string>
+				<key>hitPoints</key>
+				<string>27 (6d8)</string>
+				<key>hp</key>
+				<integer>27</integer>
+				<key>hpDice</key>
+				<string>6d8</string>
+				<key>int</key>
+				<integer>16</integer>
+				<key>intelligence</key>
+				<string>16 (+3)</string>
+				<key>languages</key>
+				<string>Elvish, Undercommon</string>
+				<key>name</key>
+				<string>Nezznar the Black Spider</string>
+				<key>passivePerception</key>
+				<integer>14</integer>
+				<key>savingThrows</key>
+				<string>Int +5, Wis +4</string>
+				<key>senses</key>
+				<string>darkvision 120 ft., passive Perception 14</string>
+				<key>sizeTypeAlignment</key>
+				<string>Medium humanoid (elf), neutral evil</string>
+				<key>sizeValue</key>
+				<string>Medium</string>
+				<key>skills</key>
+				<string>Arcana +5, Perception +4, Stealth +3</string>
+				<key>speed</key>
+				<string>30 ft.</string>
+				<key>str</key>
+				<integer>9</integer>
+				<key>strength</key>
+				<string>9 (-1)</string>
+				<key>type</key>
+				<string>humanoid</string>
+				<key>wis</key>
+				<integer>14</integer>
+				<key>wisdom</key>
+				<string>14 (+2)</string>
+				<key>xp</key>
+				<integer>450</integer>
+			</dict>
+			<key>legendaryActions</key>
+			<array>
+			</array>
+			<key>name</key>
+			<string>Nezznar the Black Spider</string>
+			<key>reactions</key>
+			<array>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>2</integer>
+					<key>page</key>
+					<integer>59</integer>
+				</dict>
+			</array>
+			<key>tags</key>
+			<array>
+				<string>elf</string>
+			</array>
+			<key>traits</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Special Equipment</string>
+					<key>text</key>
+					<string>Nezznar has a spider staff.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Fey Ancestry</string>
+					<key>text</key>
+					<string>Nezznar has advantage on saving throws against being charmed, and magic can't put him to sleep.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Sunlight Sensitivity</string>
+					<key>text</key>
+					<string>Nezznar has disadvantage on attack rolls when he or his target is in sunlight.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Innate Spellcasting</string>
+					<key>text</key>
+					<string>Nezznar can innately cast the following spells, requiring no material components:
+At will: dancing lights
+1/day each: darkness, faerie fire (save DC 12)</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Spellcasting</string>
+					<key>text</key>
+					<string>Nezznar is a 4th-level spellcaster that uses Intelligence as his spellcasting ability (spell save DC 13; +5 to hit with spell attacks). Nezznar has the following spells prepared from the wizard's spell list:
+Cantrips (at will): mage hand, ray of frost, shocking grasp
+1st Level (4 slots): mage armor, magic missile, shield
+2nd Level (3 slots): invisibility, suggestion</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>actions</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Multiattack</string>
+					<key>text</key>
+					<string>The ruffian makes two melee attacks.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Shortsword</string>
+					<key>text</key>
+					<string>Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6 + 2) piercing damage.</string>
+				</dict>
+			</array>
+			<key>info</key>
+			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
+				<key>armorClass</key>
+				<string>14 (studded leather armor)</string>
+				<key>cha</key>
+				<integer>11</integer>
+				<key>challenge</key>
+				<string>1/2 (100 XP)</string>
+				<key>charisma</key>
+				<string>11 (+0)</string>
+				<key>con</key>
+				<integer>12</integer>
+				<key>constitution</key>
+				<string>12 (+1)</string>
+				<key>cr</key>
+				<real>0.5</real>
+				<key>dex</key>
+				<integer>14</integer>
+				<key>dexterity</key>
+				<string>14 (+2)</string>
+				<key>hitPoints</key>
+				<string>16 (3d8 + 3)</string>
+				<key>hp</key>
+				<integer>16</integer>
+				<key>hpDice</key>
+				<string>3d8+3</string>
+				<key>int</key>
+				<integer>9</integer>
+				<key>intelligence</key>
+				<string>9 (-1)</string>
+				<key>languages</key>
+				<string>Common</string>
+				<key>name</key>
+				<string>Redbrand Ruffian</string>
+				<key>passivePerception</key>
+				<integer>9</integer>
+				<key>senses</key>
+				<string>passive Perception 9</string>
+				<key>sizeTypeAlignment</key>
+				<string>Medium humanoid (human), neutral evil</string>
+				<key>sizeValue</key>
+				<string>Medium</string>
+				<key>skills</key>
+				<string>Intimidation +2</string>
+				<key>speed</key>
+				<string>30 ft.</string>
+				<key>str</key>
+				<integer>11</integer>
+				<key>strength</key>
+				<string>11 (+0)</string>
+				<key>type</key>
+				<string>humanoid</string>
+				<key>wis</key>
+				<integer>9</integer>
+				<key>wisdom</key>
+				<string>9 (-1)</string>
+				<key>xp</key>
+				<integer>100</integer>
+			</dict>
+			<key>legendaryActions</key>
+			<array>
+			</array>
+			<key>name</key>
+			<string>Redbrand Ruffian</string>
+			<key>reactions</key>
+			<array>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>2</integer>
+					<key>page</key>
+					<integer>61</integer>
+				</dict>
+			</array>
+			<key>tags</key>
+			<array>
+				<string>human</string>
+			</array>
+			<key>traits</key>
+			<array>
+			</array>
+		</dict>
+		<dict>
+			<key>actions</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Multiattack</string>
+					<key>text</key>
+					<string>Sildar makes two melee attacks.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Longsword</string>
+					<key>text</key>
+					<string>Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 5 (1d8 + 1) slashing damage.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Heavy Crossbow. Ranged Weapon Attack: +2 to hit, range 100 ft./400 ft., one target. Hit: 5 (1d10) piercing damage</string>
+					<key>text</key>
+					<string></string>
+				</dict>
+			</array>
+			<key>info</key>
+			<dict>
+				<key>alignmentValue</key>
+				<string>neutral good</string>
+				<key>armorClass</key>
+				<string>16 (chain mail)</string>
+				<key>cha</key>
+				<integer>10</integer>
+				<key>challenge</key>
+				<string>1 (200 XP)</string>
+				<key>charisma</key>
+				<string>10 (+0)</string>
+				<key>con</key>
+				<integer>12</integer>
+				<key>constitution</key>
+				<string>12 (+1)</string>
+				<key>cr</key>
+				<real>1.0</real>
+				<key>dex</key>
+				<integer>10</integer>
+				<key>dexterity</key>
+				<string>10 (+0)</string>
+				<key>hitPoints</key>
+				<string>27 (5d8 + 5)</string>
+				<key>hp</key>
+				<integer>27</integer>
+				<key>hpDice</key>
+				<string>5d8+5</string>
+				<key>int</key>
+				<integer>10</integer>
+				<key>intelligence</key>
+				<string>10 (+0)</string>
+				<key>languages</key>
+				<string>Common</string>
+				<key>name</key>
+				<string>Sildar Hallwinter</string>
+				<key>passivePerception</key>
+				<integer>12</integer>
+				<key>savingThrows</key>
+				<string>Str +3, Con +3</string>
+				<key>senses</key>
+				<string>passive Perception 12</string>
+				<key>sizeTypeAlignment</key>
+				<string>Medium humanoid (human), neutral good</string>
+				<key>sizeValue</key>
+				<string>Medium</string>
+				<key>skills</key>
+				<string>Perception +2</string>
+				<key>speed</key>
+				<string>30 ft.</string>
+				<key>str</key>
+				<integer>13</integer>
+				<key>strength</key>
+				<string>13 (+1)</string>
+				<key>type</key>
+				<string>humanoid</string>
+				<key>wis</key>
+				<integer>11</integer>
+				<key>wisdom</key>
+				<string>11 (+0)</string>
+				<key>xp</key>
+				<integer>200</integer>
+			</dict>
+			<key>legendaryActions</key>
+			<array>
+			</array>
+			<key>name</key>
+			<string>Sildar Hallwinter</string>
+			<key>reactions</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Parry</string>
+					<key>text</key>
+					<string>When an attacker hits Sildar with a melee attack and Sildar can see the attacker, he can roll 1d6 and add the number rolled to his AC against the triggering attack, provided that he's wielding a melee weapon.</string>
+				</dict>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>2</integer>
+					<key>page</key>
+					<integer>61</integer>
+				</dict>
+			</array>
+			<key>tags</key>
+			<array>
+				<string>human</string>
+			</array>
+			<key>traits</key>
+			<array>
+			</array>
+		</dict>
 		<dict>
 			<key>actions</key>
 			<array>
@@ -135,6 +2532,12 @@
 					<integer>0</integer>
 					<key>page</key>
 					<integer>12</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>6</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -305,6 +2708,12 @@ Whenever the charmed target takes damage, the target can repeat the saving throw
 					<integer>0</integer>
 					<key>page</key>
 					<integer>13</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>6</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -891,6 +3300,12 @@ At will: detect evil and good, invisibility (self only)
 					<key>page</key>
 					<integer>9</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>7</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -1117,6 +3532,12 @@ At will: detect evil and good, invisibility (self only)
 					<key>section</key>
 					<string>Animated Objects</string>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>16</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -1232,6 +3653,12 @@ At will: detect evil and good, invisibility (self only)
 					<key>page</key>
 					<integer>21</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>8</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -1330,6 +3757,12 @@ At will: detect evil and good, invisibility (self only)
 					<integer>0</integer>
 					<key>page</key>
 					<integer>22</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>9</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -2158,6 +4591,12 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 					<key>page</key>
 					<integer>44</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>2</integer>
+					<key>page</key>
+					<integer>62</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -2367,6 +4806,12 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 					<integer>1</integer>
 					<key>page</key>
 					<integer>47</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>2</integer>
+					<key>page</key>
+					<integer>63</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -2593,6 +5038,12 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 					<integer>1</integer>
 					<key>page</key>
 					<integer>13</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>2</integer>
+					<key>page</key>
+					<integer>56</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -2834,6 +5285,12 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 					<key>page</key>
 					<integer>34</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>10</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -2946,6 +5403,12 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 					<integer>0</integer>
 					<key>page</key>
 					<integer>35</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>7</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -3468,6 +5931,12 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 					<key>page</key>
 					<integer>14</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>9</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -3578,6 +6047,18 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 					<integer>0</integer>
 					<key>page</key>
 					<integer>40</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>10</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>11</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -3711,6 +6192,12 @@ A duplicate has the cloaker's AC and uses its saving throws. If an attack hits a
 					<integer>0</integer>
 					<key>page</key>
 					<integer>41</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>11</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -4057,6 +6544,12 @@ At will: detect evil and good, detect magic, detect thoughts
 					<key>page</key>
 					<integer>44</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>12</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -4174,6 +6667,12 @@ At will: detect evil and good, detect magic, detect thoughts
 					<key>page</key>
 					<integer>16</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>11</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -4280,6 +6779,12 @@ A creature can detach the darkmantle by making a successful DC 13 Strength check
 					<integer>0</integer>
 					<key>page</key>
 					<integer>46</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>13</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -4872,6 +7377,12 @@ In its crypt, a demilich has access to lair actions and additional uses for its 
 					<integer>56</integer>
 					<key>section</key>
 					<string>Demons</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>9</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -5531,6 +8042,12 @@ At will: darkness, detect magic, dispel magic
 					<key>section</key>
 					<string>Demons</string>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>19</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -6162,6 +8679,12 @@ At will: darkness, detect magic, dispel magic
 					<key>section</key>
 					<string>Demons</string>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>32</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -6307,6 +8830,12 @@ At will: darkness, detect magic, dispel magic
 					<integer>64</integer>
 					<key>section</key>
 					<string>Demons</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>36</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -6591,6 +9120,12 @@ At will: detect thoughts, web
 					<key>section</key>
 					<string>Devils</string>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>8</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -6724,6 +9259,12 @@ At will: detect thoughts, web
 					<integer>70</integer>
 					<key>section</key>
 					<string>Devils</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>8</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -6860,6 +9401,12 @@ At will: detect thoughts, web
 					<integer>71</integer>
 					<key>section</key>
 					<string>Devils</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>9</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -8834,6 +11381,18 @@ At will: detect magic, fireball
 					<key>page</key>
 					<integer>17</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>2</integer>
+					<key>page</key>
+					<integer>56</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>8</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -9491,6 +12050,12 @@ At will: detect magic, fireball
 					<key>section</key>
 					<string>Dragons (Chromatic)</string>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>7</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -10037,7 +12602,7 @@ A blue dragon will collapse the caverns that make up its lair if that lair is in
 				<array>
 					<string>• Thunderstorms rage within 6 miles of the lair.</string>
 					<string>• Dust devils scour the land within 6 miles of the lair. A dust devil has the statistics of an air elemental, but it can't fly, has a speed of 50 feet, and has an Intelligence and Charisma of 1 (-5).</string>
-					<string>• Hidden sinkholes form in and around the dragon's lair. A sinkhole can be spotted from a safe distance with a successful DC 20 Wisdom (Perception) check. Otherwise, the first creature to step on the thin crust covering the sinkhole must succeed on a DC 15 Dexterity saving throw or fall 1d6 x 10 feet into the sinkhole.</string>
+					<string>• Hidden sinkholes form in and around the dragon's lair. A sinkhole can be spotted from a safe distance with a successful DC 20 Wisdom (Perception) check. Otherwise, the first creature to step on the thin crust covering the sinkhole must succeed on a DC 15 Dexterity saving throw or fall 1d6 × 10 feet into the sinkhole.</string>
 				</array>
 			</dict>
 			<key>legendaryActions</key>
@@ -10075,6 +12640,18 @@ A blue dragon will collapse the caverns that make up its lair if that lair is in
 					<integer>81</integer>
 					<key>section</key>
 					<string>Dragons (Chromatic)</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>4</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>5</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -10653,6 +13230,12 @@ Each 10-foot-cube of thickets has AC 5, 30 hit points, resistance to bludgeoning
 					<key>section</key>
 					<string>Dragons (Chromatic)</string>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>5</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -10791,6 +13374,12 @@ Each 10-foot-cube of thickets has AC 5, 30 hit points, resistance to bludgeoning
 					<integer>1</integer>
 					<key>page</key>
 					<integer>52</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>2</integer>
+					<key>page</key>
+					<integer>63</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -11379,6 +13968,12 @@ Throughout the lair complex, servants erect monuments to the dragon's power, tel
 					<key>section</key>
 					<string>Dragons (Chromatic)</string>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>38</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -11827,6 +14422,18 @@ If the dragon wishes to move through a wall, it can do so without slowing down. 
 					<integer>101</integer>
 					<key>section</key>
 					<string>Dragons (Chromatic)</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>5</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>6</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -13006,6 +15613,12 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 					<integer>108</integer>
 					<key>section</key>
 					<string>Dragons (Metallic)</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>7</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -14752,7 +17365,7 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 				<key>lairActions</key>
 				<array>
 					<string>• The dragon creates fog as if it had cast the fog cloud spell. The fog lasts until initiative count 20 on the next round.</string>
-					<string>• A blisteringly cold wind blows through the lair near the dragon. Each creature within 120 feet of the dragon must succeed on a DC 15 Constitution saving throw or take 5 (1dl0) cold damage. Gases and vapors are dispersed by the wind, and unprotected flames are extinguished. Protected flames, such as lanterns, have a 50 percent chance of being extinguished.</string>
+					<string>• A blisteringly cold wind blows through the lair near the dragon. Each creature within 120 feet of the dragon must succeed on a DC 15 Constitution saving throw or take 5 (1d10) cold damage. Gases and vapors are dispersed by the wind, and unprotected flames are extinguished. Protected flames, such as lanterns, have a 50 percent chance of being extinguished.</string>
 				</array>
 				<key>lairTraits</key>
 				<array>
@@ -15157,6 +17770,12 @@ Paralyzing Breath. The dragon exhales paralyzing gas in a 15-foot cone. Each cre
 					<key>page</key>
 					<integer>119</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>14</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -15551,6 +18170,12 @@ At will: druidcraft
 					<key>page</key>
 					<integer>122</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>16</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -15684,6 +18309,18 @@ If the saving throw is successful, the target takes half the bludgeoning damage 
 					<key>page</key>
 					<integer>9</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>5</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>6</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -15804,6 +18441,12 @@ If the saving throw is successful, the target takes half the bludgeoning damage 
 					<integer>1</integer>
 					<key>page</key>
 					<integer>17</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>13</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -15929,6 +18572,12 @@ If the saving throw is successful, the target takes half the bludgeoning damage 
 					<integer>1</integer>
 					<key>page</key>
 					<integer>18</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>15</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -16067,6 +18716,12 @@ The elemental can grapple one Large creature or up to two Medium or smaller crea
 					<integer>1</integer>
 					<key>page</key>
 					<integer>49</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>26</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -16444,6 +19099,12 @@ At will: dancing lights
 					<integer>129</integer>
 					<key>section</key>
 					<string>Elves: Drow</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>15</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -16881,6 +19542,18 @@ At will: greater restoration, pass without trace, water breathing, water walk
 					<key>page</key>
 					<integer>131</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>9</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>14</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -17005,6 +19678,18 @@ At will: greater restoration, pass without trace, water breathing, water walk
 					<integer>0</integer>
 					<key>page</key>
 					<integer>132</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>14</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>17</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -17260,6 +19945,12 @@ Violet, 1/day: polymorph</string>
 					<integer>1</integer>
 					<key>page</key>
 					<integer>19</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>2</integer>
+					<key>page</key>
+					<integer>57</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -17836,6 +20527,18 @@ Spores invade an infected creature's system, killing the creature in a number of
 					<key>section</key>
 					<string>Fungi</string>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>21</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>36</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -17946,6 +20649,12 @@ Spores invade an infected creature's system, killing the creature in a number of
 					<integer>0</integer>
 					<key>page</key>
 					<integer>139</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>17</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -18076,6 +20785,12 @@ Spores invade an infected creature's system, killing the creature in a number of
 					<key>page</key>
 					<integer>21</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>9</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -18192,6 +20907,18 @@ Spores invade an infected creature's system, killing the creature in a number of
 					<integer>143</integer>
 					<key>section</key>
 					<string>Genies</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>12</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>13</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -18332,6 +21059,12 @@ A creature can use its action to free a creature restrained by the whirlwind, in
 					<key>section</key>
 					<string>Genies</string>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>14</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -18457,6 +21190,18 @@ At will: detect evil and good, detect magic, thunderwave
 					<integer>145</integer>
 					<key>section</key>
 					<string>Genies</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>13</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>16</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -18632,7 +21377,7 @@ At will: create or destroy water, detect evil and good, detect magic, fog cloud,
 					<key>name</key>
 					<string>Horrifying Visage</string>
 					<key>text</key>
-					<string>Each non-undead creature within 60 feet of the ghost that can see it must succeed on a DC 13 Wisdom saving throw or be frightened for 1 minute. If the save fails by 5 or more, the target also ages 1d4 x 10 years. A frightened target can repeat the saving throw at the end of each of its turns, ending the frightened condition on itself on a success. If a target's saving throw is successful or the effect ends for it, the target is immune to this ghost's Horrifying Visage for the next 24 hours. The aging effect can be reversed with a greater restoration spell, but only within 24 hours of it occurring.</string>
+					<string>Each non-undead creature within 60 feet of the ghost that can see it must succeed on a DC 13 Wisdom saving throw or be frightened for 1 minute. If the save fails by 5 or more, the target also ages 1d4 × 10 years. A frightened target can repeat the saving throw at the end of each of its turns, ending the frightened condition on itself on a success. If a target's saving throw is successful or the effect ends for it, the target is immune to this ghost's Horrifying Visage for the next 24 hours. The aging effect can be reversed with a greater restoration spell, but only within 24 hours of it occurring.</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -18726,6 +21471,12 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 					<integer>1</integer>
 					<key>page</key>
 					<integer>22</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>15</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -18845,6 +21596,12 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 					<integer>148</integer>
 					<key>section</key>
 					<string>Ghouls</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>18</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -18969,6 +21726,12 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 					<key>page</key>
 					<integer>22</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>2</integer>
+					<key>page</key>
+					<integer>58</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -19077,6 +21840,12 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 					<integer>154</integer>
 					<key>section</key>
 					<string>Giants</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>12</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -19562,6 +22331,12 @@ At will: detect magic, fog cloud, light
 					<integer>156</integer>
 					<key>section</key>
 					<string>Giants</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>18</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -20526,6 +23301,12 @@ At will: mage hand (the hand is invisible)
 					<key>section</key>
 					<string>Gnolls</string>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>18</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -20752,6 +23533,12 @@ At will: mage hand (the hand is invisible)
 					<key>section</key>
 					<string>Gnomes, Deep (Svirfneblin)</string>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>13</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -20875,6 +23662,12 @@ At will: nondetection (self only)
 					<integer>166</integer>
 					<key>section</key>
 					<string>Goblins</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>2</integer>
+					<key>page</key>
+					<integer>58</integer>
 				</dict>
 				<dict>
 					<key>book</key>
@@ -21121,6 +23914,12 @@ At will: nondetection (self only)
 					<integer>168</integer>
 					<key>section</key>
 					<string>Golems</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>10</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -21558,6 +24357,12 @@ The golem's creator, if within 60 feet of the berserk golem, can try to calm it 
 					<key>page</key>
 					<integer>45</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>18</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -21683,6 +24488,12 @@ The golem's creator, if within 60 feet of the berserk golem, can try to calm it 
 					<key>page</key>
 					<integer>171</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>17</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -21801,6 +24612,12 @@ The target is also grappled (escape DC 15). If the target is Medium or smaller, 
 					<key>page</key>
 					<integer>172</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>18</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -21911,6 +24728,12 @@ The target is also grappled (escape DC 15). If the target is Medium or smaller, 
 					<integer>1</integer>
 					<key>page</key>
 					<integer>30</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>2</integer>
+					<key>page</key>
+					<integer>58</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -22145,6 +24968,12 @@ The target is also grappled (escape DC 15). If the target is Medium or smaller, 
 					<integer>1</integer>
 					<key>page</key>
 					<integer>31</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>11</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -22638,6 +25467,12 @@ The changes wrought by this effect fail to hold up to physical inspection. For e
 					<key>section</key>
 					<string>Hags</string>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>31</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -22779,6 +25614,12 @@ Unless the target is surprised or the revelation of the hag's true form is sudde
 					<integer>180</integer>
 					<key>section</key>
 					<string>Half-Dragon</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>17</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -23128,6 +25969,24 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 					<key>page</key>
 					<integer>183</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>11</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>18</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>19</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -23364,6 +26223,18 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 					<key>page</key>
 					<integer>32</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>2</integer>
+					<key>page</key>
+					<integer>59</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>12</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -23483,6 +26354,18 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 					<integer>186</integer>
 					<key>section</key>
 					<string>Hobgoblins</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>12</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>20</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -23828,6 +26711,12 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 					<integer>0</integer>
 					<key>page</key>
 					<integer>189</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>20</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -24203,6 +27092,12 @@ If the host body drops to 0 hit points, the intellect devourer must leave it. A 
 					<key>page</key>
 					<integer>192</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>21</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -24324,6 +27219,12 @@ If the host body drops to 0 hit points, the intellect devourer must leave it. A 
 					<key>page</key>
 					<integer>193</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>21</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -24444,6 +27345,12 @@ If the host body drops to 0 hit points, the intellect devourer must leave it. A 
 					<key>page</key>
 					<integer>194</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>21</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -24557,6 +27464,12 @@ If the host body drops to 0 hit points, the intellect devourer must leave it. A 
 					<integer>195</integer>
 					<key>section</key>
 					<string>Kobolds</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>22</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -24677,6 +27590,18 @@ If the host body drops to 0 hit points, the intellect devourer must leave it. A 
 					<integer>1</integer>
 					<key>page</key>
 					<integer>34</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>13</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>19</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -24996,6 +27921,12 @@ If the kraken takes 50 damage or more on a single turn from a creature inside it
 					<key>section</key>
 					<string>Kuo-toa</string>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>22</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -25129,6 +28060,12 @@ If the kraken takes 50 damage or more on a single turn from a creature inside it
 					<integer>200</integer>
 					<key>section</key>
 					<string>Kuo-toa</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>22</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -25275,6 +28212,12 @@ Cantrips (at will): guidance, sacred flame, thaumaturgy
 					<integer>200</integer>
 					<key>section</key>
 					<string>Kuo-toa</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>23</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -25580,6 +28523,12 @@ A lich encountered in its lair has a challenge rating of 22 (41,000 XP).</string
 					<key>page</key>
 					<integer>202</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>23</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -25741,6 +28690,18 @@ Cantrips (at will): mage hand, prestidigitation, ray of frost
 					<key>page</key>
 					<integer>35</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>13</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>19</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -25862,6 +28823,12 @@ Cantrips (at will): mage hand, prestidigitation, ray of frost
 					<integer>205</integer>
 					<key>section</key>
 					<string>Lizardfolk</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>24</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -25998,6 +28965,12 @@ Cantrips (at will): druidcraft, produce flame, thorn whip
 					<integer>205</integer>
 					<key>section</key>
 					<string>Lizardfolk</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>24</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -26253,6 +29226,12 @@ Cantrips (at will): druidcraft, produce flame, thorn whip
 					<integer>209</integer>
 					<key>section</key>
 					<string>Lycanthropes</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>37</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -26782,6 +29761,12 @@ Cantrips (at will): druidcraft, produce flame, thorn whip
 					<key>page</key>
 					<integer>212</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>25</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -27153,6 +30138,12 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 					<key>section</key>
 					<string>Mephits</string>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>16</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -27273,6 +30264,12 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 					<integer>215</integer>
 					<key>section</key>
 					<string>Mephits</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>20</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -27401,6 +30398,12 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 					<key>section</key>
 					<string>Mephits</string>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>25</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -27526,6 +30529,12 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 					<key>section</key>
 					<string>Mephits</string>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>26</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -27645,6 +30654,12 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 					<key>section</key>
 					<string>Mephits</string>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>32</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -27761,6 +30776,12 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 					<integer>217</integer>
 					<key>section</key>
 					<string>Mephits</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>34</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -27992,6 +31013,18 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 					<integer>0</integer>
 					<key>page</key>
 					<integer>219</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>19</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>25</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -29091,6 +32124,12 @@ At will: detect thoughts, levitate
 					<key>page</key>
 					<integer>37</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>20</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -29267,6 +32306,12 @@ A mummy lord encountered in its lair has a challenge rating of 16 (15,000 XP).</
 					<integer>229</integer>
 					<key>section</key>
 					<string>Mummies</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>20</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -30351,6 +33396,12 @@ Cantrips (at will): mending, sacred flame, thaumaturgy
 					<key>page</key>
 					<integer>37</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>2</integer>
+					<key>page</key>
+					<integer>60</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -30464,6 +33515,24 @@ Cantrips (at will): mending, sacred flame, thaumaturgy
 					<key>page</key>
 					<integer>38</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>2</integer>
+					<key>page</key>
+					<integer>60</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>14</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>21</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -30562,6 +33631,12 @@ Cantrips (at will): mending, sacred flame, thaumaturgy
 					<integer>238</integer>
 					<key>section</key>
 					<string>Ogres</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>19</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -30677,6 +33752,12 @@ Cantrips (at will): mending, sacred flame, thaumaturgy
 					<integer>0</integer>
 					<key>page</key>
 					<integer>239</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>27</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -30800,6 +33881,12 @@ At will: darkness, invisibility
 					<integer>241</integer>
 					<key>section</key>
 					<string>Oozes</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>10</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -31038,6 +34125,12 @@ The cube can hold only one Large creature or up to four Medium or smaller creatu
 					<key>section</key>
 					<string>Oozes</string>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>11</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -31168,6 +34261,12 @@ The ooze can eat through 2-inch-thick, nonmagical metal in 1 round.</string>
 					<key>page</key>
 					<integer>38</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>2</integer>
+					<key>page</key>
+					<integer>60</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -31288,6 +34387,18 @@ The ooze can eat through 2-inch-thick, nonmagical metal in 1 round.</string>
 					<integer>1</integer>
 					<key>page</key>
 					<integer>39</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>2</integer>
+					<key>page</key>
+					<integer>61</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>14</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -31523,6 +34634,12 @@ The ooze can eat through 2-inch-thick, nonmagical metal in 1 round.</string>
 					<key>section</key>
 					<string>Orcs</string>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>28</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -31654,6 +34771,12 @@ Cantrips (at-will): guidance, resistance, thaumaturgy
 					<key>section</key>
 					<string>Orcs</string>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>28</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -31774,6 +34897,18 @@ Cantrips (at-will): guidance, resistance, thaumaturgy
 					<key>page</key>
 					<integer>248</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>14</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>21</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -31890,6 +35025,12 @@ Cantrips (at-will): guidance, resistance, thaumaturgy
 					<integer>1</integer>
 					<key>page</key>
 					<integer>39</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>2</integer>
+					<key>page</key>
+					<integer>61</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -32109,6 +35250,18 @@ Cantrips (at-will): guidance, resistance, thaumaturgy
 					<key>page</key>
 					<integer>251</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>15</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>28</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -32219,6 +35372,12 @@ Cantrips (at-will): guidance, resistance, thaumaturgy
 					<integer>0</integer>
 					<key>page</key>
 					<integer>252</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>28</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -32442,6 +35601,12 @@ At will: druidcraft
 					<key>page</key>
 					<integer>254</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>22</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -32565,6 +35730,12 @@ If the worm takes 30 damage or more on a single turn from a creature inside it, 
 					<integer>0</integer>
 					<key>page</key>
 					<integer>255</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>29</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -33126,6 +36297,12 @@ If the remorhaz takes 30 damage or more on a single turn from a creature inside 
 					<key>page</key>
 					<integer>259</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>29</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -33374,6 +36551,18 @@ If the remorhaz takes 30 damage or more on a single turn from a creature inside 
 					<key>page</key>
 					<integer>261</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>15</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>30</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -33489,6 +36678,12 @@ If the object touched is either metal armor or a metal shield being worn or carr
 					<integer>0</integer>
 					<key>page</key>
 					<integer>262</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>30</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -34023,6 +37218,12 @@ Cantrips (at will): guidance, thaumaturgy
 					<key>section</key>
 					<string>Salamanders</string>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>17</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -34141,6 +37342,12 @@ Cantrips (at will): guidance, thaumaturgy
 					<integer>266</integer>
 					<key>section</key>
 					<string>Salamanders</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>30</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -34494,6 +37701,12 @@ If a non-evil humanoid dies from this attack, a new shadow rises from the corpse
 					<key>page</key>
 					<integer>269</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>31</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -34623,6 +37836,12 @@ If a non-evil humanoid dies from this attack, a new shadow rises from the corpse
 					<key>page</key>
 					<integer>270</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>16</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -34737,6 +37956,12 @@ If a non-evil humanoid dies from this attack, a new shadow rises from the corpse
 					<integer>0</integer>
 					<key>page</key>
 					<integer>271</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>32</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -34868,6 +38093,12 @@ If a non-evil humanoid dies from this attack, a new shadow rises from the corpse
 					<integer>1</integer>
 					<key>page</key>
 					<integer>43</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>2</integer>
+					<key>page</key>
+					<integer>62</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -35986,6 +39217,24 @@ At will: detect magic, detect thoughts, invisibility (self only), mage hand, maj
 					<key>page</key>
 					<integer>279</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>17</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>22</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>33</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -36446,6 +39695,12 @@ Cantrips (at will): mage hand, minor illusion, prestidigitation
 					<key>page</key>
 					<integer>283</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>33</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -36543,6 +39798,18 @@ The stirge can detach itself by spending 5 feet of its movement. It does so afte
 					<integer>1</integer>
 					<key>page</key>
 					<integer>44</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>2</integer>
+					<key>page</key>
+					<integer>62</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>17</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -36659,6 +39926,12 @@ The fiend can have only one target charmed at a time. If it charms another, the 
 					<integer>0</integer>
 					<key>page</key>
 					<integer>285</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>23</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -37204,6 +40477,18 @@ If the tarrasque takes 60 damage or more on a single turn from a creature inside
 					<key>page</key>
 					<integer>290</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>19</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>34</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -37336,6 +40621,18 @@ If the tarrasque takes 60 damage or more on a single turn from a creature inside
 					<key>page</key>
 					<integer>47</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>19</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>24</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -37452,6 +40749,12 @@ If the tarrasque takes 60 damage or more on a single turn from a creature inside
 					<integer>0</integer>
 					<key>page</key>
 					<integer>292</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>35</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -37825,6 +41128,18 @@ Each time the vampire or the vampire's companions do anything harmful to the tar
 					<key>section</key>
 					<string>Vampires</string>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>20</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>25</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -37982,6 +41297,24 @@ Sunlight Hypersensitivity. The vampire takes 20 radiant damage when it starts it
 					<key>section</key>
 					<string>Vampires</string>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>21</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>24</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>35</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -38102,6 +41435,12 @@ Sunlight Hypersensitivity. The vampire takes 20 radiant damage when it starts it
 					<integer>0</integer>
 					<key>page</key>
 					<integer>299</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>36</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -38241,6 +41580,12 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 					<key>page</key>
 					<integer>50</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>27</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -38351,6 +41696,18 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 					<integer>0</integer>
 					<key>page</key>
 					<integer>301</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>22</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>37</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -38481,6 +41838,12 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 					<key>page</key>
 					<integer>302</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>28</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -38610,6 +41973,12 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 					<key>page</key>
 					<integer>51</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>22</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -38718,6 +42087,12 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 					<integer>0</integer>
 					<key>page</key>
 					<integer>304</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>38</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -39132,6 +42507,12 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 					<key>section</key>
 					<string>Yuan-ti</string>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>28</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -39249,6 +42630,18 @@ At will: animal friendship (snakes only)
 					<integer>309</integer>
 					<key>section</key>
 					<string>Yuan-ti</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>23</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>29</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -39393,6 +42786,18 @@ Type 3: Human head and upper body with a serpentine lower body instead of legs</
 					<integer>310</integer>
 					<key>section</key>
 					<string>Yuan-ti</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>23</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>29</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -39676,6 +43081,12 @@ Cantrips (at will): fire bolt, mage hand, minor illusion, prestidigitation
 					<key>section</key>
 					<string>Yugoloths</string>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>26</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -39817,6 +43228,12 @@ Cantrips (at will): fire bolt, mage hand, minor illusion, prestidigitation
 					<integer>314</integer>
 					<key>section</key>
 					<string>Yugoloths</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>27</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -40087,6 +43504,12 @@ At will: alter self, clairvoyance, darkness, detect magic, detect thoughts, disp
 					<integer>1</integer>
 					<key>page</key>
 					<integer>52</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>2</integer>
+					<key>page</key>
+					<integer>63</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -40647,6 +44070,12 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 					<integer>1</integer>
 					<key>page</key>
 					<integer>10</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>8</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -42170,6 +45599,12 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 					<key>page</key>
 					<integer>15</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>7</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -42387,6 +45822,12 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 					<integer>1</integer>
 					<key>page</key>
 					<integer>16</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>7</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -42922,6 +46363,12 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 					<integer>1</integer>
 					<key>page</key>
 					<integer>18</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>8</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -43691,6 +47138,12 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 					<integer>1</integer>
 					<key>page</key>
 					<integer>23</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>9</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -44474,6 +47927,12 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 					<key>page</key>
 					<integer>25</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>10</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -44803,6 +48262,12 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 					<key>page</key>
 					<integer>26</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>10</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -44909,6 +48374,12 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 					<integer>1</integer>
 					<key>page</key>
 					<integer>26</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>16</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -45696,6 +49167,18 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 					<integer>1</integer>
 					<key>page</key>
 					<integer>28</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>2</integer>
+					<key>page</key>
+					<integer>58</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>10</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -48202,6 +51685,12 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 					<key>page</key>
 					<integer>41</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>22</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -49607,6 +53096,12 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 					<key>page</key>
 					<integer>45</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>18</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -49715,6 +53210,12 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 					<integer>1</integer>
 					<key>page</key>
 					<integer>46</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>23</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -49946,6 +53447,12 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 					<key>page</key>
 					<integer>46</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>19</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -50062,6 +53569,12 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 					<integer>1</integer>
 					<key>page</key>
 					<integer>46</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>23</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -50399,6 +53912,12 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 					<integer>1</integer>
 					<key>page</key>
 					<integer>48</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>26</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -50743,6 +54262,18 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 					<key>page</key>
 					<integer>50</integer>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>2</integer>
+					<key>page</key>
+					<integer>63</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>27</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -50964,6 +54495,14 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 					<integer>1</integer>
 					<key>page</key>
 					<integer>53</integer>
+					<key>section</key>
+					<string>Nonplayer Characters</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>4</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -51208,6 +54747,24 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 					<key>section</key>
 					<string>Nonplayer Characters</string>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>6</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>7</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>8</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -51331,6 +54888,14 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 					<integer>1</integer>
 					<key>page</key>
 					<integer>53</integer>
+					<key>section</key>
+					<string>Nonplayer Characters</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>6</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -51448,6 +55013,12 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 					<key>section</key>
 					<string>Nonplayer Characters</string>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>9</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -51547,6 +55118,14 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 					<integer>1</integer>
 					<key>page</key>
 					<integer>53</integer>
+					<key>section</key>
+					<string>Nonplayer Characters</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>6</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -51653,6 +55232,26 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 					<integer>1</integer>
 					<key>page</key>
 					<integer>54</integer>
+					<key>section</key>
+					<string>Nonplayer Characters</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>2</integer>
+					<key>page</key>
+					<integer>56</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>7</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>11</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -51755,6 +55354,26 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 					<integer>1</integer>
 					<key>page</key>
 					<integer>54</integer>
+					<key>section</key>
+					<string>Nonplayer Characters</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>2</integer>
+					<key>page</key>
+					<integer>56</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>7</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>11</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -51863,6 +55482,18 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 					<integer>345</integer>
 					<key>section</key>
 					<string>Nonplayer Characters</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>11</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>12</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -51974,6 +55605,18 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 					<integer>346</integer>
 					<key>section</key>
 					<string>Nonplayer Characters</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>12</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>15</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -52100,6 +55743,12 @@ Cantrips (at will): druidcraft, produce flame, shillelagh
 					<key>section</key>
 					<string>Nonplayer Characters</string>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>16</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -52213,6 +55862,20 @@ Cantrips (at will): druidcraft, produce flame, shillelagh
 					<integer>1</integer>
 					<key>page</key>
 					<integer>54</integer>
+					<key>section</key>
+					<string>Nonplayer Characters</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>11</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>17</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -52339,6 +56002,20 @@ Cantrips (at will): druidcraft, produce flame, shillelagh
 					<integer>1</integer>
 					<key>page</key>
 					<integer>54</integer>
+					<key>section</key>
+					<string>Nonplayer Characters</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>12</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>18</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -52449,6 +56126,20 @@ Cantrips (at will): druidcraft, produce flame, shillelagh
 					<integer>1</integer>
 					<key>page</key>
 					<integer>55</integer>
+					<key>section</key>
+					<string>Nonplayer Characters</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>13</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>19</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -52564,6 +56255,24 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation
 					<key>section</key>
 					<string>Nonplayer Characters</string>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>13</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>21</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>26</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -52665,6 +56374,14 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation
 					<integer>1</integer>
 					<key>page</key>
 					<integer>55</integer>
+					<key>section</key>
+					<string>Nonplayer Characters</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>15</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -52790,6 +56507,18 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 					<key>section</key>
 					<string>Nonplayer Characters</string>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>16</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>31</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -52903,6 +56632,18 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 					<integer>349</integer>
 					<key>section</key>
 					<string>Nonplayer Characters</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>17</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>33</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -53029,6 +56770,8 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 					<integer>1</integer>
 					<key>page</key>
 					<integer>55</integer>
+					<key>section</key>
+					<string>Nonplayer Characters</string>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -53129,6 +56872,18 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 					<integer>350</integer>
 					<key>section</key>
 					<string>Nonplayer Characters</string>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>6</integer>
+					<key>page</key>
+					<integer>24</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>34</integer>
 				</dict>
 			</array>
 			<key>tags</key>
@@ -53250,6 +57005,18 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 					<key>section</key>
 					<string>Nonplayer Characters</string>
 				</dict>
+				<dict>
+					<key>book</key>
+					<integer>4</integer>
+					<key>page</key>
+					<integer>21</integer>
+				</dict>
+				<dict>
+					<key>book</key>
+					<integer>8</integer>
+					<key>page</key>
+					<integer>35</integer>
+				</dict>
 			</array>
 			<key>tags</key>
 			<array>
@@ -53259,9 +57026,1142 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 			<array>
 			</array>
 		</dict>
+		<dict>
+			<key>actions</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Multiattack</string>
+					<key>text</key>
+					<string>The dragonfang attacks twice with its shortsword.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Shortsword</string>
+					<key>text</key>
+					<string>Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) piercing damage plus 7 (2d6) damage of the type to which the dragonfang has damage resistance.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Orb of Dragon's Breath (2/Day)</string>
+					<key>text</key>
+					<string>Ranged Spell Attack: +5 to hit, range 90 ft., one target. Hit: 22 (5d8) damage of the type to which the dragonfang has damage resistance.</string>
+				</dict>
+			</array>
+			<key>info</key>
+			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
+				<key>armorClass</key>
+				<string>15 (studded leather)</string>
+				<key>cha</key>
+				<integer>14</integer>
+				<key>challenge</key>
+				<string>5 (1,800 XP)</string>
+				<key>charisma</key>
+				<string>14 (+2)</string>
+				<key>con</key>
+				<integer>14</integer>
+				<key>constitution</key>
+				<string>14 (+2)</string>
+				<key>cr</key>
+				<real>5.0</real>
+				<key>damageResistances</key>
+				<string>one of the following: acid, cold, fire, lightning, or poison</string>
+				<key>dex</key>
+				<integer>16</integer>
+				<key>dexterity</key>
+				<string>16 (+3)</string>
+				<key>hitPoints</key>
+				<string>78 (12d8 + 24)</string>
+				<key>hp</key>
+				<integer>78</integer>
+				<key>hpDice</key>
+				<string>12d8+24</string>
+				<key>int</key>
+				<integer>12</integer>
+				<key>intelligence</key>
+				<string>12 (+1)</string>
+				<key>languages</key>
+				<string>Common, Draconic, Infernal</string>
+				<key>name</key>
+				<string>Dragonfang</string>
+				<key>passivePerception</key>
+				<integer>11</integer>
+				<key>savingThrows</key>
+				<string>Wis +3</string>
+				<key>senses</key>
+				<string>passive Perception 11</string>
+				<key>sizeTypeAlignment</key>
+				<string>Medium humanoid (human), neutral evil</string>
+				<key>sizeValue</key>
+				<string>Medium</string>
+				<key>skills</key>
+				<string>Deception +4, Stealth +5</string>
+				<key>speed</key>
+				<string>30 ft.</string>
+				<key>str</key>
+				<integer>11</integer>
+				<key>strength</key>
+				<string>11 (+0)</string>
+				<key>type</key>
+				<string>humanoid</string>
+				<key>wis</key>
+				<integer>12</integer>
+				<key>wisdom</key>
+				<string>12 (+1)</string>
+				<key>xp</key>
+				<integer>1800</integer>
+			</dict>
+			<key>legendaryActions</key>
+			<array>
+			</array>
+			<key>name</key>
+			<string>Dragonfang</string>
+			<key>reactions</key>
+			<array>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>5</integer>
+					<key>page</key>
+					<integer>89</integer>
+				</dict>
+			</array>
+			<key>tags</key>
+			<array>
+				<string>human</string>
+			</array>
+			<key>traits</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Dragon Fanatic</string>
+					<key>text</key>
+					<string>The dragonfang has advantage on saving throws against being charmed or frightened. While the dragonfang can see a dragon or higher-ranking Cult of the Dragon cultist friendly to it, the dragonfang ignores the effects of being charmed or frightened.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Fanatic Advantage</string>
+					<key>text</key>
+					<string>Once per turn, if the dragonfang makes a weapon attack with advantage on the attack roll and hits, the target takes an extra 10 (3d6) damage.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Limited Flight</string>
+					<key>text</key>
+					<string>The dragonfang can use a bonus action to gain a flying speed of 30 feet until the end of its turn.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Pack Tactics</string>
+					<key>text</key>
+					<string>The dragonfang has advantage on an attack roll against a creature if at least one of the dragonfang's allies is within 5 feet of the creature and the ally isn't incapacitated.</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>actions</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Multiattack</string>
+					<key>text</key>
+					<string>The dragonsoul attacks twice with its shortsword.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Shortsword</string>
+					<key>text</key>
+					<string>Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) piercing damage plus 10 (3d6) damage of the type to which the dragonsoul has damage resistance.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Orb of Dragon's Breath (3/Day). Ranged Spell Attack: +7 to hit, range 90 ft., one target. Hit: 27 (6d8) damage of the type to which the dragonsoul has damage resistance</string>
+					<key>text</key>
+					<string></string>
+				</dict>
+			</array>
+			<key>info</key>
+			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
+				<key>armorClass</key>
+				<string>16 (studded leather)</string>
+				<key>cha</key>
+				<integer>16</integer>
+				<key>challenge</key>
+				<string>7 (2,900 XP)</string>
+				<key>charisma</key>
+				<string>16 (+3)</string>
+				<key>con</key>
+				<integer>14</integer>
+				<key>constitution</key>
+				<string>14 (+2)</string>
+				<key>cr</key>
+				<real>7.0</real>
+				<key>damageResistances</key>
+				<string>one of the following: acid, cold, fire, lightning, or poison</string>
+				<key>dex</key>
+				<integer>18</integer>
+				<key>dexterity</key>
+				<string>18 (+4)</string>
+				<key>hitPoints</key>
+				<string>110 (17d8 + 34)</string>
+				<key>hp</key>
+				<integer>110</integer>
+				<key>hpDice</key>
+				<string>17d8+34</string>
+				<key>int</key>
+				<integer>13</integer>
+				<key>intelligence</key>
+				<string>13 (+1)</string>
+				<key>languages</key>
+				<string>Common, Draconic, Infernal</string>
+				<key>name</key>
+				<string>Dragonsoul</string>
+				<key>passivePerception</key>
+				<integer>11</integer>
+				<key>savingThrows</key>
+				<string>Wis +4</string>
+				<key>senses</key>
+				<string>passive Perception 11</string>
+				<key>sizeTypeAlignment</key>
+				<string>Medium humanoid (human), neutral evil</string>
+				<key>sizeValue</key>
+				<string>Medium</string>
+				<key>skills</key>
+				<string>Deception +6, Stealth +7</string>
+				<key>speed</key>
+				<string>30 ft.</string>
+				<key>str</key>
+				<integer>11</integer>
+				<key>strength</key>
+				<string>11 (+0)</string>
+				<key>type</key>
+				<string>humanoid</string>
+				<key>wis</key>
+				<integer>12</integer>
+				<key>wisdom</key>
+				<string>12 (+1)</string>
+				<key>xp</key>
+				<integer>2900</integer>
+			</dict>
+			<key>legendaryActions</key>
+			<array>
+			</array>
+			<key>name</key>
+			<string>Dragonsoul</string>
+			<key>reactions</key>
+			<array>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>5</integer>
+					<key>page</key>
+					<integer>89</integer>
+				</dict>
+			</array>
+			<key>tags</key>
+			<array>
+				<string>human</string>
+			</array>
+			<key>traits</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Dragon Fanatic</string>
+					<key>text</key>
+					<string>The dragonsoul has advantage on saving throws against being charmed or frightened. While the dragonsoul can see a dragon or higher-ranking Cult of the Dragon cultist friendly to it, the dragonsoul ignores the effects of being charmed or frightened.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Fanatic Advantage</string>
+					<key>text</key>
+					<string>Once per turn, if the dragonsoul makes a weapon attack with advantage on the attack roll and hits, the target takes an extra 10 (3d6) damage.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Limited Flight</string>
+					<key>text</key>
+					<string>The dragonsoul can use a bonus action to gain a flying speed of 30 feet until the end of its turn.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Pack Tactics</string>
+					<key>text</key>
+					<string>The dragonsoul has advantage on an attack roll against a creature if at least one of the dragonsoul's allies is within 5 feet of the creature and the ally isn't incapacitated.</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>actions</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Multiattack</string>
+					<key>text</key>
+					<string>The dragonwing attacks twice with its scimitar.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Scimitar</string>
+					<key>text</key>
+					<string>Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) slashing damage plus 3 (1d6) damage of the type to which the cultist has damage resistance.</string>
+				</dict>
+			</array>
+			<key>info</key>
+			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
+				<key>armorClass</key>
+				<string>14 (leather armor)</string>
+				<key>cha</key>
+				<integer>13</integer>
+				<key>challenge</key>
+				<string>2 (450 XP)</string>
+				<key>charisma</key>
+				<string>13 (+1)</string>
+				<key>con</key>
+				<integer>13</integer>
+				<key>constitution</key>
+				<string>13 (+1)</string>
+				<key>cr</key>
+				<real>2.0</real>
+				<key>damageResistances</key>
+				<string>one of the following: acid, cold, fire, lightning, or poison</string>
+				<key>dex</key>
+				<integer>16</integer>
+				<key>dexterity</key>
+				<string>16 (+3)</string>
+				<key>hitPoints</key>
+				<string>33 (6d8 + 6)</string>
+				<key>hp</key>
+				<integer>33</integer>
+				<key>hpDice</key>
+				<string>6d8+6</string>
+				<key>int</key>
+				<integer>11</integer>
+				<key>intelligence</key>
+				<string>11 (+0)</string>
+				<key>languages</key>
+				<string>Common, Draconic</string>
+				<key>name</key>
+				<string>Dragonwing</string>
+				<key>passivePerception</key>
+				<integer>10</integer>
+				<key>savingThrows</key>
+				<string>Wis +2</string>
+				<key>senses</key>
+				<string>passive Perception 10</string>
+				<key>sizeTypeAlignment</key>
+				<string>Medium humanoid (human), neutral evil</string>
+				<key>sizeValue</key>
+				<string>Medium</string>
+				<key>skills</key>
+				<string>Deception +3, Stealth +5</string>
+				<key>speed</key>
+				<string>30 ft.</string>
+				<key>str</key>
+				<integer>11</integer>
+				<key>strength</key>
+				<string>11 (+0)</string>
+				<key>type</key>
+				<string>humanoid</string>
+				<key>wis</key>
+				<integer>11</integer>
+				<key>wisdom</key>
+				<string>11 (+0)</string>
+				<key>xp</key>
+				<integer>450</integer>
+			</dict>
+			<key>legendaryActions</key>
+			<array>
+			</array>
+			<key>name</key>
+			<string>Dragonwing</string>
+			<key>reactions</key>
+			<array>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>5</integer>
+					<key>page</key>
+					<integer>90</integer>
+				</dict>
+			</array>
+			<key>tags</key>
+			<array>
+				<string>human</string>
+			</array>
+			<key>traits</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Dragon Fanatic</string>
+					<key>text</key>
+					<string>The dragonwing has advantage on saving throws against being charmed or frightened. While the dragonwing can see a dragon or higher-ranking Cult of the Dragon cultist friendly to it, the dragonwing ignores the effects of being charmed or frightened.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Fanatical Advantage</string>
+					<key>text</key>
+					<string>Once per turn, if the dragonwing makes a weapon attack with advantage on the attack roll and hits, the target takes an extra 7 (2d6) damage.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Limited Flight</string>
+					<key>text</key>
+					<string>The dragonwing can use a bonus action to gain a flying speed of 30 feet until the end of its turn.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Pack Tactics</string>
+					<key>text</key>
+					<string>The dragonwing has advantage on an attack roll against a creature if at least one of the dragonwing's allies is within 5 feet of the creature and the ally isn't incapacitated.</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>actions</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Bite</string>
+					<key>text</key>
+					<string>Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 5 (1d8 + 1) piercing damage plus 4 (1d8) cold damage. If the target is a Medium or smaller creature, it is grappled (escape DC 11). Until this grapple ends, the toad can't bite another target.</string>
+				</dict>
+			</array>
+			<key>info</key>
+			<dict>
+				<key>alignmentValue</key>
+				<string>neutral</string>
+				<key>armorClass</key>
+				<string>12 (natural armor)</string>
+				<key>cha</key>
+				<integer>6</integer>
+				<key>challenge</key>
+				<string>1 (200 XP)</string>
+				<key>charisma</key>
+				<string>6 (-2)</string>
+				<key>con</key>
+				<integer>14</integer>
+				<key>constitution</key>
+				<string>14 (+2)</string>
+				<key>cr</key>
+				<real>1.0</real>
+				<key>damageImmunities</key>
+				<string>cold</string>
+				<key>dex</key>
+				<integer>10</integer>
+				<key>dexterity</key>
+				<string>10 (+0)</string>
+				<key>hitPoints</key>
+				<string>32 (5d8 + 10)</string>
+				<key>hp</key>
+				<integer>32</integer>
+				<key>hpDice</key>
+				<string>5d8+10</string>
+				<key>int</key>
+				<integer>8</integer>
+				<key>intelligence</key>
+				<string>8 (-1)</string>
+				<key>languages</key>
+				<string>Ice Toad</string>
+				<key>name</key>
+				<string>Ice Toad</string>
+				<key>passivePerception</key>
+				<integer>12</integer>
+				<key>senses</key>
+				<string>darkvision 60 ft., passive Perception 12</string>
+				<key>sizeTypeAlignment</key>
+				<string>Medium monstrosity, neutral</string>
+				<key>sizeValue</key>
+				<string>Medium</string>
+				<key>skills</key>
+				<string>Perception +2</string>
+				<key>speed</key>
+				<string>30 ft., swim 30 ft.</string>
+				<key>str</key>
+				<integer>13</integer>
+				<key>strength</key>
+				<string>13 (+1)</string>
+				<key>type</key>
+				<string>monstrosity</string>
+				<key>wis</key>
+				<integer>10</integer>
+				<key>wisdom</key>
+				<string>10 (+0)</string>
+				<key>xp</key>
+				<integer>200</integer>
+			</dict>
+			<key>legendaryActions</key>
+			<array>
+			</array>
+			<key>name</key>
+			<string>Ice Toad</string>
+			<key>reactions</key>
+			<array>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>5</integer>
+					<key>page</key>
+					<integer>90</integer>
+				</dict>
+			</array>
+			<key>tags</key>
+			<array>
+			</array>
+			<key>traits</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Amphibious</string>
+					<key>text</key>
+					<string>The toad can breathe air and water.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Cold Aura</string>
+					<key>text</key>
+					<string>Any creature that starts its turn within 5 feet of the toad takes 3 (1d6) cold damage.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Standing Leap</string>
+					<key>text</key>
+					<string>The toad's long jump is up to 20 feet and its high jump is up to 10 feet, with or without a running start.</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>actions</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Multiattack</string>
+					<key>text</key>
+					<string>Naergoth makes three attacks, either with his longsword or longbow. He can use Life Drain in place of one longsword attack.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Life Drain</string>
+					<key>text</key>
+					<string>Melee Weapon Attack: +9 to hit, reach 5 ft., one creature. Hit: 20 (5d6 + 3) necrotic damage. The target must succeed on a DC 15 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. This reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0.
+A humanoid slain by this attack rises 24 hours later as a zombie under Naergoth's control, unless the humanoid is restored to life or its body is destroyed. Naergoth can have no more than twelve zombies under his control at one time.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Longsword</string>
+					<key>text</key>
+					<string>Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 9 (1d8 + 5) slashing damage, or 10 (1d10 + 5) slashing damage if used with two hands, plus 10 (3d6) necrotic damage.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Longbow</string>
+					<key>text</key>
+					<string>Ranged Weapon Attack: +5 to hit, range 150/600 ft., one target. Hit: 5 (1d8 + 1) piercing damage plus 10 (3d6) necrotic damage.</string>
+				</dict>
+			</array>
+			<key>info</key>
+			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
+				<key>armorClass</key>
+				<string>18 (plate)</string>
+				<key>cha</key>
+				<integer>16</integer>
+				<key>challenge</key>
+				<string>11 (7,200 XP)</string>
+				<key>charisma</key>
+				<string>16 (+3)</string>
+				<key>con</key>
+				<integer>16</integer>
+				<key>conditionImmunities</key>
+				<string>exhaustion, poisoned</string>
+				<key>constitution</key>
+				<string>16 (+3)</string>
+				<key>cr</key>
+				<real>11.0</real>
+				<key>damageImmunities</key>
+				<string>poison</string>
+				<key>damageResistances</key>
+				<string>necrotic; bludgeoning, piercing, and slashing from nonmagical weapons that aren't silvered</string>
+				<key>dex</key>
+				<integer>12</integer>
+				<key>dexterity</key>
+				<string>12 (+1)</string>
+				<key>hitPoints</key>
+				<string>135 (18d8 + 54)</string>
+				<key>hp</key>
+				<integer>135</integer>
+				<key>hpDice</key>
+				<string>18d8+54</string>
+				<key>int</key>
+				<integer>12</integer>
+				<key>intelligence</key>
+				<string>12 (+1)</string>
+				<key>languages</key>
+				<string>Common, Draconic</string>
+				<key>name</key>
+				<string>Naergoth Bladelord</string>
+				<key>passivePerception</key>
+				<integer>16</integer>
+				<key>savingThrows</key>
+				<string>Dex +5, Wis +6</string>
+				<key>senses</key>
+				<string>darkvision 60 ft., passive Perception 16</string>
+				<key>sizeTypeAlignment</key>
+				<string>Medium undead, neutral evil</string>
+				<key>sizeValue</key>
+				<string>Medium</string>
+				<key>skills</key>
+				<string>Perception +6, Stealth +5</string>
+				<key>speed</key>
+				<string>30 ft.</string>
+				<key>str</key>
+				<integer>20</integer>
+				<key>strength</key>
+				<string>20 (+5)</string>
+				<key>type</key>
+				<string>undead</string>
+				<key>wis</key>
+				<integer>14</integer>
+				<key>wisdom</key>
+				<string>14 (+2)</string>
+				<key>xp</key>
+				<integer>7200</integer>
+			</dict>
+			<key>legendaryActions</key>
+			<array>
+			</array>
+			<key>name</key>
+			<string>Naergoth Bladelord</string>
+			<key>reactions</key>
+			<array>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>5</integer>
+					<key>page</key>
+					<integer>90</integer>
+				</dict>
+			</array>
+			<key>tags</key>
+			<array>
+			</array>
+			<key>traits</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Sunlight Sensitivity</string>
+					<key>text</key>
+					<string>While in sunlight, Naergoth has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight.</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>actions</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Multiattack</string>
+					<key>text</key>
+					<string>Neronvain makes two attacks, either with his shortsword or Eldritch Arrow.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Shortsword</string>
+					<key>text</key>
+					<string>Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) piercing damage plus 13 (3d8) poison damage.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Eldritch Arrow</string>
+					<key>text</key>
+					<string>Ranged Spell Attack: +7 to hit, range 120 ft., one target. Hit: 11 (2d10) force damage plus 9 (2d8) poison damage.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Poisonous Cloud (2/Day)</string>
+					<key>text</key>
+					<string>Poison gas fills a 20-foot-radius sphere centered on a point Neronvain can see within 50 feet of him. The gas spreads around corners and remains until the start of Neronvain's next turn. Each creature that starts its turn in the gas must succeed on a DC 16 Constitution saving throw or be poisoned for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.</string>
+				</dict>
+			</array>
+			<key>info</key>
+			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
+				<key>armorClass</key>
+				<string>17</string>
+				<key>cha</key>
+				<integer>18</integer>
+				<key>challenge</key>
+				<string>9 (5,000 XP)</string>
+				<key>charisma</key>
+				<string>18 (+4)</string>
+				<key>con</key>
+				<integer>15</integer>
+				<key>conditionImmunities</key>
+				<string>charmed, frightened, poisoned</string>
+				<key>constitution</key>
+				<string>15 (+2)</string>
+				<key>cr</key>
+				<real>9.0</real>
+				<key>damageImmunities</key>
+				<string>poison</string>
+				<key>dex</key>
+				<integer>17</integer>
+				<key>dexterity</key>
+				<string>17 (+3)</string>
+				<key>hitPoints</key>
+				<string>117 (18d8 + 36)</string>
+				<key>hp</key>
+				<integer>117</integer>
+				<key>hpDice</key>
+				<string>18d8+36</string>
+				<key>int</key>
+				<integer>16</integer>
+				<key>intelligence</key>
+				<string>16 (+3)</string>
+				<key>languages</key>
+				<string>Common, Draconic, Elvish, Infernal</string>
+				<key>name</key>
+				<string>Neronvain</string>
+				<key>passivePerception</key>
+				<integer>15</integer>
+				<key>savingThrows</key>
+				<string>Constitution +6, Wisdom +5</string>
+				<key>senses</key>
+				<string>darkvision 60 ft., passive Perception 15</string>
+				<key>sizeTypeAlignment</key>
+				<string>Medium humanoid (elf), neutral evil</string>
+				<key>sizeValue</key>
+				<string>Medium</string>
+				<key>skills</key>
+				<string>Arcana +7, Perception +5</string>
+				<key>speed</key>
+				<string>30 ft.</string>
+				<key>str</key>
+				<integer>8</integer>
+				<key>strength</key>
+				<string>8 (-1)</string>
+				<key>type</key>
+				<string>humanoid</string>
+				<key>wis</key>
+				<integer>13</integer>
+				<key>wisdom</key>
+				<string>13 (+1)</string>
+				<key>xp</key>
+				<integer>5000</integer>
+			</dict>
+			<key>legendaryActions</key>
+			<array>
+			</array>
+			<key>name</key>
+			<string>Neronvain</string>
+			<key>reactions</key>
+			<array>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>5</integer>
+					<key>page</key>
+					<integer>91</integer>
+				</dict>
+			</array>
+			<key>tags</key>
+			<array>
+				<string>elf</string>
+			</array>
+			<key>traits</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Draconic Majesty</string>
+					<key>text</key>
+					<string>Neronvain adds his Charisma bonus to his AC (included).</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Fey Ancestry</string>
+					<key>text</key>
+					<string>Magic can't put Neronvain to sleep.</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>actions</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Burning Touch</string>
+					<key>text</key>
+					<string>Melee Spell Attack: +5 to hit, reach 5 ft., one target. Hit: 18 (4d8) fire damage.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Flaming Orb</string>
+					<key>text</key>
+					<string>Ranged Spell Attack: +5 to hit, range 90 ft., one target. Hit: 40 (9d8) fire damage.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Scorching Burst</string>
+					<key>text</key>
+					<string>Severin chooses a point he can see within 60 feet of him. Each creature within 5 feet of that point must make a DC 17 Dexterity saving throw, taking 18 (4d8) fire damage on a failed save, or half as much damage on a successful one.</string>
+				</dict>
+			</array>
+			<key>info</key>
+			<dict>
+				<key>alignmentValue</key>
+				<string>neutral evil</string>
+				<key>armorClass</key>
+				<string>16</string>
+				<key>cha</key>
+				<integer>20</integer>
+				<key>challenge</key>
+				<string>11 (7,200 XP)</string>
+				<key>charisma</key>
+				<string>20 (+5)</string>
+				<key>con</key>
+				<integer>16</integer>
+				<key>conditionImmunities</key>
+				<string>*charmed, frightened, poisoned</string>
+				<key>constitution</key>
+				<string>16 (+3)</string>
+				<key>cr</key>
+				<real>11.0</real>
+				<key>damageImmunities</key>
+				<string>*fire</string>
+				<key>damageResistances</key>
+				<string>*acid, cold, lightning, poison; bludgeoning, piercing, and slashing damage from nonmagical weapons</string>
+				<key>dex</key>
+				<integer>13</integer>
+				<key>dexterity</key>
+				<string>13 (+1)</string>
+				<key>hitPoints</key>
+				<string>150 (20d8 + 60)</string>
+				<key>hp</key>
+				<integer>150</integer>
+				<key>hpDice</key>
+				<string>20d8+60</string>
+				<key>int</key>
+				<integer>17</integer>
+				<key>intelligence</key>
+				<string>17 (+3)</string>
+				<key>languages</key>
+				<string>Common, Draconic, Infernal</string>
+				<key>name</key>
+				<string>Severin</string>
+				<key>passivePerception</key>
+				<integer>11</integer>
+				<key>savingThrows</key>
+				<string>Dexterity +5, Wisdom +5</string>
+				<key>senses</key>
+				<string>darkvision 60 ft.*, passive Perception 11</string>
+				<key>sizeTypeAlignment</key>
+				<string>Medium humanoid (human), neutral evil</string>
+				<key>sizeValue</key>
+				<string>Medium</string>
+				<key>skills</key>
+				<string>Arcana +7, Religion +7</string>
+				<key>speed</key>
+				<string>30 ft.</string>
+				<key>str</key>
+				<integer>10</integer>
+				<key>strength</key>
+				<string>10 (+0)</string>
+				<key>type</key>
+				<string>humanoid</string>
+				<key>wis</key>
+				<integer>12</integer>
+				<key>wisdom</key>
+				<string>12 (+1)</string>
+				<key>xp</key>
+				<integer>7200</integer>
+			</dict>
+			<key>legendaryActions</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Attack</string>
+					<key>text</key>
+					<string>Severin makes one attack.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Fiery Teleport (Costs 2 Actions)</string>
+					<key>text</key>
+					<string>Severin, along with any objects he is wearing or carrying, teleports up to 60 feet to an unoccupied space he can see. Each creature within 5 feet of Severin before he teleports takes 5 (1d10) fire damage.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Hellish Chains (Costs 3 Actions)</string>
+					<key>text</key>
+					<string>Severin targets one creature he can see within 30 feet of him. The target is wrapped in magical chains of fire and restrained. The restrained target takes 21 (6d6) fire damage at the start of each of its turns. At the end of its turns, the target can make a DC 17 Strength saving throw, ending the effect on itself on a success.</string>
+				</dict>
+			</array>
+			<key>name</key>
+			<string>Severin</string>
+			<key>reactions</key>
+			<array>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>5</integer>
+					<key>page</key>
+					<integer>92</integer>
+				</dict>
+			</array>
+			<key>tags</key>
+			<array>
+				<string>human</string>
+			</array>
+			<key>traits</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Special Equipment</string>
+					<key>text</key>
+					<string>Severin has the /Mask of the Dragon Queen/.
+*Severin has these features while wearing the /Mask of the Dragon Queen/.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Draconic Majesty</string>
+					<key>text</key>
+					<string>Severin adds his Charisma bonus to his AC (included).</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Ignite Enemy</string>
+					<key>text</key>
+					<string>If Severin deals fire damage to a creature while wearing the /Mask of the Dragon Queen/, the target catches fire. At the start of each of its turns, the burning target takes 5 (1d10) fire damage. A creature within reach of the fire can use an action to extinguish it.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Legendary Resistance (5/Day)</string>
+					<key>text</key>
+					<string>While wearing the /Mask of the Dragon Queen/, if Severin fails a saving throw, he can choose to succeed instead.</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>actions</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Multiattack</string>
+					<key>text</key>
+					<string>Tiamat can use her Frightful Presence. She then makes three attacks: two with her claws and one with her tail.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Claw</string>
+					<key>text</key>
+					<string>Melee Weapon Attack: +19 to hit, reach 15 ft., one target. Hit: 24 (4d6 + 10) slashing damage.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Tail</string>
+					<key>text</key>
+					<string>Melee Weapon Attack: +19 to hit, reach 25 ft., one target. Hit: 28 (4d8 + 10) piercing damage.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Frightful Presence</string>
+					<key>text</key>
+					<string>Each creature of Tiamat's choice that is within 240 feet of Tiamat and aware of her must succeed on a DC 26 Wisdom saving throw or become frightened for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to Tiamat's Frightful Presence for the next 24 hours.</string>
+				</dict>
+			</array>
+			<key>info</key>
+			<dict>
+				<key>alignmentValue</key>
+				<string>chaotic evil</string>
+				<key>armorClass</key>
+				<string>25 (natural armor)</string>
+				<key>cha</key>
+				<integer>28</integer>
+				<key>challenge</key>
+				<string>30 (155,000 XP)</string>
+				<key>charisma</key>
+				<string>28 (+9)</string>
+				<key>con</key>
+				<integer>30</integer>
+				<key>conditionImmunities</key>
+				<string>blinded, charmed, deafened, frightened, poisoned, stunned</string>
+				<key>constitution</key>
+				<string>30 (+10)</string>
+				<key>cr</key>
+				<real>30.0</real>
+				<key>damageImmunities</key>
+				<string>acid, cold, fire, lightning, poison; bludgeoning, piercing, and slashing from nonmagical weapons</string>
+				<key>dex</key>
+				<integer>10</integer>
+				<key>dexterity</key>
+				<string>10 (+0)</string>
+				<key>hitPoints</key>
+				<string>615 (30d20 + 300)</string>
+				<key>hp</key>
+				<integer>615</integer>
+				<key>hpDice</key>
+				<string>30d20+300</string>
+				<key>int</key>
+				<integer>26</integer>
+				<key>intelligence</key>
+				<string>26 (+8)</string>
+				<key>languages</key>
+				<string>Common, Draconic, Infernal</string>
+				<key>name</key>
+				<string>Tiamat</string>
+				<key>passivePerception</key>
+				<integer>36</integer>
+				<key>savingThrows</key>
+				<string>Strength +19, Dexterity +9, Wisdom +17</string>
+				<key>senses</key>
+				<string>darkvision 240 ft., truesight 120 ft., passive Perception 36</string>
+				<key>sizeTypeAlignment</key>
+				<string>Gargantuan fiend, chaotic evil</string>
+				<key>sizeValue</key>
+				<string>Gargantuan</string>
+				<key>skills</key>
+				<string>Arcana +17, Perception +26, Religion +17</string>
+				<key>speed</key>
+				<string>60 ft., fly 120 ft.</string>
+				<key>str</key>
+				<integer>30</integer>
+				<key>strength</key>
+				<string>30 (+10)</string>
+				<key>type</key>
+				<string>fiend</string>
+				<key>wis</key>
+				<integer>26</integer>
+				<key>wisdom</key>
+				<string>26 (+8)</string>
+				<key>xp</key>
+				<integer>155000</integer>
+			</dict>
+			<key>legendaryActions</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Bite</string>
+					<key>text</key>
+					<string>Melee Weapon Attack: +19 to hit, reach 20 ft., one target. Hit: 32 (4d10 + 10) slashing damage plus 14 (4d6) acid damage (black dragon head), lightning damage (blue dragon head), poison damage (green dragon head), fire damage (red dragon head), or cold damage (white dragon head).</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Black Dragon Head: Acid Breath (Costs 2 Actions)</string>
+					<key>text</key>
+					<string>Tiamat breathes acid in a 120-foot line that is 10 feet wide. Each creature in that line must make a DC 27 Dexterity saving throw, taking 67 (15d8) acid damage on a failed save, or half as much damage on a successful one.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Blue Dragon Head: Lightning Breath (Costs 2 Actions)</string>
+					<key>text</key>
+					<string>Tiamat breathes lightning in a 120-foot line that is 10 feet wide. Each creature in that line must make a DC 27 Dexterity saving throw, taking 88 (16d10) lightning damage on a failed save, or half as much damage on a successful one.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Green Dragon Head: Poison Breath (Costs 2 Actions)</string>
+					<key>text</key>
+					<string>Tiamat breathes poisonous gas in a 90-foot cone. Each creature in that area must make a DC 27 Constitution saving throw, taking 77 (22d6) poison damage on a failed save, or half as much damage on a successful one.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Red Dragon Head: Fire Breath (Costs 2 Actions)</string>
+					<key>text</key>
+					<string>Tiamat breathes fire in a 90-foot cone. Each creature in that area must make a DC 27 Dexterity saving throw, taking 91 (26d6) fire damage on a failed save, or half as much damage on a successful one.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>White Dragon Head: Cold Breath (Costs 2 Actions)</string>
+					<key>text</key>
+					<string>Tiamat breathes an icy blast in a 90-foot cone. Each creature in that area must make a DC 27 Dexterity saving throw, taking 72 (16d8) cold damage on a failed save, or half as much damage on a successful one.</string>
+				</dict>
+			</array>
+			<key>name</key>
+			<string>Tiamat</string>
+			<key>reactions</key>
+			<array>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>5</integer>
+					<key>page</key>
+					<integer>92</integer>
+				</dict>
+			</array>
+			<key>tags</key>
+			<array>
+			</array>
+			<key>traits</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Discorporation</string>
+					<key>text</key>
+					<string>When Tiamat drops to 0 hit points or dies, her body is destroyed but her essence travels back to her domain in the Nine Hells, and she is unable to take physical form for a time.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Innate Spellcasting (3/Day)</string>
+					<key>text</key>
+					<string>Tiamat can innately cast divine word (spell save DC 26). Her spellcasting ability is Charisma.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Legendary Resistance (5/Day)</string>
+					<key>text</key>
+					<string>If Tiamat fails a saving throw, she can choose to succeed instead.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Limited Magic Immunity</string>
+					<key>text</key>
+					<string>Unless she wishes to be affected, Tiamat is immune to spells of 6th level or lower. She has advantage on saving throws against all other spells and magical effects.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Magic Weapons</string>
+					<key>text</key>
+					<string>Tiamat's weapon attacks are magical.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Multiple Heads</string>
+					<key>text</key>
+					<string>Tiamat can take one reaction per turn, rather than only one per round. She also has advantage on saving throws against being knocked unconscious. If she fails a saving throw against an effect that would stun a creature, one of her unspent legendary actions is spent.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Regeneration</string>
+					<key>text</key>
+					<string>Tiamat regains 30 hit points at the start of her turn.</string>
+				</dict>
+			</array>
+		</dict>
 	</array>
 	<key>version</key>
-	<integer>1449482639</integer>
+	<integer>1449500113</integer>
 </dict>
 </plist>
 
