@@ -2341,9 +2341,9 @@ Cantrips (at will): mage hand, ray of frost, shocking grasp
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>Heavy Crossbow. Ranged Weapon Attack: +2 to hit, range 100 ft./400 ft., one target. Hit: 5 (1d10) piercing damage</string>
+					<string>Heavy Crossbow</string>
 					<key>text</key>
-					<string></string>
+					<string>Ranged Weapon Attack: +2 to hit, range 100 ft./400 ft., one target. Hit: 5 (1d10) piercing damage.</string>
 				</dict>
 			</array>
 			<key>info</key>
@@ -58161,7 +58161,7 @@ A humanoid slain by this attack rises 24 hours later as a zombie under Naergoth'
 		</dict>
 	</array>
 	<key>version</key>
-	<integer>1449500113</integer>
+	<integer>1449500320</integer>
 </dict>
 </plist>
 
