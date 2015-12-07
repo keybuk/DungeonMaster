@@ -305,12 +305,30 @@ def main():
 	books = [
 		{
 			"name": "Monster Manual",
+			"type": 0,
 		},
 		{
-			"name": "Dungeon Master's Basic Rules"
+			"name": "Dungeon Master's Basic Rules",
+			"type": 2,
 		},
+		{
+			"name": "Hoard of the Dragon Queen",
+			"type": 1,
+		},
+		{
+			"name": "Hoard of the Dragon Queen Online Supplement",
+			"type": 2,
+		},
+		{
+			"name": "The Rise of Tiamat",
+			"type": 1,
+		},
+		{
+			"name": "The Rise of Tiamat Online Supplement",
+			"type": 2,
+		}
 	]
-	bookTags = [ "mm", "dmbr" ]
+	bookTags = [ "mm", "dmbr", "hotdq", "hotdqs", "trot", "trots" ]
 
 	monsters = []
 	for filename in monster.local_files():

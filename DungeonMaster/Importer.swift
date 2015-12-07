@@ -38,6 +38,7 @@ func importIfNeeded() {
     for bookData in bookDatas {
         let name = bookData["name"] as! String
         let book = Book(name: name, inManagedObjectContext: managedObjectContext)
+        book.typeValue = Int16(bookData["type"]!!.integerValue)
         books.append(book)
     }
     

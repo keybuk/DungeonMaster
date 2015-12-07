@@ -33,12 +33,13 @@ class BooksTableViewController: UITableViewController {
         let entity = NSEntityDescription.entity(Model.Book, inManagedObjectContext: managedObjectContext)
         fetchRequest.entity = entity
         
-        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
+        let typeSortDescriptor = NSSortDescriptor(key: "typeValue", ascending: true)
+        let nameSortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        fetchRequest.sortDescriptors = [ typeSortDescriptor, nameSortDescriptor ]
         
         // Edit the section name key path and cache name if appropriate.
         // nil for section name key path means "no sections".
-        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: "typeValue", cacheName: nil)
         aFetchedResultsController.delegate = self
         _fetchedResultsController = aFetchedResultsController
         
@@ -82,7 +83,18 @@ extension BooksTableViewController {
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Official Source Books"
+        let sectionInfo = fetchedResultsController.sections![section]
+        let book = sectionInfo.objects?[0] as? Book
+        guard book != nil else { return nil }
+        
+        switch book!.type {
+        case .CoreRulebook:
+            return "Core Rulebooks"
+        case .OfficialAdventure:
+            return "Official Adventures"
+        case .OnlineSupplement:
+            return "Online Supplements"
+        }
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

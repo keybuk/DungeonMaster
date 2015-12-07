@@ -7,10 +7,38 @@
 		<dict>
 			<key>name</key>
 			<string>Monster Manual</string>
+			<key>type</key>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>name</key>
 			<string>Dungeon Master's Basic Rules</string>
+			<key>type</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Hoard of the Dragon Queen</string>
+			<key>type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Hoard of the Dragon Queen Online Supplement</string>
+			<key>type</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>The Rise of Tiamat</string>
+			<key>type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>The Rise of Tiamat Online Supplement</string>
+			<key>type</key>
+			<integer>2</integer>
 		</dict>
 	</array>
 	<key>monsters</key>
@@ -53233,7 +53261,7 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 		</dict>
 	</array>
 	<key>version</key>
-	<integer>1449479117</integer>
+	<integer>1449482639</integer>
 </dict>
 </plist>
 

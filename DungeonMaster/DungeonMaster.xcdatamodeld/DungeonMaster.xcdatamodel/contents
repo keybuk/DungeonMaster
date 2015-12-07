@@ -7,6 +7,7 @@
     </entity>
     <entity name="Book" representedClassName=".Book" syncable="YES">
         <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="typeValue" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="sources" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Source" inverseName="book" inverseEntity="Source" syncable="YES"/>
     </entity>
     <entity name="Lair" representedClassName=".Lair" syncable="YES">
@@ -109,7 +110,7 @@
     </entity>
     <elements>
         <element name="Action" positionX="261" positionY="360" width="128" height="90"/>
-        <element name="Book" positionX="-261" positionY="198" width="128" height="75"/>
+        <element name="Book" positionX="-261" positionY="198" width="128" height="90"/>
         <element name="Lair" positionX="385" positionY="666" width="128" height="208"/>
         <element name="LairAction" positionX="567" positionY="630" width="128" height="75"/>
         <element name="LairTrait" positionX="567" positionY="717" width="128" height="75"/>
