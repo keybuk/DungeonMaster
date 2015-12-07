@@ -63,9 +63,11 @@ final class Monster: NSManagedObject {
         }
     }
 
-    // Hit Points and dice expression to generate.
+    // Hit Points and dice expression to generate, CR, and XP.
     @NSManaged var hp: Int16
     @NSManaged var hpDice: String
+    @NSManaged var cr: Float
+    @NSManaged var xp: Int32
 
     // Parsed ability scores, saving throws, skills, and passive Perception.
     @NSManaged var str: Int16

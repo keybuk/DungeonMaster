@@ -107,7 +107,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="98u-x2-6P7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="59Y-la-xli" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1529" y="-1548"/>
+            <point key="canvasLocation" x="2141" y="-1548"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="c6W-jn-lIe">
@@ -125,69 +125,114 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rPM-3V-nLR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="709" y="-1548"/>
+            <point key="canvasLocation" x="1424" y="-1548"/>
         </scene>
         <!--Monsters-->
-        <scene sceneID="WFH-Ar-e0T">
+        <scene sceneID="It0-Nm-NdZ">
             <objects>
-                <tableViewController id="RFK-ss-fCA" customClass="MonstersTableViewController" customModule="DungeonMaster" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="vb0-t3-Fg1">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Wkq-TG-mW3" customClass="MonstersViewController" customModule="DungeonMaster" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sFr-5D-qtB"/>
+                        <viewControllerLayoutGuide type="bottom" id="bh1-wQ-wlh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="p77-XZ-QhD">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lu8-85-bB2">
+                                <rect key="frame" x="0.0" y="101" width="600" height="499"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MonstersTableViewCell" textLabel="RgI-0A-gLR" style="IBUITableViewCellStyleDefault" id="blm-Pz-tal" customClass="MonstersTableViewCell" customModule="DungeonMaster" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="blm-Pz-tal" id="YDG-Qs-Ew0">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RgI-0A-gLR">
+                                                    <rect key="frame" x="15" y="0.0" width="570" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <connections>
+                                            <segue destination="vC3-pB-5Vb" kind="showDetail" identifier="MonsterDetailSegue" id="5QB-OF-e1J"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Wkq-TG-mW3" id="j5J-AQ-9kc"/>
+                                    <outlet property="delegate" destination="Wkq-TG-mW3" id="nq2-tU-Tgr"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1qj-kz-lcv" customClass="ExtendedNavigationBarView" customModule="DungeonMaster" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="600" height="36"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="egI-K3-ZHZ">
+                                        <rect key="frame" x="239" y="0.0" width="123" height="29"/>
+                                        <animations/>
+                                        <segments>
+                                            <segment title="Name"/>
+                                            <segment title="CR / XP"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="sortControlValueChanged:" destination="Wkq-TG-mW3" eventType="valueChanged" id="a7j-BW-VbH"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" red="0.96862745098039216" green="0.96998217281879195" blue="0.97027055369127513" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="egI-K3-ZHZ" secondAttribute="bottom" constant="8" id="a8e-Wx-wFL"/>
+                                    <constraint firstItem="egI-K3-ZHZ" firstAttribute="top" secondItem="1qj-kz-lcv" secondAttribute="top" id="faI-CY-egD"/>
+                                    <constraint firstItem="egI-K3-ZHZ" firstAttribute="centerX" secondItem="1qj-kz-lcv" secondAttribute="centerX" id="s2R-4r-N11"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MonstersTableViewCell" textLabel="hDn-ik-8jC" style="IBUITableViewCellStyleDefault" id="p7n-ea-lwh" customClass="MonstersTableViewCell" customModule="DungeonMaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p7n-ea-lwh" id="TK7-3a-5wp">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hDn-ik-8jC">
-                                            <rect key="frame" x="15" y="0.0" width="570" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <animations/>
-                                </tableViewCellContentView>
-                                <animations/>
-                                <connections>
-                                    <segue destination="vC3-pB-5Vb" kind="showDetail" identifier="MonsterDetailSegue" id="QAF-P0-zob"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="RFK-ss-fCA" id="LdH-ee-55F"/>
-                            <outlet property="delegate" destination="RFK-ss-fCA" id="QLD-Hi-qZF"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Monsters" id="jFU-9A-zdf">
-                        <barButtonItem key="leftBarButtonItem" title="Books" id="EyY-wN-ZSw">
+                        <constraints>
+                            <constraint firstItem="1qj-kz-lcv" firstAttribute="top" secondItem="sFr-5D-qtB" secondAttribute="bottom" id="0yy-Il-3Es"/>
+                            <constraint firstItem="bh1-wQ-wlh" firstAttribute="top" secondItem="lu8-85-bB2" secondAttribute="bottom" id="19L-5v-ghT"/>
+                            <constraint firstItem="lu8-85-bB2" firstAttribute="top" secondItem="sFr-5D-qtB" secondAttribute="bottom" id="19X-J5-21Y"/>
+                            <constraint firstItem="1qj-kz-lcv" firstAttribute="leading" secondItem="p77-XZ-QhD" secondAttribute="leading" id="Cct-LI-aD7"/>
+                            <constraint firstAttribute="trailing" secondItem="1qj-kz-lcv" secondAttribute="trailing" id="KXb-Ta-V2o"/>
+                            <constraint firstItem="lu8-85-bB2" firstAttribute="leading" secondItem="p77-XZ-QhD" secondAttribute="leading" id="V4l-on-WCr"/>
+                            <constraint firstAttribute="trailing" secondItem="lu8-85-bB2" secondAttribute="trailing" id="oft-xq-TnU"/>
+                            <constraint firstItem="lu8-85-bB2" firstAttribute="top" secondItem="1qj-kz-lcv" secondAttribute="bottom" constant="1" id="uZX-5y-2Rd"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="19X-J5-21Y"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Monsters" id="Vof-c2-HmX">
+                        <barButtonItem key="leftBarButtonItem" title="Books" id="tYc-aU-6Ay">
                             <connections>
-                                <segue destination="UmQ-Z7-aAB" kind="popoverPresentation" identifier="BooksPopoverSegue" popoverAnchorBarButtonItem="EyY-wN-ZSw" id="uNJ-lW-gUX">
+                                <segue destination="UmQ-Z7-aAB" kind="popoverPresentation" identifier="BooksPopoverSegue" popoverAnchorBarButtonItem="tYc-aU-6Ay" id="AVt-Zn-R2O">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                 </segue>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="searchDisplayController" destination="BBw-Eg-GbE" id="wpz-hf-5Xp"/>
+                        <outlet property="extendedNavigationBarView" destination="1qj-kz-lcv" id="egi-Wm-wtT"/>
+                        <outlet property="sortControl" destination="egI-K3-ZHZ" id="xew-yu-bZS"/>
+                        <outlet property="tableView" destination="lu8-85-bB2" id="BWH-98-bpD"/>
+                        <outlet property="topConstraintInsideSearch" destination="19X-J5-21Y" id="o1N-LN-PYv"/>
+                        <outlet property="topConstraintOutsideSearch" destination="uZX-5y-2Rd" id="ECD-Lx-RUK"/>
                     </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gnN-W6-isj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="BBw-Eg-GbE">
-                    <connections>
-                        <outlet property="delegate" destination="RFK-ss-fCA" id="YWh-hz-4Xz"/>
-                        <outlet property="searchContentsController" destination="RFK-ss-fCA" id="zTX-JH-BYS"/>
-                        <outlet property="searchResultsDataSource" destination="RFK-ss-fCA" id="UjI-bV-0s3"/>
-                        <outlet property="searchResultsDelegate" destination="RFK-ss-fCA" id="e32-8B-hEo"/>
-                    </connections>
-                </searchDisplayController>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ngm-tQ-aId" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="709" y="-739"/>
         </scene>
@@ -201,7 +246,7 @@
                         <animations/>
                     </navigationBar>
                     <connections>
-                        <segue destination="RFK-ss-fCA" kind="relationship" relationship="rootViewController" id="vl3-Ud-ya5"/>
+                        <segue destination="Wkq-TG-mW3" kind="relationship" relationship="rootViewController" id="hvA-Gp-Ad9"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rp9-rG-SIv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -240,6 +285,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="QAF-P0-zob"/>
+        <segue reference="5QB-OF-e1J"/>
     </inferredMetricsTieBreakers>
 </document>

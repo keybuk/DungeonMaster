@@ -44,6 +44,7 @@
         <attribute name="con" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="conditionImmunities" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="constitution" attributeType="String" syncable="YES"/>
+        <attribute name="cr" attributeType="Float" defaultValueString="0" syncable="YES"/>
         <attribute name="damageImmunities" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="damageResistances" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="damageVulnerabilities" optional="YES" attributeType="String" syncable="YES"/>
@@ -68,6 +69,7 @@
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="wis" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="wisdom" attributeType="String" syncable="YES"/>
+        <attribute name="xp" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="actions" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Action" inverseName="monster" inverseEntity="Action" syncable="YES"/>
         <relationship name="lair" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Lair" inverseName="monster" inverseEntity="Lair" syncable="YES"/>
         <relationship name="legendaryActions" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="LegendaryAction" inverseName="monster" inverseEntity="LegendaryAction" syncable="YES"/>
@@ -112,7 +114,7 @@
         <element name="LairAction" positionX="567" positionY="630" width="128" height="75"/>
         <element name="LairTrait" positionX="567" positionY="717" width="128" height="75"/>
         <element name="LegendaryAction" positionX="261" positionY="558" width="128" height="90"/>
-        <element name="Monster" positionX="79" positionY="216" width="128" height="628"/>
+        <element name="Monster" positionX="79" positionY="216" width="128" height="660"/>
         <element name="Reaction" positionX="261" positionY="459" width="128" height="90"/>
         <element name="RegionalEffect" positionX="565" positionY="801" width="128" height="75"/>
         <element name="Source" positionX="-92" positionY="198" width="128" height="105"/>

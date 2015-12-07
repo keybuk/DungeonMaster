@@ -25,8 +25,10 @@ HIT_POINTS_RE = re.compile(r'^(\d+) \(([^)]*)\)$')
 ABILITY_RE = re.compile(r'^(\d+) \(([+-]\d+)\)$')
 SENSES_RE = re.compile(r'^(?:.*, )?passive Perception (\d+)$')
 
-DICE_RE = re.compile(r'^(?:[1-9][0-9]*(?:d(?:2|4|6|8|10|12|20|100))(?: *[+-] *?(?=[^ ]))?)+$')
+DICE_RE = re.compile(r'^(?:[1-9][0-9]*(?:d(?:2|4|6|8|10|12|20|100))?(?: *[+-] *(?=[^ ]))?)+$')
 SPELL_RE = re.compile(r'/([a-z ]+)/')
+
+CHALLENGE_RE = re.compile(r'^([0-9/]+) \(([0-9,]+) XP\)$')
 
 class Exporter(monster.MonsterParser):
 
@@ -68,7 +70,7 @@ class Exporter(monster.MonsterParser):
 		try:
 			index = self.bookTags.index(source)
 		except ValueError:
-			self.error("Unknown book tag: %s" % bookTag)
+			raise self.error("Unknown book tag: %s" % bookTag)
 
 		source = {
 			"book": index,
@@ -85,7 +87,7 @@ class Exporter(monster.MonsterParser):
 
 		match = SIZE_TYPE_TAG_RE.match(line)
 		if match is None:
-			self.error("Size/Type/Alignment didn't match expected format: %s", line)
+			raise self.error("Size/Type/Alignment didn't match expected format: %s" % line)
 
 		(size, type, swarm_size, swarm_type, tags, alignment_text) = match.groups()
 		if swarm_size is not None or swarm_type is not None:
@@ -117,13 +119,13 @@ class Exporter(monster.MonsterParser):
 
 		match = HIT_POINTS_RE.match(line)
 		if match is None:
-			self.error("Hit Points didn't match expected format: %s" % line)
+			raise self.error("Hit Points didn't match expected format: %s" % line)
 
 		(hp, dice) = match.groups()
 
 		match = DICE_RE.match(dice)
 		if match is None:
-			self.error("Hit Points dice expression didn't match expected format: %s" % dice)
+			raise self.error("Hit Points dice expression didn't match expected format: %s" % dice)
 
 		self.info['hp'] = int(hp)
 		self.info['hpDice'] = dice.replace(" ", "")
@@ -153,13 +155,13 @@ class Exporter(monster.MonsterParser):
 	def handle_ability_score(self, line, textKey, scoreKey):
 		match = ABILITY_RE.match(line)
 		if match is None:
-			self.error("%s ability score doesn't match expected formated: %s" % (name.title(), line))
+			raise self.error("%s ability score doesn't match expected formated: %s" % (name.title(), line))
 
 		(score, modifier) = match.groups()
 		calculated = (int(score) - 10) / 2
 
 		if int(modifier) != calculated:
-			self.error("%s ability score modifier (%s) didn't match that calculated from score %s (%d)" % (
+			raise self.error("%s ability score modifier (%s) didn't match that calculated from score %s (%d)" % (
 				name.title(), modifier, score, calculated))
 
 		self.info[textKey] = line
@@ -191,7 +193,7 @@ class Exporter(monster.MonsterParser):
 
 		match = SENSES_RE.match(line)
 		if match is None:
-			raise self.error("Senses line didn't have passive Perception")
+			raise self.error("Senses line didn't have passive Perception: %s" % line)
 
 		(passive,) = match.groups()
 		self.info['passivePerception'] = int(passive)
@@ -204,6 +206,23 @@ class Exporter(monster.MonsterParser):
 	def handle_challenge(self, line):
 		# TODO: easy to parse
 		self.info['challenge'] = line
+
+		match = CHALLENGE_RE.match(line)
+		if match is None:
+			self.warning("Challenge didn't match expected format: %s" % line)
+		else:
+			(cr, xp) = match.groups()
+			if cr == '1/8':
+				cr = 1.0/8
+			elif cr == '1/4':
+				cr = 1.0/4
+			elif cr == '1/2':
+				cr = 1.0/2
+			else:
+				cr = float(cr)
+
+			self.info['cr'] = cr
+			self.info['xp'] = int(xp.replace(",", ""))
 
 	def add_action(self, list, name, lines):
 		name = name.rstrip('.')
