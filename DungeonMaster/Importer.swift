@@ -61,7 +61,7 @@ func importIfNeeded() {
                 monsterTags.append(tag)
             }
         }
-        monster.tags = NSSet(array: monsterTags)
+        monster.tags = NSOrderedSet(array: monsterTags)
         
         var sources = [Source]()
         let sourceDatas = monsterData["sources"] as! [NSDictionary]

@@ -13,7 +13,7 @@ final class Monster: NSManagedObject {
     
     @NSManaged var name: String
     @NSManaged var sources: NSSet
-    @NSManaged var tags: NSSet
+    @NSManaged var tags: NSOrderedSet
     
     // Size is a wrapped enum object.
     @NSManaged var sizeValue: String

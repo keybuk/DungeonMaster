@@ -76,7 +76,7 @@
         <relationship name="legendaryActions" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="LegendaryAction" inverseName="monster" inverseEntity="LegendaryAction" syncable="YES"/>
         <relationship name="reactions" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Reaction" inverseName="monster" inverseEntity="Reaction" syncable="YES"/>
         <relationship name="sources" toMany="YES" deletionRule="Cascade" destinationEntity="Source" inverseName="monster" inverseEntity="Source" syncable="YES"/>
-        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="monsters" inverseEntity="Tag" syncable="YES"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Tag" inverseName="monsters" inverseEntity="Tag" syncable="YES"/>
         <relationship name="traits" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Trait" inverseName="monster" inverseEntity="Trait" syncable="YES"/>
         <compoundIndexes>
             <compoundIndex>
