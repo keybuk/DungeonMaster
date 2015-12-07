@@ -39,37 +39,30 @@
     <entity name="Monster" representedClassName=".Monster" syncable="YES">
         <attribute name="alignmentValue" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="armorClass" attributeType="String" syncable="YES"/>
-        <attribute name="cha" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="challenge" attributeType="String" syncable="YES"/>
-        <attribute name="charisma" attributeType="String" syncable="YES"/>
-        <attribute name="con" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
+        <attribute name="charismaValue" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="conditionImmunities" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="constitution" attributeType="String" syncable="YES"/>
+        <attribute name="constitutionValue" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="cr" attributeType="Float" defaultValueString="0" syncable="YES"/>
         <attribute name="damageImmunities" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="damageResistances" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="damageVulnerabilities" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="dex" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
-        <attribute name="dexterity" attributeType="String" syncable="YES"/>
-        <attribute name="hitPoints" attributeType="String" syncable="YES"/>
-        <attribute name="hp" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="hpDice" attributeType="String" syncable="YES"/>
-        <attribute name="int" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
-        <attribute name="intelligence" attributeType="String" syncable="YES"/>
+        <attribute name="dexterityValue" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
+        <attribute name="hitDiceValue" attributeType="String" syncable="YES"/>
+        <attribute name="hitPointsValue" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="intelligenceValue" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="languages" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
-        <attribute name="passivePerception" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
+        <attribute name="passivePerceptionValue" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="savingThrows" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="senses" attributeType="String" syncable="YES"/>
         <attribute name="sizeTypeAlignment" attributeType="String" syncable="YES"/>
         <attribute name="sizeValue" attributeType="String" syncable="YES"/>
         <attribute name="skills" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="speed" attributeType="String" syncable="YES"/>
-        <attribute name="str" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
-        <attribute name="strength" attributeType="String" syncable="YES"/>
+        <attribute name="strengthValue" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="wis" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
-        <attribute name="wisdom" attributeType="String" syncable="YES"/>
+        <attribute name="wisdomValue" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="xp" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="actions" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Action" inverseName="monster" inverseEntity="Action" syncable="YES"/>
         <relationship name="lair" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Lair" inverseName="monster" inverseEntity="Lair" syncable="YES"/>
@@ -115,7 +108,7 @@
         <element name="LairAction" positionX="567" positionY="630" width="128" height="75"/>
         <element name="LairTrait" positionX="567" positionY="717" width="128" height="75"/>
         <element name="LegendaryAction" positionX="261" positionY="558" width="128" height="90"/>
-        <element name="Monster" positionX="79" positionY="216" width="128" height="660"/>
+        <element name="Monster" positionX="79" positionY="216" width="128" height="555"/>
         <element name="Reaction" positionX="261" positionY="459" width="128" height="90"/>
         <element name="RegionalEffect" positionX="565" positionY="801" width="128" height="75"/>
         <element name="Source" positionX="-92" positionY="198" width="128" height="105"/>

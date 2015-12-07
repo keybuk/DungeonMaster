@@ -14,9 +14,19 @@ final class Monster: NSManagedObject {
     @NSManaged var name: String
     @NSManaged var sources: NSSet
     @NSManaged var tags: NSOrderedSet
-    
-    // Size is a wrapped enum object.
+
+    // Type-wrapped members.
     @NSManaged var sizeValue: String
+    @NSManaged var alignmentValue: String?
+    @NSManaged var hitPointsValue: Int16
+    @NSManaged var hitDiceValue: String
+    @NSManaged var strengthValue: Int16
+    @NSManaged var dexterityValue: Int16
+    @NSManaged var constitutionValue: Int16
+    @NSManaged var intelligenceValue: Int16
+    @NSManaged var wisdomValue: Int16
+    @NSManaged var charismaValue: Int16
+    @NSManaged var passivePerceptionValue: Int16
 
     enum Size: String {
         case Tiny
@@ -35,11 +45,6 @@ final class Monster: NSManagedObject {
             sizeValue = size.rawValue
         }
     }
-    
-    @NSManaged var type: String
-    
-    // Alignment is a wrapped enum object.
-    @NSManaged var alignmentValue: String?
     
     enum Alignment: String {
         case Unaligned = "unaligned"
@@ -63,32 +68,120 @@ final class Monster: NSManagedObject {
         }
     }
 
-    // Hit Points and dice expression to generate, CR, and XP.
-    @NSManaged var hp: Int16
-    @NSManaged var hpDice: String
+    var hitPoints: Int {
+        get {
+            return Int(hitPointsValue)
+        }
+        set {
+            hitPointsValue = Int16(hitPoints)
+        }
+    }
+    
+    var hitDice: DiceCombo {
+        get {
+            return try! DiceCombo(description: hitDiceValue)
+        }
+        set {
+            hitDiceValue = hitDice.description
+        }
+    }
+
+    var strengthScore: Int {
+        get {
+            return Int(strengthValue)
+        }
+        set {
+            strengthValue = Int16(strengthScore)
+        }
+    }
+    
+    var strengthModifier: Int {
+        return (strengthScore - 10) / 2
+    }
+
+    var dexterityScore: Int {
+        get {
+            return Int(dexterityValue)
+        }
+        set {
+            dexterityValue = Int16(dexterityScore)
+        }
+    }
+
+    var dexterityModifier: Int {
+        return (dexterityScore - 10) / 2
+    }
+    
+    var constitutionScore: Int {
+        get {
+            return Int(constitutionValue)
+        }
+        set {
+            constitutionValue = Int16(constitutionScore)
+        }
+    }
+
+    var constitutionModifier: Int {
+        return (constitutionScore - 10) / 2
+    }
+    
+    var intelligenceScore: Int {
+        get {
+            return Int(intelligenceValue)
+        }
+        set {
+            intelligenceValue = Int16(intelligenceScore)
+        }
+    }
+
+    var intelligenceModifier: Int {
+        return (intelligenceScore - 10) / 2
+    }
+    
+    var wisdomScore: Int {
+        get {
+            return Int(wisdomValue)
+        }
+        set {
+            wisdomValue = Int16(wisdomScore)
+        }
+    }
+
+    var wisdomModifier: Int {
+        return (wisdomScore - 10) / 2
+    }
+    
+    var charismaScore: Int {
+        get {
+            return Int(charismaValue)
+        }
+        set {
+            charismaValue = Int16(charismaScore)
+        }
+    }
+
+    var charismaModifier: Int {
+        return (charismaScore - 10) / 2
+    }
+    
+    var passivePerception: Int {
+        get {
+            return Int(passivePerceptionValue)
+        }
+        set {
+            passivePerceptionValue = Int16(passivePerception)
+        }
+    }
+    
+    // Partially-parsed members.
+    @NSManaged var type: String
     @NSManaged var cr: Float
     @NSManaged var xp: Int32
-
-    // Parsed ability scores, saving throws, skills, and passive Perception.
-    @NSManaged var str: Int16
-    @NSManaged var dex: Int16
-    @NSManaged var con: Int16
-    @NSManaged var int: Int16
-    @NSManaged var wis: Int16
-    @NSManaged var cha: Int16
-    @NSManaged var passivePerception: Int16
     
-    // Original stat block text.
+    // Original un-parsed stat block text.
     @NSManaged var sizeTypeAlignment: String
     @NSManaged var armorClass: String
-    @NSManaged var hitPoints: String
     @NSManaged var speed: String
-    @NSManaged var strength: String
-    @NSManaged var dexterity: String
-    @NSManaged var constitution: String
-    @NSManaged var intelligence: String
-    @NSManaged var wisdom: String
-    @NSManaged var charisma: String
     @NSManaged var savingThrows: String?
     @NSManaged var skills: String?
     @NSManaged var damageVulnerabilities: String?

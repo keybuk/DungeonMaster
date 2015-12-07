@@ -157,6 +157,11 @@ func importIfNeeded() {
 
             monster.lair = lair
         }
+        
+        // This exists entirely to test the DiceCombo conversion.
+        if monster.hitPoints != monster.hitDice.averageValue {
+            print("\(monster.name) has unusual HP: \(monster.hitPoints), expected \(monster.hitDice.averageValue)")
+        }
     }
 
     do {

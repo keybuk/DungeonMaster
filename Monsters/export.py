@@ -146,8 +146,6 @@ class Exporter(monster.MonsterParser):
 		self.info['armorClass'] = line
 
 	def handle_hit_points(self, line):
-		self.info['hitPoints'] = line
-
 		match = HIT_POINTS_RE.match(line)
 		if match is None:
 			raise self.error("Hit Points didn't match expected format: %s" % line)
@@ -158,32 +156,32 @@ class Exporter(monster.MonsterParser):
 		if match is None:
 			raise self.error("Hit Points dice expression didn't match expected format: %s" % dice)
 
-		self.info['hp'] = int(hp)
-		self.info['hpDice'] = dice.replace(" ", "")
+		self.info['hitPointsValue'] = int(hp)
+		self.info['hitDiceValue'] = dice
 
 	def handle_speed(self, line):
 		# TODO: should be largely parseable
 		self.info['speed'] = line
 
 	def handle_str(self, line):
-		self.handle_ability_score(line, 'strength', 'str')
+		self.handle_ability_score(line, 'strength')
 
 	def handle_dex(self, line):
-		self.handle_ability_score(line, 'dexterity', 'dex')
+		self.handle_ability_score(line, 'dexterity')
 
 	def handle_con(self, line):
-		self.handle_ability_score(line, 'constitution', 'con')
+		self.handle_ability_score(line, 'constitution')
 
 	def handle_int(self, line):
-		self.handle_ability_score(line, 'intelligence', 'int')
+		self.handle_ability_score(line, 'intelligence')
 
 	def handle_wis(self, line):
-		self.handle_ability_score(line, 'wisdom', 'wis')
+		self.handle_ability_score(line, 'wisdom')
 
 	def handle_cha(self, line):
-		self.handle_ability_score(line, 'charisma', 'cha')
+		self.handle_ability_score(line, 'charisma')
 
-	def handle_ability_score(self, line, textKey, scoreKey):
+	def handle_ability_score(self, line, name):
 		match = ABILITY_RE.match(line)
 		if match is None:
 			raise self.error("%s ability score doesn't match expected formated: %s" % (name.title(), line))
@@ -195,8 +193,7 @@ class Exporter(monster.MonsterParser):
 			raise self.error("%s ability score modifier (%s) didn't match that calculated from score %s (%d)" % (
 				name.title(), modifier, score, calculated))
 
-		self.info[textKey] = line
-		self.info[scoreKey] = int(score)
+		self.info[name + 'Value'] = int(score)
 
 	def handle_saving_throws(self, line):
 		# TODO: Should be easy to parse
@@ -227,7 +224,7 @@ class Exporter(monster.MonsterParser):
 			raise self.error("Senses line didn't have passive Perception: %s" % line)
 
 		(passive,) = match.groups()
-		self.info['passivePerception'] = int(passive)
+		self.info['passivePerceptionValue'] = int(passive)
 
 	def handle_languages(self, line):
 		# TODO: easy to parse
