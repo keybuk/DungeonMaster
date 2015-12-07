@@ -28,7 +28,7 @@ SENSES_RE = re.compile(r'^(?:.*, )?passive Perception (\d+)$')
 DICE_RE = re.compile(r'^(?:[1-9][0-9]*(?:d(?:2|4|6|8|10|12|20|100))?(?: *[+-] *(?=[^ ]))?)+$')
 SPELL_RE = re.compile(r'/([a-z ]+)/')
 
-CHALLENGE_RE = re.compile(r'^([0-9/]+) \(([0-9,]+) XP\)$')
+CHALLENGE_RE = re.compile(r'^([0-9/]+) \(([0-9,]+)(?: XP)?\)$')
 
 class Exporter(monster.MonsterParser):
 
@@ -70,7 +70,7 @@ class Exporter(monster.MonsterParser):
 		try:
 			index = self.bookTags.index(source)
 		except ValueError:
-			raise self.error("Unknown book tag: %s" % bookTag)
+			raise self.error("Unknown book tag: %s" % source)
 
 		source = {
 			"book": index,
@@ -312,6 +312,10 @@ def main():
 			"type": 2,
 		},
 		{
+			"name": "Lost Mine of Phandelver",
+			"type": 1,
+		},
+		{
 			"name": "Hoard of the Dragon Queen",
 			"type": 1,
 		},
@@ -330,7 +334,7 @@ def main():
 		{
 			"name": "Princes of the Apocalypse",
 			"type": 1,
-		}
+		},
 		{
 			"name": "Princes of the Apocalypse Online Supplement",
 			"type": 2,
@@ -340,7 +344,9 @@ def main():
 			"type": 1,
 		}
 	]
-	bookTags = [ "mm", "dmbr", "hotdq", "hotdqs", "trot", "trots", "pota", "potas", ]
+	bookTags = [
+		"mm", "dmbr", "lmop",
+		"hotdq", "hotdqs", "trot", "trots", "pota", "potas", ]
 
 	monsters = []
 	for filename in monster.local_files():
