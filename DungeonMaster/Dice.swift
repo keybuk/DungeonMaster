@@ -185,27 +185,44 @@ struct DiceCombo: Equatable, CustomStringConvertible {
             sign = .None
         }
         
+        var spaceOkayHere = false
+        var lastWasSpace = false
+        
         for c in description.characters {
             switch c {
             case "0"..."9":
+                guard !lastWasSpace || numeric == "" else { throw DieError.InvalidString }
                 numeric.append(c)
+                spaceOkayHere = true
+                lastWasSpace = false
             case "d":
+                guard !lastWasSpace else { throw DieError.InvalidString }
                 guard multiplier == 0 else { throw DieError.InvalidString }
                 guard let intValue = Int(numeric) else { throw DieError.InvalidString }
                 if intValue == 0 { throw DieError.InvalidMultiplier }
                 multiplier = intValue
                 numeric = ""
+                spaceOkayHere = false
+                lastWasSpace = false
             case "+":
                 try addValue()
                 sign = .Plus
+                spaceOkayHere = true
+                lastWasSpace = false
             case "-":
                 try addValue()
                 sign = .Minus
+                spaceOkayHere = true
+                lastWasSpace = false
+            case " ":
+                guard spaceOkayHere else { throw DieError.InvalidString }
+                lastWasSpace = true
             default:
                 throw DieError.InvalidString
             }
         }
         
+        guard !lastWasSpace else { throw DieError.InvalidString }
         try addValue()
 
         self.dice = dice

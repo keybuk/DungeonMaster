@@ -198,6 +198,32 @@ class DiceTest: XCTestCase {
         XCTAssertEqual(combo.description, "1d4 + 4")
     }
 
+    func testComboWithModifierAndSpaces() {
+        let combo = try! DiceCombo(description: "1d4 + 4")
+        XCTAssertEqual(combo.dice.count, 2)
+        
+        let dice = combo.dice[0]
+        XCTAssertEqual(dice.sign, JoiningSign.None)
+        XCTAssertEqual(dice.dice.count, 1)
+        XCTAssertEqual(dice.dice[0].sides, 4)
+        XCTAssertEqual(dice.description, "1d4")
+        
+        XCTAssertEqual(dice.value, dice.dice[0].value)
+        XCTAssertEqual(dice.averageValue, 2)
+        
+        let modifier = combo.dice[1]
+        XCTAssertEqual(modifier.dice.count, 0)
+        XCTAssertEqual(modifier.value, 4)
+        XCTAssertEqual(modifier.sign, JoiningSign.Plus)
+        XCTAssertEqual(modifier.averageValue, 4)
+        XCTAssertEqual(modifier.description, "4")
+        
+        XCTAssertEqual(combo.value, dice.value + modifier.value)
+        XCTAssertEqual(combo.averageValue, dice.averageValue + modifier.averageValue)
+        
+        XCTAssertEqual(combo.description, "1d4 + 4")
+    }
+
     func testComboWithNegativeModifier() {
         let combo = try! DiceCombo(description: "1d4-4")
         XCTAssertEqual(combo.dice.count, 2)
@@ -218,6 +244,32 @@ class DiceTest: XCTestCase {
         XCTAssertEqual(modifier.averageValue, 4)
         XCTAssertEqual(modifier.description, "4")
 
+        XCTAssertEqual(combo.value, dice.value - modifier.value)
+        XCTAssertEqual(combo.averageValue, dice.averageValue - modifier.averageValue)
+        
+        XCTAssertEqual(combo.description, "1d4 - 4")
+    }
+
+    func testComboWithNegativeModifierAndSpaces() {
+        let combo = try! DiceCombo(description: "1d4 - 4")
+        XCTAssertEqual(combo.dice.count, 2)
+        
+        let dice = combo.dice[0]
+        XCTAssertEqual(dice.sign, JoiningSign.None)
+        XCTAssertEqual(dice.dice.count, 1)
+        XCTAssertEqual(dice.dice[0].sides, 4)
+        XCTAssertEqual(dice.description, "1d4")
+        
+        XCTAssertEqual(dice.value, dice.dice[0].value)
+        XCTAssertEqual(dice.averageValue, 2)
+        
+        let modifier = combo.dice[1]
+        XCTAssertEqual(modifier.dice.count, 0)
+        XCTAssertEqual(modifier.value, 4)
+        XCTAssertEqual(modifier.sign, JoiningSign.Minus)
+        XCTAssertEqual(modifier.averageValue, 4)
+        XCTAssertEqual(modifier.description, "4")
+        
         XCTAssertEqual(combo.value, dice.value - modifier.value)
         XCTAssertEqual(combo.averageValue, dice.averageValue - modifier.averageValue)
         
@@ -247,6 +299,35 @@ class DiceTest: XCTestCase {
         XCTAssertEqual(dice2.value, dice2.dice[0].value + dice2.dice[1].value)
         XCTAssertEqual(dice2.averageValue, 7)
 
+        XCTAssertEqual(combo.value, dice1.value + dice2.value)
+        XCTAssertEqual(combo.averageValue, dice1.averageValue + dice2.averageValue)
+        
+        XCTAssertEqual(combo.description, "1d4 + 2d6")
+    }
+
+    func testComboWithTwoDiceSetsAndSpaces() {
+        let combo = try! DiceCombo(description: "1d4 + 2d6")
+        XCTAssertEqual(combo.dice.count, 2)
+        
+        let dice1 = combo.dice[0]
+        XCTAssertEqual(dice1.sign, JoiningSign.None)
+        XCTAssertEqual(dice1.dice.count, 1)
+        XCTAssertEqual(dice1.dice[0].sides, 4)
+        XCTAssertEqual(dice1.description, "1d4")
+        
+        XCTAssertEqual(dice1.value, dice1.dice[0].value)
+        XCTAssertEqual(dice1.averageValue, 2)
+        
+        let dice2 = combo.dice[1]
+        XCTAssertEqual(dice2.sign, JoiningSign.Plus)
+        XCTAssertEqual(dice2.dice.count, 2)
+        XCTAssertEqual(dice2.dice[0].sides, 6)
+        XCTAssertEqual(dice2.dice[1].sides, 6)
+        XCTAssertEqual(dice2.description, "2d6")
+        
+        XCTAssertEqual(dice2.value, dice2.dice[0].value + dice2.dice[1].value)
+        XCTAssertEqual(dice2.averageValue, 7)
+        
         XCTAssertEqual(combo.value, dice1.value + dice2.value)
         XCTAssertEqual(combo.averageValue, dice1.averageValue + dice2.averageValue)
         
@@ -283,6 +364,42 @@ class DiceTest: XCTestCase {
         XCTAssertEqual(dice2.value, dice2.dice[0].value + dice2.dice[1].value)
         XCTAssertEqual(dice2.averageValue, 7)
 
+        XCTAssertEqual(combo.value, dice1.value + modifier.value + dice2.value)
+        XCTAssertEqual(combo.averageValue, dice1.averageValue + modifier.averageValue + dice2.averageValue)
+        
+        XCTAssertEqual(combo.description, "1d4 + 1 + 2d6")
+    }
+
+    func testComboWithTwoDiceSetsAroundModifierAndSpaces() {
+        let combo = try! DiceCombo(description: "1d4 + 1 + 2d6")
+        XCTAssertEqual(combo.dice.count, 3)
+        
+        let dice1 = combo.dice[0]
+        XCTAssertEqual(dice1.sign, JoiningSign.None)
+        XCTAssertEqual(dice1.dice.count, 1)
+        XCTAssertEqual(dice1.dice[0].sides, 4)
+        XCTAssertEqual(dice1.description, "1d4")
+        
+        XCTAssertEqual(dice1.value, dice1.dice[0].value)
+        XCTAssertEqual(dice1.averageValue, 2)
+        
+        let modifier = combo.dice[1]
+        XCTAssertEqual(modifier.dice.count, 0)
+        XCTAssertEqual(modifier.value, 1)
+        XCTAssertEqual(modifier.sign, JoiningSign.Plus)
+        XCTAssertEqual(modifier.averageValue, 1)
+        XCTAssertEqual(modifier.description, "1")
+        
+        let dice2 = combo.dice[2]
+        XCTAssertEqual(dice2.sign, JoiningSign.Plus)
+        XCTAssertEqual(dice2.dice.count, 2)
+        XCTAssertEqual(dice2.dice[0].sides, 6)
+        XCTAssertEqual(dice2.dice[1].sides, 6)
+        XCTAssertEqual(dice2.description, "2d6")
+        
+        XCTAssertEqual(dice2.value, dice2.dice[0].value + dice2.dice[1].value)
+        XCTAssertEqual(dice2.averageValue, 7)
+        
         XCTAssertEqual(combo.value, dice1.value + modifier.value + dice2.value)
         XCTAssertEqual(combo.averageValue, dice1.averageValue + modifier.averageValue + dice2.averageValue)
         
@@ -366,6 +483,17 @@ class DiceTest: XCTestCase {
         XCTFail("Expected exception to be thrown")
     }
     
+    func testInvalidComboWithMultipleSignsAndSpaces() {
+        do {
+            let _ = try DiceCombo(description: "2d4 + - 4")
+        } catch DieError.InvalidString {
+            return
+        } catch {
+            XCTFail("Expected DieError.InvalidString to be thrown")
+        }
+        XCTFail("Expected exception to be thrown")
+    }
+
     func testInvalidEmptyString() {
         do {
             let _ = try DiceCombo(description: "")
@@ -377,9 +505,53 @@ class DiceTest: XCTestCase {
         XCTFail("Expected exception to be thrown")
     }
     
-    func testInvalidSpaceString() {
+    func testInvalidSpaceWithinMultiplier() {
         do {
-            let _ = try DiceCombo(description: "2d4 + 1")
+            let _ = try DiceCombo(description: "1 2d4")
+        } catch DieError.InvalidString {
+            return
+        } catch {
+            XCTFail("Expected DieError.InvalidString to be thrown")
+        }
+        XCTFail("Expected exception to be thrown")
+    }
+
+    func testInvalidSpaceAfterMultiplier() {
+        do {
+            let _ = try DiceCombo(description: "2 d4")
+        } catch DieError.InvalidString {
+            return
+        } catch {
+            XCTFail("Expected DieError.InvalidString to be thrown")
+        }
+        XCTFail("Expected exception to be thrown")
+    }
+
+    func testInvalidSpaceWithinSides() {
+        do {
+            let _ = try DiceCombo(description: "2d1 2")
+        } catch DieError.InvalidString {
+            return
+        } catch {
+            XCTFail("Expected DieError.InvalidString to be thrown")
+        }
+        XCTFail("Expected exception to be thrown")
+    }
+
+    func testInvalidSpaceBeforeSides() {
+        do {
+            let _ = try DiceCombo(description: "2d 4")
+        } catch DieError.InvalidString {
+            return
+        } catch {
+            XCTFail("Expected DieError.InvalidString to be thrown")
+        }
+        XCTFail("Expected exception to be thrown")
+    }
+
+    func testInvalidSpacePrefixString() {
+        do {
+            let _ = try DiceCombo(description: " 2d4 + 1")
         } catch DieError.InvalidString {
             return
         } catch {
@@ -388,6 +560,17 @@ class DiceTest: XCTestCase {
         XCTFail("Expected exception to be thrown")
     }
     
+    func testInvalidSpacePostfixString() {
+        do {
+            let _ = try DiceCombo(description: "2d4 + 1 ")
+        } catch DieError.InvalidString {
+            return
+        } catch {
+            XCTFail("Expected DieError.InvalidString to be thrown")
+        }
+        XCTFail("Expected exception to be thrown")
+    }
+
     func testInvalidSignString() {
         do {
             let _ = try DiceCombo(description: "+")
