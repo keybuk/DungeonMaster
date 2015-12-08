@@ -196,7 +196,7 @@
                                     </segmentedControl>
                                 </subviews>
                                 <animations/>
-                                <color key="backgroundColor" red="0.96862745098039216" green="0.96998217281879195" blue="0.97027055369127513" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.96998217279999999" blue="0.97027055370000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="egI-K3-ZHZ" secondAttribute="bottom" constant="8" id="a8e-Wx-wFL"/>
                                     <constraint firstItem="egI-K3-ZHZ" firstAttribute="top" secondItem="1qj-kz-lcv" secondAttribute="top" id="faI-CY-egD"/>

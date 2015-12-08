@@ -41,23 +41,7 @@ class MonstersViewController: UIViewController {
         super.viewWillAppear(animated)
 
         // Remove the navigation bar's shadow.
-        let rect = CGRectMake(0.0, 0.0, 1.0, 1.0)
-        UIGraphicsBeginImageContext(rect.size)
-        let context = UIGraphicsGetCurrentContext()
-        
-        let color = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
-        CGContextSetFillColorWithColor(context, color.CGColor)
-        CGContextFillRect(context, rect)
-        
-        navigationController?.navigationBar.shadowImage = UIGraphicsGetImageFromCurrentImageContext()
-        
-        let bgColor = UIColor(red: 247.0/255.0, green: 247.0/255.0, blue: 247.0/255.0, alpha: 1.0)
-        CGContextSetFillColorWithColor(context, bgColor.CGColor)
-        CGContextFillRect(context, rect)
-        
-        navigationController?.navigationBar.setBackgroundImage(UIGraphicsGetImageFromCurrentImageContext(), forBarMetrics: .Default)
-        
-        UIGraphicsEndImageContext()
+        extendedNavigationBarView.removeShadowFromNavigationBar(navigationController?.navigationBar)
 
         // Deselect the row when we reappear in collapsed mode.
         if splitViewController!.collapsed {
@@ -80,8 +64,7 @@ class MonstersViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         // Restore the default navigation bar shadow for the next view.
-        navigationController?.navigationBar.shadowImage = nil
-        navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: .Default)
+        extendedNavigationBarView.restoreShadowToNavigationBar(navigationController?.navigationBar)
     }
 
     override func didReceiveMemoryWarning() {
