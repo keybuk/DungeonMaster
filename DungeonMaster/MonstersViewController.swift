@@ -102,15 +102,15 @@ class MonstersViewController: UIViewController {
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
         } else if segue.identifier == "BooksPopoverSegue" {
-            let booksTableViewController = (segue.destinationViewController as! UINavigationController).topViewController as! BooksTableViewController
-            booksTableViewController.hiddenBooks = hiddenBooks
+            let booksViewController = (segue.destinationViewController as! UINavigationController).topViewController as! BooksViewController
+            booksViewController.hiddenBooks = hiddenBooks
         }
     }
     
     @IBAction func unwindFromBooks(segue: UIStoryboardSegue) {
-        let booksTableViewController = segue.sourceViewController as! BooksTableViewController
-        if booksTableViewController.hiddenBooks != hiddenBooks {
-            hiddenBooks = booksTableViewController.hiddenBooks
+        let booksViewController = segue.sourceViewController as! BooksViewController
+        if booksViewController.hiddenBooks != hiddenBooks {
+            hiddenBooks = booksViewController.hiddenBooks
             updateFetchedResults()
             
             let defaults = NSUserDefaults.standardUserDefaults()
@@ -285,7 +285,7 @@ extension MonstersViewController: UITableViewDataSource {
     // MARK: Rows
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MonstersTableViewCell", forIndexPath: indexPath) as! MonstersTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("MonsterCell", forIndexPath: indexPath) as! MonsterCell
         let monster = fetchedResultsController.objectAtIndexPath(indexPath) as! Monster
         cell.monster = monster        
         return cell
@@ -323,7 +323,7 @@ extension MonstersViewController: NSFetchedResultsControllerDelegate {
         case .Delete:
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
         case .Update:
-            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! MonstersTableViewCell
+            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! MonsterCell
             let monster = fetchedResultsController.objectAtIndexPath(indexPath!) as! Monster
             cell.monster = monster
         case .Move:
@@ -379,7 +379,7 @@ extension MonstersViewController: UISearchResultsUpdating {
 
 
 // MARK: - 
-class MonstersTableViewCell: UITableViewCell {
+class MonsterCell: UITableViewCell {
     
     var monster: Monster? {
         didSet {

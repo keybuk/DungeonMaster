@@ -1,5 +1,5 @@
 //
-//  BooksTableViewController.swift
+//  BooksViewController.swift
 //  DungeonMaster
 //
 //  Created by Scott James Remnant on 12/6/15.
@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class BooksTableViewController: UITableViewController {
+class BooksViewController: UITableViewController {
 
     var hiddenBooks: Set<Book>?
 
@@ -71,7 +71,7 @@ class BooksTableViewController: UITableViewController {
 }
 
 // MARK: UITableViewDataSource
-extension BooksTableViewController {
+extension BooksViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return fetchedResultsController.sections?.count ?? 0
@@ -98,7 +98,7 @@ extension BooksTableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("BooksTableViewCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("BookCell", forIndexPath: indexPath)
         updateCell(cell, forIndexPath: indexPath)
         return cell
     }
@@ -106,7 +106,7 @@ extension BooksTableViewController {
 }
 
 // MARK: UITableViewDelegate
-extension BooksTableViewController {
+extension BooksViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let book = fetchedResultsController.objectAtIndexPath(indexPath) as! Book
@@ -131,7 +131,7 @@ extension BooksTableViewController {
 }
 
 // MARK: NSFetchedResultsControllerDelegate
-extension BooksTableViewController: NSFetchedResultsControllerDelegate {
+extension BooksViewController: NSFetchedResultsControllerDelegate {
     
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
         tableView.beginUpdates()
