@@ -12,6 +12,8 @@ class TabletopViewController: UIViewController {
 
     var tabletopView: TabletopView!
     
+    var points = [CGPoint(x: 150.0, y: 100.0)]
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         tabletopView = view as! TabletopView
@@ -37,5 +39,26 @@ class TabletopViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
+}
+
+// MARK: TabletopViewDataSource
+extension TabletopViewController: TabletopViewDataSource {
+    
+    func numberOfItemsInTabletopView(tabletopView: TabletopView) -> Int {
+        return points.count
+    }
+    
+    func tabletopView(tabletopView: TabletopView, pointForItemAtIndex index: Int) -> CGPoint {
+        return points[index]
+    }
+    
+}
+
+extension TabletopViewController: TabletopViewDelegate {
+    
+    func tabletopView(tabletopView: TabletopView, moveItemAtIndex index: Int, to point: CGPoint) {
+        points[index] = point
+    }
 
 }
