@@ -25,6 +25,12 @@ class EncounterViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        performSegueWithIdentifier("TabletopSegue", sender: self)
+    }
+    
     // MARK: Navigation
     
     @IBAction func unwindFromMonster(segue: UIStoryboardSegue) {

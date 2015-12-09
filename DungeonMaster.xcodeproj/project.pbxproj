@@ -37,6 +37,8 @@
 		D2A9AF2F1BFFEAA5009902ED /* DungeonMasterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A9AF2E1BFFEAA5009902ED /* DungeonMasterUITests.swift */; };
 		D2BDE60C1C17500A0008B2F2 /* EncountersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDE60B1C17500A0008B2F2 /* EncountersViewController.swift */; };
 		D2BDE60E1C1750170008B2F2 /* EncounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDE60D1C1750170008B2F2 /* EncounterViewController.swift */; };
+		D2C6063E1C17D32900F61DBD /* TabletopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C6063D1C17D32900F61DBD /* TabletopViewController.swift */; };
+		D2C606401C17D58400F61DBD /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C6063F1C17D58400F61DBD /* SpriteKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +95,8 @@
 		D2A9AF301BFFEAA5009902ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2BDE60B1C17500A0008B2F2 /* EncountersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncountersViewController.swift; sourceTree = "<group>"; };
 		D2BDE60D1C1750170008B2F2 /* EncounterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncounterViewController.swift; sourceTree = "<group>"; };
+		D2C6063D1C17D32900F61DBD /* TabletopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabletopViewController.swift; sourceTree = "<group>"; };
+		D2C6063F1C17D58400F61DBD /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2C606401C17D58400F61DBD /* SpriteKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +150,7 @@
 		D2A9AEFD1BFFEAA5009902ED = {
 			isa = PBXGroup;
 			children = (
+				D2C6063F1C17D58400F61DBD /* SpriteKit.framework */,
 				D2A9AF081BFFEAA5009902ED /* DungeonMaster */,
 				D2A9AF221BFFEAA5009902ED /* DungeonMasterTests */,
 				D2A9AF2D1BFFEAA5009902ED /* DungeonMasterUITests */,
@@ -203,6 +209,7 @@
 			children = (
 				D2BDE60B1C17500A0008B2F2 /* EncountersViewController.swift */,
 				D2BDE60D1C1750170008B2F2 /* EncounterViewController.swift */,
+				D2C6063D1C17D32900F61DBD /* TabletopViewController.swift */,
 				D2511FF71C12B1AD00A09F0B /* MonstersViewController.swift */,
 				D2511FFF1C14C7ED00A09F0B /* BooksViewController.swift */,
 				D2A9AF101BFFEAA5009902ED /* DetailViewController.swift */,
@@ -359,6 +366,7 @@
 				D23435F21C0D608B00108D5F /* Source.swift in Sources */,
 				D23435FB1C0FEFA000108D5F /* Dice.swift in Sources */,
 				D23435F61C0D634100108D5F /* Importer.swift in Sources */,
+				D2C6063E1C17D32900F61DBD /* TabletopViewController.swift in Sources */,
 				D25120001C14C7ED00A09F0B /* BooksViewController.swift in Sources */,
 				D2116A4F1C10F377001EDBBA /* Lair.swift in Sources */,
 				D2511FF81C12B1AD00A09F0B /* MonstersViewController.swift in Sources */,
