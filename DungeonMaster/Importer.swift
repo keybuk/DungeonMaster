@@ -34,18 +34,18 @@ func importIfNeeded() {
     
     // Import books.
     var books = [Book]()
-    let bookDatas = data["books"] as! NSArray
+    let bookDatas = data["books"] as! [NSDictionary]
     for bookData in bookDatas {
         let name = bookData["name"] as! String
         let book = Book(name: name, inManagedObjectContext: managedObjectContext)
-        book.typeValue = Int16(bookData["type"]!!.integerValue)
+        book.typeValue = Int16(bookData["type"]!.integerValue)
         books.append(book)
     }
     
     var tags = [String:Tag]()
     
     // Import monsters.
-    let monsterDatas = data["monsters"] as! NSArray
+    let monsterDatas = data["monsters"] as! [NSDictionary]
     for monsterData in monsterDatas {
         let name = monsterData["name"] as! String
         let monster = Monster(name: name, inManagedObjectContext: managedObjectContext)
