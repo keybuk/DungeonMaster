@@ -7,16 +7,19 @@
 //
 
 import UIKit
-import SpriteKit
 
 class TabletopViewController: UIViewController {
 
-    @IBOutlet var skView: SKView!
-
+    var tabletopView: TabletopView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        tabletopView = view as! TabletopView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
