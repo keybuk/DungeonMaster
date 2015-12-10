@@ -12,7 +12,10 @@ class TabletopViewController: UIViewController {
 
     var tabletopView: TabletopView!
     
-    var points = [CGPoint(x: 150.0, y: 100.0)]
+    var points = [CGPoint(x: 250.0, y: 250.0),
+        CGPoint(x: 150.0, y: 100.0),
+        CGPoint(x: 350.0, y: 150.0),
+        CGPoint(x: 275.0, y: 400.0)]
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -53,12 +56,24 @@ extension TabletopViewController: TabletopViewDataSource {
         return points[index]
     }
     
+    func tabletopView(tabletopView: TabletopView, nameForItem index: Int) -> String {
+        return "Bugbear Captain"
+    }
+    
+    func tabletopView(tabletopView: TabletopView, healthForItem index: Int) -> Float {
+        return 0.7
+    }
+
 }
 
 extension TabletopViewController: TabletopViewDelegate {
     
     func tabletopView(tabletopView: TabletopView, moveItem index: Int, to point: CGPoint) {
         points[index] = point
+    }
+    
+    func tabletopView(tabletopView: TabletopView, willShowStatsForItem index: Int) {
+        print("Tapped \(index)")
     }
     
     func tabletopView(tabletopView: TabletopView, didSelectItem index: Int) {

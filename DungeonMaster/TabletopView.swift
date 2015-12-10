@@ -18,12 +18,21 @@ let π = M_PI
     /// Returns the location on the table top of the item with the given index.
     func tabletopView(tabletopView: TabletopView, pointForItem index: Int) -> CGPoint
     
+    /// Returns the name of the item with the given index on the table top.
+    func tabletopView(tabletopView: TabletopView, nameForItem index: Int) -> String
+    
+    /// Returns the health of the item with the given index on the table stop. Health should be in the range 0.0–1.0.
+    func tabletopView(tabletopView: TabletopView, healthForItem index: Int) -> Float
+    
 }
 
 @objc protocol TabletopViewDelegate {
     
     /// Informs the delegate that an item was moved on the table top to a new location.
     func tabletopView(tabletopView: TabletopView, moveItem index: Int, to point: CGPoint)
+    
+    /// Informs the delegate that the stats for an item on the table top are being shown.
+    func tabletopView(tabletopView: TabletopView, willShowStatsForItem index: Int)
 
     /// Informs the delegate that an item was selected on the table top.
     func tabletopView(tabletopView: TabletopView, didSelectItem index: Int)
@@ -43,6 +52,9 @@ let π = M_PI
     var touching: Int?
     var startingPoint: CGPoint?
     var delayedTap: dispatch_block_t?
+    
+    var statsPopup: TabletopStatsPopupView?
+    var statsPopupIndex: Int?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -167,6 +179,9 @@ let π = M_PI
     // MARK: Touch handling
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        // No matter where on the view is tapped, always hide the stats popup. The exception is the popup itself, but that handles those touches itself and blocks this getting called anyway.
+        hideStatsPopup()
+
         guard let touch = touches.first else { return }
         guard let index = indexOfPointNearLocation(touch.locationInView(self), radius: touch.majorRadius + touch.majorRadiusTolerance) else { return }
         guard let point = points[index] else { abort() }
@@ -201,7 +216,7 @@ let π = M_PI
 
         if touch.tapCount == 1 {
             delayedTap = dispatch_block_create(DISPATCH_BLOCK_ASSIGN_CURRENT) {
-                print("Tapped \(index)")
+                self.showStatsPopupForItem(index, at: point)
                 self.delayedTap = nil
             }
                 
@@ -228,5 +243,45 @@ let π = M_PI
         setNeedsDisplayForPoint(point)
         setNeedsDisplayForPoint(points[index]!)
     }
+    
+    // MARK: Stats popup.
+    
+    func showStatsPopupForItem(index: Int, at point: CGPoint) {
+        hideStatsPopup()
+        
+        delegate?.tabletopView(self, willShowStatsForItem: index)
+        guard let name = dataSource?.tabletopView(self, nameForItem: index) else { return }
+        guard let health = dataSource?.tabletopView(self, healthForItem: index) else { return }
+        
+        let view = TabletopStatsPopupView(point: point)
+        view.label.text = name
+        view.progress.progress = health
+        
+        view.tapHandler = {
+            self.delegate?.tabletopView(self, didSelectItem: index)
+        }
+        
+        self.addSubview(view)
+        
+        statsPopup = view
+        statsPopupIndex = index
 
+        view.alpha = 0.0
+        UIView.animateWithDuration(0.3) {
+            view.alpha = 1.0
+        }
+    }
+
+    func hideStatsPopup() {
+        guard let statsPopup = statsPopup else { return }
+        self.statsPopup = nil
+        self.statsPopupIndex = nil
+
+        UIView.animateWithDuration(0.3, animations: {
+            statsPopup.alpha = 0.0
+        }, completion: { completed in
+            statsPopup.removeFromSuperview()
+        })
+    }
+    
 }

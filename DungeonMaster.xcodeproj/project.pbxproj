@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D20049231C1A127500A645E9 /* TabletopStatsPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20049221C1A127500A645E9 /* TabletopStatsPopupView.swift */; };
 		D2116A461C10EBEB001EDBBA /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2116A451C10EBEB001EDBBA /* Action.swift */; };
 		D2116A481C10ECAE001EDBBA /* Trait.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2116A471C10ECAE001EDBBA /* Trait.swift */; };
 		D2116A4A1C10ECBC001EDBBA /* Reaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2116A491C10ECBC001EDBBA /* Reaction.swift */; };
@@ -59,6 +60,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D20049221C1A127500A645E9 /* TabletopStatsPopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabletopStatsPopupView.swift; sourceTree = "<group>"; };
 		D2116A451C10EBEB001EDBBA /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		D2116A471C10ECAE001EDBBA /* Trait.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trait.swift; sourceTree = "<group>"; };
 		D2116A491C10ECBC001EDBBA /* Reaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reaction.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 			children = (
 				D25120011C14FC0A00A09F0B /* ExtendedNavigationBarView.swift */,
 				D243F6421C189A7500324572 /* TabletopView.swift */,
+				D20049221C1A127500A645E9 /* TabletopStatsPopupView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				D25120021C14FC0A00A09F0B /* ExtendedNavigationBarView.swift in Sources */,
 				D23435F21C0D608B00108D5F /* Source.swift in Sources */,
 				D23435FB1C0FEFA000108D5F /* Dice.swift in Sources */,
+				D20049231C1A127500A645E9 /* TabletopStatsPopupView.swift in Sources */,
 				D23435F61C0D634100108D5F /* Importer.swift in Sources */,
 				D2C6063E1C17D32900F61DBD /* TabletopViewController.swift in Sources */,
 				D25120001C14C7ED00A09F0B /* BooksViewController.swift in Sources */,
