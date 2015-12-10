@@ -16,14 +16,17 @@ let π = M_PI
     func numberOfItemsInTabletopView(tabletopView: TabletopView) -> Int
     
     /// Returns the location on the table top of the item with the given index.
-    func tabletopView(tabletopView: TabletopView, pointForItemAtIndex index: Int) -> CGPoint
+    func tabletopView(tabletopView: TabletopView, pointForItem index: Int) -> CGPoint
     
 }
 
 @objc protocol TabletopViewDelegate {
     
     /// Informs the delegate that an item was moved on the table top to a new location.
-    func tabletopView(tabletopView: TabletopView, moveItemAtIndex index: Int, to point: CGPoint)
+    func tabletopView(tabletopView: TabletopView, moveItem index: Int, to point: CGPoint)
+
+    /// Informs the delegate that an item was selected on the table top.
+    func tabletopView(tabletopView: TabletopView, didSelectItem index: Int)
 
 }
 
@@ -36,8 +39,10 @@ let π = M_PI
     let fudge = CGFloat(8.0)
     
     var points = [CGPoint?]()
-    var touching = [UITouch: Int]()
-    var startingPoint = [UITouch: CGPoint]()
+
+    var touching: Int?
+    var startingPoint: CGPoint?
+    var delayedTap: dispatch_block_t?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -69,7 +74,9 @@ let π = M_PI
             points.removeAll()
         }
         
-        touching.removeAll()
+        touching = nil
+        startingPoint = nil
+
         setNeedsDisplay()
     }
     
@@ -81,24 +88,24 @@ let π = M_PI
             assert(count == points.count, "Number of items on table top didn't match that expected after insertion.")
         }
         
-        for (touch, touchIndex) in touching {
+        if let touchIndex = touching {
             if touchIndex >= index {
-                touching[touch] = touchIndex + 1
+                touching = touchIndex + 1
             }
         }
     }
     
     /// Deletes an item, with the given index, and removes it from the table top.
     func deleteItemAtIndex(index: Int) {
-        for (touch, touchIndex) in touching {
+        if let touchIndex = touching {
             if touchIndex > index {
-                touching[touch] = touchIndex - 1
+                touching = touchIndex - 1
             } else if touchIndex == index {
                 guard let point = points[index] else { abort() }
                 setNeedsDisplayForMovementFrom(point, to: point)
                 
-                touching[touch] = nil
-                startingPoint[touch] = nil
+                touching = nil
+                startingPoint = nil
             }
         }
 
@@ -112,7 +119,7 @@ let π = M_PI
     // MARK: Housekeeping
     
     func updatePoint(index: Int) -> CGPoint? {
-        let point = dataSource?.tabletopView(self, pointForItemAtIndex: index)
+        let point = dataSource?.tabletopView(self, pointForItem: index)
         points[index] = point
         return point
     }
@@ -163,54 +170,64 @@ let π = M_PI
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        for touch in touches {
-            guard let index = indexOfPointNearLocation(touch.locationInView(self), radius: touch.majorRadius + touch.majorRadiusTolerance) else { continue }
-            guard let point = points[index] else { abort() }
-
-            touching[touch] = index
-            startingPoint[touch] = point
+        guard let touch = touches.first else { return }
+        guard let index = indexOfPointNearLocation(touch.locationInView(self), radius: touch.majorRadius + touch.majorRadiusTolerance) else { return }
+        guard let point = points[index] else { abort() }
+        
+        touching = index
+        startingPoint = point
+        
+        if let block = delayedTap {
+            dispatch_block_cancel(block)
+            delayedTap = nil
         }
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        for touch in touches {
-            guard let index = touching[touch] else { continue }
-            guard let point = points[index] else { abort() }
+        guard let touch = touches.first else { return }
+        guard let index = touching else { return }
+        guard let point = points[index] else { abort() }
 
-            let previousLocation = touch.previousLocationInView(self)
-            let location = touch.locationInView(self)
+        let previousLocation = touch.previousLocationInView(self)
+        let location = touch.locationInView(self)
 
-            points[index] = CGPoint(x: point.x + location.x - previousLocation.x, y: point.y + location.y - previousLocation.y)
+        points[index] = CGPoint(x: point.x + location.x - previousLocation.x, y: point.y + location.y - previousLocation.y)
 
-            setNeedsDisplayForMovementFrom(point, to: points[index]!)
-        }
+        setNeedsDisplayForMovementFrom(point, to: points[index]!)
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        for touch in touches {
-            guard let index = touching[touch] else { continue }
-            guard let point = points[index] else { abort() }
+        guard let touch = touches.first else { return }
+        guard let index = touching else { return }
+        guard let point = points[index] else { abort() }
 
-            touching[touch] = nil
-            startingPoint[touch] = nil
-            
-            delegate?.tabletopView(self, moveItemAtIndex: index, to: point)
+        if touch.tapCount == 1 {
+            delayedTap = dispatch_block_create(DISPATCH_BLOCK_ASSIGN_CURRENT) {
+                print("Tapped \(index)")
+                self.delayedTap = nil
+            }
+                
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 300_000_000), dispatch_get_main_queue(), delayedTap!)
+        } else if touch.tapCount == 2 {
+            delegate?.tabletopView(self, didSelectItem: index)
         }
+
+        touching = nil
+        startingPoint = nil
+            
+        delegate?.tabletopView(self, moveItem: index, to: point)
     }
     
     override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
-        guard touches != nil else { return }
-        for touch in touches! {
-            guard let index = touching[touch] else { continue }
-            guard let point = points[index] else { abort() }
+        guard let index = touching else { return }
+        guard let point = points[index] else { abort() }
             
-            points[index] = startingPoint[touch]!
+        points[index] = startingPoint!
 
-            touching[touch] = nil
-            startingPoint[touch] = nil
+        touching = nil
+        startingPoint = nil
 
-            setNeedsDisplayForMovementFrom(point, to: points[index]!)
-        }
+        setNeedsDisplayForMovementFrom(point, to: points[index]!)
     }
 
 }

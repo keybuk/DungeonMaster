@@ -49,7 +49,7 @@ extension TabletopViewController: TabletopViewDataSource {
         return points.count
     }
     
-    func tabletopView(tabletopView: TabletopView, pointForItemAtIndex index: Int) -> CGPoint {
+    func tabletopView(tabletopView: TabletopView, pointForItem index: Int) -> CGPoint {
         return points[index]
     }
     
@@ -57,8 +57,12 @@ extension TabletopViewController: TabletopViewDataSource {
 
 extension TabletopViewController: TabletopViewDelegate {
     
-    func tabletopView(tabletopView: TabletopView, moveItemAtIndex index: Int, to point: CGPoint) {
+    func tabletopView(tabletopView: TabletopView, moveItem index: Int, to point: CGPoint) {
         points[index] = point
+    }
+    
+    func tabletopView(tabletopView: TabletopView, didSelectItem index: Int) {
+        print("Selected \(index)")
     }
 
 }
