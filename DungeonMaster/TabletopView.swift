@@ -102,7 +102,7 @@ let π = M_PI
                 touching = touchIndex - 1
             } else if touchIndex == index {
                 guard let point = points[index] else { abort() }
-                setNeedsDisplayForMovementFrom(point, to: point)
+                setNeedsDisplayForPoint(point)
                 
                 touching = nil
                 startingPoint = nil
@@ -159,15 +159,12 @@ let π = M_PI
         }
     }
     
-    // MARK: Touch handling
-    
-    func setNeedsDisplayForMovementFrom(oldPoint: CGPoint, to newPoint: CGPoint) {
-        let oldRect = CGRectInset(CGRect(origin: oldPoint, size: CGSizeZero), -(radius + fudge), -(radius + fudge))
-        let newRect = CGRectInset(CGRect(origin: newPoint, size: CGSizeZero), -(radius + fudge), -(radius + fudge))
-
-        setNeedsDisplayInRect(CGRectUnion(oldRect, newRect))
-
+    func setNeedsDisplayForPoint(point: CGPoint) {
+        let rect = CGRectInset(CGRect(origin: point, size: CGSizeZero), -(radius + fudge), -(radius + fudge))
+        setNeedsDisplayInRect(rect)
     }
+
+    // MARK: Touch handling
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         guard let touch = touches.first else { return }
@@ -193,7 +190,8 @@ let π = M_PI
 
         points[index] = CGPoint(x: point.x + location.x - previousLocation.x, y: point.y + location.y - previousLocation.y)
 
-        setNeedsDisplayForMovementFrom(point, to: points[index]!)
+        setNeedsDisplayForPoint(point)
+        setNeedsDisplayForPoint(points[index]!)
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -227,7 +225,8 @@ let π = M_PI
         touching = nil
         startingPoint = nil
 
-        setNeedsDisplayForMovementFrom(point, to: points[index]!)
+        setNeedsDisplayForPoint(point)
+        setNeedsDisplayForPoint(points[index]!)
     }
 
 }
