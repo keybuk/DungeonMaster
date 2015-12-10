@@ -36,18 +36,45 @@ let π = M_PI
 
 }
 
+/// TabletopView implements a tabletop on which pieces are displayed, labelled with a name and health, and can be readily moved around by the user to match the general positions on the physical table top in front of them.
 @IBDesignable class TabletopView: UIView {
     
+    /// The data source provides the tabletop information about the items to be displayed.
     @IBOutlet weak var dataSource: TabletopViewDataSource?
+    
+    /// The delegate receives information about activity on the tabletop.
     @IBOutlet weak var delegate: TabletopViewDelegate?
     
-    let radius = CGFloat(22.0)
-    let fudge = CGFloat(8.0)
+    /// Color used for line around items on the table top.
+    @IBInspectable var itemStrokeColor: UIColor = UIColor.blackColor()
     
-    var points = [CGPoint]()
-    var statsViews = [TabletopStatsPopupView]()
+    /// Color used to fill items on the table top.
+    @IBInspectable var itemFillColor: UIColor = UIColor.whiteColor()
+    
+    /// Color used for line around the selected item on the table top.
+    @IBInspectable var selectedItemStrokeColor: UIColor = UIColor.blackColor()
+    
+    /// Color used to fill the selected item on the table top.
+    @IBInspectable var selectedItemFillColor: UIColor = UIColor(white: 0.8, alpha: 1.0)
+    
+    /// Stroke width for items on the table top.
+    @IBInspectable var itemStrokeWidth: CGFloat = 2.0
 
+    /// Radius of items shown on the table top.
+    @IBInspectable var itemRadius: CGFloat = 22.0
+    
+    // MARK: Internal variables
+    
+    /// Center points of each item on the table top.
+    var points = [CGPoint]()
+    
+    /// Associated stats view of each item on the table top.
+    var statsViews = [TabletopStatsView]()
+
+    /// Index of item currently involved in user touch.
     var touching: Int?
+    
+    /// The original starting point of the item being moved by the user.
     var startingPoint: CGPoint?
     
     override init(frame: CGRect) {
@@ -145,7 +172,7 @@ let π = M_PI
     func indexOfPointNearLocation(location: CGPoint, radius touchRadius: CGFloat) -> Int? {
         for (index, point) in points.enumerate() {
             let squareDistance = (location.x - point.x) * (location.x - point.x) + (location.y - point.y) * (location.y - point.y)
-            let squareRadius = (radius + fudge + touchRadius) * (radius + fudge + touchRadius)
+            let squareRadius = (itemRadius + itemStrokeWidth + touchRadius) * (itemRadius + itemStrokeWidth + touchRadius)
             
             if squareDistance <= squareRadius {
                 return index
@@ -164,25 +191,26 @@ let π = M_PI
         CGContextSetFillColorWithColor(context, backgroundColor!.CGColor)
         CGContextFillRect(context, rect)
         
-        CGContextSetStrokeColorWithColor(context, UIColor.blackColor().CGColor)
-        CGContextSetLineWidth(context, 2.0)
+        CGContextSetLineWidth(context, itemStrokeWidth)
 
         for (index, point) in points.enumerate() {
             if touching == index {
-                CGContextSetFillColorWithColor(context, UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0).CGColor)
+                CGContextSetStrokeColorWithColor(context, selectedItemStrokeColor.CGColor)
+                CGContextSetFillColorWithColor(context, selectedItemFillColor.CGColor)
             } else {
-                CGContextSetFillColorWithColor(context, backgroundColor!.CGColor)
+                CGContextSetStrokeColorWithColor(context, itemStrokeColor.CGColor)
+                CGContextSetFillColorWithColor(context, itemFillColor.CGColor)
             }
             
-            CGContextAddArc(context, point.x, point.y, radius, 0.0, CGFloat(2.0 * π), 0)
+            CGContextAddArc(context, point.x, point.y, itemRadius, 0.0, CGFloat(2.0 * π), 0)
             CGContextFillPath(context)
-            CGContextAddArc(context, point.x, point.y, radius, 0.0, CGFloat(2.0 * π), 0)
+            CGContextAddArc(context, point.x, point.y, itemRadius, 0.0, CGFloat(2.0 * π), 0)
             CGContextStrokePath(context)
         }
     }
     
     func setNeedsDisplayForPoint(point: CGPoint) {
-        let rect = CGRectInset(CGRect(origin: point, size: CGSizeZero), -(radius + fudge), -(radius + fudge))
+        let rect = CGRectInset(CGRect(origin: point, size: CGSizeZero), -(itemRadius + itemStrokeWidth), -(itemRadius + itemStrokeWidth))
         setNeedsDisplayInRect(rect)
     }
 
@@ -254,11 +282,11 @@ let π = M_PI
     
     // MARK: Stats popup.
     
-    func statsViewForItem(index: Int) -> TabletopStatsPopupView {
+    func statsViewForItem(index: Int) -> TabletopStatsView {
         let name = dataSource!.tabletopView(self, nameForItem: index)
         let health = dataSource!.tabletopView(self, healthForItem: index)
         
-        let view = TabletopStatsPopupView()
+        let view = TabletopStatsView()    
         view.label.text = name
         view.progress.progress = health
         
@@ -272,7 +300,7 @@ let π = M_PI
     func showStatsViewForItem(index: Int, at point: CGPoint) {
         let view = statsViews[index]
         
-        view.center = CGPoint(x: point.x, y: point.y - radius - 2.0 - view.frame.size.height / 2.0)
+        view.center = CGPoint(x: point.x, y: point.y - itemRadius - 2.0 - view.frame.size.height / 2.0)
             
         self.addSubview(view)
     }

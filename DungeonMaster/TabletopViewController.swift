@@ -15,10 +15,12 @@ class TabletopViewController: UIViewController {
     var points = [CGPoint(x: 250.0, y: 250.0),
         CGPoint(x: 150.0, y: 100.0),
         CGPoint(x: 350.0, y: 150.0),
-        CGPoint(x: 275.0, y: 400.0)]
+        CGPoint(x: 275.0, y: 400.0),
+        CGPoint(x: 400.0, y: 450.0),
+    ]
     
-    var names = ["Goblin", "Goblin", "Wolf", "Bugbear Captain"]
-    var healths: [Float] = [0.8, 0.2, 1.0, 0.7]
+    var names = ["Goblin", "Goblin", "Wolf", "Bugbear Captain", "Half-Red Dragon Veteran"]
+    var healths: [Float] = [0.8, 0.2, 1.0, 0.7, 0.5]
     
     override func awakeFromNib() {
         super.awakeFromNib()

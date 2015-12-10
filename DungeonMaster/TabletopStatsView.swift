@@ -1,5 +1,5 @@
 //
-//  TabletopStatsPopupView.swift
+//  TabletopStatsView.swift
 //  DungeonMaster
 //
 //  Created by Scott James Remnant on 12/10/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TabletopStatsPopupView: UIView {
+class TabletopStatsView: UIView {
     
     var label: UILabel!
     var progress: UIProgressView!
@@ -29,13 +29,14 @@ class TabletopStatsPopupView: UIView {
     }
     
     func configureView() {
-        backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.8)
+        backgroundColor = UIColor(white: 1.0, alpha: 0.8)
         layer.cornerRadius = 8.0
         opaque = false
 
         label = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 100.0, height: 30.0))
         label.font = UIFont.systemFontOfSize(14.0)
         label.adjustsFontSizeToFitWidth = true
+        label.numberOfLines = 0
         label.textAlignment = .Center
         addSubview(label)
         
@@ -47,18 +48,18 @@ class TabletopStatsPopupView: UIView {
     // MARK: Touch handling.
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        backgroundColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 0.8)
+        backgroundColor = UIColor(white: 0.8, alpha: 0.8)
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.8)
+        backgroundColor = UIColor(white: 1.0, alpha: 0.8)
         if let tapHandler = tapHandler {
             tapHandler()
         }
     }
     
     override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
-        backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.8)
+        backgroundColor = UIColor(white: 1.0, alpha: 0.8)
     }
 
 }
