@@ -31,9 +31,6 @@ let π = M_PI
     /// Informs the delegate that an item was moved on the table top to a new location.
     func tabletopView(tabletopView: TabletopView, moveItem index: Int, to point: CGPoint)
     
-    /// Informs the delegate that the stats for an item on the table top are being shown.
-    func tabletopView(tabletopView: TabletopView, willShowStatsForItem index: Int)
-
     /// Informs the delegate that an item was selected on the table top.
     func tabletopView(tabletopView: TabletopView, didSelectItem index: Int)
 
@@ -47,14 +44,11 @@ let π = M_PI
     let radius = CGFloat(22.0)
     let fudge = CGFloat(8.0)
     
-    var points = [CGPoint?]()
+    var points = [CGPoint]()
+    var statsViews = [TabletopStatsPopupView]()
 
     var touching: Int?
     var startingPoint: CGPoint?
-    var delayedTap: dispatch_block_t?
-    
-    var statsPopup: TabletopStatsPopupView?
-    var statsPopupIndex: Int?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -78,33 +72,50 @@ let π = M_PI
     
     /// Reloads the data in the view, invalidating all existing information.
     func reloadData() {
-        // TODO there might be in-progress touches
-        
-        if let count = dataSource?.numberOfItemsInTabletopView(self) {
-            points = [CGPoint?](count: count, repeatedValue: nil)
-        } else {
-            points.removeAll()
+        for statsView in statsViews {
+            statsView.removeFromSuperview()
         }
         
+        points.removeAll()
+        statsViews.removeAll()
+
         touching = nil
         startingPoint = nil
+
+        if let count = dataSource?.numberOfItemsInTabletopView(self) {
+            for index in 0..<count {
+                let point = dataSource!.tabletopView(self, pointForItem: index)
+                let statsView = statsViewForItem(index)
+
+                points.append(point)
+                statsViews.append(statsView)
+                
+                showStatsViewForItem(index, at: point)
+            }
+        }
 
         setNeedsDisplay()
     }
     
     /// Inserts a new item, with the given index, onto the table top.
     func insertItemAtIndex(index: Int) {
-        points.insert(nil, atIndex: index)
+        let point = dataSource!.tabletopView(self, pointForItem: index)
+        let statsView = statsViewForItem(index)
+    
+        points.insert(point, atIndex: index)
+        statsViews.insert(statsView, atIndex: index)
 
-        if let count = dataSource?.numberOfItemsInTabletopView(self) {
-            assert(count == points.count, "Number of items on table top didn't match that expected after insertion.")
-        }
+        let count = dataSource!.numberOfItemsInTabletopView(self)
+        assert(count == points.count, "Number of items on table top didn't match that expected after insertion.")
         
         if let touchIndex = touching {
             if touchIndex >= index {
                 touching = touchIndex + 1
             }
         }
+        
+        setNeedsDisplayForPoint(point)
+        showStatsViewForItem(index, at: point)
     }
     
     /// Deletes an item, with the given index, and removes it from the table top.
@@ -113,33 +124,26 @@ let π = M_PI
             if touchIndex > index {
                 touching = touchIndex - 1
             } else if touchIndex == index {
-                guard let point = points[index] else { abort() }
-                setNeedsDisplayForPoint(point)
-                
                 touching = nil
                 startingPoint = nil
             }
         }
 
-        points.removeAtIndex(index)
+        let point = points.removeAtIndex(index)
+        let statsView = statsViews.removeAtIndex(index)
         
         if let count = dataSource?.numberOfItemsInTabletopView(self) {
             assert(count == points.count, "Number of items on table top didn't match that expected after insertion.")
         }
+        
+        setNeedsDisplayForPoint(point)
+        statsView.removeFromSuperview()
     }
     
     // MARK: Housekeeping
     
-    func updatePoint(index: Int) -> CGPoint? {
-        let point = dataSource?.tabletopView(self, pointForItem: index)
-        points[index] = point
-        return point
-    }
-    
     func indexOfPointNearLocation(location: CGPoint, radius touchRadius: CGFloat) -> Int? {
         for (index, point) in points.enumerate() {
-            guard let point = point ?? updatePoint(index) else { continue }
-            
             let squareDistance = (location.x - point.x) * (location.x - point.x) + (location.y - point.y) * (location.y - point.y)
             let squareRadius = (radius + fudge + touchRadius) * (radius + fudge + touchRadius)
             
@@ -162,10 +166,16 @@ let π = M_PI
         
         CGContextSetStrokeColorWithColor(context, UIColor.blackColor().CGColor)
         CGContextSetLineWidth(context, 2.0)
-        
-        for (index, point) in points.enumerate() {
-            guard let point = point ?? updatePoint(index) else { continue }
 
+        for (index, point) in points.enumerate() {
+            if touching == index {
+                CGContextSetFillColorWithColor(context, UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0).CGColor)
+            } else {
+                CGContextSetFillColorWithColor(context, backgroundColor!.CGColor)
+            }
+            
+            CGContextAddArc(context, point.x, point.y, radius, 0.0, CGFloat(2.0 * π), 0)
+            CGContextFillPath(context)
             CGContextAddArc(context, point.x, point.y, radius, 0.0, CGFloat(2.0 * π), 0)
             CGContextStrokePath(context)
         }
@@ -179,109 +189,92 @@ let π = M_PI
     // MARK: Touch handling
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        // No matter where on the view is tapped, always hide the stats popup. The exception is the popup itself, but that handles those touches itself and blocks this getting called anyway.
-        hideStatsPopup()
-
         guard let touch = touches.first else { return }
         guard let index = indexOfPointNearLocation(touch.locationInView(self), radius: touch.majorRadius + touch.majorRadiusTolerance) else { return }
-        guard let point = points[index] else { abort() }
+        
+        let point = points[index]
         
         touching = index
         startingPoint = point
-        
-        if let block = delayedTap {
-            dispatch_block_cancel(block)
-            delayedTap = nil
-        }
+
+        setNeedsDisplayForPoint(point)
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         guard let touch = touches.first else { return }
         guard let index = touching else { return }
-        guard let point = points[index] else { abort() }
 
+        statsViews[index].removeFromSuperview()
+        
         let previousLocation = touch.previousLocationInView(self)
         let location = touch.locationInView(self)
 
+        let point = points[index]
         points[index] = CGPoint(x: point.x + location.x - previousLocation.x, y: point.y + location.y - previousLocation.y)
 
         setNeedsDisplayForPoint(point)
-        setNeedsDisplayForPoint(points[index]!)
+        setNeedsDisplayForPoint(points[index])
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         guard let touch = touches.first else { return }
         guard let index = touching else { return }
-        guard let point = points[index] else { abort() }
-
-        if touch.tapCount == 1 {
-            delayedTap = dispatch_block_create(DISPATCH_BLOCK_ASSIGN_CURRENT) {
-                self.showStatsPopupForItem(index, at: point)
-                self.delayedTap = nil
-            }
-                
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 300_000_000), dispatch_get_main_queue(), delayedTap!)
-        } else if touch.tapCount == 2 {
-            delegate?.tabletopView(self, didSelectItem: index)
-        }
-
+        
         touching = nil
         startingPoint = nil
-            
+        
+        let point = points[index]
+        
+        showStatsViewForItem(index, at: point)
+        setNeedsDisplayForPoint(point)
+        
         delegate?.tabletopView(self, moveItem: index, to: point)
+        
+        if touch.tapCount > 0 {
+            delegate?.tabletopView(self, didSelectItem: index)
+        }
     }
     
     override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
         guard let index = touching else { return }
-        guard let point = points[index] else { abort() }
-            
-        points[index] = startingPoint!
-
+        
+        let movedPoint = points[index]
+        let point = startingPoint!
+        
+        points[index] = point
+        
         touching = nil
         startingPoint = nil
 
+        setNeedsDisplayForPoint(movedPoint)
         setNeedsDisplayForPoint(point)
-        setNeedsDisplayForPoint(points[index]!)
+
+        showStatsViewForItem(index, at: point)
     }
     
     // MARK: Stats popup.
     
-    func showStatsPopupForItem(index: Int, at point: CGPoint) {
-        hideStatsPopup()
+    func statsViewForItem(index: Int) -> TabletopStatsPopupView {
+        let name = dataSource!.tabletopView(self, nameForItem: index)
+        let health = dataSource!.tabletopView(self, healthForItem: index)
         
-        delegate?.tabletopView(self, willShowStatsForItem: index)
-        guard let name = dataSource?.tabletopView(self, nameForItem: index) else { return }
-        guard let health = dataSource?.tabletopView(self, healthForItem: index) else { return }
-        
-        let view = TabletopStatsPopupView(point: point)
+        let view = TabletopStatsPopupView()
         view.label.text = name
         view.progress.progress = health
         
         view.tapHandler = {
             self.delegate?.tabletopView(self, didSelectItem: index)
         }
-        
-        self.addSubview(view)
-        
-        statsPopup = view
-        statsPopupIndex = index
 
-        view.alpha = 0.0
-        UIView.animateWithDuration(0.3) {
-            view.alpha = 1.0
-        }
+        return view
     }
-
-    func hideStatsPopup() {
-        guard let statsPopup = statsPopup else { return }
-        self.statsPopup = nil
-        self.statsPopupIndex = nil
-
-        UIView.animateWithDuration(0.3, animations: {
-            statsPopup.alpha = 0.0
-        }, completion: { completed in
-            statsPopup.removeFromSuperview()
-        })
+    
+    func showStatsViewForItem(index: Int, at point: CGPoint) {
+        let view = statsViews[index]
+        
+        view.center = CGPoint(x: point.x, y: point.y - radius - 2.0 - view.frame.size.height / 2.0)
+            
+        self.addSubview(view)
     }
     
 }

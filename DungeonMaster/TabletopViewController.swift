@@ -17,6 +17,9 @@ class TabletopViewController: UIViewController {
         CGPoint(x: 350.0, y: 150.0),
         CGPoint(x: 275.0, y: 400.0)]
     
+    var names = ["Goblin", "Goblin", "Wolf", "Bugbear Captain"]
+    var healths: [Float] = [0.8, 0.2, 1.0, 0.7]
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         tabletopView = view as! TabletopView
@@ -57,11 +60,11 @@ extension TabletopViewController: TabletopViewDataSource {
     }
     
     func tabletopView(tabletopView: TabletopView, nameForItem index: Int) -> String {
-        return "Bugbear Captain"
+        return names[index]
     }
     
     func tabletopView(tabletopView: TabletopView, healthForItem index: Int) -> Float {
-        return 0.7
+        return healths[index]
     }
 
 }

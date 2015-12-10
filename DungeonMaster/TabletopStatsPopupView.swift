@@ -10,24 +10,19 @@ import UIKit
 
 class TabletopStatsPopupView: UIView {
     
-    var point: CGPoint
-
     var label: UILabel!
     var progress: UIProgressView!
     
     var tapHandler: (() -> Void)?
     
-    init(point: CGPoint) {
-        self.point = point
-
-        let frame = CGRect(x: point.x - 52.0, y: point.y - 62.0, width: 104.0, height: 38.0)
+    init() {
+        let frame = CGRect(x: 0.0, y: 0.0, width: 104.0, height: 38.0)
         super.init(frame: frame)
         
         configureView()
     }
 
     required init?(coder aDecoder: NSCoder) {
-        self.point = aDecoder.decodeCGPointForKey("point")
         super.init(coder: aDecoder)
         
         configureView()
@@ -39,6 +34,7 @@ class TabletopStatsPopupView: UIView {
         opaque = false
 
         label = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 100.0, height: 30.0))
+        label.font = UIFont.systemFontOfSize(14.0)
         label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .Center
         addSubview(label)
