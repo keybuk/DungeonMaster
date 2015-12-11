@@ -23,7 +23,7 @@ class TabletopStatsView: UIView {
     var tapHandler: (() -> Void)?
     
     init() {
-        let frame = CGRect(x: 0.0, y: 0.0, width: 104.0, height: 38.0)
+        let frame = CGRect(x: 0.0, y: 0.0, width: 104.0, height: 36.0)
         super.init(frame: frame)
         
         configureView()
@@ -40,14 +40,14 @@ class TabletopStatsView: UIView {
         layer.cornerRadius = 8.0
         opaque = false
 
-        label = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 100.0, height: 30.0))
+        label = UILabel(frame: CGRect(x: 2.0, y: 2.0, width: 100.0, height: 30.0))
         label.font = UIFont.systemFontOfSize(14.0)
         label.adjustsFontSizeToFitWidth = true
         label.numberOfLines = 0
         label.textAlignment = .Center
         addSubview(label)
         
-        progress = UIProgressView(frame: CGRect(x: 6.0, y: 30.0, width: 88.0, height: 2.0))
+        progress = UIProgressView(frame: CGRect(x: 8.0, y: 32.0, width: 88.0, height: 2.0))
         progress.progressTintColor = UIColor.greenColor()
         progress.trackTintColor = UIColor.redColor()
         addSubview(progress)
