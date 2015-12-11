@@ -12,11 +12,12 @@ class TabletopViewController: UIViewController {
 
     var tabletopView: TabletopView!
     
-    var points = [CGPoint(x: 250.0, y: 250.0),
-        CGPoint(x: 150.0, y: 100.0),
-        CGPoint(x: 350.0, y: 150.0),
-        CGPoint(x: 275.0, y: 400.0),
-        CGPoint(x: 400.0, y: 450.0),
+    var locations = [
+        CGPoint(x:  0.0, y:  0.0),
+        CGPoint(x: -0.5, y: -0.5),
+        CGPoint(x:  0.5, y: -0.5),
+        CGPoint(x:  0.3, y:  0.3),
+        CGPoint(x: -0.5, y:  0.5),
     ]
     
     var names = ["Goblin", "Goblin", "Wolf", "Bugbear Captain", "Half-Red Dragon Veteran"]
@@ -54,11 +55,11 @@ class TabletopViewController: UIViewController {
 extension TabletopViewController: TabletopViewDataSource {
     
     func numberOfItemsInTabletopView(tabletopView: TabletopView) -> Int {
-        return points.count
+        return locations.count
     }
     
-    func tabletopView(tabletopView: TabletopView, pointForItem index: Int) -> CGPoint {
-        return points[index]
+    func tabletopView(tabletopView: TabletopView, locationForItem index: Int) -> CGPoint {
+        return locations[index]
     }
     
     func tabletopView(tabletopView: TabletopView, nameForItem index: Int) -> String {
@@ -73,8 +74,8 @@ extension TabletopViewController: TabletopViewDataSource {
 
 extension TabletopViewController: TabletopViewDelegate {
     
-    func tabletopView(tabletopView: TabletopView, moveItem index: Int, to point: CGPoint) {
-        points[index] = point
+    func tabletopView(tabletopView: TabletopView, moveItem index: Int, to location: CGPoint) {
+        locations[index] = location
     }
     
     func tabletopView(tabletopView: TabletopView, willShowStatsForItem index: Int) {
