@@ -8,11 +8,18 @@
 
 import UIKit
 
+/// TabletopStatsView holds a label and health bar in a fixed size frame, rendered against a partially-transparent background.
+///
+/// Taps are handled by the view, set the tapHandler block to set an action.
 class TabletopStatsView: UIView {
     
+    /// Label to render name of item in.
     var label: UILabel!
+    
+    /// Progress bar may be used to render the health of the item.
     var progress: UIProgressView!
     
+    /// Action handler for taps on the view.
     var tapHandler: (() -> Void)?
     
     init() {
@@ -41,7 +48,8 @@ class TabletopStatsView: UIView {
         addSubview(label)
         
         progress = UIProgressView(frame: CGRect(x: 6.0, y: 30.0, width: 88.0, height: 2.0))
-        progress.tintColor = UIColor.greenColor()
+        progress.progressTintColor = UIColor.greenColor()
+        progress.trackTintColor = UIColor.redColor()
         addSubview(progress)
     }
     
