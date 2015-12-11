@@ -40,6 +40,7 @@
 		D2BDE60C1C17500A0008B2F2 /* EncountersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDE60B1C17500A0008B2F2 /* EncountersViewController.swift */; };
 		D2BDE60E1C1750170008B2F2 /* EncounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDE60D1C1750170008B2F2 /* EncounterViewController.swift */; };
 		D2C6063E1C17D32900F61DBD /* TabletopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C6063D1C17D32900F61DBD /* TabletopViewController.swift */; };
+		D2F9D12F1C1A71D8005F2D9A /* Encounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F9D12E1C1A71D8005F2D9A /* Encounter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		D2BDE60B1C17500A0008B2F2 /* EncountersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncountersViewController.swift; sourceTree = "<group>"; };
 		D2BDE60D1C1750170008B2F2 /* EncounterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncounterViewController.swift; sourceTree = "<group>"; };
 		D2C6063D1C17D32900F61DBD /* TabletopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabletopViewController.swift; sourceTree = "<group>"; };
+		D2F9D12E1C1A71D8005F2D9A /* Encounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encounter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 				D2116A501C10F4CE001EDBBA /* LairAction.swift */,
 				D2116A521C10F4E9001EDBBA /* LairTrait.swift */,
 				D2116A541C10F4F8001EDBBA /* RegionalEffect.swift */,
+				D2F9D12E1C1A71D8005F2D9A /* Encounter.swift */,
 				D23435F51C0D634100108D5F /* Importer.swift */,
 			);
 			name = "Data Model";
@@ -369,6 +372,7 @@
 				D23435FB1C0FEFA000108D5F /* Dice.swift in Sources */,
 				D20049231C1A127500A645E9 /* TabletopStatsView.swift in Sources */,
 				D23435F61C0D634100108D5F /* Importer.swift in Sources */,
+				D2F9D12F1C1A71D8005F2D9A /* Encounter.swift in Sources */,
 				D2C6063E1C17D32900F61DBD /* TabletopViewController.swift in Sources */,
 				D25120001C14C7ED00A09F0B /* BooksViewController.swift in Sources */,
 				D2116A4F1C10F377001EDBBA /* Lair.swift in Sources */,

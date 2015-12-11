@@ -284,7 +284,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="amA-OW-K2L" kind="show" id="3SG-1c-o4R"/>
+                                    <segue destination="amA-OW-K2L" kind="show" identifier="EncounterSegue" id="3SG-1c-o4R"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -297,7 +297,7 @@
                     <navigationItem key="navigationItem" title="Encounters" id="IzT-nz-4JL">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="k2E-Ko-8UO">
                             <connections>
-                                <segue destination="amA-OW-K2L" kind="show" id="qMl-qw-ZaA"/>
+                                <segue destination="amA-OW-K2L" kind="show" identifier="CreateEncounterSegue" id="qMl-qw-ZaA"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -410,6 +410,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3SG-1c-o4R"/>
+        <segue reference="qMl-qw-ZaA"/>
     </inferredMetricsTieBreakers>
 </document>

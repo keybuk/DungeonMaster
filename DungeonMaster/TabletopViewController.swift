@@ -12,6 +12,8 @@ class TabletopViewController: UIViewController {
 
     var tabletopView: TabletopView!
     
+    var encounter: Encounter!
+    
     var locations = [
         CGPoint(x:  0.0, y:  0.0),
         CGPoint(x: -0.5, y: -0.5),
@@ -30,6 +32,12 @@ class TabletopViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationItem.title = encounter.name ?? "Encounter"
 
     }
 
