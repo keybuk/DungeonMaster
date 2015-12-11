@@ -57,6 +57,9 @@ let π = M_PI
     /// Color used to fill the selected item on the table top.
     @IBInspectable var selectedItemFillColor: UIColor = UIColor(white: 0.8, alpha: 1.0)
     
+    /// Color used for grid lines.
+    @IBInspectable var gridColor: UIColor = UIColor(white: 0.8, alpha: 1.0)
+    
     /// Stroke width for items on the table top.
     @IBInspectable var itemStrokeWidth: CGFloat = 2.0
 
@@ -190,6 +193,32 @@ let π = M_PI
         
         CGContextSetFillColorWithColor(context, backgroundColor!.CGColor)
         CGContextFillRect(context, rect)
+        
+        CGContextSetStrokeColorWithColor(context, gridColor.CGColor)
+        CGContextSetLineWidth(context, 0.25)
+
+        let center = CGPoint(x: frame.size.width / 2.0, y: frame.size.height / 2.0)
+        var gridLine: CGFloat = itemRadius
+        while gridLine <= frame.size.width {
+            CGContextMoveToPoint(context, 0.0, center.y - gridLine)
+            CGContextAddLineToPoint(context, frame.size.width, center.y - gridLine)
+            CGContextStrokePath(context)
+            
+            CGContextMoveToPoint(context, 0.0, center.y + gridLine)
+            CGContextAddLineToPoint(context, frame.size.width, center.y + gridLine)
+            CGContextStrokePath(context)
+
+            CGContextMoveToPoint(context, center.x - gridLine, 0.0)
+            CGContextAddLineToPoint(context, center.x - gridLine, frame.size.height)
+            CGContextStrokePath(context)
+            
+            CGContextMoveToPoint(context, center.x + gridLine, 0.0)
+            CGContextAddLineToPoint(context, center.x + gridLine, frame.size.height)
+            CGContextStrokePath(context)
+
+            gridLine += itemRadius * 2
+        }
+        
         
         CGContextSetLineWidth(context, itemStrokeWidth)
 
