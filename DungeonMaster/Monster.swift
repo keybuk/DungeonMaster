@@ -197,7 +197,8 @@ final class Monster: NSManagedObject {
     @NSManaged var reactions: NSOrderedSet
     @NSManaged var legendaryActions: NSOrderedSet
     @NSManaged var lair: Lair?
-    
+    @NSManaged var combatants: NSSet
+
     var nameInitial: String {
         return String(name.characters.first!)
     }

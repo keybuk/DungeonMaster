@@ -23,6 +23,7 @@ enum Model: String {
     case LairTrait
     case RegionalEffect
     case Encounter
+    case Combatant
 
     static let name = "DungeonMaster"
     

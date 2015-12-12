@@ -14,6 +14,8 @@ final class Encounter: NSManagedObject {
     @NSManaged var lastUsed: NSDate
     @NSManaged var name: String?
     
+    @NSManaged var combatants: NSSet
+    
     convenience init(inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Encounter, inManagedObjectContext: context)
         self.init(entity: entity, insertIntoManagedObjectContext: context)
