@@ -34,7 +34,6 @@ class EncountersViewController: UITableViewController {
         let fetchRequest = NSFetchRequest()
         let entity = NSEntityDescription.entity(Model.Encounter, inManagedObjectContext: managedObjectContext)
         fetchRequest.entity = entity
-        fetchRequest.fetchBatchSize = 20
         
         let sortDescriptor = NSSortDescriptor(key: "lastUsed", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
