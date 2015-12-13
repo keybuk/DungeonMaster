@@ -32,6 +32,7 @@
 		D26FBA221C1BEA0F00D44503 /* Combatant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FBA211C1BEA0F00D44503 /* Combatant.swift */; };
 		D26FBA2D1C1D0D7500D44503 /* dice.caf in Resources */ = {isa = PBXBuildFile; fileRef = D26FBA271C1D0D7500D44503 /* dice.caf */; };
 		D26FBA321C1D39B900D44503 /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FBA311C1D39B900D44503 /* Sounds.swift */; };
+		D26FBA341C1D3BAF00D44503 /* CombatantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FBA331C1D3BAF00D44503 /* CombatantViewController.swift */; };
 		D2A9AF0A1BFFEAA5009902ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A9AF091BFFEAA5009902ED /* AppDelegate.swift */; };
 		D2A9AF0D1BFFEAA5009902ED /* DungeonMaster.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2A9AF0B1BFFEAA5009902ED /* DungeonMaster.xcdatamodeld */; };
 		D2A9AF111BFFEAA5009902ED /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A9AF101BFFEAA5009902ED /* DetailViewController.swift */; };
@@ -89,6 +90,7 @@
 		D26FBA211C1BEA0F00D44503 /* Combatant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Combatant.swift; sourceTree = "<group>"; };
 		D26FBA271C1D0D7500D44503 /* dice.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dice.caf; sourceTree = "<group>"; };
 		D26FBA311C1D39B900D44503 /* Sounds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
+		D26FBA331C1D3BAF00D44503 /* CombatantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombatantViewController.swift; sourceTree = "<group>"; };
 		D2A9AF061BFFEAA5009902ED /* DungeonMaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DungeonMaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2A9AF091BFFEAA5009902ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2A9AF0C1BFFEAA5009902ED /* DungeonMaster.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DungeonMaster.xcdatamodel; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 			children = (
 				D2BDE60B1C17500A0008B2F2 /* EncountersViewController.swift */,
 				D2BDE60D1C1750170008B2F2 /* EncounterViewController.swift */,
+				D26FBA331C1D3BAF00D44503 /* CombatantViewController.swift */,
 				D2C6063D1C17D32900F61DBD /* TabletopViewController.swift */,
 				D2511FF71C12B1AD00A09F0B /* MonstersViewController.swift */,
 				D2511FFF1C14C7ED00A09F0B /* BooksViewController.swift */,
@@ -400,6 +403,7 @@
 				D2116A481C10ECAE001EDBBA /* Trait.swift in Sources */,
 				D26FBA321C1D39B900D44503 /* Sounds.swift in Sources */,
 				D2116A531C10F4E9001EDBBA /* LairTrait.swift in Sources */,
+				D26FBA341C1D3BAF00D44503 /* CombatantViewController.swift in Sources */,
 				D2A9AF111BFFEAA5009902ED /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

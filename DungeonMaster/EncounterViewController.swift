@@ -87,6 +87,15 @@ class EncounterViewController: UITableViewController {
             tabletopViewController.encounter = encounter
             tabletopViewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
             tabletopViewController.navigationItem.leftItemsSupplementBackButton = true
+        } else if segue.identifier == "CombatantSegue" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let combatant = fetchedResultsController.objectAtIndexPath(indexPath) as! Combatant
+
+                let combatantViewController = (segue.destinationViewController as! UINavigationController).topViewController as! CombatantViewController
+                combatantViewController.combatant = combatant
+                combatantViewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
+                combatantViewController.navigationItem.leftItemsSupplementBackButton = true
+            }
         }
     }
 
