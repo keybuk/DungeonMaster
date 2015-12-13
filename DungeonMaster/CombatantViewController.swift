@@ -19,12 +19,6 @@ class CombatantViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
         notificationObserver = NSNotificationCenter.defaultCenter().addObserverForName(NSManagedObjectContextObjectsDidChangeNotification, object: managedObjectContext, queue: nil) { notification in
             if let updatedObjects = notification.userInfo?[NSUpdatedObjectsKey] as? NSSet {
                 if updatedObjects.containsObject(self.combatant) {
@@ -34,54 +28,22 @@ class CombatantViewController: UITableViewController {
         }
     }
     
-    deinit {
-        if let notificationObserver = notificationObserver {
-            NSNotificationCenter.defaultCenter().removeObserver(notificationObserver)
-        }
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
-
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    deinit {
+        if let notificationObserver = notificationObserver {
+            NSNotificationCenter.defaultCenter().removeObserver(notificationObserver)
+        }
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    // MARK: Data handling.
+    
+    func combatantUpdated() {
+        tableView.reloadData()
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     /*
     // MARK: - Navigation
@@ -93,15 +55,18 @@ class CombatantViewController: UITableViewController {
     }
     */
 
-    func combatantUpdated() {
-        tableView.reloadData()
-    }
 }
 
 // MARK: UITableViewDataSource
 extension CombatantViewController {
     
-    enum TableRows: Int {
+    enum TableSections: Int {
+        case Details
+        case Notes
+        case SectionCount
+    }
+    
+    enum TableDetailsRows: Int {
         case MonsterName
         case HitPoints
         case Initiative
@@ -109,14 +74,14 @@ extension CombatantViewController {
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+        return TableSections.SectionCount.rawValue
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return TableRows.RowCount.rawValue
-        case 1:
+        switch TableSections(rawValue: section)! {
+        case .Details:
+            return TableDetailsRows.RowCount.rawValue
+        case .Notes:
             return 1
         default:
             abort()
@@ -124,10 +89,10 @@ extension CombatantViewController {
     }
 
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
+        switch TableSections(rawValue: section)! {
+        case .Details:
             return nil
-        case 1:
+        case .Notes:
             return "Notes"
         default:
             abort()
@@ -135,9 +100,9 @@ extension CombatantViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        switch indexPath.section {
-        case 0:
-            let tableRow = TableRows(rawValue: indexPath.row)!
+        switch TableSections(rawValue: indexPath.section)! {
+        case .Details:
+            let tableRow = TableDetailsRows(rawValue: indexPath.row)!
             switch tableRow {
             case .MonsterName:
                 let cell = tableView.dequeueReusableCellWithIdentifier("CombatantNameCell", forIndexPath: indexPath) as! CombatantNameCell
@@ -158,7 +123,7 @@ extension CombatantViewController {
             default:
                 abort()
             }
-        case 1:
+        case .Notes:
             let cell = tableView.dequeueReusableCellWithIdentifier("NotesCell", forIndexPath: indexPath) as! NotesCell
             cell.textView.text = combatant.notes
             return cell
@@ -168,10 +133,10 @@ extension CombatantViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        switch indexPath.section {
-        case 0:
+        switch TableSections(rawValue: indexPath.section)! {
+        case .Details:
             return 44.0
-        case 1:
+        case .Notes:
             return 144.0
         default:
             abort()
@@ -179,9 +144,9 @@ extension CombatantViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        switch indexPath.section {
-        case 0:
-            let tableRow = TableRows(rawValue: indexPath.row)!
+        switch TableSections(rawValue: indexPath.section)! {
+        case .Details:
+            let tableRow = TableDetailsRows(rawValue: indexPath.row)!
             switch tableRow {
             case .HitPoints, .Initiative:
                 let cell = tableView.cellForRowAtIndexPath(indexPath) as! DiceRollCell
@@ -189,7 +154,7 @@ extension CombatantViewController {
             default:
                 break
             }
-        case 1:
+        case .Notes:
             let cell = tableView.cellForRowAtIndexPath(indexPath) as! NotesCell
             cell.textView.becomeFirstResponder()
         default:
@@ -198,6 +163,8 @@ extension CombatantViewController {
     }
 
 }
+
+// MARK: -
 
 class CombatantNameCell: UITableViewCell {
     

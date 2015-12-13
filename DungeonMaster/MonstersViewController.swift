@@ -72,7 +72,6 @@ class MonstersViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
     // MARK: Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -203,6 +202,8 @@ class MonstersViewController: UIViewController {
         updateFetchRequestController(search: search)
         tableView.reloadData()
     }
+    
+    // MARK: Actions
 
     @IBAction func sortControlValueChanged(sortControl: UISegmentedControl) {
         updateFetchedResults()
@@ -360,8 +361,8 @@ extension MonstersViewController: UISearchResultsUpdating {
     
 }
 
-
 // MARK: - 
+
 class MonsterCell: UITableViewCell {
     
     var monster: Monster? {

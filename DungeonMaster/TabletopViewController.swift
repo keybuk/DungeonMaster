@@ -46,7 +46,6 @@ class TabletopViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -80,6 +79,7 @@ extension TabletopViewController: TabletopViewDataSource {
 
 }
 
+// MARK: TabletopViewDelegate
 extension TabletopViewController: TabletopViewDelegate {
     
     func tabletopView(tabletopView: TabletopView, moveItem index: Int, to location: CGPoint) {

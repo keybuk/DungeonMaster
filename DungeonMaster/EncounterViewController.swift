@@ -141,7 +141,7 @@ extension EncounterViewController {
         return cell
     }
     
-    // MARK: Edit support.
+    // MARK: Edit support
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
@@ -200,6 +200,8 @@ extension EncounterViewController: NSFetchedResultsControllerDelegate {
     }
     
 }
+
+// MARK: -
 
 class CombatantCell: UITableViewCell {
     
