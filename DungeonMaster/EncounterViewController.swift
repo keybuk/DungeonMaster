@@ -112,10 +112,16 @@ class EncounterViewController: UITableViewController {
     @IBAction func initiativeTapped(sender: UIBarButtonItem) {
         PlaySound(.Initiative)
         
+        var initiativeDice = [Monster: DiceCombo]()
         for combatant in encounter.combatants {
             let combatant = combatant as! Combatant
-            let combo = combatant.monster.initiativeDice.reroll()
-            combatant.initiative = combo.value
+            if let combo = initiativeDice[combatant.monster] {
+                combatant.initiative = combo.value
+            } else {
+                let combo = combatant.monster.initiativeDice.reroll()
+                initiativeDice[combatant.monster] = combo
+                combatant.initiative = combo.value
+            }
         }
     }
 
