@@ -86,7 +86,7 @@ extension EncountersViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("EncounterCell", forIndexPath: indexPath)
         let encounter = fetchedResultsController.objectAtIndexPath(indexPath) as! Encounter
-        cell.textLabel?.text = encounter.name ?? "Encounter"
+        cell.textLabel?.text = encounter.title
         return cell
     }
 
@@ -137,7 +137,7 @@ extension EncountersViewController: NSFetchedResultsControllerDelegate {
         case .Update:
             let cell = tableView.cellForRowAtIndexPath(indexPath!)
             let encounter = fetchedResultsController.objectAtIndexPath(indexPath!) as! Encounter
-            cell?.textLabel?.text = encounter.name ?? "Encounter"
+            cell?.textLabel?.text = encounter.title
         case .Move:
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
             tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)

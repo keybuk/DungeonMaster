@@ -388,7 +388,7 @@
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Encounter" id="LzR-Tq-G6t">
+                    <navigationItem key="navigationItem" id="LzR-Tq-G6t">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="zWa-kW-O2x">
                             <connections>
                                 <segue destination="Wkq-TG-mW3" kind="show" identifier="AddMonsterSegue" id="Ynb-s2-Xx3"/>
@@ -556,7 +556,18 @@
                             <outlet property="delegate" destination="v0S-aJ-iGT" id="U77-2w-oO3"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" id="SXv-lg-MWA"/>
+                    <navigationItem key="navigationItem" id="SXv-lg-MWA">
+                        <nil key="title"/>
+                        <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Encounter" textAlignment="center" minimumFontSize="17" id="Jn8-gJ-6vp">
+                            <rect key="frame" x="200" y="7" width="200" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <action selector="textFieldEditingDidEnd:" destination="v0S-aJ-iGT" eventType="editingDidEnd" id="Phb-qx-lJL"/>
+                            </connections>
+                        </textField>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bwi-hl-Zsf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

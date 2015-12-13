@@ -18,6 +18,33 @@ final class Encounter: NSManagedObject {
     
     var notificationObserver: NSObjectProtocol?
     
+    var title: String {
+        if name != nil {
+            return name!
+        }
+        
+        let sortDescriptor = NSSortDescriptor(key: "monster.cr", ascending: false)
+        let sortedCombatants = combatants.sortedArrayUsingDescriptors([sortDescriptor]) as! [Combatant]
+        if sortedCombatants.count > 0 {
+            let monster = sortedCombatants[0].monster
+            let count = sortedCombatants.filter { return $0.monster == monster }.count
+
+            if count > 1 {
+                if count < sortedCombatants.count {
+                    return "\(count) \(monster.name)s and \(sortedCombatants.count - count) others"
+                } else {
+                    return "\(count) \(monster.name)s"
+                }
+            } else if sortedCombatants.count > 1 {
+                return "\(monster.name) and \(sortedCombatants.count - 1) others"
+            } else {
+                return "\(monster.name)"
+            }
+        }
+        
+        return "Encounter"
+    }
+    
     convenience init(inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Encounter, inManagedObjectContext: context)
         self.init(entity: entity, insertIntoManagedObjectContext: context)

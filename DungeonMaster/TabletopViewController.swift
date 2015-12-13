@@ -37,8 +37,10 @@ class TabletopViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationItem.title = encounter.name ?? "Encounter"
-
+        navigationItem.title = encounter.title
+        if let textField = navigationItem.titleView as? UITextField {
+            textField.text = navigationItem.title
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,7 +49,7 @@ class TabletopViewController: UIViewController {
     }
     
     /*
-    // MARK: - Navigation
+    // MARK: Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -55,6 +57,12 @@ class TabletopViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
+    // MARK: Actions
+    
+    @IBAction func textFieldEditingDidEnd(sender: UITextField) {
+        encounter.name = sender.text
+    }
 
 }
 
