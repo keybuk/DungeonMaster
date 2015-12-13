@@ -276,6 +276,32 @@ class DiceTest: XCTestCase {
         XCTAssertEqual(combo.description, "1d4 - 4")
     }
 
+    func testComboWithZeroModifier() {
+        let combo = try! DiceCombo(description: "1d20 + 0")
+        XCTAssertEqual(combo.dice.count, 2)
+        
+        let dice = combo.dice[0]
+        XCTAssertEqual(dice.sign, JoiningSign.None)
+        XCTAssertEqual(dice.dice.count, 1)
+        XCTAssertEqual(dice.dice[0].sides, 20)
+        XCTAssertEqual(dice.description, "1d20")
+        
+        XCTAssertEqual(dice.value, dice.dice[0].value)
+        XCTAssertEqual(dice.averageValue, 10)
+        
+        let modifier = combo.dice[1]
+        XCTAssertEqual(modifier.dice.count, 0)
+        XCTAssertEqual(modifier.value, 0)
+        XCTAssertEqual(modifier.sign, JoiningSign.Plus)
+        XCTAssertEqual(modifier.averageValue, 0)
+        XCTAssertEqual(modifier.description, "0")
+        
+        XCTAssertEqual(combo.value, dice.value + modifier.value)
+        XCTAssertEqual(combo.averageValue, dice.averageValue + modifier.averageValue)
+        
+        XCTAssertEqual(combo.description, "1d20 + 0")
+    }
+
     func testComboWithTwoDiceSets() {
         let combo = try! DiceCombo(description: "1d4+2d6")
         XCTAssertEqual(combo.dice.count, 2)
@@ -426,6 +452,11 @@ class DiceTest: XCTestCase {
         XCTAssertEqual(combo.description, "1d20 - 2")
     }
 
+    func testCreateDiceAndZeroModifier() {
+        let combo = try! DiceCombo(sides: 20, modifier: 0)
+        XCTAssertEqual(combo.description, "1d20 + 0")
+    }
+    
     func testCreateDiceWithAllFields() {
         let combo = try! DiceCombo(multiplier: 2, sides: 8, modifier: 5)
         XCTAssertEqual(combo.description, "2d8 + 5")

@@ -162,7 +162,7 @@ struct DiceCombo: Equatable, CustomStringConvertible {
         let dice = try Dice(multiplier: multiplier, sides: sides)
         
         if let modifier = modifier {
-            let modifierDice = Dice(value: abs(modifier), sign: modifier > 0 ? .Plus : .Minus)
+            let modifierDice = Dice(value: abs(modifier), sign: modifier >= 0 ? .Plus : .Minus)
             self.dice = [dice, modifierDice]
             self.value = dice.value + modifier
             self.averageValue = dice.averageValue
