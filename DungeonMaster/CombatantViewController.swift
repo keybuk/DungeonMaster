@@ -89,49 +89,91 @@ extension CombatantViewController {
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return TableRows.RowCount.rawValue
+        switch section {
+        case 0:
+            return TableRows.RowCount.rawValue
+        case 1:
+            return 1
+        default:
+            abort()
+        }
+    }
+
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return nil
+        case 1:
+            return "Notes"
+        default:
+            abort()
+        }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let tableRow = TableRows(rawValue: indexPath.row)!
-        switch tableRow {
-        case .MonsterName:
-            let cell = tableView.dequeueReusableCellWithIdentifier("CombatantNameCell", forIndexPath: indexPath) as! CombatantNameCell
-            cell.nameLabel.text = combatant.monster.name
-            return cell
-        case .HitPoints:
-            let cell = tableView.dequeueReusableCellWithIdentifier("DiceRollCell", forIndexPath: indexPath) as! DiceRollCell
-            cell.diceCombo = combatant.monster.hitDice
-            cell.label.text = "Hit Points"
-            cell.textField.text = "\(combatant.hitPoints)"
-            return cell
-        case .Initiative:
-            let cell = tableView.dequeueReusableCellWithIdentifier("DiceRollCell", forIndexPath: indexPath) as! DiceRollCell
-            cell.diceCombo = try! DiceCombo(description: "1d20 + \(combatant.monster.dexterityModifier)") // modifier can be negative, use a better init
-            cell.label.text = "Initiative"
-            cell.textField.text = "\(combatant.initiative)"
+        switch indexPath.section {
+        case 0:
+            let tableRow = TableRows(rawValue: indexPath.row)!
+            switch tableRow {
+            case .MonsterName:
+                let cell = tableView.dequeueReusableCellWithIdentifier("CombatantNameCell", forIndexPath: indexPath) as! CombatantNameCell
+                cell.nameLabel.text = combatant.monster.name
+                return cell
+            case .HitPoints:
+                let cell = tableView.dequeueReusableCellWithIdentifier("DiceRollCell", forIndexPath: indexPath) as! DiceRollCell
+                cell.diceCombo = combatant.monster.hitDice
+                cell.label.text = "Hit Points"
+                cell.textField.text = "\(combatant.hitPoints)"
+                return cell
+            case .Initiative:
+                let cell = tableView.dequeueReusableCellWithIdentifier("DiceRollCell", forIndexPath: indexPath) as! DiceRollCell
+                cell.diceCombo = try! DiceCombo(description: "1d20 + \(combatant.monster.dexterityModifier)") // modifier can be negative, use a better init
+                cell.label.text = "Initiative"
+                cell.textField.text = "\(combatant.initiative)"
+                return cell
+            default:
+                abort()
+            }
+        case 1:
+            let cell = tableView.dequeueReusableCellWithIdentifier("NotesCell", forIndexPath: indexPath) as! NotesCell
+            cell.textView.text = combatant.notes
             return cell
         default:
             abort()
         }
     }
     
-    /*override func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return false
-    }*/
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        switch indexPath.section {
+        case 0:
+            return 44.0
+        case 1:
+            return 144.0
+        default:
+            abort()
+        }
+    }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let tableRow = TableRows(rawValue: indexPath.row)!
-        switch tableRow {
-        case .HitPoints, .Initiative:
-            let cell = tableView.cellForRowAtIndexPath(indexPath) as! DiceRollCell
-            cell.textField.becomeFirstResponder()
+        switch indexPath.section {
+        case 0:
+            let tableRow = TableRows(rawValue: indexPath.row)!
+            switch tableRow {
+            case .HitPoints, .Initiative:
+                let cell = tableView.cellForRowAtIndexPath(indexPath) as! DiceRollCell
+                cell.textField.becomeFirstResponder()
+            default:
+                break
+            }
+        case 1:
+            let cell = tableView.cellForRowAtIndexPath(indexPath) as! NotesCell
+            cell.textView.becomeFirstResponder()
         default:
-            break
+            abort()
         }
     }
 
@@ -161,4 +203,10 @@ class DiceRollCell: UITableViewCell {
         textField.text = "\(diceCombo.value)"
     }
     
+}
+
+class NotesCell: UITableViewCell {
+    
+    @IBOutlet var textView: UITextView!
+
 }

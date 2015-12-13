@@ -16,6 +16,7 @@ final class Combatant: NSManagedObject {
 
     @NSManaged var hitPointsValue: Int16
     @NSManaged var initiativeValue: NSNumber?
+    @NSManaged var notes: String?
 
     var hitPoints: Int {
         get {

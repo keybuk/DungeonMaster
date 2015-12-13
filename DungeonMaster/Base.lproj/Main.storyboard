@@ -478,6 +478,32 @@
                                     <outlet property="textField" destination="BuD-C8-JrJ" id="p8k-XS-Iee"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NotesCell" rowHeight="144" id="0yS-eM-CzN" customClass="NotesCell" customModule="DungeonMaster" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="201.5" width="600" height="144"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0yS-eM-CzN" id="XpP-MG-d0J">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="143.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="U7E-uE-z4O">
+                                            <rect key="frame" x="8" y="0.0" width="584" height="143.5"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="U7E-uE-z4O" firstAttribute="top" secondItem="XpP-MG-d0J" secondAttribute="topMargin" constant="-8" id="DRC-bo-5mC"/>
+                                        <constraint firstItem="U7E-uE-z4O" firstAttribute="trailing" secondItem="XpP-MG-d0J" secondAttribute="trailingMargin" id="ZHT-H4-ubo"/>
+                                        <constraint firstItem="U7E-uE-z4O" firstAttribute="leading" secondItem="XpP-MG-d0J" secondAttribute="leadingMargin" id="gxT-FS-NNk"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="U7E-uE-z4O" secondAttribute="bottom" constant="-8" id="lQr-rc-8F7"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="textView" destination="U7E-uE-z4O" id="JFx-5l-e0M"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="HF8-EI-wiy" id="pZt-Qv-Mfe"/>
