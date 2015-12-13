@@ -33,6 +33,11 @@ struct Die: Equatable {
         
         value = Int(arc4random_uniform(UInt32(sides)) + 1)
     }
+    
+    /// Re-rolls the die, returning a Die object containing the new value.
+    func reroll() -> Die {
+        return try! Die(sides: sides)
+    }
         
 }
 
@@ -92,7 +97,16 @@ struct Dice: Equatable, CustomStringConvertible {
         self.sign = sign
         self.averageValue = value
     }
-
+    
+    /// Re-rolls the dice, returning a Dice object containing the new value.
+    func reroll() -> Dice {
+        if dice.count > 0 {
+            return try! Dice(multiplier: dice.count, sides: dice[0].sides, sign: sign)
+        } else {
+            return Dice(value: value, sign: sign)
+        }
+    }
+    
 }
 
 func ==(lhs: Dice, rhs: Dice) -> Bool {
@@ -243,6 +257,11 @@ struct DiceCombo: Equatable, CustomStringConvertible {
         self.dice = dice
         self.value = value
         self.averageValue = averageValue
+    }
+    
+    /// Re-rolls the dice, returning a DiceCombo object containing the new value.
+    func reroll() -> DiceCombo {
+        return try! DiceCombo(description: self.description)
     }
     
 }
