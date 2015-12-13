@@ -406,6 +406,31 @@ class DiceTest: XCTestCase {
         XCTAssertEqual(combo.description, "1d4 + 1 + 2d6")
     }
 
+    func testCreateJustDice() {
+        let combo = try! DiceCombo(sides: 20)
+        XCTAssertEqual(combo.description, "1d20")
+    }
+    
+    func testCreateDiceAndMultiplier() {
+        let combo = try! DiceCombo(multiplier: 4, sides: 6)
+        XCTAssertEqual(combo.description, "4d6")
+    }
+    
+    func testCreateDiceAndPositiveModifier() {
+        let combo = try! DiceCombo(sides: 20, modifier: 3)
+        XCTAssertEqual(combo.description, "1d20 + 3")
+    }
+
+    func testCreateDiceAndNegativeModifier() {
+        let combo = try! DiceCombo(sides: 20, modifier: -2)
+        XCTAssertEqual(combo.description, "1d20 - 2")
+    }
+
+    func testCreateDiceWithAllFields() {
+        let combo = try! DiceCombo(multiplier: 2, sides: 8, modifier: 5)
+        XCTAssertEqual(combo.description, "2d8 + 5")
+    }
+
     func testInvalidComboWithInvalidDice() {
         do {
             let _ = try DiceCombo(description: "1d5")

@@ -144,6 +144,21 @@ struct DiceCombo: Equatable, CustomStringConvertible {
         return parts.joinWithSeparator("")
     }
 
+    init(multiplier: Int = 1, sides: Int, modifier: Int? = nil) throws {
+        let dice = try Dice(multiplier: multiplier, sides: sides)
+        
+        if let modifier = modifier {
+            let modifierDice = Dice(value: abs(modifier), sign: modifier > 0 ? .Plus : .Minus)
+            self.dice = [dice, modifierDice]
+            self.value = dice.value + modifier
+            self.averageValue = dice.averageValue
+        } else {
+            self.dice = [dice]
+            self.value = dice.value
+            self.averageValue = dice.averageValue
+        }
+    }
+    
     init(description: String) throws {
         var dice = [Dice]()
         var value = 0
