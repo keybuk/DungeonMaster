@@ -60,10 +60,10 @@ class TabletopViewController: UIViewController {
 
     // MARK: Actions
     
-    @IBAction func textFieldEditingDidEnd(sender: UITextField) {
+    @IBAction func textFieldPrimaryAction(sender: UITextField) {
         encounter.name = sender.text
+        sender.resignFirstResponder()
     }
-
 }
 
 // MARK: TabletopViewDataSource

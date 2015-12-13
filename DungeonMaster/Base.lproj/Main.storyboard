@@ -564,7 +564,7 @@
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
-                                <action selector="textFieldEditingDidEnd:" destination="v0S-aJ-iGT" eventType="editingDidEnd" id="Phb-qx-lJL"/>
+                                <action selector="textFieldPrimaryAction:" destination="v0S-aJ-iGT" eventType="primaryActionTriggered" id="uGO-DX-HBs"/>
                             </connections>
                         </textField>
                     </navigationItem>
