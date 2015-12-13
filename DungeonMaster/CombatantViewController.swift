@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import CoreData
 
 class CombatantViewController: UITableViewController {
 
     /// The encounter combatant being shown and manipulated.
     var combatant: Combatant!
+    
+    var notificationObserver: NSObjectProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +24,20 @@ class CombatantViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        notificationObserver = NSNotificationCenter.defaultCenter().addObserverForName(NSManagedObjectContextObjectsDidChangeNotification, object: managedObjectContext, queue: nil) { notification in
+            if let updatedObjects = notification.userInfo?[NSUpdatedObjectsKey] as? NSSet {
+                if updatedObjects.containsObject(self.combatant) {
+                    self.combatantUpdated()
+                }
+            }
+        }
+    }
+    
+    deinit {
+        if let notificationObserver = notificationObserver {
+            NSNotificationCenter.defaultCenter().removeObserver(notificationObserver)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -76,6 +93,9 @@ class CombatantViewController: UITableViewController {
     }
     */
 
+    func combatantUpdated() {
+        tableView.reloadData()
+    }
 }
 
 // MARK: UITableViewDataSource
