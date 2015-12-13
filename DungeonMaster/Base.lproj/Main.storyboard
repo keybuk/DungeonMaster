@@ -301,7 +301,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pZf-9G-rqZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -382,6 +381,13 @@
                             <outlet property="delegate" destination="amA-OW-K2L" id="qVp-eE-6he"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem title="Initiative" id="xky-VZ-nVa">
+                            <connections>
+                                <action selector="initiativeTapped:" destination="amA-OW-K2L" id="RyF-3H-ZcX"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Encounter" id="LzR-Tq-G6t">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="zWa-kW-O2x">
                             <connections>
@@ -389,6 +395,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="jr3-ft-OuD" kind="showDetail" identifier="TabletopSegue" id="N9H-oc-W3k"/>
                     </connections>

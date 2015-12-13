@@ -32,6 +32,14 @@ class EncounterViewController: UITableViewController {
         
         // FIXME This is the wrong place to do this, because it's triggered in several places, especially collapsed mode and portrait collapsed mode.
         performSegueWithIdentifier("TabletopSegue", sender: self)
+        
+        navigationController?.toolbarHidden = false
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        navigationController?.toolbarHidden = true
     }
     
     // MARK: Fetched results controller
@@ -96,6 +104,18 @@ class EncounterViewController: UITableViewController {
                 combatantViewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
                 combatantViewController.navigationItem.leftItemsSupplementBackButton = true
             }
+        }
+    }
+    
+    // MARK: Actions
+    
+    @IBAction func initiativeTapped(sender: UIBarButtonItem) {
+        PlaySound(.Initiative)
+        
+        for combatant in encounter.combatants {
+            let combatant = combatant as! Combatant
+            let combo = combatant.monster.initiativeDice.reroll()
+            combatant.initiative = combo.value
         }
     }
 

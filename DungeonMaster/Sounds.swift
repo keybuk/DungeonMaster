@@ -9,8 +9,13 @@
 import Foundation
 import AudioToolbox
 
-func DiceRollSound() {
-    if let soundFileURL = NSBundle.mainBundle().URLForResource("dice", withExtension: "caf", subdirectory: "Sounds") {
+enum Sound: String {
+    case Dice = "dice"
+    case Initiative = "initiative"
+}
+
+func PlaySound(sound: Sound) {
+    if let soundFileURL = NSBundle.mainBundle().URLForResource(sound.rawValue, withExtension: "caf", subdirectory: "Sounds") {
         var soundID: SystemSoundID = 0
         AudioServicesCreateSystemSoundID(soundFileURL, &soundID)
         AudioServicesPlaySystemSound(soundID)
