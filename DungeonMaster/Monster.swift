@@ -173,6 +173,10 @@ final class Monster: NSManagedObject {
         }
     }
     
+    var initiativeDice: DiceCombo {
+        return try! DiceCombo(sides: 20, modifier: dexterityModifier)
+    }
+    
     // Partially-parsed members.
     @NSManaged var type: String
     @NSManaged var cr: Float
