@@ -131,7 +131,7 @@ extension CombatantViewController {
                 return cell
             case .Initiative:
                 let cell = tableView.dequeueReusableCellWithIdentifier("DiceRollCell", forIndexPath: indexPath) as! DiceRollCell
-                cell.diceCombo = try! DiceCombo(description: "1d20 + \(combatant.monster.dexterityModifier)") // modifier can be negative, use a better init
+                cell.diceCombo = combatant.monster.initiativeDice
                 cell.label.text = "Initiative"
                 cell.textField.text = "\(combatant.initiative)"
                 return cell
@@ -198,7 +198,7 @@ class DiceRollCell: UITableViewCell {
     }
     
     @IBAction func buttonTapped(sender: UIButton) {
-        DiceRollSound()
+        PlaySound(.Dice)
         diceCombo = diceCombo.reroll()
         textField.text = "\(diceCombo.value)"
     }
