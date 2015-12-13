@@ -118,7 +118,11 @@ extension CombatantViewController {
                 let cell = tableView.dequeueReusableCellWithIdentifier("DiceRollCell", forIndexPath: indexPath) as! DiceRollCell
                 cell.diceCombo = combatant.monster.initiativeDice
                 cell.label.text = "Initiative"
-                cell.textField.text = "\(combatant.initiative)"
+                if let initiative = combatant.initiative {
+                    cell.textField.text = "\(initiative)"
+                } else {
+                    cell.textField.text = "—"
+                }
                 return cell
             default:
                 abort()
