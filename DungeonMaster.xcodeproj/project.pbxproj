@@ -30,6 +30,8 @@
 		D25120001C14C7ED00A09F0B /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2511FFF1C14C7ED00A09F0B /* BooksViewController.swift */; };
 		D25120021C14FC0A00A09F0B /* ExtendedNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25120011C14FC0A00A09F0B /* ExtendedNavigationBarView.swift */; };
 		D26FBA221C1BEA0F00D44503 /* Combatant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FBA211C1BEA0F00D44503 /* Combatant.swift */; };
+		D26FBA2D1C1D0D7500D44503 /* dice.caf in Resources */ = {isa = PBXBuildFile; fileRef = D26FBA271C1D0D7500D44503 /* dice.caf */; };
+		D26FBA321C1D39B900D44503 /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FBA311C1D39B900D44503 /* Sounds.swift */; };
 		D2A9AF0A1BFFEAA5009902ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A9AF091BFFEAA5009902ED /* AppDelegate.swift */; };
 		D2A9AF0D1BFFEAA5009902ED /* DungeonMaster.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2A9AF0B1BFFEAA5009902ED /* DungeonMaster.xcdatamodeld */; };
 		D2A9AF111BFFEAA5009902ED /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A9AF101BFFEAA5009902ED /* DetailViewController.swift */; };
@@ -85,6 +87,8 @@
 		D2511FFF1C14C7ED00A09F0B /* BooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
 		D25120011C14FC0A00A09F0B /* ExtendedNavigationBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtendedNavigationBarView.swift; sourceTree = "<group>"; };
 		D26FBA211C1BEA0F00D44503 /* Combatant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Combatant.swift; sourceTree = "<group>"; };
+		D26FBA271C1D0D7500D44503 /* dice.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dice.caf; sourceTree = "<group>"; };
+		D26FBA311C1D39B900D44503 /* Sounds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
 		D2A9AF061BFFEAA5009902ED /* DungeonMaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DungeonMaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2A9AF091BFFEAA5009902ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2A9AF0C1BFFEAA5009902ED /* DungeonMaster.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DungeonMaster.xcdatamodel; sourceTree = "<group>"; };
@@ -182,8 +186,10 @@
 				D2BDE6101C1755040008B2F2 /* Views */,
 				D2A9AF091BFFEAA5009902ED /* AppDelegate.swift */,
 				D23435FA1C0FEFA000108D5F /* Dice.swift */,
+				D26FBA311C1D39B900D44503 /* Sounds.swift */,
 				D2A9AF121BFFEAA5009902ED /* Main.storyboard */,
 				D2A9AF151BFFEAA5009902ED /* Assets.xcassets */,
+				D26FBA271C1D0D7500D44503 /* dice.caf */,
 				D2A9AF171BFFEAA5009902ED /* LaunchScreen.storyboard */,
 				D2A9AF1A1BFFEAA5009902ED /* Info.plist */,
 				D2116A561C10F791001EDBBA /* Data.plist */,
@@ -340,6 +346,7 @@
 				D2A9AF191BFFEAA5009902ED /* LaunchScreen.storyboard in Resources */,
 				D2116A571C10F791001EDBBA /* Data.plist in Resources */,
 				D2A9AF161BFFEAA5009902ED /* Assets.xcassets in Resources */,
+				D26FBA2D1C1D0D7500D44503 /* dice.caf in Resources */,
 				D2A9AF141BFFEAA5009902ED /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -391,6 +398,7 @@
 				D243F6431C189A7500324572 /* TabletopView.swift in Sources */,
 				D2116A551C10F4F8001EDBBA /* RegionalEffect.swift in Sources */,
 				D2116A481C10ECAE001EDBBA /* Trait.swift in Sources */,
+				D26FBA321C1D39B900D44503 /* Sounds.swift in Sources */,
 				D2116A531C10F4E9001EDBBA /* LairTrait.swift in Sources */,
 				D2A9AF111BFFEAA5009902ED /* DetailViewController.swift in Sources */,
 			);
