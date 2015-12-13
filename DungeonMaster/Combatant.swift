@@ -32,7 +32,7 @@ final class Combatant: NSManagedObject {
             return initiativeValue?.integerValue
         }
         set(newInitiative) {
-            initiativeValue = initiative != nil ? NSNumber(integer: newInitiative!) : nil
+            initiativeValue = newInitiative != nil ? NSNumber(integer: newInitiative!) : nil
         }
     }
     
