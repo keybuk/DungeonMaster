@@ -77,7 +77,7 @@ class DiceTest: XCTestCase {
         }
         XCTFail("Expected exception to be thrown")
     }
-
+    
     func testSimpleCombo() {
         let combo = try! DiceCombo(description: "1d4")
         XCTAssertEqual(combo.dice.count, 1)
