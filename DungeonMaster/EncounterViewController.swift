@@ -115,9 +115,9 @@ extension EncounterViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("CombatantCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("CombatantCell", forIndexPath: indexPath) as! CombatantCell
         let combatant = fetchedResultsController.objectAtIndexPath(indexPath) as! Combatant
-        cell.textLabel?.text = combatant.monster.name
+        cell.combatant = combatant
         return cell
     }
     
@@ -166,9 +166,9 @@ extension EncounterViewController: NSFetchedResultsControllerDelegate {
         case .Delete:
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
         case .Update:
-            let cell = tableView.cellForRowAtIndexPath(indexPath!)
+            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! CombatantCell
             let combatant = fetchedResultsController.objectAtIndexPath(indexPath!) as! Combatant
-            cell?.textLabel?.text = combatant.monster.name
+            cell.combatant = combatant
         case .Move:
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
             tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
@@ -179,4 +179,23 @@ extension EncounterViewController: NSFetchedResultsControllerDelegate {
         tableView.endUpdates()
     }
     
+}
+
+class CombatantCell: UITableViewCell {
+    
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var progress: UIProgressView!
+    @IBOutlet var acLabel: UILabel!
+    
+    var combatant: Combatant! {
+        didSet {
+            nameLabel.text = combatant.monster.name
+            progress.progress = Float(combatant.hitPoints) / Float(combatant.monster.hitPoints)
+            
+            let armorClassString = combatant.monster.armorClass
+            let armorClass = Int(armorClassString.componentsSeparatedByString(" ")[0])!
+            acLabel.text = "\(armorClass)"
+        }
+    }
+
 }

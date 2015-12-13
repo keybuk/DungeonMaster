@@ -316,23 +316,63 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CombatantCell" textLabel="Udm-EY-c60" style="IBUITableViewCellStyleDefault" id="xkO-WW-sxK">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CombatantCell" id="xkO-WW-sxK" customClass="CombatantCell" customModule="DungeonMaster" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xkO-WW-sxK" id="2Us-Pj-e7H">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Udm-EY-c60">
-                                            <rect key="frame" x="15" y="0.0" width="550" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="San-Mh-dIc">
+                                            <rect key="frame" x="15" y="0.0" width="507.5" height="35.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="35.5" id="uL3-M2-Iag"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="g80-6l-tt2">
+                                            <rect key="frame" x="23" y="35.5" width="491.5" height="2"/>
+                                            <color key="progressTintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="trackTintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </progressView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rku-7n-D04">
+                                            <rect key="frame" x="531.5" y="13.5" width="28.5" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="KWv-Dp-jbL"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFF-ae-GNT">
+                                            <rect key="frame" x="538.5" y="4" width="15.5" height="12"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="12" id="8bT-Fb-kuA"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Rku-7n-D04" firstAttribute="top" secondItem="FFF-ae-GNT" secondAttribute="bottom" constant="-2.5" id="2TB-fK-mXn"/>
+                                        <constraint firstItem="Rku-7n-D04" firstAttribute="centerX" secondItem="FFF-ae-GNT" secondAttribute="centerX" id="7hk-of-JDN"/>
+                                        <constraint firstItem="Rku-7n-D04" firstAttribute="baseline" secondItem="g80-6l-tt2" secondAttribute="baseline" id="Acn-4U-mNT"/>
+                                        <constraint firstItem="San-Mh-dIc" firstAttribute="top" secondItem="2Us-Pj-e7H" secondAttribute="top" id="Qdr-xM-IXc"/>
+                                        <constraint firstItem="San-Mh-dIc" firstAttribute="leading" secondItem="g80-6l-tt2" secondAttribute="leading" constant="-8" id="R27-M1-a7D"/>
+                                        <constraint firstItem="g80-6l-tt2" firstAttribute="top" secondItem="San-Mh-dIc" secondAttribute="bottom" id="iky-1b-q2f"/>
+                                        <constraint firstItem="San-Mh-dIc" firstAttribute="leading" secondItem="2Us-Pj-e7H" secondAttribute="leadingMargin" constant="7" id="mYf-rz-Kym"/>
+                                        <constraint firstItem="San-Mh-dIc" firstAttribute="trailing" secondItem="g80-6l-tt2" secondAttribute="trailing" constant="8" id="ncb-fb-l0j"/>
+                                        <constraint firstItem="Rku-7n-D04" firstAttribute="leading" secondItem="San-Mh-dIc" secondAttribute="trailing" constant="9" id="puE-GI-xZY"/>
+                                        <constraint firstAttribute="trailing" secondItem="Rku-7n-D04" secondAttribute="trailing" constant="7" id="yaL-UQ-dRx"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="acLabel" destination="Rku-7n-D04" id="lSd-Fg-VTm"/>
+                                    <outlet property="nameLabel" destination="San-Mh-dIc" id="czV-0z-cUr"/>
+                                    <outlet property="progress" destination="g80-6l-tt2" id="y2d-O2-XGv"/>
                                     <segue destination="9UL-On-Ol1" kind="showDetail" identifier="CombatantSegue" id="gXz-Vn-4xu"/>
                                 </connections>
                             </tableViewCell>
