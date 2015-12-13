@@ -20,8 +20,8 @@ final class Source: NSManagedObject {
         get {
             return Int(pageValue)
         }
-        set {
-            pageValue = Int16(page)
+        set(newPage) {
+            pageValue = Int16(newPage)
         }
     }
     

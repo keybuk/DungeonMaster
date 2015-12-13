@@ -27,8 +27,8 @@ final class Book: NSManagedObject {
         get {
             return Type(rawValue: typeValue)!
         }
-        set {
-            typeValue = type.rawValue
+        set(newType) {
+            typeValue = newType.rawValue
         }
     }
     

@@ -41,8 +41,8 @@ final class Monster: NSManagedObject {
         get {
             return Size(rawValue: sizeValue)!
         }
-        set {
-            sizeValue = size.rawValue
+        set(newSize) {
+            sizeValue = newSize.rawValue
         }
     }
     
@@ -63,8 +63,8 @@ final class Monster: NSManagedObject {
         get {
             return alignmentValue != nil ? Alignment(rawValue: alignmentValue!) : nil
         }
-        set {
-            alignmentValue = alignment != nil ? alignment!.rawValue : nil
+        set(newAlignment) {
+            alignmentValue = newAlignment?.rawValue
         }
     }
 
@@ -72,8 +72,8 @@ final class Monster: NSManagedObject {
         get {
             return Int(hitPointsValue)
         }
-        set {
-            hitPointsValue = Int16(hitPoints)
+        set(newHitPoints) {
+            hitPointsValue = Int16(newHitPoints)
         }
     }
     
@@ -81,8 +81,8 @@ final class Monster: NSManagedObject {
         get {
             return try! DiceCombo(description: hitDiceValue)
         }
-        set {
-            hitDiceValue = hitDice.description
+        set(newHitDice) {
+            hitDiceValue = newHitDice.description
         }
     }
 
@@ -90,8 +90,8 @@ final class Monster: NSManagedObject {
         get {
             return Int(strengthValue)
         }
-        set {
-            strengthValue = Int16(strengthScore)
+        set(newStrengthScore) {
+            strengthValue = Int16(newStrengthScore)
         }
     }
     
@@ -103,8 +103,8 @@ final class Monster: NSManagedObject {
         get {
             return Int(dexterityValue)
         }
-        set {
-            dexterityValue = Int16(dexterityScore)
+        set(newDexterityScore) {
+            dexterityValue = Int16(newDexterityScore)
         }
     }
 
@@ -116,8 +116,8 @@ final class Monster: NSManagedObject {
         get {
             return Int(constitutionValue)
         }
-        set {
-            constitutionValue = Int16(constitutionScore)
+        set(newConstitutionScore) {
+            constitutionValue = Int16(newConstitutionScore)
         }
     }
 
@@ -129,8 +129,8 @@ final class Monster: NSManagedObject {
         get {
             return Int(intelligenceValue)
         }
-        set {
-            intelligenceValue = Int16(intelligenceScore)
+        set(newIntelligenceScore) {
+            intelligenceValue = Int16(newIntelligenceScore)
         }
     }
 
@@ -142,8 +142,8 @@ final class Monster: NSManagedObject {
         get {
             return Int(wisdomValue)
         }
-        set {
-            wisdomValue = Int16(wisdomScore)
+        set(newWisdomScore) {
+            wisdomValue = Int16(newWisdomScore)
         }
     }
 
@@ -155,8 +155,8 @@ final class Monster: NSManagedObject {
         get {
             return Int(charismaValue)
         }
-        set {
-            charismaValue = Int16(charismaScore)
+        set(newCharismaScore) {
+            charismaValue = Int16(newCharismaScore)
         }
     }
 
@@ -168,8 +168,8 @@ final class Monster: NSManagedObject {
         get {
             return Int(passivePerceptionValue)
         }
-        set {
-            passivePerceptionValue = Int16(passivePerception)
+        set(newPassivePerception) {
+            passivePerceptionValue = Int16(newPassivePerception)
         }
     }
     

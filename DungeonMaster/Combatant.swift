@@ -21,8 +21,8 @@ final class Combatant: NSManagedObject {
         get {
             return Int(hitPointsValue)
         }
-        set {
-            hitPointsValue = Int16(hitPoints)
+        set(newHitPoints) {
+            hitPointsValue = Int16(newHitPoints)
         }
     }
 
@@ -30,8 +30,8 @@ final class Combatant: NSManagedObject {
         get {
             return initiativeValue?.integerValue
         }
-        set {
-            initiativeValue = initiative != nil ? NSNumber(integer: initiative!) : nil
+        set(newInitiative) {
+            initiativeValue = initiative != nil ? NSNumber(integer: newInitiative!) : nil
         }
     }
     
