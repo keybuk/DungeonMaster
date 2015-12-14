@@ -45,15 +45,17 @@ class CombatantViewController: UITableViewController {
         tableView.reloadData()
     }
 
-    /*
     // MARK: Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func unwindFromDamage(segue: UIStoryboardSegue) {
+        let damageViewController = segue.sourceViewController as! DamageViewController
+        
+        let damage = Damage(target: combatant, inManagedObjectContext: managedObjectContext)
+        damage.points = damageViewController.points!
+        damage.type = damageViewController.type!
+        
+        combatant.damagePoints += damage.points
     }
-    */
 
 }
 
@@ -62,6 +64,7 @@ extension CombatantViewController {
     
     enum TableSections: Int {
         case Details
+        case Damage
         case Notes
         case SectionCount
     }
@@ -73,6 +76,8 @@ extension CombatantViewController {
         case RowCount
     }
     
+    // MARK: Sections
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return TableSections.SectionCount.rawValue
     }
@@ -81,6 +86,8 @@ extension CombatantViewController {
         switch TableSections(rawValue: section)! {
         case .Details:
             return TableDetailsRows.RowCount.rawValue
+        case .Damage:
+            return combatant.damage.count + 1
         case .Notes:
             return 1
         default:
@@ -92,12 +99,16 @@ extension CombatantViewController {
         switch TableSections(rawValue: section)! {
         case .Details:
             return nil
+        case .Damage:
+            return "Damage"
         case .Notes:
             return "Notes"
         default:
             abort()
         }
     }
+    
+    // MARK: Rows
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch TableSections(rawValue: indexPath.section)! {
@@ -127,6 +138,29 @@ extension CombatantViewController {
             default:
                 abort()
             }
+        case .Damage:
+            if indexPath.row == 0 {
+                let cell = tableView.dequeueReusableCellWithIdentifier("AddDamageCell", forIndexPath: indexPath) as! AddDamageCell
+                let hitPoints = combatant.hitPoints - combatant.damagePoints
+                cell.hitPointsLabel.text = "\(hitPoints)"
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCellWithIdentifier("DamageCell", forIndexPath: indexPath) as! DamageCell
+                let damageIndex = combatant.damage.count - indexPath.row
+                let damage = combatant.damage.objectAtIndex(damageIndex) as! Damage
+                cell.damage = damage
+                
+                var hitPoints = combatant.hitPoints
+                for index in 0..<damageIndex {
+                    let damage = combatant.damage.objectAtIndex(index) as! Damage
+                    hitPoints -= damage.points
+                }
+                hitPoints = max(hitPoints, 0)
+                
+                cell.hitPointsLabel.attributedText = NSAttributedString(string: "\(hitPoints)", attributes: [NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue])
+                
+                return cell
+            }
         case .Notes:
             let cell = tableView.dequeueReusableCellWithIdentifier("NotesCell", forIndexPath: indexPath) as! NotesCell
             cell.textView.text = combatant.notes
@@ -139,6 +173,8 @@ extension CombatantViewController {
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch TableSections(rawValue: indexPath.section)! {
         case .Details:
+            return 44.0
+        case .Damage:
             return 44.0
         case .Notes:
             return 144.0
@@ -158,9 +194,44 @@ extension CombatantViewController {
             default:
                 break
             }
+        case .Damage:
+            // Handled by a segue action in the storyboard.
+            break
         case .Notes:
             let cell = tableView.cellForRowAtIndexPath(indexPath) as! NotesCell
             cell.textView.becomeFirstResponder()
+        default:
+            abort()
+        }
+    }
+
+    // MARK: Edit support
+    
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        switch TableSections(rawValue: indexPath.section)! {
+        case .Details:
+            return false
+        case .Damage:
+            return indexPath.row > 0
+        case .Notes:
+            return false
+        default:
+            abort()
+        }
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        switch TableSections(rawValue: indexPath.section)! {
+        case .Damage:
+            if indexPath.row > 0 {
+                let damage = combatant.damage.objectAtIndex(combatant.damage.count - indexPath.row) as! Damage
+                let points = damage.points
+                managedObjectContext.deleteObject(damage)
+                
+                combatant.damagePoints -= points
+            } else {
+                abort()
+            }
         default:
             abort()
         }
@@ -199,5 +270,26 @@ class DiceRollCell: UITableViewCell {
 class NotesCell: UITableViewCell {
     
     @IBOutlet var textView: UITextView!
+
+}
+
+class AddDamageCell: UITableViewCell {
+    
+    @IBOutlet var hitPointsLabel: UILabel!
+
+}
+
+class DamageCell: UITableViewCell {
+    
+    @IBOutlet var pointsLabel: UILabel!
+    @IBOutlet var typeLabel: UILabel!
+    @IBOutlet var hitPointsLabel: UILabel!
+    
+    var damage: Damage! {
+        didSet {
+            pointsLabel.text = "\(damage.points)"
+            typeLabel.text = damage.type.rawValue.capitalizedString
+        }
+    }
 
 }

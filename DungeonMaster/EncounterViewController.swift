@@ -218,7 +218,7 @@ class CombatantCell: UITableViewCell {
     var combatant: Combatant! {
         didSet {
             nameLabel.text = combatant.monster.name
-            progress.progress = Float(combatant.hitPoints) / Float(combatant.monster.hitPoints)
+            progress.progress = combatant.health
             
             let armorClassString = combatant.monster.armorClass
             let armorClass = Int(armorClassString.componentsSeparatedByString(" ")[0])!

@@ -13,8 +13,10 @@ final class Combatant: NSManagedObject {
     
     @NSManaged var encounter: Encounter
     @NSManaged var monster: Monster
+    @NSManaged var damage: NSOrderedSet
 
     @NSManaged var hitPointsValue: Int16
+    @NSManaged var damagePointsValue: Int16
     @NSManaged var initiativeValue: NSNumber?
     @NSManaged var notes: String?
 
@@ -25,6 +27,19 @@ final class Combatant: NSManagedObject {
         set(newHitPoints) {
             hitPointsValue = Int16(newHitPoints)
         }
+    }
+    
+    var damagePoints: Int {
+        get {
+            return Int(damagePointsValue)
+        }
+        set(newDamagePoints) {
+            damagePointsValue = Int16(newDamagePoints)
+        }
+    }
+    
+    var health: Float {
+        return Float(max(hitPoints - damagePoints, 0)) / Float(hitPoints)
     }
 
     var initiative: Int? {

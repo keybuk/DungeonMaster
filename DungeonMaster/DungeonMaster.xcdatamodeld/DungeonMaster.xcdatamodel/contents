@@ -11,11 +11,18 @@
         <relationship name="sources" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Source" inverseName="book" inverseEntity="Source" syncable="YES"/>
     </entity>
     <entity name="Combatant" representedClassName=".Combatant" syncable="YES">
+        <attribute name="damagePointsValue" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="hitPointsValue" attributeType="Integer 16" syncable="YES"/>
         <attribute name="initiativeValue" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="damage" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Damage" inverseName="target" inverseEntity="Damage" syncable="YES"/>
         <relationship name="encounter" maxCount="1" deletionRule="Nullify" destinationEntity="Encounter" inverseName="combatants" inverseEntity="Encounter" syncable="YES"/>
         <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="combatants" inverseEntity="Monster" syncable="YES"/>
+    </entity>
+    <entity name="Damage" representedClassName=".Damage" syncable="YES">
+        <attribute name="pointsValue" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="typeValue" attributeType="String" syncable="YES"/>
+        <relationship name="target" maxCount="1" deletionRule="Nullify" destinationEntity="Combatant" inverseName="damage" inverseEntity="Combatant" syncable="YES"/>
     </entity>
     <entity name="Encounter" representedClassName=".Encounter" syncable="YES">
         <attribute name="lastUsed" attributeType="Date" syncable="YES"/>
@@ -117,7 +124,7 @@
     <elements>
         <element name="Action" positionX="261" positionY="360" width="128" height="90"/>
         <element name="Book" positionX="-261" positionY="198" width="128" height="90"/>
-        <element name="Combatant" positionX="-54" positionY="351" width="128" height="120"/>
+        <element name="Combatant" positionX="-54" positionY="351" width="128" height="150"/>
         <element name="Encounter" positionX="-54" positionY="351" width="128" height="90"/>
         <element name="Lair" positionX="385" positionY="666" width="128" height="208"/>
         <element name="LairAction" positionX="567" positionY="630" width="128" height="75"/>
@@ -129,5 +136,6 @@
         <element name="Source" positionX="-92" positionY="198" width="128" height="105"/>
         <element name="Tag" positionX="-92" positionY="432" width="128" height="73"/>
         <element name="Trait" positionX="261" positionY="261" width="128" height="90"/>
+        <element name="Damage" positionX="-45" positionY="360" width="128" height="90"/>
     </elements>
 </model>
