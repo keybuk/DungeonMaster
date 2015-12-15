@@ -15,10 +15,11 @@ final class LegendaryAction: NSManagedObject {
     @NSManaged var name: String
     @NSManaged var text: String
     
-    convenience init(name: String, text: String, inManagedObjectContext context: NSManagedObjectContext) {
+    convenience init(monster: Monster, name: String, text: String, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.LegendaryAction, inManagedObjectContext: context)
         self.init(entity: entity, insertIntoManagedObjectContext: context)
         
+        self.monster = monster
         self.name = name
         self.text = text
     }

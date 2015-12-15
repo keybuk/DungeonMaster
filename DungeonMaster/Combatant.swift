@@ -56,11 +56,14 @@ final class Combatant: NSManagedObject {
         return Float(max(hitPoints - damagePoints, 0)) / Float(hitPoints)
     }
 
-    convenience init(encounter: Encounter, inManagedObjectContext context: NSManagedObjectContext) {
+    convenience init(encounter: Encounter, monster: Monster, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Combatant, inManagedObjectContext: context)
         self.init(entity: entity, insertIntoManagedObjectContext: context)
         
         self.encounter = encounter
+        self.monster = monster
+        
+        hitPoints = monster.hitPoints ?? monster.hitDice.averageValue
     }
     
 }

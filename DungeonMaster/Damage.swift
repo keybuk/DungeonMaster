@@ -34,11 +34,13 @@ final class Damage: NSManagedObject {
         }
     }
     
-    convenience init(target: Combatant, inManagedObjectContext context: NSManagedObjectContext) {
+    convenience init(target: Combatant, points: Int, type: DamageType, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Damage, inManagedObjectContext: context)
         self.init(entity: entity, insertIntoManagedObjectContext: context)
         
         self.target = target
+        self.points = points
+        self.type = type
     }
     
 }

@@ -12,7 +12,6 @@ import CoreData
 final class Lair: NSManagedObject {
 
     @NSManaged var monster: Monster
-
     @NSManaged var text: String
     @NSManaged var lairActionsText: String?
     @NSManaged var lairActionsLimit: String?

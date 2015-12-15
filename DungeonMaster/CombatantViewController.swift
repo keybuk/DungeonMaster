@@ -52,16 +52,13 @@ class CombatantViewController: UITableViewController {
     @IBAction func unwindFromCondition(segue: UIStoryboardSegue) {
         let conditionViewController = segue.sourceViewController as! ConditionViewController
         
-        let condition = Condition(target: combatant, inManagedObjectContext: managedObjectContext)
-        condition.type = conditionViewController.type!
+        let _ = Condition(target: combatant, type: conditionViewController.type!, inManagedObjectContext: managedObjectContext)
     }
 
     @IBAction func unwindFromDamage(segue: UIStoryboardSegue) {
         let damageViewController = segue.sourceViewController as! DamageViewController
         
-        let damage = Damage(target: combatant, inManagedObjectContext: managedObjectContext)
-        damage.points = damageViewController.points!
-        damage.type = damageViewController.type!
+        let damage = Damage(target: combatant, points: damageViewController.points!, type: damageViewController.type!, inManagedObjectContext: managedObjectContext)
         
         combatant.damagePoints += damage.points
     }

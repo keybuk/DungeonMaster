@@ -14,10 +14,11 @@ final class RegionalEffect: NSManagedObject {
     @NSManaged var lair: Lair
     @NSManaged var text: String
     
-    convenience init(text: String, inManagedObjectContext context: NSManagedObjectContext) {
+    convenience init(lair: Lair, text: String, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.RegionalEffect, inManagedObjectContext: context)
         self.init(entity: entity, insertIntoManagedObjectContext: context)
         
+        self.lair = lair
         self.text = text
     }
     

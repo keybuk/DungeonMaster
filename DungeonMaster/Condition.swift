@@ -24,11 +24,12 @@ final class Condition: NSManagedObject {
         }
     }
     
-    convenience init(target: Combatant, inManagedObjectContext context: NSManagedObjectContext) {
+    convenience init(target: Combatant, type: ConditionType, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Condition, inManagedObjectContext: context)
         self.init(entity: entity, insertIntoManagedObjectContext: context)
         
         self.target = target
+        self.type = type
     }
     
 }

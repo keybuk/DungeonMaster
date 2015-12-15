@@ -12,8 +12,6 @@ import CoreData
 final class Monster: NSManagedObject {
     
     @NSManaged var name: String
-    @NSManaged var sources: NSSet
-    @NSManaged var tags: NSOrderedSet
 
     @NSManaged var rawSize: String
     @NSManaged var rawAlignment: String?
@@ -144,6 +142,8 @@ final class Monster: NSManagedObject {
     @NSManaged var languages: String?
     @NSManaged var challenge: String
     
+    @NSManaged var sources: NSSet
+    @NSManaged var tags: NSOrderedSet
     @NSManaged var traits: NSOrderedSet
     @NSManaged var actions: NSOrderedSet
     @NSManaged var reactions: NSOrderedSet

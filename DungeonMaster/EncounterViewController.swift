@@ -82,10 +82,7 @@ class EncounterViewController: UITableViewController {
         let controller = segue.sourceViewController as! DetailViewController
         let monster = controller.detailItem as! Monster
         
-        let combatant = Combatant(encounter: encounter, inManagedObjectContext: managedObjectContext)
-        combatant.monster = monster
-        
-        combatant.hitPoints = monster.hitPoints ?? monster.hitDice.averageValue
+        let _ = Combatant(encounter: encounter, monster: monster, inManagedObjectContext: managedObjectContext)
     }
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
