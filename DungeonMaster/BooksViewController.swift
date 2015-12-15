@@ -33,13 +33,13 @@ class BooksViewController: UITableViewController {
         let entity = NSEntityDescription.entity(Model.Book, inManagedObjectContext: managedObjectContext)
         fetchRequest.entity = entity
         
-        let typeSortDescriptor = NSSortDescriptor(key: "typeValue", ascending: true)
+        let typeSortDescriptor = NSSortDescriptor(key: "rawType", ascending: true)
         let nameSortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [ typeSortDescriptor, nameSortDescriptor ]
         
         // Edit the section name key path and cache name if appropriate.
         // nil for section name key path means "no sections".
-        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: "typeValue", cacheName: nil)
+        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: "rawType", cacheName: nil)
         aFetchedResultsController.delegate = self
         _fetchedResultsController = aFetchedResultsController
         
