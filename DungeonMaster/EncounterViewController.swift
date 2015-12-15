@@ -85,7 +85,7 @@ class EncounterViewController: UITableViewController {
         let combatant = Combatant(encounter: encounter, inManagedObjectContext: managedObjectContext)
         combatant.monster = monster
         
-        combatant.hitPoints = monster.hitPoints
+        combatant.hitPoints = monster.hitPoints ?? monster.hitDice.averageValue
     }
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

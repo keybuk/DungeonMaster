@@ -75,7 +75,7 @@
         <attribute name="rawConstitution" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="rawDexterity" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="rawHitDice" attributeType="String" syncable="YES"/>
-        <attribute name="rawHitPoints" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="rawHitPoints" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawIntelligence" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="rawPassivePerception" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="rawSize" attributeType="String" syncable="YES"/>
@@ -130,6 +130,8 @@
         <element name="Action" positionX="261" positionY="360" width="128" height="90"/>
         <element name="Book" positionX="-261" positionY="198" width="128" height="90"/>
         <element name="Combatant" positionX="-54" positionY="351" width="128" height="165"/>
+        <element name="Condition" positionX="-36" positionY="369" width="128" height="75"/>
+        <element name="Damage" positionX="-45" positionY="360" width="128" height="90"/>
         <element name="Encounter" positionX="-54" positionY="351" width="128" height="90"/>
         <element name="Lair" positionX="385" positionY="666" width="128" height="208"/>
         <element name="LairAction" positionX="567" positionY="630" width="128" height="75"/>
@@ -141,7 +143,5 @@
         <element name="Source" positionX="-92" positionY="198" width="128" height="105"/>
         <element name="Tag" positionX="-92" positionY="432" width="128" height="73"/>
         <element name="Trait" positionX="261" positionY="261" width="128" height="90"/>
-        <element name="Damage" positionX="-45" positionY="360" width="128" height="90"/>
-        <element name="Condition" positionX="-36" positionY="369" width="128" height="75"/>
     </elements>
 </model>

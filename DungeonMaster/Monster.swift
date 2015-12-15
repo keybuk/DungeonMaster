@@ -17,7 +17,7 @@ final class Monster: NSManagedObject {
 
     @NSManaged var rawSize: String
     @NSManaged var rawAlignment: String?
-    @NSManaged var rawHitPoints: Int16
+    @NSManaged var rawHitPoints: NSNumber?
     @NSManaged var rawHitDice: String
     @NSManaged var rawStrength: Int16
     @NSManaged var rawDexterity: Int16
@@ -45,12 +45,12 @@ final class Monster: NSManagedObject {
         }
     }
 
-    var hitPoints: Int {
+    var hitPoints: Int? {
         get {
-            return Int(rawHitPoints)
+            return rawHitPoints?.integerValue
         }
         set(newHitPoints) {
-            rawHitPoints = Int16(newHitPoints)
+            rawHitPoints = newHitPoints != nil ? NSNumber(integer: newHitPoints!) : nil
         }
     }
     

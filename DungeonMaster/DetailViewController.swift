@@ -130,8 +130,9 @@ class DetailViewController: UIViewController {
                 text.appendAttributedString(NSAttributedString(string: "Armor Class ", attributes: statsLabelStyle))
                 text.appendAttributedString(NSAttributedString(string: "\(monster.armorClass)\n", attributes: statsValueStyle))
                 
+                let hitPoints = monster.hitPoints ?? monster.hitDice.averageValue
                 text.appendAttributedString(NSAttributedString(string: "Hit Points ", attributes: statsLabelStyle))
-                text.appendAttributedString(NSAttributedString(string: "\(monster.hitPoints) (\(monster.hitDice.description))\n", attributes: statsValueStyle))
+                text.appendAttributedString(NSAttributedString(string: "\(hitPoints) (\(monster.hitDice.description))\n", attributes: statsValueStyle))
 
                 text.appendAttributedString(NSAttributedString(string: "Speed ", attributes: statsLabelStyle))
                 text.appendAttributedString(NSAttributedString(string: "\(monster.speed)\n", attributes: statsValueStyle))

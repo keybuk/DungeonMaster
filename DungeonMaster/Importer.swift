@@ -158,9 +158,11 @@ func importIfNeeded() {
             monster.lair = lair
         }
         
-        // This exists entirely to test the DiceCombo conversion.
+        // hitPoints can be entirely optional; since for all but one monster (the Demilich) it's simply the average value of the hit dice.
         if monster.hitPoints != monster.hitDice.averageValue {
             print("\(monster.name) has unusual HP: \(monster.hitPoints), expected \(monster.hitDice.averageValue)")
+        } else {
+            monster.hitPoints = nil
         }
     }
 
