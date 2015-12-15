@@ -19,6 +19,8 @@ class CombatantViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.rightBarButtonItem = self.editButtonItem()
+
         notificationObserver = NSNotificationCenter.defaultCenter().addObserverForName(NSManagedObjectContextObjectsDidChangeNotification, object: managedObjectContext, queue: nil) { notification in
             if let updatedObjects = notification.userInfo?[NSUpdatedObjectsKey] as? NSSet {
                 if updatedObjects.containsObject(self.combatant) {
