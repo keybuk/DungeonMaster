@@ -25,6 +25,10 @@ final class Book: NSManagedObject {
     }
     
     @NSManaged var sources: NSSet
+    
+    var allSources: Set<Source> {
+        return sources as! Set<Source>
+    }
 
     convenience init(name: String, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Book, inManagedObjectContext: context)

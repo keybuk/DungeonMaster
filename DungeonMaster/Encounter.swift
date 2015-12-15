@@ -15,6 +15,10 @@ final class Encounter: NSManagedObject {
     @NSManaged var name: String?
     
     @NSManaged var combatants: NSSet
+
+    var allCombatants: Set<Combatant> {
+        return combatants as! Set<Combatant>
+    }
     
     // MARK: Computed properties
     

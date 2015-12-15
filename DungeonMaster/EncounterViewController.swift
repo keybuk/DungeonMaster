@@ -110,8 +110,7 @@ class EncounterViewController: UITableViewController {
         PlaySound(.Initiative)
         
         var initiativeDice = [Monster: DiceCombo]()
-        for combatant in encounter.combatants {
-            let combatant = combatant as! Combatant
+        for combatant in encounter.allCombatants {
             if let combo = initiativeDice[combatant.monster] {
                 combatant.initiative = combo.value
             } else {

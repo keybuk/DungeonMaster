@@ -184,6 +184,34 @@ final class Monster: NSManagedObject {
     var initiativeDice: DiceCombo {
         return try! DiceCombo(sides: 20, modifier: dexterityModifier)
     }
+    
+    var allSources: Set<Source> {
+        return sources as! Set<Source>
+    }
+    
+    var allTags: [Tag] {
+        return tags.array as! [Tag]
+    }
+    
+    var allTraits: [Trait] {
+        return traits.array as! [Trait]
+    }
+    
+    var allActions: [Action] {
+        return actions.array as! [Action]
+    }
+
+    var allReactions: [Reaction] {
+        return reactions.array as! [Reaction]
+    }
+    
+    var allLegendaryActions: [LegendaryAction] {
+        return legendaryActions.array as! [LegendaryAction]
+    }
+    
+    var allCombatants: Set<Combatant> {
+        return combatants as! Set<Combatant>
+    }
 
     convenience init(name: String, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Monster, inManagedObjectContext: context)

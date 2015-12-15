@@ -49,6 +49,14 @@ final class Combatant: NSManagedObject {
 
     @NSManaged var damages: NSOrderedSet
     @NSManaged var conditions: NSOrderedSet
+    
+    var allDamages: [Damage] {
+        return damages.array as! [Damage]
+    }
+    
+    var allConditions: [Condition] {
+        return conditions.array as! [Condition]
+    }
 
     // MARK: Computed properties
 

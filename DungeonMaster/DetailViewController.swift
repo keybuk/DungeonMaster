@@ -191,9 +191,7 @@ class DetailViewController: UIViewController {
                 text.appendAttributedString(NSAttributedString(string: "Challenge ", attributes: statsLabelStyle))
                 text.appendAttributedString(NSAttributedString(string: "\(monster.challenge)\n", attributes: statsValueStyle))
                 
-                for trait in monster.traits {
-                    let trait = trait as! Trait
-                    
+                for trait in monster.allTraits {
                     text.appendAttributedString(NSAttributedString(string: "\(trait.name). ", attributes: featureNameStyle))
                     
                     var attributes = featureTextStyle
@@ -206,9 +204,7 @@ class DetailViewController: UIViewController {
                 if monster.actions.count > 0 {
                     text.appendAttributedString(NSAttributedString(string: "Actions\n", attributes: titleStyle))
                 
-                    for action in monster.actions {
-                        let action = action as! Action
-                        
+                    for action in monster.allActions {
                         text.appendAttributedString(NSAttributedString(string: "\(action.name). ", attributes: featureNameStyle))
                         
                         var attributes = featureTextStyle
@@ -222,9 +218,7 @@ class DetailViewController: UIViewController {
                 if monster.reactions.count > 0 {
                     text.appendAttributedString(NSAttributedString(string: "Reactions\n", attributes: titleStyle))
                 
-                    for reaction in monster.reactions {
-                        let reaction = reaction as! Reaction
-                        
+                    for reaction in monster.allReactions {
                         text.appendAttributedString(NSAttributedString(string: "\(reaction.name). ", attributes: featureNameStyle))
                         
                         var attributes = featureTextStyle
@@ -238,9 +232,7 @@ class DetailViewController: UIViewController {
                 if monster.legendaryActions.count > 0 {
                     text.appendAttributedString(NSAttributedString(string: "Legendary Actions\n", attributes: titleStyle))
                 
-                    for legendaryAction in monster.legendaryActions {
-                        let legendaryAction = legendaryAction as! LegendaryAction
-                        
+                    for legendaryAction in monster.allLegendaryActions {
                         text.appendAttributedString(NSAttributedString(string: "\(legendaryAction.name). ", attributes: featureNameStyle))
                         
                         var attributes = featureTextStyle
@@ -269,9 +261,7 @@ class DetailViewController: UIViewController {
                             attributes = featureContinuedStyle
                         }
 
-                        for lairAction in lair.lairActions {
-                            let lairAction = lairAction as! LairAction
-                            
+                        for lairAction in lair.allLairActions {
                             attributes = featureTextStyle
                             lairAction.text.enumerateLines { line, stop in
                                 text.appendAttributedString(NSAttributedString(string: "\(line)\n", attributes: attributes))
@@ -295,9 +285,7 @@ class DetailViewController: UIViewController {
                             attributes = featureContinuedStyle
                         }
 
-                        for lairTrait in lair.lairTraits {
-                            let lairTrait = lairTrait as! LairTrait
-                            
+                        for lairTrait in lair.allLairTraits {
                             var attributes = featureTextStyle
                             lairTrait.text.enumerateLines { line, stop in
                                 text.appendAttributedString(NSAttributedString(string: "\(line)\n", attributes: attributes))
@@ -321,9 +309,7 @@ class DetailViewController: UIViewController {
                             attributes = featureContinuedStyle
                         }
 
-                        for regionalEffect in lair.regionalEffects {
-                            let regionalEffect = regionalEffect as! RegionalEffect
-                            
+                        for regionalEffect in lair.allRegionalEffects {
                             var attributes = featureTextStyle
                             regionalEffect.text.enumerateLines { line, stop in
                                 text.appendAttributedString(NSAttributedString(string: "\(line)\n", attributes: attributes))
