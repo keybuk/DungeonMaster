@@ -13,45 +13,49 @@ final class Combatant: NSManagedObject {
     
     @NSManaged var encounter: Encounter
     @NSManaged var monster: Monster
-    @NSManaged var damage: NSOrderedSet
-    @NSManaged var conditions: NSOrderedSet
 
-    @NSManaged var hitPointsValue: Int16
-    @NSManaged var damagePointsValue: Int16
-    @NSManaged var initiativeValue: NSNumber?
-    @NSManaged var notes: String?
+    @NSManaged var rawHitPoints: Int16
+    @NSManaged var rawDamagePoints: Int16
+    @NSManaged var rawInitiative: NSNumber?
 
     var hitPoints: Int {
         get {
-            return Int(hitPointsValue)
+            return Int(rawHitPoints)
         }
         set(newHitPoints) {
-            hitPointsValue = Int16(newHitPoints)
+            rawHitPoints = Int16(newHitPoints)
         }
     }
     
     var damagePoints: Int {
         get {
-            return Int(damagePointsValue)
+            return Int(rawDamagePoints)
         }
         set(newDamagePoints) {
-            damagePointsValue = Int16(newDamagePoints)
+            rawDamagePoints = Int16(newDamagePoints)
         }
     }
     
+    var initiative: Int? {
+        get {
+            return rawInitiative?.integerValue
+        }
+        set(newInitiative) {
+            rawInitiative = newInitiative != nil ? NSNumber(integer: newInitiative!) : nil
+        }
+    }
+    
+    @NSManaged var notes: String?
+
+    @NSManaged var damage: NSOrderedSet
+    @NSManaged var conditions: NSOrderedSet
+
+    // MARK: Computed properties
+
     var health: Float {
         return Float(max(hitPoints - damagePoints, 0)) / Float(hitPoints)
     }
 
-    var initiative: Int? {
-        get {
-            return initiativeValue?.integerValue
-        }
-        set(newInitiative) {
-            initiativeValue = newInitiative != nil ? NSNumber(integer: newInitiative!) : nil
-        }
-    }
-    
     convenience init(encounter: Encounter, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Combatant, inManagedObjectContext: context)
         self.init(entity: entity, insertIntoManagedObjectContext: context)

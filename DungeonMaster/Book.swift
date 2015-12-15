@@ -12,20 +12,20 @@ import CoreData
 final class Book: NSManagedObject {
     
     @NSManaged var name: String
-    @NSManaged var sources: NSSet
     
-    // Type is a wrapped enum object.
-    @NSManaged var typeValue: Int16
+    @NSManaged var rawType: Int16
     
     var type: BookType {
         get {
-            return BookType(rawValue: typeValue)!
+            return BookType(rawValue: rawType)!
         }
         set(newType) {
-            typeValue = newType.rawValue
+            rawType = newType.rawValue
         }
     }
     
+    @NSManaged var sources: NSSet
+
     convenience init(name: String, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Book, inManagedObjectContext: context)
         self.init(entity: entity, insertIntoManagedObjectContext: context)

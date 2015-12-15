@@ -15,147 +15,117 @@ final class Monster: NSManagedObject {
     @NSManaged var sources: NSSet
     @NSManaged var tags: NSOrderedSet
 
-    // Type-wrapped members.
-    @NSManaged var sizeValue: String
-    @NSManaged var alignmentValue: String?
-    @NSManaged var hitPointsValue: Int16
-    @NSManaged var hitDiceValue: String
-    @NSManaged var strengthValue: Int16
-    @NSManaged var dexterityValue: Int16
-    @NSManaged var constitutionValue: Int16
-    @NSManaged var intelligenceValue: Int16
-    @NSManaged var wisdomValue: Int16
-    @NSManaged var charismaValue: Int16
-    @NSManaged var passivePerceptionValue: Int16
+    @NSManaged var rawSize: String
+    @NSManaged var rawAlignment: String?
+    @NSManaged var rawHitPoints: Int16
+    @NSManaged var rawHitDice: String
+    @NSManaged var rawStrength: Int16
+    @NSManaged var rawDexterity: Int16
+    @NSManaged var rawConstitution: Int16
+    @NSManaged var rawIntelligence: Int16
+    @NSManaged var rawWisdom: Int16
+    @NSManaged var rawCharisma: Int16
+    @NSManaged var rawPassivePerception: Int16
 
     var size: Size {
         get {
-            return Size(rawValue: sizeValue)!
+            return Size(rawValue: rawSize)!
         }
         set(newSize) {
-            sizeValue = newSize.rawValue
+            rawSize = newSize.rawValue
         }
     }
     
     var alignment: Alignment? {
         get {
-            return alignmentValue != nil ? Alignment(rawValue: alignmentValue!) : nil
+            return rawAlignment != nil ? Alignment(rawValue: rawAlignment!) : nil
         }
         set(newAlignment) {
-            alignmentValue = newAlignment?.rawValue
+            rawAlignment = newAlignment?.rawValue
         }
     }
 
     var hitPoints: Int {
         get {
-            return Int(hitPointsValue)
+            return Int(rawHitPoints)
         }
         set(newHitPoints) {
-            hitPointsValue = Int16(newHitPoints)
+            rawHitPoints = Int16(newHitPoints)
         }
     }
     
     var hitDice: DiceCombo {
         get {
-            return try! DiceCombo(description: hitDiceValue)
+            return try! DiceCombo(description: rawHitDice)
         }
         set(newHitDice) {
-            hitDiceValue = newHitDice.description
+            rawHitDice = newHitDice.description
         }
     }
 
-    var strengthScore: Int {
+    var strength: Int {
         get {
-            return Int(strengthValue)
+            return Int(rawStrength)
         }
-        set(newStrengthScore) {
-            strengthValue = Int16(newStrengthScore)
+        set(newStrength) {
+            rawStrength = Int16(newStrength)
         }
     }
     
-    var strengthModifier: Int {
-        return (strengthScore - 10) / 2
-    }
-
-    var dexterityScore: Int {
+    var dexterity: Int {
         get {
-            return Int(dexterityValue)
+            return Int(rawDexterity)
         }
-        set(newDexterityScore) {
-            dexterityValue = Int16(newDexterityScore)
+        set(newDexterity) {
+            rawDexterity = Int16(newDexterity)
         }
-    }
-
-    var dexterityModifier: Int {
-        return (dexterityScore - 10) / 2
     }
     
-    var constitutionScore: Int {
+    var constitution: Int {
         get {
-            return Int(constitutionValue)
+            return Int(rawConstitution)
         }
-        set(newConstitutionScore) {
-            constitutionValue = Int16(newConstitutionScore)
+        set(newConstitution) {
+            rawConstitution = Int16(newConstitution)
         }
     }
 
-    var constitutionModifier: Int {
-        return (constitutionScore - 10) / 2
-    }
-    
-    var intelligenceScore: Int {
+    var intelligence: Int {
         get {
-            return Int(intelligenceValue)
+            return Int(rawIntelligence)
         }
-        set(newIntelligenceScore) {
-            intelligenceValue = Int16(newIntelligenceScore)
+        set(newIntelligence) {
+            rawIntelligence = Int16(newIntelligence)
         }
     }
 
-    var intelligenceModifier: Int {
-        return (intelligenceScore - 10) / 2
-    }
-    
-    var wisdomScore: Int {
+    var wisdom: Int {
         get {
-            return Int(wisdomValue)
+            return Int(rawWisdom)
         }
-        set(newWisdomScore) {
-            wisdomValue = Int16(newWisdomScore)
+        set(newWisdom) {
+            rawWisdom = Int16(newWisdom)
         }
     }
 
-    var wisdomModifier: Int {
-        return (wisdomScore - 10) / 2
-    }
-    
-    var charismaScore: Int {
+    var charisma: Int {
         get {
-            return Int(charismaValue)
+            return Int(rawCharisma)
         }
-        set(newCharismaScore) {
-            charismaValue = Int16(newCharismaScore)
+        set(newCharisma) {
+            rawCharisma = Int16(newCharisma)
         }
     }
 
-    var charismaModifier: Int {
-        return (charismaScore - 10) / 2
-    }
-    
     var passivePerception: Int {
         get {
-            return Int(passivePerceptionValue)
+            return Int(rawPassivePerception)
         }
         set(newPassivePerception) {
-            passivePerceptionValue = Int16(newPassivePerception)
+            rawPassivePerception = Int16(newPassivePerception)
         }
     }
-    
-    var initiativeDice: DiceCombo {
-        return try! DiceCombo(sides: 20, modifier: dexterityModifier)
-    }
-    
-    // Partially-parsed members.
+
     @NSManaged var type: String
     @NSManaged var cr: Float
     @NSManaged var xp: Int32
@@ -181,8 +151,38 @@ final class Monster: NSManagedObject {
     @NSManaged var lair: Lair?
     @NSManaged var combatants: NSSet
 
+    // MARK: Computed properties
+    
     var nameInitial: String {
         return String(name.characters.first!)
+    }
+    
+    var strengthModifier: Int {
+        return (strength - 10) / 2
+    }
+    
+    var dexterityModifier: Int {
+        return (dexterity - 10) / 2
+    }
+
+    var constitutionModifier: Int {
+        return (constitution - 10) / 2
+    }
+    
+    var intelligenceModifier: Int {
+        return (intelligence - 10) / 2
+    }
+    
+    var wisdomModifier: Int {
+        return (wisdom - 10) / 2
+    }
+    
+    var charismaModifier: Int {
+        return (charisma - 10) / 2
+    }
+
+    var initiativeDice: DiceCombo {
+        return try! DiceCombo(sides: 20, modifier: dexterityModifier)
     }
 
     convenience init(name: String, inManagedObjectContext context: NSManagedObjectContext) {

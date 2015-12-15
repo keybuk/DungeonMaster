@@ -13,24 +13,24 @@ final class Damage: NSManagedObject {
     
     @NSManaged var target: Combatant
 
-    @NSManaged var pointsValue: Int16
-    @NSManaged var typeValue: String
+    @NSManaged var rawPoints: Int16
+    @NSManaged var rawType: String
     
     var points: Int {
         get {
-            return Int(pointsValue)
+            return Int(rawPoints)
         }
         set(newPoints) {
-            pointsValue = Int16(newPoints)
+            rawPoints = Int16(newPoints)
         }
     }
     
     var type: DamageType {
         get {
-            return DamageType(rawValue: typeValue)!
+            return DamageType(rawValue: rawType)!
         }
         set(newType) {
-            typeValue = newType.rawValue
+            rawType = newType.rawValue
         }
     }
     

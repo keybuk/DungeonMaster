@@ -12,6 +12,7 @@ import CoreData
 final class Tag: NSManagedObject {
     
     @NSManaged var name: String
+
     @NSManaged var monsters: NSSet
     
     convenience init(name: String, inManagedObjectContext context: NSManagedObjectContext) {

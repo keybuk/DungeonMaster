@@ -136,12 +136,12 @@ class DetailViewController: UIViewController {
                 text.appendAttributedString(NSAttributedString(string: "Speed ", attributes: statsLabelStyle))
                 text.appendAttributedString(NSAttributedString(string: "\(monster.speed)\n", attributes: statsValueStyle))
                 
-                let str = String(format: "%d (%+d)", monster.strengthScore, monster.strengthModifier)
-                let dex = String(format: "%d (%+d)", monster.dexterityScore, monster.dexterityModifier)
-                let con = String(format: "%d (%+d)", monster.constitutionScore, monster.constitutionModifier)
-                let int = String(format: "%d (%+d)", monster.intelligenceScore, monster.intelligenceModifier)
-                let wis = String(format: "%d (%+d)", monster.wisdomScore, monster.wisdomModifier)
-                let cha = String(format: "%d (%+d)", monster.charismaScore, monster.charismaModifier)
+                let str = String(format: "%d (%+d)", monster.strength, monster.strengthModifier)
+                let dex = String(format: "%d (%+d)", monster.dexterity, monster.dexterityModifier)
+                let con = String(format: "%d (%+d)", monster.constitution, monster.constitutionModifier)
+                let int = String(format: "%d (%+d)", monster.intelligence, monster.intelligenceModifier)
+                let wis = String(format: "%d (%+d)", monster.wisdom, monster.wisdomModifier)
+                let cha = String(format: "%d (%+d)", monster.charisma, monster.charismaModifier)
                 
                 text.appendAttributedString(NSAttributedString(string: "\tSTR\tDEX\tCON\tINT\tWIS\tCHA\n", attributes: abilityScoresLabelStyle))
                 text.appendAttributedString(NSAttributedString(string: "\t\(str)\t\(dex)\t\(con)\t\(int)\t\(wis)\t\(cha)\n", attributes: abilityScoresValueStyle))

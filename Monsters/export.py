@@ -125,7 +125,7 @@ class Exporter(monster.MonsterParser):
 			size = swarm_size
 			type = swarm_type
 
-		self.info['sizeValue'] = size
+		self.info['rawSize'] = size
 		self.info['type'] = type
 
 		if tags is not None:
@@ -137,7 +137,7 @@ class Exporter(monster.MonsterParser):
 			# Can handle the Empyrean & Cloud Giant %age case with a set and weights.
 			self.warning("Alignment didn't match expected format: %s" % alignment_text)
 		else:
-			self.info['alignmentValue'] = alignment_text
+			self.info['rawAlignment'] = alignment_text
 
 	def handle_armor_class(self, line):
 		# TODO: should be able to parse into an AC, and a list of armor types
@@ -156,8 +156,8 @@ class Exporter(monster.MonsterParser):
 		if match is None:
 			raise self.error("Hit Points dice expression didn't match expected format: %s" % dice)
 
-		self.info['hitPointsValue'] = int(hp)
-		self.info['hitDiceValue'] = dice
+		self.info['rawHitPoints'] = int(hp)
+		self.info['rawHitDice'] = dice
 
 	def handle_speed(self, line):
 		# TODO: should be largely parseable
@@ -193,7 +193,7 @@ class Exporter(monster.MonsterParser):
 			raise self.error("%s ability score modifier (%s) didn't match that calculated from score %s (%d)" % (
 				name.title(), modifier, score, calculated))
 
-		self.info[name + 'Value'] = int(score)
+		self.info['raw' + name.title()] = int(score)
 
 	def handle_saving_throws(self, line):
 		# TODO: Should be easy to parse
@@ -224,7 +224,7 @@ class Exporter(monster.MonsterParser):
 			raise self.error("Senses line didn't have passive Perception: %s" % line)
 
 		(passive,) = match.groups()
-		self.info['passivePerceptionValue'] = int(passive)
+		self.info['rawPassivePerception'] = int(passive)
 
 	def handle_languages(self, line):
 		# TODO: easy to parse

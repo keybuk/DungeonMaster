@@ -13,14 +13,14 @@ final class Condition: NSManagedObject {
     
     @NSManaged var target: Combatant
     
-    @NSManaged var typeValue: String
+    @NSManaged var rawType: String
     
     var type: ConditionType {
         get {
-            return ConditionType(rawValue: typeValue)!
+            return ConditionType(rawValue: rawType)!
         }
         set(newType) {
-            typeValue = newType.rawValue
+            rawType = newType.rawValue
         }
     }
     

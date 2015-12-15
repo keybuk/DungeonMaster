@@ -7,26 +7,26 @@
     </entity>
     <entity name="Book" representedClassName=".Book" syncable="YES">
         <attribute name="name" attributeType="String" syncable="YES"/>
-        <attribute name="typeValue" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="rawType" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="sources" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Source" inverseName="book" inverseEntity="Source" syncable="YES"/>
     </entity>
     <entity name="Combatant" representedClassName=".Combatant" syncable="YES">
-        <attribute name="damagePointsValue" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="hitPointsValue" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="initiativeValue" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rawDamagePoints" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="rawHitPoints" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="rawInitiative" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <relationship name="conditions" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Condition" inverseName="target" inverseEntity="Condition" syncable="YES"/>
         <relationship name="damage" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Damage" inverseName="target" inverseEntity="Damage" syncable="YES"/>
         <relationship name="encounter" maxCount="1" deletionRule="Nullify" destinationEntity="Encounter" inverseName="combatants" inverseEntity="Encounter" syncable="YES"/>
         <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="combatants" inverseEntity="Monster" syncable="YES"/>
     </entity>
     <entity name="Condition" representedClassName=".Condition" syncable="YES">
-        <attribute name="typeValue" attributeType="String" syncable="YES"/>
+        <attribute name="rawType" attributeType="String" syncable="YES"/>
         <relationship name="target" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Combatant" inverseName="conditions" inverseEntity="Combatant" syncable="YES"/>
     </entity>
     <entity name="Damage" representedClassName=".Damage" syncable="YES">
-        <attribute name="pointsValue" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="typeValue" attributeType="String" syncable="YES"/>
+        <attribute name="rawPoints" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="rawType" attributeType="String" syncable="YES"/>
         <relationship name="target" maxCount="1" deletionRule="Nullify" destinationEntity="Combatant" inverseName="damage" inverseEntity="Combatant" syncable="YES"/>
     </entity>
     <entity name="Encounter" representedClassName=".Encounter" syncable="YES">
@@ -61,32 +61,32 @@
         <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="legendaryActions" inverseEntity="Monster" syncable="YES"/>
     </entity>
     <entity name="Monster" representedClassName=".Monster" syncable="YES">
-        <attribute name="alignmentValue" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="armorClass" attributeType="String" syncable="YES"/>
         <attribute name="challenge" attributeType="String" syncable="YES"/>
-        <attribute name="charismaValue" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="conditionImmunities" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="constitutionValue" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="cr" attributeType="Float" defaultValueString="0" syncable="YES"/>
         <attribute name="damageImmunities" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="damageResistances" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="damageVulnerabilities" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="dexterityValue" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
-        <attribute name="hitDiceValue" attributeType="String" syncable="YES"/>
-        <attribute name="hitPointsValue" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="intelligenceValue" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="languages" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
-        <attribute name="passivePerceptionValue" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
+        <attribute name="rawAlignment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rawCharisma" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
+        <attribute name="rawConstitution" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
+        <attribute name="rawDexterity" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
+        <attribute name="rawHitDice" attributeType="String" syncable="YES"/>
+        <attribute name="rawHitPoints" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="rawIntelligence" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
+        <attribute name="rawPassivePerception" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
+        <attribute name="rawSize" attributeType="String" syncable="YES"/>
+        <attribute name="rawStrength" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
+        <attribute name="rawWisdom" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="savingThrows" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="senses" attributeType="String" syncable="YES"/>
         <attribute name="sizeTypeAlignment" attributeType="String" syncable="YES"/>
-        <attribute name="sizeValue" attributeType="String" syncable="YES"/>
         <attribute name="skills" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="speed" attributeType="String" syncable="YES"/>
-        <attribute name="strengthValue" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="wisdomValue" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="xp" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="actions" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Action" inverseName="monster" inverseEntity="Action" syncable="YES"/>
         <relationship name="combatants" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Combatant" inverseName="monster" inverseEntity="Combatant" syncable="YES"/>
@@ -112,7 +112,7 @@
         <relationship name="lair" maxCount="1" deletionRule="Nullify" destinationEntity="Lair" inverseName="regionalEffects" inverseEntity="Lair" syncable="YES"/>
     </entity>
     <entity name="Source" representedClassName=".Source" syncable="YES">
-        <attribute name="pageValue" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="rawPage" attributeType="Integer 16" syncable="YES"/>
         <attribute name="section" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="book" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="sources" inverseEntity="Book" syncable="YES"/>
         <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="sources" inverseEntity="Monster" syncable="YES"/>

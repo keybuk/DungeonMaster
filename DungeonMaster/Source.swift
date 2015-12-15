@@ -12,16 +12,17 @@ import CoreData
 final class Source: NSManagedObject {
 
     @NSManaged var book: Book
-    @NSManaged var pageValue: Int16
     @NSManaged var section: String?
     @NSManaged var monster: Monster
 
+    @NSManaged var rawPage: Int16
+
     var page: Int {
         get {
-            return Int(pageValue)
+            return Int(rawPage)
         }
         set(newPage) {
-            pageValue = Int16(newPage)
+            rawPage = Int16(newPage)
         }
     }
     

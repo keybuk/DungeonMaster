@@ -16,7 +16,7 @@ final class Encounter: NSManagedObject {
     
     @NSManaged var combatants: NSSet
     
-    var notificationObserver: NSObjectProtocol?
+    // MARK: Computed properties
     
     var title: String {
         if name != nil {
@@ -44,6 +44,10 @@ final class Encounter: NSManagedObject {
         
         return "Encounter"
     }
+
+    // MARK: Internal properties
+    
+    var notificationObserver: NSObjectProtocol?
     
     convenience init(inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Encounter, inManagedObjectContext: context)
