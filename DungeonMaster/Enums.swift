@@ -23,3 +23,21 @@ enum DamageType: String {
     case Slashing = "slashing"
     case Thunder = "thunder"
 }
+
+enum ConditionType: String {
+    // TODO: deal with exhaustion, and its six levels
+    case Blinded = "blinded"
+    case Charmed = "charmed"
+    case Deafened = "deafened"
+    case Frightened = "frightened"
+    case Grappled = "grappled"
+    case Incapacitated = "incapacitated"
+    case Invisible = "invisible"
+    case Paralyzed = "paralyzed"
+    case Petrified = "petrified"
+    case Poisoned = "poisoned"
+    case Prone = "prone"
+    case Restrained = "restrained"
+    case Stunned = "stunned"
+    case Unconcious = "unconcious"
+}

@@ -25,6 +25,7 @@ enum Model: String {
     case Encounter
     case Combatant
     case Damage
+    case Condition
 
     static let name = "DungeonMaster"
     

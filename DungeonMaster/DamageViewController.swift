@@ -142,9 +142,3 @@ class PointsCell: UITableViewCell {
     @IBOutlet var textField: UITextField!
 
 }
-
-class TypeCell: UITableViewCell {
-    
-    @IBOutlet var pickerView: UIPickerView!
-
-}

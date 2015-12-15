@@ -47,6 +47,13 @@ class CombatantViewController: UITableViewController {
 
     // MARK: Navigation
 
+    @IBAction func unwindFromCondition(segue: UIStoryboardSegue) {
+        let conditionViewController = segue.sourceViewController as! ConditionViewController
+        
+        let condition = Condition(target: combatant, inManagedObjectContext: managedObjectContext)
+        condition.type = conditionViewController.type!
+    }
+
     @IBAction func unwindFromDamage(segue: UIStoryboardSegue) {
         let damageViewController = segue.sourceViewController as! DamageViewController
         
@@ -64,6 +71,7 @@ extension CombatantViewController {
     
     enum TableSections: Int {
         case Details
+        case Conditions
         case Damage
         case Notes
         case SectionCount
@@ -86,6 +94,8 @@ extension CombatantViewController {
         switch TableSections(rawValue: section)! {
         case .Details:
             return TableDetailsRows.RowCount.rawValue
+        case .Conditions:
+            return combatant.conditions.count + 1
         case .Damage:
             return combatant.damage.count + 1
         case .Notes:
@@ -99,6 +109,8 @@ extension CombatantViewController {
         switch TableSections(rawValue: section)! {
         case .Details:
             return nil
+        case .Conditions:
+            return "Conditions"
         case .Damage:
             return "Damage"
         case .Notes:
@@ -138,6 +150,16 @@ extension CombatantViewController {
             default:
                 abort()
             }
+        case .Conditions:
+            if indexPath.row == 0 {
+                let cell = tableView.dequeueReusableCellWithIdentifier("AddConditionCell", forIndexPath: indexPath)
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCellWithIdentifier("ConditionCell", forIndexPath: indexPath)
+                let condition = combatant.conditions.objectAtIndex(indexPath.row - 1) as! Condition
+                cell.textLabel?.text = condition.type.rawValue.capitalizedString
+                return cell
+            }
         case .Damage:
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCellWithIdentifier("AddDamageCell", forIndexPath: indexPath) as! AddDamageCell
@@ -174,6 +196,8 @@ extension CombatantViewController {
         switch TableSections(rawValue: indexPath.section)! {
         case .Details:
             return 44.0
+        case .Conditions:
+            return 44.0
         case .Damage:
             return 44.0
         case .Notes:
@@ -194,6 +218,9 @@ extension CombatantViewController {
             default:
                 break
             }
+        case .Conditions:
+            // Handled by a segue action in the storyboard.
+            break
         case .Damage:
             // Handled by a segue action in the storyboard.
             break
@@ -211,6 +238,8 @@ extension CombatantViewController {
         switch TableSections(rawValue: indexPath.section)! {
         case .Details:
             return false
+        case .Conditions:
+            return indexPath.row > 0
         case .Damage:
             return indexPath.row > 0
         case .Notes:
@@ -222,6 +251,13 @@ extension CombatantViewController {
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         switch TableSections(rawValue: indexPath.section)! {
+        case .Conditions:
+            if indexPath.row > 0 {
+                let condition = combatant.conditions.objectAtIndex(indexPath.row - 1) as! Condition
+                managedObjectContext.deleteObject(condition)
+            } else {
+                abort()
+            }
         case .Damage:
             if indexPath.row > 0 {
                 let damage = combatant.damage.objectAtIndex(combatant.damage.count - indexPath.row) as! Damage

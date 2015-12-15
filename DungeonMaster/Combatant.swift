@@ -14,6 +14,7 @@ final class Combatant: NSManagedObject {
     @NSManaged var encounter: Encounter
     @NSManaged var monster: Monster
     @NSManaged var damage: NSOrderedSet
+    @NSManaged var conditions: NSOrderedSet
 
     @NSManaged var hitPointsValue: Int16
     @NSManaged var damagePointsValue: Int16

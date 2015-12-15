@@ -36,6 +36,8 @@
 		D26FBA391C1E366300D44503 /* Damage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FBA381C1E366300D44503 /* Damage.swift */; };
 		D26FBA3B1C1E3FE400D44503 /* DamageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FBA3A1C1E3FE400D44503 /* DamageViewController.swift */; };
 		D26FBA3D1C1E52CA00D44503 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FBA3C1C1E52CA00D44503 /* Enums.swift */; };
+		D26FBA3F1C1EA4E700D44503 /* Condition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FBA3E1C1EA4E700D44503 /* Condition.swift */; };
+		D26FBA411C1FA17400D44503 /* ConditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FBA401C1FA17400D44503 /* ConditionViewController.swift */; };
 		D2A9AF0A1BFFEAA5009902ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A9AF091BFFEAA5009902ED /* AppDelegate.swift */; };
 		D2A9AF0D1BFFEAA5009902ED /* DungeonMaster.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2A9AF0B1BFFEAA5009902ED /* DungeonMaster.xcdatamodeld */; };
 		D2A9AF111BFFEAA5009902ED /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A9AF101BFFEAA5009902ED /* DetailViewController.swift */; };
@@ -97,6 +99,8 @@
 		D26FBA381C1E366300D44503 /* Damage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Damage.swift; sourceTree = "<group>"; };
 		D26FBA3A1C1E3FE400D44503 /* DamageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamageViewController.swift; sourceTree = "<group>"; };
 		D26FBA3C1C1E52CA00D44503 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		D26FBA3E1C1EA4E700D44503 /* Condition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Condition.swift; sourceTree = "<group>"; };
+		D26FBA401C1FA17400D44503 /* ConditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConditionViewController.swift; sourceTree = "<group>"; };
 		D2A9AF061BFFEAA5009902ED /* DungeonMaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DungeonMaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2A9AF091BFFEAA5009902ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2A9AF0C1BFFEAA5009902ED /* DungeonMaster.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DungeonMaster.xcdatamodel; sourceTree = "<group>"; };
@@ -163,6 +167,7 @@
 				D2F9D12E1C1A71D8005F2D9A /* Encounter.swift */,
 				D26FBA211C1BEA0F00D44503 /* Combatant.swift */,
 				D26FBA381C1E366300D44503 /* Damage.swift */,
+				D26FBA3E1C1EA4E700D44503 /* Condition.swift */,
 				D23435F51C0D634100108D5F /* Importer.swift */,
 			);
 			name = "Data Model";
@@ -232,6 +237,7 @@
 				D2BDE60B1C17500A0008B2F2 /* EncountersViewController.swift */,
 				D2BDE60D1C1750170008B2F2 /* EncounterViewController.swift */,
 				D26FBA331C1D3BAF00D44503 /* CombatantViewController.swift */,
+				D26FBA401C1FA17400D44503 /* ConditionViewController.swift */,
 				D26FBA3A1C1E3FE400D44503 /* DamageViewController.swift */,
 				D2C6063D1C17D32900F61DBD /* TabletopViewController.swift */,
 				D2511FF71C12B1AD00A09F0B /* MonstersViewController.swift */,
@@ -393,6 +399,7 @@
 				D25120021C14FC0A00A09F0B /* ExtendedNavigationBarView.swift in Sources */,
 				D23435F21C0D608B00108D5F /* Source.swift in Sources */,
 				D23435FB1C0FEFA000108D5F /* Dice.swift in Sources */,
+				D26FBA411C1FA17400D44503 /* ConditionViewController.swift in Sources */,
 				D20049231C1A127500A645E9 /* TabletopStatsView.swift in Sources */,
 				D26FBA3D1C1E52CA00D44503 /* Enums.swift in Sources */,
 				D23435F61C0D634100108D5F /* Importer.swift in Sources */,
@@ -403,6 +410,7 @@
 				D2511FF81C12B1AD00A09F0B /* MonstersViewController.swift in Sources */,
 				D2116A4C1C10ECC9001EDBBA /* LegendaryAction.swift in Sources */,
 				D23435EC1C0D5A3D00108D5F /* Model.swift in Sources */,
+				D26FBA3F1C1EA4E700D44503 /* Condition.swift in Sources */,
 				D2A9AF0D1BFFEAA5009902ED /* DungeonMaster.xcdatamodeld in Sources */,
 				D26FBA3B1C1E3FE400D44503 /* DamageViewController.swift in Sources */,
 				D2511FFA1C14BC3700A09F0B /* Tag.swift in Sources */,
