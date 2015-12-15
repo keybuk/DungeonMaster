@@ -28,15 +28,6 @@ final class Monster: NSManagedObject {
     @NSManaged var charismaValue: Int16
     @NSManaged var passivePerceptionValue: Int16
 
-    enum Size: String {
-        case Tiny
-        case Small
-        case Medium
-        case Large
-        case Huge
-        case Gargantuan
-    }
-
     var size: Size {
         get {
             return Size(rawValue: sizeValue)!
@@ -44,19 +35,6 @@ final class Monster: NSManagedObject {
         set(newSize) {
             sizeValue = newSize.rawValue
         }
-    }
-    
-    enum Alignment: String {
-        case Unaligned = "unaligned"
-        case LawfulGood = "lawful good"
-        case LawfulNeutral = "lawful neutral"
-        case LawfulEvil = "lawful evil"
-        case NeutralGood = "neutral good"
-        case Neutral = "neutral"
-        case NeutralEvil = "neutral evil"
-        case ChaoticGood = "chaotic good"
-        case ChaoticNeutral = "chaotic neutral"
-        case ChaoticEvil = "chaotic evil"
     }
     
     var alignment: Alignment? {

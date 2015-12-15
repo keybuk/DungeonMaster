@@ -17,15 +17,9 @@ final class Book: NSManagedObject {
     // Type is a wrapped enum object.
     @NSManaged var typeValue: Int16
     
-    enum Type: Int16 {
-        case CoreRulebook
-        case OfficialAdventure
-        case OnlineSupplement
-    }
-    
-    var type: Type {
+    var type: BookType {
         get {
-            return Type(rawValue: typeValue)!
+            return BookType(rawValue: typeValue)!
         }
         set(newType) {
             typeValue = newType.rawValue
