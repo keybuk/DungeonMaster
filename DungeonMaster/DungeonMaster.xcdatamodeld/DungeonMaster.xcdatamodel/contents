@@ -16,7 +16,7 @@
         <attribute name="rawHitPoints" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawInitiative" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <relationship name="conditions" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Condition" inverseName="target" inverseEntity="Condition" syncable="YES"/>
-        <relationship name="damage" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Damage" inverseName="target" inverseEntity="Damage" syncable="YES"/>
+        <relationship name="damages" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Damage" inverseName="target" inverseEntity="Damage" syncable="YES"/>
         <relationship name="encounter" maxCount="1" deletionRule="Nullify" destinationEntity="Encounter" inverseName="combatants" inverseEntity="Encounter" syncable="YES"/>
         <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="combatants" inverseEntity="Monster" syncable="YES"/>
     </entity>
@@ -27,7 +27,7 @@
     <entity name="Damage" representedClassName=".Damage" syncable="YES">
         <attribute name="rawPoints" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawType" attributeType="String" syncable="YES"/>
-        <relationship name="target" maxCount="1" deletionRule="Nullify" destinationEntity="Combatant" inverseName="damage" inverseEntity="Combatant" syncable="YES"/>
+        <relationship name="target" maxCount="1" deletionRule="Nullify" destinationEntity="Combatant" inverseName="damages" inverseEntity="Combatant" syncable="YES"/>
     </entity>
     <entity name="Encounter" representedClassName=".Encounter" syncable="YES">
         <attribute name="lastUsed" attributeType="Date" syncable="YES"/>

@@ -71,7 +71,7 @@ extension CombatantViewController {
     enum TableSections: Int {
         case Details
         case Conditions
-        case Damage
+        case Damages
         case Notes
         case SectionCount
     }
@@ -95,8 +95,8 @@ extension CombatantViewController {
             return TableDetailsRows.RowCount.rawValue
         case .Conditions:
             return combatant.conditions.count + 1
-        case .Damage:
-            return combatant.damage.count + 1
+        case .Damages:
+            return combatant.damages.count + 1
         case .Notes:
             return 1
         default:
@@ -110,7 +110,7 @@ extension CombatantViewController {
             return nil
         case .Conditions:
             return "Conditions"
-        case .Damage:
+        case .Damages:
             return "Damage"
         case .Notes:
             return "Notes"
@@ -159,7 +159,7 @@ extension CombatantViewController {
                 cell.textLabel?.text = condition.type.rawValue.capitalizedString
                 return cell
             }
-        case .Damage:
+        case .Damages:
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCellWithIdentifier("AddDamageCell", forIndexPath: indexPath) as! AddDamageCell
                 let hitPoints = combatant.hitPoints - combatant.damagePoints
@@ -167,13 +167,13 @@ extension CombatantViewController {
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCellWithIdentifier("DamageCell", forIndexPath: indexPath) as! DamageCell
-                let damageIndex = combatant.damage.count - indexPath.row
-                let damage = combatant.damage.objectAtIndex(damageIndex) as! Damage
+                let damageIndex = combatant.damages.count - indexPath.row
+                let damage = combatant.damages.objectAtIndex(damageIndex) as! Damage
                 cell.damage = damage
                 
                 var hitPoints = combatant.hitPoints
                 for index in 0..<damageIndex {
-                    let damage = combatant.damage.objectAtIndex(index) as! Damage
+                    let damage = combatant.damages.objectAtIndex(index) as! Damage
                     hitPoints -= damage.points
                 }
                 hitPoints = max(hitPoints, 0)
@@ -197,7 +197,7 @@ extension CombatantViewController {
             return 44.0
         case .Conditions:
             return 44.0
-        case .Damage:
+        case .Damages:
             return 44.0
         case .Notes:
             return 144.0
@@ -220,7 +220,7 @@ extension CombatantViewController {
         case .Conditions:
             // Handled by a segue action in the storyboard.
             break
-        case .Damage:
+        case .Damages:
             // Handled by a segue action in the storyboard.
             break
         case .Notes:
@@ -239,7 +239,7 @@ extension CombatantViewController {
             return false
         case .Conditions:
             return indexPath.row > 0
-        case .Damage:
+        case .Damages:
             return indexPath.row > 0
         case .Notes:
             return false
@@ -257,9 +257,9 @@ extension CombatantViewController {
             } else {
                 abort()
             }
-        case .Damage:
+        case .Damages:
             if indexPath.row > 0 {
-                let damage = combatant.damage.objectAtIndex(combatant.damage.count - indexPath.row) as! Damage
+                let damage = combatant.damages.objectAtIndex(combatant.damages.count - indexPath.row) as! Damage
                 let points = damage.points
                 managedObjectContext.deleteObject(damage)
                 

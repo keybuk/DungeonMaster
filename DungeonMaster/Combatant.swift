@@ -47,7 +47,7 @@ final class Combatant: NSManagedObject {
     
     @NSManaged var notes: String?
 
-    @NSManaged var damage: NSOrderedSet
+    @NSManaged var damages: NSOrderedSet
     @NSManaged var conditions: NSOrderedSet
 
     // MARK: Computed properties
