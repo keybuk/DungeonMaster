@@ -10,13 +10,15 @@ import UIKit
 
 let π = M_PI
 
+typealias TabletopLocation = CGPoint
+
 @objc protocol TabletopViewDataSource {
     
     /// Returns the number of items to display on the table top.
     func numberOfItemsInTabletopView(tabletopView: TabletopView) -> Int
     
     /// Returns the location on the table top of the item with the given index.
-    func tabletopView(tabletopView: TabletopView, locationForItem index: Int) -> CGPoint
+    func tabletopView(tabletopView: TabletopView, locationForItem index: Int) -> TabletopLocation
     
     /// Returns the name of the item with the given index on the table top.
     func tabletopView(tabletopView: TabletopView, nameForItem index: Int) -> String
@@ -29,7 +31,7 @@ let π = M_PI
 @objc protocol TabletopViewDelegate {
     
     /// Informs the delegate that an item was moved on the table top to a new location.
-    func tabletopView(tabletopView: TabletopView, moveItem index: Int, to location: CGPoint)
+    func tabletopView(tabletopView: TabletopView, moveItem index: Int, to location: TabletopLocation)
     
     /// Informs the delegate that an item was selected on the table top.
     func tabletopView(tabletopView: TabletopView, didSelectItem index: Int)
@@ -72,7 +74,7 @@ let π = M_PI
     var boxWidth: CGFloat = 0.0
     
     /// Center locations of each item on the table top in the range -1.0...1.0.
-    var locations = [CGPoint]()
+    var locations = [TabletopLocation]()
     
     /// Associated stats view of each item on the table top.
     var statsViews = [TabletopStatsView]()
@@ -81,7 +83,7 @@ let π = M_PI
     var touchingIndex: Int?
     
     /// The original starting location of the item being moved by the user.
-    var startingLocation: CGPoint?
+    var startingLocation: TabletopLocation?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -192,14 +194,14 @@ let π = M_PI
         statsView.removeFromSuperview()
     }
     
-    // MARK: Housekeeping
+    // MARK: Point locations.
     
-    func locationToPoint(location: CGPoint) -> CGPoint {
+    func locationToPoint(location: TabletopLocation) -> CGPoint {
         return CGPoint(x: (frame.size.width / 2.0) + location.x * boxWidth, y: (frame.size.height / 2.0) + location.y * boxWidth)
     }
     
-    func pointToLocation(point: CGPoint) -> CGPoint {
-        return CGPoint(x: (point.x - frame.size.width / 2.0) / boxWidth, y: (point.y - frame.size.height / 2.0) / boxWidth)
+    func pointToLocation(point: CGPoint) -> TabletopLocation {
+        return TabletopLocation(x: (point.x - frame.size.width / 2.0) / boxWidth, y: (point.y - frame.size.height / 2.0) / boxWidth)
     }
     
     func indexOfItemNearTouch(touch: UITouch) -> Int? {
@@ -270,7 +272,7 @@ let π = M_PI
         }
     }
     
-    func setNeedsDisplayForLocation(location: CGPoint) {
+    func setNeedsDisplayForLocation(location: TabletopLocation) {
         let point = locationToPoint(location)
         let rect = CGRectInset(CGRect(origin: point, size: CGSizeZero), -(itemRadius + itemStrokeWidth), -(itemRadius + itemStrokeWidth))
         setNeedsDisplayInRect(rect)
