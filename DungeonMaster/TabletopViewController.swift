@@ -14,14 +14,7 @@ class TabletopViewController: UIViewController {
     
     var encounter: Encounter!
     
-    var locations = [
-        CGPoint(x:  0.0, y:  0.0),
-        CGPoint(x: -0.5, y: -0.5),
-        CGPoint(x:  0.5, y: -0.5),
-        CGPoint(x:  0.3, y:  0.3),
-        CGPoint(x: -0.5, y:  0.5),
-    ]
-    
+    var locations = [TabletopLocation]()
     var names = ["Goblin", "Goblin", "Wolf", "Bugbear Captain", "Half-Red Dragon Veteran"]
     var healths: [Float] = [0.8, 0.2, 1.0, 0.7, 0.5]
     
@@ -70,11 +63,19 @@ class TabletopViewController: UIViewController {
 extension TabletopViewController: TabletopViewDataSource {
     
     func numberOfItemsInTabletopView(tabletopView: TabletopView) -> Int {
-        return locations.count
+        return names.count
     }
     
-    func tabletopView(tabletopView: TabletopView, locationForItem index: Int) -> CGPoint {
-        return locations[index]
+    func tabletopView(tabletopView: TabletopView, locationForItem index: Int) -> TabletopLocation {
+        if index < locations.count {
+            return locations[index]
+        } else if index == locations.count {
+            let location = tabletopView.emptyLocationForNewItem()!
+            locations.append(location)
+            return location
+        } else {
+            abort()
+        }
     }
     
     func tabletopView(tabletopView: TabletopView, nameForItem index: Int) -> String {
@@ -90,7 +91,7 @@ extension TabletopViewController: TabletopViewDataSource {
 // MARK: TabletopViewDelegate
 extension TabletopViewController: TabletopViewDelegate {
     
-    func tabletopView(tabletopView: TabletopView, moveItem index: Int, to location: CGPoint) {
+    func tabletopView(tabletopView: TabletopView, moveItem index: Int, to location: TabletopLocation) {
         locations[index] = location
     }
     

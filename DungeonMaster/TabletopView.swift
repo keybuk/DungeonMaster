@@ -97,18 +97,13 @@ typealias TabletopLocation = CGPoint
         contentMode = .Redraw
     }
     
-    override func didMoveToSuperview() {
-        super.didMoveToSuperview()
-        
-        if locations.count == 0 {
-            reloadData()
-        }
-    }
-    
     override func didMoveToWindow() {
         super.didMoveToWindow()
         if let window = window {
             boxWidth = max(window.screen.bounds.width, window.screen.bounds.height) / 2.0
+        }
+        if locations.count == 0 {
+            reloadData()
         }
     }
     
@@ -196,6 +191,39 @@ typealias TabletopLocation = CGPoint
     
     // MARK: Point locations.
     
+    /// Returns a location on the tabletop that a new item could be placed in.
+    func emptyLocationForNewItem() -> TabletopLocation? {
+        var pointGenerator = PointGenerator(range: -1.0...1.0)
+        while let location = pointGenerator.next() {
+            // Make sure the point is within the visible bounds of the UI right now.
+            let point = locationToPoint(location)
+            if point.x < itemRadius || point.y < itemRadius || point.x > frame.size.width - itemRadius || point.y > frame.size.height - itemRadius {
+                continue
+            }
+            
+            // Find the closest existing item.
+            var minimumDistance: CGFloat? = nil
+            for otherLocation in locations {
+                let otherPoint = locationToPoint(otherLocation)
+                
+                let squareDistance = (otherPoint.x - point.x) * (otherPoint.x - point.x) + (otherPoint.y - point.y) * (otherPoint.y - point.y)
+                if minimumDistance == nil || squareDistance < minimumDistance! {
+                    minimumDistance = squareDistance
+                }
+            }
+            
+            // If an item is too close, skip this point.
+            let squareRadius = itemRadius * 1.5 * itemRadius * 1.5
+            if minimumDistance != nil && minimumDistance! < squareRadius {
+                continue
+            }
+            
+            // This is a good point for an item.
+            return location
+        }
+        return nil
+    }
+
     func locationToPoint(location: TabletopLocation) -> CGPoint {
         return CGPoint(x: (frame.size.width / 2.0) + location.x * boxWidth, y: (frame.size.height / 2.0) + location.y * boxWidth)
     }
