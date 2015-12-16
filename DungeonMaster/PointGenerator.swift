@@ -9,62 +9,58 @@
 import Foundation
 import UIKit
 
-/// Box represents an arbitrary box of values denoted by two ranges for those values.
-private struct Box<T: BidirectionalIndexType> {
-    var width: Range<T>
-    var height: Range<T>
-}
-
-/// Point represents a co-ordinate in an arbitrary typed space.
-struct Point<T> {
-    var x: T
-    var y: T
+/// Box represents an arbitrary box of values denoted by two intervals for those values.
+private struct Box {
+    var width: ClosedInterval<CGFloat>
+    var height: ClosedInterval<CGFloat>
+    
+    var center: CGPoint {
+        return CGPoint(x: width.start + (width.end - width.start) / 2.0, y: height.start + (height.end - height.start) / 2.0)
+    }
 }
 
 /// PointGenerator generates a distributed set of point values in a square box of a given range.
-struct PointGenerator<T: BidirectionalIndexType>: GeneratorType {
+struct PointGenerator: GeneratorType {
     
-    typealias Element = Point<T>
+    typealias Element = CGPoint
 
-    private var boxes = [Box<T>]()
-    private var points = [Point<T>]()
+    private var boxes = [Box]()
+    private var points = [CGPoint]()
     private var pointIndex = 0
 
-    init(range: Range<T>) {
-        boxes.append(Box<T>(width: range, height: range))
+    init(range: ClosedInterval<CGFloat>) {
+        boxes.append(Box(width: range, height: range))
         
         points = pointsForBox(boxes[0])
         pointIndex = points.startIndex
     }
     
-    private func pointsForBox(box: Box<T>, rotate: Int = 0) -> [Point<T>] {
-        let centerX = box.width.startIndex.advancedBy(box.width.count / 2)
-        let centerY = box.height.startIndex.advancedBy(box.height.count / 2)
-        
-        var points = [Point<T>]()
-        points.append(Point<T>(x: box.width.startIndex, y: centerY))
-        points.append(Point<T>(x: centerX, y: box.height.startIndex))
-        points.append(Point<T>(x: box.width.endIndex.predecessor(), y: centerY))
-        points.append(Point<T>(x: centerX, y: box.height.endIndex.predecessor()))
+    init(start: CGFloat, end: CGFloat) {
+        self.init(range: ClosedInterval<CGFloat>(start, end))
+    }
+    
+    private func pointsForBox(box: Box, rotate: Int = 0) -> [CGPoint] {
+        var points = [CGPoint]()
+        points.append(CGPoint(x: box.width.start, y: box.center.y))
+        points.append(CGPoint(x: box.center.x, y: box.height.start))
+        points.append(CGPoint(x: box.width.end, y: box.center.y))
+        points.append(CGPoint(x: box.center.x, y: box.height.end))
         
         for _ in 0..<rotate {
             points.append(points.removeFirst())
         }
         
-        points.insert(Point<T>(x: centerX, y: centerY), atIndex: 0)
+        points.insert(box.center, atIndex: 0)
         
         return points
     }
     
-    private func boxesForBox(box: Box<T>, rotate: Int = 0) -> [Box<T>] {
-        let centerX = box.width.startIndex.advancedBy(box.width.count / 2)
-        let centerY = box.height.startIndex.advancedBy(box.height.count / 2)
-        
-        var boxes = [Box<T>]()
-        boxes.append(Box<T>(width: box.width.startIndex...centerX, height: box.height.startIndex...centerY))
-        boxes.append(Box<T>(width: centerX...box.width.endIndex.predecessor(), height: box.height.startIndex...centerY))
-        boxes.append(Box<T>(width: centerX...box.width.endIndex.predecessor(), height: centerY...box.height.endIndex.predecessor()))
-        boxes.append(Box<T>(width: box.width.startIndex...centerX, height: centerY...box.height.endIndex.predecessor()))
+    private func boxesForBox(box: Box, rotate: Int = 0) -> [Box] {
+        var boxes = [Box]()
+        boxes.append(Box(width: box.width.start...box.center.x, height: box.height.start...box.center.y))
+        boxes.append(Box(width: box.center.x...box.width.end, height: box.height.start...box.center.y))
+        boxes.append(Box(width: box.center.x...box.width.end, height: box.center.y...box.height.end))
+        boxes.append(Box(width: box.width.start...box.center.x, height: box.center.y...box.height.end))
         
         for _ in 0..<rotate {
             boxes.append(boxes.removeFirst())
@@ -75,14 +71,14 @@ struct PointGenerator<T: BidirectionalIndexType>: GeneratorType {
     
     private mutating func splitBoxes() {
         // Split the current set of boxes, rotating each resulting set, and collate back into a single set.
-        var allBoxes = [[Box<T>]]()
+        var allBoxes = [[Box]]()
         for (index, box) in boxes.enumerate() {
             allBoxes.append(boxesForBox(box, rotate: index % 4))
         }
         
         boxes.removeAll()
         while allBoxes[0].count > 0 {
-            var newBoxes = [[Box<T>]]()
+            var newBoxes = [[Box]]()
             for var thisBoxes in allBoxes {
                 boxes.append(thisBoxes.removeFirst())
                 newBoxes.append(thisBoxes)
@@ -91,14 +87,14 @@ struct PointGenerator<T: BidirectionalIndexType>: GeneratorType {
         }
         
         // Iterate the resulting new set of boxes, creating points, rotating each resulting set, and collating back into a single set of points.
-        var allPoints = [[Point<T>]]()
+        var allPoints = [[CGPoint]]()
         for (index, box) in boxes.enumerate() {
             allPoints.append(pointsForBox(box, rotate: (index / 4 + index) % 4))
         }
     
         points.removeAll()
         while allPoints[0].count > 0 {
-            var newPoints = [[Point<T>]]()
+            var newPoints = [[CGPoint]]()
             for var thisPoints in allPoints {
                 points.append(thisPoints.removeFirst())
                 newPoints.append(thisPoints)
@@ -110,7 +106,7 @@ struct PointGenerator<T: BidirectionalIndexType>: GeneratorType {
         pointIndex = points.startIndex
     }
     
-    mutating func next() -> Point<T>? {
+    mutating func next() -> CGPoint? {
         if pointIndex == points.endIndex {
             splitBoxes()
         }
