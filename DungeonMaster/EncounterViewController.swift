@@ -83,6 +83,7 @@ class EncounterViewController: UITableViewController {
         let monster = controller.detailItem as! Monster
         
         let _ = Combatant(encounter: encounter, monster: monster, inManagedObjectContext: managedObjectContext)
+        saveContext()
     }
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -123,6 +124,8 @@ class EncounterViewController: UITableViewController {
                 combatant.initiative = combo.value
             }
         }
+        
+        saveContext()
     }
 
 }
@@ -158,6 +161,7 @@ extension EncounterViewController {
         if editingStyle == .Delete {
             let combatant = fetchedResultsController.objectAtIndexPath(indexPath) as! Combatant
             managedObjectContext.deleteObject(combatant)
+            saveContext()
         }
     }
     

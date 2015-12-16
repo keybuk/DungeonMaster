@@ -80,6 +80,7 @@ class CombatantViewController: UITableViewController {
         let conditionViewController = segue.sourceViewController as! ConditionViewController
         
         let _ = Condition(target: combatant, type: conditionViewController.type!, inManagedObjectContext: managedObjectContext)
+        saveContext()
     }
 
     @IBAction func unwindFromDamage(segue: UIStoryboardSegue) {
@@ -88,6 +89,7 @@ class CombatantViewController: UITableViewController {
         let damage = Damage(target: combatant, points: damageViewController.points!, type: damageViewController.type!, inManagedObjectContext: managedObjectContext)
         
         combatant.damagePoints += damage.points
+        saveContext()
     }
     
     @IBAction func unwindFromDetail(segue: UIStoryboardSegue) {
@@ -99,6 +101,7 @@ class CombatantViewController: UITableViewController {
         if let hitPoints = Int(sender.text!) {
             ignoreNextUpdate = true
             combatant.hitPoints = hitPoints
+            saveContext()
             sender.textColor = nil
         } else {
             sender.textColor = UIColor.redColor()
@@ -109,6 +112,7 @@ class CombatantViewController: UITableViewController {
         if let initiative = Int(sender.text!) {
             ignoreNextUpdate = true
             combatant.initiative = initiative
+            saveContext()
             sender.textColor = nil
         } else {
             sender.textColor = UIColor.redColor()
@@ -308,6 +312,7 @@ extension CombatantViewController {
             if indexPath.row > 0 {
                 let condition = combatant.conditions.objectAtIndex(indexPath.row - 1) as! Condition
                 managedObjectContext.deleteObject(condition)
+                saveContext()
             } else {
                 abort()
             }
@@ -318,6 +323,7 @@ extension CombatantViewController {
                 managedObjectContext.deleteObject(damage)
                 
                 combatant.damagePoints -= points
+                saveContext()
             } else {
                 abort()
             }
@@ -334,6 +340,7 @@ extension CombatantViewController: UITextViewDelegate {
     func textViewDidChange(textView: UITextView) {
         ignoreNextUpdate = true
         combatant.notes = textView.text
+        saveContext()
     }
 
 }
