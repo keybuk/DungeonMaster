@@ -30,6 +30,18 @@ class CombatantViewController: UITableViewController {
         }
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.toolbarHidden = false
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        navigationController?.toolbarHidden = true
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -48,6 +60,16 @@ class CombatantViewController: UITableViewController {
     }
 
     // MARK: Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "MonsterDetailSegue" {
+            let detailViewController = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
+            if let index = detailViewController.navigationItem.rightBarButtonItems?.indexOf(detailViewController.addButton) {
+                detailViewController.navigationItem.rightBarButtonItems?.removeAtIndex(index)
+            }
+            detailViewController.detailItem = combatant.monster
+        }
+    }
 
     @IBAction func unwindFromCondition(segue: UIStoryboardSegue) {
         let conditionViewController = segue.sourceViewController as! ConditionViewController
@@ -61,6 +83,9 @@ class CombatantViewController: UITableViewController {
         let damage = Damage(target: combatant, points: damageViewController.points!, type: damageViewController.type!, inManagedObjectContext: managedObjectContext)
         
         combatant.damagePoints += damage.points
+    }
+    
+    @IBAction func unwindFromDetail(segue: UIStoryboardSegue) {
     }
 
 }

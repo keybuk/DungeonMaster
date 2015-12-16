@@ -82,6 +82,9 @@ class MonstersViewController: UIViewController {
                 controller.detailItem = monster
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
                 controller.navigationItem.leftItemsSupplementBackButton = true
+                if let index = controller.navigationItem.rightBarButtonItems?.indexOf(controller.doneButton) {
+                    controller.navigationItem.rightBarButtonItems?.removeAtIndex(index)
+                }
             }
         } else if segue.identifier == "BooksPopoverSegue" {
             let booksViewController = (segue.destinationViewController as! UINavigationController).topViewController as! BooksViewController

@@ -11,6 +11,8 @@ import UIKit
 class DetailViewController: UIViewController {
 
     @IBOutlet var textView: UITextView!
+    @IBOutlet var addButton: UIBarButtonItem!
+    @IBOutlet var doneButton: UIBarButtonItem!
 
     var detailItem: AnyObject? {
         didSet {

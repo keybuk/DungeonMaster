@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Detail-->
@@ -50,13 +51,22 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM">
-                        <barButtonItem key="rightBarButtonItem" title="Add" style="done" id="vPt-38-iF1">
-                            <connections>
-                                <segue destination="fCg-s9-Ul4" kind="unwind" unwindAction="unwindFromMonster:" id="9s3-ZQ-wff"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Add" style="done" id="vPt-38-iF1">
+                                <connections>
+                                    <segue destination="fCg-s9-Ul4" kind="unwind" unwindAction="unwindFromMonster:" id="9s3-ZQ-wff"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem style="done" systemItem="done" id="4m0-Yc-LCF">
+                                <connections>
+                                    <segue destination="fCg-s9-Ul4" kind="unwind" unwindAction="unwindFromDetail:" id="tcW-jO-Cl8"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="addButton" destination="vPt-38-iF1" id="mub-P1-vDy"/>
+                        <outlet property="doneButton" destination="4m0-Yc-LCF" id="Jyt-19-unl"/>
                         <outlet property="textView" destination="l3l-Ww-fMV" id="W79-g7-aQX"/>
                     </connections>
                 </viewController>
@@ -387,6 +397,12 @@
                                 <action selector="initiativeTapped:" destination="amA-OW-K2L" id="RyF-3H-ZcX"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="hAz-F8-wij"/>
+                        <barButtonItem title="Table Top" id="G4J-8N-g5e">
+                            <connections>
+                                <segue destination="jr3-ft-OuD" kind="showDetail" identifier="TabletopSegue" id="qiD-OT-Itc"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="LzR-Tq-G6t">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="zWa-kW-O2x">
@@ -668,7 +684,15 @@
                             <outlet property="delegate" destination="HF8-EI-wiy" id="m1R-zs-KKf"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem title="Stat Block" id="WgA-TG-nsV">
+                            <connections>
+                                <segue destination="vC3-pB-5Vb" kind="presentation" identifier="MonsterDetailSegue" modalPresentationStyle="pageSheet" id="vmH-Jw-TdB"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="iHs-Cz-UJ6"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5BE-VL-rjv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -888,7 +912,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="vmH-Jw-TdB"/>
         <segue reference="qMl-qw-ZaA"/>
+        <segue reference="N9H-oc-W3k"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

@@ -92,6 +92,10 @@ class EncounterViewController: UITableViewController {
             tabletopViewController.encounter = encounter
             tabletopViewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
             tabletopViewController.navigationItem.leftItemsSupplementBackButton = true
+            
+            if let indexPath = tableView.indexPathForSelectedRow {
+                tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            }
         } else if segue.identifier == "CombatantSegue" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let combatant = fetchedResultsController.objectAtIndexPath(indexPath) as! Combatant
