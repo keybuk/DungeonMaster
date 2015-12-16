@@ -15,6 +15,8 @@ class CombatantViewController: UITableViewController {
     var combatant: Combatant!
     
     var notificationObserver: NSObjectProtocol?
+    
+    var ignoreNextUpdate = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +58,10 @@ class CombatantViewController: UITableViewController {
     // MARK: Data handling.
     
     func combatantUpdated() {
-        tableView.reloadData()
+        if !ignoreNextUpdate {
+            tableView.reloadData()
+        }
+        ignoreNextUpdate = false
     }
 
     // MARK: Navigation
@@ -88,6 +93,28 @@ class CombatantViewController: UITableViewController {
     @IBAction func unwindFromDetail(segue: UIStoryboardSegue) {
     }
 
+    // MARK: Actions
+    
+    @IBAction func hitPointsEditingChanged(sender: UITextField) {
+        if let hitPoints = Int(sender.text!) {
+            ignoreNextUpdate = true
+            combatant.hitPoints = hitPoints
+            sender.textColor = nil
+        } else {
+            sender.textColor = UIColor.redColor()
+        }
+    }
+
+    @IBAction func initiativeEditingChanged(sender: UITextField) {
+        if let initiative = Int(sender.text!) {
+            ignoreNextUpdate = true
+            combatant.initiative = initiative
+            sender.textColor = nil
+        } else {
+            sender.textColor = UIColor.redColor()
+        }
+    }
+    
 }
 
 // MARK: UITableViewDataSource
@@ -160,6 +187,7 @@ extension CombatantViewController {
                 cell.diceCombo = combatant.monster.hitDice
                 cell.label.text = "Hit Points"
                 cell.textField.text = "\(combatant.hitPoints)"
+                cell.textField.addTarget(self, action: "hitPointsEditingChanged:", forControlEvents: .EditingChanged)
                 return cell
             case .Initiative:
                 let cell = tableView.dequeueReusableCellWithIdentifier("DiceRollCell", forIndexPath: indexPath) as! DiceRollCell
@@ -170,6 +198,7 @@ extension CombatantViewController {
                 } else {
                     cell.textField.text = "—"
                 }
+                cell.textField.addTarget(self, action: "initiativeEditingChanged:", forControlEvents: .EditingChanged)
                 return cell
             default:
                 abort()
@@ -295,6 +324,16 @@ extension CombatantViewController {
         default:
             abort()
         }
+    }
+
+}
+
+// MARK: UITextViewDelegate
+extension CombatantViewController: UITextViewDelegate {
+    
+    func textViewDidChange(textView: UITextView) {
+        ignoreNextUpdate = true
+        combatant.notes = textView.text
     }
 
 }
