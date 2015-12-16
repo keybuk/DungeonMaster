@@ -191,6 +191,7 @@ extension CombatantViewController {
                 cell.diceCombo = combatant.monster.hitDice
                 cell.label.text = "Hit Points"
                 cell.textField.text = "\(combatant.hitPoints)"
+                // Should read up on control events and figure out if this is right or not.
                 cell.textField.addTarget(self, action: "hitPointsEditingChanged:", forControlEvents: .EditingChanged)
                 return cell
             case .Initiative:
@@ -369,6 +370,8 @@ class DiceRollCell: UITableViewCell {
         PlaySound(.Dice)
         diceCombo = diceCombo.reroll()
         textField.text = "\(diceCombo.value)"
+        // This seems a very hacky way to do this...
+        textField.sendActionsForControlEvents(.EditingChanged)
     }
     
 }
