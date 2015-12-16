@@ -124,6 +124,7 @@ final class Monster: NSManagedObject {
         }
     }
 
+    @NSManaged var isNPC: Bool
     @NSManaged var type: String
     @NSManaged var cr: Float
     @NSManaged var xp: Int32

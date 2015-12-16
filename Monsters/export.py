@@ -113,6 +113,9 @@ class Exporter(monster.MonsterParser):
 
 		self.sources.append(source)
 
+	def handle_npc(self):
+		self.info['isNPC'] = True
+
 	def handle_size_type_alignment(self, line):
 		self.info['sizeTypeAlignment'] = line
 

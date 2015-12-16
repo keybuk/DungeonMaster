@@ -39,7 +39,10 @@ class MonsterParser(object):
 		line = self.next_line(error_message="Expected sources")
 		self.handle_sources(line)
 
-		line = self.next_line(error_message="Expected size, type, and alignment")
+		line = self.next_line(error_message="Expected NPC, or, size, type, and alignment")
+		if line == "NPC":
+			self.handle_npc()
+			line = self.next_line(error_message="Expected size, type, and alignment")
 		self.handle_size_type_alignment(line)
 
 		self.blank_line(error_message="Expected blank line after header")
@@ -269,6 +272,9 @@ class MonsterParser(object):
 			self.handle_source(source, page, section)
 
 	def handle_source(self, source, page, section):
+		pass
+
+	def handle_npc(self):
 		pass
 
 	def handle_size_type_alignment(self, line):
