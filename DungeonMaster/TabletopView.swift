@@ -167,6 +167,25 @@ typealias TabletopLocation = CGPoint
         setNeedsLayout()
     }
     
+    /// Updates an item, with the given index, refreshing its location and display.
+    func updateItemAtIndex(index: Int) {
+        let oldLocation = locations[index]
+        let location = dataSource!.tabletopView(self, locationForItem: index)
+
+        locations[index] = location
+        
+        if touchingIndex != nil && touchingIndex! == index {
+            touchingIndex = nil
+            startingLocation = nil
+        }
+
+        updateStatsForItem(index)
+        
+        setNeedsDisplayForLocation(oldLocation)
+        setNeedsDisplayForLocation(location)
+        setNeedsLayout()
+    }
+    
     /// Deletes an item, with the given index, and removes it from the table top.
     func deleteItemAtIndex(index: Int) {
         if let touchingIndex = touchingIndex {
@@ -398,4 +417,13 @@ typealias TabletopLocation = CGPoint
         return view
     }
     
+    func updateStatsForItem(index: Int) {
+        let name = dataSource!.tabletopView(self, nameForItem: index)
+        let health = dataSource!.tabletopView(self, healthForItem: index)
+
+        let view = statsViews[index]
+        view.label.text = name
+        view.progress.progress = health
+    }
+
 }
