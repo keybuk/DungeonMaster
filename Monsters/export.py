@@ -335,7 +335,15 @@ class Exporter(monster.MonsterParser):
 def main():
 	books = [
 		{
+			"name": "Player's Handbook",
+			"type": 0,
+		},
+		{
 			"name": "Monster Manual",
+			"type": 0,
+		},
+		{
+			"name": "Dungeon Master's Guide",
 			"type": 0,
 		},
 		{
@@ -376,8 +384,8 @@ def main():
 		}
 	]
 	bookTags = [
-		"mm", "dmbr", "lmop",
-		"hotdq", "hotdqs", "trot", "trots", "pota", "potas", ]
+		"phb", "mm", "dmg", "dmbr",
+		"lmop", "hotdq", "hotdqs", "trot", "trots", "pota", "potas", ]
 
 	monsters = []
 	for filename in monster.local_files():
