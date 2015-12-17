@@ -43,6 +43,15 @@ struct Rules {
         return data["alignments"]! as! [String]
     }
     
+    /// Dictionary mapping challenge rating to XP earned for defeating a monster of that rating.
+    var challengeXP: [NSDecimalNumber: Int] {
+        var result = [NSDecimalNumber: Int]()
+        for (challenge, xp) in data["challengeXP"]! as! [String: NSNumber] {
+            result[NSDecimalNumber(string: challenge)] = xp.integerValue
+        }
+        return result
+    }
+    
     /// Dictionary mapping condition name to array of rules texts.
     var conditionDescriptions: [String: [String]] {
         return data["conditionDescriptions"]! as! [String: [String]]

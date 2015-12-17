@@ -186,9 +186,20 @@ final class Monster: NSManagedObject {
         }
     }
     @NSManaged private var rawPassivePerception: Int16
+    
+    /// The challenge rating of this monster.
+    ///
+    /// Represented as an NSDecimalNumber since ⅛ (0.125), ¼ (0.25), and ½ (0.5) are possible ratings, and we want to represent them without getting into fuzzy comparisons that we'd end up with using Floats or Doubles.
+    @NSManaged var challenge: NSDecimalNumber
 
-    @NSManaged var cr: NSDecimalNumber
-    @NSManaged var xp: Int32
+    /// XP earned for defeating this monster.
+    var XP: Int {
+        if challenge == 0 && actions.count == 0 && reactions.count == 0 {
+            return 0
+        }
+        
+        return sharedRules.challengeXP[challenge]!
+    }
 
     // Original un-parsed stat block text.
     @NSManaged var armorClass: String
@@ -201,7 +212,6 @@ final class Monster: NSManagedObject {
     @NSManaged var conditionImmunities: String?
     @NSManaged var senses: String
     @NSManaged var languages: String?
-    @NSManaged var challenge: String
     @NSManaged var lair: Lair?
     
     @NSManaged var traits: NSOrderedSet

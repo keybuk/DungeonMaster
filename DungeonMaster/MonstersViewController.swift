@@ -159,11 +159,11 @@ class MonstersViewController: UIViewController {
             
             sectionNameKeyPath = "nameInitial"
         case .ByCrXp:
-            let primarySortDescriptor = NSSortDescriptor(key: "cr", ascending: true)
+            let primarySortDescriptor = NSSortDescriptor(key: "challenge", ascending: true)
             let secondarySortDescriptor = NSSortDescriptor(key: "name", ascending: true)
             fetchRequest.sortDescriptors = [primarySortDescriptor, secondarySortDescriptor]
             
-            sectionNameKeyPath = "cr"
+            sectionNameKeyPath = "challenge"
         }
         
         // Set the filter based on both the hidden books, and the search pattern.

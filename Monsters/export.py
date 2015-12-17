@@ -259,25 +259,21 @@ class Exporter(monster.MonsterParser):
 			self.info['languages'] = line
 
 	def handle_challenge(self, line):
-		# TODO: easy to parse
-		self.info['challenge'] = line
-
 		match = CHALLENGE_RE.match(line)
 		if match is None:
 			raise self.error("Challenge didn't match expected format: %s" % line)
-		else:
-			(cr, xp) = match.groups()
-			if cr == '1/8':
-				cr = 1.0/8
-			elif cr == '1/4':
-				cr = 1.0/4
-			elif cr == '1/2':
-				cr = 1.0/2
-			else:
-				cr = float(cr)
 
-			self.info['cr'] = cr
-			self.info['xp'] = int(xp.replace(",", ""))
+		(cr, xp) = match.groups()
+		if cr == '1/8':
+			cr = 1.0/8
+		elif cr == '1/4':
+			cr = 1.0/4
+		elif cr == '1/2':
+			cr = 1.0/2
+		else:
+			cr = float(cr)
+
+		self.info['challenge'] = cr
 
 	def add_action(self, list, name, lines):
 		name = name.rstrip('.')

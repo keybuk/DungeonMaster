@@ -349,15 +349,13 @@
 	</array>
 	<key>challengeXP</key>
 	<dict>
-		<key>-</key>
-		<integer>0</integer>
 		<key>0</key>
 		<integer>10</integer>
-		<key>1/8</key>
+		<key>0.125</key>
 		<integer>25</integer>
-		<key>1/4</key>
+		<key>0.25</key>
 		<integer>50</integer>
-		<key>1/2</key>
+		<key>0.5</key>
 		<integer>100</integer>
 		<key>1</key>
 		<integer>200</integer>

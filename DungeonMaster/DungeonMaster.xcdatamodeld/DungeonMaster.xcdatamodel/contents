@@ -70,9 +70,8 @@
     </entity>
     <entity name="Monster" representedClassName=".Monster" syncable="YES">
         <attribute name="armorClass" attributeType="String" syncable="YES"/>
-        <attribute name="challenge" attributeType="String" syncable="YES"/>
+        <attribute name="challenge" attributeType="Decimal" defaultValueString="0" syncable="YES"/>
         <attribute name="conditionImmunities" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="cr" attributeType="Decimal" defaultValueString="0" syncable="YES"/>
         <attribute name="damageImmunities" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="damageResistances" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="damageVulnerabilities" optional="YES" attributeType="String" syncable="YES"/>
@@ -98,7 +97,6 @@
         <attribute name="skills" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="speed" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="xp" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="actions" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Action" inverseName="monster" inverseEntity="Action" syncable="YES"/>
         <relationship name="alignmentOptions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="AlignmentOption" inverseName="monster" inverseEntity="AlignmentOption" syncable="YES"/>
         <relationship name="combatants" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Combatant" inverseName="monster" inverseEntity="Combatant" syncable="YES"/>
@@ -150,7 +148,7 @@
         <element name="LairAction" positionX="567" positionY="630" width="128" height="75"/>
         <element name="LairTrait" positionX="567" positionY="717" width="128" height="75"/>
         <element name="LegendaryAction" positionX="261" positionY="558" width="128" height="90"/>
-        <element name="Monster" positionX="79" positionY="216" width="128" height="630"/>
+        <element name="Monster" positionX="79" positionY="216" width="128" height="600"/>
         <element name="Reaction" positionX="261" positionY="459" width="128" height="90"/>
         <element name="RegionalEffect" positionX="565" positionY="801" width="128" height="75"/>
         <element name="Source" positionX="-92" positionY="198" width="128" height="105"/>

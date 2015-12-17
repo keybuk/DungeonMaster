@@ -246,9 +246,25 @@ class DetailViewController: UIViewController {
                 } else {
                     text.appendAttributedString(NSAttributedString(string: "—\n", attributes: statsValueStyle))
                 }
-
+                
+                let challengeString: String
+                if monster.challenge == NSDecimalNumber(string: "0.125") {
+                    challengeString = "1/8"
+                } else if monster.challenge == NSDecimalNumber(string: "0.25") {
+                    challengeString = "1/4"
+                } else if monster.challenge == NSDecimalNumber(string: "0.5") {
+                    challengeString = "1/2"
+                } else {
+                    challengeString = "\(monster.challenge)"
+                }
+                
+                let xpFormatter = NSNumberFormatter()
+                xpFormatter.numberStyle = .DecimalStyle
+                
+                let xpString = xpFormatter.stringFromNumber(monster.XP)!
+                
                 text.appendAttributedString(NSAttributedString(string: "Challenge ", attributes: statsLabelStyle))
-                text.appendAttributedString(NSAttributedString(string: "\(monster.challenge)\n", attributes: statsValueStyle))
+                text.appendAttributedString(NSAttributedString(string: "\(challengeString) (\(xpString) XP)\n", attributes: statsValueStyle))
                 
                 for trait in monster.allTraits {
                     text.appendAttributedString(NSAttributedString(string: "\(trait.name). ", attributes: featureNameStyle))
