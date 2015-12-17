@@ -167,7 +167,6 @@ final class Monster: NSManagedObject {
     @NSManaged var xp: Int32
 
     // Original un-parsed stat block text.
-    @NSManaged var sizeTypeAlignment: String
     @NSManaged var armorClass: String
     @NSManaged var speed: String
     @NSManaged var savingThrows: String?

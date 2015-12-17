@@ -133,8 +133,6 @@ class Exporter(monster.MonsterParser):
 		self.info['isNPC'] = True
 
 	def handle_size_type_alignment(self, line):
-		self.info['sizeTypeAlignment'] = line
-
 		match = SIZE_TYPE_TAG_ALIGNMENT_RE.match(line)
 		if match is None:
 			raise self.error("Size/Type/Alignment didn't match expected format: %s" % line)

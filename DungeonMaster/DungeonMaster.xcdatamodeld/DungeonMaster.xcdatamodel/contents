@@ -95,7 +95,6 @@
         <attribute name="requiresRace" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="savingThrows" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="senses" attributeType="String" syncable="YES"/>
-        <attribute name="sizeTypeAlignment" attributeType="String" syncable="YES"/>
         <attribute name="skills" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="speed" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
@@ -151,7 +150,7 @@
         <element name="LairAction" positionX="567" positionY="630" width="128" height="75"/>
         <element name="LairTrait" positionX="567" positionY="717" width="128" height="75"/>
         <element name="LegendaryAction" positionX="261" positionY="558" width="128" height="90"/>
-        <element name="Monster" positionX="79" positionY="216" width="128" height="645"/>
+        <element name="Monster" positionX="79" positionY="216" width="128" height="630"/>
         <element name="Reaction" positionX="261" positionY="459" width="128" height="90"/>
         <element name="RegionalEffect" positionX="565" positionY="801" width="128" height="75"/>
         <element name="Source" positionX="-92" positionY="198" width="128" height="105"/>
