@@ -132,6 +132,10 @@ typealias TabletopLocation = CGPoint
         touchingIndex = nil
         startingLocation = nil
 
+        batchInserts = nil
+        batchUpdates = nil
+        batchDeletes = nil
+
         if let count = dataSource?.numberOfItemsInTabletopView(self) {
             for index in 0..<count {
                 let location = dataSource!.tabletopView(self, locationForItem: index)
@@ -146,17 +150,80 @@ typealias TabletopLocation = CGPoint
         setNeedsLayout()
     }
     
+    var batchInserts: NSMutableIndexSet?
+    var batchDeletes: NSMutableIndexSet?
+    var batchUpdates: NSMutableIndexSet?
+    
+    /// Begin a batch update set that processes data in the same way as a table view would.
+    func beginUpdates() {
+        batchInserts = NSMutableIndexSet()
+        batchDeletes = NSMutableIndexSet()
+        batchUpdates = NSMutableIndexSet()
+    }
+    
     /// Inserts a new item, with the given index, onto the table top.
     func insertItemAtIndex(index: Int) {
+        if batchInserts != nil {
+            batchInserts?.addIndex(index)
+        } else {
+            doInsertItemAtIndex(index)
+
+            let count = dataSource!.numberOfItemsInTabletopView(self)
+            assert(count == locations.count, "Number of items on table top didn't match that expected after insertion.")
+        }
+    }
+    
+    /// Updates an item, with the given index, refreshing its location and display.
+    func updateItemAtIndex(index: Int) {
+        if batchUpdates != nil {
+            batchUpdates?.addIndex(index)
+        } else {
+            doUpdateItemAtIndex(index)
+            
+            let count = dataSource!.numberOfItemsInTabletopView(self)
+            assert(count == locations.count, "Number of items on table top didn't match that expected after update.")
+        }
+    }
+    
+    /// Deletes an item, with the given index, and removes it from the table top.
+    func deleteItemAtIndex(index: Int) {
+        if batchDeletes != nil {
+            batchDeletes?.addIndex(index)
+        } else {
+            doDeleteItemAtIndex(index)
+            
+            let count = dataSource!.numberOfItemsInTabletopView(self)
+            assert(count == locations.count, "Number of items on table top didn't match that expected after deletion.")
+        }
+    }
+    
+    /// End a batch update set.
+    func endUpdates() {
+        for index in batchDeletes!.reverse() {
+            doDeleteItemAtIndex(index)
+        }
+        for index in batchInserts! {
+            doInsertItemAtIndex(index)
+        }
+        for index in batchUpdates! {
+            doUpdateItemAtIndex(index)
+        }
+        
+        let count = dataSource!.numberOfItemsInTabletopView(self)
+        assert(count == locations.count, "Number of items on table top didn't match that expected after update.")
+
+        batchInserts = nil
+        batchUpdates = nil
+        batchDeletes = nil
+    }
+    
+    func doInsertItemAtIndex(index: Int) {
         let location = dataSource!.tabletopView(self, locationForItem: index)
         let statsView = statsViewForItem(index)
     
         locations.insert(location, atIndex: index)
         statsViews.insert(statsView, atIndex: index)
 
-        let count = dataSource!.numberOfItemsInTabletopView(self)
-        assert(count == locations.count, "Number of items on table top didn't match that expected after insertion.")
-        
         if let touchingIndex = touchingIndex {
             if touchingIndex >= index {
                 self.touchingIndex = touchingIndex + 1
@@ -167,8 +234,7 @@ typealias TabletopLocation = CGPoint
         setNeedsLayout()
     }
     
-    /// Updates an item, with the given index, refreshing its location and display.
-    func updateItemAtIndex(index: Int) {
+    func doUpdateItemAtIndex(index: Int) {
         let oldLocation = locations[index]
         let location = dataSource!.tabletopView(self, locationForItem: index)
 
@@ -187,7 +253,7 @@ typealias TabletopLocation = CGPoint
     }
     
     /// Deletes an item, with the given index, and removes it from the table top.
-    func deleteItemAtIndex(index: Int) {
+    func doDeleteItemAtIndex(index: Int) {
         if let touchingIndex = touchingIndex {
             if touchingIndex > index {
                 self.touchingIndex = touchingIndex - 1
@@ -199,10 +265,6 @@ typealias TabletopLocation = CGPoint
 
         let location = locations.removeAtIndex(index)
         let statsView = statsViews.removeAtIndex(index)
-        
-        if let count = dataSource?.numberOfItemsInTabletopView(self) {
-            assert(count == locations.count, "Number of items on table top didn't match that expected after insertion.")
-        }
         
         setNeedsDisplayForLocation(location)
         statsView.removeFromSuperview()
