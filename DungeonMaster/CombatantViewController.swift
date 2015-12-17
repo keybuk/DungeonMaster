@@ -264,31 +264,6 @@ extension CombatantViewController {
             abort()
         }
     }
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        switch TableSections(rawValue: indexPath.section)! {
-        case .Details:
-            let tableRow = TableDetailsRows(rawValue: indexPath.row)!
-            switch tableRow {
-            case .HitPoints, .Initiative:
-                let cell = tableView.cellForRowAtIndexPath(indexPath) as! DiceRollCell
-                cell.textField.becomeFirstResponder()
-            default:
-                break
-            }
-        case .Conditions:
-            // Handled by a segue action in the storyboard.
-            break
-        case .Damages:
-            // Handled by a segue action in the storyboard.
-            break
-        case .Notes:
-            let cell = tableView.cellForRowAtIndexPath(indexPath) as! NotesCell
-            cell.textView.becomeFirstResponder()
-        default:
-            abort()
-        }
-    }
 
     // MARK: Edit support
     
@@ -328,6 +303,62 @@ extension CombatantViewController {
             } else {
                 abort()
             }
+        default:
+            abort()
+        }
+    }
+
+}
+
+// MARK: UITableViewDelegate
+extension CombatantViewController {
+    
+    override func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
+        switch TableSections(rawValue: indexPath.section)! {
+        case .Conditions:
+            if indexPath.row > 0 {
+                let cell = tableView.cellForRowAtIndexPath(indexPath)
+                let condition = ConditionType(rawValue: cell!.textLabel!.text!.lowercaseString)!
+
+                
+                let conditionRulesViewController = storyboard?.instantiateViewControllerWithIdentifier("ConditionRulesViewController") as! ConditionRulesViewController
+                conditionRulesViewController.modalPresentationStyle = .Popover
+                
+                conditionRulesViewController.popoverPresentationController?.sourceView = cell?.contentView
+                conditionRulesViewController.popoverPresentationController?.sourceRect = CGRect(x: cell!.contentView.frame.size.width, y: 0.0, width: 0.0, height: cell!.frame.size.height)
+
+                conditionRulesViewController.condition = condition
+                presentViewController(conditionRulesViewController, animated: true, completion: nil)
+            } else {
+                abort()
+            }
+        default:
+            abort()
+        }
+
+    }
+    
+
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        switch TableSections(rawValue: indexPath.section)! {
+        case .Details:
+            let tableRow = TableDetailsRows(rawValue: indexPath.row)!
+            switch tableRow {
+            case .HitPoints, .Initiative:
+                let cell = tableView.cellForRowAtIndexPath(indexPath) as! DiceRollCell
+                cell.textField.becomeFirstResponder()
+            default:
+                break
+            }
+        case .Conditions:
+            // Handled by a segue action in the storyboard.
+            break
+        case .Damages:
+            // Handled by a segue action in the storyboard.
+            break
+        case .Notes:
+            let cell = tableView.cellForRowAtIndexPath(indexPath) as! NotesCell
+            cell.textView.becomeFirstResponder()
         default:
             abort()
         }

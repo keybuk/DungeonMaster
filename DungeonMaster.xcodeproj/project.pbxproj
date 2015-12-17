@@ -28,6 +28,7 @@
 		D249CF831C21DDF300CDE673 /* PointGeneratorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D249CF821C21DDF300CDE673 /* PointGeneratorTest.swift */; };
 		D249CF851C21DF3500CDE673 /* PointGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D249CF841C21DF3500CDE673 /* PointGenerator.swift */; };
 		D249CF871C224ED900CDE673 /* Rules.plist in Resources */ = {isa = PBXBuildFile; fileRef = D249CF861C224ED900CDE673 /* Rules.plist */; };
+		D249CF891C22602800CDE673 /* ConditionRulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D249CF881C22602800CDE673 /* ConditionRulesViewController.swift */; };
 		D2511FF81C12B1AD00A09F0B /* MonstersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2511FF71C12B1AD00A09F0B /* MonstersViewController.swift */; };
 		D2511FFA1C14BC3700A09F0B /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2511FF91C14BC3700A09F0B /* Tag.swift */; };
 		D25120001C14C7ED00A09F0B /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2511FFF1C14C7ED00A09F0B /* BooksViewController.swift */; };
@@ -94,6 +95,7 @@
 		D249CF821C21DDF300CDE673 /* PointGeneratorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointGeneratorTest.swift; sourceTree = "<group>"; };
 		D249CF841C21DF3500CDE673 /* PointGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointGenerator.swift; sourceTree = "<group>"; };
 		D249CF861C224ED900CDE673 /* Rules.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Rules.plist; sourceTree = "<group>"; };
+		D249CF881C22602800CDE673 /* ConditionRulesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConditionRulesViewController.swift; sourceTree = "<group>"; };
 		D2511FF71C12B1AD00A09F0B /* MonstersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonstersViewController.swift; sourceTree = "<group>"; };
 		D2511FF91C14BC3700A09F0B /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		D2511FFF1C14C7ED00A09F0B /* BooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				D2BDE60D1C1750170008B2F2 /* EncounterViewController.swift */,
 				D26FBA331C1D3BAF00D44503 /* CombatantViewController.swift */,
 				D26FBA401C1FA17400D44503 /* ConditionViewController.swift */,
+				D249CF881C22602800CDE673 /* ConditionRulesViewController.swift */,
 				D26FBA3A1C1E3FE400D44503 /* DamageViewController.swift */,
 				D2C6063D1C17D32900F61DBD /* TabletopViewController.swift */,
 				D2511FF71C12B1AD00A09F0B /* MonstersViewController.swift */,
@@ -422,6 +425,7 @@
 				D2116A4C1C10ECC9001EDBBA /* LegendaryAction.swift in Sources */,
 				D23435EC1C0D5A3D00108D5F /* Model.swift in Sources */,
 				D26FBA3F1C1EA4E700D44503 /* Condition.swift in Sources */,
+				D249CF891C22602800CDE673 /* ConditionRulesViewController.swift in Sources */,
 				D2A9AF0D1BFFEAA5009902ED /* DungeonMaster.xcdatamodeld in Sources */,
 				D26FBA3B1C1E3FE400D44503 /* DamageViewController.swift in Sources */,
 				D2511FFA1C14BC3700A09F0B /* Tag.swift in Sources */,
