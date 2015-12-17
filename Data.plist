@@ -130,8 +130,6 @@
 				<integer>10</integer>
 				<key>senses</key>
 				<string>passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium fiend, neutral evil</string>
 				<key>speed</key>
 				<string>20 ft.</string>
 				<key>xp</key>
@@ -212,8 +210,6 @@
 				<integer>11</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium dragon, unaligned</string>
 				<key>skills</key>
 				<string>Perception +4, Stealth +4</string>
 				<key>speed</key>
@@ -312,8 +308,6 @@
 				<string>Int +5, Wis +3</string>
 				<key>senses</key>
 				<string>passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (human), lawful evil</string>
 				<key>skills</key>
 				<string>Arcana +5, Deception +2, Insight +3, Stealth +5</string>
 				<key>speed</key>
@@ -434,8 +428,6 @@ Cantrips (at will): mage hand, prestidigitation, ray of frost, shocking grasp
 				<string>Con +9, Wis +6, Cha +6</string>
 				<key>senses</key>
 				<string>passive Perception 16</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge giant (cloud giant), neutral evil</string>
 				<key>skills</key>
 				<string>Arcana +7, Insight +6, Intimidation +6, Perception +6</string>
 				<key>speed</key>
@@ -557,8 +549,6 @@ Cantrips (at will): light, mage hand, prestidigitation
 				<string>Str +7, Con +6</string>
 				<key>senses</key>
 				<string>passive Perception 15</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (human), lawful evil</string>
 				<key>skills</key>
 				<string>Athletics +7, Intimidation +4, Perception +5, Religion +4</string>
 				<key>speed</key>
@@ -662,8 +652,6 @@ Cantrips (at will): light, mage hand, prestidigitation
 				<string>Wis +2</string>
 				<key>senses</key>
 				<string>passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (human), neutral evil</string>
 				<key>skills</key>
 				<string>Deception +3, Stealth +5</string>
 				<key>speed</key>
@@ -787,8 +775,6 @@ Cantrips (at will): light, mage hand, prestidigitation
 				<string>Str +6, Con +4</string>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (high-elf), neutral evil</string>
 				<key>skills</key>
 				<string>Arcana +5, Deception +1, Insight +2, Perception +2, Religion +5</string>
 				<key>speed</key>
@@ -908,8 +894,6 @@ Cantrips (at will): fire bolt, prestidigitation, shocking grasp
 				<string>Wis +6, Cha +4</string>
 				<key>senses</key>
 				<string>passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (human), lawful evil</string>
 				<key>skills</key>
 				<string>Deception +4, History +2, Religion +2</string>
 				<key>speed</key>
@@ -1015,8 +999,6 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium dragon, unaligned</string>
 				<key>skills</key>
 				<string>Perception +2</string>
 				<key>speed</key>
@@ -1115,8 +1097,6 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 				<string>Dex +5, Int +4</string>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Small humanoid (gnome), neutral</string>
 				<key>skills</key>
 				<string>Acrobatics +5, Deception +3, Insight +2, Perception +4, Persuasion +3, Stealth +7</string>
 				<key>speed</key>
@@ -1244,8 +1224,6 @@ Cantrips (at will): mage hand, minor illusion, prestidigitation, ray of frost
 				<string>Str +6, Con +5</string>
 				<key>senses</key>
 				<string>blindsight 10 ft., darkvision 60 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (half-dragon), lawful evil</string>
 				<key>skills</key>
 				<string>Athletics +6, Intimidation +3, Perception +4</string>
 				<key>speed</key>
@@ -1357,8 +1335,6 @@ Cantrips (at will): mage hand, minor illusion, prestidigitation, ray of frost
 				<string>Str +4, Con +6</string>
 				<key>senses</key>
 				<string>passive Perception 15</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (bullywug), chaotic evil</string>
 				<key>skills</key>
 				<string>Perception +5, Religion +2, Stealth +3</string>
 				<key>speed</key>
@@ -1481,8 +1457,6 @@ thunderwave
 				<string>Int +7, Wis +5</string>
 				<key>senses</key>
 				<string>passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (human), lawful evil</string>
 				<key>skills</key>
 				<string>Arcana +7, Deception +3, Insight +5, Stealth +6</string>
 				<key>speed</key>
@@ -1617,8 +1591,6 @@ Cantrips (at will): fire bolt, minor illusion, prestidigitation, shocking grasp
 				<string>Dex +6, Wis +4</string>
 				<key>senses</key>
 				<string>blindsight 10 ft., darkvision 120 ft., passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (half-black dragon), neutral evil</string>
 				<key>skills</key>
 				<string>Arcana +5, Stealth +9</string>
 				<key>speed</key>
@@ -1760,8 +1732,6 @@ Cantrips (at will): fire bolt, minor illusion, prestidigitation, shocking grasp
 				<string>Wis +6, Cha +6</string>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 16</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (half-elf), lawful evil</string>
 				<key>skills</key>
 				<string>Deception +6, Insight +6, Perception +6, Persuasion +6</string>
 				<key>speed</key>
@@ -1903,8 +1873,6 @@ weapon (spear)
 				<string>Int +5, Wis +3</string>
 				<key>senses</key>
 				<string>passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (human), any alignment</string>
 				<key>skills</key>
 				<string>Arcana +5, History +5</string>
 				<key>speed</key>
@@ -2005,8 +1973,6 @@ Cantrips (at will): light, mage hand, shocking grasp
 				<integer>14</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium undead, neutral evil</string>
 				<key>speed</key>
 				<string>0 ft., fly 60 ft.</string>
 				<key>xp</key>
@@ -2109,8 +2075,6 @@ Cantrips (at will): light, mage hand, shocking grasp
 				<string>Int +5, Wis +4</string>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (elf), neutral evil</string>
 				<key>skills</key>
 				<string>Arcana +5, Perception +4, Stealth +3</string>
 				<key>speed</key>
@@ -2235,8 +2199,6 @@ Cantrips (at will): mage hand, ray of frost, shocking grasp
 				<integer>9</integer>
 				<key>senses</key>
 				<string>passive Perception 9</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (human), neutral evil</string>
 				<key>skills</key>
 				<string>Intimidation +2</string>
 				<key>speed</key>
@@ -2336,8 +2298,6 @@ Cantrips (at will): mage hand, ray of frost, shocking grasp
 				<string>Str +3, Con +3</string>
 				<key>senses</key>
 				<string>passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (human), neutral good</string>
 				<key>skills</key>
 				<string>Perception +2</string>
 				<key>speed</key>
@@ -2433,8 +2393,6 @@ Cantrips (at will): mage hand, ray of frost, shocking grasp
 				<integer>12</integer>
 				<key>senses</key>
 				<string>passive Perception 15</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (aarakocra), neutral good</string>
 				<key>skills</key>
 				<string>Perception +5</string>
 				<key>speed</key>
@@ -2551,8 +2509,6 @@ Whenever the charmed target takes damage, the target can repeat the saving throw
 				<string>Con +6, Int +8, Wis +6</string>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 20</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large aberration, lawful evil</string>
 				<key>skills</key>
 				<string>History +12, Perception +10</string>
 				<key>speed</key>
@@ -2731,8 +2687,6 @@ In a new form, the deva retains its game statistics and ability to speak, but it
 				<string>Wis +9, Cha +9</string>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 19</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium celestial, lawful good</string>
 				<key>skills</key>
 				<string>Insight +7, Perception +9</string>
 				<key>speed</key>
@@ -2855,8 +2809,6 @@ At will: detect evil and good
 				<string>Con +12, Wis +11, Cha +12</string>
 				<key>senses</key>
 				<string>truesight 120 ft., passive Perception 21</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large celestial, lawful good</string>
 				<key>skills</key>
 				<string>Perception +11</string>
 				<key>speed</key>
@@ -3000,8 +2952,6 @@ At will: detect evil and good, invisibility (self only)
 				<string>Int +14, Wis +14, Cha +17</string>
 				<key>senses</key>
 				<string>truesight 120 ft., passive Perception 24</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large celestial, lawful good</string>
 				<key>skills</key>
 				<string>Perception +14</string>
 				<key>speed</key>
@@ -3137,8 +3087,6 @@ At will: detect evil and good, invisibility (self only)
 				<integer>3</integer>
 				<key>senses</key>
 				<string>blindsight 60 ft. (blind beyond this radius), passive Perception 6</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium construct, unaligned</string>
 				<key>speed</key>
 				<string>25 ft.</string>
 				<key>xp</key>
@@ -3247,8 +3195,6 @@ At will: detect evil and good, invisibility (self only)
 				<string>Dex +4</string>
 				<key>senses</key>
 				<string>blindsight 60 ft. (blind beyond this radius), passive Perception 7</string>
-				<key>sizeTypeAlignment</key>
-				<string>Small construct, unaligned</string>
 				<key>speed</key>
 				<string>0 ft., fly 50 ft.</string>
 				<key>xp</key>
@@ -3349,8 +3295,6 @@ At will: detect evil and good, invisibility (self only)
 				<integer>3</integer>
 				<key>senses</key>
 				<string>blindsight 60 ft. (blind beyond this radius), passive Perception 6</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large construct, unaligned</string>
 				<key>speed</key>
 				<string>10 ft.</string>
 				<key>xp</key>
@@ -3459,8 +3403,6 @@ At will: detect evil and good, invisibility (self only)
 				<integer>13</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., tremorsense 60 ft., passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large monstrosity, unaligned</string>
 				<key>speed</key>
 				<string>30 ft., burrow 10 ft.</string>
 				<key>xp</key>
@@ -3553,8 +3495,6 @@ At will: detect evil and good, invisibility (self only)
 				<string>Con +4</string>
 				<key>senses</key>
 				<string>passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium elemental, lawful neutral</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -3679,8 +3619,6 @@ At will: detect evil and good, invisibility (self only)
 				<string>Wis +2, Cha +4</string>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium undead, chaotic evil</string>
 				<key>speed</key>
 				<string>0 ft., fly 40 ft. (hover)</string>
 				<key>xp</key>
@@ -3775,8 +3713,6 @@ At will: detect evil and good, invisibility (self only)
 				<integer>8</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 9</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium monstrosity, unaligned</string>
 				<key>speed</key>
 				<string>20 ft.</string>
 				<key>xp</key>
@@ -3898,8 +3834,6 @@ If the behir takes 30 damage or more on a single turn from the swallowed creatur
 				<integer>14</integer>
 				<key>senses</key>
 				<string>darkvision 90 ft., passive Perception 16</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge monstrosity, neutral evil</string>
 				<key>skills</key>
 				<string>Perception +6, Stealth +7</string>
 				<key>speed</key>
@@ -4004,8 +3938,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<string>Int +8, Wis +7, Cha +8</string>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 22</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large aberration, lawful evil</string>
 				<key>skills</key>
 				<string>Perception +12</string>
 				<key>speed</key>
@@ -4156,8 +4088,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<string>Str +5, Con +7, Int +9, Wis +7, Cha +9</string>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 22</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large undead, lawful evil</string>
 				<key>skills</key>
 				<string>Perception +12</string>
 				<key>speed</key>
@@ -4302,8 +4232,6 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 				<integer>14</integer>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 16</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium aberration, lawful neutral</string>
 				<key>skills</key>
 				<string>Perception +6</string>
 				<key>speed</key>
@@ -4414,8 +4342,6 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 				<integer>8</integer>
 				<key>senses</key>
 				<string>blindsight 60 ft. (blind beyond this radius), passive Perception 9</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium plant, neutral evil</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -4502,8 +4428,6 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 				<integer>8</integer>
 				<key>senses</key>
 				<string>blindsight 60 ft. (blind beyond this radius), passive Perception 9</string>
-				<key>sizeTypeAlignment</key>
-				<string>Small plant, neutral evil</string>
 				<key>skills</key>
 				<string>Stealth +3</string>
 				<key>speed</key>
@@ -4614,8 +4538,6 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 				<integer>10</integer>
 				<key>senses</key>
 				<string>blindsight 60 ft. (blind beyond this radius), passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium plant, neutral evil</string>
 				<key>skills</key>
 				<string>Stealth +1</string>
 				<key>speed</key>
@@ -4712,8 +4634,6 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 				<integer>11</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (goblinoid), chaotic evil</string>
 				<key>skills</key>
 				<string>Stealth +6, Survival +2</string>
 				<key>speed</key>
@@ -4835,8 +4755,6 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 				<integer>12</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (goblinoid), chaotic evil</string>
 				<key>skills</key>
 				<string>Intimidation +2, Stealth +6, Survival +3</string>
 				<key>speed</key>
@@ -4942,8 +4860,6 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., tremorsense 60 ft., passive Perception 16</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large monstrosity, unaligned</string>
 				<key>skills</key>
 				<string>Perception +6</string>
 				<key>speed</key>
@@ -5050,8 +4966,6 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 				<integer>10</integer>
 				<key>senses</key>
 				<string>passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (bullywug), neutral evil</string>
 				<key>skills</key>
 				<string>Stealth +3</string>
 				<key>speed</key>
@@ -5194,8 +5108,6 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 				<string>Str +7, Con +6, Int +5, Cha +6</string>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium fiend, any evil alignment</string>
 				<key>skills</key>
 				<string>Deception +6, Intimidation +6, Perception +4, Stealth +7</string>
 				<key>speed</key>
@@ -5300,8 +5212,6 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 				<integer>12</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large monstrosity, unaligned</string>
 				<key>skills</key>
 				<string>Perception +3</string>
 				<key>speed</key>
@@ -5414,8 +5324,6 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 				<integer>13</integer>
 				<key>senses</key>
 				<string>passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large monstrosity, neutral good</string>
 				<key>skills</key>
 				<string>Athletics +6, Perception +3, Survival +3</string>
 				<key>speed</key>
@@ -5534,8 +5442,6 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 				<integer>14</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 18</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large monstrosity, chaotic evil</string>
 				<key>skills</key>
 				<string>Perception +8</string>
 				<key>speed</key>
@@ -5646,8 +5552,6 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 				<integer>11</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large aberration, chaotic evil</string>
 				<key>skills</key>
 				<string>Perception +4</string>
 				<key>speed</key>
@@ -5780,8 +5684,6 @@ A duplicate has the cloaker's AC and uses its saving throws. If an attack hits a
 				<integer>12</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large aberration, chaotic neutral</string>
 				<key>skills</key>
 				<string>Stealth +5</string>
 				<key>speed</key>
@@ -5884,8 +5786,6 @@ A duplicate has the cloaker's AC and uses its saving throws. If an attack hits a
 				<integer>13</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Small monstrosity, unaligned</string>
 				<key>speed</key>
 				<string>20 ft., fly 40 ft.</string>
 				<key>xp</key>
@@ -5991,8 +5891,6 @@ In a new form, the couatl retains its game statistics and ability to speak, but 
 				<string>Con +5, Wis +7, Cha +6</string>
 				<key>senses</key>
 				<string>truesight 120 ft., passive Perception 15</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium celestial, lawful good</string>
 				<key>speed</key>
 				<string>30 ft., fly 90 ft.</string>
 				<key>xp</key>
@@ -6098,8 +5996,6 @@ At will: detect evil and good, detect magic, detect thoughts
 				<integer>10</integer>
 				<key>senses</key>
 				<string>blindsight 30 ft. (blind beyond this radius), passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Tiny undead, neutral evil</string>
 				<key>speed</key>
 				<string>20 ft., climb 20 ft.</string>
 				<key>xp</key>
@@ -6204,8 +6100,6 @@ At will: detect evil and good, detect magic, detect thoughts
 				<integer>6</integer>
 				<key>senses</key>
 				<string>passive Perception 8</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge giant, chaotic neutral</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -6308,8 +6202,6 @@ A creature can detach the darkmantle by making a successful DC 13 Strength check
 				<integer>10</integer>
 				<key>senses</key>
 				<string>blindsight 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Small monstrosity, unaligned</string>
 				<key>skills</key>
 				<string>Stealth +3</string>
 				<key>speed</key>
@@ -6428,8 +6320,6 @@ A creature can detach the darkmantle by making a successful DC 13 Strength check
 				<string>Dex +6, Wis +9, Cha +10</string>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium undead, chaotic evil</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -6551,8 +6441,6 @@ A creature can detach the darkmantle by making a successful DC 13 Strength check
 				<string>Con +6, Int +11, Wis +9, Cha +11</string>
 				<key>senses</key>
 				<string>truesight 120 ft., passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Tiny undead, neutral evil</string>
 				<key>speed</key>
 				<string>0 ft., fly 30 ft. (hover)</string>
 				<key>xp</key>
@@ -6731,8 +6619,6 @@ In its crypt, a demilich has access to lair actions and additional uses for its 
 				<string>Str +14, Con +12, Wis +9, Cha +12</string>
 				<key>senses</key>
 				<string>truesight 120 ft., passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge fiend (demon), chaotic evil</string>
 				<key>speed</key>
 				<string>40 ft., fly 80 ft.</string>
 				<key>xp</key>
@@ -6860,8 +6746,6 @@ In its crypt, a demilich has access to lair actions and additional uses for its 
 				<string>Dex +5, Con +6</string>
 				<key>senses</key>
 				<string>blindsight 30 ft., darkvision 120 ft., passive Perception 15</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large fiend (demon), chaotic evil</string>
 				<key>skills</key>
 				<string>Perception +5, Stealth +5</string>
 				<key>speed</key>
@@ -6981,8 +6865,6 @@ In its crypt, a demilich has access to lair actions and additional uses for its 
 				<string>Dex +5, Wis +5</string>
 				<key>senses</key>
 				<string>blindsight 10 ft., darkvision 120 ft., passive Perception 15</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large fiend (demon), chaotic evil</string>
 				<key>skills</key>
 				<string>Perception +5</string>
 				<key>speed</key>
@@ -7110,8 +6992,6 @@ In its crypt, a demilich has access to lair actions and additional uses for its 
 				<integer>8</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 9</string>
-				<key>sizeTypeAlignment</key>
-				<string>Small fiend (demon), chaotic evil</string>
 				<key>speed</key>
 				<string>20 ft.</string>
 				<key>xp</key>
@@ -7215,8 +7095,6 @@ In its crypt, a demilich has access to lair actions and additional uses for its 
 				<string>Str +9, Con +9, Wis +7, Cha +7</string>
 				<key>senses</key>
 				<string>truesight 120 ft., passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large fiend (demon), chaotic evil</string>
 				<key>speed</key>
 				<string>40 ft.</string>
 				<key>xp</key>
@@ -7340,8 +7218,6 @@ At will: darkness, detect magic, dispel magic
 				<string>Str +13, Dex +6, Con +13, Wis +7</string>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 17</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge fiend (demon), chaotic evil</string>
 				<key>skills</key>
 				<string>Perception +7</string>
 				<key>speed</key>
@@ -7471,8 +7347,6 @@ At will: darkness, detect magic, dispel magic
 				<string>Str +7, Con +8, Wis +4</string>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large fiend (demon), chaotic evil</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -7580,8 +7454,6 @@ At will: darkness, detect magic, dispel magic
 				<integer>8</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 9</string>
-				<key>sizeTypeAlignment</key>
-				<string>Small fiend (demon), chaotic evil</string>
 				<key>speed</key>
 				<string>20 ft.</string>
 				<key>xp</key>
@@ -7691,8 +7563,6 @@ At will: darkness, detect magic, dispel magic
 				<string>Str +9, Con +10, Wis +8, Cha +10</string>
 				<key>senses</key>
 				<string>truesight 120 ft., passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large fiend (demon), chaotic evil</string>
 				<key>speed</key>
 				<string>40 ft.</string>
 				<key>xp</key>
@@ -7832,8 +7702,6 @@ At will: darkness, detect magic, dispel magic
 				<string>Con +11, Int +9, Wis +6, Cha +7</string>
 				<key>senses</key>
 				<string>truesight 120 ft., passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large fiend (demon), chaotic evil</string>
 				<key>speed</key>
 				<string>20 ft., fly 30 ft.</string>
 				<key>xp</key>
@@ -7941,8 +7809,6 @@ At will: darkness, detect magic, dispel magic
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Tiny fiend (demon, shapechanger), chaotic evil</string>
 				<key>skills</key>
 				<string>Stealth +5</string>
 				<key>speed</key>
@@ -8057,8 +7923,6 @@ At will: darkness, detect magic, dispel magic
 				<string>Dex +5, Cha +4</string>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium fiend (demon), chaotic evil</string>
 				<key>skills</key>
 				<string>Stealth +7</string>
 				<key>speed</key>
@@ -8200,8 +8064,6 @@ At will: darkness, detect magic, dispel magic
 				<string>Dex +5, Wis +4, Cha +2</string>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large fiend (demon), chaotic evil</string>
 				<key>speed</key>
 				<string>40 ft., fly 60 ft.</string>
 				<key>xp</key>
@@ -8319,8 +8181,6 @@ While in mist form, the yochlol can enter a creature's space and stop there. Eac
 				<string>Dex +6, Int +5, Wis +6, Cha +6</string>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium fiend (demon, shapechanger), chaotic evil</string>
 				<key>skills</key>
 				<string>Deception +10, Insight +6</string>
 				<key>speed</key>
@@ -8465,8 +8325,6 @@ At will: detect thoughts, web
 				<string>Str +6, Con +7, Wis +5, Cha +5</string>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 18</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium fiend (devil), lawful evil</string>
 				<key>skills</key>
 				<string>Deception +5, Insight +5, Perception +8</string>
 				<key>speed</key>
@@ -8596,8 +8454,6 @@ At will: detect thoughts, web
 				<string>Str +5, Con +4, Wis +2</string>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium fiend (devil), lawful evil</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -8725,8 +8581,6 @@ At will: detect thoughts, web
 				<string>Int +5, Wis +6, Cha +7</string>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large fiend (devil), lawful evil</string>
 				<key>skills</key>
 				<string>Deception +7, Insight +6</string>
 				<key>speed</key>
@@ -8851,8 +8705,6 @@ Each animated chain is an object with AC 20, 20 hit points, resistance to pierci
 				<string>Con +7, Wis +4, Cha +5</string>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium fiend (devil), lawful evil</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -8974,8 +8826,6 @@ Each animated chain is an object with AC 20, 20 hit points, resistance to pierci
 				<string>Dex +7, Con +8, Wis +6, Cha +8</string>
 				<key>senses</key>
 				<string>truesight 120 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium fiend (devil), lawful evil</string>
 				<key>speed</key>
 				<string>30 ft., fly 60 ft.</string>
 				<key>xp</key>
@@ -9103,8 +8953,6 @@ Each animated chain is an object with AC 20, 20 hit points, resistance to pierci
 				<string>Str +10, Dex +7, Wis +7, Cha +7</string>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large fiend (devil), lawful evil</string>
 				<key>speed</key>
 				<string>20 ft., fly 60 ft.</string>
 				<key>xp</key>
@@ -9234,8 +9082,6 @@ The wall lasts for 1 minute or until the devil is incapacitated or dies. The wal
 				<string>Dex +7, Con +9, Wis +7, Cha +9</string>
 				<key>senses</key>
 				<string>blindsight 60 ft., darkvision 120 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large fiend (devil), lawful evil</string>
 				<key>speed</key>
 				<string>40 ft.</string>
 				<key>xp</key>
@@ -9343,8 +9189,6 @@ The wall lasts for 1 minute or until the devil is incapacitated or dies. The wal
 				<integer>12</integer>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Tiny fiend (devil, shapechanger), lawful evil</string>
 				<key>skills</key>
 				<string>Deception +4, Insight +3, Persuasion +4, Stealth +5</string>
 				<key>speed</key>
@@ -9461,8 +9305,6 @@ The wall lasts for 1 minute or until the devil is incapacitated or dies. The wal
 				<integer>11</integer>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium fiend (devil), lawful evil</string>
 				<key>speed</key>
 				<string>15 ft.</string>
 				<key>xp</key>
@@ -9590,8 +9432,6 @@ The wall lasts for 1 minute or until the devil is incapacitated or dies. The wal
 				<string>Dex +8, Con +13, Wis +10</string>
 				<key>senses</key>
 				<string>truesight 120 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large fiend (devil), lawful evil</string>
 				<key>speed</key>
 				<string>30 ft., fly 60 ft.</string>
 				<key>xp</key>
@@ -9725,8 +9565,6 @@ At will: detect magic, fireball
 				<integer>14</integer>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Small fiend (devil), lawful evil</string>
 				<key>speed</key>
 				<string>20 ft., fly 40 ft.</string>
 				<key>xp</key>
@@ -9836,8 +9674,6 @@ At will: detect magic, fireball
 				<integer>12</integer>
 				<key>senses</key>
 				<string>passive Perception 15</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +5</string>
 				<key>speed</key>
@@ -9930,8 +9766,6 @@ At will: detect magic, fireball
 				<integer>12</integer>
 				<key>senses</key>
 				<string>passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge beast, unaligned</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -10016,8 +9850,6 @@ At will: detect magic, fireball
 				<integer>12</integer>
 				<key>senses</key>
 				<string>passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +3, Stealth +4</string>
 				<key>speed</key>
@@ -10110,8 +9942,6 @@ At will: detect magic, fireball
 				<integer>9</integer>
 				<key>senses</key>
 				<string>passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +1</string>
 				<key>speed</key>
@@ -10210,8 +10040,6 @@ At will: detect magic, fireball
 				<integer>11</integer>
 				<key>senses</key>
 				<string>passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge beast, unaligned</string>
 				<key>speed</key>
 				<string>50 ft.</string>
 				<key>xp</key>
@@ -10314,8 +10142,6 @@ At will: detect magic, fireball
 				<integer>12</integer>
 				<key>senses</key>
 				<string>passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +4</string>
 				<key>speed</key>
@@ -10410,8 +10236,6 @@ At will: detect magic, fireball
 				<integer>12</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large monstrosity, lawful evil</string>
 				<key>speed</key>
 				<string>40 ft.</string>
 				<key>xp</key>
@@ -10518,8 +10342,6 @@ At will: detect magic, fireball
 				<integer>12</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium monstrosity (shapechanger), neutral</string>
 				<key>skills</key>
 				<string>Deception +6, Insight +3</string>
 				<key>speed</key>
@@ -10677,8 +10499,6 @@ At will: detect magic, fireball
 				<string>Dex +5, Con +11, Wis +7, Cha +9</string>
 				<key>senses</key>
 				<string>blindsight 60 ft., darkvision 120 ft., passive Perception 22</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge undead, lawful evil</string>
 				<key>skills</key>
 				<string>Perception +12, Stealth +5</string>
 				<key>speed</key>
@@ -10815,8 +10635,6 @@ At will: detect magic, fireball
 				<string>Dex +4, Con +9, Wis +4, Cha +8</string>
 				<key>senses</key>
 				<string>blindsight 30 ft., darkvision 120 ft., passive Perception 18</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large dragon, chaotic evil</string>
 				<key>skills</key>
 				<string>Perception +8, Stealth +8</string>
 				<key>speed</key>
@@ -10951,8 +10769,6 @@ At will: detect magic, fireball
 				<string>Dex +9, Con +14, Wis +9, Cha +11</string>
 				<key>senses</key>
 				<string>blindsight 60 ft., darkvision 120 ft., passive Perception 26</string>
-				<key>sizeTypeAlignment</key>
-				<string>Gargantuan dragon, chaotic evil</string>
 				<key>skills</key>
 				<string>Perception +16, Stealth +9</string>
 				<key>speed</key>
@@ -11101,8 +10917,6 @@ At will: detect magic, fireball
 				<string>Dex +7, Con +10, Wis +6, Cha +8</string>
 				<key>senses</key>
 				<string>blindsight 60 ft., darkvision 120 ft., passive Perception 21</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge dragon, chaotic evil</string>
 				<key>skills</key>
 				<string>Perception +11, Stealth +7</string>
 				<key>speed</key>
@@ -11273,8 +11087,6 @@ At will: detect magic, fireball
 				<string>Dex +5, Con +6, Wis +3, Cha +5</string>
 				<key>senses</key>
 				<string>blindsight 30 ft., darkvision 120 ft., passive Perception 16</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large dragon, chaotic evil</string>
 				<key>skills</key>
 				<string>Perception +6, Stealth +5</string>
 				<key>speed</key>
@@ -11375,8 +11187,6 @@ At will: detect magic, fireball
 				<string>Dex +4, Con +3, Wis +2, Cha +3</string>
 				<key>senses</key>
 				<string>blindsight 10 ft., darkvision 60 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium dragon, chaotic evil</string>
 				<key>skills</key>
 				<string>Perception +4, Stealth +4</string>
 				<key>speed</key>
@@ -11501,8 +11311,6 @@ At will: detect magic, fireball
 				<string>Dex +7, Con +15, Wis +10, Cha +12</string>
 				<key>senses</key>
 				<string>blindsight 60 ft., darkvision 120 ft., passive Perception 27</string>
-				<key>sizeTypeAlignment</key>
-				<string>Gargantuan dragon, lawful evil</string>
 				<key>skills</key>
 				<string>Perception +17, Stealth +7</string>
 				<key>speed</key>
@@ -11645,8 +11453,6 @@ At will: detect magic, fireball
 				<string>Dex +5, Con +11, Wis +7, Cha +9</string>
 				<key>senses</key>
 				<string>blindsight 60 ft., darkvision 120 ft., passive Perception 22</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge dragon, lawful evil</string>
 				<key>skills</key>
 				<string>Perception +12, Stealth +5</string>
 				<key>speed</key>
@@ -11820,8 +11626,6 @@ A blue dragon will collapse the caverns that make up its lair if that lair is in
 				<string>Dex +4, Con +8, Wis +5, Cha +7</string>
 				<key>senses</key>
 				<string>blindsight 30 ft., darkvision 120 ft., passive Perception 19</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large dragon, lawful evil</string>
 				<key>skills</key>
 				<string>Perception +9, Stealth +4</string>
 				<key>speed</key>
@@ -11916,8 +11720,6 @@ A blue dragon will collapse the caverns that make up its lair if that lair is in
 				<string>Dex +2, Con +4, Wis +2, Cha +4</string>
 				<key>senses</key>
 				<string>blindsight 10 ft., darkvision 60 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium dragon, lawful evil</string>
 				<key>skills</key>
 				<string>Perception +4, Stealth +2</string>
 				<key>speed</key>
@@ -12038,8 +11840,6 @@ A blue dragon will collapse the caverns that make up its lair if that lair is in
 				<string>Dex +8, Con +14, Wis +10, Cha +11</string>
 				<key>senses</key>
 				<string>blindsight 60 ft., darkvision 120 ft., passive Perception 27</string>
-				<key>sizeTypeAlignment</key>
-				<string>Gargantuan dragon, lawful evil</string>
 				<key>skills</key>
 				<string>Deception +11, Insight +10, Perception +17, Persuasion +11, Stealth +8</string>
 				<key>speed</key>
@@ -12190,8 +11990,6 @@ A blue dragon will collapse the caverns that make up its lair if that lair is in
 				<string>Dex +6, Con +10, Wis +7, Cha +8</string>
 				<key>senses</key>
 				<string>blindsight 60 ft., darkvision 120 ft., passive Perception 22</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge dragon, lawful evil</string>
 				<key>skills</key>
 				<string>Deception +8, Insight +7, Perception +12, Persuasion +8, Stealth +6</string>
 				<key>speed</key>
@@ -12367,8 +12165,6 @@ Each 10-foot-cube of thickets has AC 5, 30 hit points, resistance to bludgeoning
 				<string>Dex +4, Con +6, Wis +4, Cha +5</string>
 				<key>senses</key>
 				<string>blindsight 30 ft., darkvision 120 ft., passive Perception 17</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large dragon, lawful evil</string>
 				<key>skills</key>
 				<string>Deception +5, Perception +7, Stealth +4</string>
 				<key>speed</key>
@@ -12483,8 +12279,6 @@ Each 10-foot-cube of thickets has AC 5, 30 hit points, resistance to bludgeoning
 				<string>Dex +3, Con +3, Wis +2, Cha +3</string>
 				<key>senses</key>
 				<string>blindsight 10 ft., darkvision 60 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium dragon, lawful evil</string>
 				<key>skills</key>
 				<string>Perception +4, Stealth +3</string>
 				<key>speed</key>
@@ -12609,8 +12403,6 @@ Each 10-foot-cube of thickets has AC 5, 30 hit points, resistance to bludgeoning
 				<string>Dex +7, Con +16, Wis +9, Cha +13</string>
 				<key>senses</key>
 				<string>blindsight 60 ft., darkvision 120 ft., passive Perception 26</string>
-				<key>sizeTypeAlignment</key>
-				<string>Gargantuan dragon, chaotic evil</string>
 				<key>skills</key>
 				<string>Perception +16, Stealth +7</string>
 				<key>speed</key>
@@ -12753,8 +12545,6 @@ Each 10-foot-cube of thickets has AC 5, 30 hit points, resistance to bludgeoning
 				<string>Dex +6, Con +13, Wis +7, Cha +11</string>
 				<key>senses</key>
 				<string>blindsight 60 ft., darkvision 120 ft., passive Perception 23</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge dragon, chaotic evil</string>
 				<key>skills</key>
 				<string>Perception +13, Stealth +6</string>
 				<key>speed</key>
@@ -12922,8 +12712,6 @@ Throughout the lair complex, servants erect monuments to the dragon's power, tel
 				<string>Dex +4, Con +9, Wis +4, Cha +8</string>
 				<key>senses</key>
 				<string>blindsight 30 ft., darkvision 120 ft., passive Perception 18</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large dragon, chaotic evil</string>
 				<key>skills</key>
 				<string>Perception +8, Stealth +4</string>
 				<key>speed</key>
@@ -13024,8 +12812,6 @@ Throughout the lair complex, servants erect monuments to the dragon's power, tel
 				<string>Dex +2, Con +5, Wis +2, Cha +4</string>
 				<key>senses</key>
 				<string>blindsight 10 ft., darkvision 60 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium dragon, chaotic evil</string>
 				<key>skills</key>
 				<string>Perception +4, Stealth +2</string>
 				<key>speed</key>
@@ -13144,8 +12930,6 @@ Throughout the lair complex, servants erect monuments to the dragon's power, tel
 				<string>Dex +6, Con +14, Wis +7, Cha +8</string>
 				<key>senses</key>
 				<string>blindsight 60 ft., darkvision 120 ft., passive Perception 23</string>
-				<key>sizeTypeAlignment</key>
-				<string>Gargantuan dragon, chaotic evil</string>
 				<key>skills</key>
 				<string>Perception +13, Stealth +6</string>
 				<key>speed</key>
@@ -13294,8 +13078,6 @@ Throughout the lair complex, servants erect monuments to the dragon's power, tel
 				<string>Dex +5, Con +11, Wis +6, Cha +6</string>
 				<key>senses</key>
 				<string>blindsight 60 ft., darkvision 120 ft., passive Perception 21</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge dragon, chaotic evil</string>
 				<key>skills</key>
 				<string>Perception +11, Stealth +5</string>
 				<key>speed</key>
@@ -13476,8 +13258,6 @@ If the dragon wishes to move through a wall, it can do so without slowing down. 
 				<string>Dex +3, Con +7, Wis +3, Cha +4</string>
 				<key>senses</key>
 				<string>blindsight 30 ft., darkvision 120 ft., passive Perception 16</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large dragon, chaotic evil</string>
 				<key>skills</key>
 				<string>Perception +6, Stealth +3</string>
 				<key>speed</key>
@@ -13578,8 +13358,6 @@ If the dragon wishes to move through a wall, it can do so without slowing down. 
 				<string>Dex +2, Con +4, Wis +2, Cha +2</string>
 				<key>senses</key>
 				<string>blindsight 10 ft., darkvision 60 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium dragon, chaotic evil</string>
 				<key>skills</key>
 				<string>Perception +4, Stealth +2</string>
 				<key>speed</key>
@@ -13707,8 +13485,6 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 				<string>Dex +6, Con +13, Wis +8, Cha +10</string>
 				<key>senses</key>
 				<string>blindsight 60 ft., darkvision 120 ft., passive Perception 24</string>
-				<key>sizeTypeAlignment</key>
-				<string>Gargantuan dragon, chaotic good</string>
 				<key>skills</key>
 				<string>History +9, Perception +14, Persuasion +10, Stealth +6</string>
 				<key>speed</key>
@@ -13853,8 +13629,6 @@ Sleep Breath. The dragon exhales sleep gas in a 60-foot cone. Each creature in t
 				<string>Dex +5, Con +10, Wis +6, Cha +8</string>
 				<key>senses</key>
 				<string>blindsight 60 ft., darkvision 120 ft., passive Perception 21</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge dragon, chaotic good</string>
 				<key>skills</key>
 				<string>History +7, Perception +11, Persuasion +8, Stealth +5</string>
 				<key>speed</key>
@@ -14015,8 +13789,6 @@ Sleep Breath. The dragon exhales sleep gas in a 30-foot cone. Each creature in t
 				<string>Dex +5, Con +8, Wis +5, Cha +7</string>
 				<key>senses</key>
 				<string>blindsight 30 ft., darkvision 120 ft., passive Perception 20</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large dragon, chaotic good</string>
 				<key>skills</key>
 				<string>Perception +10, Persuasion +7, Stealth +5</string>
 				<key>speed</key>
@@ -14113,8 +13885,6 @@ Sleep Breath. The dragon exhales sleep gas in a 15-foot cone. Each creature in t
 				<string>Dex +2, Con +3, Wis +2, Cha +3</string>
 				<key>senses</key>
 				<string>blindsight 10 ft., darkvision 60 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium dragon, chaotic good</string>
 				<key>skills</key>
 				<string>Perception +4, Stealth +2</string>
 				<key>speed</key>
@@ -14242,8 +14012,6 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 				<string>Dex +7, Con +15, Wis +10, Cha +12</string>
 				<key>senses</key>
 				<string>blindsight 60 ft., darkvision 120 ft., passive Perception 27</string>
-				<key>sizeTypeAlignment</key>
-				<string>Gargantuan dragon, lawful good</string>
 				<key>skills</key>
 				<string>Insight +10, Perception +17, Stealth +7</string>
 				<key>speed</key>
@@ -14401,8 +14169,6 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 				<string>Dex +5, Con +11, Wis +7, Cha +9</string>
 				<key>senses</key>
 				<string>blindsight 60 ft., darkvision 120 ft., passive Perception 22</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge dragon, lawful good</string>
 				<key>skills</key>
 				<string>Insight +7, Perception +12, Stealth +5</string>
 				<key>speed</key>
@@ -14575,8 +14341,6 @@ Repulsion Breath. The dragon exhales repulsion energy in a 30-foot cone. Each cr
 				<string>Dex +3, Con +7, Wis +4, Cha +6</string>
 				<key>senses</key>
 				<string>blindsight 30 ft., darkvision 120 ft., passive Perception 17</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large dragon, lawful good</string>
 				<key>skills</key>
 				<string>Insight +4, Perception +7, Stealth +3</string>
 				<key>speed</key>
@@ -14679,8 +14443,6 @@ Repulsion Breath. The dragon exhales repulsion energy in a 30-foot cone. Each cr
 				<string>Dex +2, Con +4, Wis +2, Cha +4</string>
 				<key>senses</key>
 				<string>blindsight 10 ft., darkvision 60 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium dragon, lawful good</string>
 				<key>skills</key>
 				<string>Perception +4, Stealth +2</string>
 				<key>speed</key>
@@ -14814,8 +14576,6 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 				<string>Dex +8, Con +14, Wis +10, Cha +11</string>
 				<key>senses</key>
 				<string>blindsight 60 ft., darkvision 120 ft., passive Perception 27</string>
-				<key>sizeTypeAlignment</key>
-				<string>Gargantuan dragon, chaotic good</string>
 				<key>skills</key>
 				<string>Deception +11, Perception +17, Stealth +8</string>
 				<key>speed</key>
@@ -14960,8 +14720,6 @@ Slowing Breath. The dragon exhales gas in a 60-foot cone. Each creature in that 
 				<string>Dex +6, Con +10, Wis +7, Cha +8</string>
 				<key>senses</key>
 				<string>blindsight 60 ft., darkvision 120 ft., passive Perception 22</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge dragon, chaotic good</string>
 				<key>skills</key>
 				<string>Deception +8, Perception +12, Stealth +6</string>
 				<key>speed</key>
@@ -15122,8 +14880,6 @@ Slowing Breath. The dragon exhales gas in a 30-foot cone. Each creature in that 
 				<string>Dex +4, Con +6, Wis +4, Cha +5</string>
 				<key>senses</key>
 				<string>blindsight 30 ft., darkvision 120 ft., passive Perception 17</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large dragon, chaotic good</string>
 				<key>skills</key>
 				<string>Deception +5, Perception +7, Stealth +4</string>
 				<key>speed</key>
@@ -15220,8 +14976,6 @@ Slowing Breath. The dragon exhales gas in a 15-foot cone. Each creature in that 
 				<string>Dex +3, Con +3, Wis +2, Cha +3</string>
 				<key>senses</key>
 				<string>blindsight 10 ft., darkvision 60 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium dragon, chaotic good</string>
 				<key>skills</key>
 				<string>Perception +4, Stealth +3</string>
 				<key>speed</key>
@@ -15349,8 +15103,6 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 				<string>Dex +9, Con +16, Wis +10, Cha +16</string>
 				<key>senses</key>
 				<string>blindsight 60 ft., darkvision 120 ft., passive Perception 27</string>
-				<key>sizeTypeAlignment</key>
-				<string>Gargantuan dragon, lawful good</string>
 				<key>skills</key>
 				<string>Insight +10, Perception +17, Persuasion +16, Stealth +9</string>
 				<key>speed</key>
@@ -15508,8 +15260,6 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 				<string>Dex +8, Con +13, Wis +8, Cha +13</string>
 				<key>senses</key>
 				<string>blindsight 60 ft., darkvision 120 ft., passive Perception 24</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge dragon, lawful good</string>
 				<key>skills</key>
 				<string>Insight +8, Perception +14, Persuasion +13, Stealth +8</string>
 				<key>speed</key>
@@ -15676,8 +15426,6 @@ Weakening Breath. The dragon exhales gas in a 30-foot cone. Each creature in tha
 				<string>Dex +6, Con +9, Wis +5, Cha +9</string>
 				<key>senses</key>
 				<string>blindsight 30 ft., darkvision 120 ft., passive Perception 19</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large dragon, lawful good</string>
 				<key>skills</key>
 				<string>Insight +5, Perception +9, Persuasion +9, Stealth +6</string>
 				<key>speed</key>
@@ -15780,8 +15528,6 @@ Weakening Breath. The dragon exhales gas in a 15-foot cone. Each creature in tha
 				<string>Dex +4, Con +6, Wis +2, Cha +5</string>
 				<key>senses</key>
 				<string>blindsight 10 ft., darkvision 60 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium dragon, lawful good</string>
 				<key>skills</key>
 				<string>Perception +4, Stealth +4</string>
 				<key>speed</key>
@@ -15915,8 +15661,6 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 				<string>Dex +7, Con +16, Wis +9, Cha +13</string>
 				<key>senses</key>
 				<string>blindsight 60 ft., darkvision 120 ft., passive Perception 26</string>
-				<key>sizeTypeAlignment</key>
-				<string>Gargantuan dragon, lawful good</string>
 				<key>skills</key>
 				<string>Arcana +11, History +11, Perception +16, Stealth +7</string>
 				<key>speed</key>
@@ -16068,8 +15812,6 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 				<string>Dex +5, Con +12, Wis +6, Cha +10</string>
 				<key>senses</key>
 				<string>blindsight 60 ft., darkvision 120 ft., passive Perception 21</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge dragon, lawful good</string>
 				<key>skills</key>
 				<string>Arcana +8, History +8, Perception +11, Stealth +5</string>
 				<key>speed</key>
@@ -16230,8 +15972,6 @@ Paralyzing Breath. The dragon exhales paralyzing gas in a 30-foot cone. Each cre
 				<string>Dex +4, Con +9, Wis +4, Cha +8</string>
 				<key>senses</key>
 				<string>blindsight 30 ft., darkvision 120 ft., passive Perception 18</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large dragon, lawful good</string>
 				<key>skills</key>
 				<string>Arcana +6, History +6, Perception +8, Stealth +4</string>
 				<key>speed</key>
@@ -16328,8 +16068,6 @@ Paralyzing Breath. The dragon exhales paralyzing gas in a 15-foot cone. Each cre
 				<string>Dex +2, Con +5, Wis +2, Cha +4</string>
 				<key>senses</key>
 				<string>blindsight 10 ft., darkvision 60 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium dragon, lawful good</string>
 				<key>skills</key>
 				<string>Perception +4, Stealth +2</string>
 				<key>speed</key>
@@ -16442,8 +16180,6 @@ Paralyzing Breath. The dragon exhales paralyzing gas in a 15-foot cone. Each cre
 				<string>Dex +5, Con +10, Wis +6</string>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Gargantuan dragon, neutral</string>
 				<key>speed</key>
 				<string>20 ft., swim 40 ft.</string>
 				<key>xp</key>
@@ -16554,8 +16290,6 @@ Paralyzing Breath. The dragon exhales paralyzing gas in a 15-foot cone. Each cre
 				<integer>14</integer>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 15</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large monstrosity, chaotic evil</string>
 				<key>skills</key>
 				<string>Perception +5, Stealth +9</string>
 				<key>speed</key>
@@ -16678,8 +16412,6 @@ The dryad can have no more than one humanoid and up to three beasts charmed at a
 				<integer>15</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium fey, neutral</string>
 				<key>skills</key>
 				<string>Perception +4, Stealth +5</string>
 				<key>speed</key>
@@ -16809,8 +16541,6 @@ At will: druidcraft
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (dwarf), lawful evil</string>
 				<key>speed</key>
 				<string>25 ft.</string>
 				<key>xp</key>
@@ -16929,8 +16659,6 @@ If the saving throw is successful, the target takes half the bludgeoning damage 
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large elemental, neutral</string>
 				<key>speed</key>
 				<string>0 ft., fly 90 ft. (hover)</string>
 				<key>xp</key>
@@ -17051,8 +16779,6 @@ If the saving throw is successful, the target takes half the bludgeoning damage 
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., tremorsense 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large elemental, neutral</string>
 				<key>speed</key>
 				<string>30 ft., burrow 30 ft.</string>
 				<key>xp</key>
@@ -17171,8 +16897,6 @@ If the saving throw is successful, the target takes half the bludgeoning damage 
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large elemental, neutral</string>
 				<key>speed</key>
 				<string>50 ft.</string>
 				<key>xp</key>
@@ -17304,8 +17028,6 @@ The elemental can grapple one Large creature or up to two Medium or smaller crea
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large elemental, neutral</string>
 				<key>speed</key>
 				<string>30 ft., swim 90 ft.</string>
 				<key>xp</key>
@@ -17418,8 +17140,6 @@ The elemental can grapple one Large creature or up to two Medium or smaller crea
 				<integer>11</integer>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (elf), neutral evil</string>
 				<key>skills</key>
 				<string>Perception +2, Stealth +4</string>
 				<key>speed</key>
@@ -17539,8 +17259,6 @@ At will: dancing lights
 				<string>Dex +7, Con +5, Wis +4</string>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (elf), neutral evil</string>
 				<key>skills</key>
 				<string>Perception +4, Stealth +10</string>
 				<key>speed</key>
@@ -17658,8 +17376,6 @@ At will: dancing lights
 				<integer>13</integer>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (elf), neutral evil</string>
 				<key>skills</key>
 				<string>Arcana +6, Deception +5, Perception +4, Stealth +5</string>
 				<key>speed</key>
@@ -17797,8 +17513,6 @@ Cantrips (at will): mage hand, minor illusion, poison spray, ray of frost
 				<string>Con +4, Wis +6, Cha +7</string>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 16</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (elf), neutral evil</string>
 				<key>skills</key>
 				<string>Insight +6, Perception +6, Religion +4, Stealth +5</string>
 				<key>speed</key>
@@ -17932,8 +17646,6 @@ Cantrips (at will): guidance, poison spray, resistance, spare the dying, thaumat
 				<string>Str +17, Int +12, Wis +13, Cha +15</string>
 				<key>senses</key>
 				<string>truesight 120 ft., passive Perception 16</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge celestial (titan), chaotic good (75%) or neutral evil (25%)</string>
 				<key>skills</key>
 				<string>Insight +13, Persuasion +15</string>
 				<key>speed</key>
@@ -18077,8 +17789,6 @@ At will: greater restoration, pass without trace, water breathing, water walk
 				<integer>12</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium monstrosity, neutral evil</string>
 				<key>skills</key>
 				<string>Perception +3, Stealth +4, Survival +3</string>
 				<key>speed</key>
@@ -18203,8 +17913,6 @@ At will: greater restoration, pass without trace, water breathing, water walk
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large giant, chaotic evil</string>
 				<key>skills</key>
 				<string>Perception +4</string>
 				<key>speed</key>
@@ -18257,125 +17965,6 @@ At will: greater restoration, pass without trace, water breathing, water walk
 					<string>Wakeful</string>
 					<key>text</key>
 					<string>When one of the ettin's heads is asleep, its other head is awake.</string>
-				</dict>
-			</array>
-		</dict>
-		<dict>
-			<key>actions</key>
-			<array>
-				<dict>
-					<key>name</key>
-					<string>Bite</string>
-					<key>text</key>
-					<string>Melee Weapon Attack: +7 to hit, reach 5 ft., one creature. Hit: 1 piercing damage.</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Euphoria Breath (Recharge 5–6)</string>
-					<key>text</key>
-					<string>The dragon exhales a puff of euphoria gas at one creature within 5 feet of it. The target must succeed on a DC 11 Wisdom saving throw, or for 1 minute, the target can't take reactions and must roll a d6 at the start of each of its turns to determine its behavior during the turn:
-1–4. The target takes no action or bonus action and uses all of its movement to move in a random direction.
-5–6. The target doesn't move, and the only thing it can do on its turn is make a DC 11 Wisdom saving throw, ending the effect on itself on a success.</string>
-				</dict>
-			</array>
-			<key>alignmentOptions</key>
-			<array>
-			</array>
-			<key>info</key>
-			<dict>
-				<key>armorClass</key>
-				<string>15</string>
-				<key>challenge</key>
-				<string>1 (200 XP) for a red, orange, or yellow faerie dragon; 2 (450 XP) for a green, blue, indigo, or violet faerie dragon</string>
-				<key>languages</key>
-				<string>Draconic, Sylvan</string>
-				<key>name</key>
-				<string>Faerie Dragon</string>
-				<key>rawAlignment</key>
-				<integer>6</integer>
-				<key>rawCharisma</key>
-				<integer>16</integer>
-				<key>rawConstitution</key>
-				<integer>13</integer>
-				<key>rawDexterity</key>
-				<integer>20</integer>
-				<key>rawHitDice</key>
-				<string>4d4 + 4</string>
-				<key>rawHitPoints</key>
-				<integer>14</integer>
-				<key>rawIntelligence</key>
-				<integer>14</integer>
-				<key>rawPassivePerception</key>
-				<integer>13</integer>
-				<key>rawSize</key>
-				<integer>0</integer>
-				<key>rawStrength</key>
-				<integer>3</integer>
-				<key>rawType</key>
-				<integer>4</integer>
-				<key>rawWisdom</key>
-				<integer>12</integer>
-				<key>senses</key>
-				<string>darkvision 60 ft., passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Tiny dragon, chaotic good</string>
-				<key>skills</key>
-				<string>Arcana +4, Perception +3, Stealth +7</string>
-				<key>speed</key>
-				<string>10 ft., fly 60 ft.</string>
-			</dict>
-			<key>legendaryActions</key>
-			<array>
-			</array>
-			<key>name</key>
-			<string>Faerie Dragon</string>
-			<key>reactions</key>
-			<array>
-			</array>
-			<key>sources</key>
-			<array>
-				<dict>
-					<key>book</key>
-					<integer>1</integer>
-					<key>page</key>
-					<integer>133</integer>
-				</dict>
-			</array>
-			<key>tags</key>
-			<array>
-			</array>
-			<key>traits</key>
-			<array>
-				<dict>
-					<key>name</key>
-					<string>Superior Invisibility</string>
-					<key>text</key>
-					<string>As a bonus action, the dragon can magically turn invisible until its concentration ends (as if concentrating on a spell). Any equipment the dragon wears or carries is invisible with it.</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Limited Telepathy</string>
-					<key>text</key>
-					<string>Using telepathy, the dragon can magically communicate with any other faerie dragon within 60 feet of it.</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Magic Resistance</string>
-					<key>text</key>
-					<string>The dragon has advantage on saving throws against spells and other magical effects.</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Innate Spellcasting</string>
-					<key>text</key>
-					<string>The dragon's innate spellcasting ability is Charisma (spell save DC 13). It can innately cast a number of spells, requiring no material components. As the dragon ages and changes color, it gains additional spells as shown below.
-Red, 1/day each: dancing lights, mage hand, minor illusion
-Orange, 1/day: color spray
-Yellow, 1/day: mirror image
-Green, 1/day: suggestion
-Blue, 1/day: major image
-Indigo, 1/day: hallucinatory terrain
-Violet, 1/day: polymorph</string>
 				</dict>
 			</array>
 		</dict>
@@ -18442,8 +18031,6 @@ Violet, 1/day: polymorph</string>
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Tiny undead, neutral evil</string>
 				<key>skills</key>
 				<string>Arcana +5, Perception +2</string>
 				<key>speed</key>
@@ -18574,8 +18161,6 @@ Cantrip (at will): mage hand
 				<integer>14</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Small aberration, lawful good</string>
 				<key>skills</key>
 				<string>Arcana +4, History +4, Religion +4</string>
 				<key>speed</key>
@@ -18695,8 +18280,6 @@ The transformed creature can repeat the saving throw whenever it finishes a long
 				<integer>14</integer>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 18</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge giant, chaotic evil</string>
 				<key>skills</key>
 				<string>Perception +8, Stealth +3</string>
 				<key>speed</key>
@@ -18779,8 +18362,6 @@ The transformed creature can repeat the saving throw whenever it finishes a long
 				<integer>1</integer>
 				<key>senses</key>
 				<string>blindsight 30 ft. (blind beyond this radius), passive Perception 5</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large plant, unaligned</string>
 				<key>speed</key>
 				<string>0 ft., fly 10 ft. (hover)</string>
 				<key>xp</key>
@@ -18868,8 +18449,6 @@ Spores invade an infected creature's system, killing the creature in a number of
 				<integer>3</integer>
 				<key>senses</key>
 				<string>blindsight 30 ft. (blind beyond this radius), passive Perception 6</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium plant, unaligned</string>
 				<key>speed</key>
 				<string>0 ft.</string>
 				<key>xp</key>
@@ -18968,8 +18547,6 @@ Spores invade an infected creature's system, killing the creature in a number of
 				<integer>3</integer>
 				<key>senses</key>
 				<string>blindsight 30 ft. (blind beyond this radius), passive Perception 6</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium plant, unaligned</string>
 				<key>speed</key>
 				<string>5 ft.</string>
 				<key>xp</key>
@@ -19082,8 +18659,6 @@ Spores invade an infected creature's system, killing the creature in a number of
 				<integer>12</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., tremorsense 60 ft., passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium elemental, neutral</string>
 				<key>speed</key>
 				<string>15 ft. (30 ft. when rolling, 60 ft. rolling downhill)</string>
 				<key>xp</key>
@@ -19200,8 +18775,6 @@ Spores invade an infected creature's system, killing the creature in a number of
 				<integer>11</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium elemental, chaotic evil</string>
 				<key>speed</key>
 				<string>30 ft., fly 60 ft.</string>
 				<key>xp</key>
@@ -19316,8 +18889,6 @@ Spores invade an infected creature's system, killing the creature in a number of
 				<string>Int +5, Wis +5, Cha +6</string>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large elemental, neutral evil</string>
 				<key>speed</key>
 				<string>30 ft., burrow 30 ft., fly 30 ft.</string>
 				<key>xp</key>
@@ -19456,8 +19027,6 @@ A creature can use its action to free a creature restrained by the whirlwind, in
 				<string>Dex +6, Wis +7, Cha +9</string>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large elemental, chaotic good</string>
 				<key>speed</key>
 				<string>30 ft., fly 90 ft.</string>
 				<key>xp</key>
@@ -19577,8 +19146,6 @@ At will: detect evil and good, detect magic, thunderwave
 				<string>Int +7, Wis +6, Cha +7</string>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large elemental, lawful evil</string>
 				<key>speed</key>
 				<string>40 ft., fly 60 ft.</string>
 				<key>xp</key>
@@ -19704,8 +19271,6 @@ At will: detect magic
 				<string>Dex +5, Wis +7, Cha +8</string>
 				<key>senses</key>
 				<string>blindsight 30 ft., darkvision 120 ft., passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large elemental, chaotic neutral</string>
 				<key>speed</key>
 				<string>30 ft., fly 60 ft., swim 90 ft.</string>
 				<key>xp</key>
@@ -19859,8 +19424,6 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 				<integer>12</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium undead, any alignment</string>
 				<key>speed</key>
 				<string>0 ft., fly 40 ft.</string>
 				<key>xp</key>
@@ -19977,8 +19540,6 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium undead, chaotic evil</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -20089,8 +19650,6 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium undead, chaotic evil</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -20205,8 +19764,6 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 				<string>Con +9, Wis +7, Cha +7</string>
 				<key>senses</key>
 				<string>passive Perception 17</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge giant, neutral good (50%) or neutral evil (50%)</string>
 				<key>skills</key>
 				<string>Insight +7, Perception +7</string>
 				<key>speed</key>
@@ -20328,8 +19885,6 @@ At will: detect magic, fog cloud, light
 				<string>Dex +3, Con +10, Cha +5</string>
 				<key>senses</key>
 				<string>passive Perception 16</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge giant, lawful evil</string>
 				<key>skills</key>
 				<string>Athletics +11, Perception +6</string>
 				<key>speed</key>
@@ -20436,8 +19991,6 @@ At will: detect magic, fog cloud, light
 				<string>Con +8, Wis +3, Cha +4</string>
 				<key>senses</key>
 				<string>passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge giant, neutral evil</string>
 				<key>skills</key>
 				<string>Athletics +9, Perception +3</string>
 				<key>speed</key>
@@ -20540,8 +20093,6 @@ At will: detect magic, fog cloud, light
 				<integer>9</integer>
 				<key>senses</key>
 				<string>passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge giant, chaotic evil</string>
 				<key>skills</key>
 				<string>Perception +2</string>
 				<key>speed</key>
@@ -20646,8 +20197,6 @@ At will: detect magic, fog cloud, light
 				<string>Dex +5, Con +8, Wis +4</string>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge giant, neutral</string>
 				<key>skills</key>
 				<string>Athletics +12, Perception +4</string>
 				<key>speed</key>
@@ -20774,8 +20323,6 @@ At will: detect magic, fog cloud, light
 				<string>Str +14, Con +10, Wis +9, Cha +9</string>
 				<key>senses</key>
 				<string>passive Perception 19</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge giant, chaotic good</string>
 				<key>skills</key>
 				<string>Arcana +8, Athletics +14, History +8, Perception +9</string>
 				<key>speed</key>
@@ -20886,8 +20433,6 @@ At will: detect magic, feather fall, levitate, light
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium aberration, neutral</string>
 				<key>speed</key>
 				<string>10 ft., swim 10 ft.</string>
 				<key>xp</key>
@@ -20988,8 +20533,6 @@ At will: detect magic, feather fall, levitate, light
 				<string>Con +3, Int +3, Wis +3</string>
 				<key>senses</key>
 				<string>passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (gith), lawful evil</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -21089,8 +20632,6 @@ At will: mage hand (the hand is invisible)
 				<string>Con +5, Int +5, Wis +5</string>
 				<key>senses</key>
 				<string>passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (gith), lawful evil</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -21191,8 +20732,6 @@ At will: mage hand (the hand is invisible)
 				<string>Str +3, Dex +4, Int +3, Wis +4</string>
 				<key>senses</key>
 				<string>passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (gith), lawful neutral</string>
 				<key>skills</key>
 				<string>Insight +4, Perception +4</string>
 				<key>speed</key>
@@ -21300,8 +20839,6 @@ At will: mage hand (the hand is invisible)
 				<string>Str +4, Dex +7, Int +6, Wis +6</string>
 				<key>senses</key>
 				<string>passive Perception 16</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (gith), lawful neutral</string>
 				<key>skills</key>
 				<string>Arcana +6, Insight +6, Perception +6</string>
 				<key>speed</key>
@@ -21414,8 +20951,6 @@ At will: mage hand (the hand is invisible)
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (gnoll), chaotic evil</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -21535,8 +21070,6 @@ At will: mage hand (the hand is invisible)
 				<integer>11</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (gnoll), chaotic evil</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -21646,8 +21179,6 @@ At will: mage hand (the hand is invisible)
 				<string>Con +4, Wis +2, Cha +3</string>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium fiend (gnoll), chaotic evil</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -21743,8 +21274,6 @@ At will: mage hand (the hand is invisible)
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Small humanoid (gnome), neutral good</string>
 				<key>skills</key>
 				<string>Investigation +3, Perception +2, Stealth +4</string>
 				<key>speed</key>
@@ -21862,8 +21391,6 @@ At will: nondetection (self only)
 				<integer>8</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 9</string>
-				<key>sizeTypeAlignment</key>
-				<string>Small humanoid (goblinoid), neutral evil</string>
 				<key>skills</key>
 				<string>Stealth +6</string>
 				<key>speed</key>
@@ -21979,8 +21506,6 @@ At will: nondetection (self only)
 				<integer>8</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 9</string>
-				<key>sizeTypeAlignment</key>
-				<string>Small humanoid (goblinoid), neutral evil</string>
 				<key>skills</key>
 				<string>Stealth +6</string>
 				<key>speed</key>
@@ -22092,8 +21617,6 @@ At will: nondetection (self only)
 				<integer>8</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 9</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large construct, unaligned</string>
 				<key>speed</key>
 				<string>20 ft.</string>
 				<key>xp</key>
@@ -22222,8 +21745,6 @@ At will: nondetection (self only)
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium construct, neutral</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -22369,8 +21890,6 @@ The golem's creator, if within 60 feet of the berserk golem, can try to calm it 
 				<integer>11</integer>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large construct, unaligned</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -22491,8 +22010,6 @@ The golem's creator, if within 60 feet of the berserk golem, can try to calm it 
 				<integer>11</integer>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large construct, unaligned</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -22615,8 +22132,6 @@ The golem's creator, if within 60 feet of the berserk golem, can try to calm it 
 				<integer>12</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large monstrosity, unaligned</string>
 				<key>skills</key>
 				<string>Perception +4</string>
 				<key>speed</key>
@@ -22728,8 +22243,6 @@ The target is also grappled (escape DC 15). If the target is Medium or smaller, 
 				<integer>11</integer>
 				<key>senses</key>
 				<string>blindsight 60 ft. (blind beyond this radius), passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium aberration, neutral evil</string>
 				<key>skills</key>
 				<string>Perception +4, Stealth +6</string>
 				<key>speed</key>
@@ -22830,8 +22343,6 @@ The target is also grappled (escape DC 15). If the target is Medium or smaller, 
 				<integer>14</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium monstrosity, neutral</string>
 				<key>speed</key>
 				<string>30 ft., climb 30 ft.</string>
 				<key>xp</key>
@@ -22948,8 +22459,6 @@ The target is also grappled (escape DC 15). If the target is Medium or smaller, 
 				<integer>14</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large monstrosity, neutral</string>
 				<key>speed</key>
 				<string>30 ft., climb 30 ft.</string>
 				<key>xp</key>
@@ -23044,8 +22553,6 @@ The target is also grappled (escape DC 15). If the target is Medium or smaller, 
 				<integer>13</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 15</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large monstrosity, unaligned</string>
 				<key>skills</key>
 				<string>Perception +5</string>
 				<key>speed</key>
@@ -23148,8 +22655,6 @@ The target is also grappled (escape DC 15). If the target is Medium or smaller, 
 				<integer>8</integer>
 				<key>senses</key>
 				<string>blindsight 30 ft. or 10 ft. while deafened (blind beyond this radius), passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (grimlock), neutral evil</string>
 				<key>skills</key>
 				<string>Athletics +5, Perception +3, Stealth +3</string>
 				<key>speed</key>
@@ -23264,8 +22769,6 @@ The changes wrought by this effect fail to hold up to physical inspection. For e
 				<integer>14</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium fey, neutral evil</string>
 				<key>skills</key>
 				<string>Arcana +3, Deception +4, Perception +4, Stealth +3</string>
 				<key>speed</key>
@@ -23391,8 +22894,6 @@ At will: dancing lights, minor illusion, vicious mockery</string>
 				<integer>14</integer>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 16</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium fiend, neutral evil</string>
 				<key>skills</key>
 				<string>Deception +7, Insight +6, Perception +6, Stealth +6</string>
 				<key>speed</key>
@@ -23504,8 +23005,6 @@ The changes wrought by this effect fail to hold up to physical inspection. For e
 				<integer>12</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium fey, chaotic evil</string>
 				<key>speed</key>
 				<string>30 ft., swim 40 ft.</string>
 				<key>xp</key>
@@ -23660,8 +23159,6 @@ Unless the target is surprised or the revelation of the hag's true form is sudde
 				<string>Str +5, Con +4</string>
 				<key>senses</key>
 				<string>blindsight 10 ft., darkvision 60 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (human), any alignment</string>
 				<key>skills</key>
 				<string>Athletics +5, Perception +2</string>
 				<key>speed</key>
@@ -23779,8 +23276,6 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 				<integer>10</integer>
 				<key>senses</key>
 				<string>passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium monstrosity, chaotic evil</string>
 				<key>speed</key>
 				<string>20 ft., fly 40 ft.</string>
 				<key>xp</key>
@@ -23875,8 +23370,6 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 				<integer>13</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 15</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium fiend, lawful evil</string>
 				<key>skills</key>
 				<string>Perception +5</string>
 				<key>speed</key>
@@ -23989,8 +23482,6 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 				<integer>10</integer>
 				<key>senses</key>
 				<string>blindsight 60 ft. (blind beyond this radius), passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium construct, neutral</string>
 				<key>skills</key>
 				<string>Perception +4</string>
 				<key>speed</key>
@@ -24111,8 +23602,6 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 				<integer>12</integer>
 				<key>senses</key>
 				<string>passive Perception 15</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large monstrosity, unaligned</string>
 				<key>skills</key>
 				<string>Perception +5</string>
 				<key>speed</key>
@@ -24213,8 +23702,6 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (goblinoid), lawful evil</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -24340,8 +23827,6 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (goblinoid), lawful evil</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -24469,8 +23954,6 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 				<string>Int +5, Wis +3, Cha +5</string>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (goblinoid), lawful evil</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -24570,8 +24053,6 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Tiny construct, neutral</string>
 				<key>speed</key>
 				<string>20 ft., fly 40 ft.</string>
 				<key>xp</key>
@@ -24664,8 +24145,6 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 				<integer>12</integer>
 				<key>senses</key>
 				<string>blindsight 60 ft., darkvision 10 ft., passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large monstrosity, neutral</string>
 				<key>skills</key>
 				<string>Perception +3</string>
 				<key>speed</key>
@@ -24768,8 +24247,6 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 16</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge monstrosity, unaligned</string>
 				<key>skills</key>
 				<string>Perception +6</string>
 				<key>speed</key>
@@ -24907,8 +24384,6 @@ If the host body drops to 0 hit points, the intellect devourer must leave it. A 
 				<integer>11</integer>
 				<key>senses</key>
 				<string>blindsight 60 ft. (blind beyond this radius), passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Tiny aberration, lawful evil</string>
 				<key>skills</key>
 				<string>Perception +2, Stealth +4</string>
 				<key>speed</key>
@@ -25009,8 +24484,6 @@ If the host body drops to 0 hit points, the intellect devourer must leave it. A 
 				<integer>15</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 18</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium elemental, neutral</string>
 				<key>skills</key>
 				<string>Perception +8, Stealth +10</string>
 				<key>speed</key>
@@ -25125,8 +24598,6 @@ If the host body drops to 0 hit points, the intellect devourer must leave it. A 
 				<integer>11</integer>
 				<key>senses</key>
 				<string>passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (shapechanger), chaotic evil</string>
 				<key>skills</key>
 				<string>Deception +4, Perception +2, Stealth +4</string>
 				<key>speed</key>
@@ -25240,8 +24711,6 @@ If the host body drops to 0 hit points, the intellect devourer must leave it. A 
 				<integer>10</integer>
 				<key>senses</key>
 				<string>passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (kenku), chaotic neutral</string>
 				<key>skills</key>
 				<string>Deception +4, Perception +2, Stealth +5</string>
 				<key>speed</key>
@@ -25349,8 +24818,6 @@ If the host body drops to 0 hit points, the intellect devourer must leave it. A 
 				<integer>7</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 8</string>
-				<key>sizeTypeAlignment</key>
-				<string>Small humanoid (kobold), lawful evil</string>
 				<key>speed</key>
 				<string>30 ft., fly 30 ft.</string>
 				<key>xp</key>
@@ -25458,8 +24925,6 @@ If the host body drops to 0 hit points, the intellect devourer must leave it. A 
 				<integer>7</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 8</string>
-				<key>sizeTypeAlignment</key>
-				<string>Small humanoid (kobold), lawful evil</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -25604,8 +25069,6 @@ If the kraken takes 50 damage or more on a single turn from a creature inside it
 				<string>Str +18, Dex +8, Con +15, Int +14, Wis +12</string>
 				<key>senses</key>
 				<string>truesight 120 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Gargantuan monstrosity (titan), chaotic evil</string>
 				<key>speed</key>
 				<string>20 ft., swim 60 ft.</string>
 				<key>xp</key>
@@ -25764,8 +25227,6 @@ If the kraken takes 50 damage or more on a single turn from a creature inside it
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (kuo-toa), neutral evil</string>
 				<key>skills</key>
 				<string>Perception +4</string>
 				<key>speed</key>
@@ -25899,8 +25360,6 @@ If the kraken takes 50 damage or more on a single turn from a creature inside it
 				<integer>16</integer>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 19</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (kuo-toa), neutral evil</string>
 				<key>skills</key>
 				<string>Perception +9, Religion +6</string>
 				<key>speed</key>
@@ -26040,8 +25499,6 @@ Cantrips (at will): guidance, sacred flame, thaumaturgy
 				<integer>14</integer>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 16</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (kuo-toa), neutral evil</string>
 				<key>skills</key>
 				<string>Perception +6, Religion +4</string>
 				<key>speed</key>
@@ -26183,8 +25640,6 @@ Cantrips (at will): sacred flame, thaumaturgy
 				<integer>15</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large monstrosity, chaotic evil</string>
 				<key>skills</key>
 				<string>Deception +7, Insight +4, Stealth +3</string>
 				<key>speed</key>
@@ -26291,8 +25746,6 @@ At will: disguise self (any humanoid form), major image
 				<string>Con +10, Int +12, Wis +9</string>
 				<key>senses</key>
 				<string>truesight 120 ft., passive Perception 19</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium undead, any evil alignment</string>
 				<key>skills</key>
 				<string>Arcana +18, History +12, Insight +9, Perception +9</string>
 				<key>speed</key>
@@ -26487,8 +25940,6 @@ Cantrips (at will): mage hand, prestidigitation, ray of frost
 				<integer>12</integer>
 				<key>senses</key>
 				<string>passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (lizardfolk), neutral</string>
 				<key>skills</key>
 				<string>Perception +3, Stealth +4, Survival +5</string>
 				<key>speed</key>
@@ -26616,8 +26067,6 @@ Cantrips (at will): mage hand, prestidigitation, ray of frost
 				<integer>15</integer>
 				<key>senses</key>
 				<string>passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (lizardfolk), neutral</string>
 				<key>skills</key>
 				<string>Perception +4, Stealth +4, Survival +6</string>
 				<key>speed</key>
@@ -26747,8 +26196,6 @@ Cantrips (at will): druidcraft, produce flame, thorn whip
 				<string>Con +4, Wis +2</string>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (lizardfolk), chaotic evil</string>
 				<key>skills</key>
 				<string>Perception +4, Stealth +5, Survival +4</string>
 				<key>speed</key>
@@ -26872,8 +26319,6 @@ Cantrips (at will): druidcraft, produce flame, thorn whip
 				<integer>12</integer>
 				<key>senses</key>
 				<string>passive Perception 17</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (human, shapechanger), neutral good</string>
 				<key>skills</key>
 				<string>Perception +7</string>
 				<key>speed</key>
@@ -26986,8 +26431,6 @@ Cantrips (at will): druidcraft, produce flame, thorn whip
 				<integer>11</integer>
 				<key>senses</key>
 				<string>passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (human, shapechanger), neutral evil</string>
 				<key>skills</key>
 				<string>Perception +2</string>
 				<key>speed</key>
@@ -27118,8 +26561,6 @@ Cantrips (at will): druidcraft, produce flame, thorn whip
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft. (rat form only), passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (human, shapechanger), lawful evil</string>
 				<key>skills</key>
 				<string>Perception +2, Stealth +4</string>
 				<key>speed</key>
@@ -27244,8 +26685,6 @@ Cantrips (at will): druidcraft, produce flame, thorn whip
 				<integer>13</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 15</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (human, shapechanger), neutral</string>
 				<key>skills</key>
 				<string>Perception +5, Stealth +4</string>
 				<key>speed</key>
@@ -27370,8 +26809,6 @@ Cantrips (at will): druidcraft, produce flame, thorn whip
 				<integer>11</integer>
 				<key>senses</key>
 				<string>passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (human, shapechanger), chaotic evil</string>
 				<key>skills</key>
 				<string>Perception +4, Stealth +3</string>
 				<key>speed</key>
@@ -27480,8 +26917,6 @@ Cantrips (at will): druidcraft, produce flame, thorn whip
 				<integer>11</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Small elemental, chaotic neutral</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -27598,8 +27033,6 @@ Cantrips (at will): druidcraft, produce flame, thorn whip
 				<integer>12</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large monstrosity, lawful evil</string>
 				<key>speed</key>
 				<string>30 ft., fly 50 ft.</string>
 				<key>xp</key>
@@ -27710,8 +27143,6 @@ Cantrips (at will): druidcraft, produce flame, thorn whip
 				<integer>13</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium monstrosity, lawful evil</string>
 				<key>skills</key>
 				<string>Deception +5, Insight +4, Perception +4, Stealth +5</string>
 				<key>speed</key>
@@ -27820,8 +27251,6 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 				<integer>11</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Small elemental, neutral evil</string>
 				<key>skills</key>
 				<string>Perception +2, Stealth +4</string>
 				<key>speed</key>
@@ -27936,8 +27365,6 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 				<integer>11</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Small elemental, neutral evil</string>
 				<key>skills</key>
 				<string>Perception +2, Stealth +3</string>
 				<key>speed</key>
@@ -28058,8 +27485,6 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Small elemental, neutral evil</string>
 				<key>skills</key>
 				<string>Stealth +3</string>
 				<key>speed</key>
@@ -28178,8 +27603,6 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 				<integer>11</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Small elemental, neutral evil</string>
 				<key>skills</key>
 				<string>Stealth +3</string>
 				<key>speed</key>
@@ -28292,8 +27715,6 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Small elemental, neutral evil</string>
 				<key>skills</key>
 				<string>Perception +2, Stealth +4</string>
 				<key>speed</key>
@@ -28406,8 +27827,6 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Small elemental, neutral evil</string>
 				<key>speed</key>
 				<string>30 ft., fly 30 ft.</string>
 				<key>xp</key>
@@ -28508,8 +27927,6 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 				<integer>11</integer>
 				<key>senses</key>
 				<string>passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (merfolk), neutral</string>
 				<key>skills</key>
 				<string>Perception +2</string>
 				<key>speed</key>
@@ -28623,8 +28040,6 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large monstrosity, chaotic evil</string>
 				<key>speed</key>
 				<string>10 ft., swim 40 ft.</string>
 				<key>xp</key>
@@ -28731,8 +28146,6 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 				<integer>13</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium monstrosity (shapechanger), neutral</string>
 				<key>skills</key>
 				<string>Stealth +5</string>
 				<key>speed</key>
@@ -28854,8 +28267,6 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 				<string>Int +7, Wis +6, Cha +6</string>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 16</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium aberration, lawful evil</string>
 				<key>skills</key>
 				<string>Arcana +7, Deception +6, Insight +6, Perception +6, Persuasion +6, Stealth +4</string>
 				<key>speed</key>
@@ -28958,8 +28369,6 @@ At will: detect thoughts, levitate
 				<integer>16</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 17</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large monstrosity, chaotic evil</string>
 				<key>skills</key>
 				<string>Perception +7</string>
 				<key>speed</key>
@@ -29072,8 +28481,6 @@ At will: detect thoughts, levitate
 				<integer>10</integer>
 				<key>senses</key>
 				<string>truesight 120 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium construct, lawful neutral</string>
 				<key>speed</key>
 				<string>30 ft., fly 30 ft.</string>
 				<key>xp</key>
@@ -29180,8 +28587,6 @@ At will: detect thoughts, levitate
 				<integer>10</integer>
 				<key>senses</key>
 				<string>truesight 120 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium construct, lawful neutral</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -29288,8 +28693,6 @@ At will: detect thoughts, levitate
 				<integer>10</integer>
 				<key>senses</key>
 				<string>truesight 120 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium construct, lawful neutral</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -29396,8 +28799,6 @@ At will: detect thoughts, levitate
 				<integer>10</integer>
 				<key>senses</key>
 				<string>truesight 120 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium construct, lawful neutral</string>
 				<key>skills</key>
 				<string>Perception +2</string>
 				<key>speed</key>
@@ -29506,8 +28907,6 @@ At will: detect thoughts, levitate
 				<integer>10</integer>
 				<key>senses</key>
 				<string>truesight 120 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large construct, lawful neutral</string>
 				<key>skills</key>
 				<string>Perception +4</string>
 				<key>speed</key>
@@ -29626,8 +29025,6 @@ At will: detect thoughts, levitate
 				<string>Wis +2</string>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium undead, lawful evil</string>
 				<key>speed</key>
 				<string>20 ft.</string>
 				<key>xp</key>
@@ -29742,8 +29139,6 @@ At will: detect thoughts, levitate
 				<string>Con +8, Int +5, Wis +9, Cha +8</string>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium undead, lawful evil</string>
 				<key>skills</key>
 				<string>History +5, Religion +5</string>
 				<key>speed</key>
@@ -29923,8 +29318,6 @@ Cantrips (at will): sacred flame, thaumaturgy
 				<integer>11</integer>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Small plant, lawful neutral</string>
 				<key>speed</key>
 				<string>10 ft.</string>
 				<key>xp</key>
@@ -30025,8 +29418,6 @@ Cantrips (at will): sacred flame, thaumaturgy
 				<integer>6</integer>
 				<key>senses</key>
 				<string>blindsight 30 ft. (blind beyond this radius), passive Perception 8</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium plant, unaligned</string>
 				<key>speed</key>
 				<string>20 ft., climb 20 ft.</string>
 				<key>xp</key>
@@ -30119,8 +29510,6 @@ Cantrips (at will): sacred flame, thaumaturgy
 				<integer>13</integer>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium plant, lawful neutral</string>
 				<key>speed</key>
 				<string>20 ft.</string>
 				<key>xp</key>
@@ -30243,8 +29632,6 @@ Cantrips (at will): sacred flame, thaumaturgy
 				<integer>15</integer>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large plant, lawful neutral</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -30343,8 +29730,6 @@ Cantrips (at will): sacred flame, thaumaturgy
 				<integer>15</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large undead, lawful evil</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -30449,8 +29834,6 @@ Cantrips (at will): mage hand, minor illusion, ray of frost
 				<string>Dex +6, Con +5, Wis +5, Cha +6</string>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large monstrosity, chaotic evil</string>
 				<key>speed</key>
 				<string>40 ft.</string>
 				<key>xp</key>
@@ -30563,8 +29946,6 @@ Cantrips (at will): mage hand, minor illusion, ray of frost
 				<string>Dex +8, Con +7, Int +7, Wis +8, Cha +8</string>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large monstrosity, lawful good</string>
 				<key>speed</key>
 				<string>40 ft.</string>
 				<key>xp</key>
@@ -30674,8 +30055,6 @@ Cantrips (at will): mending, sacred flame, thaumaturgy
 				<integer>13</integer>
 				<key>senses</key>
 				<string>passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large fiend, neutral evil</string>
 				<key>speed</key>
 				<string>60 ft., fly 90 ft.</string>
 				<key>xp</key>
@@ -30786,8 +30165,6 @@ Cantrips (at will): mending, sacred flame, thaumaturgy
 				<integer>10</integer>
 				<key>senses</key>
 				<string>truesight 120 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium aberration, neutral evil</string>
 				<key>skills</key>
 				<string>Arcana +3, Insight +4, Perception +2, Stealth +5</string>
 				<key>speed</key>
@@ -30894,8 +30271,6 @@ Cantrips (at will): mending, sacred flame, thaumaturgy
 				<integer>7</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 8</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large giant, chaotic evil</string>
 				<key>speed</key>
 				<string>40 ft.</string>
 				<key>xp</key>
@@ -31015,8 +30390,6 @@ Cantrips (at will): mending, sacred flame, thaumaturgy
 				<integer>9</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 9</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large giant, any chaotic alignment</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -31125,8 +30498,6 @@ Cantrips (at will): mending, sacred flame, thaumaturgy
 				<string>Dex +3, Con +6, Wis +4, Cha +5</string>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large giant, lawful evil</string>
 				<key>skills</key>
 				<string>Arcana +5, Deception +8, Perception +4</string>
 				<key>speed</key>
@@ -31235,8 +30606,6 @@ At will: darkness, invisibility
 				<integer>6</integer>
 				<key>senses</key>
 				<string>blindsight 60 ft. (blind beyond this radius), passive Perception 8</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large ooze, unaligned</string>
 				<key>speed</key>
 				<string>20 ft., climb 20 ft.</string>
 				<key>xp</key>
@@ -31357,8 +30726,6 @@ An engulfed creature can try to escape by taking an action to make a DC 12 Stren
 				<integer>6</integer>
 				<key>senses</key>
 				<string>blindsight 60 ft. (blind beyond this radius), passive Perception 8</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large ooze, unaligned</string>
 				<key>speed</key>
 				<string>15 ft.</string>
 				<key>xp</key>
@@ -31456,8 +30823,6 @@ The cube can hold only one Large creature or up to four Medium or smaller creatu
 				<integer>6</integer>
 				<key>senses</key>
 				<string>blindsight 60 ft. (blind beyond this radius), passive Perception 8</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium ooze, unaligned</string>
 				<key>skills</key>
 				<string>Stealth +2</string>
 				<key>speed</key>
@@ -31569,8 +30934,6 @@ The ooze can eat through 2-inch-thick, nonmagical metal in 1 round.</string>
 				<integer>6</integer>
 				<key>senses</key>
 				<string>blindsight 60 ft. (blind beyond this radius), passive Perception 8</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large ooze, unaligned</string>
 				<key>speed</key>
 				<string>10 ft., climb 10 ft.</string>
 				<key>xp</key>
@@ -31689,8 +31052,6 @@ The ooze can eat through 2-inch-thick, nonmagical metal in 1 round.</string>
 				<integer>11</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (orc), chaotic evil</string>
 				<key>skills</key>
 				<string>Intimidation +2</string>
 				<key>speed</key>
@@ -31820,8 +31181,6 @@ The ooze can eat through 2-inch-thick, nonmagical metal in 1 round.</string>
 				<string>Str +6, Con +6, Wis +2</string>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (orc), chaotic evil</string>
 				<key>skills</key>
 				<string>Intimidation +5</string>
 				<key>speed</key>
@@ -31919,8 +31278,6 @@ The ooze can eat through 2-inch-thick, nonmagical metal in 1 round.</string>
 				<integer>13</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (orc), chaotic evil</string>
 				<key>skills</key>
 				<string>Intimidation +3, Religion +1</string>
 				<key>speed</key>
@@ -32045,8 +31402,6 @@ Cantrips (at-will): guidance, resistance, thaumaturgy
 				<integer>11</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (orc), chaotic evil</string>
 				<key>skills</key>
 				<string>Intimidation +5, Survival +2</string>
 				<key>speed</key>
@@ -32164,8 +31519,6 @@ Cantrips (at-will): guidance, resistance, thaumaturgy
 				<string>Con +7</string>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large aberration, neutral</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -32272,8 +31625,6 @@ Cantrips (at-will): guidance, resistance, thaumaturgy
 				<integer>12</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large monstrosity, unaligned</string>
 				<key>skills</key>
 				<string>Perception +3</string>
 				<key>speed</key>
@@ -32376,8 +31727,6 @@ Cantrips (at-will): guidance, resistance, thaumaturgy
 				<string>Dex +4, Wis +4, Cha +3</string>
 				<key>senses</key>
 				<string>passive Perception 16</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large celestial, chaotic good</string>
 				<key>skills</key>
 				<string>Perception +6</string>
 				<key>speed</key>
@@ -32480,8 +31829,6 @@ Cantrips (at-will): guidance, resistance, thaumaturgy
 				<integer>12</integer>
 				<key>senses</key>
 				<string>passive Perception 15</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium monstrosity, chaotic evil</string>
 				<key>skills</key>
 				<string>Perception +5</string>
 				<key>speed</key>
@@ -32590,8 +31937,6 @@ Cantrips (at-will): guidance, resistance, thaumaturgy
 				<integer>7</integer>
 				<key>senses</key>
 				<string>blindsight 30 ft., darkvision 60 ft., passive Perception 8</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium monstrosity, unaligned</string>
 				<key>skills</key>
 				<string>Stealth +5</string>
 				<key>speed</key>
@@ -32692,8 +32037,6 @@ Cantrips (at-will): guidance, resistance, thaumaturgy
 				<integer>14</integer>
 				<key>senses</key>
 				<string>passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Tiny fey, neutral good</string>
 				<key>skills</key>
 				<string>Perception +4, Stealth +7</string>
 				<key>speed</key>
@@ -32796,8 +32139,6 @@ At will: druidcraft
 				<integer>12</integer>
 				<key>senses</key>
 				<string>blindsight 10 ft., darkvision 60 ft., passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Tiny dragon, neutral good</string>
 				<key>skills</key>
 				<string>Perception +3, Stealth +4</string>
 				<key>speed</key>
@@ -32921,8 +32262,6 @@ If the worm takes 30 damage or more on a single turn from a creature inside it, 
 				<string>Con +11, Wis +4</string>
 				<key>senses</key>
 				<string>blindsight 30 ft., tremorsense 60 ft., passive Perception 9</string>
-				<key>sizeTypeAlignment</key>
-				<string>Gargantuan monstrosity, unaligned</string>
 				<key>speed</key>
 				<string>50 ft., burrow 30 ft.</string>
 				<key>xp</key>
@@ -33025,8 +32364,6 @@ If the worm takes 30 damage or more on a single turn from a creature inside it, 
 				<integer>12</integer>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (quaggoth), chaotic neutral</string>
 				<key>skills</key>
 				<string>Athletics +5</string>
 				<key>speed</key>
@@ -33126,8 +32463,6 @@ If the worm takes 30 damage or more on a single turn from a creature inside it, 
 				<integer>16</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium fiend, lawful evil</string>
 				<key>skills</key>
 				<string>Deception +10, Insight +8</string>
 				<key>speed</key>
@@ -33223,8 +32558,6 @@ At will: detect thoughts, disguise self, mage hand, minor illusion
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., tremorsense 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large monstrosity, unaligned</string>
 				<key>speed</key>
 				<string>30 ft., burrow 20 ft.</string>
 				<key>xp</key>
@@ -33318,8 +32651,6 @@ If the remorhaz takes 30 damage or more on a single turn from a creature inside 
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., tremorsense 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge monstrosity, unaligned</string>
 				<key>speed</key>
 				<string>30 ft., burrow 20 ft.</string>
 				<key>xp</key>
@@ -33428,8 +32759,6 @@ If the remorhaz takes 30 damage or more on a single turn from a creature inside 
 				<string>Str +7, Con +7, Wis +6, Cha +7</string>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium undead, neutral</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -33550,8 +32879,6 @@ If the remorhaz takes 30 damage or more on a single turn from a creature inside 
 				<string>Dex +4, Con +9, Wis +4, Cha +3</string>
 				<key>senses</key>
 				<string>passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Gargantuan monstrosity, unaligned</string>
 				<key>skills</key>
 				<string>Perception +4</string>
 				<key>speed</key>
@@ -33656,8 +32983,6 @@ If the remorhaz takes 30 damage or more on a single turn from a creature inside 
 				<integer>16</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 16</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large monstrosity, neutral evil</string>
 				<key>skills</key>
 				<string>Perception +6, Stealth +5</string>
 				<key>speed</key>
@@ -33773,8 +33098,6 @@ If the object touched is either metal armor or a metal shield being worn or carr
 				<integer>13</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium monstrosity, unaligned</string>
 				<key>speed</key>
 				<string>40 ft.</string>
 				<key>xp</key>
@@ -33891,8 +33214,6 @@ If the object touched is either metal armor or a metal shield being worn or carr
 				<integer>13</integer>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 15</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (sahuagin), lawful evil</string>
 				<key>skills</key>
 				<string>Perception +5</string>
 				<key>speed</key>
@@ -34008,8 +33329,6 @@ If the object touched is either metal armor or a metal shield being worn or carr
 				<integer>14</integer>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 16</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (sahuagin), lawful evil</string>
 				<key>skills</key>
 				<string>Perception +6, Religion +3</string>
 				<key>speed</key>
@@ -34143,8 +33462,6 @@ Cantrips (at will): guidance, thaumaturgy
 				<string>Dex +5, Con +6, Int +5, Wis +4</string>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 17</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large humanoid (sahuagin), lawful evil</string>
 				<key>skills</key>
 				<string>Perception +7</string>
 				<key>speed</key>
@@ -34266,8 +33583,6 @@ Cantrips (at will): guidance, thaumaturgy
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium elemental, neutral evil</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -34380,8 +33695,6 @@ Cantrips (at will): guidance, thaumaturgy
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large elemental, neutral evil</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -34494,8 +33807,6 @@ Cantrips (at will): guidance, thaumaturgy
 				<integer>10</integer>
 				<key>senses</key>
 				<string>passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium fey, chaotic neutral</string>
 				<key>skills</key>
 				<string>Perception +2, Performance +6, Stealth +5</string>
 				<key>speed</key>
@@ -34610,8 +33921,6 @@ Cantrips (at will): guidance, thaumaturgy
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium construct, chaotic evil</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -34705,8 +34014,6 @@ If a non-evil humanoid dies from this attack, a new shadow rises from the corpse
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium undead, chaotic evil</string>
 				<key>skills</key>
 				<string>Stealth +4 (+6 in dim light or darkness)</string>
 				<key>speed</key>
@@ -34827,8 +34134,6 @@ If a non-evil humanoid dies from this attack, a new shadow rises from the corpse
 				<integer>10</integer>
 				<key>senses</key>
 				<string>blindsight 60 ft. (blind beyond this radius), passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large plant, unaligned</string>
 				<key>skills</key>
 				<string>Stealth +2</string>
 				<key>speed</key>
@@ -34931,8 +34236,6 @@ If a non-evil humanoid dies from this attack, a new shadow rises from the corpse
 				<integer>10</integer>
 				<key>senses</key>
 				<string>blindsight 10 ft., darkvision 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large construct, unaligned</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -35055,8 +34358,6 @@ If a non-evil humanoid dies from this attack, a new shadow rises from the corpse
 				<integer>8</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 9</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium undead, lawful evil</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -35169,8 +34470,6 @@ If a non-evil humanoid dies from this attack, a new shadow rises from the corpse
 				<integer>8</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 9</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large undead, lawful evil</string>
 				<key>speed</key>
 				<string>40 ft.</string>
 				<key>xp</key>
@@ -35263,8 +34562,6 @@ If a non-evil humanoid dies from this attack, a new shadow rises from the corpse
 				<integer>8</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 9</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large undead, lawful evil</string>
 				<key>speed</key>
 				<string>60 ft.</string>
 				<key>xp</key>
@@ -35363,8 +34660,6 @@ If the disease is cured before the tadpole's emergence, the unborn slaad is disi
 				<integer>6</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large aberration, chaotic neutral</string>
 				<key>skills</key>
 				<string>Perception +1</string>
 				<key>speed</key>
@@ -35463,8 +34758,6 @@ If the disease is cured before the tadpole's emergence, the unborn slaad is disi
 				<integer>5</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 7</string>
-				<key>sizeTypeAlignment</key>
-				<string>Tiny aberration, chaotic neutral</string>
 				<key>skills</key>
 				<string>Stealth +4</string>
 				<key>speed</key>
@@ -35569,8 +34862,6 @@ If the disease is cured before the tadpole's emergence, the unborn slaad is disi
 				<integer>7</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large aberration, chaotic neutral</string>
 				<key>skills</key>
 				<string>Perception +1</string>
 				<key>speed</key>
@@ -35693,8 +34984,6 @@ If the disease is cured before the tadpole's emergence, the unborn slaad is disi
 				<integer>8</integer>
 				<key>senses</key>
 				<string>blindsight 30 ft., darkvision 60 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large aberration (shapechanger), chaotic neutral</string>
 				<key>skills</key>
 				<string>Arcana +3, Perception +2</string>
 				<key>speed</key>
@@ -35827,8 +35116,6 @@ At will: detect magic, detect thoughts, mage hand
 				<integer>8</integer>
 				<key>senses</key>
 				<string>blindsight 60 ft., darkvision 60 ft., passive Perception 16</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium aberration (shapechanger), chaotic neutral</string>
 				<key>skills</key>
 				<string>Arcana +5, Perception +6</string>
 				<key>speed</key>
@@ -35967,8 +35254,6 @@ At will: detect magic, detect thoughts, invisibility (self only), mage hand, maj
 				<integer>10</integer>
 				<key>senses</key>
 				<string>blindsight 60 ft., darkvision 60 ft., passive Perception 18</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium aberration (shapechanger), chaotic evil</string>
 				<key>skills</key>
 				<string>Arcana +6, Perception +8</string>
 				<key>speed</key>
@@ -36093,8 +35378,6 @@ At will: detect magic, detect thoughts, invisibility (self only), mage hand, maj
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium undead, chaotic evil</string>
 				<key>speed</key>
 				<string>0 ft., fly 50 ft. (hover)</string>
 				<key>xp</key>
@@ -36226,8 +35509,6 @@ Third Roar. Each creature makes a DC 18 Constitution saving throw. On a failed s
 				<string>Dex +6, Con +11, Int +9, Wis +10</string>
 				<key>senses</key>
 				<string>truesight 120 ft., passive Perception 20</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large monstrosity, lawful neutral</string>
 				<key>skills</key>
 				<string>Arcana +9, Perception +10, Religion +15</string>
 				<key>speed</key>
@@ -36367,8 +35648,6 @@ Cantrips (at will): sacred flame, spare the dying, thaumaturgy
 				<integer>18</integer>
 				<key>senses</key>
 				<string>truesight 120 ft., passive Perception 19</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large monstrosity, lawful neutral</string>
 				<key>skills</key>
 				<string>Arcana +14, History +14, Perception +9, Religion +9</string>
 				<key>speed</key>
@@ -36536,8 +35815,6 @@ Cantrips (at will): mage hand, minor illusion, prestidigitation
 				<integer>13</integer>
 				<key>senses</key>
 				<string>passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Tiny fey, neutral good</string>
 				<key>skills</key>
 				<string>Perception +3, Stealth +8</string>
 				<key>speed</key>
@@ -36629,8 +35906,6 @@ The stirge can detach itself by spending 5 feet of its movement. It does so afte
 				<integer>8</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 9</string>
-				<key>sizeTypeAlignment</key>
-				<string>Tiny beast, unaligned</string>
 				<key>speed</key>
 				<string>10 ft., fly 40 ft.</string>
 				<key>xp</key>
@@ -36750,8 +36025,6 @@ The fiend can have only one target charmed at a time. If it charms another, the 
 				<integer>12</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 15</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium fiend (shapechanger), neutral evil</string>
 				<key>skills</key>
 				<string>Deception +9, Insight +5, Perception +5, Persuasion +9, Stealth +7</string>
 				<key>speed</key>
@@ -36892,8 +36165,6 @@ If the tarrasque takes 60 damage or more on a single turn from a creature inside
 				<string>Int +5, Wis +9, Cha +9</string>
 				<key>senses</key>
 				<string>blindsight 120 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Gargantuan monstrosity (titan), unaligned</string>
 				<key>speed</key>
 				<string>40 ft.</string>
 				<key>xp</key>
@@ -37029,8 +36300,6 @@ If the tarrasque takes 60 damage or more on a single turn from a creature inside
 				<integer>12</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (thri-kreen), chaotic neutral</string>
 				<key>skills</key>
 				<string>Perception +3, Stealth +4, Survival +3</string>
 				<key>speed</key>
@@ -37148,8 +36417,6 @@ If the tarrasque takes 60 damage or more on a single turn from a creature inside
 				<integer>16</integer>
 				<key>senses</key>
 				<string>passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge plant, chaotic good</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -37254,8 +36521,6 @@ If the tarrasque takes 60 damage or more on a single turn from a creature inside
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (troglodyte), chaotic evil</string>
 				<key>skills</key>
 				<string>Stealth +2</string>
 				<key>speed</key>
@@ -37381,8 +36646,6 @@ If the tarrasque takes 60 damage or more on a single turn from a creature inside
 				<integer>9</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large giant, chaotic evil</string>
 				<key>skills</key>
 				<string>Perception +1</string>
 				<key>speed</key>
@@ -37507,8 +36770,6 @@ If the tarrasque takes 60 damage or more on a single turn from a creature inside
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 120 ft., tremorsense 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large monstrosity, chaotic evil</string>
 				<key>speed</key>
 				<string>30 ft., burrow 20 ft.</string>
 				<key>xp</key>
@@ -37637,8 +36898,6 @@ Unless surprised, a creature can avert its eyes to avoid the saving throw at the
 				<integer>17</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large celestial, lawful good</string>
 				<key>speed</key>
 				<string>50 ft.</string>
 				<key>xp</key>
@@ -37817,8 +37076,6 @@ Each time the vampire or the vampire's companions do anything harmful to the tar
 				<string>Dex +9, Wis +7, Cha +9</string>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 17</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium undead (shapechanger), lawful evil</string>
 				<key>skills</key>
 				<string>Perception +7, Stealth +9</string>
 				<key>speed</key>
@@ -38017,8 +37274,6 @@ Sunlight Hypersensitivity. The vampire takes 20 radiant damage when it starts it
 				<string>Dex +6, Wis +3</string>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium undead, neutral evil</string>
 				<key>skills</key>
 				<string>Perception +3, Stealth +6</string>
 				<key>speed</key>
@@ -38149,8 +37404,6 @@ Sunlight Hypersensitivity. The vampire takes 20 radiant damage when it starts it
 				<integer>10</integer>
 				<key>senses</key>
 				<string>blindsight 30 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large elemental, neutral</string>
 				<key>speed</key>
 				<string>0 ft., swim 60 ft.</string>
 				<key>xp</key>
@@ -38274,8 +37527,6 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 				<integer>13</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium undead, neutral evil</string>
 				<key>skills</key>
 				<string>Perception +3, Stealth +4</string>
 				<key>speed</key>
@@ -38388,8 +37639,6 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 				<integer>14</integer>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Tiny undead, chaotic evil</string>
 				<key>speed</key>
 				<string>0 ft., fly 50 ft. (hover)</string>
 				<key>xp</key>
@@ -38518,8 +37767,6 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 				<integer>14</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium undead, neutral evil</string>
 				<key>speed</key>
 				<string>0 ft., fly 60 ft. (hover)</string>
 				<key>xp</key>
@@ -38632,8 +37879,6 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 				<integer>12</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large dragon, unaligned</string>
 				<key>skills</key>
 				<string>Perception +4</string>
 				<key>speed</key>
@@ -38742,8 +37987,6 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., tremorsense 60 ft., passive Perception 16</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium elemental, neutral</string>
 				<key>skills</key>
 				<string>Perception +6, Stealth +3</string>
 				<key>speed</key>
@@ -38864,8 +38107,6 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 				<integer>12</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large monstrosity, chaotic evil</string>
 				<key>skills</key>
 				<string>Perception +3, Stealth +3</string>
 				<key>speed</key>
@@ -38994,8 +38235,6 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 				<integer>13</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 15</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge monstrosity, chaotic evil</string>
 				<key>skills</key>
 				<string>Perception +5, Stealth +4</string>
 				<key>speed</key>
@@ -39126,8 +38365,6 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 				<integer>15</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 15</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large monstrosity (shapechanger, yuan-ti), neutral evil</string>
 				<key>skills</key>
 				<string>Perception +5, Stealth +6</string>
 				<key>speed</key>
@@ -39239,8 +38476,6 @@ At will: animal friendship (snakes only)
 				<integer>12</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium monstrosity (shapechanger, yuan-ti), neutral evil</string>
 				<key>skills</key>
 				<string>Deception +5, Stealth +4</string>
 				<key>speed</key>
@@ -39384,8 +38619,6 @@ Type 3: Human head and upper body with a serpentine lower body instead of legs</
 				<integer>12</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (yuan-ti), neutral evil</string>
 				<key>skills</key>
 				<string>Deception +6, Perception +3, Stealth +3</string>
 				<key>speed</key>
@@ -39511,8 +38744,6 @@ At will: animal friendship (snakes only)
 				<string>Dex +5, Int +9, Wis +7, Cha +7</string>
 				<key>senses</key>
 				<string>truesight 120 ft., passive Perception 17</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium fiend (yugoloth), neutral evil</string>
 				<key>skills</key>
 				<string>Arcana +13, Deception +9, Insight +9, Perception +7</string>
 				<key>speed</key>
@@ -39656,8 +38887,6 @@ Cantrips (at will): fire bolt, mage hand, minor illusion, prestidigitation
 				<integer>10</integer>
 				<key>senses</key>
 				<string>blindsight 60 ft., darkvision 60 ft., passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium fiend (yugoloth), neutral evil</string>
 				<key>skills</key>
 				<string>Perception +3</string>
 				<key>speed</key>
@@ -39793,8 +39022,6 @@ Cantrips (at will): fire bolt, mage hand, minor illusion, prestidigitation
 				<integer>10</integer>
 				<key>senses</key>
 				<string>blindsight 60 ft., darkvision 60 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large fiend (yugoloth), neutral evil</string>
 				<key>skills</key>
 				<string>Intimidation +6, Perception +4, Stealth +4</string>
 				<key>speed</key>
@@ -39929,8 +39156,6 @@ At will: darkness, detect magic, dispel magic, invisibility (self only), mirror 
 				<integer>15</integer>
 				<key>senses</key>
 				<string>truesight 120 ft., passive Perception 17</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium fiend (yugoloth), neutral evil</string>
 				<key>skills</key>
 				<string>Intimidation +9, Perception +7, Stealth +8</string>
 				<key>speed</key>
@@ -40043,8 +39268,6 @@ At will: alter self, clairvoyance, darkness, detect magic, detect thoughts, disp
 				<string>Wis +0</string>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 8</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium undead, neutral evil</string>
 				<key>speed</key>
 				<string>20 ft.</string>
 				<key>xp</key>
@@ -40157,8 +39380,6 @@ At will: alter self, clairvoyance, darkness, detect magic, detect thoughts, disp
 				<string>Wis +0</string>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 8</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large undead, neutral evil</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -40264,8 +39485,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<string>Wis +2</string>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 9</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large undead, neutral evil</string>
 				<key>speed</key>
 				<string>0 ft., fly 20 ft. (hover)</string>
 				<key>xp</key>
@@ -40362,8 +39581,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>12</integer>
 				<key>senses</key>
 				<string>passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium beast, unaligned</string>
 				<key>skills</key>
 				<string>Athletics +5, Perception +3</string>
 				<key>speed</key>
@@ -40456,8 +39673,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>10</integer>
 				<key>senses</key>
 				<string>passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Small plant, unaligned</string>
 				<key>speed</key>
 				<string>20 ft.</string>
 				<key>xp</key>
@@ -40554,8 +39769,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>10</integer>
 				<key>senses</key>
 				<string>passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge plant, unaligned</string>
 				<key>speed</key>
 				<string>20 ft.</string>
 				<key>xp</key>
@@ -40652,8 +39865,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>10</integer>
 				<key>senses</key>
 				<string>passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large beast, unaligned</string>
 				<key>speed</key>
 				<string>50 ft.</string>
 				<key>xp</key>
@@ -40738,8 +39949,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>12</integer>
 				<key>senses</key>
 				<string>passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Small beast, unaligned</string>
 				<key>speed</key>
 				<string>30 ft., climb 30 ft.</string>
 				<key>xp</key>
@@ -40830,8 +40039,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>12</integer>
 				<key>senses</key>
 				<string>darkvision 30 ft., passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Tiny beast, unaligned</string>
 				<key>speed</key>
 				<string>20 ft., burrow 5 ft.</string>
 				<key>xp</key>
@@ -40922,8 +40129,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>12</integer>
 				<key>senses</key>
 				<string>blindsight 60 ft., passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Tiny beast, unaligned</string>
 				<key>speed</key>
 				<string>5 ft., fly 30 ft.</string>
 				<key>xp</key>
@@ -41038,8 +40243,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>12</integer>
 				<key>senses</key>
 				<string>passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +3</string>
 				<key>speed</key>
@@ -41148,8 +40351,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>13</integer>
 				<key>senses</key>
 				<string>passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium fey, lawful good</string>
 				<key>skills</key>
 				<string>Perception +3, Stealth +5</string>
 				<key>speed</key>
@@ -41242,8 +40443,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>14</integer>
 				<key>senses</key>
 				<string>passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Small beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +4</string>
 				<key>speed</key>
@@ -41342,8 +40541,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>9</integer>
 				<key>senses</key>
 				<string>passive Perception 9</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium beast, unaligned</string>
 				<key>speed</key>
 				<string>40 ft.</string>
 				<key>xp</key>
@@ -41458,8 +40655,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>13</integer>
 				<key>senses</key>
 				<string>passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +3</string>
 				<key>speed</key>
@@ -41558,8 +40753,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>8</integer>
 				<key>senses</key>
 				<string>passive Perception 9</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large beast, unaligned</string>
 				<key>speed</key>
 				<string>50 ft.</string>
 				<key>xp</key>
@@ -41644,8 +40837,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>12</integer>
 				<key>senses</key>
 				<string>passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Tiny beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +3, Stealth +4</string>
 				<key>speed</key>
@@ -41750,8 +40941,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>10</integer>
 				<key>senses</key>
 				<string>blindsight 10 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large beast, unaligned</string>
 				<key>speed</key>
 				<string>30 ft., swim 30 ft.</string>
 				<key>xp</key>
@@ -41842,8 +41031,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>8</integer>
 				<key>senses</key>
 				<string>blindsight 30 ft., passive Perception 9</string>
-				<key>sizeTypeAlignment</key>
-				<string>Tiny beast, unaligned</string>
 				<key>skills</key>
 				<string>Stealth +2</string>
 				<key>speed</key>
@@ -41936,8 +41123,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>10</integer>
 				<key>senses</key>
 				<string>passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large beast, unaligned</string>
 				<key>skills</key>
 				<string>Stealth +2</string>
 				<key>speed</key>
@@ -42050,8 +41235,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>13</integer>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 15</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium monstrosity, neutral evil</string>
 				<key>skills</key>
 				<string>Perception +5, Stealth +4</string>
 				<key>speed</key>
@@ -42144,8 +41327,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>14</integer>
 				<key>senses</key>
 				<string>passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium beast, unaligned</string>
 				<key>speed</key>
 				<string>50 ft.</string>
 				<key>xp</key>
@@ -42236,8 +41417,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>12</integer>
 				<key>senses</key>
 				<string>passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +3, Stealth +4</string>
 				<key>speed</key>
@@ -42342,8 +41521,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>11</integer>
 				<key>senses</key>
 				<string>passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large beast, unaligned</string>
 				<key>speed</key>
 				<string>40 ft.</string>
 				<key>xp</key>
@@ -42428,8 +41605,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>14</integer>
 				<key>senses</key>
 				<string>passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Small beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +4</string>
 				<key>speed</key>
@@ -42528,8 +41703,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>11</integer>
 				<key>senses</key>
 				<string>passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge beast, unaligned</string>
 				<key>speed</key>
 				<string>40 ft.</string>
 				<key>xp</key>
@@ -42626,8 +41799,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>10</integer>
 				<key>senses</key>
 				<string>passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large beast, unaligned</string>
 				<key>speed</key>
 				<string>50 ft.</string>
 				<key>xp</key>
@@ -42724,8 +41895,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>12</integer>
 				<key>senses</key>
 				<string>blindsight 10 ft., passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Tiny beast, unaligned</string>
 				<key>speed</key>
 				<string>30 ft., fly 60 ft., swim 30 ft.</string>
 				<key>xp</key>
@@ -42810,8 +41979,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>8</integer>
 				<key>senses</key>
 				<string>darkvision 30 ft., passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Tiny beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +1, Stealth +3</string>
 				<key>speed</key>
@@ -42928,8 +42095,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>12</integer>
 				<key>senses</key>
 				<string>passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge beast, unaligned</string>
 				<key>skills</key>
 				<string>Athletics +9, Perception +4</string>
 				<key>speed</key>
@@ -43028,8 +42193,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>12</integer>
 				<key>senses</key>
 				<string>darkvision 30 ft., passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium beast, unaligned</string>
 				<key>speed</key>
 				<string>30 ft., burrow 10 ft.</string>
 				<key>xp</key>
@@ -43120,8 +42283,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>12</integer>
 				<key>senses</key>
 				<string>blindsight 60 ft., passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large beast, unaligned</string>
 				<key>speed</key>
 				<string>10 ft., fly 60 ft.</string>
 				<key>xp</key>
@@ -43218,8 +42379,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>7</integer>
 				<key>senses</key>
 				<string>passive Perception 8</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large beast, unaligned</string>
 				<key>speed</key>
 				<string>40 ft.</string>
 				<key>xp</key>
@@ -43316,8 +42475,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>7</integer>
 				<key>senses</key>
 				<string>blindsight 30 ft., passive Perception 8</string>
-				<key>sizeTypeAlignment</key>
-				<string>Small beast, unaligned</string>
 				<key>speed</key>
 				<string>30 ft., climb 30 ft.</string>
 				<key>xp</key>
@@ -43414,8 +42571,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>10</integer>
 				<key>senses</key>
 				<string>blindsight 10 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +2</string>
 				<key>speed</key>
@@ -43502,8 +42657,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>9</integer>
 				<key>senses</key>
 				<string>blindsight 30 ft., passive Perception 9</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium beast, unaligned</string>
 				<key>skills</key>
 				<string>Stealth +4</string>
 				<key>speed</key>
@@ -43608,8 +42761,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>10</integer>
 				<key>senses</key>
 				<string>passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge beast, unaligned</string>
 				<key>skills</key>
 				<string>Stealth +5</string>
 				<key>speed</key>
@@ -43718,8 +42869,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>14</integer>
 				<key>senses</key>
 				<string>passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large beast, neutral good</string>
 				<key>skills</key>
 				<string>Perception +4</string>
 				<key>speed</key>
@@ -43826,8 +42975,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>14</integer>
 				<key>senses</key>
 				<string>passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +4</string>
 				<key>speed</key>
@@ -43920,8 +43067,6 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<integer>7</integer>
 				<key>senses</key>
 				<string>blindsight 30 ft., passive Perception 8</string>
-				<key>sizeTypeAlignment</key>
-				<string>Small beast, unaligned</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -44019,8 +43164,6 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 30 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +2, Stealth +3</string>
 				<key>speed</key>
@@ -44125,8 +43268,6 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>12</integer>
 				<key>senses</key>
 				<string>passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large beast, unaligned</string>
 				<key>speed</key>
 				<string>40 ft.</string>
 				<key>xp</key>
@@ -44223,8 +43364,6 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>12</integer>
 				<key>senses</key>
 				<string>passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +3</string>
 				<key>speed</key>
@@ -44317,8 +43456,6 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 30 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large beast, unaligned</string>
 				<key>speed</key>
 				<string>30 ft., climb 30 ft.</string>
 				<key>xp</key>
@@ -44415,8 +43552,6 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +4, Stealth +5</string>
 				<key>speed</key>
@@ -44531,8 +43666,6 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>13</integer>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 15</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large beast, neutral</string>
 				<key>skills</key>
 				<string>Perception +5, Stealth +4</string>
 				<key>speed</key>
@@ -44631,8 +43764,6 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>10</integer>
 				<key>senses</key>
 				<string>blindsight 10 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +2</string>
 				<key>speed</key>
@@ -44719,8 +43850,6 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Small beast, unaligned</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -44829,8 +43958,6 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>9</integer>
 				<key>senses</key>
 				<string>blindsight 60 ft., passive Perception 9</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large beast, unaligned</string>
 				<key>speed</key>
 				<string>40 ft.</string>
 				<key>xp</key>
@@ -44915,8 +44042,6 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>12</integer>
 				<key>senses</key>
 				<string>passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large beast, unaligned</string>
 				<key>speed</key>
 				<string>0 ft., swim 40 ft.</string>
 				<key>xp</key>
@@ -45013,8 +44138,6 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>10</integer>
 				<key>senses</key>
 				<string>blindsight 60 ft., passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +3</string>
 				<key>speed</key>
@@ -45119,8 +44242,6 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>11</integer>
 				<key>senses</key>
 				<string>blindsight 10 ft., darkvision 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large beast, unaligned</string>
 				<key>skills</key>
 				<string>Stealth +7</string>
 				<key>speed</key>
@@ -45250,8 +44371,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 30 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large beast, unaligned</string>
 				<key>speed</key>
 				<string>20 ft., swim 40 ft.</string>
 				<key>xp</key>
@@ -45364,8 +44483,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>12</integer>
 				<key>senses</key>
 				<string>passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large beast, neutral evil</string>
 				<key>skills</key>
 				<string>Perception +3</string>
 				<key>speed</key>
@@ -45464,8 +44581,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>10</integer>
 				<key>senses</key>
 				<string>passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium beast, unaligned</string>
 				<key>speed</key>
 				<string>10 ft., fly 50 ft.</string>
 				<key>xp</key>
@@ -45550,8 +44665,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>12</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +3, Stealth +5</string>
 				<key>speed</key>
@@ -45644,8 +44757,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>12</integer>
 				<key>senses</key>
 				<string>blindsight 10 ft., darkvision 60 ft., passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +3, Stealth +7</string>
 				<key>speed</key>
@@ -45750,8 +44861,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>10</integer>
 				<key>senses</key>
 				<string>passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium beast, unaligned</string>
 				<key>speed</key>
 				<string>40 ft.</string>
 				<key>xp</key>
@@ -45848,8 +44957,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>14</integer>
 				<key>senses</key>
 				<string>passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Tiny beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +4</string>
 				<key>speed</key>
@@ -45948,8 +45055,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>10</integer>
 				<key>senses</key>
 				<string>blindsight 30 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +2</string>
 				<key>speed</key>
@@ -46048,8 +45153,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>12</integer>
 				<key>senses</key>
 				<string>passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +3</string>
 				<key>speed</key>
@@ -46142,8 +45245,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>12</integer>
 				<key>senses</key>
 				<string>passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Small beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +3</string>
 				<key>speed</key>
@@ -46242,8 +45343,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>12</integer>
 				<key>senses</key>
 				<string>blindsight 120 ft., passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +3</string>
 				<key>speed</key>
@@ -46354,8 +45453,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>12</integer>
 				<key>senses</key>
 				<string>passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +3, Stealth +6</string>
 				<key>speed</key>
@@ -46472,8 +45569,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>8</integer>
 				<key>senses</key>
 				<string>darkvision 30 ft., passive Perception 9</string>
-				<key>sizeTypeAlignment</key>
-				<string>Tiny beast, unaligned</string>
 				<key>speed</key>
 				<string>20 ft., climb 20 ft.</string>
 				<key>xp</key>
@@ -46564,8 +45659,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>11</integer>
 				<key>senses</key>
 				<string>passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Huge beast, unaligned</string>
 				<key>speed</key>
 				<string>40 ft.</string>
 				<key>xp</key>
@@ -46656,8 +45749,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>12</integer>
 				<key>senses</key>
 				<string>passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +3</string>
 				<key>speed</key>
@@ -46756,8 +45847,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>10</integer>
 				<key>senses</key>
 				<string>passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium beast, unaligned</string>
 				<key>speed</key>
 				<string>40 ft.</string>
 				<key>xp</key>
@@ -46866,8 +45955,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 30 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Small beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +2, Stealth +4</string>
 				<key>speed</key>
@@ -46972,8 +46059,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>12</integer>
 				<key>senses</key>
 				<string>darkvision 120 ft., passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Tiny beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +3, Stealth +3</string>
 				<key>speed</key>
@@ -47084,8 +46169,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>14</integer>
 				<key>senses</key>
 				<string>passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +4, Stealth +6</string>
 				<key>speed</key>
@@ -47190,8 +46273,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large monstrosity, unaligned</string>
 				<key>skills</key>
 				<string>Stealth +6</string>
 				<key>speed</key>
@@ -47296,8 +46377,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>10</integer>
 				<key>senses</key>
 				<string>blindsight 10 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Tiny beast, unaligned</string>
 				<key>speed</key>
 				<string>30 ft., swim 30 ft.</string>
 				<key>xp</key>
@@ -47400,8 +46479,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>13</integer>
 				<key>senses</key>
 				<string>passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +3</string>
 				<key>speed</key>
@@ -47500,8 +46577,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>11</integer>
 				<key>senses</key>
 				<string>passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium beast, unaligned</string>
 				<key>speed</key>
 				<string>40 ft.</string>
 				<key>xp</key>
@@ -47586,8 +46661,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>7</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 8</string>
-				<key>sizeTypeAlignment</key>
-				<string>Tiny beast, unaligned</string>
 				<key>speed</key>
 				<string>0 ft., swim 40 ft.</string>
 				<key>xp</key>
@@ -47684,8 +46757,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 30 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Tiny beast, unaligned</string>
 				<key>speed</key>
 				<string>20 ft.</string>
 				<key>xp</key>
@@ -47782,8 +46853,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>12</integer>
 				<key>senses</key>
 				<string>passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Tiny beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +3</string>
 				<key>speed</key>
@@ -47882,8 +46951,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>10</integer>
 				<key>senses</key>
 				<string>blindsight 30 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +2</string>
 				<key>speed</key>
@@ -47988,8 +47055,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>12</integer>
 				<key>senses</key>
 				<string>passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large beast, unaligned</string>
 				<key>speed</key>
 				<string>40 ft.</string>
 				<key>xp</key>
@@ -48080,8 +47145,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>11</integer>
 				<key>senses</key>
 				<string>passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large beast, unaligned</string>
 				<key>speed</key>
 				<string>60 ft.</string>
 				<key>xp</key>
@@ -48178,8 +47241,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>12</integer>
 				<key>senses</key>
 				<string>passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +3, Stealth +6</string>
 				<key>speed</key>
@@ -48278,8 +47339,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>8</integer>
 				<key>senses</key>
 				<string>blindsight 10 ft., passive Perception 9</string>
-				<key>sizeTypeAlignment</key>
-				<string>Tiny beast, unaligned</string>
 				<key>speed</key>
 				<string>10 ft.</string>
 				<key>xp</key>
@@ -48358,8 +47417,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>10</integer>
 				<key>senses</key>
 				<string>passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Tiny beast, unaligned</string>
 				<key>speed</key>
 				<string>0 ft., swim 20 ft.</string>
 				<key>xp</key>
@@ -48450,8 +47507,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 30 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Tiny beast, unaligned</string>
 				<key>skills</key>
 				<string>Stealth +4</string>
 				<key>speed</key>
@@ -48562,8 +47617,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>12</integer>
 				<key>senses</key>
 				<string>blindsight 60 ft., passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium swarm of Tiny beasts, unaligned</string>
 				<key>speed</key>
 				<string>0 ft., fly 30 ft.</string>
 				<key>xp</key>
@@ -48672,8 +47725,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>7</integer>
 				<key>senses</key>
 				<string>blindsight 10 ft., passive Perception 8</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium swarm of Tiny beasts, unaligned</string>
 				<key>speed</key>
 				<string>20 ft., climb 20 ft.</string>
 				<key>xp</key>
@@ -48776,8 +47827,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>10</integer>
 				<key>senses</key>
 				<string>blindsight 10 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium swarm of Tiny beasts, unaligned</string>
 				<key>speed</key>
 				<string>30 ft., swim 30 ft.</string>
 				<key>xp</key>
@@ -48880,8 +47929,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>7</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 8</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium swarm of Tiny beasts, unaligned</string>
 				<key>speed</key>
 				<string>0 ft., swim 40 ft.</string>
 				<key>xp</key>
@@ -48990,8 +48037,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 30 ft., passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium swarm of Tiny beasts, unaligned</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -49100,8 +48145,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>12</integer>
 				<key>senses</key>
 				<string>passive Perception 15</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium swarm of Tiny beasts, unaligned</string>
 				<key>skills</key>
 				<string>Perception +5</string>
 				<key>speed</key>
@@ -49206,8 +48249,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>12</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +3, Stealth +6</string>
 				<key>speed</key>
@@ -49312,8 +48353,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>12</integer>
 				<key>senses</key>
 				<string>passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +3</string>
 				<key>speed</key>
@@ -49412,8 +48451,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>12</integer>
 				<key>senses</key>
 				<string>passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large beast, unaligned</string>
 				<key>speed</key>
 				<string>60 ft.</string>
 				<key>xp</key>
@@ -49516,8 +48553,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>12</integer>
 				<key>senses</key>
 				<string>passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Tiny beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +3, Stealth +5</string>
 				<key>speed</key>
@@ -49622,8 +48657,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>12</integer>
 				<key>senses</key>
 				<string>passive Perception 15</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large monstrosity, neutral evil</string>
 				<key>skills</key>
 				<string>Perception +5, Stealth +3</string>
 				<key>speed</key>
@@ -49728,8 +48761,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>12</integer>
 				<key>senses</key>
 				<string>passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium beast, unaligned</string>
 				<key>skills</key>
 				<string>Perception +3, Stealth +4</string>
 				<key>speed</key>
@@ -49850,8 +48881,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>11</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Large monstrosity, neutral evil</string>
 				<key>skills</key>
 				<string>Perception +4</string>
 				<key>speed</key>
@@ -49975,8 +49004,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<true/>
 				<key>senses</key>
 				<string>passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (any race), any alignment</string>
 				<key>skills</key>
 				<string>Medicine +4, Religion +2</string>
 				<key>speed</key>
@@ -50114,8 +49141,6 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 				<string>Int +9, Wis +6</string>
 				<key>senses</key>
 				<string>passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (any race), any alignment</string>
 				<key>skills</key>
 				<string>Arcana +13, History +13</string>
 				<key>speed</key>
@@ -50257,8 +49282,6 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 				<string>Dex +7, Int +5</string>
 				<key>senses</key>
 				<string>passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (any race), any non-good alignment</string>
 				<key>skills</key>
 				<string>Acrobatics +7, Deception +4, Perception +4, Stealth +11</string>
 				<key>speed</key>
@@ -50403,8 +49426,6 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 				<true/>
 				<key>senses</key>
 				<string>passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (any race), any non-lawful alignment</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -50533,8 +49554,6 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 				<string>Str +4, Dex +5, Wis +2</string>
 				<key>senses</key>
 				<string>passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (any race), any non-lawful alignment</string>
 				<key>skills</key>
 				<string>Athletics +4, Deception +4</string>
 				<key>speed</key>
@@ -50640,8 +49659,6 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 				<true/>
 				<key>senses</key>
 				<string>passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (any race), any chaotic alignment</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -50771,8 +49788,6 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 				<true/>
 				<key>senses</key>
 				<string>passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (any race), any alignment</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -50899,8 +49914,6 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 				<true/>
 				<key>senses</key>
 				<string>passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (any race), any non-good alignment</string>
 				<key>skills</key>
 				<string>Deception +2, Religion +2</string>
 				<key>speed</key>
@@ -51041,8 +50054,6 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 				<true/>
 				<key>senses</key>
 				<string>passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (any race), any non-good alignment</string>
 				<key>skills</key>
 				<string>Deception +4, Persuasion +4, Religion +2</string>
 				<key>speed</key>
@@ -51181,8 +50192,6 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 				<true/>
 				<key>senses</key>
 				<string>passive Perception 14</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (any race), any alignment</string>
 				<key>skills</key>
 				<string>Medicine +4, Nature +3, Perception +4</string>
 				<key>speed</key>
@@ -51329,8 +50338,6 @@ Cantrips (at will): druidcraft, produce flame, shillelagh
 				<string>Str +7, Dex +5, Con +6</string>
 				<key>senses</key>
 				<string>passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (any race), any alignment</string>
 				<key>skills</key>
 				<string>Athletics +10, Intimidation +5</string>
 				<key>speed</key>
@@ -51466,8 +50473,6 @@ Cantrips (at will): druidcraft, produce flame, shillelagh
 				<true/>
 				<key>senses</key>
 				<string>passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (any race), any alignment</string>
 				<key>skills</key>
 				<string>Perception +2</string>
 				<key>speed</key>
@@ -51619,8 +50624,6 @@ Cantrips (at will): druidcraft, produce flame, shillelagh
 				<string>Con +4, Wis +2</string>
 				<key>senses</key>
 				<string>passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (any race), any alignment</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -51764,8 +50767,6 @@ Cantrips (at will): druidcraft, produce flame, shillelagh
 				<string>Int +6, Wis +4</string>
 				<key>senses</key>
 				<string>passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (any race), any alignment</string>
 				<key>skills</key>
 				<string>Arcana +6, History +6</string>
 				<key>speed</key>
@@ -51909,8 +50910,6 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation
 				<true/>
 				<key>senses</key>
 				<string>passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (any race), any alignment</string>
 				<key>skills</key>
 				<string>Deception +5, Insight +4, Persuasion +5</string>
 				<key>speed</key>
@@ -52046,8 +51045,6 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation
 				<true/>
 				<key>senses</key>
 				<string>passive Perception 13</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (any race), any alignment</string>
 				<key>skills</key>
 				<string>Medicine +7, Persuasion +3, Religion +4</string>
 				<key>speed</key>
@@ -52201,8 +51198,6 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 				<true/>
 				<key>senses</key>
 				<string>passive Perception 15</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (any race), any alignment</string>
 				<key>skills</key>
 				<string>Nature +4, Perception +5, Stealth +6, Survival +5</string>
 				<key>speed</key>
@@ -52344,8 +51339,6 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 				<true/>
 				<key>senses</key>
 				<string>passive Perception 16</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (any race), any alignment</string>
 				<key>skills</key>
 				<string>Deception +5, Insight +4, Investigation +5, Perception +6, Persuasion +5, Sleight of Hand +4, Stealth +4</string>
 				<key>speed</key>
@@ -52484,8 +51477,6 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 				<true/>
 				<key>senses</key>
 				<string>passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (any race), any non-good alignment</string>
 				<key>skills</key>
 				<string>Intimidation +2</string>
 				<key>speed</key>
@@ -52611,8 +51602,6 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 				<true/>
 				<key>senses</key>
 				<string>passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (any race), any alignment</string>
 				<key>speed</key>
 				<string>30 ft.</string>
 				<key>xp</key>
@@ -52758,8 +51747,6 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 				<true/>
 				<key>senses</key>
 				<string>passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (any race), any alignment</string>
 				<key>skills</key>
 				<string>Athletics +5, Perception +2</string>
 				<key>speed</key>
@@ -52872,8 +51859,6 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 				<string>Wis +3</string>
 				<key>senses</key>
 				<string>passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (human), neutral evil</string>
 				<key>skills</key>
 				<string>Deception +4, Stealth +5</string>
 				<key>speed</key>
@@ -52997,8 +51982,6 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 				<string>Wis +4</string>
 				<key>senses</key>
 				<string>passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (human), neutral evil</string>
 				<key>skills</key>
 				<string>Deception +6, Stealth +7</string>
 				<key>speed</key>
@@ -53116,8 +52099,6 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 				<string>Wis +2</string>
 				<key>senses</key>
 				<string>passive Perception 10</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (human), neutral evil</string>
 				<key>skills</key>
 				<string>Deception +3, Stealth +5</string>
 				<key>speed</key>
@@ -53227,8 +52208,6 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 				<integer>10</integer>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 12</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium monstrosity, neutral</string>
 				<key>skills</key>
 				<string>Perception +2</string>
 				<key>speed</key>
@@ -53358,8 +52337,6 @@ A humanoid slain by this attack rises 24 hours later as a zombie under Naergoth'
 				<string>Dex +5, Wis +6</string>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 16</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium undead, neutral evil</string>
 				<key>skills</key>
 				<string>Perception +6, Stealth +5</string>
 				<key>speed</key>
@@ -53474,8 +52451,6 @@ A humanoid slain by this attack rises 24 hours later as a zombie under Naergoth'
 				<string>Constitution +6, Wisdom +5</string>
 				<key>senses</key>
 				<string>darkvision 60 ft., passive Perception 15</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (elf), neutral evil</string>
 				<key>skills</key>
 				<string>Arcana +7, Perception +5</string>
 				<key>speed</key>
@@ -53593,8 +52568,6 @@ A humanoid slain by this attack rises 24 hours later as a zombie under Naergoth'
 				<string>Dexterity +5, Wisdom +5</string>
 				<key>senses</key>
 				<string>darkvision 60 ft.*, passive Perception 11</string>
-				<key>sizeTypeAlignment</key>
-				<string>Medium humanoid (human), neutral evil</string>
 				<key>skills</key>
 				<string>Arcana +7, Religion +7</string>
 				<key>speed</key>
@@ -53747,8 +52720,6 @@ A humanoid slain by this attack rises 24 hours later as a zombie under Naergoth'
 				<string>Strength +19, Dexterity +9, Wisdom +17</string>
 				<key>senses</key>
 				<string>darkvision 240 ft., truesight 120 ft., passive Perception 36</string>
-				<key>sizeTypeAlignment</key>
-				<string>Gargantuan fiend, chaotic evil</string>
 				<key>skills</key>
 				<string>Arcana +17, Perception +26, Religion +17</string>
 				<key>speed</key>
@@ -53860,7 +52831,7 @@ A humanoid slain by this attack rises 24 hours later as a zombie under Naergoth'
 		</dict>
 	</array>
 	<key>version</key>
-	<integer>1450415026</integer>
+	<integer>1450416757</integer>
 </dict>
 </plist>
 

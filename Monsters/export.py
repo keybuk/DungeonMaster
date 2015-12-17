@@ -264,7 +264,7 @@ class Exporter(monster.MonsterParser):
 
 		match = CHALLENGE_RE.match(line)
 		if match is None:
-			self.warning("Challenge didn't match expected format: %s" % line)
+			raise self.error("Challenge didn't match expected format: %s" % line)
 		else:
 			(cr, xp) = match.groups()
 			if cr == '1/8':
@@ -420,7 +420,6 @@ def main():
 				monsters.append(parser.object())
 			except monster.ParseException, e:
 				print >>sys.stderr, "%s:%d:%s" % (e.filename, e.lineno, e.message)
-				sys.exit(1)
 		finally:
 			parser.close()
 
