@@ -29,6 +29,37 @@ enum Size: String {
     case Gargantuan
 }
 
+enum MonsterType {
+    case Aberration
+    case Beast
+    case Celestial
+    case Construct
+    case Dragon
+    case Elemental
+    case Fey
+    case Fiend
+    case Giant
+    case Humanoid
+    case Monstrosity
+    case Ooze
+    case Plant
+    case Undead
+}
+
+enum Environment {
+    case Arctic
+    case Coastal
+    case Desert
+    case Forest
+    case Grassland
+    case Hill
+    case Mountain
+    case Swamp
+    case Underdark
+    case Underwater
+    case Urban
+}
+
 enum Alignment: String {
     case Unaligned = "unaligned"
     case LawfulGood = "lawful good"
@@ -40,6 +71,29 @@ enum Alignment: String {
     case ChaoticGood = "chaotic good"
     case ChaoticNeutral = "chaotic neutral"
     case ChaoticEvil = "chaotic evil"
+}
+
+enum Armor {
+    // Light Armor
+    case Padded
+    case Leather
+    case StuddedLeather
+    
+    // Medium Armor
+    case Hide
+    case ChainShirt
+    case ScaleMail
+    case Breastplate
+    case HalfPlate
+    
+    // Heavy Armor
+    case RingMail
+    case ChainMail
+    case Splint
+    case Plate
+    
+    // Shield
+    case Shield
 }
 
 enum DamageType: String {
@@ -74,4 +128,43 @@ enum ConditionType: String {
     case Restrained = "restrained"
     case Stunned = "stunned"
     case Unconcious = "unconcious"
+}
+
+enum Language {
+    // Standard Languages
+    case Common
+    case Dwarvish
+    case Elvish
+    case Giant
+    case Gnomish
+    case Goblin
+    case Halfling
+    case Orc
+    
+    // Exotic Languages
+    case Abyssal
+    case Celestial
+    case Draconic
+    case DeepSpeech
+    case Infernal
+    case Primordial
+    case Sylvan
+    case Undercommon
+    
+    // Primordial Dialects
+    case Auran
+    case Aquan
+    case Ignan
+    case Terran
+}
+
+enum MagicSchool {
+    case Abjuration
+    case Conjuration
+    case Divination
+    case Enchantment
+    case Evocation
+    case Illusion
+    case Necromancy
+    case Transmutation
 }

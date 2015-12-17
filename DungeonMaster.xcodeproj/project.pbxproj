@@ -27,6 +27,7 @@
 		D243F6431C189A7500324572 /* TabletopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D243F6421C189A7500324572 /* TabletopView.swift */; };
 		D249CF831C21DDF300CDE673 /* PointGeneratorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D249CF821C21DDF300CDE673 /* PointGeneratorTest.swift */; };
 		D249CF851C21DF3500CDE673 /* PointGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D249CF841C21DF3500CDE673 /* PointGenerator.swift */; };
+		D249CF871C224ED900CDE673 /* Rules.plist in Resources */ = {isa = PBXBuildFile; fileRef = D249CF861C224ED900CDE673 /* Rules.plist */; };
 		D2511FF81C12B1AD00A09F0B /* MonstersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2511FF71C12B1AD00A09F0B /* MonstersViewController.swift */; };
 		D2511FFA1C14BC3700A09F0B /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2511FF91C14BC3700A09F0B /* Tag.swift */; };
 		D25120001C14C7ED00A09F0B /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2511FFF1C14C7ED00A09F0B /* BooksViewController.swift */; };
@@ -92,6 +93,7 @@
 		D243F6421C189A7500324572 /* TabletopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabletopView.swift; sourceTree = "<group>"; };
 		D249CF821C21DDF300CDE673 /* PointGeneratorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointGeneratorTest.swift; sourceTree = "<group>"; };
 		D249CF841C21DF3500CDE673 /* PointGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointGenerator.swift; sourceTree = "<group>"; };
+		D249CF861C224ED900CDE673 /* Rules.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Rules.plist; sourceTree = "<group>"; };
 		D2511FF71C12B1AD00A09F0B /* MonstersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonstersViewController.swift; sourceTree = "<group>"; };
 		D2511FF91C14BC3700A09F0B /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		D2511FFF1C14C7ED00A09F0B /* BooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				D26FBA361C1DE2CE00D44503 /* Sounds */,
 				D2A9AF171BFFEAA5009902ED /* LaunchScreen.storyboard */,
 				D2A9AF1A1BFFEAA5009902ED /* Info.plist */,
+				D249CF861C224ED900CDE673 /* Rules.plist */,
 				D2116A561C10F791001EDBBA /* Data.plist */,
 			);
 			path = DungeonMaster;
@@ -369,6 +372,7 @@
 			files = (
 				D26FBA371C1DE2CE00D44503 /* Sounds in Resources */,
 				D2A9AF191BFFEAA5009902ED /* LaunchScreen.storyboard in Resources */,
+				D249CF871C224ED900CDE673 /* Rules.plist in Resources */,
 				D2116A571C10F791001EDBBA /* Data.plist in Resources */,
 				D2A9AF161BFFEAA5009902ED /* Assets.xcassets in Resources */,
 				D2A9AF141BFFEAA5009902ED /* Main.storyboard in Resources */,
