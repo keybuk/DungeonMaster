@@ -13,8 +13,6 @@ final class Condition: NSManagedObject {
     
     @NSManaged var target: Combatant
     
-    @NSManaged var rawType: String
-    
     var type: ConditionType {
         get {
             return ConditionType(rawValue: rawType)!
@@ -23,7 +21,8 @@ final class Condition: NSManagedObject {
             rawType = newType.rawValue
         }
     }
-    
+    @NSManaged private var rawType: String
+
     convenience init(target: Combatant, type: ConditionType, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Condition, inManagedObjectContext: context)
         self.init(entity: entity, insertIntoManagedObjectContext: context)

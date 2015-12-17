@@ -12,9 +12,6 @@ import CoreData
 final class Damage: NSManagedObject {
     
     @NSManaged var target: Combatant
-
-    @NSManaged var rawPoints: Int16
-    @NSManaged var rawType: String
     
     var points: Int {
         get {
@@ -24,7 +21,8 @@ final class Damage: NSManagedObject {
             rawPoints = Int16(newPoints)
         }
     }
-    
+    @NSManaged private var rawPoints: Int16
+
     var type: DamageType {
         get {
             return DamageType(rawValue: rawType)!
@@ -33,7 +31,8 @@ final class Damage: NSManagedObject {
             rawType = newType.rawValue
         }
     }
-    
+    @NSManaged private var rawType: String
+
     convenience init(target: Combatant, points: Int, type: DamageType, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Damage, inManagedObjectContext: context)
         self.init(entity: entity, insertIntoManagedObjectContext: context)

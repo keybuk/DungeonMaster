@@ -15,8 +15,6 @@ final class Source: NSManagedObject {
     @NSManaged var section: String?
     @NSManaged var monster: Monster
 
-    @NSManaged var rawPage: Int16
-
     var page: Int {
         get {
             return Int(rawPage)
@@ -25,6 +23,7 @@ final class Source: NSManagedObject {
             rawPage = Int16(newPage)
         }
     }
+    @NSManaged private var rawPage: Int16
     
     convenience init(book: Book, page: Int, monster: Monster, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Source, inManagedObjectContext: context)

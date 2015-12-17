@@ -13,8 +13,6 @@ final class Book: NSManagedObject {
     
     @NSManaged var name: String
     
-    @NSManaged var rawType: Int16
-    
     var type: BookType {
         get {
             return BookType(rawValue: rawType)!
@@ -23,9 +21,10 @@ final class Book: NSManagedObject {
             rawType = newType.rawValue
         }
     }
-    
+    @NSManaged private var rawType: Int16
+
     @NSManaged var sources: NSSet
-    
+
     var allSources: Set<Source> {
         return sources as! Set<Source>
     }

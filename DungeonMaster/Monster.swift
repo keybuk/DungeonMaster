@@ -12,18 +12,8 @@ import CoreData
 final class Monster: NSManagedObject {
     
     @NSManaged var name: String
-
-    @NSManaged var rawSize: String
-    @NSManaged var rawAlignment: String?
-    @NSManaged var rawHitPoints: NSNumber?
-    @NSManaged var rawHitDice: String
-    @NSManaged var rawStrength: Int16
-    @NSManaged var rawDexterity: Int16
-    @NSManaged var rawConstitution: Int16
-    @NSManaged var rawIntelligence: Int16
-    @NSManaged var rawWisdom: Int16
-    @NSManaged var rawCharisma: Int16
-    @NSManaged var rawPassivePerception: Int16
+    @NSManaged var isNPC: Bool
+    @NSManaged var lair: Lair?
 
     var size: Size {
         get {
@@ -33,7 +23,8 @@ final class Monster: NSManagedObject {
             rawSize = newSize.rawValue
         }
     }
-    
+    @NSManaged private var rawSize: String
+
     var alignment: Alignment? {
         get {
             return rawAlignment != nil ? Alignment(rawValue: rawAlignment!) : nil
@@ -42,6 +33,7 @@ final class Monster: NSManagedObject {
             rawAlignment = newAlignment?.rawValue
         }
     }
+    @NSManaged private var rawAlignment: String?
 
     var hitPoints: Int? {
         get {
@@ -51,7 +43,8 @@ final class Monster: NSManagedObject {
             rawHitPoints = newHitPoints != nil ? NSNumber(integer: newHitPoints!) : nil
         }
     }
-    
+    @NSManaged private var rawHitPoints: NSNumber?
+
     var hitDice: DiceCombo {
         get {
             return try! DiceCombo(description: rawHitDice)
@@ -60,6 +53,7 @@ final class Monster: NSManagedObject {
             rawHitDice = newHitDice.description
         }
     }
+    @NSManaged private var rawHitDice: String
 
     var strength: Int {
         get {
@@ -69,7 +63,8 @@ final class Monster: NSManagedObject {
             rawStrength = Int16(newStrength)
         }
     }
-    
+    @NSManaged private var rawStrength: Int16
+
     var dexterity: Int {
         get {
             return Int(rawDexterity)
@@ -78,7 +73,8 @@ final class Monster: NSManagedObject {
             rawDexterity = Int16(newDexterity)
         }
     }
-    
+    @NSManaged private var rawDexterity: Int16
+
     var constitution: Int {
         get {
             return Int(rawConstitution)
@@ -87,6 +83,7 @@ final class Monster: NSManagedObject {
             rawConstitution = Int16(newConstitution)
         }
     }
+    @NSManaged private var rawConstitution: Int16
 
     var intelligence: Int {
         get {
@@ -96,6 +93,7 @@ final class Monster: NSManagedObject {
             rawIntelligence = Int16(newIntelligence)
         }
     }
+    @NSManaged private var rawIntelligence: Int16
 
     var wisdom: Int {
         get {
@@ -105,6 +103,7 @@ final class Monster: NSManagedObject {
             rawWisdom = Int16(newWisdom)
         }
     }
+    @NSManaged private var rawWisdom: Int16
 
     var charisma: Int {
         get {
@@ -114,6 +113,7 @@ final class Monster: NSManagedObject {
             rawCharisma = Int16(newCharisma)
         }
     }
+    @NSManaged private var rawCharisma: Int16
 
     var passivePerception: Int {
         get {
@@ -123,12 +123,12 @@ final class Monster: NSManagedObject {
             rawPassivePerception = Int16(newPassivePerception)
         }
     }
+    @NSManaged private var rawPassivePerception: Int16
 
-    @NSManaged var isNPC: Bool
     @NSManaged var type: String
     @NSManaged var cr: Float
     @NSManaged var xp: Int32
-    
+
     // Original un-parsed stat block text.
     @NSManaged var sizeTypeAlignment: String
     @NSManaged var armorClass: String
@@ -144,13 +144,46 @@ final class Monster: NSManagedObject {
     @NSManaged var challenge: String
     
     @NSManaged var sources: NSSet
+
+    var allSources: Set<Source> {
+        return sources as! Set<Source>
+    }
+    
     @NSManaged var tags: NSOrderedSet
+
+    var allTags: [Tag] {
+        return tags.array as! [Tag]
+    }
+    
     @NSManaged var traits: NSOrderedSet
+
+    var allTraits: [Trait] {
+        return traits.array as! [Trait]
+    }
+    
     @NSManaged var actions: NSOrderedSet
+    
+    var allActions: [Action] {
+        return actions.array as! [Action]
+    }
+    
     @NSManaged var reactions: NSOrderedSet
+
+    var allReactions: [Reaction] {
+        return reactions.array as! [Reaction]
+    }
+    
     @NSManaged var legendaryActions: NSOrderedSet
-    @NSManaged var lair: Lair?
+
+    var allLegendaryActions: [LegendaryAction] {
+        return legendaryActions.array as! [LegendaryAction]
+    }
+    
     @NSManaged var combatants: NSSet
+
+    var allCombatants: Set<Combatant> {
+        return combatants as! Set<Combatant>
+    }
 
     // MARK: Computed properties
     
@@ -186,34 +219,6 @@ final class Monster: NSManagedObject {
         return try! DiceCombo(sides: 20, modifier: dexterityModifier)
     }
     
-    var allSources: Set<Source> {
-        return sources as! Set<Source>
-    }
-    
-    var allTags: [Tag] {
-        return tags.array as! [Tag]
-    }
-    
-    var allTraits: [Trait] {
-        return traits.array as! [Trait]
-    }
-    
-    var allActions: [Action] {
-        return actions.array as! [Action]
-    }
-
-    var allReactions: [Reaction] {
-        return reactions.array as! [Reaction]
-    }
-    
-    var allLegendaryActions: [LegendaryAction] {
-        return legendaryActions.array as! [LegendaryAction]
-    }
-    
-    var allCombatants: Set<Combatant> {
-        return combatants as! Set<Combatant>
-    }
-
     convenience init(name: String, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Monster, inManagedObjectContext: context)
         self.init(entity: entity, insertIntoManagedObjectContext: context)

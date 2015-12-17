@@ -21,17 +21,19 @@ final class Lair: NSManagedObject {
     @NSManaged var regionalEffectsDuration: String?
     
     @NSManaged var lairActions: NSOrderedSet
-    @NSManaged var lairTraits: NSOrderedSet
-    @NSManaged var regionalEffects: NSOrderedSet
     
     var allLairActions: [LairAction] {
         return lairActions.array as! [LairAction]
     }
     
+    @NSManaged var lairTraits: NSOrderedSet
+
     var allLairTraits: [LairTrait] {
         return lairTraits.array as! [LairTrait]
     }
     
+    @NSManaged var regionalEffects: NSOrderedSet
+
     var allRegionalEffects: [RegionalEffect] {
         return regionalEffects.array as! [RegionalEffect]
     }

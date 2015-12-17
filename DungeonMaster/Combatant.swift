@@ -15,12 +15,7 @@ final class Combatant: NSManagedObject {
     @NSManaged var encounter: Encounter
     @NSManaged var monster: Monster
     @NSManaged var dateCreated: NSDate
-
-    @NSManaged var rawHitPoints: Int16
-    @NSManaged var rawDamagePoints: Int16
-    @NSManaged var rawInitiative: NSNumber?
-    @NSManaged var rawLocationX: NSNumber?
-    @NSManaged var rawLocationY: NSNumber?
+    @NSManaged var notes: String?
 
     var hitPoints: Int {
         get {
@@ -30,7 +25,8 @@ final class Combatant: NSManagedObject {
             rawHitPoints = Int16(newHitPoints)
         }
     }
-    
+    @NSManaged private var rawHitPoints: Int16
+
     var damagePoints: Int {
         get {
             return Int(rawDamagePoints)
@@ -39,7 +35,8 @@ final class Combatant: NSManagedObject {
             rawDamagePoints = Int16(newDamagePoints)
         }
     }
-    
+    @NSManaged private var rawDamagePoints: Int16
+
     var initiative: Int? {
         get {
             return rawInitiative?.integerValue
@@ -48,7 +45,8 @@ final class Combatant: NSManagedObject {
             rawInitiative = newInitiative != nil ? NSNumber(integer: newInitiative!) : nil
         }
     }
-    
+    @NSManaged private var rawInitiative: NSNumber?
+
     var location: TabletopLocation? {
         get {
             return rawLocationX != nil && rawLocationY != nil ? TabletopLocation(x: CGFloat(rawLocationX!.floatValue), y: CGFloat(rawLocationY!.floatValue)) : nil
@@ -58,16 +56,17 @@ final class Combatant: NSManagedObject {
             rawLocationY = newLocation != nil ? NSNumber(float: Float(newLocation!.y)) : nil
         }
     }
-    
-    @NSManaged var notes: String?
+    @NSManaged private var rawLocationX: NSNumber?
+    @NSManaged private var rawLocationY: NSNumber?
 
     @NSManaged var damages: NSOrderedSet
-    @NSManaged var conditions: NSOrderedSet
     
     var allDamages: [Damage] {
         return damages.array as! [Damage]
     }
     
+    @NSManaged var conditions: NSOrderedSet
+
     var allConditions: [Condition] {
         return conditions.array as! [Condition]
     }
