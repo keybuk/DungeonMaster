@@ -49971,6 +49971,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<integer>9</integer>
 				<key>rawWisdom</key>
 				<integer>14</integer>
+				<key>requiresRace</key>
+				<true/>
 				<key>senses</key>
 				<string>passive Perception 10</string>
 				<key>sizeTypeAlignment</key>
@@ -50017,7 +50019,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>tags</key>
 			<array>
-				<string>any race</string>
 			</array>
 			<key>traits</key>
 			<array>
@@ -50107,6 +50108,8 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 				<integer>9</integer>
 				<key>rawWisdom</key>
 				<integer>15</integer>
+				<key>requiresRace</key>
+				<true/>
 				<key>savingThrows</key>
 				<string>Int +9, Wis +6</string>
 				<key>senses</key>
@@ -50141,7 +50144,6 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 			</array>
 			<key>tags</key>
 			<array>
-				<string>any race</string>
 			</array>
 			<key>traits</key>
 			<array>
@@ -50249,6 +50251,8 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 				<integer>9</integer>
 				<key>rawWisdom</key>
 				<integer>11</integer>
+				<key>requiresRace</key>
+				<true/>
 				<key>savingThrows</key>
 				<string>Dex +7, Int +5</string>
 				<key>senses</key>
@@ -50301,7 +50305,6 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 			</array>
 			<key>tags</key>
 			<array>
-				<string>any race</string>
 			</array>
 			<key>traits</key>
 			<array>
@@ -50396,6 +50399,8 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 				<integer>9</integer>
 				<key>rawWisdom</key>
 				<integer>10</integer>
+				<key>requiresRace</key>
+				<true/>
 				<key>senses</key>
 				<string>passive Perception 10</string>
 				<key>sizeTypeAlignment</key>
@@ -50440,7 +50445,6 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 			</array>
 			<key>tags</key>
 			<array>
-				<string>any race</string>
 			</array>
 			<key>traits</key>
 			<array>
@@ -50523,6 +50527,8 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 				<integer>9</integer>
 				<key>rawWisdom</key>
 				<integer>11</integer>
+				<key>requiresRace</key>
+				<true/>
 				<key>savingThrows</key>
 				<string>Str +4, Dex +5, Wis +2</string>
 				<key>senses</key>
@@ -50569,7 +50575,6 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 			</array>
 			<key>tags</key>
 			<array>
-				<string>any race</string>
 			</array>
 			<key>traits</key>
 			<array>
@@ -50631,6 +50636,8 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 				<integer>9</integer>
 				<key>rawWisdom</key>
 				<integer>11</integer>
+				<key>requiresRace</key>
+				<true/>
 				<key>senses</key>
 				<string>passive Perception 10</string>
 				<key>sizeTypeAlignment</key>
@@ -50675,7 +50682,6 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 			</array>
 			<key>tags</key>
 			<array>
-				<string>any race</string>
 			</array>
 			<key>traits</key>
 			<array>
@@ -50761,6 +50767,8 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 				<integer>9</integer>
 				<key>rawWisdom</key>
 				<integer>10</integer>
+				<key>requiresRace</key>
+				<true/>
 				<key>senses</key>
 				<string>passive Perception 10</string>
 				<key>sizeTypeAlignment</key>
@@ -50817,7 +50825,6 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 			</array>
 			<key>tags</key>
 			<array>
-				<string>any race</string>
 			</array>
 			<key>traits</key>
 			<array>
@@ -50888,6 +50895,8 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 				<integer>9</integer>
 				<key>rawWisdom</key>
 				<integer>11</integer>
+				<key>requiresRace</key>
+				<true/>
 				<key>senses</key>
 				<string>passive Perception 10</string>
 				<key>sizeTypeAlignment</key>
@@ -50946,7 +50955,6 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 			</array>
 			<key>tags</key>
 			<array>
-				<string>any race</string>
 			</array>
 			<key>traits</key>
 			<array>
@@ -51029,6 +51037,8 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 				<integer>9</integer>
 				<key>rawWisdom</key>
 				<integer>13</integer>
+				<key>requiresRace</key>
+				<true/>
 				<key>senses</key>
 				<string>passive Perception 10</string>
 				<key>sizeTypeAlignment</key>
@@ -51073,7 +51083,6 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 			</array>
 			<key>tags</key>
 			<array>
-				<string>any race</string>
 			</array>
 			<key>traits</key>
 			<array>
@@ -51168,6 +51177,8 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 				<integer>9</integer>
 				<key>rawWisdom</key>
 				<integer>15</integer>
+				<key>requiresRace</key>
+				<true/>
 				<key>senses</key>
 				<string>passive Perception 14</string>
 				<key>sizeTypeAlignment</key>
@@ -51212,7 +51223,6 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 			</array>
 			<key>tags</key>
 			<array>
-				<string>any race</string>
 			</array>
 			<key>traits</key>
 			<array>
@@ -51313,6 +51323,8 @@ Cantrips (at will): druidcraft, produce flame, shillelagh
 				<integer>9</integer>
 				<key>rawWisdom</key>
 				<integer>12</integer>
+				<key>requiresRace</key>
+				<true/>
 				<key>savingThrows</key>
 				<string>Str +7, Dex +5, Con +6</string>
 				<key>senses</key>
@@ -51359,7 +51371,6 @@ Cantrips (at will): druidcraft, produce flame, shillelagh
 			</array>
 			<key>tags</key>
 			<array>
-				<string>any race</string>
 			</array>
 			<key>traits</key>
 			<array>
@@ -51451,6 +51462,8 @@ Cantrips (at will): druidcraft, produce flame, shillelagh
 				<integer>9</integer>
 				<key>rawWisdom</key>
 				<integer>11</integer>
+				<key>requiresRace</key>
+				<true/>
 				<key>senses</key>
 				<string>passive Perception 12</string>
 				<key>sizeTypeAlignment</key>
@@ -51503,7 +51516,6 @@ Cantrips (at will): druidcraft, produce flame, shillelagh
 			</array>
 			<key>tags</key>
 			<array>
-				<string>any race</string>
 			</array>
 			<key>traits</key>
 			<array>
@@ -51601,6 +51613,8 @@ Cantrips (at will): druidcraft, produce flame, shillelagh
 				<integer>9</integer>
 				<key>rawWisdom</key>
 				<integer>11</integer>
+				<key>requiresRace</key>
+				<true/>
 				<key>savingThrows</key>
 				<string>Con +4, Wis +2</string>
 				<key>senses</key>
@@ -51659,7 +51673,6 @@ Cantrips (at will): druidcraft, produce flame, shillelagh
 			</array>
 			<key>tags</key>
 			<array>
-				<string>any race</string>
 			</array>
 			<key>traits</key>
 			<array>
@@ -51745,6 +51758,8 @@ Cantrips (at will): druidcraft, produce flame, shillelagh
 				<integer>9</integer>
 				<key>rawWisdom</key>
 				<integer>12</integer>
+				<key>requiresRace</key>
+				<true/>
 				<key>savingThrows</key>
 				<string>Int +6, Wis +4</string>
 				<key>senses</key>
@@ -51799,7 +51814,6 @@ Cantrips (at will): druidcraft, produce flame, shillelagh
 			</array>
 			<key>tags</key>
 			<array>
-				<string>any race</string>
 			</array>
 			<key>traits</key>
 			<array>
@@ -51891,6 +51905,8 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation
 				<integer>9</integer>
 				<key>rawWisdom</key>
 				<integer>14</integer>
+				<key>requiresRace</key>
+				<true/>
 				<key>senses</key>
 				<string>passive Perception 10</string>
 				<key>sizeTypeAlignment</key>
@@ -51947,7 +51963,6 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation
 			</array>
 			<key>tags</key>
 			<array>
-				<string>any race</string>
 			</array>
 			<key>traits</key>
 			<array>
@@ -52027,6 +52042,8 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation
 				<integer>9</integer>
 				<key>rawWisdom</key>
 				<integer>16</integer>
+				<key>requiresRace</key>
+				<true/>
 				<key>senses</key>
 				<string>passive Perception 13</string>
 				<key>sizeTypeAlignment</key>
@@ -52073,7 +52090,6 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation
 			</array>
 			<key>tags</key>
 			<array>
-				<string>any race</string>
 			</array>
 			<key>traits</key>
 			<array>
@@ -52181,6 +52197,8 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 				<integer>9</integer>
 				<key>rawWisdom</key>
 				<integer>13</integer>
+				<key>requiresRace</key>
+				<true/>
 				<key>senses</key>
 				<string>passive Perception 15</string>
 				<key>sizeTypeAlignment</key>
@@ -52225,7 +52243,6 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 			</array>
 			<key>tags</key>
 			<array>
-				<string>any race</string>
 			</array>
 			<key>traits</key>
 			<array>
@@ -52323,6 +52340,8 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 				<integer>9</integer>
 				<key>rawWisdom</key>
 				<integer>14</integer>
+				<key>requiresRace</key>
+				<true/>
 				<key>senses</key>
 				<string>passive Perception 16</string>
 				<key>sizeTypeAlignment</key>
@@ -52367,7 +52386,6 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 			</array>
 			<key>tags</key>
 			<array>
-				<string>any race</string>
 			</array>
 			<key>traits</key>
 			<array>
@@ -52462,6 +52480,8 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 				<integer>9</integer>
 				<key>rawWisdom</key>
 				<integer>10</integer>
+				<key>requiresRace</key>
+				<true/>
 				<key>senses</key>
 				<string>passive Perception 10</string>
 				<key>sizeTypeAlignment</key>
@@ -52502,7 +52522,6 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 			</array>
 			<key>tags</key>
 			<array>
-				<string>any race</string>
 			</array>
 			<key>traits</key>
 			<array>
@@ -52588,6 +52607,8 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 				<integer>9</integer>
 				<key>rawWisdom</key>
 				<integer>11</integer>
+				<key>requiresRace</key>
+				<true/>
 				<key>senses</key>
 				<string>passive Perception 10</string>
 				<key>sizeTypeAlignment</key>
@@ -52630,7 +52651,6 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 			</array>
 			<key>tags</key>
 			<array>
-				<string>any race</string>
 			</array>
 			<key>traits</key>
 			<array>
@@ -52734,6 +52754,8 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 				<integer>9</integer>
 				<key>rawWisdom</key>
 				<integer>11</integer>
+				<key>requiresRace</key>
+				<true/>
 				<key>senses</key>
 				<string>passive Perception 12</string>
 				<key>sizeTypeAlignment</key>
@@ -52778,7 +52800,6 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 			</array>
 			<key>tags</key>
 			<array>
-				<string>any race</string>
 			</array>
 			<key>traits</key>
 			<array>
@@ -53839,7 +53860,7 @@ A humanoid slain by this attack rises 24 hours later as a zombie under Naergoth'
 		</dict>
 	</array>
 	<key>version</key>
-	<integer>1450410867</integer>
+	<integer>1450415026</integer>
 </dict>
 </plist>
 

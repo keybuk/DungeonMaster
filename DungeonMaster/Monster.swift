@@ -49,6 +49,16 @@ final class Monster: NSManagedObject {
         }
     }
     @NSManaged private var rawType: NSNumber
+    
+    /// Some monster stats are templates for classes of NPCs and don't have race-specific information; those have `true` for this property.
+    @NSManaged var requiresRace: Bool
+    
+    /// Arbitrary tags applied to monsters that have no meaning in of themselves, but may be referred to in the descriptions of traits, attacks, spells, etc.
+    @NSManaged var tags: NSSet
+    
+    var allTags: Set<Tag> {
+        return tags as! Set<Tag>
+    }
 
     /// Alignment of the monster.
     ///
@@ -174,12 +184,6 @@ final class Monster: NSManagedObject {
 
     var allSources: Set<Source> {
         return sources as! Set<Source>
-    }
-    
-    @NSManaged var tags: NSOrderedSet
-
-    var allTags: [Tag] {
-        return tags.array as! [Tag]
     }
     
     @NSManaged var alignmentOptions: NSSet

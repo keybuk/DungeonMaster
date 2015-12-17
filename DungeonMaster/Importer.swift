@@ -75,7 +75,7 @@ func importIfNeeded() {
                 monsterTags.append(tag)
             }
         }
-        monster.tags = NSOrderedSet(array: monsterTags)
+        monster.tags = NSSet(array: monsterTags)
 
         let alignmentOptionDatas = monsterData["alignmentOptions"] as! [[NSNumber]]
         for alignmentOptionData in alignmentOptionDatas {

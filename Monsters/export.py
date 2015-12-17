@@ -151,7 +151,11 @@ class Exporter(monster.MonsterParser):
 		self.info['rawType'] = MONSTER_TYPES.index(type)
 
 		if tags is not None:
-			self.tags.extend(tags.split(", "))
+			tags = tags.split(", ")
+			if "any race" in tags:
+				tags.remove("any race")
+				self.info['requiresRace'] = True
+			self.tags.extend(tags)
 
 		if alignment is not None:
 			self.info['rawAlignment'] = ALIGNMENTS.index(alignment)

@@ -137,9 +137,13 @@ class DetailViewController: UIViewController {
                 }
                 text.appendAttributedString(NSAttributedString(string: "\(sizeType)", attributes: sizeTypeAlignmentStyle))
 
-                if monster.tags.count > 0 {
-                    let tags = monster.allTags.map { $0.name }.joinWithSeparator(", ")
-                    text.appendAttributedString(NSAttributedString(string: " (\(tags))", attributes: sizeTypeAlignmentStyle))
+                if monster.tags.count > 0 || monster.requiresRace {
+                    var tags = monster.allTags.map { $0.name }.sort()
+                    if monster.requiresRace {
+                        tags.insert("any race", atIndex: 0)
+                    }
+                    let tagString = tags.joinWithSeparator(", ")
+                    text.appendAttributedString(NSAttributedString(string: " (\(tagString))", attributes: sizeTypeAlignmentStyle))
                 }
                 
                 if let alignment = monster.alignment {
