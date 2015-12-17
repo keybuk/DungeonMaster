@@ -7,16 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 class TabletopViewController: UIViewController {
 
     var tabletopView: TabletopView!
     
     var encounter: Encounter!
-    
-    var locations = [TabletopLocation]()
-    var names = ["Goblin", "Goblin", "Wolf", "Bugbear Captain", "Half-Red Dragon Veteran"]
-    var healths: [Float] = [0.8, 0.2, 1.0, 0.7, 0.5]
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -41,15 +38,38 @@ class TabletopViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    /*
-    // MARK: Navigation
+    // MARK: Fetched results controller
+    
+    var fetchedResultsController: NSFetchedResultsController {
+        if _fetchedResultsController != nil {
+            return _fetchedResultsController!
+        }
+        
+        // We use a predicate on the Combatant table, matching against the encounter, rather than just using "encounter.combatants" so that we can be a delegate and get change notifications.
+        let fetchRequest = NSFetchRequest()
+        let entity = NSEntityDescription.entity(Model.Combatant, inManagedObjectContext: managedObjectContext)
+        fetchRequest.entity = entity
+        
+        let predicate = NSPredicate(format: "encounter = %@", encounter)
+        fetchRequest.predicate = predicate
+        
+        let sortDescriptor = NSSortDescriptor(key: "dateCreated", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController.delegate = self
+        _fetchedResultsController = fetchedResultsController
+        
+        do {
+            try _fetchedResultsController!.performFetch()
+        } catch {
+            let error = error as NSError
+            print("Unresolved error \(error), \(error.userInfo)")
+            abort()
+        }
+        return _fetchedResultsController!
     }
-    */
+    var _fetchedResultsController: NSFetchedResultsController?
 
     // MARK: Actions
     
@@ -63,27 +83,27 @@ class TabletopViewController: UIViewController {
 extension TabletopViewController: TabletopViewDataSource {
     
     func numberOfItemsInTabletopView(tabletopView: TabletopView) -> Int {
-        return names.count
+        return fetchedResultsController.fetchedObjects!.count
     }
     
     func tabletopView(tabletopView: TabletopView, locationForItem index: Int) -> TabletopLocation {
-        if index < locations.count {
-            return locations[index]
-        } else if index == locations.count {
-            let location = tabletopView.emptyLocationForNewItem()!
-            locations.append(location)
+        let combatant = fetchedResultsController.fetchedObjects![index] as! Combatant
+        if let location = combatant.location {
             return location
         } else {
-            abort()
+            combatant.location = tabletopView.emptyLocationForNewItem()!
+            return combatant.location!
         }
     }
     
     func tabletopView(tabletopView: TabletopView, nameForItem index: Int) -> String {
-        return names[index]
+        let combatant = fetchedResultsController.fetchedObjects![index] as! Combatant
+        return combatant.monster.name
     }
     
     func tabletopView(tabletopView: TabletopView, healthForItem index: Int) -> Float {
-        return healths[index]
+        let combatant = fetchedResultsController.fetchedObjects![index] as! Combatant
+        return combatant.health
     }
 
 }
@@ -92,7 +112,8 @@ extension TabletopViewController: TabletopViewDataSource {
 extension TabletopViewController: TabletopViewDelegate {
     
     func tabletopView(tabletopView: TabletopView, moveItem index: Int, to location: TabletopLocation) {
-        locations[index] = location
+        let combatant = fetchedResultsController.fetchedObjects![index] as! Combatant
+        combatant.location = location
     }
     
     func tabletopView(tabletopView: TabletopView, willShowStatsForItem index: Int) {
@@ -103,4 +124,32 @@ extension TabletopViewController: TabletopViewDelegate {
         print("Selected \(index)")
     }
 
+}
+
+// MARK: NSFetchedResultsControllerDelegate
+extension TabletopViewController: NSFetchedResultsControllerDelegate {
+    
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+    }
+    
+    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+    }
+    
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        switch type {
+        case .Insert:
+            tabletopView.insertItemAtIndex(newIndexPath!.row)
+        case .Delete:
+            tabletopView.deleteItemAtIndex(indexPath!.row)
+        case .Update:
+            tabletopView.updateItemAtIndex(indexPath!.row)
+        case .Move:
+            tabletopView.deleteItemAtIndex(indexPath!.row)
+            tabletopView.insertItemAtIndex(newIndexPath!.row)
+        }
+    }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    }
+    
 }
