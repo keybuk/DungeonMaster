@@ -467,7 +467,7 @@
 		<key>30</key>
 		<integer>9</integer>
 	</dict>
-	<key>conditions</key>
+	<key>conditionDescriptions</key>
 	<dict>
 		<key>blinded</key>
 		<array>

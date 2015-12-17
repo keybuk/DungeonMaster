@@ -29,6 +29,7 @@
 		D249CF851C21DF3500CDE673 /* PointGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D249CF841C21DF3500CDE673 /* PointGenerator.swift */; };
 		D249CF871C224ED900CDE673 /* Rules.plist in Resources */ = {isa = PBXBuildFile; fileRef = D249CF861C224ED900CDE673 /* Rules.plist */; };
 		D249CF891C22602800CDE673 /* ConditionRulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D249CF881C22602800CDE673 /* ConditionRulesViewController.swift */; };
+		D249CF8B1C23311A00CDE673 /* Rules.swift in Sources */ = {isa = PBXBuildFile; fileRef = D249CF8A1C23311A00CDE673 /* Rules.swift */; };
 		D2511FF81C12B1AD00A09F0B /* MonstersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2511FF71C12B1AD00A09F0B /* MonstersViewController.swift */; };
 		D2511FFA1C14BC3700A09F0B /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2511FF91C14BC3700A09F0B /* Tag.swift */; };
 		D25120001C14C7ED00A09F0B /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2511FFF1C14C7ED00A09F0B /* BooksViewController.swift */; };
@@ -96,6 +97,7 @@
 		D249CF841C21DF3500CDE673 /* PointGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointGenerator.swift; sourceTree = "<group>"; };
 		D249CF861C224ED900CDE673 /* Rules.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Rules.plist; sourceTree = "<group>"; };
 		D249CF881C22602800CDE673 /* ConditionRulesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConditionRulesViewController.swift; sourceTree = "<group>"; };
+		D249CF8A1C23311A00CDE673 /* Rules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rules.swift; sourceTree = "<group>"; };
 		D2511FF71C12B1AD00A09F0B /* MonstersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonstersViewController.swift; sourceTree = "<group>"; };
 		D2511FF91C14BC3700A09F0B /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		D2511FFF1C14C7ED00A09F0B /* BooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				D2BDE6101C1755040008B2F2 /* Views */,
 				D2A9AF091BFFEAA5009902ED /* AppDelegate.swift */,
 				D23435FA1C0FEFA000108D5F /* Dice.swift */,
+				D249CF8A1C23311A00CDE673 /* Rules.swift */,
 				D249CF841C21DF3500CDE673 /* PointGenerator.swift */,
 				D26FBA311C1D39B900D44503 /* Sounds.swift */,
 				D2A9AF121BFFEAA5009902ED /* Main.storyboard */,
@@ -438,6 +441,7 @@
 				D2116A481C10ECAE001EDBBA /* Trait.swift in Sources */,
 				D26FBA321C1D39B900D44503 /* Sounds.swift in Sources */,
 				D2116A531C10F4E9001EDBBA /* LairTrait.swift in Sources */,
+				D249CF8B1C23311A00CDE673 /* Rules.swift in Sources */,
 				D26FBA341C1D3BAF00D44503 /* CombatantViewController.swift in Sources */,
 				D2A9AF111BFFEAA5009902ED /* DetailViewController.swift in Sources */,
 			);

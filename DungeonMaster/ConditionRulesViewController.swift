@@ -46,13 +46,7 @@ class ConditionRulesViewController: UIViewController {
             NSParagraphStyleAttributeName: listParaStyle
         ]
         
-        
-        let filename = NSBundle.mainBundle().pathForResource("Rules", ofType: "plist")!
-        let rulesData = NSDictionary(contentsOfFile: filename)!
-        
-        let conditions = rulesData["conditions"]! as! [String: [String]]
-
-        for ruleText in conditions[condition.rawValue]! {
+        for ruleText in sharedRules.conditionDescriptions[condition.rawValue]! {
             text.appendAttributedString(NSAttributedString(string: "•\t\(ruleText)\n", attributes: listStyle))
         }
 
