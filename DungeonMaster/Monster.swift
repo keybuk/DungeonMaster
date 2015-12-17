@@ -9,11 +9,26 @@
 import Foundation
 import CoreData
 
+/// Monster represents any DM-controlled creature or target in the D&D world, from evil dragons through to a helpful NPC the players might encounter.
 final class Monster: NSManagedObject {
     
+    /// Name for the monster.
     @NSManaged var name: String
+    
+    /// First initial of the monster's name, used for section and index titles in the monsters list.
+    var nameInitial: String {
+        return String(name.characters[name.characters.startIndex])
+    }
+
+    /// Some monsters represent a specific individual, rather than a generic creature. These individuals are intended to be the same exact creature in each encounter, rather than another generic of the same creature type.
     @NSManaged var isNPC: Bool
-    @NSManaged var lair: Lair?
+
+    /// Source material for the monster. Each member is a `Source` containing a reference to the specific book, supplement, etc. the monster text can be found in, the page number, and the section if relevant.
+    @NSManaged var sources: NSSet
+    
+    var allSources: Set<Source> {
+        return sources as! Set<Source>
+    }
 
     /// When the monster represents a swarm of (usually) smaller monsters, this property is set to the size of the swarm itself.
     ///
@@ -72,6 +87,15 @@ final class Monster: NSManagedObject {
         }
     }
     @NSManaged private var rawAlignment: NSNumber?
+
+    /// Options for alignment of the monster.
+    ///
+    /// This field is used when `alignment` is nil and provides the set of alignments that the monster can have. Either all alignment options have the `weight` field set, in which case the weight indicates the distribution of these alignments in the general population, or all alignment options do not have the `weight` field set, in which case the options indicate an equal range of probable alignments and correspond to common sets such as "any evil alignment".
+    @NSManaged var alignmentOptions: NSSet
+    
+    var allAlignmentOptions: Set<AlignmentOption> {
+        return alignmentOptions as! Set<AlignmentOption>
+    }
 
     var hitPoints: Int? {
         get {
@@ -178,18 +202,7 @@ final class Monster: NSManagedObject {
     @NSManaged var senses: String
     @NSManaged var languages: String?
     @NSManaged var challenge: String
-    
-    @NSManaged var sources: NSSet
-
-    var allSources: Set<Source> {
-        return sources as! Set<Source>
-    }
-    
-    @NSManaged var alignmentOptions: NSSet
-    
-    var allAlignmentOptions: Set<AlignmentOption> {
-        return alignmentOptions as! Set<AlignmentOption>
-    }
+    @NSManaged var lair: Lair?
     
     @NSManaged var traits: NSOrderedSet
 
@@ -222,10 +235,6 @@ final class Monster: NSManagedObject {
     }
 
     // MARK: Computed properties
-    
-    var nameInitial: String {
-        return String(name.characters.first!)
-    }
     
     var strengthModifier: Int {
         return (strength - 10) / 2

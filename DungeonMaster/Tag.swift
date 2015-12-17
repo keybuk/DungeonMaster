@@ -9,10 +9,15 @@
 import Foundation
 import CoreData
 
+/// Tag represents arbitrary text strings that can be applied to monsters.
+///
+/// Tags have no meaning in of themselves; but may be referred to in the descriptions of traits, attacks, spells, etc. All monsters that reference a specific tag share the same `Tag` object.
 final class Tag: NSManagedObject {
     
+    /// Name of the tag.
     @NSManaged var name: String
 
+    /// Set of monsters that this tag applies to.
     @NSManaged var monsters: NSSet
     
     var allMonsters: Set<Monster> {

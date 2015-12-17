@@ -9,10 +9,13 @@
 import Foundation
 import CoreData
 
+/// AlignmentOption represents a single option, in a set, for choosing the alignment of a monster.
 final class AlignmentOption: NSManagedObject {
     
+    /// Monster for which this alignment is an option.
     @NSManaged var monster: Monster
     
+    /// The specific alignment that can be chosen.
     var alignment: Alignment {
         get {
             return Alignment(rawValue: rawAlignment.integerValue)!
@@ -23,6 +26,9 @@ final class AlignmentOption: NSManagedObject {
     }
     @NSManaged private var rawAlignment: NSNumber
     
+    /// Weight that should be applied when randomly choosing an alignment from the complete set.
+    ///
+    /// This is always set for all alignments, or always unset for all alignments. When unset, simply pick an alignment at random from the set. When set, each alignment has a weight value in the range 0.0...1.0, with the complete set totalling 1.0.
     var weight: Float? {
         get {
             return rawWeight?.floatValue

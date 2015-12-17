@@ -9,10 +9,13 @@
 import Foundation
 import CoreData
 
+/// Book represents a specific book, supplement, online update, etc. in which references to material can be found.
 final class Book: NSManagedObject {
     
+    /// Name of the book.
     @NSManaged var name: String
     
+    /// Type of the book.
     var type: BookType {
         get {
             return BookType(rawValue: rawType.integerValue)!
@@ -23,6 +26,7 @@ final class Book: NSManagedObject {
     }
     @NSManaged private var rawType: NSNumber
 
+    /// References contained within this book.
     @NSManaged var sources: NSSet
 
     var allSources: Set<Source> {

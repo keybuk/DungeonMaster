@@ -20,6 +20,7 @@ enum BookType: Int {
     // TODO: category for Unearthed Arcana?
 }
 
+/// Size categorises the different range of monster sizes.
 enum Size: Int {
     case Tiny
     case Small
@@ -44,6 +45,7 @@ enum Size: Int {
     }
 }
 
+/// MonsterType categorises the different types of monsters.
 enum MonsterType: Int {
     case Aberration
     case Beast
@@ -80,6 +82,9 @@ enum Environment {
     case Urban
 }
 
+/// Alignment categorises the different alignments of monsters.
+///
+/// Only the specific alignments are contained within this enum, a creature with no alignment should have an optional alignment with a nil value.
 enum Alignment: Int {
     case LawfulGood
     case LawfulNeutral

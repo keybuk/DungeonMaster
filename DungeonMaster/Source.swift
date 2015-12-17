@@ -9,12 +9,13 @@
 import Foundation
 import CoreData
 
+/// Source represents an individual reference to source material.
 final class Source: NSManagedObject {
 
+    /// The source book for this reference.
     @NSManaged var book: Book
-    @NSManaged var section: String?
-    @NSManaged var monster: Monster
 
+    /// Page number in the book where this reference can be found.
     var page: Int {
         get {
             return Int(rawPage)
@@ -24,7 +25,13 @@ final class Source: NSManagedObject {
         }
     }
     @NSManaged private var rawPage: Int16
+
+    /// Title of the section that the reference can be found in, if relevant.
+    @NSManaged var section: String?
     
+    /// Monster contained at this reference point.
+    @NSManaged var monster: Monster
+
     convenience init(book: Book, page: Int, monster: Monster, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Source, inManagedObjectContext: context)
         self.init(entity: entity, insertIntoManagedObjectContext: context)
