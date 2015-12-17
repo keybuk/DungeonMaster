@@ -384,8 +384,8 @@ class DetailViewController: UIViewController {
                     }
                 }
 
+                textView.scrollEnabled = false
                 textView.attributedText = text
-                textView.scrollRangeToVisible(NSRange(location: 0, length: 0))
         }
     }
 
@@ -393,6 +393,11 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.configureView()
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        textView.scrollEnabled = true
     }
 
     override func didReceiveMemoryWarning() {
