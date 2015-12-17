@@ -296,6 +296,10 @@ class Exporter(monster.MonsterParser):
 		for name, lines in actions:
 			self.add_action(self.actions, name, lines)
 
+	def handle_yuan_ti_actions(self, section, actions):
+		for name, lines in actions:
+			self.add_action(self.actions, section + '—' + name, lines)
+
 	def handle_reactions(self, reactions):
 		for name, lines in reactions:
 			self.add_action(self.reactions, name, lines)

@@ -38430,6 +38430,72 @@ At will: animal friendship (snakes only)
 		<dict>
 			<key>actions</key>
 			<array>
+				<dict>
+					<key>name</key>
+					<string>ACTIONS FOR TYPE 1—Multiattack (Yuan-ti Form Only)</string>
+					<key>text</key>
+					<string>The yuan-ti makes two ranged attacks or two melee attacks, but can use its bite only once.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>ACTIONS FOR TYPE 1—Bite</string>
+					<key>text</key>
+					<string>Melee Weapon Attack: +5 to hit, reach 5 ft., one creature. Hit: 5 (1d4 + 3) piercing damage plus 7 (2d6) poison damage.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>ACTIONS FOR TYPE 1—Scimitar (Yuan-ti Form Only)</string>
+					<key>text</key>
+					<string>Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) slashing damage.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>ACTIONS FOR TYPE 1—Longbow (Yuan-ti Form Only)</string>
+					<key>text</key>
+					<string>Ranged Weapon Attack: +4 to hit, range 150/600 ft., one target. Hit: 6 (1d8 + 2) piercing damage plus 7 (2d6) poison damage.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>ACTIONS FOR TYPE 2—Multiattack (Yuan-ti Form Only)</string>
+					<key>text</key>
+					<string>The yuan-ti makes two bite attacks using its snake arms.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>ACTIONS FOR TYPE 2—Bite</string>
+					<key>text</key>
+					<string>Melee Weapon Attack: +5 to hit, reach 5 ft., one creature. Hit: 5 (1d4 + 3) piercing damage plus 7 (2d6) poison damage.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>ACTIONS FOR TYPE 3—Multiattack (Yuan-ti Form Only)</string>
+					<key>text</key>
+					<string>The yuan-ti makes two ranged attacks or two melee attacks, but can constrict only once.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>ACTIONS FOR TYPE 3—Bite (Snake Form Only)</string>
+					<key>text</key>
+					<string>Melee Weapon Attack: +5 to hit, reach 5 ft., one creature. Hit: 5 (1d4 + 3) piercing damage plus 7 (2d6) poison damage.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>ACTIONS FOR TYPE 3—Constrict</string>
+					<key>text</key>
+					<string>Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 10 (2d6 + 3) bludgeoning damage, and the target is grappled (escape DC 13). Until this grapple ends, the target is restrained, and the yuan-ti can't constrict another target.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>ACTIONS FOR TYPE 3—Scimitar (Yuan-ti Form Only)</string>
+					<key>text</key>
+					<string>Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) slashing damage.</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>ACTIONS FOR TYPE 3—Longbow (Yuan-ti Form Only)</string>
+					<key>text</key>
+					<string>Ranged Weapon Attack: +4 to hit, range 150/600 ft., one target. Hit: 6 (1d8 + 2) piercing damage.</string>
+				</dict>
 			</array>
 			<key>alignmentOptions</key>
 			<array>
@@ -52831,7 +52897,7 @@ A humanoid slain by this attack rises 24 hours later as a zombie under Naergoth'
 		</dict>
 	</array>
 	<key>version</key>
-	<integer>1450416757</integer>
+	<integer>1450417013</integer>
 </dict>
 </plist>
 
