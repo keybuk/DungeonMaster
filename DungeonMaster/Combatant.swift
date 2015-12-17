@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 final class Combatant: NSManagedObject {
     
@@ -18,6 +19,8 @@ final class Combatant: NSManagedObject {
     @NSManaged var rawHitPoints: Int16
     @NSManaged var rawDamagePoints: Int16
     @NSManaged var rawInitiative: NSNumber?
+    @NSManaged var rawLocationX: NSNumber?
+    @NSManaged var rawLocationY: NSNumber?
 
     var hitPoints: Int {
         get {
@@ -43,6 +46,16 @@ final class Combatant: NSManagedObject {
         }
         set(newInitiative) {
             rawInitiative = newInitiative != nil ? NSNumber(integer: newInitiative!) : nil
+        }
+    }
+    
+    var location: TabletopLocation? {
+        get {
+            return rawLocationX != nil && rawLocationY != nil ? TabletopLocation(x: CGFloat(rawLocationX!.floatValue), y: CGFloat(rawLocationY!.floatValue)) : nil
+        }
+        set(newLocation) {
+            rawLocationX = newLocation != nil ? NSNumber(float: Float(newLocation!.x)) : nil
+            rawLocationY = newLocation != nil ? NSNumber(float: Float(newLocation!.y)) : nil
         }
     }
     
