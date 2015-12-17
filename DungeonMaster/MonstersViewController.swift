@@ -231,38 +231,41 @@ extension MonstersViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         guard !searchController!.active else { return nil }
         let sectionInfo = fetchedResultsController.sections![section]
-        let monster = sectionInfo.objects!.first as! Monster
         
         let sort = MonstersSort(rawValue: sortControl.selectedSegmentIndex)!
         switch sort {
         case .ByName:
-            return monster.nameInitial
+            return sectionInfo.name
         case .ByCrXp:
-            return monster.challenge
+            let challenge = NSDecimalNumber(string: sectionInfo.name)
+            let challengeString: String
+            if challenge == NSDecimalNumber(string: "0.125") {
+                challengeString = "1/8"
+            } else if challenge == NSDecimalNumber(string: "0.25") {
+                challengeString = "1/4"
+            } else if challenge == NSDecimalNumber(string: "0.5") {
+                challengeString = "1/2"
+            } else {
+                challengeString = "\(challenge)"
+            }
+
+            let xpString: String
+            if challenge != 0 {
+                let xpFormatter = NSNumberFormatter()
+                xpFormatter.numberStyle = .DecimalStyle
+                
+                xpString = xpFormatter.stringFromNumber(sharedRules.challengeXP[challenge]!)!
+            } else {
+                xpString = "0–10"
+            }
+
+            return "\(challengeString) (\(xpString) XP)"
         }
     }
     
     func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
         guard !searchController!.active else { return nil }
-        let sort = MonstersSort(rawValue: sortControl.selectedSegmentIndex)!
-        return fetchedResultsController.sections!.map { sectionInfo in
-            let monster = sectionInfo.objects!.first as! Monster
-
-            switch sort {
-            case .ByName:
-                return monster.nameInitial
-            case .ByCrXp:
-                if monster.cr == NSDecimalNumber(string: "0.125") {
-                    return "⅛"
-                } else if monster.cr == NSDecimalNumber(string: "0.25") {
-                    return "¼"
-                } else if monster.cr == NSDecimalNumber(string: "0.5") {
-                    return "½"
-                } else {
-                    return "\(monster.cr)"
-                }
-            }
-        }
+        return fetchedResultsController.sectionIndexTitles
     }
     
     // MARK: Rows
@@ -317,6 +320,25 @@ extension MonstersViewController: NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         tableView.endUpdates()
+    }
+    
+    func controller(controller: NSFetchedResultsController, sectionIndexTitleForSectionName sectionName: String) -> String? {
+        let sort = MonstersSort(rawValue: sortControl.selectedSegmentIndex)!
+        
+        switch sort {
+        case .ByName:
+            return sectionName
+        case .ByCrXp:
+            if sectionName == "0.125" {
+                return "⅛"
+            } else if sectionName == "0.25" {
+                return "¼"
+            } else if sectionName == "0.5" {
+                return "½"
+            } else {
+                return sectionName
+            }
+        }
     }
     
 }
