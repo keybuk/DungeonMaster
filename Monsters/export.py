@@ -8,18 +8,32 @@ import time
 import monster
 import plistlib
 
-size_expr = r'Tiny|Small|Medium|Large|Huge|Gargantuan'
-type_expr = r'aberration|beast|celestial|construct|dragon|elemental|fey|fiend|giant|humanoid|monstrosity|ooze|plant|undead'
+SIZES = [ "tiny", "small", "medium", "large", "huge", "gargantuan" ]
+MONSTER_TYPES = [ "aberration", "beast", "celestial", "construct", "dragon", "elemental", "fey",
+				  "fiend", "giant", "humanoid", "monstrosity", "ooze", "plant", "undead" ]
+ALIGNMENTS = [ "lawful good", "lawful neutral", "lawful evil",
+			   "neutral good", "neutral", "neutral evil",
+			   "chaotic good", "chaotic neutral", "chaotic evil" ]
 
-SIZE_TYPE_TAG_RE  = re.compile(
-	r'^(?:(' + size_expr + r') (' + type_expr + r')'
-	r'|(' + size_expr + r') (swarm of (?:' + size_expr + r') (?:' + type_expr + r')s))' +
-	r'(?: \(([^)]+)\))?, (.*)')
+ALIGNMENT_OPTIONS = {
+	"any alignment": ALIGNMENTS,
+	"any chaotic alignment": [ "chaotic good", "chaotic neutral", "chaotic evil" ],
+	"any evil alignment": [ "lawful evil", "neutral evil", "chaotic evil" ],
+	"any non-good alignment": [ "lawful neutral", "lawful evil", "neutral", "neutral evil", "chaotic neutral", "chaotic evil" ],
+	"any non-lawful alignment": [ "neutral good", "neutral", "neutral evil", "chaotic good", "chaotic neutral", "chaotic evil" ],
+}
 
-ALIGNMENT_RE = re.compile(
-	r'^(?:unaligned|neutral' +
-	r'|neutral (?:good|evil)|(?:lawful|chaotic) (?:good|neutral|evil))$')
+size_expr = "|".join(size.title() for size in SIZES)
+monster_type_expr = "|".join(MONSTER_TYPES)
+alignment_expr = "|".join(ALIGNMENTS)
+alignment_option_expr = "|".join(ALIGNMENT_OPTIONS.keys())
 
+SIZE_TYPE_TAG_ALIGNMENT_RE  = re.compile(
+	r'^(?:(' + size_expr + r') (' + monster_type_expr + r')'
+	r'|(' + size_expr + r') (?:swarm of (' + size_expr + r') (' + monster_type_expr + r')s))' +
+	r'(?: \(([^)]+)\))?, ' +
+	r'(?:unaligned|(' + alignment_expr + r')|(' + alignment_option_expr + r')'
+	r'|(' + alignment_expr + r') \((\d+)%\) or (' + alignment_expr + r') \((\d+)%\))$')
 
 HIT_POINTS_RE = re.compile(r'^(\d+) \(([^)]*)\)$')
 ABILITY_RE = re.compile(r'^(\d+) \(([+-]\d+)\)$')
@@ -40,6 +54,7 @@ class Exporter(monster.MonsterParser):
 		self.name = None
 		self.sources = []
 		self.tags = []
+		self.alignment_options = []
 		self.info = {}
 		self.traits = []
 		self.actions = []
@@ -82,6 +97,7 @@ class Exporter(monster.MonsterParser):
 			"name": unicode(self.name, 'utf8'),
 			"sources": self.sources,
 			"tags": self.tags,
+			"alignmentOptions": self.alignment_options,
 			"info": self.info,
 			"traits": self.traits,
 			"actions": self.actions,
@@ -119,28 +135,34 @@ class Exporter(monster.MonsterParser):
 	def handle_size_type_alignment(self, line):
 		self.info['sizeTypeAlignment'] = line
 
-		match = SIZE_TYPE_TAG_RE.match(line)
+		match = SIZE_TYPE_TAG_ALIGNMENT_RE.match(line)
 		if match is None:
 			raise self.error("Size/Type/Alignment didn't match expected format: %s" % line)
 
-		(size, type, swarm_size, swarm_type, tags, alignment_text) = match.groups()
-		if swarm_size is not None or swarm_type is not None:
-			size = swarm_size
+		(size, type, swarm_size, swarm_monster_size, swarm_type, tags, alignment, alignment_option,
+			alignment1, alignment1_weight, alignment2, alignment2_weight) = match.groups()
+		if swarm_size is not None:
+			self.info['rawSwarmSize'] = SIZES.index(swarm_size.lower())
+
+			size = swarm_monster_size
 			type = swarm_type
 
-		self.info['rawSize'] = size
-		self.info['type'] = type
+		self.info['rawSize'] = SIZES.index(size.lower())
+		self.info['rawType'] = MONSTER_TYPES.index(type)
 
 		if tags is not None:
 			self.tags.extend(tags.split(", "))
 
-		match = ALIGNMENT_RE.match(alignment_text)
-		if match is None:
-			# TODO: Handle "any alignment", "any X alignment" with a set of alignments.
-			# Can handle the Empyrean & Cloud Giant %age case with a set and weights.
-			self.warning("Alignment didn't match expected format: %s" % alignment_text)
-		else:
-			self.info['rawAlignment'] = alignment_text
+		if alignment is not None:
+			self.info['rawAlignment'] = ALIGNMENTS.index(alignment)
+		elif alignment_option is not None:
+			for alignment in ALIGNMENT_OPTIONS[alignment_option]:
+				self.alignment_options.append([ ALIGNMENTS.index(alignment) ])
+		elif alignment1 is not None:
+			self.alignment_options.append([
+				ALIGNMENTS.index(alignment1), float(alignment1_weight) / 100.0 ])
+			self.alignment_options.append([
+				ALIGNMENTS.index(alignment2), float(alignment2_weight) / 100.0 ])
 
 	def handle_armor_class(self, line):
 		# TODO: should be able to parse into an AC, and a list of armor types

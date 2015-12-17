@@ -50,6 +50,20 @@ func importIfNeeded() {
         let name = monsterData["name"] as! String
         let monster = Monster(name: name, inManagedObjectContext: managedObjectContext)
         
+        let sourceDatas = monsterData["sources"] as! [NSDictionary]
+        for sourceData in sourceDatas {
+            let bookIndex = sourceData["book"]!.integerValue
+            let book = books[bookIndex]
+
+            let page = sourceData["page"]!.integerValue
+            
+            let source = Source(book: book, page: page, monster: monster, inManagedObjectContext: managedObjectContext)
+            
+            if let section = sourceData["section"] as? String {
+                source.section = section
+            }
+        }
+        
         var monsterTags = [Tag]()
         let tagNames = monsterData["tags"] as! [String]
         for tagName in tagNames {
@@ -62,18 +76,14 @@ func importIfNeeded() {
             }
         }
         monster.tags = NSOrderedSet(array: monsterTags)
-        
-        let sourceDatas = monsterData["sources"] as! [NSDictionary]
-        for sourceData in sourceDatas {
-            let bookIndex = sourceData["book"]!.integerValue
-            let book = books[bookIndex]
 
-            let page = sourceData["page"]!.integerValue
-            
-            let source = Source(book: book, page: page, monster: monster, inManagedObjectContext: managedObjectContext)
-            
-            if let section = sourceData["section"] as? String {
-                source.section = section
+        let alignmentOptionDatas = monsterData["alignmentOptions"] as! [[NSNumber]]
+        for alignmentOptionData in alignmentOptionDatas {
+            let alignmentOption = AlignmentOption(monster: monster, inManagedObjectContext: managedObjectContext)
+            alignmentOption.alignment = Alignment(rawValue: alignmentOptionData[0].integerValue)!
+
+            if alignmentOptionData.count > 1 {
+                alignmentOption.weight = alignmentOptionData[1].floatValue
             }
         }
         

@@ -20,16 +20,31 @@ enum BookType: Int {
     // TODO: category for Unearthed Arcana?
 }
 
-enum Size: String {
+enum Size: Int {
     case Tiny
     case Small
     case Medium
     case Large
     case Huge
     case Gargantuan
+    
+    /// Returns the string equivalent of the size.
+    var stringValue: String {
+        return sharedRules.sizes[rawValue]
+    }
+    
+    /// Returns the space in feet occupied by creatures of this type.
+    var space: Float {
+        return sharedRules.sizeSpace[rawValue]
+    }
+    
+    /// Returns the number of sides for the hit dice used to calculate hit points of creatures of this type.
+    var hitDiceSides: Int {
+        return sharedRules.sizeHitDiceSides[rawValue]
+    }
 }
 
-enum MonsterType {
+enum MonsterType: Int {
     case Aberration
     case Beast
     case Celestial
@@ -44,6 +59,11 @@ enum MonsterType {
     case Ooze
     case Plant
     case Undead
+    
+    /// Returns the string equivalent of the monster type.
+    var stringValue: String {
+        return sharedRules.monsterTypes[rawValue]
+    }
 }
 
 enum Environment {
@@ -60,17 +80,46 @@ enum Environment {
     case Urban
 }
 
-enum Alignment: String {
-    case Unaligned = "unaligned"
-    case LawfulGood = "lawful good"
-    case LawfulNeutral = "lawful neutral"
-    case LawfulEvil = "lawful evil"
-    case NeutralGood = "neutral good"
-    case Neutral = "neutral"
-    case NeutralEvil = "neutral evil"
-    case ChaoticGood = "chaotic good"
-    case ChaoticNeutral = "chaotic neutral"
-    case ChaoticEvil = "chaotic evil"
+enum Alignment: Int {
+    case LawfulGood
+    case LawfulNeutral
+    case LawfulEvil
+    case NeutralGood
+    case Neutral
+    case NeutralEvil
+    case ChaoticGood
+    case ChaoticNeutral
+    case ChaoticEvil
+    
+    /// Returns the string equivalent of the alignment.
+    var stringValue: String {
+        return sharedRules.alignments[rawValue]
+    }
+    
+    /// Returns a set of all alignments.
+    static var allAlignments: Set<Alignment> {
+        return [ .LawfulGood, .LawfulNeutral, .LawfulEvil, .NeutralGood, .Neutral, .NeutralEvil, .ChaoticGood, .ChaoticNeutral, .ChaoticEvil ]
+    }
+    
+    /// Returns a set of all lawful alignments.
+    static var lawfulAlignments: Set<Alignment> {
+        return [ .LawfulGood, .LawfulNeutral, .LawfulEvil ]
+    }
+
+    /// Returns a set of all choatic alignments.
+    static var chaoticAlignments: Set<Alignment> {
+        return [ .ChaoticGood, .ChaoticNeutral, .ChaoticEvil ]
+    }
+    
+    /// Returns a set of all good alignments.
+    static var goodAlignments: Set<Alignment> {
+        return [ .LawfulGood, .NeutralGood, .ChaoticGood ]
+    }
+
+    /// Returns a set of all evil alignments.
+    static var evilAlignments: Set<Alignment> {
+        return [ .LawfulEvil, .NeutralEvil, .ChaoticEvil ]
+    }
 }
 
 enum Armor {

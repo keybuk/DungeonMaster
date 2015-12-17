@@ -15,25 +15,53 @@ final class Monster: NSManagedObject {
     @NSManaged var isNPC: Bool
     @NSManaged var lair: Lair?
 
+    /// When the monster represents a swarm of (usually) smaller monsters, this property is set to the size of the swarm itself.
+    ///
+    /// The size of the individual monsters in the swarm can be found in the usual `size` property.
+    var swarmSize: Size? {
+        get {
+            return rawSwarmSize != nil ? Size(rawValue: rawSwarmSize!.integerValue)! : nil
+        }
+        set(newSwarmSize) {
+            rawSwarmSize = newSwarmSize != nil ? NSNumber(integer: newSwarmSize!.rawValue) : nil
+        }
+    }
+    @NSManaged private var rawSwarmSize: NSNumber?
+
+    /// Size of the monster.
     var size: Size {
         get {
-            return Size(rawValue: rawSize)!
+            return Size(rawValue: rawSize.integerValue)!
         }
         set(newSize) {
-            rawSize = newSize.rawValue
+            rawSize = NSNumber(integer: newSize.rawValue)
         }
     }
-    @NSManaged private var rawSize: String
+    @NSManaged private var rawSize: NSNumber
 
+    /// Type of the monster.
+    var type: MonsterType {
+        get {
+            return MonsterType(rawValue: rawType.integerValue)!
+        }
+        set(newType) {
+            rawType = NSNumber(integer: newType.rawValue)
+        }
+    }
+    @NSManaged private var rawType: NSNumber
+
+    /// Alignment of the monster.
+    ///
+    /// When this value is nil, check `alignmentOptions` for the possible alignments that this monster may have. If the monster has neither alignment or alignment options, then it has no alignment ("unaligned" in the Monster Manual).
     var alignment: Alignment? {
         get {
-            return rawAlignment != nil ? Alignment(rawValue: rawAlignment!) : nil
+            return rawAlignment != nil ? Alignment(rawValue: rawAlignment!.integerValue)! : nil
         }
         set(newAlignment) {
-            rawAlignment = newAlignment?.rawValue
+            rawAlignment = newAlignment != nil ? NSNumber(integer: newAlignment!.rawValue) : nil
         }
     }
-    @NSManaged private var rawAlignment: String?
+    @NSManaged private var rawAlignment: NSNumber?
 
     var hitPoints: Int? {
         get {
@@ -125,7 +153,6 @@ final class Monster: NSManagedObject {
     }
     @NSManaged private var rawPassivePerception: Int16
 
-    @NSManaged var type: String
     @NSManaged var cr: Float
     @NSManaged var xp: Int32
 
@@ -153,6 +180,12 @@ final class Monster: NSManagedObject {
 
     var allTags: [Tag] {
         return tags.array as! [Tag]
+    }
+    
+    @NSManaged var alignmentOptions: NSSet
+    
+    var allAlignmentOptions: Set<AlignmentOption> {
+        return alignmentOptions as! Set<AlignmentOption>
     }
     
     @NSManaged var traits: NSOrderedSet

@@ -14,6 +14,7 @@ enum Model: String {
     case Source
     case Monster
     case Tag
+    case AlignmentOption
     case Trait
     case Action
     case Reaction

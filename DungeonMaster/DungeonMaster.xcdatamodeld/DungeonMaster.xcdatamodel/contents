@@ -5,6 +5,11 @@
         <attribute name="text" attributeType="String" syncable="YES"/>
         <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="actions" inverseEntity="Monster" syncable="YES"/>
     </entity>
+    <entity name="AlignmentOption" representedClassName=".AlignmentOption" syncable="YES">
+        <attribute name="rawAlignment" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="rawWeight" optional="YES" attributeType="Float" syncable="YES"/>
+        <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="alignmentOptions" inverseEntity="Monster" syncable="YES"/>
+    </entity>
     <entity name="Book" representedClassName=".Book" syncable="YES">
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="rawType" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -74,7 +79,7 @@
         <attribute name="isNPC" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="languages" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
-        <attribute name="rawAlignment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rawAlignment" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawCharisma" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="rawConstitution" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="rawDexterity" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
@@ -82,8 +87,10 @@
         <attribute name="rawHitPoints" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawIntelligence" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="rawPassivePerception" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
-        <attribute name="rawSize" attributeType="String" syncable="YES"/>
+        <attribute name="rawSize" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawStrength" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
+        <attribute name="rawSwarmSize" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="rawType" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawWisdom" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="savingThrows" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="senses" attributeType="String" syncable="YES"/>
@@ -93,6 +100,7 @@
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="xp" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="actions" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Action" inverseName="monster" inverseEntity="Action" syncable="YES"/>
+        <relationship name="alignmentOptions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="AlignmentOption" inverseName="monster" inverseEntity="AlignmentOption" syncable="YES"/>
         <relationship name="combatants" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Combatant" inverseName="monster" inverseEntity="Combatant" syncable="YES"/>
         <relationship name="lair" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Lair" inverseName="monster" inverseEntity="Lair" syncable="YES"/>
         <relationship name="legendaryActions" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="LegendaryAction" inverseName="monster" inverseEntity="LegendaryAction" syncable="YES"/>
@@ -121,7 +129,7 @@
         <relationship name="book" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="sources" inverseEntity="Book" syncable="YES"/>
         <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="sources" inverseEntity="Monster" syncable="YES"/>
     </entity>
-    <entity name="Tag" syncable="YES">
+    <entity name="Tag" representedClassName=".Tag" syncable="YES">
         <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="monsters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Monster" inverseName="tags" inverseEntity="Monster" syncable="YES"/>
     </entity>
@@ -141,11 +149,12 @@
         <element name="LairAction" positionX="567" positionY="630" width="128" height="75"/>
         <element name="LairTrait" positionX="567" positionY="717" width="128" height="75"/>
         <element name="LegendaryAction" positionX="261" positionY="558" width="128" height="90"/>
-        <element name="Monster" positionX="79" positionY="216" width="128" height="585"/>
+        <element name="Monster" positionX="79" positionY="216" width="128" height="630"/>
         <element name="Reaction" positionX="261" positionY="459" width="128" height="90"/>
         <element name="RegionalEffect" positionX="565" positionY="801" width="128" height="75"/>
         <element name="Source" positionX="-92" positionY="198" width="128" height="105"/>
-        <element name="Tag" positionX="-92" positionY="432" width="128" height="73"/>
+        <element name="Tag" positionX="-92" positionY="432" width="128" height="75"/>
         <element name="Trait" positionX="261" positionY="261" width="128" height="90"/>
+        <element name="AlignmentOption" positionX="-54" positionY="351" width="128" height="90"/>
     </elements>
 </model>

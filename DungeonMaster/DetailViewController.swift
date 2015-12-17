@@ -127,8 +127,61 @@ class DetailViewController: UIViewController {
 
                 
                 text.appendAttributedString(NSAttributedString(string: "\(monster.name)\n", attributes: nameStyle))
-                text.appendAttributedString(NSAttributedString(string: "\(monster.sizeTypeAlignment)\n", attributes: sizeTypeAlignmentStyle))
                 
+                
+                let sizeType: String
+                if let swarmSize = monster.swarmSize {
+                    sizeType = "\(swarmSize.stringValue.capitalizedString) swarm of \(monster.size.stringValue.capitalizedString) \(monster.type.stringValue)s"
+                } else {
+                    sizeType = "\(monster.size.stringValue.capitalizedString) \(monster.type.stringValue)"
+                }
+                text.appendAttributedString(NSAttributedString(string: "\(sizeType)", attributes: sizeTypeAlignmentStyle))
+
+                if monster.tags.count > 0 {
+                    let tags = monster.allTags.map { $0.name }.joinWithSeparator(", ")
+                    text.appendAttributedString(NSAttributedString(string: " (\(tags))", attributes: sizeTypeAlignmentStyle))
+                }
+                
+                if let alignment = monster.alignment {
+                    text.appendAttributedString(NSAttributedString(string: ", \(alignment.stringValue)\n", attributes: sizeTypeAlignmentStyle))
+                } else if monster.alignmentOptions.filter({ ($0 as! AlignmentOption).weight != nil }).count > 0 {
+                    // By weight
+                    let weightSortDescriptor = NSSortDescriptor(key: "rawWeight", ascending: false)
+                    let alignmentSortDescriptor = NSSortDescriptor(key: "rawAlignment", ascending: true)
+                    
+                    let alignmentString = monster.alignmentOptions.sortedArrayUsingDescriptors([ weightSortDescriptor, alignmentSortDescriptor ]).map {
+                        let alignmentOption = $0 as! AlignmentOption
+                        let formattedWeight = NSString(format: "%.0f", alignmentOption.weight! * 100.0)
+                        return "\(alignmentOption.alignment.stringValue) (\(formattedWeight)%)"
+                    }.joinWithSeparator(" or ")
+                    
+                    text.appendAttributedString(NSAttributedString(string: ", \(alignmentString)\n", attributes: sizeTypeAlignmentStyle))
+
+                } else if monster.alignmentOptions.count > 0 {
+                    // By set;
+                    let alignmentSet = Set<Alignment>(monster.alignmentOptions.map({ ($0 as! AlignmentOption).alignment }))
+                    
+                    let alignmentString: String
+                    if alignmentSet == Alignment.allAlignments {
+                        alignmentString = "any alignment"
+                    } else if alignmentSet == Alignment.chaoticAlignments {
+                        alignmentString = "any chaotic alignment"
+                    } else if alignmentSet == Alignment.evilAlignments {
+                        alignmentString = "any evil alignment"
+                    } else if alignmentSet == Alignment.allAlignments.subtract(Alignment.goodAlignments) {
+                        alignmentString = "any non-good alignment"
+                    } else if alignmentSet == Alignment.allAlignments.subtract(Alignment.lawfulAlignments) {
+                        alignmentString = "any non-lawful alignment"
+                    } else {
+                        alignmentString = "various alignments"
+                    }
+                    
+                    text.appendAttributedString(NSAttributedString(string: ", \(alignmentString)\n", attributes: sizeTypeAlignmentStyle))
+                } else {
+                    text.appendAttributedString(NSAttributedString(string: ", unaligned\n", attributes: sizeTypeAlignmentStyle))
+
+                }
+            
                 text.appendAttributedString(NSAttributedString(string: "Armor Class ", attributes: statsLabelStyle))
                 text.appendAttributedString(NSAttributedString(string: "\(monster.armorClass)\n", attributes: statsValueStyle))
                 

@@ -30,6 +30,7 @@
 		D249CF871C224ED900CDE673 /* Rules.plist in Resources */ = {isa = PBXBuildFile; fileRef = D249CF861C224ED900CDE673 /* Rules.plist */; };
 		D249CF891C22602800CDE673 /* ConditionRulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D249CF881C22602800CDE673 /* ConditionRulesViewController.swift */; };
 		D249CF8B1C23311A00CDE673 /* Rules.swift in Sources */ = {isa = PBXBuildFile; fileRef = D249CF8A1C23311A00CDE673 /* Rules.swift */; };
+		D249CF8D1C233B2F00CDE673 /* AlignmentOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = D249CF8C1C233B2F00CDE673 /* AlignmentOption.swift */; };
 		D2511FF81C12B1AD00A09F0B /* MonstersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2511FF71C12B1AD00A09F0B /* MonstersViewController.swift */; };
 		D2511FFA1C14BC3700A09F0B /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2511FF91C14BC3700A09F0B /* Tag.swift */; };
 		D25120001C14C7ED00A09F0B /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2511FFF1C14C7ED00A09F0B /* BooksViewController.swift */; };
@@ -98,6 +99,7 @@
 		D249CF861C224ED900CDE673 /* Rules.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Rules.plist; sourceTree = "<group>"; };
 		D249CF881C22602800CDE673 /* ConditionRulesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConditionRulesViewController.swift; sourceTree = "<group>"; };
 		D249CF8A1C23311A00CDE673 /* Rules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rules.swift; sourceTree = "<group>"; };
+		D249CF8C1C233B2F00CDE673 /* AlignmentOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlignmentOption.swift; sourceTree = "<group>"; };
 		D2511FF71C12B1AD00A09F0B /* MonstersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonstersViewController.swift; sourceTree = "<group>"; };
 		D2511FF91C14BC3700A09F0B /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		D2511FFF1C14C7ED00A09F0B /* BooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				D23435F01C0D608B00108D5F /* Source.swift */,
 				D23435F31C0D617C00108D5F /* Monster.swift */,
 				D2511FF91C14BC3700A09F0B /* Tag.swift */,
+				D249CF8C1C233B2F00CDE673 /* AlignmentOption.swift */,
 				D2116A471C10ECAE001EDBBA /* Trait.swift */,
 				D2116A451C10EBEB001EDBBA /* Action.swift */,
 				D2116A491C10ECBC001EDBBA /* Reaction.swift */,
@@ -437,6 +440,7 @@
 				D2116A4A1C10ECBC001EDBBA /* Reaction.swift in Sources */,
 				D2A9AF0A1BFFEAA5009902ED /* AppDelegate.swift in Sources */,
 				D243F6431C189A7500324572 /* TabletopView.swift in Sources */,
+				D249CF8D1C233B2F00CDE673 /* AlignmentOption.swift in Sources */,
 				D2116A551C10F4F8001EDBBA /* RegionalEffect.swift in Sources */,
 				D2116A481C10ECAE001EDBBA /* Trait.swift in Sources */,
 				D26FBA321C1D39B900D44503 /* Sounds.swift in Sources */,
