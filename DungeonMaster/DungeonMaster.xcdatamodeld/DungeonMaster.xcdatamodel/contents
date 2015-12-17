@@ -11,10 +11,13 @@
         <relationship name="sources" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Source" inverseName="book" inverseEntity="Source" syncable="YES"/>
     </entity>
     <entity name="Combatant" representedClassName=".Combatant" syncable="YES">
+        <attribute name="dateCreated" attributeType="Date" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rawDamagePoints" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="rawHitPoints" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawInitiative" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="rawLocationX" optional="YES" attributeType="Float" syncable="YES"/>
+        <attribute name="rawLocationY" optional="YES" attributeType="Float" syncable="YES"/>
         <relationship name="conditions" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Condition" inverseName="target" inverseEntity="Condition" syncable="YES"/>
         <relationship name="damages" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Damage" inverseName="target" inverseEntity="Damage" syncable="YES"/>
         <relationship name="encounter" maxCount="1" deletionRule="Nullify" destinationEntity="Encounter" inverseName="combatants" inverseEntity="Encounter" syncable="YES"/>
@@ -130,7 +133,7 @@
     <elements>
         <element name="Action" positionX="261" positionY="360" width="128" height="90"/>
         <element name="Book" positionX="-261" positionY="198" width="128" height="90"/>
-        <element name="Combatant" positionX="-54" positionY="351" width="128" height="165"/>
+        <element name="Combatant" positionX="-54" positionY="351" width="128" height="210"/>
         <element name="Condition" positionX="-36" positionY="369" width="128" height="75"/>
         <element name="Damage" positionX="-45" positionY="360" width="128" height="90"/>
         <element name="Encounter" positionX="-54" positionY="351" width="128" height="90"/>

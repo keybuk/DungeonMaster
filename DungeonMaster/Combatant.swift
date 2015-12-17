@@ -13,6 +13,7 @@ final class Combatant: NSManagedObject {
     
     @NSManaged var encounter: Encounter
     @NSManaged var monster: Monster
+    @NSManaged var dateCreated: NSDate
 
     @NSManaged var rawHitPoints: Int16
     @NSManaged var rawDamagePoints: Int16
@@ -71,6 +72,7 @@ final class Combatant: NSManagedObject {
         self.encounter = encounter
         self.monster = monster
         
+        dateCreated = NSDate()
         hitPoints = monster.hitPoints ?? monster.hitDice.averageValue
     }
     
