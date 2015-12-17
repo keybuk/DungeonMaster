@@ -187,7 +187,7 @@ final class Monster: NSManagedObject {
     }
     @NSManaged private var rawPassivePerception: Int16
 
-    @NSManaged var cr: Float
+    @NSManaged var cr: NSDecimalNumber
     @NSManaged var xp: Int32
 
     // Original un-parsed stat block text.

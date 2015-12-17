@@ -252,18 +252,14 @@ extension MonstersViewController: UITableViewDataSource {
             case .ByName:
                 return monster.nameInitial
             case .ByCrXp:
-                //return "\(monster.cr)"
-                if monster.cr > 0.9 {
-                    let cr = Int(monster.cr)
-                    return "\(cr)"
-                } else if monster.cr > 0.4 {
-                    return "½"
-                } else if monster.cr > 0.2 {
-                    return "¼"
-                } else if monster.cr > 0.1 {
+                if monster.cr == NSDecimalNumber(string: "0.125") {
                     return "⅛"
+                } else if monster.cr == NSDecimalNumber(string: "0.25") {
+                    return "¼"
+                } else if monster.cr == NSDecimalNumber(string: "0.5") {
+                    return "½"
                 } else {
-                    return "0"
+                    return "\(monster.cr)"
                 }
             }
         }

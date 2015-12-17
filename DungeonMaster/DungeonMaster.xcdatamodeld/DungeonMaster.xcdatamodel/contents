@@ -72,7 +72,7 @@
         <attribute name="armorClass" attributeType="String" syncable="YES"/>
         <attribute name="challenge" attributeType="String" syncable="YES"/>
         <attribute name="conditionImmunities" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="cr" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="cr" attributeType="Decimal" defaultValueString="0" syncable="YES"/>
         <attribute name="damageImmunities" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="damageResistances" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="damageVulnerabilities" optional="YES" attributeType="String" syncable="YES"/>
