@@ -116,12 +116,17 @@ extension TabletopViewController: TabletopViewDelegate {
         combatant.location = location
     }
     
-    func tabletopView(tabletopView: TabletopView, willShowStatsForItem index: Int) {
-        print("Tapped \(index)")
-    }
-    
     func tabletopView(tabletopView: TabletopView, didSelectItem index: Int) {
-        print("Selected \(index)")
+        let combatant = fetchedResultsController.fetchedObjects![index] as! Combatant
+        if let encounterViewController = (splitViewController?.viewControllers[0] as! UINavigationController).topViewController as? EncounterViewController {
+            for (sectionIndex, section) in encounterViewController.fetchedResultsController.sections!.enumerate() {
+                let combatants = section.objects as! [Combatant]?
+                if let rowIndex = combatants?.indexOf(combatant) {
+                    encounterViewController.tableView.selectRowAtIndexPath(NSIndexPath(forRow: rowIndex, inSection: sectionIndex), animated: true, scrollPosition: .Middle)
+                    encounterViewController.performSegueWithIdentifier("CombatantSegue", sender: self)
+                }
+            }
+        }
     }
 
 }
