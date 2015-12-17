@@ -15,13 +15,13 @@ final class Book: NSManagedObject {
     
     var type: BookType {
         get {
-            return BookType(rawValue: rawType)!
+            return BookType(rawValue: rawType.integerValue)!
         }
         set(newType) {
-            rawType = newType.rawValue
+            rawType = NSNumber(integer: newType.rawValue)
         }
     }
-    @NSManaged private var rawType: Int16
+    @NSManaged private var rawType: NSNumber
 
     @NSManaged var sources: NSSet
 

@@ -12,7 +12,7 @@ import Foundation
 ///  - **CoreRulebook**: the three core rulebooks: Player's Handbook, Monster Manual, and Dungeon Master's Guide.
 ///  - **OfficialAdventure**: an official adventure published by Wizards of the Coast, e.g. Princes of the Apocalypse.
 ///  - **OnlineSupplement**: freely published online supplements to core rulebooks and official adventures, including the basic rules.
-enum BookType: Int16 {
+enum BookType: Int {
     case CoreRulebook
     case OfficialAdventure
     case OnlineSupplement
