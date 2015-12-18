@@ -417,7 +417,7 @@ class ConditionCell: UITableViewCell {
 
     var condition: Condition! {
         didSet {
-            textLabel?.text = condition.type.stringValue
+            textLabel?.text = condition.type.stringValue.capitalizedString
         }
     }
 
@@ -438,7 +438,7 @@ class DamageCell: UITableViewCell {
     var damage: Damage! {
         didSet {
             pointsLabel.text = "\(damage.points)"
-            typeLabel.text = damage.type.stringValue
+            typeLabel.text = damage.type.stringValue.capitalizedString
         }
     }
 
