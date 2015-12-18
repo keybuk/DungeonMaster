@@ -15,13 +15,13 @@ final class Damage: NSManagedObject {
     
     var points: Int {
         get {
-            return Int(rawPoints)
+            return rawPoints.integerValue
         }
         set(newPoints) {
-            rawPoints = Int16(newPoints)
+            rawPoints = NSNumber(integer: newPoints)
         }
     }
-    @NSManaged private var rawPoints: Int16
+    @NSManaged private var rawPoints: NSNumber
 
     var type: DamageType {
         get {

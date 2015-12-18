@@ -123,13 +123,13 @@ final class Monster: NSManagedObject {
     /// Strength score, used for generating `strengthModifier`.
     var strength: Int {
         get {
-            return Int(rawStrength)
+            return rawStrength.integerValue
         }
         set(newStrength) {
-            rawStrength = Int16(newStrength)
+            rawStrength = NSNumber(integer: newStrength)
         }
     }
-    @NSManaged private var rawStrength: Int16
+    @NSManaged private var rawStrength: NSNumber
 
     /// Modifier to apply to strength actions, saving throws, and ability checks.
     var strengthModifier: Int {
@@ -139,13 +139,13 @@ final class Monster: NSManagedObject {
     /// Dexterity score, used for generating `dexterityModifier`.
     var dexterity: Int {
         get {
-            return Int(rawDexterity)
+            return rawDexterity.integerValue
         }
         set(newDexterity) {
-            rawDexterity = Int16(newDexterity)
+            rawDexterity = NSNumber(integer: newDexterity)
         }
     }
-    @NSManaged private var rawDexterity: Int16
+    @NSManaged private var rawDexterity: NSNumber
 
     /// Modifier to apply to dexterity actions, saving throws, and ability checks.
     var dexterityModifier: Int {
@@ -155,13 +155,13 @@ final class Monster: NSManagedObject {
     /// Constitution score, used for generating `constitutionModifier`.
     var constitution: Int {
         get {
-            return Int(rawConstitution)
+            return rawConstitution.integerValue
         }
         set(newConstitution) {
-            rawConstitution = Int16(newConstitution)
+            rawConstitution = NSNumber(integer: newConstitution)
         }
     }
-    @NSManaged private var rawConstitution: Int16
+    @NSManaged private var rawConstitution: NSNumber
 
     /// Modifier to apply to constitution saving throws and ability checks.
     var constitutionModifier: Int {
@@ -171,13 +171,13 @@ final class Monster: NSManagedObject {
     /// Intelligence score, used for generating `intelligenceModifier`.
     var intelligence: Int {
         get {
-            return Int(rawIntelligence)
+            return rawIntelligence.integerValue
         }
         set(newIntelligence) {
-            rawIntelligence = Int16(newIntelligence)
+            rawIntelligence = NSNumber(integer: newIntelligence)
         }
     }
-    @NSManaged private var rawIntelligence: Int16
+    @NSManaged private var rawIntelligence: NSNumber
 
     /// Modifier to apply to intelligence spells, saving throws, and ability checks.
     var intelligenceModifier: Int {
@@ -187,13 +187,13 @@ final class Monster: NSManagedObject {
     /// Wisdom score, used for generating `wisdomModifier`.
     var wisdom: Int {
         get {
-            return Int(rawWisdom)
+            return rawWisdom.integerValue
         }
         set(newWisdom) {
-            rawWisdom = Int16(newWisdom)
+            rawWisdom = NSNumber(integer: newWisdom)
         }
     }
-    @NSManaged private var rawWisdom: Int16
+    @NSManaged private var rawWisdom: NSNumber
 
     /// Modifier to apply to wisdom spells, saving throws, and ability checks.
     var wisdomModifier: Int {
@@ -203,13 +203,13 @@ final class Monster: NSManagedObject {
     /// Charisma score, used for genearting `charismaModifier`.
     var charisma: Int {
         get {
-            return Int(rawCharisma)
+            return rawCharisma.integerValue
         }
         set(newCharisma) {
-            rawCharisma = Int16(newCharisma)
+            rawCharisma = NSNumber(integer: newCharisma)
         }
     }
-    @NSManaged private var rawCharisma: Int16
+    @NSManaged private var rawCharisma: NSNumber
 
     /// Modifier to apply to charisma spells, saving throws, and ability checks.
     var charismaModifier: Int {
@@ -219,13 +219,13 @@ final class Monster: NSManagedObject {
     /// Passive perception score.
     var passivePerception: Int {
         get {
-            return Int(rawPassivePerception)
+            return rawPassivePerception.integerValue
         }
         set(newPassivePerception) {
-            rawPassivePerception = Int16(newPassivePerception)
+            rawPassivePerception = NSNumber(integer: newPassivePerception)
         }
     }
-    @NSManaged private var rawPassivePerception: Int16
+    @NSManaged private var rawPassivePerception: NSNumber
     
     /// The challenge rating of this monster.
     ///

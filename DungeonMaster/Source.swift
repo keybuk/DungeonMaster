@@ -18,13 +18,13 @@ final class Source: NSManagedObject {
     /// Page number in the book where this reference can be found.
     var page: Int {
         get {
-            return Int(rawPage)
+            return rawPage.integerValue
         }
         set(newPage) {
-            rawPage = Int16(newPage)
+            rawPage = NSNumber(integer: newPage)
         }
     }
-    @NSManaged private var rawPage: Int16
+    @NSManaged private var rawPage: NSNumber
 
     /// Title of the section that the reference can be found in, if relevant.
     @NSManaged var section: String?

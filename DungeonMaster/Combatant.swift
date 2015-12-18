@@ -19,23 +19,23 @@ final class Combatant: NSManagedObject {
 
     var hitPoints: Int {
         get {
-            return Int(rawHitPoints)
+            return rawHitPoints.integerValue
         }
         set(newHitPoints) {
-            rawHitPoints = Int16(newHitPoints)
+            rawHitPoints = NSNumber(integer: newHitPoints)
         }
     }
-    @NSManaged private var rawHitPoints: Int16
+    @NSManaged private var rawHitPoints: NSNumber
 
     var damagePoints: Int {
         get {
-            return Int(rawDamagePoints)
+            return rawDamagePoints.integerValue
         }
         set(newDamagePoints) {
-            rawDamagePoints = Int16(newDamagePoints)
+            rawDamagePoints = NSNumber(integer: newDamagePoints)
         }
     }
-    @NSManaged private var rawDamagePoints: Int16
+    @NSManaged private var rawDamagePoints: NSNumber
 
     var health: Float {
         return Float(max(hitPoints - damagePoints, 0)) / Float(hitPoints)
