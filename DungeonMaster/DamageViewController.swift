@@ -53,7 +53,7 @@ extension DamageViewController: UIPickerViewDataSource {
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 14
+        return sharedRules.damageType.count + 1
     }
     
 }
@@ -65,34 +65,8 @@ extension DamageViewController: UIPickerViewDelegate {
         switch row {
         case 0:
             return NSAttributedString(string: "Damage Type", attributes: [NSForegroundColorAttributeName: UIColor.lightGrayColor()])
-        case 1:
-            return NSAttributedString(string: "Acid")
-        case 2:
-            return NSAttributedString(string: "Bludgeoning")
-        case 3:
-            return NSAttributedString(string: "Cold")
-        case 4:
-            return NSAttributedString(string: "Fire")
-        case 5:
-            return NSAttributedString(string: "Force")
-        case 6:
-            return NSAttributedString(string: "Lightning")
-        case 7:
-            return NSAttributedString(string: "Necrotic")
-        case 8:
-            return NSAttributedString(string: "Piercing")
-        case 9:
-            return NSAttributedString(string: "Poison")
-        case 10:
-            return NSAttributedString(string: "Psychic")
-        case 11:
-            return NSAttributedString(string: "Radiant")
-        case 12:
-            return NSAttributedString(string: "Slashing")
-        case 13:
-            return NSAttributedString(string: "Thunder")
         default:
-            abort()
+            return NSAttributedString(string: DamageType(rawValue: row - 1)!.stringValue.capitalizedString)
         }
     }
 
@@ -100,34 +74,8 @@ extension DamageViewController: UIPickerViewDelegate {
         switch row {
         case 0:
             type = nil
-        case 1:
-            type = .Acid
-        case 2:
-            type = .Bludgeoning
-        case 3:
-            type = .Cold
-        case 4:
-            type = .Fire
-        case 5:
-            type = .Force
-        case 6:
-            type = .Lightning
-        case 7:
-            type = .Necrotic
-        case 8:
-            type = .Piercing
-        case 9:
-            type = .Poison
-        case 10:
-            type = .Psychic
-        case 11:
-            type = .Radiant
-        case 12:
-            type = .Slashing
-        case 13:
-            type = .Thunder
         default:
-            abort()
+            type = DamageType(rawValue: row - 1)
         }
         
         addButton.enabled = (points != nil && type != nil)
