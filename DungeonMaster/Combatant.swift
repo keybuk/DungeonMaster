@@ -37,6 +37,10 @@ final class Combatant: NSManagedObject {
     }
     @NSManaged private var rawDamagePoints: Int16
 
+    var health: Float {
+        return Float(max(hitPoints - damagePoints, 0)) / Float(hitPoints)
+    }
+    
     var initiative: Int? {
         get {
             return rawInitiative?.integerValue
@@ -61,21 +65,7 @@ final class Combatant: NSManagedObject {
 
     @NSManaged var damages: NSOrderedSet
     
-    var allDamages: [Damage] {
-        return damages.array as! [Damage]
-    }
-    
     @NSManaged var conditions: NSOrderedSet
-
-    var allConditions: [Condition] {
-        return conditions.array as! [Condition]
-    }
-
-    // MARK: Computed properties
-
-    var health: Float {
-        return Float(max(hitPoints - damagePoints, 0)) / Float(hitPoints)
-    }
 
     convenience init(encounter: Encounter, monster: Monster, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Combatant, inManagedObjectContext: context)

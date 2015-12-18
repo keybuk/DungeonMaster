@@ -16,12 +16,6 @@ final class Encounter: NSManagedObject {
     
     @NSManaged var combatants: NSSet
 
-    var allCombatants: Set<Combatant> {
-        return combatants as! Set<Combatant>
-    }
-    
-    // MARK: Computed properties
-    
     var title: String {
         if name != nil {
             return name!

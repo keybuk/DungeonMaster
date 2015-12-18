@@ -27,11 +27,9 @@ final class Book: NSManagedObject {
     @NSManaged private var rawType: NSNumber
 
     /// References contained within this book.
+    ///
+    /// Each member is a `Source` with the page of the specific reference and link to the referencing entity.
     @NSManaged var sources: NSSet
-
-    var allSources: Set<Source> {
-        return sources as! Set<Source>
-    }
 
     convenience init(name: String, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Book, inManagedObjectContext: context)

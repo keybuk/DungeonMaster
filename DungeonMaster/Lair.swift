@@ -22,21 +22,9 @@ final class Lair: NSManagedObject {
     
     @NSManaged var lairActions: NSOrderedSet
     
-    var allLairActions: [LairAction] {
-        return lairActions.array as! [LairAction]
-    }
-    
     @NSManaged var lairTraits: NSOrderedSet
 
-    var allLairTraits: [LairTrait] {
-        return lairTraits.array as! [LairTrait]
-    }
-    
     @NSManaged var regionalEffects: NSOrderedSet
-
-    var allRegionalEffects: [RegionalEffect] {
-        return regionalEffects.array as! [RegionalEffect]
-    }
 
     convenience init(inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Lair, inManagedObjectContext: context)
