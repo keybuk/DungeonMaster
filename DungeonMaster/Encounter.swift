@@ -27,7 +27,7 @@ final class Encounter: NSManagedObject {
             return name!
         }
         
-        let sortDescriptor = NSSortDescriptor(key: "monster.cr", ascending: false)
+        let sortDescriptor = NSSortDescriptor(key: "monster.challenge", ascending: false)
         let sortedCombatants = combatants.sortedArrayUsingDescriptors([sortDescriptor]) as! [Combatant]
         if sortedCombatants.count > 0 {
             let monster = sortedCombatants[0].monster
