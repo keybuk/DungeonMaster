@@ -25,13 +25,13 @@ final class Damage: NSManagedObject {
 
     var type: DamageType {
         get {
-            return DamageType(rawValue: rawType)!
+            return DamageType(rawValue: rawType.integerValue)!
         }
         set(newType) {
-            rawType = newType.rawValue
+            rawType = NSNumber(integer: newType.rawValue)
         }
     }
-    @NSManaged private var rawType: String
+    @NSManaged private var rawType: NSNumber
 
     convenience init(target: Combatant, points: Int, type: DamageType, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Damage, inManagedObjectContext: context)

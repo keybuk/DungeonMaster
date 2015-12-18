@@ -29,12 +29,12 @@
         <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="combatants" inverseEntity="Monster" syncable="YES"/>
     </entity>
     <entity name="Condition" representedClassName=".Condition" syncable="YES">
-        <attribute name="rawType" attributeType="String" syncable="YES"/>
+        <attribute name="rawType" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="target" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Combatant" inverseName="conditions" inverseEntity="Combatant" syncable="YES"/>
     </entity>
     <entity name="Damage" representedClassName=".Damage" syncable="YES">
         <attribute name="rawPoints" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="rawType" attributeType="String" syncable="YES"/>
+        <attribute name="rawType" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="target" maxCount="1" deletionRule="Nullify" destinationEntity="Combatant" inverseName="damages" inverseEntity="Combatant" syncable="YES"/>
     </entity>
     <entity name="Encounter" representedClassName=".Encounter" syncable="YES">

@@ -29,8 +29,7 @@ class ConditionRulesViewController: UIViewController {
             NSParagraphStyleAttributeName: nameParaStyle
         ]
 
-        let name = condition.rawValue.capitalizedString
-        text.appendAttributedString(NSAttributedString(string: "\(name)\n", attributes: nameStyle))
+        text.appendAttributedString(NSAttributedString(string: "\(condition.stringValue)\n", attributes: nameStyle))
 
         
         let bodyFont = UIFontDescriptor.preferredFontDescriptorWithTextStyle(UIFontTextStyleBody)
@@ -46,7 +45,7 @@ class ConditionRulesViewController: UIViewController {
             NSParagraphStyleAttributeName: listParaStyle
         ]
         
-        for ruleText in sharedRules.conditionDescriptions[condition.rawValue]! {
+        for ruleText in condition.rulesDescription {
             text.appendAttributedString(NSAttributedString(string: "•\t\(ruleText)\n", attributes: listStyle))
         }
 

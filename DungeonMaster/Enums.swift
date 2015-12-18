@@ -31,7 +31,7 @@ enum Size: Int {
     
     /// Returns the string equivalent of the size.
     var stringValue: String {
-        return sharedRules.sizes[rawValue]
+        return sharedRules.size[rawValue]
     }
     
     /// Returns the space in feet occupied by creatures of this type.
@@ -64,7 +64,7 @@ enum MonsterType: Int {
     
     /// Returns the string equivalent of the monster type.
     var stringValue: String {
-        return sharedRules.monsterTypes[rawValue]
+        return sharedRules.monsterType[rawValue]
     }
 }
 
@@ -83,9 +83,8 @@ enum Environment {
 }
 
 /// Alignment categorises the different alignments of monsters.
-///
-/// Only the specific alignments are contained within this enum, a creature with no alignment should have an optional alignment with a nil value.
 enum Alignment: Int {
+    case Unaligned
     case LawfulGood
     case LawfulNeutral
     case LawfulEvil
@@ -98,7 +97,7 @@ enum Alignment: Int {
     
     /// Returns the string equivalent of the alignment.
     var stringValue: String {
-        return sharedRules.alignments[rawValue]
+        return sharedRules.alignment[rawValue]
     }
     
     /// Returns a set of all alignments.
@@ -127,7 +126,11 @@ enum Alignment: Int {
     }
 }
 
-enum Armor {
+/// Armor that can be worn by players and monsters.
+enum ArmorType: Int {
+    case None
+    case Natural
+
     // Light Armor
     case Padded
     case Leather
@@ -146,42 +149,89 @@ enum Armor {
     case Splint
     case Plate
     
-    // Shield
-    case Shield
+    // Monster-specific Armor.
+    case Scraps
+    case BardingScraps
+    case Patchwork
+    
+    /// Returns the string equivalent of the armor.
+    var stringValue: String {
+        return sharedRules.armorType[rawValue]
+    }
+    
+    /// Returns the base armor class for the armor.
+    ///
+    /// When this returns nil, it's up to the monster designer to decide the base AC.
+    var armorClass: Int? {
+        return sharedRules.armorClass[rawValue]
+    }
+    
+    /// Returns whether the monster should add its Dexterity modifier to the armor class. and maximum value for that if appropriate.
+    var addDexterityModifier: (add: Bool, max: Int?) {
+        return sharedRules.armorDexterityModifierMax[rawValue]
+    }
+    
+    /// Returns the minimum strength requirement for the armor.
+    ///
+    /// When this is not nil, and the monster does not have a strength equal or greater to the returned score, the monster's speed is reduced by 10 feet.
+    var minimumStrength: Int? {
+        return sharedRules.armorMinimumStrength[rawValue]
+    }
+    
+    /// Returns whether stealth checks for monsters wearing this armor should have disadvantage.
+    var stealthDisadvantage: Bool {
+        return sharedRules.armorStealthDisadvantage[rawValue]
+    }
 }
 
-enum DamageType: String {
-    case Acid = "acid"
-    case Bludgeoning = "bludgeoning"
-    case Cold = "cold"
-    case Fire = "fire"
-    case Force = "force"
-    case Lightning = "lightning"
-    case Necrotic = "necrotic"
-    case Piercing = "piercing"
-    case Poison = "poison"
-    case Psychic = "psychic"
-    case Radiant = "radiant"
-    case Slashing = "slashing"
-    case Thunder = "thunder"
+/// Types of damage that can be dealt by attacks.
+enum DamageType: Int {
+    case Acid
+    case Bludgeoning
+    case Cold
+    case Fire
+    case Force
+    case Lightning
+    case Necrotic
+    case Piercing
+    case Poison
+    case Psychic
+    case Radiant
+    case Slashing
+    case Thunder
+    
+    /// Returns the string equivalent of the damage type.
+    var stringValue: String {
+        return sharedRules.damageType[rawValue]
+    }
 }
 
-enum ConditionType: String {
+enum ConditionType: Int {
     // TODO: deal with exhaustion, and its six levels
-    case Blinded = "blinded"
-    case Charmed = "charmed"
-    case Deafened = "deafened"
-    case Frightened = "frightened"
-    case Grappled = "grappled"
-    case Incapacitated = "incapacitated"
-    case Invisible = "invisible"
-    case Paralyzed = "paralyzed"
-    case Petrified = "petrified"
-    case Poisoned = "poisoned"
-    case Prone = "prone"
-    case Restrained = "restrained"
-    case Stunned = "stunned"
-    case Unconcious = "unconcious"
+    case Blinded
+    case Charmed
+    case Deafened
+    case Frightened
+    case Grappled
+    case Incapacitated
+    case Invisible
+    case Paralyzed
+    case Petrified
+    case Poisoned
+    case Prone
+    case Restrained
+    case Stunned
+    case Unconcious
+    
+    /// Returns the string equivalent of the condition.
+    var stringValue: String {
+        return sharedRules.conditionType[rawValue]
+    }
+    
+    /// Returns an array of rules texts for the condition.
+    var rulesDescription: [String] {
+        return sharedRules.conditionDescription[rawValue]
+    }
 }
 
 enum Language {

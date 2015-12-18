@@ -11,12 +11,12 @@ import plistlib
 SIZES = [ "tiny", "small", "medium", "large", "huge", "gargantuan" ]
 MONSTER_TYPES = [ "aberration", "beast", "celestial", "construct", "dragon", "elemental", "fey",
 				  "fiend", "giant", "humanoid", "monstrosity", "ooze", "plant", "undead" ]
-ALIGNMENTS = [ "lawful good", "lawful neutral", "lawful evil",
+ALIGNMENTS = [ "unaligned", "lawful good", "lawful neutral", "lawful evil",
 			   "neutral good", "neutral", "neutral evil",
 			   "chaotic good", "chaotic neutral", "chaotic evil" ]
 
 ALIGNMENT_OPTIONS = {
-	"any alignment": ALIGNMENTS,
+	"any alignment": ALIGNMENTS[1:],
 	"any chaotic alignment": [ "chaotic good", "chaotic neutral", "chaotic evil" ],
 	"any evil alignment": [ "lawful evil", "neutral evil", "chaotic evil" ],
 	"any non-good alignment": [ "lawful neutral", "lawful evil", "neutral", "neutral evil", "chaotic neutral", "chaotic evil" ],
@@ -32,8 +32,20 @@ SIZE_TYPE_TAG_ALIGNMENT_RE  = re.compile(
 	r'^(?:(' + size_expr + r') (' + monster_type_expr + r')'
 	r'|(' + size_expr + r') (?:swarm of (' + size_expr + r') (' + monster_type_expr + r')s))' +
 	r'(?: \(([^)]+)\))?, ' +
-	r'(?:unaligned|(' + alignment_expr + r')|(' + alignment_option_expr + r')'
+	r'(?:(' + alignment_expr + r')|(' + alignment_option_expr + r')'
 	r'|(' + alignment_expr + r') \((\d+)%\) or (' + alignment_expr + r') \((\d+)%\))$')
+
+ARMOR_TYPES = [ None, "natural", "padded", "leather", "studded leather", "hide", "chain shirt",
+                "scale mail", "breastplate", "half plate", "ring mail", "chain mail",
+                "splint", "plate", "armor scraps", "barding scraps", "patchwork" ]
+DAMAGE_TYPES = [ "acid", "bludgeoning", "cold", "fire", "force", "lightning", "necrotic", "piercing",
+                 "poison", "psychic", "radiant", "slashing", "thunder" ]
+CONDITIONS = [ "blinded", "charmed", "deafened", "frightened", "grappled", "incapacitated", "invisible",
+              "paralyzed", "petrified", "poisoned", "prone", "restrained", "stunned", "unconcious" ]
+
+armor_expr = "|".join(armor for armor in ARMOR_TYPES if armor is not None)
+damage_expr = "|".join(DAMAGE_TYPES)
+condition_expr = "|".join(CONDITIONS)
 
 HIT_POINTS_RE = re.compile(r'^(\d+) \(([^)]*)\)$')
 ABILITY_RE = re.compile(r'^(\d+) \(([+-]\d+)\)$')

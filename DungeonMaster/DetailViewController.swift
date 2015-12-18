@@ -162,7 +162,7 @@ class DetailViewController: UIViewController {
                     
                     text.appendAttributedString(NSAttributedString(string: ", \(alignmentString)\n", attributes: sizeTypeAlignmentStyle))
 
-                } else if monster.alignmentOptions.count > 0 {
+                } else {
                     // By set;
                     let alignmentSet = Set<Alignment>(monster.alignmentOptions.map({ ($0 as! AlignmentOption).alignment }))
                     
@@ -182,9 +182,6 @@ class DetailViewController: UIViewController {
                     }
                     
                     text.appendAttributedString(NSAttributedString(string: ", \(alignmentString)\n", attributes: sizeTypeAlignmentStyle))
-                } else {
-                    text.appendAttributedString(NSAttributedString(string: ", unaligned\n", attributes: sizeTypeAlignmentStyle))
-
                 }
             
                 text.appendAttributedString(NSAttributedString(string: "Armor Class ", attributes: statsLabelStyle))

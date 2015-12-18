@@ -543,7 +543,7 @@
                                     <segue destination="bGp-m2-jNF" kind="show" identifier="AddConditionSegue" id="vTG-3I-ZLE"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="ConditionCell" textLabel="CVJ-Jp-4ig" style="IBUITableViewCellStyleDefault" id="4yf-0A-ngK">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="ConditionCell" textLabel="CVJ-Jp-4ig" style="IBUITableViewCellStyleDefault" id="4yf-0A-ngK" customClass="ConditionCell" customModule="DungeonMaster" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="245.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4yf-0A-ngK" id="3xk-jB-dXR">

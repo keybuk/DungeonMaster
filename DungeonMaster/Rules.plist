@@ -88,7 +88,7 @@
 		<key>20</key>
 		<integer>6</integer>
 	</dict>
-	<key>levelXPThresholds</key>
+	<key>levelXPThreshold</key>
 	<dict>
 		<key>1</key>
 		<array>
@@ -274,24 +274,7 @@
 		<key>20</key>
 		<integer>40000</integer>
 	</dict>
-	<key>monsterXPMultipliers</key>
-	<dict>
-		<key>0</key>
-		<real>0.5</real>
-		<key>1</key>
-		<integer>1</integer>
-		<key>2</key>
-		<real>1.5</real>
-		<key>3</key>
-		<integer>2</integer>
-		<key>7</key>
-		<real>2.5</real>
-		<key>11</key>
-		<integer>3</integer>
-		<key>15</key>
-		<integer>4</integer>
-	</dict>
-	<key>sizes</key>
+	<key>size</key>
 	<array>
 		<string>tiny</string>
 		<string>small</string>
@@ -318,7 +301,7 @@
 		<integer>12</integer>
 		<integer>20</integer>
 	</array>
-	<key>monsterTypes</key>
+	<key>monsterType</key>
 	<array>
 		<string>aberration</string>
 		<string>beast</string>
@@ -335,8 +318,9 @@
 		<string>plant</string>
 		<string>undead</string>
 	</array>
-	<key>alignments</key>
+	<key>alignment</key>
 	<array>
+		<string>unaligned</string>
 		<string>lawful good</string>
 		<string>lawful neutral</string>
 		<string>lawful evil</string>
@@ -346,6 +330,208 @@
 		<string>chaotic good</string>
 		<string>chaotic neutral</string>
 		<string>chaotic evil</string>
+	</array>
+	<key>armorType</key>
+	<array>
+		<string>none</string>
+		<string>natural armor</string>
+		<string>padded armor</string>
+		<string>leather armor</string>
+		<string>studded leather</string>
+		<string>hide armor</string>
+		<string>chain shirt</string>
+		<string>scale mail</string>
+		<string>breastplate</string>
+		<string>half plate</string>
+		<string>ring mail</string>
+		<string>chain mail</string>
+		<string>splint</string>
+		<string>plate</string>
+		<string>armor scraps</string>
+		<string>barding scraps</string>
+		<string>patchwork armor</string>
+	</array>
+	<key>armorClass</key>
+	<array>
+		<integer>0</integer>
+		<integer>0</integer>
+		<integer>11</integer>
+		<integer>11</integer>
+		<integer>12</integer>
+		<integer>12</integer>
+		<integer>13</integer>
+		<integer>14</integer>
+		<integer>14</integer>
+		<integer>15</integer>
+		<integer>14</integer>
+		<integer>16</integer>
+		<integer>17</integer>
+		<integer>18</integer>
+		<integer>0</integer>
+		<integer>0</integer>
+		<integer>0</integer>
+	</array>
+	<key>armorDexterityModifierMax</key>
+	<array>
+		<integer>0</integer>
+		<integer>0</integer>
+		<integer>10</integer>
+		<integer>10</integer>
+		<integer>10</integer>
+		<integer>2</integer>
+		<integer>2</integer>
+		<integer>2</integer>
+		<integer>2</integer>
+		<integer>2</integer>
+		<integer>0</integer>
+		<integer>0</integer>
+		<integer>0</integer>
+		<integer>0</integer>
+		<integer>0</integer>
+		<integer>0</integer>
+		<integer>0</integer>
+	</array>
+	<key>armorMinimumStrength</key>
+	<array>
+		<integer>0</integer>
+		<integer>0</integer>
+		<integer>0</integer>
+		<integer>0</integer>
+		<integer>0</integer>
+		<integer>0</integer>
+		<integer>0</integer>
+		<integer>0</integer>
+		<integer>0</integer>
+		<integer>0</integer>
+		<integer>0</integer>
+		<integer>13</integer>
+		<integer>15</integer>
+		<integer>15</integer>
+		<integer>0</integer>
+		<integer>0</integer>
+		<integer>0</integer>
+	</array>
+	<key>armorStealthDisadvantage</key>
+	<array>
+		<false/>
+		<true/>
+		<false/>
+		<false/>
+		<false/>
+		<false/>
+		<false/>
+		<true/>
+		<false/>
+		<true/>
+		<true/>
+		<true/>
+		<true/>
+		<true/>
+		<false/>
+		<false/>
+		<false/>
+	</array>
+	<key>damageType</key>
+	<array>
+		<string>acid</string>
+		<string>bludgeoning</string>
+		<string>cold</string>
+		<string>fire</string>
+		<string>force</string>
+		<string>lightning</string>
+		<string>necrotic</string>
+		<string>piercing</string>
+		<string>poison</string>
+		<string>psychic</string>
+		<string>radiant</string>
+		<string>slashing</string>
+		<string>thunder</string>
+	</array>
+	<key>conditionType</key>
+	<array>
+		<string>blinded</string>
+		<string>charmed</string>
+		<string>deafened</string>
+		<string>frightened</string>
+		<string>grappled</string>
+		<string>incapacitated</string>
+		<string>invisible</string>
+		<string>paralyzed</string>
+		<string>petrified</string>
+		<string>poisoned</string>
+		<string>prone</string>
+		<string>restrained</string>
+		<string>stunned</string>
+		<string>unconcious</string>
+	</array>
+	<key>conditionDescription</key>
+	<array>
+		<array>
+			<string>A blinded creature can&apos;t see and automatically fails any ability check that requires sight.</string>
+			<string>Attack rolls against the creature have advantage, and the creature&apos;s attack rolls have disadvantage.</string>
+		</array>
+		<array>
+			<string>A charmed creature can&apos;t attack the charmer or target the charmer with harmful abilities or magical effects.</string>
+			<string>The charmer has advantage on any ability check to interact socially with the creature.</string>
+		</array>
+		<array>
+			<string>A deafened creature can&apos;t hear and automatically fails any ability check that requires hearing.</string>
+		</array>
+		<array>
+			<string>A frightened creature has disadvantage on ability checks and attack rolls while the source of its fear is within line of sight.</string>
+			<string>The creature can&apos;t willingly move closer to the source of its fear.</string>
+		</array>
+		<array>
+			<string>A grappled creature&apos;s speed becomes 0, and it can&apos;t benefit from any bonus to its speed.</string>
+			<string>The condition ends if the grappler is incapacitated (see the condition).</string>
+			<string>The condition also ends if an effect removes the grappled creature from the reach of the grappler or grappling effect, such as when a creature is hurled away by the /thunderwave/ spell.</string>
+		</array>
+		<array>
+			<string>An incapacitated creature can&apos;t take actions or reactions.</string>
+		</array>
+		<array>
+			<string>An invisible creature is impossible to see without the aid of magic or a special sense. For the purpose of hiding, the creature is heavily obscured. The creature&apos;s location can be detected by any noise it makes or any tracks it leaves.</string>
+			<string>Attack rolls against the creature have disadvantage, and the creature&apos;s attack rolls have advantage.</string>
+		</array>
+		<array>
+			<string>A paralyzed creature is incapacitated (see the condition) and can&apos;t move or speak.</string>
+			<string>The creature automatically fails Strength and Dexterity saving throws.</string>
+			<string>Attack rolls against the creature have advantage.</string>
+			<string>Any attack that hits the creature is a critical hit if the attacker is within 5 feet of the creature.</string>
+		</array>
+		<array>
+			<string>A petrified creature is transformed, along with any nonmagical object it is wearing or carrying, into a solid inanimate substance (usually stone). Its weight increased by a factor of ten, and it ceases aging.</string>
+			<string>The creature is incapacitated (see the condition), can&apos;t move or speak, and is unaware of its surroundings.</string>
+			<string>Attack rolls against the creature have advantage.</string>
+			<string>The creature automatically fails Strength and Dexterity saving throws.</string>
+			<string>The creature has resistance to all damage.</string>
+			<string>The creature is immune to poision and disease, although a poision or disease already in its system is suspended, not neutralized.</string>
+		</array>
+		<array>
+			<string>A poisoned creature has disadvantage on attack rolls and ability checks.</string>
+		</array>
+		<array>
+			<string>A prone creature&apos;s only movement option is to crawl, unless it stands up and thereby ends the condition.</string>
+			<string>The creature has disadvantage on attack rolls.</string>
+			<string>An attack roll against the creature has advantage if the attacker is within 5 feet of the creature. Otherwise the attack roll has disadvantage.</string>
+		</array>
+		<array>
+			<string>A restrained creature&apos;s speed becomes 0, and it can&apos;t benefit from any bonus to its speed.</string>
+			<string>Attack rolls against the creature have advantage, and the creature&apos;s attack rolls have disadvantage.</string>
+			<string>The creature has disadvantage on Dexterity saving throws.</string>
+		</array>
+		<array>
+			<string>A stunned creature is incapacitated (see the condition), can&apos;t move, and can speak only falteringly.</string>
+			<string>The creature automatically fails Strength and Dexterity saving throws.</string>
+			<string>Attack rolls against the creature have advantage.</string>
+		</array>
+		<array>
+			<string>An unconcious creature is incapacitated (see the condition), can&apos;t move or speak, and is unaware of its surroundings.</string>
+			<string>The creature drops whatever it&apos;s holding and falls prone.</string>
+			<string>The creature automatically fails Strength and Dexterity saving throws.</string>
+			<string>Attack rolls against the creature have advantage.</string>
+			<string>Any attack that hits the creature is a critical hit if the attacker is within 5 feet of the creature.</string>
+		</array>
 	</array>
 	<key>challengeXP</key>
 	<dict>
@@ -491,88 +677,22 @@
 		<key>30</key>
 		<integer>9</integer>
 	</dict>
-	<key>conditionDescriptions</key>
+	<key>monsterXPMultiplier</key>
 	<dict>
-		<key>blinded</key>
-		<array>
-			<string>A blinded creature can&apos;t see and automatically fails any ability check that requires sight.</string>
-			<string>Attack rolls against the creature have advantage, and the creature&apos;s attack rolls have disadvantage.</string>
-		</array>
-		<key>charmed</key>
-		<array>
-			<string>A charmed creature can&apos;t attack the charmer or target the charmer with harmful abilities or magical effects.</string>
-			<string>The charmer has advantage on any ability check to interact socially with the creature.</string>
-		</array>
-		<key>deafened</key>
-		<array>
-			<string>A deafened creature can&apos;t hear and automatically fails any ability check that requires hearing.</string>
-		</array>
-		<key>frightened</key>
-		<array>
-			<string>A frightened creature has disadvantage on ability checks and attack rolls while the source of its fear is within line of sight.</string>
-			<string>The creature can&apos;t willingly move closer to the source of its fear.</string>
-		</array>
-		<key>grappled</key>
-		<array>
-			<string>A grappled creature&apos;s speed becomes 0, and it can&apos;t benefit from any bonus to its speed.</string>
-			<string>The condition ends if the grappler is incapacitated (see the condition).</string>
-			<string>The condition also ends if an effect removes the grappled creature from the reach of the grappler or grappling effect, such as when a creature is hurled away by the /thunderwave/ spell.</string>
-		</array>
-		<key>incapacitated</key>
-		<array>
-			<string>An incapacitated creature can&apos;t take actions or reactions.</string>
-		</array>
-		<key>invisible</key>
-		<array>
-			<string>An invisible creature is impossible to see without the aid of magic or a special sense. For the purpose of hiding, the creature is heavily obscured. The creature&apos;s location can be detected by any noise it makes or any tracks it leaves.</string>
-			<string>Attack rolls against the creature have disadvantage, and the creature&apos;s attack rolls have advantage.</string>
-		</array>
-		<key>paralyzed</key>
-		<array>
-			<string>A paralyzed creature is incapacitated (see the condition) and can&apos;t move or speak.</string>
-			<string>The creature automatically fails Strength and Dexterity saving throws.</string>
-			<string>Attack rolls against the creature have advantage.</string>
-			<string>Any attack that hits the creature is a critical hit if the attacker is within 5 feet of the creature.</string>
-		</array>
-		<key>petrified</key>
-		<array>
-			<string>A petrified creature is transformed, along with any nonmagical object it is wearing or carrying, into a solid inanimate substance (usually stone). Its weight increased by a factor of ten, and it ceases aging.</string>
-			<string>The creature is incapacitated (see the condition), can&apos;t move or speak, and is unaware of its surroundings.</string>
-			<string>Attack rolls against the creature have advantage.</string>
-			<string>The creature automatically fails Strength and Dexterity saving throws.</string>
-			<string>The creature has resistance to all damage.</string>
-			<string>The creature is immune to poision and disease, although a poision or disease already in its system is suspended, not neutralized.</string>
-		</array>
-		<key>poisoned</key>
-		<array>
-			<string>A poisoned creature has disadvantage on attack rolls and ability checks.</string>
-		</array>
-		<key>prone</key>
-		<array>
-			<string>A prone creature&apos;s only movement option is to crawl, unless it stands up and thereby ends the condition.</string>
-			<string>The creature has disadvantage on attack rolls.</string>
-			<string>An attack roll against the creature has advantage if the attacker is within 5 feet of the creature. Otherwise the attack roll has disadvantage.</string>
-		</array>
-		<key>restrained</key>
-		<array>
-			<string>A restrained creature&apos;s speed becomes 0, and it can&apos;t benefit from any bonus to its speed.</string>
-			<string>Attack rolls against the creature have advantage, and the creature&apos;s attack rolls have disadvantage.</string>
-			<string>The creature has disadvantage on Dexterity saving throws.</string>
-		</array>
-		<key>stunned</key>
-		<array>
-			<string>A stunned creature is incapacitated (see the condition), can&apos;t move, and can speak only falteringly.</string>
-			<string>The creature automatically fails Strength and Dexterity saving throws.</string>
-			<string>Attack rolls against the creature have advantage.</string>
-		</array>
-		<key>unconcious</key>
-		<array>
-			<string>An unconcious creature is incapacitated (see the condition), can&apos;t move or speak, and is unaware of its surroundings.</string>
-			<string>The creature drops whatever it&apos;s holding and falls prone.</string>
-			<string>The creature automatically fails Strength and Dexterity saving throws.</string>
-			<string>Attack rolls against the creature have advantage.</string>
-			<string>Any attack that hits the creature is a critical hit if the attacker is within 5 feet of the creature.</string>
-		</array>
+		<key>0</key>
+		<real>0.5</real>
+		<key>1</key>
+		<integer>1</integer>
+		<key>2</key>
+		<real>1.5</real>
+		<key>3</key>
+		<integer>2</integer>
+		<key>7</key>
+		<real>2.5</real>
+		<key>11</key>
+		<integer>3</integer>
+		<key>15</key>
+		<integer>4</integer>
 	</dict>
 </dict>
 </plist>

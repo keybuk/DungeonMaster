@@ -15,13 +15,13 @@ final class Condition: NSManagedObject {
     
     var type: ConditionType {
         get {
-            return ConditionType(rawValue: rawType)!
+            return ConditionType(rawValue: rawType.integerValue)!
         }
         set(newType) {
-            rawType = newType.rawValue
+            rawType = NSNumber(integer: newType.rawValue)
         }
     }
-    @NSManaged private var rawType: String
+    @NSManaged private var rawType: NSNumber
 
     convenience init(target: Combatant, type: ConditionType, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Condition, inManagedObjectContext: context)

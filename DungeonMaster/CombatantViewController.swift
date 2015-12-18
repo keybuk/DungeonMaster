@@ -213,9 +213,9 @@ extension CombatantViewController {
                 let cell = tableView.dequeueReusableCellWithIdentifier("AddConditionCell", forIndexPath: indexPath)
                 return cell
             } else {
-                let cell = tableView.dequeueReusableCellWithIdentifier("ConditionCell", forIndexPath: indexPath)
+                let cell = tableView.dequeueReusableCellWithIdentifier("ConditionCell", forIndexPath: indexPath) as! ConditionCell
                 let condition = combatant.conditions.objectAtIndex(indexPath.row - 1) as! Condition
-                cell.textLabel?.text = condition.type.rawValue.capitalizedString
+                cell.condition = condition
                 return cell
             }
         case .Damages:
@@ -317,15 +317,15 @@ extension CombatantViewController {
         switch TableSections(rawValue: indexPath.section)! {
         case .Conditions:
             if indexPath.row > 0 {
-                let cell = tableView.cellForRowAtIndexPath(indexPath)
-                let condition = ConditionType(rawValue: cell!.textLabel!.text!.lowercaseString)!
+                let cell = tableView.cellForRowAtIndexPath(indexPath)! as! ConditionCell
+                let condition = cell.condition.type
 
                 
                 let conditionRulesViewController = storyboard?.instantiateViewControllerWithIdentifier("ConditionRulesViewController") as! ConditionRulesViewController
                 conditionRulesViewController.modalPresentationStyle = .Popover
                 
-                conditionRulesViewController.popoverPresentationController?.sourceView = cell?.contentView
-                conditionRulesViewController.popoverPresentationController?.sourceRect = CGRect(x: cell!.contentView.frame.size.width, y: 0.0, width: 0.0, height: cell!.frame.size.height)
+                conditionRulesViewController.popoverPresentationController?.sourceView = cell.contentView
+                conditionRulesViewController.popoverPresentationController?.sourceRect = CGRect(x: cell.contentView.frame.size.width, y: 0.0, width: 0.0, height: cell.frame.size.height)
 
                 conditionRulesViewController.condition = condition
                 presentViewController(conditionRulesViewController, animated: true, completion: nil)
@@ -413,6 +413,16 @@ class NotesCell: UITableViewCell {
 
 }
 
+class ConditionCell: UITableViewCell {
+
+    var condition: Condition! {
+        didSet {
+            textLabel?.text = condition.type.stringValue
+        }
+    }
+
+}
+
 class AddDamageCell: UITableViewCell {
     
     @IBOutlet var hitPointsLabel: UILabel!
@@ -428,7 +438,7 @@ class DamageCell: UITableViewCell {
     var damage: Damage! {
         didSet {
             pointsLabel.text = "\(damage.points)"
-            typeLabel.text = damage.type.rawValue.capitalizedString
+            typeLabel.text = damage.type.stringValue
         }
     }
 

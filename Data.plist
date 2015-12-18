@@ -103,7 +103,7 @@
 				<key>name</key>
 				<string>Larva</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>2</integer>
 				<key>rawConstitution</key>
@@ -180,6 +180,8 @@
 				<string>understands Draconic but can't speak it</string>
 				<key>name</key>
 				<string>Ambush Drake</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>6</integer>
 				<key>rawConstitution</key>
@@ -271,7 +273,7 @@
 				<key>name</key>
 				<string>Azbara Jos</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>11</integer>
 				<key>rawConstitution</key>
@@ -387,7 +389,7 @@ Cantrips (at will): mage hand, prestidigitation, ray of frost, shocking grasp
 				<key>name</key>
 				<string>Blagothkus</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>15</integer>
 				<key>rawConstitution</key>
@@ -504,7 +506,7 @@ Cantrips (at will): light, mage hand, prestidigitation
 				<key>name</key>
 				<string>Captain Othelstan</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>12</integer>
 				<key>rawConstitution</key>
@@ -603,7 +605,7 @@ Cantrips (at will): light, mage hand, prestidigitation
 				<key>name</key>
 				<string>Dragonclaw</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>12</integer>
 				<key>rawConstitution</key>
@@ -722,7 +724,7 @@ Cantrips (at will): light, mage hand, prestidigitation
 				<key>name</key>
 				<string>Dralmorrer Borngray</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>8</integer>
 				<key>rawConstitution</key>
@@ -837,7 +839,7 @@ Cantrips (at will): fire bolt, prestidigitation, shocking grasp
 				<key>name</key>
 				<string>Frulam Mondath</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>15</integer>
 				<key>rawConstitution</key>
@@ -941,6 +943,8 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 				<string>understands Draconic but can't speak it</string>
 				<key>name</key>
 				<string>Guard Drake</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -1032,7 +1036,7 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 				<key>name</key>
 				<string>Jamna Gleamsilver</string>
 				<key>rawAlignment</key>
-				<integer>4</integer>
+				<integer>5</integer>
 				<key>rawCharisma</key>
 				<integer>12</integer>
 				<key>rawConstitution</key>
@@ -1155,7 +1159,7 @@ Cantrips (at will): mage hand, minor illusion, prestidigitation, ray of frost
 				<key>name</key>
 				<string>Langdedrosa Cyanwrath</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>12</integer>
 				<key>rawConstitution</key>
@@ -1262,7 +1266,7 @@ Cantrips (at will): mage hand, minor illusion, prestidigitation, ray of frost
 				<key>name</key>
 				<string>Pharblex Spattergoo</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -1380,7 +1384,7 @@ thunderwave
 				<key>name</key>
 				<string>Rath Modar</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>10</integer>
 				<key>rawConstitution</key>
@@ -1510,7 +1514,7 @@ Cantrips (at will): fire bolt, minor illusion, prestidigitation, shocking grasp
 				<key>name</key>
 				<string>Rezmir</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>14</integer>
 				<key>rawConstitution</key>
@@ -1647,7 +1651,7 @@ Cantrips (at will): fire bolt, minor illusion, prestidigitation, shocking grasp
 				<key>name</key>
 				<string>Talis the White</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>16</integer>
 				<key>rawConstitution</key>
@@ -1748,9 +1752,6 @@ weapon (spear)
 			<key>alignmentOptions</key>
 			<array>
 				<array>
-					<integer>0</integer>
-				</array>
-				<array>
 					<integer>1</integer>
 				</array>
 				<array>
@@ -1773,6 +1774,9 @@ weapon (spear)
 				</array>
 				<array>
 					<integer>8</integer>
+				</array>
+				<array>
+					<integer>9</integer>
 				</array>
 			</array>
 			<key>info</key>
@@ -1882,7 +1886,7 @@ Cantrips (at will): light, mage hand, shocking grasp
 				<key>name</key>
 				<string>Mormesk the Wraith</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>15</integer>
 				<key>rawConstitution</key>
@@ -1978,7 +1982,7 @@ Cantrips (at will): light, mage hand, shocking grasp
 				<key>name</key>
 				<string>Nezznar the Black Spider</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>13</integer>
 				<key>rawConstitution</key>
@@ -2100,7 +2104,7 @@ Cantrips (at will): mage hand, ray of frost, shocking grasp
 				<key>name</key>
 				<string>Redbrand Ruffian</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>11</integer>
 				<key>rawConstitution</key>
@@ -2193,7 +2197,7 @@ Cantrips (at will): mage hand, ray of frost, shocking grasp
 				<key>name</key>
 				<string>Sildar Hallwinter</string>
 				<key>rawAlignment</key>
-				<integer>3</integer>
+				<integer>4</integer>
 				<key>rawCharisma</key>
 				<integer>10</integer>
 				<key>rawConstitution</key>
@@ -2286,7 +2290,7 @@ Cantrips (at will): mage hand, ray of frost, shocking grasp
 				<key>name</key>
 				<string>Aarakocra</string>
 				<key>rawAlignment</key>
-				<integer>3</integer>
+				<integer>4</integer>
 				<key>rawCharisma</key>
 				<integer>11</integer>
 				<key>rawConstitution</key>
@@ -2396,7 +2400,7 @@ Whenever the charmed target takes damage, the target can repeat the saving throw
 				<key>name</key>
 				<string>Aboleth</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>18</integer>
 				<key>rawConstitution</key>
@@ -2570,7 +2574,7 @@ In a new form, the deva retains its game statistics and ability to speak, but it
 				<key>name</key>
 				<string>Deva</string>
 				<key>rawAlignment</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawCharisma</key>
 				<integer>20</integer>
 				<key>rawConstitution</key>
@@ -2688,7 +2692,7 @@ At will: detect evil and good
 				<key>name</key>
 				<string>Planetar</string>
 				<key>rawAlignment</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawCharisma</key>
 				<integer>25</integer>
 				<key>rawConstitution</key>
@@ -2827,7 +2831,7 @@ At will: detect evil and good, invisibility (self only)
 				<key>name</key>
 				<string>Solar</string>
 				<key>rawAlignment</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawCharisma</key>
 				<integer>30</integer>
 				<key>rawConstitution</key>
@@ -2961,6 +2965,8 @@ At will: detect evil and good, invisibility (self only)
 				<string>poison, psychic</string>
 				<key>name</key>
 				<string>Animated Armor</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>1</integer>
 				<key>rawConstitution</key>
@@ -3063,6 +3069,8 @@ At will: detect evil and good, invisibility (self only)
 				<string>poison, psychic</string>
 				<key>name</key>
 				<string>Flying Sword</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>1</integer>
 				<key>rawConstitution</key>
@@ -3161,6 +3169,8 @@ At will: detect evil and good, invisibility (self only)
 				<string>poison, psychic</string>
 				<key>name</key>
 				<string>Rug of Smothering</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>1</integer>
 				<key>rawConstitution</key>
@@ -3265,6 +3275,8 @@ At will: detect evil and good, invisibility (self only)
 				<real>2.0</real>
 				<key>name</key>
 				<string>Ankheg</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>6</integer>
 				<key>rawConstitution</key>
@@ -3350,7 +3362,7 @@ At will: detect evil and good, invisibility (self only)
 				<key>name</key>
 				<string>Azer</string>
 				<key>rawAlignment</key>
-				<integer>1</integer>
+				<integer>2</integer>
 				<key>rawCharisma</key>
 				<integer>10</integer>
 				<key>rawConstitution</key>
@@ -3470,7 +3482,7 @@ At will: detect evil and good, invisibility (self only)
 				<key>name</key>
 				<string>Banshee</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>17</integer>
 				<key>rawConstitution</key>
@@ -3563,6 +3575,8 @@ At will: detect evil and good, invisibility (self only)
 				<real>3.0</real>
 				<key>name</key>
 				<string>Basilisk</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -3679,7 +3693,7 @@ If the behir takes 30 damage or more on a single turn from the swallowed creatur
 				<key>name</key>
 				<string>Behir</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>12</integer>
 				<key>rawConstitution</key>
@@ -3777,7 +3791,7 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<key>name</key>
 				<string>Beholder</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>17</integer>
 				<key>rawConstitution</key>
@@ -3923,7 +3937,7 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<key>name</key>
 				<string>Death Tyrant</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>19</integer>
 				<key>rawConstitution</key>
@@ -4065,7 +4079,7 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 				<key>name</key>
 				<string>Spectator</string>
 				<key>rawAlignment</key>
-				<integer>1</integer>
+				<integer>2</integer>
 				<key>rawCharisma</key>
 				<integer>11</integer>
 				<key>rawConstitution</key>
@@ -4171,7 +4185,7 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 				<key>name</key>
 				<string>Needle Blight</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>3</integer>
 				<key>rawConstitution</key>
@@ -4253,7 +4267,7 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 				<key>name</key>
 				<string>Twig Blight</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>3</integer>
 				<key>rawConstitution</key>
@@ -4359,7 +4373,7 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 				<key>name</key>
 				<string>Vine Blight</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>3</integer>
 				<key>rawConstitution</key>
@@ -4451,7 +4465,7 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 				<key>name</key>
 				<string>Bugbear</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>9</integer>
 				<key>rawConstitution</key>
@@ -4568,7 +4582,7 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 				<key>name</key>
 				<string>Bugbear Chief</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>11</integer>
 				<key>rawConstitution</key>
@@ -4670,6 +4684,8 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 				<real>5.0</real>
 				<key>name</key>
 				<string>Bulette</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -4771,7 +4787,7 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 				<key>name</key>
 				<string>Bullywug</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -4887,13 +4903,13 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 			<key>alignmentOptions</key>
 			<array>
 				<array>
-					<integer>2</integer>
+					<integer>3</integer>
 				</array>
 				<array>
-					<integer>5</integer>
+					<integer>6</integer>
 				</array>
 				<array>
-					<integer>8</integer>
+					<integer>9</integer>
 				</array>
 			</array>
 			<key>info</key>
@@ -5010,6 +5026,8 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 				<real>2.0</real>
 				<key>name</key>
 				<string>Carrion Crawler</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -5117,7 +5135,7 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 				<key>name</key>
 				<string>Centaur</string>
 				<key>rawAlignment</key>
-				<integer>3</integer>
+				<integer>4</integer>
 				<key>rawCharisma</key>
 				<integer>11</integer>
 				<key>rawConstitution</key>
@@ -5231,7 +5249,7 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 				<key>name</key>
 				<string>Chimera</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>10</integer>
 				<key>rawConstitution</key>
@@ -5337,7 +5355,7 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 				<key>name</key>
 				<string>Chuul</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -5465,7 +5483,7 @@ A duplicate has the cloaker's AC and uses its saving throws. If an attack hits a
 				<key>name</key>
 				<string>Cloaker</string>
 				<key>rawAlignment</key>
-				<integer>7</integer>
+				<integer>8</integer>
 				<key>rawCharisma</key>
 				<integer>14</integer>
 				<key>rawConstitution</key>
@@ -5564,6 +5582,8 @@ A duplicate has the cloaker's AC and uses its saving throws. If an attack hits a
 				<real>0.5</real>
 				<key>name</key>
 				<string>Cockatrice</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -5662,7 +5682,7 @@ In a new form, the couatl retains its game statistics and ability to speak, but 
 				<key>name</key>
 				<string>Couatl</string>
 				<key>rawAlignment</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawCharisma</key>
 				<integer>18</integer>
 				<key>rawConstitution</key>
@@ -5765,7 +5785,7 @@ At will: detect evil and good, detect magic, detect thoughts
 				<key>name</key>
 				<string>Crawling Claw</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>4</integer>
 				<key>rawConstitution</key>
@@ -5865,7 +5885,7 @@ At will: detect evil and good, detect magic, detect thoughts
 				<key>name</key>
 				<string>Cyclops</string>
 				<key>rawAlignment</key>
-				<integer>7</integer>
+				<integer>8</integer>
 				<key>rawCharisma</key>
 				<integer>10</integer>
 				<key>rawConstitution</key>
@@ -5964,6 +5984,8 @@ A creature can detach the darkmantle by making a successful DC 13 Strength check
 				<real>0.5</real>
 				<key>name</key>
 				<string>Darkmantle</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -6075,7 +6097,7 @@ A creature can detach the darkmantle by making a successful DC 13 Strength check
 				<key>name</key>
 				<string>Death Knight</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>18</integer>
 				<key>rawConstitution</key>
@@ -6192,7 +6214,7 @@ A creature can detach the darkmantle by making a successful DC 13 Strength check
 				<key>name</key>
 				<string>Demilich</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>20</integer>
 				<key>rawConstitution</key>
@@ -6366,7 +6388,7 @@ In its crypt, a demilich has access to lair actions and additional uses for its 
 				<key>name</key>
 				<string>Balor</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>22</integer>
 				<key>rawConstitution</key>
@@ -6489,7 +6511,7 @@ In its crypt, a demilich has access to lair actions and additional uses for its 
 				<key>name</key>
 				<string>Barlgura</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>9</integer>
 				<key>rawConstitution</key>
@@ -6604,7 +6626,7 @@ In its crypt, a demilich has access to lair actions and additional uses for its 
 				<key>name</key>
 				<string>Chasme</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>10</integer>
 				<key>rawConstitution</key>
@@ -6729,7 +6751,7 @@ In its crypt, a demilich has access to lair actions and additional uses for its 
 				<key>name</key>
 				<string>Dretch</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>3</integer>
 				<key>rawConstitution</key>
@@ -6826,7 +6848,7 @@ In its crypt, a demilich has access to lair actions and additional uses for its 
 				<key>name</key>
 				<string>Glabrezu</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>16</integer>
 				<key>rawConstitution</key>
@@ -6945,7 +6967,7 @@ At will: darkness, detect magic, dispel magic
 				<key>name</key>
 				<string>Goristro</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>14</integer>
 				<key>rawConstitution</key>
@@ -7070,7 +7092,7 @@ At will: darkness, detect magic, dispel magic
 				<key>name</key>
 				<string>Hezrou</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>13</integer>
 				<key>rawConstitution</key>
@@ -7175,7 +7197,7 @@ At will: darkness, detect magic, dispel magic
 				<key>name</key>
 				<string>Manes</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>4</integer>
 				<key>rawConstitution</key>
@@ -7278,7 +7300,7 @@ At will: darkness, detect magic, dispel magic
 				<key>name</key>
 				<string>Marilith</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>20</integer>
 				<key>rawConstitution</key>
@@ -7413,7 +7435,7 @@ At will: darkness, detect magic, dispel magic
 				<key>name</key>
 				<string>Nalfeshnee</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>15</integer>
 				<key>rawConstitution</key>
@@ -7518,7 +7540,7 @@ At will: darkness, detect magic, dispel magic
 				<key>name</key>
 				<string>Quasit</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>10</integer>
 				<key>rawConstitution</key>
@@ -7626,7 +7648,7 @@ At will: darkness, detect magic, dispel magic
 				<key>name</key>
 				<string>Shadow Demon</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>14</integer>
 				<key>rawConstitution</key>
@@ -7763,7 +7785,7 @@ At will: darkness, detect magic, dispel magic
 				<key>name</key>
 				<string>Vrock</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>8</integer>
 				<key>rawConstitution</key>
@@ -7876,7 +7898,7 @@ While in mist form, the yochlol can enter a creature's space and stop there. Eac
 				<key>name</key>
 				<string>Yochlol</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>15</integer>
 				<key>rawConstitution</key>
@@ -8016,7 +8038,7 @@ At will: detect thoughts, web
 				<key>name</key>
 				<string>Barbed Devil</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>14</integer>
 				<key>rawConstitution</key>
@@ -8141,7 +8163,7 @@ At will: detect thoughts, web
 				<key>name</key>
 				<string>Bearded Devil</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>11</integer>
 				<key>rawConstitution</key>
@@ -8264,7 +8286,7 @@ At will: detect thoughts, web
 				<key>name</key>
 				<string>Bone Devil</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>16</integer>
 				<key>rawConstitution</key>
@@ -8384,7 +8406,7 @@ Each animated chain is an object with AC 20, 20 hit points, resistance to pierci
 				<key>name</key>
 				<string>Chain Devil</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>14</integer>
 				<key>rawConstitution</key>
@@ -8501,7 +8523,7 @@ Each animated chain is an object with AC 20, 20 hit points, resistance to pierci
 				<key>name</key>
 				<string>Erinyes</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>18</integer>
 				<key>rawConstitution</key>
@@ -8624,7 +8646,7 @@ Each animated chain is an object with AC 20, 20 hit points, resistance to pierci
 				<key>name</key>
 				<string>Horned Devil</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>17</integer>
 				<key>rawConstitution</key>
@@ -8749,7 +8771,7 @@ The wall lasts for 1 minute or until the devil is incapacitated or dies. The wal
 				<key>name</key>
 				<string>Ice Devil</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>18</integer>
 				<key>rawConstitution</key>
@@ -8854,7 +8876,7 @@ The wall lasts for 1 minute or until the devil is incapacitated or dies. The wal
 				<key>name</key>
 				<string>Imp</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>14</integer>
 				<key>rawConstitution</key>
@@ -8966,7 +8988,7 @@ The wall lasts for 1 minute or until the devil is incapacitated or dies. The wal
 				<key>name</key>
 				<string>Lemure</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>3</integer>
 				<key>rawConstitution</key>
@@ -9087,7 +9109,7 @@ The wall lasts for 1 minute or until the devil is incapacitated or dies. The wal
 				<key>name</key>
 				<string>Pit Fiend</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>24</integer>
 				<key>rawConstitution</key>
@@ -9218,7 +9240,7 @@ At will: detect magic, fireball
 				<key>name</key>
 				<string>Spined Devil</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>8</integer>
 				<key>rawConstitution</key>
@@ -9324,6 +9346,8 @@ At will: detect magic, fireball
 				<real>2.0</real>
 				<key>name</key>
 				<string>Allosaurus</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -9412,6 +9436,8 @@ At will: detect magic, fireball
 				<real>3.0</real>
 				<key>name</key>
 				<string>Ankylosaurus</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -9492,6 +9518,8 @@ At will: detect magic, fireball
 				<real>2.0</real>
 				<key>name</key>
 				<string>Plesiosaurus</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -9580,6 +9608,8 @@ At will: detect magic, fireball
 				<real>0.25</real>
 				<key>name</key>
 				<string>Pteranodon</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -9674,6 +9704,8 @@ At will: detect magic, fireball
 				<real>5.0</real>
 				<key>name</key>
 				<string>Triceratops</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -9772,6 +9804,8 @@ At will: detect magic, fireball
 				<real>8.0</real>
 				<key>name</key>
 				<string>Tyrannosaurus Rex</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>9</integer>
 				<key>rawConstitution</key>
@@ -9861,7 +9895,7 @@ At will: detect magic, fireball
 				<key>name</key>
 				<string>Displacer Beast</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>8</integer>
 				<key>rawConstitution</key>
@@ -9963,7 +9997,7 @@ At will: detect magic, fireball
 				<key>name</key>
 				<string>Doppelganger</string>
 				<key>rawAlignment</key>
-				<integer>4</integer>
+				<integer>5</integer>
 				<key>rawCharisma</key>
 				<integer>14</integer>
 				<key>rawConstitution</key>
@@ -10114,7 +10148,7 @@ At will: detect magic, fireball
 				<key>name</key>
 				<string>Adult Blue Dracolich</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>19</integer>
 				<key>rawConstitution</key>
@@ -10246,7 +10280,7 @@ At will: detect magic, fireball
 				<key>name</key>
 				<string>Young Red Shadow Dragon</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>19</integer>
 				<key>rawConstitution</key>
@@ -10376,7 +10410,7 @@ At will: detect magic, fireball
 				<key>name</key>
 				<string>Ancient Black Dragon</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>19</integer>
 				<key>rawConstitution</key>
@@ -10520,7 +10554,7 @@ At will: detect magic, fireball
 				<key>name</key>
 				<string>Adult Black Dragon</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>17</integer>
 				<key>rawConstitution</key>
@@ -10686,7 +10720,7 @@ At will: detect magic, fireball
 				<key>name</key>
 				<string>Young Black Dragon</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>15</integer>
 				<key>rawConstitution</key>
@@ -10782,7 +10816,7 @@ At will: detect magic, fireball
 				<key>name</key>
 				<string>Black Dragon Wyrmling</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>13</integer>
 				<key>rawConstitution</key>
@@ -10902,7 +10936,7 @@ At will: detect magic, fireball
 				<key>name</key>
 				<string>Ancient Blue Dragon</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>21</integer>
 				<key>rawConstitution</key>
@@ -11040,7 +11074,7 @@ At will: detect magic, fireball
 				<key>name</key>
 				<string>Adult Blue Dragon</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>19</integer>
 				<key>rawConstitution</key>
@@ -11209,7 +11243,7 @@ A blue dragon will collapse the caverns that make up its lair if that lair is in
 				<key>name</key>
 				<string>Young Blue Dragon</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>17</integer>
 				<key>rawConstitution</key>
@@ -11299,7 +11333,7 @@ A blue dragon will collapse the caverns that make up its lair if that lair is in
 				<key>name</key>
 				<string>Blue Dragon Wyrmling</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>15</integer>
 				<key>rawConstitution</key>
@@ -11415,7 +11449,7 @@ A blue dragon will collapse the caverns that make up its lair if that lair is in
 				<key>name</key>
 				<string>Ancient Green Dragon</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>19</integer>
 				<key>rawConstitution</key>
@@ -11561,7 +11595,7 @@ A blue dragon will collapse the caverns that make up its lair if that lair is in
 				<key>name</key>
 				<string>Adult Green Dragon</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>17</integer>
 				<key>rawConstitution</key>
@@ -11732,7 +11766,7 @@ Each 10-foot-cube of thickets has AC 5, 30 hit points, resistance to bludgeoning
 				<key>name</key>
 				<string>Young Green Dragon</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>15</integer>
 				<key>rawConstitution</key>
@@ -11842,7 +11876,7 @@ Each 10-foot-cube of thickets has AC 5, 30 hit points, resistance to bludgeoning
 				<key>name</key>
 				<string>Green Dragon Wyrmling</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>13</integer>
 				<key>rawConstitution</key>
@@ -11962,7 +11996,7 @@ Each 10-foot-cube of thickets has AC 5, 30 hit points, resistance to bludgeoning
 				<key>name</key>
 				<string>Ancient Red Dragon</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>23</integer>
 				<key>rawConstitution</key>
@@ -12100,7 +12134,7 @@ Each 10-foot-cube of thickets has AC 5, 30 hit points, resistance to bludgeoning
 				<key>name</key>
 				<string>Adult Red Dragon</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>21</integer>
 				<key>rawConstitution</key>
@@ -12263,7 +12297,7 @@ Throughout the lair complex, servants erect monuments to the dragon's power, tel
 				<key>name</key>
 				<string>Young Red Dragon</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>19</integer>
 				<key>rawConstitution</key>
@@ -12359,7 +12393,7 @@ Throughout the lair complex, servants erect monuments to the dragon's power, tel
 				<key>name</key>
 				<string>Red Dragon Wyrmling</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>15</integer>
 				<key>rawConstitution</key>
@@ -12473,7 +12507,7 @@ Throughout the lair complex, servants erect monuments to the dragon's power, tel
 				<key>name</key>
 				<string>Ancient White Dragon</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>14</integer>
 				<key>rawConstitution</key>
@@ -12617,7 +12651,7 @@ Throughout the lair complex, servants erect monuments to the dragon's power, tel
 				<key>name</key>
 				<string>Adult White Dragon</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>12</integer>
 				<key>rawConstitution</key>
@@ -12793,7 +12827,7 @@ If the dragon wishes to move through a wall, it can do so without slowing down. 
 				<key>name</key>
 				<string>Young White Dragon</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>12</integer>
 				<key>rawConstitution</key>
@@ -12889,7 +12923,7 @@ If the dragon wishes to move through a wall, it can do so without slowing down. 
 				<key>name</key>
 				<string>White Dragon Wyrmling</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>11</integer>
 				<key>rawConstitution</key>
@@ -13012,7 +13046,7 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 				<key>name</key>
 				<string>Ancient Brass Dragon</string>
 				<key>rawAlignment</key>
-				<integer>6</integer>
+				<integer>7</integer>
 				<key>rawCharisma</key>
 				<integer>19</integer>
 				<key>rawConstitution</key>
@@ -13152,7 +13186,7 @@ Sleep Breath. The dragon exhales sleep gas in a 60-foot cone. Each creature in t
 				<key>name</key>
 				<string>Adult Brass Dragon</string>
 				<key>rawAlignment</key>
-				<integer>6</integer>
+				<integer>7</integer>
 				<key>rawCharisma</key>
 				<integer>17</integer>
 				<key>rawConstitution</key>
@@ -13308,7 +13342,7 @@ Sleep Breath. The dragon exhales sleep gas in a 30-foot cone. Each creature in t
 				<key>name</key>
 				<string>Young Brass Dragon</string>
 				<key>rawAlignment</key>
-				<integer>6</integer>
+				<integer>7</integer>
 				<key>rawCharisma</key>
 				<integer>15</integer>
 				<key>rawConstitution</key>
@@ -13400,7 +13434,7 @@ Sleep Breath. The dragon exhales sleep gas in a 15-foot cone. Each creature in t
 				<key>name</key>
 				<string>Brass Dragon Wyrmling</string>
 				<key>rawAlignment</key>
-				<integer>6</integer>
+				<integer>7</integer>
 				<key>rawCharisma</key>
 				<integer>13</integer>
 				<key>rawConstitution</key>
@@ -13523,7 +13557,7 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 				<key>name</key>
 				<string>Ancient Bronze Dragon</string>
 				<key>rawAlignment</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawCharisma</key>
 				<integer>21</integer>
 				<key>rawConstitution</key>
@@ -13676,7 +13710,7 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 				<key>name</key>
 				<string>Adult Bronze Dragon</string>
 				<key>rawAlignment</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawCharisma</key>
 				<integer>19</integer>
 				<key>rawConstitution</key>
@@ -13844,7 +13878,7 @@ Repulsion Breath. The dragon exhales repulsion energy in a 30-foot cone. Each cr
 				<key>name</key>
 				<string>Young Bronze Dragon</string>
 				<key>rawAlignment</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawCharisma</key>
 				<integer>17</integer>
 				<key>rawConstitution</key>
@@ -13942,7 +13976,7 @@ Repulsion Breath. The dragon exhales repulsion energy in a 30-foot cone. Each cr
 				<key>name</key>
 				<string>Bronze Dragon Wyrmling</string>
 				<key>rawAlignment</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawCharisma</key>
 				<integer>15</integer>
 				<key>rawConstitution</key>
@@ -14071,7 +14105,7 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 				<key>name</key>
 				<string>Ancient Copper Dragon</string>
 				<key>rawAlignment</key>
-				<integer>6</integer>
+				<integer>7</integer>
 				<key>rawCharisma</key>
 				<integer>19</integer>
 				<key>rawConstitution</key>
@@ -14211,7 +14245,7 @@ Slowing Breath. The dragon exhales gas in a 60-foot cone. Each creature in that 
 				<key>name</key>
 				<string>Adult Copper Dragon</string>
 				<key>rawAlignment</key>
-				<integer>6</integer>
+				<integer>7</integer>
 				<key>rawCharisma</key>
 				<integer>17</integer>
 				<key>rawConstitution</key>
@@ -14367,7 +14401,7 @@ Slowing Breath. The dragon exhales gas in a 30-foot cone. Each creature in that 
 				<key>name</key>
 				<string>Young Copper Dragon</string>
 				<key>rawAlignment</key>
-				<integer>6</integer>
+				<integer>7</integer>
 				<key>rawCharisma</key>
 				<integer>15</integer>
 				<key>rawConstitution</key>
@@ -14459,7 +14493,7 @@ Slowing Breath. The dragon exhales gas in a 15-foot cone. Each creature in that 
 				<key>name</key>
 				<string>Copper Dragon Wyrmling</string>
 				<key>rawAlignment</key>
-				<integer>6</integer>
+				<integer>7</integer>
 				<key>rawCharisma</key>
 				<integer>13</integer>
 				<key>rawConstitution</key>
@@ -14582,7 +14616,7 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 				<key>name</key>
 				<string>Ancient Gold Dragon</string>
 				<key>rawAlignment</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawCharisma</key>
 				<integer>28</integer>
 				<key>rawConstitution</key>
@@ -14735,7 +14769,7 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 				<key>name</key>
 				<string>Adult Gold Dragon</string>
 				<key>rawAlignment</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawCharisma</key>
 				<integer>24</integer>
 				<key>rawConstitution</key>
@@ -14897,7 +14931,7 @@ Weakening Breath. The dragon exhales gas in a 30-foot cone. Each creature in tha
 				<key>name</key>
 				<string>Young Gold Dragon</string>
 				<key>rawAlignment</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawCharisma</key>
 				<integer>20</integer>
 				<key>rawConstitution</key>
@@ -14995,7 +15029,7 @@ Weakening Breath. The dragon exhales gas in a 15-foot cone. Each creature in tha
 				<key>name</key>
 				<string>Gold Dragon Wyrmling</string>
 				<key>rawAlignment</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawCharisma</key>
 				<integer>16</integer>
 				<key>rawConstitution</key>
@@ -15124,7 +15158,7 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 				<key>name</key>
 				<string>Ancient Silver Dragon</string>
 				<key>rawAlignment</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawCharisma</key>
 				<integer>23</integer>
 				<key>rawConstitution</key>
@@ -15271,7 +15305,7 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 				<key>name</key>
 				<string>Adult Silver Dragon</string>
 				<key>rawAlignment</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawCharisma</key>
 				<integer>21</integer>
 				<key>rawConstitution</key>
@@ -15427,7 +15461,7 @@ Paralyzing Breath. The dragon exhales paralyzing gas in a 30-foot cone. Each cre
 				<key>name</key>
 				<string>Young Silver Dragon</string>
 				<key>rawAlignment</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawCharisma</key>
 				<integer>19</integer>
 				<key>rawConstitution</key>
@@ -15519,7 +15553,7 @@ Paralyzing Breath. The dragon exhales paralyzing gas in a 15-foot cone. Each cre
 				<key>name</key>
 				<string>Silver Dragon Wyrmling</string>
 				<key>rawAlignment</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawCharisma</key>
 				<integer>15</integer>
 				<key>rawConstitution</key>
@@ -15627,7 +15661,7 @@ Paralyzing Breath. The dragon exhales paralyzing gas in a 15-foot cone. Each cre
 				<key>name</key>
 				<string>Dragon Turtle</string>
 				<key>rawAlignment</key>
-				<integer>4</integer>
+				<integer>5</integer>
 				<key>rawCharisma</key>
 				<integer>12</integer>
 				<key>rawConstitution</key>
@@ -15735,7 +15769,7 @@ Paralyzing Breath. The dragon exhales paralyzing gas in a 15-foot cone. Each cre
 				<key>name</key>
 				<string>Drider</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>12</integer>
 				<key>rawConstitution</key>
@@ -15853,7 +15887,7 @@ The dryad can have no more than one humanoid and up to three beasts charmed at a
 				<key>name</key>
 				<string>Dryad</string>
 				<key>rawAlignment</key>
-				<integer>4</integer>
+				<integer>5</integer>
 				<key>rawCharisma</key>
 				<integer>18</integer>
 				<key>rawConstitution</key>
@@ -15978,7 +16012,7 @@ At will: druidcraft
 				<key>name</key>
 				<string>Duergar</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>9</integer>
 				<key>rawConstitution</key>
@@ -16092,7 +16126,7 @@ If the saving throw is successful, the target takes half the bludgeoning damage 
 				<key>name</key>
 				<string>Air Elemental</string>
 				<key>rawAlignment</key>
-				<integer>4</integer>
+				<integer>5</integer>
 				<key>rawCharisma</key>
 				<integer>6</integer>
 				<key>rawConstitution</key>
@@ -16208,7 +16242,7 @@ If the saving throw is successful, the target takes half the bludgeoning damage 
 				<key>name</key>
 				<string>Earth Elemental</string>
 				<key>rawAlignment</key>
-				<integer>4</integer>
+				<integer>5</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -16322,7 +16356,7 @@ If the saving throw is successful, the target takes half the bludgeoning damage 
 				<key>name</key>
 				<string>Fire Elemental</string>
 				<key>rawAlignment</key>
-				<integer>4</integer>
+				<integer>5</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -16449,7 +16483,7 @@ The elemental can grapple one Large creature or up to two Medium or smaller crea
 				<key>name</key>
 				<string>Water Elemental</string>
 				<key>rawAlignment</key>
-				<integer>4</integer>
+				<integer>5</integer>
 				<key>rawCharisma</key>
 				<integer>8</integer>
 				<key>rawConstitution</key>
@@ -16557,7 +16591,7 @@ The elemental can grapple one Large creature or up to two Medium or smaller crea
 				<key>name</key>
 				<string>Drow</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>12</integer>
 				<key>rawConstitution</key>
@@ -16670,7 +16704,7 @@ At will: dancing lights
 				<key>name</key>
 				<string>Drow Elite Warrior</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>12</integer>
 				<key>rawConstitution</key>
@@ -16785,7 +16819,7 @@ At will: dancing lights
 				<key>name</key>
 				<string>Drow Mage</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>12</integer>
 				<key>rawConstitution</key>
@@ -16916,7 +16950,7 @@ Cantrips (at will): mage hand, minor illusion, poison spray, ray of frost
 				<key>name</key>
 				<string>Drow Priestess of Lolth</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>18</integer>
 				<key>rawConstitution</key>
@@ -17026,11 +17060,11 @@ Cantrips (at will): guidance, poison spray, resistance, spare the dying, thaumat
 			<key>alignmentOptions</key>
 			<array>
 				<array>
-					<integer>6</integer>
+					<integer>7</integer>
 					<real>0.75</real>
 				</array>
 				<array>
-					<integer>5</integer>
+					<integer>6</integer>
 					<real>0.25</real>
 				</array>
 			</array>
@@ -17186,7 +17220,7 @@ At will: greater restoration, pass without trace, water breathing, water walk
 				<key>name</key>
 				<string>Ettercap</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>8</integer>
 				<key>rawConstitution</key>
@@ -17306,7 +17340,7 @@ At will: greater restoration, pass without trace, water breathing, water walk
 				<key>name</key>
 				<string>Ettin</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>8</integer>
 				<key>rawConstitution</key>
@@ -17420,7 +17454,7 @@ At will: greater restoration, pass without trace, water breathing, water walk
 				<key>name</key>
 				<string>Flameskull</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>11</integer>
 				<key>rawConstitution</key>
@@ -17546,7 +17580,7 @@ Cantrip (at will): mage hand
 				<key>name</key>
 				<string>Flumph</string>
 				<key>rawAlignment</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawCharisma</key>
 				<integer>11</integer>
 				<key>rawConstitution</key>
@@ -17661,7 +17695,7 @@ The transformed creature can repeat the saving throw whenever it finishes a long
 				<key>name</key>
 				<string>Fomorian</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>6</integer>
 				<key>rawConstitution</key>
@@ -17740,6 +17774,8 @@ The transformed creature can repeat the saving throw whenever it finishes a long
 				<string>poison</string>
 				<key>name</key>
 				<string>Gas Spore</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>1</integer>
 				<key>rawConstitution</key>
@@ -17823,6 +17859,8 @@ Spores invade an infected creature's system, killing the creature in a number of
 				<string>blinded, deafened, frightened</string>
 				<key>name</key>
 				<string>Shrieker</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>1</integer>
 				<key>rawConstitution</key>
@@ -17917,6 +17955,8 @@ Spores invade an infected creature's system, killing the creature in a number of
 				<string>blinded, deafened, frightened</string>
 				<key>name</key>
 				<string>Violet Fungus</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>1</integer>
 				<key>rawConstitution</key>
@@ -18024,7 +18064,7 @@ Spores invade an infected creature's system, killing the creature in a number of
 				<key>name</key>
 				<string>Galeb Duhr</string>
 				<key>rawAlignment</key>
-				<integer>4</integer>
+				<integer>5</integer>
 				<key>rawCharisma</key>
 				<integer>11</integer>
 				<key>rawConstitution</key>
@@ -18136,7 +18176,7 @@ Spores invade an infected creature's system, killing the creature in a number of
 				<key>name</key>
 				<string>Gargoyle</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -18244,7 +18284,7 @@ Spores invade an infected creature's system, killing the creature in a number of
 				<key>name</key>
 				<string>Dao</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>14</integer>
 				<key>rawConstitution</key>
@@ -18378,7 +18418,7 @@ A creature can use its action to free a creature restrained by the whirlwind, in
 				<key>name</key>
 				<string>Djinni</string>
 				<key>rawAlignment</key>
-				<integer>6</integer>
+				<integer>7</integer>
 				<key>rawCharisma</key>
 				<integer>20</integer>
 				<key>rawConstitution</key>
@@ -18493,7 +18533,7 @@ At will: detect evil and good, detect magic, thunderwave
 				<key>name</key>
 				<string>Efreeti</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>16</integer>
 				<key>rawConstitution</key>
@@ -18614,7 +18654,7 @@ At will: detect magic
 				<key>name</key>
 				<string>Marid</string>
 				<key>rawAlignment</key>
-				<integer>7</integer>
+				<integer>8</integer>
 				<key>rawCharisma</key>
 				<integer>18</integer>
 				<key>rawConstitution</key>
@@ -18723,9 +18763,6 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 			<key>alignmentOptions</key>
 			<array>
 				<array>
-					<integer>0</integer>
-				</array>
-				<array>
 					<integer>1</integer>
 				</array>
 				<array>
@@ -18748,6 +18785,9 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 				</array>
 				<array>
 					<integer>8</integer>
+				</array>
+				<array>
+					<integer>9</integer>
 				</array>
 			</array>
 			<key>info</key>
@@ -18877,7 +18917,7 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 				<key>name</key>
 				<string>Ghast</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>8</integer>
 				<key>rawConstitution</key>
@@ -18983,7 +19023,7 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 				<key>name</key>
 				<string>Ghoul</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>6</integer>
 				<key>rawConstitution</key>
@@ -19074,11 +19114,11 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 			<key>alignmentOptions</key>
 			<array>
 				<array>
-					<integer>3</integer>
+					<integer>4</integer>
 					<real>0.5</real>
 				</array>
 				<array>
-					<integer>5</integer>
+					<integer>6</integer>
 					<real>0.5</real>
 				</array>
 			</array>
@@ -19208,7 +19248,7 @@ At will: detect magic, fog cloud, light
 				<key>name</key>
 				<string>Fire Giant</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>13</integer>
 				<key>rawConstitution</key>
@@ -19310,7 +19350,7 @@ At will: detect magic, fog cloud, light
 				<key>name</key>
 				<string>Frost Giant</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>12</integer>
 				<key>rawConstitution</key>
@@ -19410,7 +19450,7 @@ At will: detect magic, fog cloud, light
 				<key>name</key>
 				<string>Hill Giant</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>6</integer>
 				<key>rawConstitution</key>
@@ -19508,7 +19548,7 @@ At will: detect magic, fog cloud, light
 				<key>name</key>
 				<string>Stone Giant</string>
 				<key>rawAlignment</key>
-				<integer>4</integer>
+				<integer>5</integer>
 				<key>rawCharisma</key>
 				<integer>9</integer>
 				<key>rawConstitution</key>
@@ -19630,7 +19670,7 @@ At will: detect magic, fog cloud, light
 				<key>name</key>
 				<string>Storm Giant</string>
 				<key>rawAlignment</key>
-				<integer>6</integer>
+				<integer>7</integer>
 				<key>rawCharisma</key>
 				<integer>18</integer>
 				<key>rawConstitution</key>
@@ -19738,7 +19778,7 @@ At will: detect magic, feather fall, levitate, light
 				<key>name</key>
 				<string>Gibbering Mouther</string>
 				<key>rawAlignment</key>
-				<integer>4</integer>
+				<integer>5</integer>
 				<key>rawCharisma</key>
 				<integer>6</integer>
 				<key>rawConstitution</key>
@@ -19832,7 +19872,7 @@ At will: detect magic, feather fall, levitate, light
 				<key>name</key>
 				<string>Githyanki Warrior</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>10</integer>
 				<key>rawConstitution</key>
@@ -19927,7 +19967,7 @@ At will: mage hand (the hand is invisible)
 				<key>name</key>
 				<string>Githyanki Knight</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>15</integer>
 				<key>rawConstitution</key>
@@ -20023,7 +20063,7 @@ At will: mage hand (the hand is invisible)
 				<key>name</key>
 				<string>Githzerai Monk</string>
 				<key>rawAlignment</key>
-				<integer>1</integer>
+				<integer>2</integer>
 				<key>rawCharisma</key>
 				<integer>10</integer>
 				<key>rawConstitution</key>
@@ -20126,7 +20166,7 @@ At will: mage hand (the hand is invisible)
 				<key>name</key>
 				<string>Githzerai Zerth</string>
 				<key>rawAlignment</key>
-				<integer>1</integer>
+				<integer>2</integer>
 				<key>rawCharisma</key>
 				<integer>12</integer>
 				<key>rawConstitution</key>
@@ -20236,7 +20276,7 @@ At will: mage hand (the hand is invisible)
 				<key>name</key>
 				<string>Gnoll</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -20351,7 +20391,7 @@ At will: mage hand (the hand is invisible)
 				<key>name</key>
 				<string>Gnoll Pack Lord</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>9</integer>
 				<key>rawConstitution</key>
@@ -20454,7 +20494,7 @@ At will: mage hand (the hand is invisible)
 				<key>name</key>
 				<string>Gnoll Fang of Yeenoghu</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>13</integer>
 				<key>rawConstitution</key>
@@ -20547,7 +20587,7 @@ At will: mage hand (the hand is invisible)
 				<key>name</key>
 				<string>Deep Gnome (Svirfneblin)</string>
 				<key>rawAlignment</key>
-				<integer>3</integer>
+				<integer>4</integer>
 				<key>rawCharisma</key>
 				<integer>9</integer>
 				<key>rawConstitution</key>
@@ -20660,7 +20700,7 @@ At will: nondetection (self only)
 				<key>name</key>
 				<string>Goblin</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>8</integer>
 				<key>rawConstitution</key>
@@ -20771,7 +20811,7 @@ At will: nondetection (self only)
 				<key>name</key>
 				<string>Goblin Boss</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>10</integer>
 				<key>rawConstitution</key>
@@ -20879,6 +20919,8 @@ At will: nondetection (self only)
 				<string>understands the languages of its creator but can't speak</string>
 				<key>name</key>
 				<string>Clay Golem</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>1</integer>
 				<key>rawConstitution</key>
@@ -21002,7 +21044,7 @@ At will: nondetection (self only)
 				<key>name</key>
 				<string>Flesh Golem</string>
 				<key>rawAlignment</key>
-				<integer>4</integer>
+				<integer>5</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -21144,6 +21186,8 @@ The golem's creator, if within 60 feet of the berserk golem, can try to calm it 
 				<string>understands the languages of its creator but can't speak</string>
 				<key>name</key>
 				<string>Iron Golem</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>1</integer>
 				<key>rawConstitution</key>
@@ -21260,6 +21304,8 @@ The golem's creator, if within 60 feet of the berserk golem, can try to calm it 
 				<string>understands the languages of its creator but can't speak</string>
 				<key>name</key>
 				<string>Stone Golem</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>1</integer>
 				<key>rawConstitution</key>
@@ -21378,6 +21424,8 @@ The golem's creator, if within 60 feet of the berserk golem, can try to calm it 
 				<string>petrified</string>
 				<key>name</key>
 				<string>Gorgon</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -21484,7 +21532,7 @@ The target is also grappled (escape DC 15). If the target is Medium or smaller, 
 				<key>name</key>
 				<string>Grell</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>9</integer>
 				<key>rawConstitution</key>
@@ -21580,7 +21628,7 @@ The target is also grappled (escape DC 15). If the target is Medium or smaller, 
 				<key>name</key>
 				<string>Grick</string>
 				<key>rawAlignment</key>
-				<integer>4</integer>
+				<integer>5</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -21692,7 +21740,7 @@ The target is also grappled (escape DC 15). If the target is Medium or smaller, 
 				<key>name</key>
 				<string>Grick Alpha</string>
 				<key>rawAlignment</key>
-				<integer>4</integer>
+				<integer>5</integer>
 				<key>rawCharisma</key>
 				<integer>9</integer>
 				<key>rawConstitution</key>
@@ -21783,6 +21831,8 @@ The target is also grappled (escape DC 15). If the target is Medium or smaller, 
 				<real>2.0</real>
 				<key>name</key>
 				<string>Griffon</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>8</integer>
 				<key>rawConstitution</key>
@@ -21880,7 +21930,7 @@ The target is also grappled (escape DC 15). If the target is Medium or smaller, 
 				<key>name</key>
 				<string>Grimlock</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>6</integer>
 				<key>rawConstitution</key>
@@ -21990,7 +22040,7 @@ The changes wrought by this effect fail to hold up to physical inspection. For e
 				<key>name</key>
 				<string>Green Hag</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>14</integer>
 				<key>rawConstitution</key>
@@ -22111,7 +22161,7 @@ At will: dancing lights, minor illusion, vicious mockery</string>
 				<key>name</key>
 				<string>Night Hag</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>16</integer>
 				<key>rawConstitution</key>
@@ -22218,7 +22268,7 @@ The changes wrought by this effect fail to hold up to physical inspection. For e
 				<key>name</key>
 				<string>Sea Hag</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>13</integer>
 				<key>rawConstitution</key>
@@ -22328,9 +22378,6 @@ Unless the target is surprised or the revelation of the hag's true form is sudde
 			<key>alignmentOptions</key>
 			<array>
 				<array>
-					<integer>0</integer>
-				</array>
-				<array>
 					<integer>1</integer>
 				</array>
 				<array>
@@ -22353,6 +22400,9 @@ Unless the target is surprised or the revelation of the hag's true form is sudde
 				</array>
 				<array>
 					<integer>8</integer>
+				</array>
+				<array>
+					<integer>9</integer>
 				</array>
 			</array>
 			<key>info</key>
@@ -22481,7 +22531,7 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 				<key>name</key>
 				<string>Harpy</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>13</integer>
 				<key>rawConstitution</key>
@@ -22571,7 +22621,7 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 				<key>name</key>
 				<string>Hell Hound</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>6</integer>
 				<key>rawConstitution</key>
@@ -22679,7 +22729,7 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 				<key>name</key>
 				<string>Helmed Horror</string>
 				<key>rawAlignment</key>
-				<integer>4</integer>
+				<integer>5</integer>
 				<key>rawCharisma</key>
 				<integer>10</integer>
 				<key>rawConstitution</key>
@@ -22796,6 +22846,8 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 				<real>1.0</real>
 				<key>name</key>
 				<string>Hippogriff</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>8</integer>
 				<key>rawConstitution</key>
@@ -22891,7 +22943,7 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 				<key>name</key>
 				<string>Hobgoblin</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>9</integer>
 				<key>rawConstitution</key>
@@ -23012,7 +23064,7 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 				<key>name</key>
 				<string>Hobgoblin Captain</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>13</integer>
 				<key>rawConstitution</key>
@@ -23133,7 +23185,7 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 				<key>name</key>
 				<string>Hobgoblin Warlord</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>15</integer>
 				<key>rawConstitution</key>
@@ -23230,7 +23282,7 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 				<key>name</key>
 				<string>Homunculus</string>
 				<key>rawAlignment</key>
-				<integer>4</integer>
+				<integer>5</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -23318,7 +23370,7 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 				<key>name</key>
 				<string>Hook Horror</string>
 				<key>rawAlignment</key>
-				<integer>4</integer>
+				<integer>5</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -23417,6 +23469,8 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 				<real>8.0</real>
 				<key>name</key>
 				<string>Hydra</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -23549,7 +23603,7 @@ If the host body drops to 0 hit points, the intellect devourer must leave it. A 
 				<key>name</key>
 				<string>Intellect Devourer</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>10</integer>
 				<key>rawConstitution</key>
@@ -23645,7 +23699,7 @@ If the host body drops to 0 hit points, the intellect devourer must leave it. A 
 				<key>name</key>
 				<string>Invisible Stalker</string>
 				<key>rawAlignment</key>
-				<integer>4</integer>
+				<integer>5</integer>
 				<key>rawCharisma</key>
 				<integer>11</integer>
 				<key>rawConstitution</key>
@@ -23755,7 +23809,7 @@ If the host body drops to 0 hit points, the intellect devourer must leave it. A 
 				<key>name</key>
 				<string>Jackalwere</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>10</integer>
 				<key>rawConstitution</key>
@@ -23864,7 +23918,7 @@ If the host body drops to 0 hit points, the intellect devourer must leave it. A 
 				<key>name</key>
 				<string>Kenku</string>
 				<key>rawAlignment</key>
-				<integer>7</integer>
+				<integer>8</integer>
 				<key>rawCharisma</key>
 				<integer>10</integer>
 				<key>rawConstitution</key>
@@ -23967,7 +24021,7 @@ If the host body drops to 0 hit points, the intellect devourer must leave it. A 
 				<key>name</key>
 				<string>Winged Kobold</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>8</integer>
 				<key>rawConstitution</key>
@@ -24070,7 +24124,7 @@ If the host body drops to 0 hit points, the intellect devourer must leave it. A 
 				<key>name</key>
 				<string>Kobold</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>8</integer>
 				<key>rawConstitution</key>
@@ -24208,7 +24262,7 @@ If the kraken takes 50 damage or more on a single turn from a creature inside it
 				<key>name</key>
 				<string>Kraken</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>20</integer>
 				<key>rawConstitution</key>
@@ -24364,7 +24418,7 @@ If the kraken takes 50 damage or more on a single turn from a creature inside it
 				<key>name</key>
 				<string>Kuo-toa</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>8</integer>
 				<key>rawConstitution</key>
@@ -24493,7 +24547,7 @@ If the kraken takes 50 damage or more on a single turn from a creature inside it
 				<key>name</key>
 				<string>Kuo-toa Archpriest</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>14</integer>
 				<key>rawConstitution</key>
@@ -24628,7 +24682,7 @@ Cantrips (at will): guidance, sacred flame, thaumaturgy
 				<key>name</key>
 				<string>Kuo-toa Whip</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>11</integer>
 				<key>rawConstitution</key>
@@ -24765,7 +24819,7 @@ Cantrips (at will): sacred flame, thaumaturgy
 				<key>name</key>
 				<string>Lamia</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>16</integer>
 				<key>rawConstitution</key>
@@ -24841,13 +24895,13 @@ At will: disguise self (any humanoid form), major image
 			<key>alignmentOptions</key>
 			<array>
 				<array>
-					<integer>2</integer>
+					<integer>3</integer>
 				</array>
 				<array>
-					<integer>5</integer>
+					<integer>6</integer>
 				</array>
 				<array>
-					<integer>8</integer>
+					<integer>9</integer>
 				</array>
 			</array>
 			<key>info</key>
@@ -25057,7 +25111,7 @@ Cantrips (at will): mage hand, prestidigitation, ray of frost
 				<key>name</key>
 				<string>Lizardfolk</string>
 				<key>rawAlignment</key>
-				<integer>4</integer>
+				<integer>5</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -25180,7 +25234,7 @@ Cantrips (at will): mage hand, prestidigitation, ray of frost
 				<key>name</key>
 				<string>Lizardfolk Shaman</string>
 				<key>rawAlignment</key>
-				<integer>4</integer>
+				<integer>5</integer>
 				<key>rawCharisma</key>
 				<integer>8</integer>
 				<key>rawConstitution</key>
@@ -25303,7 +25357,7 @@ Cantrips (at will): druidcraft, produce flame, thorn whip
 				<key>name</key>
 				<string>Lizard King/Queen</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>15</integer>
 				<key>rawConstitution</key>
@@ -25424,7 +25478,7 @@ Cantrips (at will): druidcraft, produce flame, thorn whip
 				<key>name</key>
 				<string>Werebear</string>
 				<key>rawAlignment</key>
-				<integer>3</integer>
+				<integer>4</integer>
 				<key>rawCharisma</key>
 				<integer>12</integer>
 				<key>rawConstitution</key>
@@ -25532,7 +25586,7 @@ Cantrips (at will): druidcraft, produce flame, thorn whip
 				<key>name</key>
 				<string>Wereboar</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>8</integer>
 				<key>rawConstitution</key>
@@ -25658,7 +25712,7 @@ Cantrips (at will): druidcraft, produce flame, thorn whip
 				<key>name</key>
 				<string>Wererat</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>8</integer>
 				<key>rawConstitution</key>
@@ -25778,7 +25832,7 @@ Cantrips (at will): druidcraft, produce flame, thorn whip
 				<key>name</key>
 				<string>Weretiger</string>
 				<key>rawAlignment</key>
-				<integer>4</integer>
+				<integer>5</integer>
 				<key>rawCharisma</key>
 				<integer>11</integer>
 				<key>rawConstitution</key>
@@ -25898,7 +25952,7 @@ Cantrips (at will): druidcraft, produce flame, thorn whip
 				<key>name</key>
 				<string>Werewolf</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>10</integer>
 				<key>rawConstitution</key>
@@ -26002,7 +26056,7 @@ Cantrips (at will): druidcraft, produce flame, thorn whip
 				<key>name</key>
 				<string>Magmin</string>
 				<key>rawAlignment</key>
-				<integer>7</integer>
+				<integer>8</integer>
 				<key>rawCharisma</key>
 				<integer>10</integer>
 				<key>rawConstitution</key>
@@ -26114,7 +26168,7 @@ Cantrips (at will): druidcraft, produce flame, thorn whip
 				<key>name</key>
 				<string>Manticore</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>8</integer>
 				<key>rawConstitution</key>
@@ -26220,7 +26274,7 @@ Cantrips (at will): druidcraft, produce flame, thorn whip
 				<key>name</key>
 				<string>Medusa</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>15</integer>
 				<key>rawConstitution</key>
@@ -26324,7 +26378,7 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 				<key>name</key>
 				<string>Dust Mephit</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>10</integer>
 				<key>rawConstitution</key>
@@ -26434,7 +26488,7 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 				<key>name</key>
 				<string>Ice Mephit</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>12</integer>
 				<key>rawConstitution</key>
@@ -26550,7 +26604,7 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 				<key>name</key>
 				<string>Magma Mephit</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>10</integer>
 				<key>rawConstitution</key>
@@ -26664,7 +26718,7 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 				<key>name</key>
 				<string>Mud Mephit</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -26772,7 +26826,7 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 				<key>name</key>
 				<string>Smoke Mephit</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>11</integer>
 				<key>rawConstitution</key>
@@ -26880,7 +26934,7 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 				<key>name</key>
 				<string>Steam Mephit</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>12</integer>
 				<key>rawConstitution</key>
@@ -26976,7 +27030,7 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 				<key>name</key>
 				<string>Merfolk</string>
 				<key>rawAlignment</key>
-				<integer>4</integer>
+				<integer>5</integer>
 				<key>rawCharisma</key>
 				<integer>12</integer>
 				<key>rawConstitution</key>
@@ -27085,7 +27139,7 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 				<key>name</key>
 				<string>Merrow</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>9</integer>
 				<key>rawConstitution</key>
@@ -27187,7 +27241,7 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 				<key>name</key>
 				<string>Mimic</string>
 				<key>rawAlignment</key>
-				<integer>4</integer>
+				<integer>5</integer>
 				<key>rawCharisma</key>
 				<integer>8</integer>
 				<key>rawConstitution</key>
@@ -27302,7 +27356,7 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 				<key>name</key>
 				<string>Mind Flayer</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>17</integer>
 				<key>rawConstitution</key>
@@ -27402,7 +27456,7 @@ At will: detect thoughts, levitate
 				<key>name</key>
 				<string>Minotaur</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>9</integer>
 				<key>rawConstitution</key>
@@ -27510,7 +27564,7 @@ At will: detect thoughts, levitate
 				<key>name</key>
 				<string>Monodrone</string>
 				<key>rawAlignment</key>
-				<integer>1</integer>
+				<integer>2</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -27612,7 +27666,7 @@ At will: detect thoughts, levitate
 				<key>name</key>
 				<string>Duodrone</string>
 				<key>rawAlignment</key>
-				<integer>1</integer>
+				<integer>2</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -27714,7 +27768,7 @@ At will: detect thoughts, levitate
 				<key>name</key>
 				<string>Tridrone</string>
 				<key>rawAlignment</key>
-				<integer>1</integer>
+				<integer>2</integer>
 				<key>rawCharisma</key>
 				<integer>9</integer>
 				<key>rawConstitution</key>
@@ -27816,7 +27870,7 @@ At will: detect thoughts, levitate
 				<key>name</key>
 				<string>Quadrone</string>
 				<key>rawAlignment</key>
-				<integer>1</integer>
+				<integer>2</integer>
 				<key>rawCharisma</key>
 				<integer>11</integer>
 				<key>rawConstitution</key>
@@ -27920,7 +27974,7 @@ At will: detect thoughts, levitate
 				<key>name</key>
 				<string>Pentadrone</string>
 				<key>rawAlignment</key>
-				<integer>1</integer>
+				<integer>2</integer>
 				<key>rawCharisma</key>
 				<integer>13</integer>
 				<key>rawConstitution</key>
@@ -28032,7 +28086,7 @@ At will: detect thoughts, levitate
 				<key>name</key>
 				<string>Mummy</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>12</integer>
 				<key>rawConstitution</key>
@@ -28142,7 +28196,7 @@ At will: detect thoughts, levitate
 				<key>name</key>
 				<string>Mummy Lord</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>16</integer>
 				<key>rawConstitution</key>
@@ -28319,7 +28373,7 @@ Cantrips (at will): sacred flame, thaumaturgy
 				<key>name</key>
 				<string>Myconid Sprout</string>
 				<key>rawAlignment</key>
-				<integer>1</integer>
+				<integer>2</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -28416,6 +28470,8 @@ Cantrips (at will): sacred flame, thaumaturgy
 				<string>poison</string>
 				<key>name</key>
 				<string>Quaggoth Spore Servant</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>1</integer>
 				<key>rawConstitution</key>
@@ -28503,7 +28559,7 @@ Cantrips (at will): sacred flame, thaumaturgy
 				<key>name</key>
 				<string>Myconid Adult</string>
 				<key>rawAlignment</key>
-				<integer>1</integer>
+				<integer>2</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -28621,7 +28677,7 @@ Cantrips (at will): sacred flame, thaumaturgy
 				<key>name</key>
 				<string>Myconid Sovereign</string>
 				<key>rawAlignment</key>
-				<integer>1</integer>
+				<integer>2</integer>
 				<key>rawCharisma</key>
 				<integer>10</integer>
 				<key>rawConstitution</key>
@@ -28715,7 +28771,7 @@ Cantrips (at will): sacred flame, thaumaturgy
 				<key>name</key>
 				<string>Bone Naga</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>16</integer>
 				<key>rawConstitution</key>
@@ -28813,7 +28869,7 @@ Cantrips (at will): mage hand, minor illusion, ray of frost
 				<key>name</key>
 				<string>Spirit Naga</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>16</integer>
 				<key>rawConstitution</key>
@@ -28921,7 +28977,7 @@ Cantrips (at will): mage hand, minor illusion, ray of frost
 				<key>name</key>
 				<string>Guardian Naga</string>
 				<key>rawAlignment</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawCharisma</key>
 				<integer>18</integer>
 				<key>rawConstitution</key>
@@ -29028,7 +29084,7 @@ Cantrips (at will): mending, sacred flame, thaumaturgy
 				<key>name</key>
 				<string>Nightmare</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>15</integer>
 				<key>rawConstitution</key>
@@ -29134,7 +29190,7 @@ Cantrips (at will): mending, sacred flame, thaumaturgy
 				<key>name</key>
 				<string>Nothic</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>8</integer>
 				<key>rawConstitution</key>
@@ -29236,7 +29292,7 @@ Cantrips (at will): mending, sacred flame, thaumaturgy
 				<key>name</key>
 				<string>Ogre</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -29333,13 +29389,13 @@ Cantrips (at will): mending, sacred flame, thaumaturgy
 			<key>alignmentOptions</key>
 			<array>
 				<array>
-					<integer>6</integer>
-				</array>
-				<array>
 					<integer>7</integer>
 				</array>
 				<array>
 					<integer>8</integer>
+				</array>
+				<array>
+					<integer>9</integer>
 				</array>
 			</array>
 			<key>info</key>
@@ -29453,7 +29509,7 @@ Cantrips (at will): mending, sacred flame, thaumaturgy
 				<key>name</key>
 				<string>Oni</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>15</integer>
 				<key>rawConstitution</key>
@@ -29560,6 +29616,8 @@ At will: darkness, invisibility
 				<string>acid, cold, lightning, slashing</string>
 				<key>name</key>
 				<string>Black Pudding</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>1</integer>
 				<key>rawConstitution</key>
@@ -29676,6 +29734,8 @@ An engulfed creature can try to escape by taking an action to make a DC 12 Stren
 				<string>blinded, charmed, deafened, exhaustion, frightened, prone</string>
 				<key>name</key>
 				<string>Gelatinous Cube</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>1</integer>
 				<key>rawConstitution</key>
@@ -29769,6 +29829,8 @@ The cube can hold only one Large creature or up to four Medium or smaller creatu
 				<string>acid, cold, fire</string>
 				<key>name</key>
 				<string>Gray Ooze</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>2</integer>
 				<key>rawConstitution</key>
@@ -29876,6 +29938,8 @@ The ooze can eat through 2-inch-thick, nonmagical metal in 1 round.</string>
 				<string>acid</string>
 				<key>name</key>
 				<string>Ochre Jelly</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>1</integer>
 				<key>rawConstitution</key>
@@ -29989,7 +30053,7 @@ The ooze can eat through 2-inch-thick, nonmagical metal in 1 round.</string>
 				<key>name</key>
 				<string>Orc</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>10</integer>
 				<key>rawConstitution</key>
@@ -30112,7 +30176,7 @@ The ooze can eat through 2-inch-thick, nonmagical metal in 1 round.</string>
 				<key>name</key>
 				<string>Orc War Chief</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>16</integer>
 				<key>rawConstitution</key>
@@ -30207,7 +30271,7 @@ The ooze can eat through 2-inch-thick, nonmagical metal in 1 round.</string>
 				<key>name</key>
 				<string>Orc Eye of Gruumsh</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>12</integer>
 				<key>rawConstitution</key>
@@ -30327,7 +30391,7 @@ Cantrips (at-will): guidance, resistance, thaumaturgy
 				<key>name</key>
 				<string>Orog</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>12</integer>
 				<key>rawConstitution</key>
@@ -30438,7 +30502,7 @@ Cantrips (at-will): guidance, resistance, thaumaturgy
 				<key>name</key>
 				<string>Otyugh</string>
 				<key>rawAlignment</key>
-				<integer>4</integer>
+				<integer>5</integer>
 				<key>rawCharisma</key>
 				<integer>6</integer>
 				<key>rawConstitution</key>
@@ -30543,6 +30607,8 @@ Cantrips (at-will): guidance, resistance, thaumaturgy
 				<real>3.0</real>
 				<key>name</key>
 				<string>Owlbear</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -30638,7 +30704,7 @@ Cantrips (at-will): guidance, resistance, thaumaturgy
 				<key>name</key>
 				<string>Pegasus</string>
 				<key>rawAlignment</key>
-				<integer>6</integer>
+				<integer>7</integer>
 				<key>rawCharisma</key>
 				<integer>13</integer>
 				<key>rawConstitution</key>
@@ -30738,7 +30804,7 @@ Cantrips (at-will): guidance, resistance, thaumaturgy
 				<key>name</key>
 				<string>Peryton</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>10</integer>
 				<key>rawConstitution</key>
@@ -30843,6 +30909,8 @@ Cantrips (at-will): guidance, resistance, thaumaturgy
 				<real>0.5</real>
 				<key>name</key>
 				<string>Piercer</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>3</integer>
 				<key>rawConstitution</key>
@@ -30938,7 +31006,7 @@ Cantrips (at-will): guidance, resistance, thaumaturgy
 				<key>name</key>
 				<string>Pixie</string>
 				<key>rawAlignment</key>
-				<integer>3</integer>
+				<integer>4</integer>
 				<key>rawCharisma</key>
 				<integer>15</integer>
 				<key>rawConstitution</key>
@@ -31036,7 +31104,7 @@ At will: druidcraft
 				<key>name</key>
 				<string>Pseudodragon</string>
 				<key>rawAlignment</key>
-				<integer>3</integer>
+				<integer>4</integer>
 				<key>rawCharisma</key>
 				<integer>10</integer>
 				<key>rawConstitution</key>
@@ -31154,6 +31222,8 @@ If the worm takes 30 damage or more on a single turn from a creature inside it, 
 				<real>15.0</real>
 				<key>name</key>
 				<string>Purple Worm</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>4</integer>
 				<key>rawConstitution</key>
@@ -31253,7 +31323,7 @@ If the worm takes 30 damage or more on a single turn from a creature inside it, 
 				<key>name</key>
 				<string>Quaggoth</string>
 				<key>rawAlignment</key>
-				<integer>7</integer>
+				<integer>8</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -31348,7 +31418,7 @@ If the worm takes 30 damage or more on a single turn from a creature inside it, 
 				<key>name</key>
 				<string>Rakshasa</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>20</integer>
 				<key>rawConstitution</key>
@@ -31440,6 +31510,8 @@ At will: detect thoughts, disguise self, mage hand, minor illusion
 				<string>cold, fire</string>
 				<key>name</key>
 				<string>Young Remorhaz</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>4</integer>
 				<key>rawConstitution</key>
@@ -31529,6 +31601,8 @@ If the remorhaz takes 30 damage or more on a single turn from a creature inside 
 				<string>cold, fire</string>
 				<key>name</key>
 				<string>Remorhaz</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -31630,7 +31704,7 @@ If the remorhaz takes 30 damage or more on a single turn from a creature inside 
 				<key>name</key>
 				<string>Revenant</string>
 				<key>rawAlignment</key>
-				<integer>4</integer>
+				<integer>5</integer>
 				<key>rawCharisma</key>
 				<integer>18</integer>
 				<key>rawConstitution</key>
@@ -31747,6 +31821,8 @@ If the remorhaz takes 30 damage or more on a single turn from a creature inside 
 				<real>11.0</real>
 				<key>name</key>
 				<string>Roc</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>9</integer>
 				<key>rawConstitution</key>
@@ -31848,7 +31924,7 @@ If the remorhaz takes 30 damage or more on a single turn from a creature inside 
 				<key>name</key>
 				<string>Roper</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>6</integer>
 				<key>rawConstitution</key>
@@ -31960,6 +32036,8 @@ If the object touched is either metal armor or a metal shield being worn or carr
 				<real>0.5</real>
 				<key>name</key>
 				<string>Rust Monster</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>6</integer>
 				<key>rawConstitution</key>
@@ -32071,7 +32149,7 @@ If the object touched is either metal armor or a metal shield being worn or carr
 				<key>name</key>
 				<string>Sahuagin</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>9</integer>
 				<key>rawConstitution</key>
@@ -32182,7 +32260,7 @@ If the object touched is either metal armor or a metal shield being worn or carr
 				<key>name</key>
 				<string>Sahuagin Priestess</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>13</integer>
 				<key>rawConstitution</key>
@@ -32309,7 +32387,7 @@ Cantrips (at will): guidance, thaumaturgy
 				<key>name</key>
 				<string>Sahuagin Baron</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>17</integer>
 				<key>rawConstitution</key>
@@ -32428,7 +32506,7 @@ Cantrips (at will): guidance, thaumaturgy
 				<key>name</key>
 				<string>Fire Snake</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>8</integer>
 				<key>rawConstitution</key>
@@ -32536,7 +32614,7 @@ Cantrips (at will): guidance, thaumaturgy
 				<key>name</key>
 				<string>Salamander</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>12</integer>
 				<key>rawConstitution</key>
@@ -32644,7 +32722,7 @@ Cantrips (at will): guidance, thaumaturgy
 				<key>name</key>
 				<string>Satyr</string>
 				<key>rawAlignment</key>
-				<integer>7</integer>
+				<integer>8</integer>
 				<key>rawCharisma</key>
 				<integer>14</integer>
 				<key>rawConstitution</key>
@@ -32754,7 +32832,7 @@ Cantrips (at will): guidance, thaumaturgy
 				<key>name</key>
 				<string>Scarecrow</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>13</integer>
 				<key>rawConstitution</key>
@@ -32843,7 +32921,7 @@ If a non-evil humanoid dies from this attack, a new shadow rises from the corpse
 				<key>name</key>
 				<string>Shadow</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>8</integer>
 				<key>rawConstitution</key>
@@ -32960,6 +33038,8 @@ If a non-evil humanoid dies from this attack, a new shadow rises from the corpse
 				<string>cold, fire</string>
 				<key>name</key>
 				<string>Shambling Mound</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -33058,6 +33138,8 @@ If a non-evil humanoid dies from this attack, a new shadow rises from the corpse
 				<string>understands commands given in any language but can't speak</string>
 				<key>name</key>
 				<string>Shield Guardian</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>3</integer>
 				<key>rawConstitution</key>
@@ -33175,7 +33257,7 @@ If a non-evil humanoid dies from this attack, a new shadow rises from the corpse
 				<key>name</key>
 				<string>Skeleton</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -33283,7 +33365,7 @@ If a non-evil humanoid dies from this attack, a new shadow rises from the corpse
 				<key>name</key>
 				<string>Minotaur Skeleton</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -33371,7 +33453,7 @@ If a non-evil humanoid dies from this attack, a new shadow rises from the corpse
 				<key>name</key>
 				<string>Warhorse Skeleton</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -33465,7 +33547,7 @@ If the disease is cured before the tadpole's emergence, the unborn slaad is disi
 				<key>name</key>
 				<string>Red Slaad</string>
 				<key>rawAlignment</key>
-				<integer>7</integer>
+				<integer>8</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -33559,7 +33641,7 @@ If the disease is cured before the tadpole's emergence, the unborn slaad is disi
 				<key>name</key>
 				<string>Slaad Tadpole</string>
 				<key>rawAlignment</key>
-				<integer>7</integer>
+				<integer>8</integer>
 				<key>rawCharisma</key>
 				<integer>3</integer>
 				<key>rawConstitution</key>
@@ -33659,7 +33741,7 @@ If the disease is cured before the tadpole's emergence, the unborn slaad is disi
 				<key>name</key>
 				<string>Blue Slaad</string>
 				<key>rawAlignment</key>
-				<integer>7</integer>
+				<integer>8</integer>
 				<key>rawCharisma</key>
 				<integer>9</integer>
 				<key>rawConstitution</key>
@@ -33777,7 +33859,7 @@ If the disease is cured before the tadpole's emergence, the unborn slaad is disi
 				<key>name</key>
 				<string>Green Slaad</string>
 				<key>rawAlignment</key>
-				<integer>7</integer>
+				<integer>8</integer>
 				<key>rawCharisma</key>
 				<integer>12</integer>
 				<key>rawConstitution</key>
@@ -33905,7 +33987,7 @@ At will: detect magic, detect thoughts, mage hand
 				<key>name</key>
 				<string>Gray Slaad</string>
 				<key>rawAlignment</key>
-				<integer>7</integer>
+				<integer>8</integer>
 				<key>rawCharisma</key>
 				<integer>14</integer>
 				<key>rawConstitution</key>
@@ -34039,7 +34121,7 @@ At will: detect magic, detect thoughts, invisibility (self only), mage hand, maj
 				<key>name</key>
 				<string>Death Slaad</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>16</integer>
 				<key>rawConstitution</key>
@@ -34159,7 +34241,7 @@ At will: detect magic, detect thoughts, invisibility (self only), mage hand, maj
 				<key>name</key>
 				<string>Specter</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>11</integer>
 				<key>rawConstitution</key>
@@ -34284,7 +34366,7 @@ Third Roar. Each creature makes a DC 18 Constitution saving throw. On a failed s
 				<key>name</key>
 				<string>Androsphinx</string>
 				<key>rawAlignment</key>
-				<integer>1</integer>
+				<integer>2</integer>
 				<key>rawCharisma</key>
 				<integer>23</integer>
 				<key>rawConstitution</key>
@@ -34421,7 +34503,7 @@ Cantrips (at will): sacred flame, spare the dying, thaumaturgy
 				<key>name</key>
 				<string>Gynosphinx</string>
 				<key>rawAlignment</key>
-				<integer>1</integer>
+				<integer>2</integer>
 				<key>rawCharisma</key>
 				<integer>18</integer>
 				<key>rawConstitution</key>
@@ -34584,7 +34666,7 @@ Cantrips (at will): mage hand, minor illusion, prestidigitation
 				<key>name</key>
 				<string>Sprite</string>
 				<key>rawAlignment</key>
-				<integer>3</integer>
+				<integer>4</integer>
 				<key>rawCharisma</key>
 				<integer>11</integer>
 				<key>rawConstitution</key>
@@ -34672,6 +34754,8 @@ The stirge can detach itself by spending 5 feet of its movement. It does so afte
 				<real>0.125</real>
 				<key>name</key>
 				<string>Stirge</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>6</integer>
 				<key>rawConstitution</key>
@@ -34786,7 +34870,7 @@ The fiend can have only one target charmed at a time. If it charms another, the 
 				<key>name</key>
 				<string>Succubus/Incubus</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>20</integer>
 				<key>rawConstitution</key>
@@ -34921,6 +35005,8 @@ If the tarrasque takes 60 damage or more on a single turn from a creature inside
 				<string>fire, poison; bludgeoning, piercing, and slashing from nonmagical weapons</string>
 				<key>name</key>
 				<string>Tarrasque</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>11</integer>
 				<key>rawConstitution</key>
@@ -35053,7 +35139,7 @@ If the tarrasque takes 60 damage or more on a single turn from a creature inside
 				<key>name</key>
 				<string>Thri-kreen</string>
 				<key>rawAlignment</key>
-				<integer>7</integer>
+				<integer>8</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -35166,7 +35252,7 @@ If the tarrasque takes 60 damage or more on a single turn from a creature inside
 				<key>name</key>
 				<string>Treant</string>
 				<key>rawAlignment</key>
-				<integer>6</integer>
+				<integer>7</integer>
 				<key>rawCharisma</key>
 				<integer>12</integer>
 				<key>rawConstitution</key>
@@ -35266,7 +35352,7 @@ If the tarrasque takes 60 damage or more on a single turn from a creature inside
 				<key>name</key>
 				<string>Troglodyte</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>6</integer>
 				<key>rawConstitution</key>
@@ -35387,7 +35473,7 @@ If the tarrasque takes 60 damage or more on a single turn from a creature inside
 				<key>name</key>
 				<string>Troll</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -35507,7 +35593,7 @@ If the tarrasque takes 60 damage or more on a single turn from a creature inside
 				<key>name</key>
 				<string>Umber Hulk</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>10</integer>
 				<key>rawConstitution</key>
@@ -35631,7 +35717,7 @@ Unless surprised, a creature can avert its eyes to avoid the saving throw at the
 				<key>name</key>
 				<string>Unicorn</string>
 				<key>rawAlignment</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawCharisma</key>
 				<integer>16</integer>
 				<key>rawConstitution</key>
@@ -35803,7 +35889,7 @@ Each time the vampire or the vampire's companions do anything harmful to the tar
 				<key>name</key>
 				<string>Vampire</string>
 				<key>rawAlignment</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>rawCharisma</key>
 				<integer>18</integer>
 				<key>rawConstitution</key>
@@ -35997,7 +36083,7 @@ Sunlight Hypersensitivity. The vampire takes 20 radiant damage when it starts it
 				<key>name</key>
 				<string>Vampire Spawn</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>12</integer>
 				<key>rawConstitution</key>
@@ -36125,7 +36211,7 @@ Sunlight Hypersensitivity. The vampire takes 20 radiant damage when it starts it
 				<key>name</key>
 				<string>Water Weird</string>
 				<key>rawAlignment</key>
-				<integer>4</integer>
+				<integer>5</integer>
 				<key>rawCharisma</key>
 				<integer>10</integer>
 				<key>rawConstitution</key>
@@ -36244,7 +36330,7 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 				<key>name</key>
 				<string>Wight</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>15</integer>
 				<key>rawConstitution</key>
@@ -36352,7 +36438,7 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 				<key>name</key>
 				<string>Will-o'-Wisp</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>11</integer>
 				<key>rawConstitution</key>
@@ -36476,7 +36562,7 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 				<key>name</key>
 				<string>Wraith</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>15</integer>
 				<key>rawConstitution</key>
@@ -36585,6 +36671,8 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 				<real>6.0</real>
 				<key>name</key>
 				<string>Wyvern</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>6</integer>
 				<key>rawConstitution</key>
@@ -36688,7 +36776,7 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 				<key>name</key>
 				<string>Xorn</string>
 				<key>rawAlignment</key>
-				<integer>4</integer>
+				<integer>5</integer>
 				<key>rawCharisma</key>
 				<integer>11</integer>
 				<key>rawConstitution</key>
@@ -36804,7 +36892,7 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 				<key>name</key>
 				<string>Yeti</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -36928,7 +37016,7 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 				<key>name</key>
 				<string>Abominable Yeti</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>9</integer>
 				<key>rawConstitution</key>
@@ -37054,7 +37142,7 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 				<key>name</key>
 				<string>Yuan-ti Abomination</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>18</integer>
 				<key>rawConstitution</key>
@@ -37227,7 +37315,7 @@ At will: animal friendship (snakes only)
 				<key>name</key>
 				<string>Yuan-ti Malison</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>16</integer>
 				<key>rawConstitution</key>
@@ -37366,7 +37454,7 @@ Type 3: Human head and upper body with a serpentine lower body instead of legs</
 				<key>name</key>
 				<string>Yuan-ti Pureblood</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>14</integer>
 				<key>rawConstitution</key>
@@ -37485,7 +37573,7 @@ At will: animal friendship (snakes only)
 				<key>name</key>
 				<string>Arcanaloth</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>17</integer>
 				<key>rawConstitution</key>
@@ -37626,7 +37714,7 @@ Cantrips (at will): fire bolt, mage hand, minor illusion, prestidigitation
 				<key>name</key>
 				<string>Mezzoloth</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>11</integer>
 				<key>rawConstitution</key>
@@ -37757,7 +37845,7 @@ Cantrips (at will): fire bolt, mage hand, minor illusion, prestidigitation
 				<key>name</key>
 				<string>Nycaloth</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>15</integer>
 				<key>rawConstitution</key>
@@ -37887,7 +37975,7 @@ At will: darkness, detect magic, dispel magic, invisibility (self only), mirror 
 				<key>name</key>
 				<string>Ultroloth</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>19</integer>
 				<key>rawConstitution</key>
@@ -37993,7 +38081,7 @@ At will: alter self, clairvoyance, darkness, detect magic, detect thoughts, disp
 				<key>name</key>
 				<string>Zombie</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -38101,7 +38189,7 @@ At will: alter self, clairvoyance, darkness, detect magic, detect thoughts, disp
 				<key>name</key>
 				<string>Ogre Zombie</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -38202,7 +38290,7 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<key>name</key>
 				<string>Beholder Zombie</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -38297,6 +38385,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<real>0.5</real>
 				<key>name</key>
 				<string>Ape</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -38385,6 +38475,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<string>one language known by its creator</string>
 				<key>name</key>
 				<string>Awakened Shrub</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>6</integer>
 				<key>rawConstitution</key>
@@ -38477,6 +38569,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<string>one language known by its creator</string>
 				<key>name</key>
 				<string>Awakened Tree</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -38569,6 +38663,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<real>0.25</real>
 				<key>name</key>
 				<string>Axe Beak</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -38649,6 +38745,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<real>0.0</real>
 				<key>name</key>
 				<string>Baboon</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>6</integer>
 				<key>rawConstitution</key>
@@ -38735,6 +38833,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<real>0.0</real>
 				<key>name</key>
 				<string>Badger</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -38821,6 +38921,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<real>0.0</real>
 				<key>name</key>
 				<string>Bat</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>4</integer>
 				<key>rawConstitution</key>
@@ -38931,6 +39033,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<real>0.5</real>
 				<key>name</key>
 				<string>Black Bear</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -39034,7 +39138,7 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<key>name</key>
 				<string>Blink Dog</string>
 				<key>rawAlignment</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawCharisma</key>
 				<integer>11</integer>
 				<key>rawConstitution</key>
@@ -39123,6 +39227,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<real>0.125</real>
 				<key>name</key>
 				<string>Blood Hawk</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -39217,6 +39323,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<real>0.25</real>
 				<key>name</key>
 				<string>Boar</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -39327,6 +39435,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<real>1.0</real>
 				<key>name</key>
 				<string>Brown Bear</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -39421,6 +39531,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<real>0.125</real>
 				<key>name</key>
 				<string>Camel</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -39501,6 +39613,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<real>0.0</real>
 				<key>name</key>
 				<string>Cat</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -39601,6 +39715,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<real>0.25</real>
 				<key>name</key>
 				<string>Constrictor Snake</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>3</integer>
 				<key>rawConstitution</key>
@@ -39687,6 +39803,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<real>0.0</real>
 				<key>name</key>
 				<string>Crab</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>2</integer>
 				<key>rawConstitution</key>
@@ -39775,6 +39893,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<real>0.5</real>
 				<key>name</key>
 				<string>Crocodile</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -39882,7 +40002,7 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<key>name</key>
 				<string>Death Dog</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>6</integer>
 				<key>rawConstitution</key>
@@ -39971,6 +40091,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<real>0.0</real>
 				<key>name</key>
 				<string>Deer</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -40057,6 +40179,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<real>1.0</real>
 				<key>name</key>
 				<string>Dire Wolf</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -40157,6 +40281,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<real>0.25</real>
 				<key>name</key>
 				<string>Draft Horse</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -40237,6 +40363,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<real>0.0</real>
 				<key>name</key>
 				<string>Eagle</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -40331,6 +40459,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<real>4.0</real>
 				<key>name</key>
 				<string>Elephant</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>6</integer>
 				<key>rawConstitution</key>
@@ -40423,6 +40553,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<real>0.25</real>
 				<key>name</key>
 				<string>Elk</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>6</integer>
 				<key>rawConstitution</key>
@@ -40515,6 +40647,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<real>0.125</real>
 				<key>name</key>
 				<string>Flying Snake</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -40595,6 +40729,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<real>0.0</real>
 				<key>name</key>
 				<string>Frog</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>3</integer>
 				<key>rawConstitution</key>
@@ -40707,6 +40843,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<real>7.0</real>
 				<key>name</key>
 				<string>Giant Ape</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -40801,6 +40939,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<real>0.25</real>
 				<key>name</key>
 				<string>Giant Badger</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -40887,6 +41027,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<real>0.25</real>
 				<key>name</key>
 				<string>Giant Bat</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>6</integer>
 				<key>rawConstitution</key>
@@ -40979,6 +41121,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<real>2.0</real>
 				<key>name</key>
 				<string>Giant Boar</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -41071,6 +41215,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<real>0.25</real>
 				<key>name</key>
 				<string>Giant Centipede</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>3</integer>
 				<key>rawConstitution</key>
@@ -41163,6 +41309,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<real>2.0</real>
 				<key>name</key>
 				<string>Giant Constrictor Snake</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>3</integer>
 				<key>rawConstitution</key>
@@ -41245,6 +41393,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<real>0.125</real>
 				<key>name</key>
 				<string>Giant Crab</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>3</integer>
 				<key>rawConstitution</key>
@@ -41345,6 +41495,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<real>5.0</real>
 				<key>name</key>
 				<string>Giant Crocodile</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -41448,7 +41600,7 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<key>name</key>
 				<string>Giant Eagle</string>
 				<key>rawAlignment</key>
-				<integer>3</integer>
+				<integer>4</integer>
 				<key>rawCharisma</key>
 				<integer>10</integer>
 				<key>rawConstitution</key>
@@ -41551,6 +41703,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<string>Giant Elk, understands Common, Elvish, and Sylvan but can't speak them</string>
 				<key>name</key>
 				<string>Giant Elk</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>10</integer>
 				<key>rawConstitution</key>
@@ -41639,6 +41793,8 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<real>0.0</real>
 				<key>name</key>
 				<string>Giant Fire Beetle</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>3</integer>
 				<key>rawConstitution</key>
@@ -41732,6 +41888,8 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 				<real>0.25</real>
 				<key>name</key>
 				<string>Giant Frog</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>3</integer>
 				<key>rawConstitution</key>
@@ -41832,6 +41990,8 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 				<real>0.5</real>
 				<key>name</key>
 				<string>Giant Goat</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>6</integer>
 				<key>rawConstitution</key>
@@ -41924,6 +42084,8 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 				<real>1.0</real>
 				<key>name</key>
 				<string>Giant Hyena</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -42012,6 +42174,8 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 				<real>0.25</real>
 				<key>name</key>
 				<string>Giant Lizard</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -42104,6 +42268,8 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 				<real>1.0</real>
 				<key>name</key>
 				<string>Giant Octopus</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>4</integer>
 				<key>rawConstitution</key>
@@ -42213,7 +42379,7 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 				<key>name</key>
 				<string>Giant Owl</string>
 				<key>rawAlignment</key>
-				<integer>4</integer>
+				<integer>5</integer>
 				<key>rawCharisma</key>
 				<integer>10</integer>
 				<key>rawConstitution</key>
@@ -42308,6 +42474,8 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 				<real>0.25</real>
 				<key>name</key>
 				<string>Giant Poisonous Snake</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>3</integer>
 				<key>rawConstitution</key>
@@ -42390,6 +42558,8 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 				<real>0.125</real>
 				<key>name</key>
 				<string>Giant Rat</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>4</integer>
 				<key>rawConstitution</key>
@@ -42494,6 +42664,8 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 				<real>3.0</real>
 				<key>name</key>
 				<string>Giant Scorpion</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>3</integer>
 				<key>rawConstitution</key>
@@ -42574,6 +42746,8 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 				<real>0.5</real>
 				<key>name</key>
 				<string>Giant Sea Horse</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -42666,6 +42840,8 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 				<real>5.0</real>
 				<key>name</key>
 				<string>Giant Shark</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -42766,6 +42942,8 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 				<real>1.0</real>
 				<key>name</key>
 				<string>Giant Spider</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>4</integer>
 				<key>rawConstitution</key>
@@ -42891,6 +43069,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>1.0</real>
 				<key>name</key>
 				<string>Giant Toad</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>3</integer>
 				<key>rawConstitution</key>
@@ -42998,7 +43178,7 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<key>name</key>
 				<string>Giant Vulture</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -43093,6 +43273,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>0.5</real>
 				<key>name</key>
 				<string>Giant Wasp</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>3</integer>
 				<key>rawConstitution</key>
@@ -43173,6 +43355,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>0.125</real>
 				<key>name</key>
 				<string>Giant Weasel</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -43261,6 +43445,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>0.25</real>
 				<key>name</key>
 				<string>Giant Wolf Spider</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>4</integer>
 				<key>rawConstitution</key>
@@ -43361,6 +43547,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>0.0</real>
 				<key>name</key>
 				<string>Goat</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -43453,6 +43641,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>0.0</real>
 				<key>name</key>
 				<string>Hawk</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>6</integer>
 				<key>rawConstitution</key>
@@ -43547,6 +43737,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>2.0</real>
 				<key>name</key>
 				<string>Hunter Shark</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>4</integer>
 				<key>rawConstitution</key>
@@ -43641,6 +43833,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>0.0</real>
 				<key>name</key>
 				<string>Hyena</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -43729,6 +43923,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>0.0</real>
 				<key>name</key>
 				<string>Jackal</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>6</integer>
 				<key>rawConstitution</key>
@@ -43823,6 +44019,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>3.0</real>
 				<key>name</key>
 				<string>Killer Whale</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -43929,6 +44127,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>1.0</real>
 				<key>name</key>
 				<string>Lion</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>8</integer>
 				<key>rawConstitution</key>
@@ -44041,6 +44241,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>0.0</real>
 				<key>name</key>
 				<string>Lizard</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>3</integer>
 				<key>rawConstitution</key>
@@ -44127,6 +44329,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>6.0</real>
 				<key>name</key>
 				<string>Mammoth</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>6</integer>
 				<key>rawConstitution</key>
@@ -44213,6 +44417,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>0.125</real>
 				<key>name</key>
 				<string>Mastiff</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -44307,6 +44513,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>0.125</real>
 				<key>name</key>
 				<string>Mule</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>5</integer>
 				<key>rawConstitution</key>
@@ -44411,6 +44619,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>0.0</real>
 				<key>name</key>
 				<string>Octopus</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>4</integer>
 				<key>rawConstitution</key>
@@ -44511,6 +44721,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>0.0</real>
 				<key>name</key>
 				<string>Owl</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -44617,6 +44829,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>0.25</real>
 				<key>name</key>
 				<string>Panther</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -44717,6 +44931,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>3.0</real>
 				<key>name</key>
 				<string>Phase Spider</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>6</integer>
 				<key>rawConstitution</key>
@@ -44817,6 +45033,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>0.125</real>
 				<key>name</key>
 				<string>Poisonous Snake</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>3</integer>
 				<key>rawConstitution</key>
@@ -44915,6 +45133,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>2.0</real>
 				<key>name</key>
 				<string>Polar Bear</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -45009,6 +45229,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>0.125</real>
 				<key>name</key>
 				<string>Pony</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -45089,6 +45311,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>0.0</real>
 				<key>name</key>
 				<string>Quipper</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>2</integer>
 				<key>rawConstitution</key>
@@ -45181,6 +45405,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>0.0</real>
 				<key>name</key>
 				<string>Rat</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>4</integer>
 				<key>rawConstitution</key>
@@ -45273,6 +45499,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>0.0</real>
 				<key>name</key>
 				<string>Raven</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>6</integer>
 				<key>rawConstitution</key>
@@ -45367,6 +45595,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>0.5</real>
 				<key>name</key>
 				<string>Reef Shark</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>4</integer>
 				<key>rawConstitution</key>
@@ -45467,6 +45697,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>2.0</real>
 				<key>name</key>
 				<string>Rhinoceros</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>6</integer>
 				<key>rawConstitution</key>
@@ -45553,6 +45785,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>0.25</real>
 				<key>name</key>
 				<string>Riding Horse</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -45645,6 +45879,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>2.0</real>
 				<key>name</key>
 				<string>Saber-Toothed Tiger</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>8</integer>
 				<key>rawConstitution</key>
@@ -45739,6 +45975,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>0.0</real>
 				<key>name</key>
 				<string>Scorpion</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>2</integer>
 				<key>rawConstitution</key>
@@ -45813,6 +46051,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>0.0</real>
 				<key>name</key>
 				<string>Sea Horse</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>2</integer>
 				<key>rawConstitution</key>
@@ -45899,6 +46139,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>0.0</real>
 				<key>name</key>
 				<string>Spider</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>2</integer>
 				<key>rawConstitution</key>
@@ -46003,6 +46245,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<string>bludgeoning, piercing, slashing</string>
 				<key>name</key>
 				<string>Swarm of Bats</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>4</integer>
 				<key>rawConstitution</key>
@@ -46107,6 +46351,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<string>bludgeoning, piercing, slashing</string>
 				<key>name</key>
 				<string>Swarm of Insects</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>1</integer>
 				<key>rawConstitution</key>
@@ -46205,6 +46451,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<string>bludgeoning, piercing, slashing</string>
 				<key>name</key>
 				<string>Swarm of Poisonous Snakes</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>3</integer>
 				<key>rawConstitution</key>
@@ -46303,6 +46551,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<string>bludgeoning, piercing, slashing</string>
 				<key>name</key>
 				<string>Swarm of Quippers</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>2</integer>
 				<key>rawConstitution</key>
@@ -46407,6 +46657,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<string>bludgeoning, piercing, slashing</string>
 				<key>name</key>
 				<string>Swarm of Rats</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>3</integer>
 				<key>rawConstitution</key>
@@ -46511,6 +46763,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<string>bludgeoning, piercing, slashing</string>
 				<key>name</key>
 				<string>Swarm of Ravens</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>6</integer>
 				<key>rawConstitution</key>
@@ -46613,6 +46867,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>1.0</real>
 				<key>name</key>
 				<string>Tiger</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>8</integer>
 				<key>rawConstitution</key>
@@ -46713,6 +46969,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>0.0</real>
 				<key>name</key>
 				<string>Vulture</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>4</integer>
 				<key>rawConstitution</key>
@@ -46807,6 +47065,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>0.5</real>
 				<key>name</key>
 				<string>Warhorse</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>7</integer>
 				<key>rawConstitution</key>
@@ -46905,6 +47165,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>0.0</real>
 				<key>name</key>
 				<string>Weasel</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>3</integer>
 				<key>rawConstitution</key>
@@ -47004,7 +47266,7 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<key>name</key>
 				<string>Winter Wolf</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>8</integer>
 				<key>rawConstitution</key>
@@ -47105,6 +47367,8 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<real>0.25</real>
 				<key>name</key>
 				<string>Wolf</string>
+				<key>rawAlignment</key>
+				<integer>0</integer>
 				<key>rawCharisma</key>
 				<integer>6</integer>
 				<key>rawConstitution</key>
@@ -47220,7 +47484,7 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				<key>name</key>
 				<string>Worg</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>8</integer>
 				<key>rawConstitution</key>
@@ -47301,9 +47565,6 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			<key>alignmentOptions</key>
 			<array>
 				<array>
-					<integer>0</integer>
-				</array>
-				<array>
 					<integer>1</integer>
 				</array>
 				<array>
@@ -47326,6 +47587,9 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 				</array>
 				<array>
 					<integer>8</integer>
+				</array>
+				<array>
+					<integer>9</integer>
 				</array>
 			</array>
 			<key>info</key>
@@ -47430,9 +47694,6 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 			<key>alignmentOptions</key>
 			<array>
 				<array>
-					<integer>0</integer>
-				</array>
-				<array>
 					<integer>1</integer>
 				</array>
 				<array>
@@ -47455,6 +47716,9 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 				</array>
 				<array>
 					<integer>8</integer>
+				</array>
+				<array>
+					<integer>9</integer>
 				</array>
 			</array>
 			<key>info</key>
@@ -47576,22 +47840,22 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 			<key>alignmentOptions</key>
 			<array>
 				<array>
-					<integer>1</integer>
-				</array>
-				<array>
 					<integer>2</integer>
 				</array>
 				<array>
-					<integer>4</integer>
+					<integer>3</integer>
 				</array>
 				<array>
 					<integer>5</integer>
 				</array>
 				<array>
-					<integer>7</integer>
+					<integer>6</integer>
 				</array>
 				<array>
 					<integer>8</integer>
+				</array>
+				<array>
+					<integer>9</integer>
 				</array>
 			</array>
 			<key>info</key>
@@ -47720,9 +47984,6 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 			<key>alignmentOptions</key>
 			<array>
 				<array>
-					<integer>3</integer>
-				</array>
-				<array>
 					<integer>4</integer>
 				</array>
 				<array>
@@ -47736,6 +47997,9 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 				</array>
 				<array>
 					<integer>8</integer>
+				</array>
+				<array>
+					<integer>9</integer>
 				</array>
 			</array>
 			<key>info</key>
@@ -47842,9 +48106,6 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 			<key>alignmentOptions</key>
 			<array>
 				<array>
-					<integer>3</integer>
-				</array>
-				<array>
 					<integer>4</integer>
 				</array>
 				<array>
@@ -47858,6 +48119,9 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 				</array>
 				<array>
 					<integer>8</integer>
+				</array>
+				<array>
+					<integer>9</integer>
 				</array>
 			</array>
 			<key>info</key>
@@ -47954,13 +48218,13 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 			<key>alignmentOptions</key>
 			<array>
 				<array>
-					<integer>6</integer>
-				</array>
-				<array>
 					<integer>7</integer>
 				</array>
 				<array>
 					<integer>8</integer>
+				</array>
+				<array>
+					<integer>9</integer>
 				</array>
 			</array>
 			<key>info</key>
@@ -48061,9 +48325,6 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 			<key>alignmentOptions</key>
 			<array>
 				<array>
-					<integer>0</integer>
-				</array>
-				<array>
 					<integer>1</integer>
 				</array>
 				<array>
@@ -48086,6 +48347,9 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 				</array>
 				<array>
 					<integer>8</integer>
+				</array>
+				<array>
+					<integer>9</integer>
 				</array>
 			</array>
 			<key>info</key>
@@ -48192,22 +48456,22 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 			<key>alignmentOptions</key>
 			<array>
 				<array>
-					<integer>1</integer>
-				</array>
-				<array>
 					<integer>2</integer>
 				</array>
 				<array>
-					<integer>4</integer>
+					<integer>3</integer>
 				</array>
 				<array>
 					<integer>5</integer>
 				</array>
 				<array>
-					<integer>7</integer>
+					<integer>6</integer>
 				</array>
 				<array>
 					<integer>8</integer>
+				</array>
+				<array>
+					<integer>9</integer>
 				</array>
 			</array>
 			<key>info</key>
@@ -48328,22 +48592,22 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 			<key>alignmentOptions</key>
 			<array>
 				<array>
-					<integer>1</integer>
-				</array>
-				<array>
 					<integer>2</integer>
 				</array>
 				<array>
-					<integer>4</integer>
+					<integer>3</integer>
 				</array>
 				<array>
 					<integer>5</integer>
 				</array>
 				<array>
-					<integer>7</integer>
+					<integer>6</integer>
 				</array>
 				<array>
 					<integer>8</integer>
+				</array>
+				<array>
+					<integer>9</integer>
 				</array>
 			</array>
 			<key>info</key>
@@ -48453,9 +48717,6 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 			<key>alignmentOptions</key>
 			<array>
 				<array>
-					<integer>0</integer>
-				</array>
-				<array>
 					<integer>1</integer>
 				</array>
 				<array>
@@ -48478,6 +48739,9 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 				</array>
 				<array>
 					<integer>8</integer>
+				</array>
+				<array>
+					<integer>9</integer>
 				</array>
 			</array>
 			<key>info</key>
@@ -48593,9 +48857,6 @@ Cantrips (at will): druidcraft, produce flame, shillelagh
 			<key>alignmentOptions</key>
 			<array>
 				<array>
-					<integer>0</integer>
-				</array>
-				<array>
 					<integer>1</integer>
 				</array>
 				<array>
@@ -48618,6 +48879,9 @@ Cantrips (at will): druidcraft, produce flame, shillelagh
 				</array>
 				<array>
 					<integer>8</integer>
+				</array>
+				<array>
+					<integer>9</integer>
 				</array>
 			</array>
 			<key>info</key>
@@ -48726,9 +48990,6 @@ Cantrips (at will): druidcraft, produce flame, shillelagh
 			<key>alignmentOptions</key>
 			<array>
 				<array>
-					<integer>0</integer>
-				</array>
-				<array>
 					<integer>1</integer>
 				</array>
 				<array>
@@ -48751,6 +49012,9 @@ Cantrips (at will): druidcraft, produce flame, shillelagh
 				</array>
 				<array>
 					<integer>8</integer>
+				</array>
+				<array>
+					<integer>9</integer>
 				</array>
 			</array>
 			<key>info</key>
@@ -48871,9 +49135,6 @@ Cantrips (at will): druidcraft, produce flame, shillelagh
 			<key>alignmentOptions</key>
 			<array>
 				<array>
-					<integer>0</integer>
-				</array>
-				<array>
 					<integer>1</integer>
 				</array>
 				<array>
@@ -48896,6 +49157,9 @@ Cantrips (at will): druidcraft, produce flame, shillelagh
 				</array>
 				<array>
 					<integer>8</integer>
+				</array>
+				<array>
+					<integer>9</integer>
 				</array>
 			</array>
 			<key>info</key>
@@ -49010,9 +49274,6 @@ Cantrips (at will): druidcraft, produce flame, shillelagh
 			<key>alignmentOptions</key>
 			<array>
 				<array>
-					<integer>0</integer>
-				</array>
-				<array>
 					<integer>1</integer>
 				</array>
 				<array>
@@ -49035,6 +49296,9 @@ Cantrips (at will): druidcraft, produce flame, shillelagh
 				</array>
 				<array>
 					<integer>8</integer>
+				</array>
+				<array>
+					<integer>9</integer>
 				</array>
 			</array>
 			<key>info</key>
@@ -49151,9 +49415,6 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation
 			<key>alignmentOptions</key>
 			<array>
 				<array>
-					<integer>0</integer>
-				</array>
-				<array>
 					<integer>1</integer>
 				</array>
 				<array>
@@ -49176,6 +49437,9 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation
 				</array>
 				<array>
 					<integer>8</integer>
+				</array>
+				<array>
+					<integer>9</integer>
 				</array>
 			</array>
 			<key>info</key>
@@ -49282,9 +49546,6 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation
 			<key>alignmentOptions</key>
 			<array>
 				<array>
-					<integer>0</integer>
-				</array>
-				<array>
 					<integer>1</integer>
 				</array>
 				<array>
@@ -49307,6 +49568,9 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation
 				</array>
 				<array>
 					<integer>8</integer>
+				</array>
+				<array>
+					<integer>9</integer>
 				</array>
 			</array>
 			<key>info</key>
@@ -49431,9 +49695,6 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 			<key>alignmentOptions</key>
 			<array>
 				<array>
-					<integer>0</integer>
-				</array>
-				<array>
 					<integer>1</integer>
 				</array>
 				<array>
@@ -49456,6 +49717,9 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 				</array>
 				<array>
 					<integer>8</integer>
+				</array>
+				<array>
+					<integer>9</integer>
 				</array>
 			</array>
 			<key>info</key>
@@ -49568,9 +49832,6 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 			<key>alignmentOptions</key>
 			<array>
 				<array>
-					<integer>0</integer>
-				</array>
-				<array>
 					<integer>1</integer>
 				</array>
 				<array>
@@ -49593,6 +49854,9 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 				</array>
 				<array>
 					<integer>8</integer>
+				</array>
+				<array>
+					<integer>9</integer>
 				</array>
 			</array>
 			<key>info</key>
@@ -49711,22 +49975,22 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 			<key>alignmentOptions</key>
 			<array>
 				<array>
-					<integer>1</integer>
-				</array>
-				<array>
 					<integer>2</integer>
 				</array>
 				<array>
-					<integer>4</integer>
+					<integer>3</integer>
 				</array>
 				<array>
 					<integer>5</integer>
 				</array>
 				<array>
-					<integer>7</integer>
+					<integer>6</integer>
 				</array>
 				<array>
 					<integer>8</integer>
+				</array>
+				<array>
+					<integer>9</integer>
 				</array>
 			</array>
 			<key>info</key>
@@ -49823,9 +50087,6 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 			<key>alignmentOptions</key>
 			<array>
 				<array>
-					<integer>0</integer>
-				</array>
-				<array>
 					<integer>1</integer>
 				</array>
 				<array>
@@ -49848,6 +50109,9 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 				</array>
 				<array>
 					<integer>8</integer>
+				</array>
+				<array>
+					<integer>9</integer>
 				</array>
 			</array>
 			<key>info</key>
@@ -49964,9 +50228,6 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 			<key>alignmentOptions</key>
 			<array>
 				<array>
-					<integer>0</integer>
-				</array>
-				<array>
 					<integer>1</integer>
 				</array>
 				<array>
@@ -49989,6 +50250,9 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 				</array>
 				<array>
 					<integer>8</integer>
+				</array>
+				<array>
+					<integer>9</integer>
 				</array>
 			</array>
 			<key>info</key>
@@ -50108,7 +50372,7 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 				<key>name</key>
 				<string>Dragonfang</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>14</integer>
 				<key>rawConstitution</key>
@@ -50227,7 +50491,7 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 				<key>name</key>
 				<string>Dragonsoul</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>16</integer>
 				<key>rawConstitution</key>
@@ -50340,7 +50604,7 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 				<key>name</key>
 				<string>Dragonwing</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>13</integer>
 				<key>rawConstitution</key>
@@ -50447,7 +50711,7 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 				<key>name</key>
 				<string>Ice Toad</string>
 				<key>rawAlignment</key>
-				<integer>4</integer>
+				<integer>5</integer>
 				<key>rawCharisma</key>
 				<integer>6</integer>
 				<key>rawConstitution</key>
@@ -50570,7 +50834,7 @@ A humanoid slain by this attack rises 24 hours later as a zombie under Naergoth'
 				<key>name</key>
 				<string>Naergoth Bladelord</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>16</integer>
 				<key>rawConstitution</key>
@@ -50680,7 +50944,7 @@ A humanoid slain by this attack rises 24 hours later as a zombie under Naergoth'
 				<key>name</key>
 				<string>Neronvain</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>18</integer>
 				<key>rawConstitution</key>
@@ -50793,7 +51057,7 @@ A humanoid slain by this attack rises 24 hours later as a zombie under Naergoth'
 				<key>name</key>
 				<string>Severin</string>
 				<key>rawAlignment</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>rawCharisma</key>
 				<integer>20</integer>
 				<key>rawConstitution</key>
@@ -50941,7 +51205,7 @@ A humanoid slain by this attack rises 24 hours later as a zombie under Naergoth'
 				<key>name</key>
 				<string>Tiamat</string>
 				<key>rawAlignment</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>rawCharisma</key>
 				<integer>28</integer>
 				<key>rawConstitution</key>
@@ -51077,7 +51341,7 @@ A humanoid slain by this attack rises 24 hours later as a zombie under Naergoth'
 		</dict>
 	</array>
 	<key>version</key>
-	<integer>1450422112</integer>
+	<integer>1450497442</integer>
 </dict>
 </plist>
 
