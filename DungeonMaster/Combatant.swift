@@ -16,6 +16,37 @@ final class Combatant: NSManagedObject {
     @NSManaged var monster: Monster
     @NSManaged var dateCreated: NSDate
     @NSManaged var notes: String?
+    
+    var equippedArmor: Armor {
+        let basicArmorPredicate = NSPredicate(format: "rawCondition == nil AND form == nil")
+        var armors = monster.armor.filteredSetUsingPredicate(basicArmorPredicate)
+    
+        if conditions.count > 0 {
+            let conditionTypes: [NSNumber] = conditions.map({ NSNumber(integer: ($0 as! Condition).type.rawValue) })
+            let conditionsPredicate = NSPredicate(format: "rawCondition IN %@", conditionTypes)
+            
+            let conditionArmors = monster.armor.filteredSetUsingPredicate(conditionsPredicate)
+            if conditionArmors.count > 0 {
+                armors = conditionArmors
+            }
+        }
+        
+        if armors.count > 0 {
+            // Return the highest applicable AC.
+            return armors.sort({ (armor1, armor2) -> Bool in
+                (armor1 as! Armor).armorClass > (armor2 as! Armor).armorClass
+            })[0] as! Armor
+            
+        } else {
+            // Return the lowest applicable AC for now...
+            let formArmorPredicate = NSPredicate(format: "rawCondition == nil AND form != nil")
+            armors = monster.armor.filteredSetUsingPredicate(formArmorPredicate)
+            
+            return armors.sort({ (armor1, armor2) -> Bool in
+                (armor1 as! Armor).armorClass < (armor2 as! Armor).armorClass
+            })[0] as! Armor
+        }
+    }
 
     var hitPoints: Int {
         get {

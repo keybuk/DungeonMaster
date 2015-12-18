@@ -224,9 +224,7 @@ class CombatantCell: UITableViewCell {
             nameLabel.text = combatant.monster.name
             progress.progress = combatant.health
             
-            let armorClassString = combatant.monster.armorClass
-            let armorClass = Int(armorClassString.componentsSeparatedByString(" ")[0])!
-            acLabel.text = "\(armorClass)"
+            acLabel.text = "\(combatant.equippedArmor.armorClass)"
         }
     }
 

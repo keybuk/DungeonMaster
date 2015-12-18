@@ -89,6 +89,11 @@ final class Monster: NSManagedObject {
     /// This field is used when `alignment` is nil and provides the set of alignments that the monster can have. Either all alignment options have the `weight` field set, in which case the weight indicates the distribution of these alignments in the general population, or all alignment options do not have the `weight` field set, in which case the options indicate an equal range of probable alignments and correspond to common sets such as "any evil alignment".
     @NSManaged var alignmentOptions: NSSet
     
+    /// Armor sets that the monster may equip.
+    ///
+    /// At least one possible armor set is guaranteed.
+    @NSManaged var armor: NSSet
+    
     /// Fixed hit points for the monster.
     ///
     /// This is almost always nil, and the `averageValue` from `hitDice` should be used; the exception is the *Demilich* which has a special trait giving it the maximum hit points, which is contained in this value.
@@ -242,7 +247,6 @@ final class Monster: NSManagedObject {
     }
 
     // Original un-parsed stat block text.
-    @NSManaged var armorClass: String
     @NSManaged var speed: String
     @NSManaged var savingThrows: String?
     @NSManaged var skills: String?

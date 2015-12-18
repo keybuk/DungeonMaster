@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class DetailViewController: UIViewController {
 
@@ -183,9 +184,68 @@ class DetailViewController: UIViewController {
                     
                     text.appendAttributedString(NSAttributedString(string: ", \(alignmentString)\n", attributes: sizeTypeAlignmentStyle))
                 }
-            
+                
+                var armorString = ""
+
+                let basicArmorPredicate = NSPredicate(format: "rawCondition == nil AND spellName == nil AND form == nil")
+                for case let armor as Armor in monster.armor.filteredSetUsingPredicate(basicArmorPredicate) {
+                    switch armor.type {
+                    case .None:
+                        armorString += "\(armor.armorClass)"
+                    default:
+                        var typeString = armor.type.stringValue
+                        if let magicModifier = armor.magicModifier {
+                            typeString = String(format: "%+d", magicModifier) + " \(typeString)"
+                        }
+                        if armor.includesShield {
+                            typeString += ", shield"
+                        }
+                        
+                        armorString += "\(armor.armorClass) (\(typeString))"
+                    }
+                }
+                
+                let spellArmorPredicate = NSPredicate(format: "spellName != nil")
+                for case let armor as Armor in monster.armor.filteredSetUsingPredicate(spellArmorPredicate) {
+                    armorString += " (\(armor.armorClass) with \(armor.spellName!))"
+                }
+                
+                let conditionArmorPredicate = NSPredicate(format: "rawCondition != nil")
+                for case let armor as Armor in monster.armor.filteredSetUsingPredicate(conditionArmorPredicate) {
+                    armorString += ", \(armor.armorClass) while \(armor.condition!.stringValue)"
+                }
+                
+                do {
+                    let fetchRequest = NSFetchRequest(entity: Model.Armor)
+                    fetchRequest.predicate = NSPredicate(format: "monster = %@ AND form != nil", monster)
+                    fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "rawArmorClass", ascending: true) ]
+
+                    for armor in try managedObjectContext.executeFetchRequest(fetchRequest) as! [Armor] {
+                        if armorString != "" {
+                            armorString += ", "
+                        }
+                        
+                        switch armor.type {
+                        case .None:
+                            armorString += "\(armor.armorClass)"
+                        default:
+                            if armor.includesShield {
+                                armorString += "\(armor.armorClass) (\(armor.type.stringValue), shield)"
+                            } else {
+                                armorString += "\(armor.armorClass) (\(armor.type.stringValue))"
+                            }
+                        }
+                        
+                        armorString += " \(armor.form!)"
+                    }
+                } catch {
+                    let error = error as NSError
+                    print("Unresolved error \(error), \(error.userInfo)")
+                    abort()
+                }
+                
                 text.appendAttributedString(NSAttributedString(string: "Armor Class ", attributes: statsLabelStyle))
-                text.appendAttributedString(NSAttributedString(string: "\(monster.armorClass)\n", attributes: statsValueStyle))
+                text.appendAttributedString(NSAttributedString(string: "\(armorString)\n", attributes: statsValueStyle))
                 
                 let hitPoints = monster.hitPoints ?? monster.hitDice.averageValue
                 text.appendAttributedString(NSAttributedString(string: "Hit Points ", attributes: statsLabelStyle))

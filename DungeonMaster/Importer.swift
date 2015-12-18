@@ -87,6 +87,12 @@ func importIfNeeded() {
             }
         }
         
+        let armorDatas = monsterData["armor"] as! [[String: AnyObject]]
+        for armorData in armorDatas {
+            let armor = Armor(monster: monster, inManagedObjectContext: managedObjectContext)
+            armor.setValuesForKeysWithDictionary(armorData)
+        }
+        
         let info = monsterData["info"] as! [String: AnyObject]
         monster.setValuesForKeysWithDictionary(info)
         

@@ -47,6 +47,12 @@ armor_expr = "|".join(armor for armor in ARMOR_TYPES if armor is not None)
 damage_expr = "|".join(DAMAGE_TYPES)
 condition_expr = "|".join(CONDITIONS)
 
+ARMOR_CLASS_RE = re.compile(
+	r'^(\d+)(?: \((?:([+-]\d+) )?(' + armor_expr + r')(?: armor)?(?:, (shield))?\))?' +
+	r'(?: \((\d+) with ([^)]+)\))?' +
+	r'(?:, (\d+) while (' + condition_expr + r')' +
+	r'| (in [^,]+ form), (\d+) \((' + armor_expr + r')(?: armor)?\) (in .+ form))?$')
+
 HIT_POINTS_RE = re.compile(r'^(\d+) \(([^)]*)\)$')
 ABILITY_RE = re.compile(r'^(\d+) \(([+-]\d+)\)$')
 SENSES_RE = re.compile(r'^(?:.*, )?passive Perception (\d+)$')
@@ -67,6 +73,7 @@ class Exporter(monster.MonsterParser):
 		self.sources = []
 		self.tags = []
 		self.alignment_options = []
+		self.armor = []
 		self.info = {}
 		self.traits = []
 		self.actions = []
@@ -110,6 +117,7 @@ class Exporter(monster.MonsterParser):
 			"sources": self.sources,
 			"tags": self.tags,
 			"alignmentOptions": self.alignment_options,
+			"armor": self.armor,
 			"info": self.info,
 			"traits": self.traits,
 			"actions": self.actions,
@@ -179,10 +187,58 @@ class Exporter(monster.MonsterParser):
 				ALIGNMENTS.index(alignment2), float(alignment2_weight) / 100.0 ])
 
 	def handle_armor_class(self, line):
-		# TODO: should be able to parse into an AC, and a list of armor types
-		# Remember to explode (X with SPELL).
-		# Will still need to handle ", X while prone" and ", X (Y) in X or hybrid form"
-		self.info['armorClass'] = line
+		match = ARMOR_CLASS_RE.match(line)
+		if match is None:
+			raise self.error("Armor Class didn't match expected format: %s" % line)
+
+		(armor_class, magic_armor_modifier, armor_type, shield,
+		 armor_spell_class, armor_spell,
+		 armor_condition_class, armor_condition,
+		 armor_original_form, armor_form_class, armor_form_type, armor_form) = match.groups()
+
+		armor = {
+			'rawArmorClass': int(armor_class),
+			'rawType': ARMOR_TYPES.index(armor_type),
+			'includesShield': (shield is not None),
+		}
+		if magic_armor_modifier is not None:
+			armor['rawMagicModifier'] = int(magic_armor_modifier)
+		if armor_original_form is not None:
+			armor['form'] = armor_original_form
+
+		self.armor.append(armor)
+
+		# FIXME This is a hack right now to ensure they're displayed.
+		# Really we want to handle spells and magic items in their own right.
+		if armor_spell_class is not None:
+			armor = {
+				'rawArmorClass': int(armor_spell_class),
+				'rawType': 0,
+				'spellName': armor_spell,
+			}
+
+			self.armor.append(armor)
+
+		# Condition-specific armor.
+		if armor_condition_class is not None:
+			armor = {
+				'rawArmorClass': int(armor_condition_class),
+				'rawType': 0,
+				'rawCondition': CONDITIONS.index(armor_condition),
+			}
+
+			self.armor.append(armor)
+
+		# FIXME this is also a hack right now to ensure they're displayed.
+		# Really we want to handle forms in their own right too.
+		if armor_form_class is not None:
+			armor = {
+				'rawArmorClass': int(armor_form_class),
+				'rawType': ARMOR_TYPES.index(armor_form_type),
+				'form': armor_form
+			}
+
+			self.armor.append(armor)
 
 	def handle_hit_points(self, line):
 		match = HIT_POINTS_RE.match(line)
