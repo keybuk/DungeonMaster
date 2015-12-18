@@ -18,6 +18,11 @@ enum BookType: Int {
     case OnlineSupplement
     // TODO: category for Sword Coast Adventures? official expansion or core rulebook?
     // TODO: category for Unearthed Arcana?
+    
+    /// Returns the string equivalent of the book type.
+    var stringValue: String {
+        return sharedRules.bookType[rawValue]
+    }
 }
 
 /// Size categorises the different range of monster sizes.

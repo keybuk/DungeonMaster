@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>bookType</key>
+	<array>
+		<string>Core Rulebook</string>
+		<string>Official Adventure</string>
+		<string>Online Supplement</string>
+	</array>
 	<key>levelXP</key>
 	<dict>
 		<key>1</key>

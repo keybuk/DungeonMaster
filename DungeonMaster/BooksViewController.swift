@@ -84,17 +84,9 @@ extension BooksViewController {
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let sectionInfo = fetchedResultsController.sections![section]
-        let book = sectionInfo.objects?[0] as? Book
-        guard book != nil else { return nil }
         
-        switch book!.type {
-        case .CoreRulebook:
-            return "Core Rulebooks"
-        case .OfficialAdventure:
-            return "Official Adventures"
-        case .OnlineSupplement:
-            return "Online Supplements"
-        }
+        let bookType = BookType(rawValue: Int(sectionInfo.name)!)!
+        return "\(bookType.stringValue)s"
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

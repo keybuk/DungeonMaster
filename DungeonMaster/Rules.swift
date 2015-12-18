@@ -18,6 +18,11 @@ struct Rules {
         data = NSDictionary(contentsOfFile: filename)!
     }
     
+    // Array of book type names.
+    var bookType: [String] {
+        return data["bookType"]! as! [String]
+    }
+    
     /// Array of size names.
     var size: [String] {
         return data["size"]! as! [String]
