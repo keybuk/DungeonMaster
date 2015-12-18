@@ -67,7 +67,6 @@ extension NSFetchRequest {
     
 }
 
-
 let persistentStoreCoordinator: NSPersistentStoreCoordinator = {
     let options: [NSObject: AnyObject]? = [
         NSMigratePersistentStoresAutomaticallyOption : true,
