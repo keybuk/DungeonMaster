@@ -464,14 +464,8 @@ final class Monster: NSManagedObject {
 
     /// Passive perception score.
     var passivePerception: Int {
-        get {
-            return rawPassivePerception.integerValue
-        }
-        set(newPassivePerception) {
-            rawPassivePerception = NSNumber(integer: newPassivePerception)
-        }
+        return 10 + perceptionSkill
     }
-    @NSManaged private var rawPassivePerception: NSNumber
 
     /// Charisma score, used for genearting `charismaModifier`.
     var charismaScore: Int {
@@ -583,7 +577,7 @@ final class Monster: NSManagedObject {
     @NSManaged var damageResistances: String?
     @NSManaged var damageImmunities: String?
     @NSManaged var conditionImmunities: String?
-    @NSManaged var senses: String
+    @NSManaged var senses: String?
     @NSManaged var languages: String?
     
     /// Special traits of this monster.

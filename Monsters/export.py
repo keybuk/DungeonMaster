@@ -58,7 +58,7 @@ ABILITY_RE = re.compile(r'^(\d+) \(([+-]\d+)\)$')
 
 SAVING_THROW_SKILLS_RE = re.compile(r'^([A-Za-z ]+) ([+-]\d+)$')
 
-SENSES_RE = re.compile(r'^(?:.*, )?passive Perception (\d+)$')
+SENSES_RE = re.compile(r'^(?:(.*), )?passive Perception (\d+)$')
 
 DICE_RE = re.compile(r'^(?:[1-9][0-9]*(?:d(?:2|4|6|8|10|12|20|100))?(?: *[+-] *(?=[^ ]))?)+$')
 DICE_ANYWHERE_RE = re.compile(r'(?:[1-9][0-9]*(?:d(?:2|4|6|8|10|12|20|100))?(?: *[+-] *(?=[^ ]))?)+')
@@ -416,15 +416,25 @@ class Exporter(monster.MonsterParser):
 		self.info['conditionImmunities'] = line
 
 	def handle_senses(self, line):
-		# TODO: easy to parse
-		self.info['senses'] = line
-
 		match = SENSES_RE.match(line)
 		if match is None:
 			raise self.error("Senses line didn't have passive Perception: %s" % line)
 
-		(passive,) = match.groups()
-		self.info['rawPassivePerception'] = int(passive)
+		(senses, passive) = match.groups()
+		if senses is not None:
+			# TODO: easy to parse
+			self.info['senses'] = senses
+
+		# Don't store passive perception, just verify it matches the calculated value.
+		expectedPassive = 10
+		if 'rawPerceptionSkill' in self.info:
+			expectedPassive = 10 + int(self.info['rawPerceptionSkill'])
+		else:
+			score = int(self.info['rawWisdomScore'])
+			expectedPassive = 10 + (int(score) - 10) / 2
+
+		if int(passive) != expectedPassive:
+			raise self.error("Passive Perception didn't match expected value (%d): %d" % (expectedPassive, passive))
 
 	def handle_languages(self, line):
 		# TODO: easy to parse

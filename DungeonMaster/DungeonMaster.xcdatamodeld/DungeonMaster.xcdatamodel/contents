@@ -109,7 +109,6 @@
         <attribute name="rawInvestigationSkill" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawMedicineSkill" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawNatureSkill" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="rawPassivePerception" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="rawPerceptionSkill" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawPerformanceSkill" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawPersuasionSkill" optional="YES" attributeType="Integer 16" syncable="YES"/>
@@ -125,7 +124,7 @@
         <attribute name="rawWisdomSavingThrow" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawWisdomScore" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="requiresRace" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
-        <attribute name="senses" attributeType="String" syncable="YES"/>
+        <attribute name="senses" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="speed" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="actions" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Action" inverseName="monster" inverseEntity="Action" syncable="YES"/>
@@ -181,7 +180,7 @@
         <element name="LairAction" positionX="567" positionY="630" width="128" height="75"/>
         <element name="LairTrait" positionX="567" positionY="717" width="128" height="75"/>
         <element name="LegendaryAction" positionX="261" positionY="558" width="128" height="90"/>
-        <element name="Monster" positionX="79" positionY="216" width="128" height="930"/>
+        <element name="Monster" positionX="79" positionY="216" width="128" height="915"/>
         <element name="Reaction" positionX="261" positionY="459" width="128" height="90"/>
         <element name="RegionalEffect" positionX="565" positionY="801" width="128" height="75"/>
         <element name="Source" positionX="-92" positionY="198" width="128" height="105"/>

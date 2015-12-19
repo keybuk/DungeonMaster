@@ -251,11 +251,6 @@ func importIfNeeded() {
         if monster.persuasionSkill != monster.charismaModifier && monster.persuasionSkill != monster.charismaModifier + monster.proficiencyBonus && monster.persuasionSkill != monster.charismaModifier + monster.proficiencyBonus * 2 {
                 print("\(monster.name) has unusual Cha (Persuasion) skill: \(monster.persuasionSkill), expected \(monster.charismaModifier), \(monster.charismaModifier + monster.proficiencyBonus), or \(monster.charismaModifier + monster.proficiencyBonus * 2)")
         }
-
-        // Sanity check passive perception
-        if monster.passivePerception != 10 + monster.perceptionSkill {
-            print("\(monster.name) has unusual Passive Perception: \(monster.passivePerception), expected \(10 + monster.perceptionSkill)")
-        }
     }
 
     do {

@@ -373,7 +373,10 @@ class DetailViewController: UIViewController {
                 }
 
                 text.appendAttributedString(NSAttributedString(string: "Senses ", attributes: statsLabelStyle))
-                text.appendAttributedString(NSAttributedString(string: "\(monster.senses)\n", attributes: statsValueStyle))
+                if let senses = monster.senses {
+                    text.appendAttributedString(NSAttributedString(string: "\(senses), ", attributes: statsValueStyle))
+                }
+                text.appendAttributedString(NSAttributedString(string: "passive Perception \(monster.passivePerception)\n", attributes: statsValueStyle))
 
                 text.appendAttributedString(NSAttributedString(string: "Languages ", attributes: statsLabelStyle))
                 if let languages = monster.languages {
