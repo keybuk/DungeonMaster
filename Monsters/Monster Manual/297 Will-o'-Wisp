@@ -14,7 +14,7 @@ WIS 14 (+2)
 CHA 11 (+0)
 
 Damage Immunities lightning, poison
-Damage Resistances acid, cold, fire, necrotic, thunder; bludgeoning, piercing, and slashing from nonmagical weapons
+Damage Resistances acid, cold, fire, necrotic, thunder; bludgeoning, piercing, and slashing from nonmagical attacks
 Condition Immunities exhaustion, grappled, paralyzed, poisoned, prone, restrained, unconscious
 Senses darkvision 120 ft., passive Perception 12
 Languages the languages it knew in life
@@ -38,4 +38,4 @@ Shock.
 Melee Spell Attack: +4 to hit, reach 5 ft., one creature. Hit: 9 (2d8) lightning damage.
 
 Invisibility.
-The will-o'-wisp and its light magically become invisible until it attacks or uses its Life Drain, or until its concentration ends (as if concentrating on a spell).
+The will-o'-wisp and its light magically become invisible until it attacks or uses its Consume Life, or until its concentration ends (as if concentrating on a spell).

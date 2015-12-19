@@ -14,7 +14,7 @@ WIS 12 (+1)
 CHA 14 (+2)
 
 Skills Deception +4, Insight +3, Persuasion +4, Stealth +5
-Damage Resistances cold; bludgeoning, piercing, and slashing from nonmagical weapons that aren't silvered
+Damage Resistances cold; bludgeoning, piercing, and slashing from nonmagical attacks not made with silvered weapons
 Damage Immunities fire, poison
 Condition Immunities poisoned
 Senses darkvision 120 ft., passive Perception 11
@@ -33,7 +33,7 @@ The imp has advantage on saving throws against spells and other magical effects.
 ACTIONS
 
 Sting (Bite in Beast Form).
-Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 5 (1d4 + 3) piercing damage, and the target must make on a DC 11 Constitution saving throw, taking 10 (3d6) poison damage on a failed save, or half as much damage on a successful one.
+Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 5 (1d4 + 3) piercing damage, and the target must make a DC 11 Constitution saving throw, taking 10 (3d6) poison damage on a failed save, or half as much damage on a successful one.
 
 Invisibility.
 The imp magically turns invisible until it attacks or until its concentration ends (as if concentrating on a spell). Any equipment the imp wears or carries is invisible with it.
