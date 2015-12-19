@@ -304,6 +304,9 @@ class Exporter(monster.MonsterParser):
 	def handle_damage_resistances(self, line):
 		self.info['damageResistances'] = line
 
+	def handle_archmage_damage_resistance(self, line):
+		self.info['damageResistances'] = line
+
 	def handle_damage_immunities(self, line):
 		self.info['damageImmunities'] = line
 

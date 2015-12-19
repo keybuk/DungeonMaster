@@ -66,7 +66,7 @@ class MonsterParser(object):
 			"Skills": self.handle_skills,
 			"Damage Vulnerabilities": self.handle_damage_vulnerabilities,
 			"Damage Resistances": self.handle_damage_resistances,
-			"Damage Resistance": self.handle_damage_resistances, # Appears in Archmage
+			"Damage Resistance": self.handle_archmage_damage_resistance,
 			"Damage Immunities": self.handle_damage_immunities,
 			"Condition Immunities": self.handle_condition_immunities,
 			"Senses": self.handle_senses,
@@ -316,6 +316,9 @@ class MonsterParser(object):
 		pass
 
 	def handle_damage_resistances(self, line):
+		pass
+
+	def handle_archmage_damage_resistance(self, line):
 		pass
 
 	def handle_damage_immunities(self, line):
