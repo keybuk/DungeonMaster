@@ -245,6 +245,13 @@ final class Monster: NSManagedObject {
         
         return sharedRules.challengeXP[challenge]!
     }
+    
+    /// Proficiency bonus for this monster.
+    ///
+    /// Applied as a modifier, on top of the appropriate ability modifier, to saving throws and skills that the monster has proficiency in, and to attacks. Sometimes doubled for "expertise".
+    var proficiencyBonus: Int {
+        return sharedRules.challengeProficiencyBonus[challenge]!
+    }
 
     // Original un-parsed stat block text.
     @NSManaged var speed: String

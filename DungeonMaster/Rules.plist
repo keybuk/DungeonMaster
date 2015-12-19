@@ -612,15 +612,13 @@
 	</dict>
 	<key>challengeProficiencyBonus</key>
 	<dict>
-		<key>-</key>
-		<integer>2</integer>
 		<key>0</key>
 		<integer>2</integer>
-		<key>1/8</key>
+		<key>0.125</key>
 		<integer>2</integer>
-		<key>1/4</key>
+		<key>0.25</key>
 		<integer>2</integer>
-		<key>1/2</key>
+		<key>0.5</key>
 		<integer>2</integer>
 		<key>1</key>
 		<integer>2</integer>

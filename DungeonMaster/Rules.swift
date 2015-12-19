@@ -112,6 +112,15 @@ struct Rules {
         return result
     }
     
+    /// Dictionary mapping challenge rating to monster's proficiency bonus in a given ability or skill.
+    var challengeProficiencyBonus: [NSDecimalNumber: Int] {
+        var result = [NSDecimalNumber: Int]()
+        for (challenge, proficiencyBonus) in data["challengeProficiencyBonus"]! as! [String: NSNumber] {
+            result[NSDecimalNumber(string: challenge)] = proficiencyBonus.integerValue
+        }
+        return result
+    }
+
 }
 
 let sharedRules = Rules()
