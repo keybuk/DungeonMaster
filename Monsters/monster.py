@@ -205,6 +205,8 @@ class MonsterParser(object):
 		if len(line):
 			self.lineno += 1
 			line = line.rstrip("\r\n")
+			if line.startswith("#"):
+				return self.next_line(error_message=error_message)
 			self.check_line(line)
 			return line
 		elif error_message is not None:
