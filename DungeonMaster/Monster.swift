@@ -138,7 +138,7 @@ final class Monster: NSManagedObject {
 
     /// Modifier to apply to strength actions, saving throws, and ability checks.
     var strengthModifier: Int {
-        return (strength - 10) / 2
+        return Int(floor(Double(strength - 10) / 2.0))
     }
     
     /// Dexterity score, used for generating `dexterityModifier`.
@@ -154,7 +154,7 @@ final class Monster: NSManagedObject {
 
     /// Modifier to apply to dexterity actions, saving throws, and ability checks.
     var dexterityModifier: Int {
-        return (dexterity - 10) / 2
+        return Int(floor(Double(dexterity - 10) / 2.0))
     }
     
     /// Constitution score, used for generating `constitutionModifier`.
@@ -170,7 +170,7 @@ final class Monster: NSManagedObject {
 
     /// Modifier to apply to constitution saving throws and ability checks.
     var constitutionModifier: Int {
-        return (constitution - 10) / 2
+        return Int(floor(Double(constitution - 10) / 2.0))
     }
     
     /// Intelligence score, used for generating `intelligenceModifier`.
@@ -186,7 +186,7 @@ final class Monster: NSManagedObject {
 
     /// Modifier to apply to intelligence spells, saving throws, and ability checks.
     var intelligenceModifier: Int {
-        return (intelligence - 10) / 2
+        return Int(floor(Double(intelligence - 10) / 2.0))
     }
     
     /// Wisdom score, used for generating `wisdomModifier`.
@@ -202,7 +202,7 @@ final class Monster: NSManagedObject {
 
     /// Modifier to apply to wisdom spells, saving throws, and ability checks.
     var wisdomModifier: Int {
-        return (wisdom - 10) / 2
+        return Int(floor(Double(wisdom - 10) / 2.0))
     }
     
     /// Charisma score, used for genearting `charismaModifier`.
@@ -218,7 +218,7 @@ final class Monster: NSManagedObject {
 
     /// Modifier to apply to charisma spells, saving throws, and ability checks.
     var charismaModifier: Int {
-        return (charisma - 10) / 2
+        return Int(floor(Double(charisma - 10) / 2.0))
     }
     
     /// Passive perception score.
