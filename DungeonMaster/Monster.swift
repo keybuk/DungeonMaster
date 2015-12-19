@@ -126,101 +126,342 @@ final class Monster: NSManagedObject {
     }
 
     /// Strength score, used for generating `strengthModifier`.
-    var strength: Int {
+    var strengthScore: Int {
         get {
-            return rawStrength.integerValue
+            return rawStrengthScore.integerValue
         }
-        set(newStrength) {
-            rawStrength = NSNumber(integer: newStrength)
+        set(newStrengthScore) {
+            rawStrengthScore = NSNumber(integer: newStrengthScore)
         }
     }
-    @NSManaged private var rawStrength: NSNumber
+    @NSManaged private var rawStrengthScore: NSNumber
 
-    /// Modifier to apply to strength actions, saving throws, and ability checks.
+    /// Modifier to apply to Strength actions and attacks.
+    ///
+    /// This is also used as the base modifier for Strength saving throws and skill checks.
     var strengthModifier: Int {
-        return Int(floor(Double(strength - 10) / 2.0))
+        return Int(floor(Double(strengthScore - 10) / 2.0))
     }
     
-    /// Dexterity score, used for generating `dexterityModifier`.
-    var dexterity: Int {
+    /// Modifier to apply for Strength saving throws.
+    ///
+    /// Generally this has either the value of `strengthModifier`, or the value of that property with `proficiencyBonus` added to it; but there are exceptions (read: mistakes by the D&D authors).
+    var strengthSavingThrow: Int {
         get {
-            return rawDexterity.integerValue
+            return rawStrengthSavingThrow?.integerValue ?? strengthModifier
         }
-        set(newDexterity) {
-            rawDexterity = NSNumber(integer: newDexterity)
+        set(newStrengthSavingThrow) {
+            rawStrengthSavingThrow = newStrengthSavingThrow != strengthModifier ? NSNumber(integer: newStrengthSavingThrow) : nil
         }
     }
-    @NSManaged private var rawDexterity: NSNumber
+    @NSManaged private var rawStrengthSavingThrow: NSNumber?
 
-    /// Modifier to apply to dexterity actions, saving throws, and ability checks.
-    var dexterityModifier: Int {
-        return Int(floor(Double(dexterity - 10) / 2.0))
+    /// Modifier to apply for Strength (Athletics) skill checks.
+    ///
+    /// Usually this has the value of `strengthModifier` either on its own, with `proficiencyBonus` added to it, or double that property added to it; but there are various exceptions to this for particular monsters.
+    var athleticsSkill: Int {
+        get {
+            return rawAthleticsSkill?.integerValue ?? strengthModifier
+        }
+        set(newAthleticsSkill) {
+            rawAthleticsSkill = newAthleticsSkill != strengthModifier ? NSNumber(integer: newAthleticsSkill) : nil
+        }
     }
+    @NSManaged private var rawAthleticsSkill: NSNumber?
+
+    /// Dexterity score, used for generating `dexterityModifier`.
+    var dexterityScore: Int {
+        get {
+            return rawDexterityScore.integerValue
+        }
+        set(newDexterityScore) {
+            rawDexterityScore = NSNumber(integer: newDexterityScore)
+        }
+    }
+    @NSManaged private var rawDexterityScore: NSNumber
+
+    /// Modifier to apply to Dexterity actions and attacks.
+    ///
+    /// This is also used as the base modifier for Dexterity saving throws and skill checks.
+    var dexterityModifier: Int {
+        return Int(floor(Double(dexterityScore - 10) / 2.0))
+    }
+    
+    /// Modifier to apply for Dexterity saving throws.
+    ///
+    /// Generally this has either the value of `dexterityModifier`, or the value of that property with `proficiencyBonus` added to it; but there are exceptions (read: mistakes by the D&D authors).
+    var dexteritySavingThrow: Int {
+        get {
+            return rawDexteritySavingThrow?.integerValue ?? dexterityModifier
+        }
+        set(newDexteritySavingThrow) {
+            rawDexteritySavingThrow = newDexteritySavingThrow != dexterityModifier ? NSNumber(integer: newDexteritySavingThrow) : nil
+        }
+    }
+    @NSManaged private var rawDexteritySavingThrow: NSNumber?
+
+    /// Modifier to apply for Dexterity (Acrobatics) skill checks.
+    ///
+    /// Usually this has the value of `dexterityModifier` either on its own, with `proficiencyBonus` added to it, or double that property added to it; but there are various exceptions to this for particular monsters.
+    var acrobaticsSkill: Int {
+        get {
+            return rawAcrobaticsSkill?.integerValue ?? dexterityModifier
+        }
+        set(newAcrobaticsSkill) {
+            rawAcrobaticsSkill = newAcrobaticsSkill != dexterityModifier ? NSNumber(integer: newAcrobaticsSkill) : nil
+        }
+    }
+    @NSManaged private var rawAcrobaticsSkill: NSNumber?
+
+    /// Modifier to apply for Dexterity (Sleight of Hand) skill checks.
+    ///
+    /// Usually this has the value of `dexterityModifier` either on its own, with `proficiencyBonus` added to it, or double that property added to it; but there are various exceptions to this for particular monsters.
+    var sleightOfHandSkill: Int {
+        get {
+            return rawSleightOfHandSkill?.integerValue ?? dexterityModifier
+        }
+        set(newSleightOfHandSkill) {
+            rawSleightOfHandSkill = newSleightOfHandSkill != dexterityModifier ? NSNumber(integer: newSleightOfHandSkill) : nil
+        }
+    }
+    @NSManaged private var rawSleightOfHandSkill: NSNumber?
+    
+    /// Modifier to apply for Dexterity (Stealth) skill checks.
+    ///
+    /// Usually this has the value of `dexterityModifier` either on its own, with `proficiencyBonus` added to it, or double that property added to it; but there are various exceptions to this for particular monsters.
+    var stealthSkill: Int {
+        get {
+            return rawStealthSkill?.integerValue ?? dexterityModifier
+        }
+        set(newStealthSkill) {
+            rawStealthSkill = newStealthSkill != dexterityModifier ? NSNumber(integer: newStealthSkill) : nil
+        }
+    }
+    @NSManaged private var rawStealthSkill: NSNumber?
     
     /// Constitution score, used for generating `constitutionModifier`.
-    var constitution: Int {
+    var constitutionScore: Int {
         get {
-            return rawConstitution.integerValue
+            return rawConstitutionScore.integerValue
         }
-        set(newConstitution) {
-            rawConstitution = NSNumber(integer: newConstitution)
+        set(newConstitutionScore) {
+            rawConstitutionScore = NSNumber(integer: newConstitutionScore)
         }
     }
-    @NSManaged private var rawConstitution: NSNumber
+    @NSManaged private var rawConstitutionScore: NSNumber
 
-    /// Modifier to apply to constitution saving throws and ability checks.
+    /// Modifier to apply to Constitution actions and attacks.
+    ///
+    /// This is also used as the base modifier for Constitution saving throws and skill checks.
     var constitutionModifier: Int {
-        return Int(floor(Double(constitution - 10) / 2.0))
+        return Int(floor(Double(constitutionScore - 10) / 2.0))
     }
     
-    /// Intelligence score, used for generating `intelligenceModifier`.
-    var intelligence: Int {
+    /// Modifier to apply for Constitution saving throws.
+    ///
+    /// Generally this has either the value of `constitutionModifier`, or the value of that property with `proficiencyBonus` added to it; but there are exceptions (read: mistakes by the D&D authors).
+    var constitutionSavingThrow: Int {
         get {
-            return rawIntelligence.integerValue
+            return rawConstitutionSavingThrow?.integerValue ?? constitutionModifier
         }
-        set(newIntelligence) {
-            rawIntelligence = NSNumber(integer: newIntelligence)
+        set(newConstitutionSavingThrow) {
+            rawConstitutionSavingThrow = newConstitutionSavingThrow != constitutionModifier ? NSNumber(integer: newConstitutionSavingThrow) : nil
         }
     }
-    @NSManaged private var rawIntelligence: NSNumber
+    @NSManaged private var rawConstitutionSavingThrow: NSNumber?
 
-    /// Modifier to apply to intelligence spells, saving throws, and ability checks.
-    var intelligenceModifier: Int {
-        return Int(floor(Double(intelligence - 10) / 2.0))
+    /// Intelligence score, used for generating `intelligenceModifier`.
+    var intelligenceScore: Int {
+        get {
+            return rawIntelligenceScore.integerValue
+        }
+        set(newIntelligenceScore) {
+            rawIntelligenceScore = NSNumber(integer: newIntelligenceScore)
+        }
     }
+    @NSManaged private var rawIntelligenceScore: NSNumber
+
+    /// Modifier to apply to Intelligence actions and attacks.
+    ///
+    /// This is also used as the base modifier for Intelligence saving throws and skill checks.
+    var intelligenceModifier: Int {
+        return Int(floor(Double(intelligenceScore - 10) / 2.0))
+    }
+    
+    /// Modifier to apply for Intelligence saving throws.
+    ///
+    /// Generally this has either the value of `intelligenceModifier`, or the value of that property with `proficiencyBonus` added to it; but there are exceptions (read: mistakes by the D&D authors).
+    var intelligenceSavingThrow: Int {
+        get {
+            return rawIntelligenceSavingThrow?.integerValue ?? intelligenceModifier
+        }
+        set(newIntelligenceSavingThrow) {
+            rawIntelligenceSavingThrow = newIntelligenceSavingThrow != intelligenceModifier ? NSNumber(integer: newIntelligenceSavingThrow) : nil
+        }
+    }
+    @NSManaged private var rawIntelligenceSavingThrow: NSNumber?
+
+    /// Modifier to apply for Intelligence (Arcana) skill checks.
+    ///
+    /// Usually this has the value of `intelligenceModifier` either on its own, with `proficiencyBonus` added to it, or double that property added to it; but there are various exceptions to this for particular monsters.
+    var arcanaSkill: Int {
+        get {
+            return rawArcanaSkill?.integerValue ?? intelligenceModifier
+        }
+        set(newArcanaSkill) {
+            rawArcanaSkill = newArcanaSkill != intelligenceModifier ? NSNumber(integer: newArcanaSkill) : nil
+        }
+    }
+    @NSManaged private var rawArcanaSkill: NSNumber?
+    
+    /// Modifier to apply for Intelligence (History) skill checks.
+    ///
+    /// Usually this has the value of `intelligenceModifier` either on its own, with `proficiencyBonus` added to it, or double that property added to it; but there are various exceptions to this for particular monsters.
+    var historySkill: Int {
+        get {
+            return rawHistorySkill?.integerValue ?? intelligenceModifier
+        }
+        set(newHistorySkill) {
+            rawHistorySkill = newHistorySkill != intelligenceModifier ? NSNumber(integer: newHistorySkill) : nil
+        }
+    }
+    @NSManaged private var rawHistorySkill: NSNumber?
+    
+    /// Modifier to apply for Intelligence (Investigation) skill checks.
+    ///
+    /// Usually this has the value of `intelligenceModifier` either on its own, with `proficiencyBonus` added to it, or double that property added to it; but there are various exceptions to this for particular monsters.
+    var investigationSkill: Int {
+        get {
+            return rawInvestigationSkill?.integerValue ?? intelligenceModifier
+        }
+        set(newInvestigationSkill) {
+            rawInvestigationSkill = newInvestigationSkill != intelligenceModifier ? NSNumber(integer: newInvestigationSkill) : nil
+        }
+    }
+    @NSManaged private var rawInvestigationSkill: NSNumber?
+
+    /// Modifier to apply for Intelligence (Nature) skill checks.
+    ///
+    /// Usually this has the value of `intelligenceModifier` either on its own, with `proficiencyBonus` added to it, or double that property added to it; but there are various exceptions to this for particular monsters.
+    var natureSkill: Int {
+        get {
+            return rawNatureSkill?.integerValue ?? intelligenceModifier
+        }
+        set(newNatureSkill) {
+            rawNatureSkill = newNatureSkill != intelligenceModifier ? NSNumber(integer: newNatureSkill) : nil
+        }
+    }
+    @NSManaged private var rawNatureSkill: NSNumber?
+    
+    /// Modifier to apply for Intelligence (Religion) skill checks.
+    ///
+    /// Usually this has the value of `intelligenceModifier` either on its own, with `proficiencyBonus` added to it, or double that property added to it; but there are various exceptions to this for particular monsters.
+    var religionSkill: Int {
+        get {
+            return rawReligionSkill?.integerValue ?? intelligenceModifier
+        }
+        set(newReligionSkill) {
+            rawReligionSkill = newReligionSkill != intelligenceModifier ? NSNumber(integer: newReligionSkill) : nil
+        }
+    }
+    @NSManaged private var rawReligionSkill: NSNumber?
     
     /// Wisdom score, used for generating `wisdomModifier`.
-    var wisdom: Int {
+    var wisdomScore: Int {
         get {
-            return rawWisdom.integerValue
+            return rawWisdomScore.integerValue
         }
-        set(newWisdom) {
-            rawWisdom = NSNumber(integer: newWisdom)
+        set(newWisdomScore) {
+            rawWisdomScore = NSNumber(integer: newWisdomScore)
         }
     }
-    @NSManaged private var rawWisdom: NSNumber
+    @NSManaged private var rawWisdomScore: NSNumber
 
-    /// Modifier to apply to wisdom spells, saving throws, and ability checks.
+    /// Modifier to apply to Wisdom actions and attacks.
+    ///
+    /// This is also used as the base modifier for Wisdom saving throws and skill checks.
     var wisdomModifier: Int {
-        return Int(floor(Double(wisdom - 10) / 2.0))
+        return Int(floor(Double(wisdomScore - 10) / 2.0))
     }
     
-    /// Charisma score, used for genearting `charismaModifier`.
-    var charisma: Int {
+    /// Modifier to apply for Wisdom saving throws.
+    ///
+    /// Generally this has either the value of `wisdomModifier`, or the value of that property with `proficiencyBonus` added to it; but there are exceptions (read: mistakes by the D&D authors).
+    var wisdomSavingThrow: Int {
         get {
-            return rawCharisma.integerValue
+            return rawWisdomSavingThrow?.integerValue ?? wisdomModifier
         }
-        set(newCharisma) {
-            rawCharisma = NSNumber(integer: newCharisma)
+        set(newWisdomSavingThrow) {
+            rawWisdomSavingThrow = newWisdomSavingThrow != wisdomModifier ? NSNumber(integer: newWisdomSavingThrow) : nil
         }
     }
-    @NSManaged private var rawCharisma: NSNumber
+    @NSManaged private var rawWisdomSavingThrow: NSNumber?
 
-    /// Modifier to apply to charisma spells, saving throws, and ability checks.
-    var charismaModifier: Int {
-        return Int(floor(Double(charisma - 10) / 2.0))
+    /// Modifier to apply for Wisdom (Animal Handling) skill checks.
+    ///
+    /// Usually this has the value of `wisdomModifier` either on its own, with `proficiencyBonus` added to it, or double that property added to it; but there are various exceptions to this for particular monsters.
+    var animalHandlingSkill: Int {
+        get {
+            return rawAnimalHandlingSkill?.integerValue ?? wisdomModifier
+        }
+        set(newAnimalHandlingSkill) {
+            rawAnimalHandlingSkill = newAnimalHandlingSkill != wisdomModifier ? NSNumber(integer: newAnimalHandlingSkill) : nil
+        }
     }
+    @NSManaged private var rawAnimalHandlingSkill: NSNumber?
     
+    /// Modifier to apply for Wisdom (Insight) skill checks.
+    ///
+    /// Usually this has the value of `wisdomModifier` either on its own, with `proficiencyBonus` added to it, or double that property added to it; but there are various exceptions to this for particular monsters.
+    var insightSkill: Int {
+        get {
+            return rawInsightSkill?.integerValue ?? wisdomModifier
+        }
+        set(newInsightSkill) {
+            rawInsightSkill = newInsightSkill != wisdomModifier ? NSNumber(integer: newInsightSkill) : nil
+        }
+    }
+    @NSManaged private var rawInsightSkill: NSNumber?
+    
+    /// Modifier to apply for Wisdom (Medicine) skill checks.
+    ///
+    /// Usually this has the value of `wisdomModifier` either on its own, with `proficiencyBonus` added to it, or double that property added to it; but there are various exceptions to this for particular monsters.
+    var medicineSkill: Int {
+        get {
+            return rawMedicineSkill?.integerValue ?? wisdomModifier
+        }
+        set(newMedicineSkill) {
+            rawMedicineSkill = newMedicineSkill != wisdomModifier ? NSNumber(integer: newMedicineSkill) : nil
+        }
+    }
+    @NSManaged private var rawMedicineSkill: NSNumber?
+    
+    /// Modifier to apply for Wisdom (Perception) skill checks.
+    ///
+    /// Usually this has the value of `wisdomModifier` either on its own, with `proficiencyBonus` added to it, or double that property added to it; but there are various exceptions to this for particular monsters.
+    var perceptionSkill: Int {
+        get {
+            return rawPerceptionSkill?.integerValue ?? wisdomModifier
+        }
+        set(newPerceptionSkill) {
+            rawPerceptionSkill = newPerceptionSkill != wisdomModifier ? NSNumber(integer: newPerceptionSkill) : nil
+        }
+    }
+    @NSManaged private var rawPerceptionSkill: NSNumber?
+    
+    /// Modifier to apply for Wisdom (Survival) skill checks.
+    ///
+    /// Usually this has the value of `wisdomModifier` either on its own, with `proficiencyBonus` added to it, or double that property added to it; but there are various exceptions to this for particular monsters.
+    var survivalSkill: Int {
+        get {
+            return rawSurvivalSkill?.integerValue ?? wisdomModifier
+        }
+        set(newSurvivalSkill) {
+            rawSurvivalSkill = newSurvivalSkill != wisdomModifier ? NSNumber(integer: newSurvivalSkill) : nil
+        }
+    }
+    @NSManaged private var rawSurvivalSkill: NSNumber?
+
     /// Passive perception score.
     var passivePerception: Int {
         get {
@@ -231,6 +472,89 @@ final class Monster: NSManagedObject {
         }
     }
     @NSManaged private var rawPassivePerception: NSNumber
+
+    /// Charisma score, used for genearting `charismaModifier`.
+    var charismaScore: Int {
+        get {
+            return rawCharismaScore.integerValue
+        }
+        set(newCharismaScore) {
+            rawCharismaScore = NSNumber(integer: newCharismaScore)
+        }
+    }
+    @NSManaged private var rawCharismaScore: NSNumber
+
+    /// Modifier to apply to Charisma actions and attacks.
+    ///
+    /// This is also used as the base modifier for Charisma saving throws and skill checks.
+    var charismaModifier: Int {
+        return Int(floor(Double(charismaScore - 10) / 2.0))
+    }
+    
+    /// Modifier to apply for Charisma saving throws.
+    ///
+    /// Generally this has either the value of `charismaModifier`, or the value of that property with `proficiencyBonus` added to it; but there are exceptions (read: mistakes by the D&D authors).
+    var charismaSavingThrow: Int {
+        get {
+            return rawCharismaSavingThrow?.integerValue ?? charismaModifier
+        }
+        set(newCharismaSavingThrow) {
+            rawCharismaSavingThrow = newCharismaSavingThrow != charismaModifier ? NSNumber(integer: newCharismaSavingThrow) : nil
+        }
+    }
+    @NSManaged private var rawCharismaSavingThrow: NSNumber?
+
+    /// Modifier to apply for Charisma (Deception) skill checks.
+    ///
+    /// Usually this has the value of `charismaModifier` either on its own, with `proficiencyBonus` added to it, or double that property added to it; but there are various exceptions to this for particular monsters.
+    var deceptionSkill: Int {
+        get {
+            return rawDeceptionSkill?.integerValue ?? charismaModifier
+        }
+        set(newDeceptionSkill) {
+            rawDeceptionSkill = newDeceptionSkill != charismaModifier ? NSNumber(integer: newDeceptionSkill) : nil
+        }
+    }
+    @NSManaged private var rawDeceptionSkill: NSNumber?
+    
+    /// Modifier to apply for Charisma (Intimidation) skill checks.
+    ///
+    /// Usually this has the value of `charismaModifier` either on its own, with `proficiencyBonus` added to it, or double that property added to it; but there are various exceptions to this for particular monsters.
+    var intimidationSkill: Int {
+        get {
+            return rawIntimidationSkill?.integerValue ?? charismaModifier
+        }
+        set(newIntimidationSkill) {
+            rawIntimidationSkill = newIntimidationSkill != charismaModifier ? NSNumber(integer: newIntimidationSkill) : nil
+        }
+    }
+    @NSManaged private var rawIntimidationSkill: NSNumber?
+
+    /// Modifier to apply for Charisma (Performance) skill checks.
+    ///
+    /// Usually this has the value of `charismaModifier` either on its own, with `proficiencyBonus` added to it, or double that property added to it; but there are various exceptions to this for particular monsters.
+    var performanceSkill: Int {
+        get {
+            return rawPerformanceSkill?.integerValue ?? charismaModifier
+        }
+        set(newPerformanceSkill) {
+            rawPerformanceSkill = newPerformanceSkill != charismaModifier ? NSNumber(integer: newPerformanceSkill) : nil
+        }
+    }
+    @NSManaged private var rawPerformanceSkill: NSNumber?
+    
+    /// Modifier to apply for Charisma (Persuasion) skill checks.
+    ///
+    /// Usually this has the value of `charismaModifier` either on its own, with `proficiencyBonus` added to it, or double that property added to it; but there are various exceptions to this for particular monsters.
+    var persuasionSkill: Int {
+        get {
+            return rawPersuasionSkill?.integerValue ?? charismaModifier
+        }
+        set(newPersuasionSkill) {
+            rawPersuasionSkill = newPersuasionSkill != charismaModifier ? NSNumber(integer: newPersuasionSkill) : nil
+        }
+    }
+    @NSManaged private var rawPersuasionSkill: NSNumber?
     
     /// The challenge rating of this monster.
     ///
@@ -255,8 +579,6 @@ final class Monster: NSManagedObject {
 
     // Original un-parsed stat block text.
     @NSManaged var speed: String
-    @NSManaged var savingThrows: String?
-    @NSManaged var skills: String?
     @NSManaged var damageVulnerabilities: String?
     @NSManaged var damageResistances: String?
     @NSManaged var damageImmunities: String?

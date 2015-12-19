@@ -52,9 +52,12 @@ ARMOR_CLASS_RE = re.compile(
 	r'(?: \((\d+) with ([^)]+)\))?' +
 	r'(?:, (\d+) while (' + condition_expr + r')' +
 	r'| (in [^,]+ form), (\d+) \((' + armor_expr + r')(?: armor)?\) (in .+ form))?$')
-
 HIT_POINTS_RE = re.compile(r'^(\d+) \(([^)]*)\)$')
+
 ABILITY_RE = re.compile(r'^(\d+) \(([+-]\d+)\)$')
+
+SAVING_THROW_SKILLS_RE = re.compile(r'^([A-Za-z ]+) ([+-]\d+)$')
+
 SENSES_RE = re.compile(r'^(?:.*, )?passive Perception (\d+)$')
 
 DICE_RE = re.compile(r'^(?:[1-9][0-9]*(?:d(?:2|4|6|8|10|12|20|100))?(?: *[+-] *(?=[^ ]))?)+$')
@@ -325,15 +328,77 @@ class Exporter(monster.MonsterParser):
 			raise self.error("%s ability score modifier (%s) didn't match that calculated from score %s (%d)" % (
 				name.title(), modifier, score, calculated))
 
-		self.info['raw' + name.title()] = int(score)
+		self.info['raw' + name.title() + 'Score'] = int(score)
 
 	def handle_saving_throws(self, line):
-		# TODO: Should be easy to parse
-		self.info['savingThrows'] = line
+		saving_throws = line.split(", ")
+		for saving_throw in saving_throws:
+			match = SAVING_THROW_SKILLS_RE.match(saving_throw)
+			if match is None:
+				raise self.error("Saving throw doesn't match expected format: %s" % saving_throw)
+
+			(name, modifier) = match.groups()
+			if name == "Str" or name == "Strength":
+				self.info['rawStrengthSavingThrow'] = int(modifier)
+			elif name == "Dex" or name == "Dexterity":
+				self.info['rawDexteritySavingThrow'] = int(modifier)
+			elif name == "Con" or name == "Constitution":
+				self.info['rawConstitutionSavingThrow'] = int(modifier)
+			elif name == "Int" or name == "Intelligence":
+				self.info['rawIntelligenceSavingThrow'] = int(modifier)
+			elif name == "Wis" or name == "Wisdom":
+				self.info['rawWisdomSavingThrow'] = int(modifier)
+			elif name == "Cha" or name == "Charisma":
+				self.info['rawCharismaSavingThrow'] = int(modifier)
+			else:
+				raise self.error("Unknown ability in saving throw: %s" % saving_throw)
 
 	def handle_skills(self, line):
-		# TODO: easy to parse, except for the stealth/blindness case.
-		self.info['skills'] = line
+		skills = line.split(", ")
+		for skill in skills:
+			match = SAVING_THROW_SKILLS_RE.match(skill)
+			if match is None:
+				raise self.error("Skill doesn't match expected format: %s" % skill)
+
+			(name, modifier) = match.groups()
+			if name == "Acrobatics":
+				self.info['rawAcrobaticsSkill'] = int(modifier)
+			elif name == "Animal Handling":
+				self.info['rawAnimalHandlingSkill'] = int(modifier)
+			elif name == "Arcana":
+				self.info['rawArcanaSkill'] = int(modifier)
+			elif name == "Athletics":
+				self.info['rawAthleticsSkill'] = int(modifier)
+			elif name == "Deception":
+				self.info['rawDeceptionSkill'] = int(modifier)
+			elif name == "History":
+				self.info['rawHistorySkill'] = int(modifier)
+			elif name == "Insight":
+				self.info['rawInsightSkill'] = int(modifier)
+			elif name == "Intimidation":
+				self.info['rawIntimidationSkill'] = int(modifier)
+			elif name == "Investigation":
+				self.info['rawInvestigationSkill'] = int(modifier)
+			elif name == "Medicine":
+				self.info['rawMedicineSkill'] = int(modifier)
+			elif name == "Nature":
+				self.info['rawNatureSkill'] = int(modifier)
+			elif name == "Perception":
+				self.info['rawPerceptionSkill'] = int(modifier)
+			elif name == "Performance":
+				self.info['rawPerformanceSkill'] = int(modifier)
+			elif name == "Persuasion":
+				self.info['rawPersuasionSkill'] = int(modifier)
+			elif name == "Religion":
+				self.info['rawReligionSkill'] = int(modifier)
+			elif name == "Sleight of Hand":
+				self.info['rawSleightOfHandSkill'] = int(modifier)
+			elif name == "Stealth":
+				self.info['rawStealthSkill'] = int(modifier)
+			elif name == "Survival":
+				self.info['rawSurvivalSkill'] = int(modifier)
+			else:
+				raise self.error("Unknown skill: %s" % skill)
 
 	def handle_damage_vulnerabilities(self, line):
 		self.info['damageVulnerabilities'] = line

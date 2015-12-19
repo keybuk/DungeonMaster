@@ -58,7 +58,7 @@ class EncounterViewController: UITableViewController {
         fetchRequest.predicate = predicate
         
         let initiativeSortDescriptor = NSSortDescriptor(key: "rawInitiative", ascending: false)
-        let dexSortDescriptor = NSSortDescriptor(key: "monster.rawDexterity", ascending: false)
+        let dexSortDescriptor = NSSortDescriptor(key: "monster.rawDexterityScore", ascending: false)
         fetchRequest.sortDescriptors = [initiativeSortDescriptor, dexSortDescriptor]
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
