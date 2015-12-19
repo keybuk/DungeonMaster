@@ -16,15 +16,21 @@ func importIfNeeded() {
     let defaults = NSUserDefaults.standardUserDefaults()
     let dataVersion = defaults.objectForKey("DataVersion") as? Int
     let plistVersion = data["version"]! as! Int
-    
-    if dataVersion != nil {
-        if dataVersion == plistVersion {
-            return
-        }
-        
-        print("Importing data from \(plistVersion), replacing \(dataVersion!)")
+
+    // Shenanigans to stop Swift complaining about "unreachable code" as it optimizes out the other path.
+    func inSimulator() -> Bool { return TARGET_OS_SIMULATOR != 0 }
+    if inSimulator() {
+        print("Running in simulator: importing data from \(plistVersion)")
     } else {
-        print("Importing data from \(plistVersion)")
+        if dataVersion != nil {
+            if dataVersion == plistVersion {
+                return
+            }
+            
+            print("Importing data from \(plistVersion), replacing \(dataVersion!)")
+        } else {
+            print("Importing data from \(plistVersion)")
+        }
     }
     
     do {
