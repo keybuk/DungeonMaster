@@ -265,6 +265,9 @@ enum Language {
     case Aquan
     case Ignan
     case Terran
+    
+    // Monster-specific Languages
+    case Aarakocra
 }
 
 enum MagicSchool {
