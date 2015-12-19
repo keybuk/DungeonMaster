@@ -15,13 +15,18 @@ func importIfNeeded() {
 
     let defaults = NSUserDefaults.standardUserDefaults()
     let dataVersion = defaults.objectForKey("DataVersion") as? Int
-    let plistVersion = data["version"] as? Int
+    let plistVersion = data["version"]! as! Int
     
-    if dataVersion != nil && dataVersion == plistVersion {
-        return
+    if dataVersion != nil {
+        if dataVersion == plistVersion {
+            return
+        }
+        
+        print("Importing data from \(plistVersion), replacing \(dataVersion!)")
+    } else {
+        print("Importing data from \(plistVersion)")
     }
     
-    print("Importing data from \(plistVersion), replacing \(dataVersion)")
     do {
         try NSFileManager.defaultManager().removeItemAtURL(Model.storeURL)
     } catch NSCocoaError.FileNoSuchFileError {
@@ -150,7 +155,7 @@ func importIfNeeded() {
         
         // hitPoints can be entirely optional; since for all but one monster (the Demilich) it's simply the average value of the hit dice.
         if monster.hitPoints != monster.hitDice.averageValue {
-            print("\(monster.name) has unusual HP: \(monster.hitPoints), expected \(monster.hitDice.averageValue)")
+            print("\(monster.name) has unusual HP: \(monster.hitPoints!), expected \(monster.hitDice.averageValue)")
         } else {
             monster.hitPoints = nil
         }
