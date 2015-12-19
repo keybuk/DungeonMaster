@@ -139,7 +139,7 @@ class Exporter(monster.MonsterParser):
 			raise self.error("Spotted missing ffi: %s" % line)
 
 		if re.search(r'[0-9]-[0-9]', line):
-			raise self.error("Spotted dash that should be en-dash: %s", line)
+			raise self.error("Spotted dash that should be en-dash: %s" % line)
 
 		if re.search('r[0-9][lIJSO]|[lIJSO][0-9]|[lJSO][JSO]+|[lI]d[0-9]', line):
 			raise self.error("Suspicious number-like form: %s" % line)
