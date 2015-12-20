@@ -187,7 +187,7 @@ class DetailViewController: UIViewController {
                 
                 var armorString = ""
 
-                let basicArmorPredicate = NSPredicate(format: "rawCondition == nil AND spellName == nil AND form == nil")
+                let basicArmorPredicate = NSPredicate(format: "rawCondition == nil AND spellName == nil")
                 for case let armor as Armor in monster.armor.filteredSetUsingPredicate(basicArmorPredicate) {
                     switch armor.type {
                     case .None:
@@ -213,35 +213,6 @@ class DetailViewController: UIViewController {
                 let conditionArmorPredicate = NSPredicate(format: "rawCondition != nil")
                 for case let armor as Armor in monster.armor.filteredSetUsingPredicate(conditionArmorPredicate) {
                     armorString += ", \(armor.armorClass) while \(armor.condition!.stringValue)"
-                }
-                
-                do {
-                    let fetchRequest = NSFetchRequest(entity: Model.Armor)
-                    fetchRequest.predicate = NSPredicate(format: "monster = %@ AND form != nil", monster)
-                    fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "rawArmorClass", ascending: true) ]
-
-                    for armor in try managedObjectContext.executeFetchRequest(fetchRequest) as! [Armor] {
-                        if armorString != "" {
-                            armorString += ", "
-                        }
-                        
-                        switch armor.type {
-                        case .None:
-                            armorString += "\(armor.armorClass)"
-                        default:
-                            if armor.includesShield {
-                                armorString += "\(armor.armorClass) (\(armor.type.stringValue), shield)"
-                            } else {
-                                armorString += "\(armor.armorClass) (\(armor.type.stringValue))"
-                            }
-                        }
-                        
-                        armorString += " \(armor.form!)"
-                    }
-                } catch {
-                    let error = error as NSError
-                    print("Unresolved error \(error), \(error.userInfo)")
-                    abort()
                 }
                 
                 text.appendAttributedString(NSAttributedString(string: "Armor Class ", attributes: statsLabelStyle))

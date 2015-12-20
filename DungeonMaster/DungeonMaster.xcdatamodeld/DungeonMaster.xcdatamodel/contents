@@ -11,7 +11,6 @@
         <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="alignmentOptions" inverseEntity="Monster" syncable="YES"/>
     </entity>
     <entity name="Armor" representedClassName=".Armor" syncable="YES">
-        <attribute name="form" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="includesShield" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="rawArmorClass" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawCondition" optional="YES" attributeType="Integer 16" syncable="YES"/>
@@ -174,7 +173,7 @@
     <elements>
         <element name="Action" positionX="261" positionY="360" width="128" height="90"/>
         <element name="AlignmentOption" positionX="-54" positionY="351" width="128" height="90"/>
-        <element name="Armor" positionX="-45" positionY="360" width="128" height="165"/>
+        <element name="Armor" positionX="-45" positionY="360" width="128" height="150"/>
         <element name="Book" positionX="-261" positionY="198" width="128" height="90"/>
         <element name="Combatant" positionX="-54" positionY="351" width="128" height="210"/>
         <element name="Condition" positionX="-36" positionY="369" width="128" height="75"/>

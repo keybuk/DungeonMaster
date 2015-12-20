@@ -50,8 +50,8 @@ condition_expr = "|".join(CONDITIONS)
 ARMOR_CLASS_RE = re.compile(
 	r'^(\d+)(?: \((?:([+-]\d+) )?(' + armor_expr + r')(?: armor)?(?:, (shield))?\))?' +
 	r'(?: \((\d+) with ([^)]+)\))?' +
-	r'(?:, (\d+) while (' + condition_expr + r')' +
-	r'| (in [^,]+ form), (\d+) \((' + armor_expr + r')(?: armor)?\) (in .+ form))?$')
+	r'(?:, (\d+) while (' + condition_expr + r'))?$')
+#	r'| (in [^,]+ form), (\d+) \((' + armor_expr + r')(?: armor)?\) (in .+ form))?$')
 HIT_POINTS_RE = re.compile(r'^(\d+) \(([^)]*)\)$')
 
 SPEED_RE = re.compile(
@@ -237,8 +237,8 @@ class Exporter(monster.MonsterParser):
 
 		(armor_class, magic_armor_modifier, armor_type, shield,
 		 armor_spell_class, armor_spell,
-		 armor_condition_class, armor_condition,
-		 armor_original_form, armor_form_class, armor_form_type, armor_form) = match.groups()
+		 armor_condition_class, armor_condition) = match.groups()
+		#armor_original_form, armor_form_class, armor_form_type, armor_form) = match.groups()
 
 		armor = {
 			'rawArmorClass': int(armor_class),
@@ -247,8 +247,8 @@ class Exporter(monster.MonsterParser):
 		}
 		if magic_armor_modifier is not None:
 			armor['rawMagicModifier'] = int(magic_armor_modifier)
-		if armor_original_form is not None:
-			armor['form'] = armor_original_form
+		#if armor_original_form is not None:
+		#	armor['form'] = armor_original_form
 
 		self.armor.append(armor)
 
@@ -275,14 +275,14 @@ class Exporter(monster.MonsterParser):
 
 		# FIXME this is also a hack right now to ensure they're displayed.
 		# Really we want to handle forms in their own right too.
-		if armor_form_class is not None:
-			armor = {
-				'rawArmorClass': int(armor_form_class),
-				'rawType': ARMOR_TYPES.index(armor_form_type),
-				'form': armor_form
-			}
-
-			self.armor.append(armor)
+		#if armor_form_class is not None:
+		#	armor = {
+		#		'rawArmorClass': int(armor_form_class),
+		#		'rawType': ARMOR_TYPES.index(armor_form_type),
+		#		'form': armor_form
+		#	}
+		#
+		#	self.armor.append(armor)
 
 	def handle_hit_points(self, line):
 		match = HIT_POINTS_RE.match(line)
