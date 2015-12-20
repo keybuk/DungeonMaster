@@ -1,5 +1,8 @@
 Dragonwing
-trot 90
+# Strictly speaking HotDQ has a different stat block because it just describes
+# how to modify Dragonclaw, but then it refers to tRoT for a more detailed
+# stat block, which is this one.
+hotd 89|trot 90
 Medium humanoid (human), neutral evil
 
 Armor Class 14 (leather armor)
