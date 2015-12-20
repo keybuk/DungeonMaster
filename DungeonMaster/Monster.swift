@@ -610,6 +610,57 @@ final class Monster: NSManagedObject {
     }
     @NSManaged private var rawPersuasionSkill: NSNumber?
     
+    /// Whether the monster is naturally blind.
+    ///
+    /// This is always combined with `blindsight` to indicate what the monster's range of perception is.
+    @NSManaged var isBlind: Bool
+    
+    /// Distance (in feet) within which the monster can perceive surroundings without relying on sight.
+    var blindsight: Int? {
+        get {
+            return rawBlindsight?.integerValue
+        }
+        set(newBlindsight) {
+            rawBlindsight = newBlindsight != nil ? NSNumber(integer: newBlindsight!) : nil
+        }
+    }
+    @NSManaged private var rawBlindsight: NSNumber?
+    
+    /// Distance (in feet) within which the monster can see in the dark.
+    ///
+    /// In darkness the monster perceives as in dim light, and in dim light as if in bright light.
+    var darkvision: Int? {
+        get {
+            return rawDarkvision?.integerValue
+        }
+        set(newDarkvision) {
+            rawDarkvision = newDarkvision != nil ? NSNumber(integer: newDarkvision!) : nil
+        }
+    }
+    @NSManaged private var rawDarkvision: NSNumber?
+    
+    /// Distance (in feet) within which the monster can detect and pinpoint vibrations.
+    var tremorsense: Int? {
+        get {
+            return rawTremorsense?.integerValue
+        }
+        set(newTremorsense) {
+            rawTremorsense = newTremorsense != nil ? NSNumber(integer: newTremorsense!) : nil
+        }
+    }
+    @NSManaged private var rawTremorsense: NSNumber?
+    
+    /// Distance (in feet) within which the monster can see in darkness, and see invisible creatures.
+    var truesight: Int? {
+        get {
+            return rawTruesight?.integerValue
+        }
+        set(newTruesight) {
+            rawTruesight = newTruesight != nil ? NSNumber(integer: newTruesight!) : nil
+        }
+    }
+    @NSManaged private var rawTruesight: NSNumber?
+    
     /// The challenge rating of this monster.
     ///
     /// Represented as an NSDecimalNumber since ⅛ (0.125), ¼ (0.25), and ½ (0.5) are possible ratings, and we want to represent them without getting into fuzzy comparisons that we'd end up with using Floats or Doubles.
@@ -636,7 +687,6 @@ final class Monster: NSManagedObject {
     @NSManaged var damageResistances: String?
     @NSManaged var damageImmunities: String?
     @NSManaged var conditionImmunities: String?
-    @NSManaged var senses: String?
     @NSManaged var languages: String?
     
     /// Special traits of this monster.

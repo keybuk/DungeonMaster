@@ -364,8 +364,22 @@ class DetailViewController: UIViewController {
                 }
 
                 text.appendAttributedString(NSAttributedString(string: "Senses ", attributes: statsLabelStyle))
-                if let senses = monster.senses {
-                    text.appendAttributedString(NSAttributedString(string: "\(senses), ", attributes: statsValueStyle))
+                if let blindsight = monster.blindsight {
+                    text.appendAttributedString(NSAttributedString(string: "blindsight \(blindsight) ft.", attributes: statsValueStyle))
+                    if monster.isBlind {
+                        text.appendAttributedString(NSAttributedString(string: " (blind beyond this radius)", attributes: statsValueStyle))
+                    }
+                    text.appendAttributedString(NSAttributedString(string: ", ", attributes: statsValueStyle))
+
+                }
+                if let darkvision = monster.darkvision {
+                    text.appendAttributedString(NSAttributedString(string: "darkvision \(darkvision) ft., ", attributes: statsValueStyle))
+                }
+                if let tremorsense = monster.tremorsense {
+                    text.appendAttributedString(NSAttributedString(string: "tremorsense \(tremorsense) ft., ", attributes: statsValueStyle))
+                }
+                if let truesight = monster.truesight {
+                    text.appendAttributedString(NSAttributedString(string: "truesight \(truesight) ft., ", attributes: statsValueStyle))
                 }
                 text.appendAttributedString(NSAttributedString(string: "passive Perception \(monster.passivePerception)\n", attributes: statsValueStyle))
 

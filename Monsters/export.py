@@ -62,7 +62,17 @@ ABILITY_RE = re.compile(r'^(\d+) \(([+-]\d+)\)$')
 
 SAVING_THROW_SKILLS_RE = re.compile(r'^([A-Za-z ]+) ([+-]\d+)$')
 
-SENSES_RE = re.compile(r'^(?:(.*), )?passive Perception (\d+)$')
+# blindsight \d+ ft.
+#  (blind beyond this radius)
+# darkvision \d+ ft.
+# tremorsense \d+ ft.
+# truesight \d+ ft.
+SENSES_RE = re.compile(
+	r'^(?:blindsight (\d+) ft\.(?: \((blind beyond this radius)\))?(?:, |$))?'
+	r'(?:darkvision (\d+) ft\.(?:, |$))?'
+	r'(?:tremorsense (\d+) ft\.(?:, |$))?'
+	r'(?:truesight (\d+) ft\.(?:, |$))?'
+	r'passive Perception (\d+)$')
 
 DICE_RE = re.compile(r'^(?:[1-9][0-9]*(?:d(?:2|4|6|8|10|12|20|100))?(?: *[+-] *(?=[^ ]))?)+$')
 DICE_ANYWHERE_RE = re.compile(r'(?:[1-9][0-9]*(?:d(?:2|4|6|8|10|12|20|100))?(?: *[+-] *(?=[^ ]))?)+')
@@ -437,12 +447,20 @@ class Exporter(monster.MonsterParser):
 	def handle_senses(self, line):
 		match = SENSES_RE.match(line)
 		if match is None:
-			raise self.error("Senses line didn't have passive Perception: %s" % line)
+			raise self.error("Senses line didn't match expected format: %s" % line)
 
-		(senses, passive) = match.groups()
-		if senses is not None:
-			# TODO: easy to parse
-			self.info['senses'] = senses
+		(blindsight, blinded, darkvision, tremorsense, truesight, passive) = match.groups()
+
+		if blindsight is not None:
+			self.info['rawBlindsight'] = int(blindsight)
+		if blinded is not None:
+			self.info['isBlind'] = True
+		if darkvision is not None:
+			self.info['rawDarkvision'] = int(darkvision)
+		if tremorsense is not None:
+			self.info['rawTremorsense'] = int(tremorsense)
+		if truesight is not None:
+			self.info['rawTruesight'] = int(truesight)
 
 		# Don't store passive perception, just verify it matches the calculated value.
 		expectedPassive = 10

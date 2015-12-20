@@ -84,6 +84,7 @@
         <attribute name="damageImmunities" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="damageResistances" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="damageVulnerabilities" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isBlind" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="isNPC" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="languages" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
@@ -92,12 +93,14 @@
         <attribute name="rawAnimalHandlingSkill" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawArcanaSkill" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawAthleticsSkill" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="rawBlindsight" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawBurrowSpeed" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawCharismaSavingThrow" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawCharismaScore" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="rawClimbSpeed" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawConstitutionSavingThrow" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawConstitutionScore" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
+        <attribute name="rawDarkvision" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawDeceptionSkill" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawDexteritySavingThrow" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawDexterityScore" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
@@ -125,11 +128,12 @@
         <attribute name="rawSurvivalSkill" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawSwarmSize" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawSwimSpeed" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="rawTremorsense" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="rawTruesight" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawType" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawWisdomSavingThrow" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawWisdomScore" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="requiresRace" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
-        <attribute name="senses" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="actions" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Action" inverseName="monster" inverseEntity="Action" syncable="YES"/>
         <relationship name="alignmentOptions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="AlignmentOption" inverseName="monster" inverseEntity="AlignmentOption" syncable="YES"/>
         <relationship name="armor" toMany="YES" deletionRule="Cascade" destinationEntity="Armor" inverseName="monster" inverseEntity="Armor" syncable="YES"/>
@@ -183,7 +187,7 @@
         <element name="LairAction" positionX="567" positionY="630" width="128" height="75"/>
         <element name="LairTrait" positionX="567" positionY="717" width="128" height="75"/>
         <element name="LegendaryAction" positionX="261" positionY="558" width="128" height="90"/>
-        <element name="Monster" positionX="79" positionY="216" width="128" height="975"/>
+        <element name="Monster" positionX="79" positionY="216" width="128" height="1035"/>
         <element name="Reaction" positionX="261" positionY="459" width="128" height="90"/>
         <element name="RegionalEffect" positionX="565" positionY="801" width="128" height="75"/>
         <element name="Source" positionX="-92" positionY="198" width="128" height="105"/>
