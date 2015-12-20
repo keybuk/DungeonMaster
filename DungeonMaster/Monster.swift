@@ -119,11 +119,66 @@ final class Monster: NSManagedObject {
         }
     }
     @NSManaged private var rawHitDice: String
-
-    /// Dice to roll to generate initiative for the monster.
-    var initiativeDice: DiceCombo {
-        return try! DiceCombo(sides: 20, modifier: dexterityModifier)
+    
+    /// Monster's movement speed (in feet).
+    var speed: Int {
+        get {
+            return rawSpeed.integerValue
+        }
+        set(newSpeed) {
+            rawSpeed = NSNumber(integer: newSpeed)
+        }
     }
+    @NSManaged private var rawSpeed: NSNumber
+    
+    /// Monster's movement speed (in feet) while burrowing, if the monster is capable of this.
+    var burrowSpeed: Int? {
+        get {
+            return rawBurrowSpeed?.integerValue
+        }
+        set(newBurrowSpeed) {
+            rawBurrowSpeed = newBurrowSpeed != nil ? NSNumber(integer: newBurrowSpeed!) : nil
+        }
+    }
+    @NSManaged private var rawBurrowSpeed: NSNumber?
+
+    /// Monster's movement speed (in feet) while climbing, if the monster is capable of this.
+    var climbSpeed: Int? {
+        get {
+            return rawClimbSpeed?.integerValue
+        }
+        set(newClimbSpeed) {
+            rawClimbSpeed = newClimbSpeed != nil ? NSNumber(integer: newClimbSpeed!) : nil
+        }
+    }
+    @NSManaged private var rawClimbSpeed: NSNumber?
+    
+    /// Monster's movement speed (in feet) while flying, if the monster is capable of this.
+    var flySpeed: Int? {
+        get {
+            return rawFlySpeed?.integerValue
+        }
+        set(newFlySpeed) {
+            rawFlySpeed = newFlySpeed != nil ? NSNumber(integer: newFlySpeed!) : nil
+        }
+    }
+    @NSManaged private var rawFlySpeed: NSNumber?
+    
+    /// Whether the monster can hover.
+    ///
+    /// Ability to hover means that, while flying, if the monster is knocked prone, has its speed reduced to zero, or is otherwise restrained from moving, it doesn't fall from the sky.
+    @NSManaged var canHover: Bool
+
+    /// Monster's movement speed (in feet) while swimming, if the monster is capable of this.
+    var swimSpeed: Int? {
+        get {
+            return rawSwimSpeed?.integerValue
+        }
+        set(newSwimSpeed) {
+            rawSwimSpeed = newSwimSpeed != nil ? NSNumber(integer: newSwimSpeed!) : nil
+        }
+    }
+    @NSManaged private var rawSwimSpeed: NSNumber?
 
     /// Strength score, used for generating `strengthModifier`.
     var strengthScore: Int {
@@ -239,6 +294,11 @@ final class Monster: NSManagedObject {
     }
     @NSManaged private var rawStealthSkill: NSNumber?
     
+    /// Dice to roll to generate initiative for the monster.
+    var initiativeDice: DiceCombo {
+        return try! DiceCombo(sides: 20, modifier: dexterityModifier)
+    }
+
     /// Constitution score, used for generating `constitutionModifier`.
     var constitutionScore: Int {
         get {
@@ -572,7 +632,6 @@ final class Monster: NSManagedObject {
     }
 
     // Original un-parsed stat block text.
-    @NSManaged var speed: String
     @NSManaged var damageVulnerabilities: String?
     @NSManaged var damageResistances: String?
     @NSManaged var damageImmunities: String?

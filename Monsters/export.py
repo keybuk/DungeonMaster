@@ -54,6 +54,10 @@ ARMOR_CLASS_RE = re.compile(
 	r'| (in [^,]+ form), (\d+) \((' + armor_expr + r')(?: armor)?\) (in .+ form))?$')
 HIT_POINTS_RE = re.compile(r'^(\d+) \(([^)]*)\)$')
 
+SPEED_RE = re.compile(
+	r'^(\d+) ft\.(?:, burrow (\d+) ft\.)?(?:, climb (\d+) ft\.)?' +
+	r'(?:, fly (\d+) ft\.(?: \((hover)\))?)?(?:, swim (\d+) ft\.)?$')
+
 ABILITY_RE = re.compile(r'^(\d+) \(([+-]\d+)\)$')
 
 SAVING_THROW_SKILLS_RE = re.compile(r'^([A-Za-z ]+) ([+-]\d+)$')
@@ -295,8 +299,23 @@ class Exporter(monster.MonsterParser):
 		self.info['rawHitDice'] = dice
 
 	def handle_speed(self, line):
-		# TODO: should be largely parseable
-		self.info['speed'] = line
+		match = SPEED_RE.match(line)
+		if match is None:
+			raise self.error("Speed didn't match expected format: %s" % line)
+
+		(speed, burrow_speed, climb_speed, fly_speed, fly_hover, swim_speed) = match.groups()
+
+		self.info['rawSpeed'] = int(speed)
+		if burrow_speed is not None:
+			self.info['rawBurrowSpeed'] = int(burrow_speed)
+		if climb_speed is not None:
+			self.info['rawClimbSpeed'] = int(climb_speed)
+		if fly_speed is not None:
+			self.info['rawFlySpeed'] = int(fly_speed)
+			if fly_hover is not None:
+				self.info['canHover'] = True
+		if swim_speed is not None:
+			self.info['rawSwimSpeed'] = int(swim_speed)
 
 	def handle_str(self, line):
 		self.handle_ability_score(line, 'strength')

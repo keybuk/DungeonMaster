@@ -252,8 +252,28 @@ class DetailViewController: UIViewController {
                 text.appendAttributedString(NSAttributedString(string: "\(hitPoints) (\(monster.hitDice.description))\n", attributes: statsValueStyle))
 
                 text.appendAttributedString(NSAttributedString(string: "Speed ", attributes: statsLabelStyle))
-                text.appendAttributedString(NSAttributedString(string: "\(monster.speed)\n", attributes: statsValueStyle))
+                text.appendAttributedString(NSAttributedString(string: "\(monster.speed) ft.", attributes: statsValueStyle))
                 
+                if let speed = monster.burrowSpeed {
+                    text.appendAttributedString(NSAttributedString(string: ", burrow \(speed) ft.", attributes: statsValueStyle))
+                }
+                
+                if let speed = monster.climbSpeed {
+                    text.appendAttributedString(NSAttributedString(string: ", climb \(speed) ft.", attributes: statsValueStyle))
+                }
+
+                if let speed = monster.flySpeed {
+                    text.appendAttributedString(NSAttributedString(string: ", fly \(speed) ft.", attributes: statsValueStyle))
+                    if monster.canHover {
+                        text.appendAttributedString(NSAttributedString(string: " (hover)", attributes: statsValueStyle))
+                    }
+                }
+
+                if let speed = monster.swimSpeed {
+                    text.appendAttributedString(NSAttributedString(string: ", swim \(speed) ft.", attributes: statsValueStyle))
+                }
+                text.appendAttributedString(NSAttributedString(string: "\n", attributes: statsValueStyle))
+
                 let str = String(format: "%d (%+d)", monster.strengthScore, monster.strengthModifier)
                 let dex = String(format: "%d (%+d)", monster.dexterityScore, monster.dexterityModifier)
                 let con = String(format: "%d (%+d)", monster.constitutionScore, monster.constitutionModifier)
