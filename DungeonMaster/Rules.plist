@@ -458,6 +458,7 @@
 		<string>blinded</string>
 		<string>charmed</string>
 		<string>deafened</string>
+		<string>exhaustion</string>
 		<string>frightened</string>
 		<string>grappled</string>
 		<string>incapacitated</string>
@@ -468,7 +469,7 @@
 		<string>prone</string>
 		<string>restrained</string>
 		<string>stunned</string>
-		<string>unconcious</string>
+		<string>unconscious</string>
 	</array>
 	<key>conditionDescription</key>
 	<array>
@@ -483,6 +484,7 @@
 		<array>
 			<string>A deafened creature can&apos;t hear and automatically fails any ability check that requires hearing.</string>
 		</array>
+		<array/>
 		<array>
 			<string>A frightened creature has disadvantage on ability checks and attack rolls while the source of its fear is within line of sight.</string>
 			<string>The creature can&apos;t willingly move closer to the source of its fear.</string>

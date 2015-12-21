@@ -610,6 +610,34 @@ final class Monster: NSManagedObject {
     }
     @NSManaged private var rawPersuasionSkill: NSNumber?
     
+    /// Types of damage and attack that this monster is vulnerable to.
+    ///
+    /// Each member is a `DamageVulnerability`.
+    @NSManaged var damageVulnerabilities: NSSet
+    
+    /// Whether the monster is resistance to all damage from spells.
+    @NSManaged var isResistantToSpellDamage: Bool
+    
+    /// Types of damage and attack that this monster is resistant to.
+    ///
+    /// Each member is a `DamageResistance`.
+    @NSManaged var damageResistances: NSSet
+    
+    /// Select of damage types that monsters created from this can be resistant to.
+    ///
+    /// Each member is a `DamageResistanceOption` specifying the resistance, one of the set should be picked and used to set `damageResistances` in the new monster.
+    @NSManaged var damageResistanceOptions: NSSet
+    
+    /// Types of damage and attack that this monster is immune to.
+    ///
+    /// Each member is a `DamageImmunity`.
+    @NSManaged var damageImmunities: NSSet
+    
+    /// Conditions that this monster is immune to.
+    ///
+    /// Each member is a `ConditionImmunity`.
+    @NSManaged var conditionImmunities: NSSet
+    
     /// Whether the monster is naturally blind.
     ///
     /// This is always combined with `blindsight` to indicate what the monster's range of perception is.
@@ -681,12 +709,8 @@ final class Monster: NSManagedObject {
     var proficiencyBonus: Int {
         return sharedRules.challengeProficiencyBonus[challenge]!
     }
-
-    // Original un-parsed stat block text.
-    @NSManaged var damageVulnerabilities: String?
-    @NSManaged var damageResistances: String?
-    @NSManaged var damageImmunities: String?
-    @NSManaged var conditionImmunities: String?
+    
+    /// The last un-parsed field!
     @NSManaged var languages: String?
     
     /// Special traits of this monster.

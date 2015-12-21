@@ -342,25 +342,105 @@ class DetailViewController: UIViewController {
                     text.appendAttributedString(NSAttributedString(string: "Skills ", attributes: statsLabelStyle))
                     text.appendAttributedString(NSAttributedString(string: "\(skillsString)\n", attributes: statsValueStyle))
                 }
-    
-                if let damageVulnerabilities = monster.damageVulnerabilities {
+                
+                func damageList(damages: NSSet, spellDamage: Bool = false) -> String {
+                    var damageList = ""
+
+                    let allAttacksPredicate = NSPredicate(format: "rawAttackType = %@", NSNumber(integer: AttackType.All.rawValue))
+                    let allAttackDamages = damages.filteredSetUsingPredicate(allAttacksPredicate)
+                    
+                    if spellDamage {
+                        damageList += "damage from spells"
+                        if damages.count > 0 {
+                            damageList += "; "
+                        }
+                    }
+                    
+                    if allAttackDamages.count > 0 {
+                        damageList += allAttackDamages.map({
+                            DamageType(rawValue: (($0 as! NSManagedObject).valueForKey("rawDamageType") as! NSNumber).integerValue)!.stringValue
+                        }).sort(<).joinWithSeparator(", ")
+                        
+                        if allAttackDamages.count < damages.count || spellDamage {
+                            damageList += "; "
+                        }
+                    }
+                    
+                    let otherAttacksPredicate = NSPredicate(format: "rawAttackType != %@", NSNumber(integer: AttackType.All.rawValue))
+                    let otherAttackDamages = damages.filteredSetUsingPredicate(otherAttacksPredicate)
+                    
+                    if otherAttackDamages.count > 0 {
+                        let anyDamage = (otherAttackDamages.first! as! NSManagedObject)
+                        let attackType = AttackType(rawValue: (anyDamage.valueForKey("rawAttackType") as! NSNumber).integerValue)!
+
+                        if spellDamage && attackType == .Nonmagical && anyDamage.valueForKey("spellName") != nil {
+                            damageList += "nonmagical "
+                        }
+                        
+                        var damageStrings = otherAttackDamages.map({
+                            DamageType(rawValue: (($0 as! NSManagedObject).valueForKey("rawDamageType") as! NSNumber).integerValue)!.stringValue
+                        }).sort(<)
+                        let lastDamageString = damageStrings.removeLast()
+                        
+                        if damageStrings.count > 1 {
+                            damageList += damageStrings.joinWithSeparator(", ") + ", and \(lastDamageString)"
+                        } else if damageStrings.count == 1 {
+                            damageList += "\(damageStrings[0]) and \(lastDamageString)"
+                        } else {
+                            damageList += lastDamageString
+                        }
+                        
+                        switch attackType {
+                        case .All:
+                            break
+                        case .Nonmagical:
+                            if spellDamage && attackType == .Nonmagical && anyDamage.valueForKey("spellName") != nil {
+                                let spellName = anyDamage.valueForKey("spellName")! as! String
+                                damageList += " (from \(spellName))"
+                            } else {
+                                damageList += " from nonmagical attacks"
+                            }
+                        case .NonmagicalNotAdamantine:
+                            damageList += " from nonmagical attacks not made with adamantine weapons"
+                        case .NonmagicalNotSilvered:
+                            damageList += " from nonmagical attacks not made with silvered weapons"
+                        case .Magical:
+                            damageList += " from magic weapons"
+                        case .MagicalByGood:
+                            damageList += " from magic weapons wielded by good creatures"
+                        }
+                    }
+
+                    return damageList
+                }
+                
+                if monster.damageVulnerabilities.count > 0 {
                     text.appendAttributedString(NSAttributedString(string: "Damage Vulnerabilities ", attributes: statsLabelStyle))
-                    text.appendAttributedString(NSAttributedString(string: "\(damageVulnerabilities)\n", attributes: statsValueStyle))
+                    text.appendAttributedString(NSAttributedString(string: "\(damageList(monster.damageVulnerabilities))\n", attributes: statsValueStyle))
                 }
 
-                if let damageResistances = monster.damageResistances {
+                if monster.damageResistances.count > 0 {
                     text.appendAttributedString(NSAttributedString(string: "Damage Resistances ", attributes: statsLabelStyle))
-                    text.appendAttributedString(NSAttributedString(string: "\(damageResistances)\n", attributes: statsValueStyle))
+                    text.appendAttributedString(NSAttributedString(string: "\(damageList(monster.damageResistances, spellDamage: monster.isResistantToSpellDamage))\n", attributes: statsValueStyle))
+                } else if monster.damageResistanceOptions.count > 0 {
+                    text.appendAttributedString(NSAttributedString(string: "Damage Resistances ", attributes: statsLabelStyle))
+
+                    var damageStrings = monster.damageResistanceOptions.map({ ($0 as! DamageResistanceOption).damageType.stringValue }).sort(<)
+                    let lastDamageString = damageStrings.removeLast()
+                    
+                    text.appendAttributedString(NSAttributedString(string: "one of the following: \(damageStrings.joinWithSeparator(", ")), or \(lastDamageString)\n", attributes: statsValueStyle))
                 }
-    
-                if let damageImmunities = monster.damageImmunities {
+                
+                if monster.damageImmunities.count > 0 {
                     text.appendAttributedString(NSAttributedString(string: "Damage Immunities ", attributes: statsLabelStyle))
-                    text.appendAttributedString(NSAttributedString(string: "\(damageImmunities)\n", attributes: statsValueStyle))
+                    text.appendAttributedString(NSAttributedString(string: "\(damageList(monster.damageImmunities))\n", attributes: statsValueStyle))
                 }
 
-                if let conditionImmunities = monster.conditionImmunities {
+                if monster.conditionImmunities.count > 0 {
                     text.appendAttributedString(NSAttributedString(string: "Condition Immunities ", attributes: statsLabelStyle))
-                    text.appendAttributedString(NSAttributedString(string: "\(conditionImmunities)\n", attributes: statsValueStyle))
+                    
+                    let conditionStrings = monster.conditionImmunities.map({ ($0 as! ConditionImmunity).condition.stringValue }).sort(<).joinWithSeparator(", ")
+                    text.appendAttributedString(NSAttributedString(string: "\(conditionStrings)\n", attributes: statsValueStyle))
                 }
 
                 text.appendAttributedString(NSAttributedString(string: "Senses ", attributes: statsLabelStyle))

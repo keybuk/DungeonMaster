@@ -189,6 +189,22 @@ enum ArmorType: Int {
     }
 }
 
+/// Types of attack that a monster can be vulnerable, resistant, or immune to.
+/// - **All**: applies to all attacks.
+/// - **Nonmagical**: applies to nonmagical attacks.
+/// - **NonmagicalNotAdamantine**: applies to nonmagical attacks not made with adamantine weapons.
+/// - **NonmagicalNotSilvered**: applies to nonmagical attacks not made with silvered weapons.
+/// - **Magical**: applies to magic weapons.
+/// - **MagicalByGood**: applies to magic weapons wielded by good creatures.
+enum AttackType: Int {
+    case All
+    case Nonmagical
+    case NonmagicalNotAdamantine
+    case NonmagicalNotSilvered
+    case Magical
+    case MagicalByGood
+}
+
 /// Types of damage that can be dealt by attacks.
 enum DamageType: Int {
     case Acid
@@ -216,6 +232,7 @@ enum ConditionType: Int {
     case Blinded
     case Charmed
     case Deafened
+    case Exhaustion
     case Frightened
     case Grappled
     case Incapacitated

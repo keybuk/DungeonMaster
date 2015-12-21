@@ -32,6 +32,11 @@
 		D249CF8B1C23311A00CDE673 /* Rules.swift in Sources */ = {isa = PBXBuildFile; fileRef = D249CF8A1C23311A00CDE673 /* Rules.swift */; };
 		D249CF8D1C233B2F00CDE673 /* AlignmentOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = D249CF8C1C233B2F00CDE673 /* AlignmentOption.swift */; };
 		D249CF9C1C24BBEA00CDE673 /* Armor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D249CF9B1C24BBEA00CDE673 /* Armor.swift */; };
+		D249CFA41C27664A00CDE673 /* ConditionImmunity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D249CFA31C27664A00CDE673 /* ConditionImmunity.swift */; };
+		D249CFA61C276B3E00CDE673 /* DamageImmunity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D249CFA51C276B3E00CDE673 /* DamageImmunity.swift */; };
+		D249CFA81C276B4400CDE673 /* DamageResistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D249CFA71C276B4400CDE673 /* DamageResistance.swift */; };
+		D249CFAA1C276B4C00CDE673 /* DamageVulnerability.swift in Sources */ = {isa = PBXBuildFile; fileRef = D249CFA91C276B4C00CDE673 /* DamageVulnerability.swift */; };
+		D249CFAC1C27A6E700CDE673 /* DamageResistanceOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = D249CFAB1C27A6E700CDE673 /* DamageResistanceOption.swift */; };
 		D2511FF81C12B1AD00A09F0B /* MonstersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2511FF71C12B1AD00A09F0B /* MonstersViewController.swift */; };
 		D2511FFA1C14BC3700A09F0B /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2511FF91C14BC3700A09F0B /* Tag.swift */; };
 		D25120001C14C7ED00A09F0B /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2511FFF1C14C7ED00A09F0B /* BooksViewController.swift */; };
@@ -102,6 +107,11 @@
 		D249CF8A1C23311A00CDE673 /* Rules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rules.swift; sourceTree = "<group>"; };
 		D249CF8C1C233B2F00CDE673 /* AlignmentOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlignmentOption.swift; sourceTree = "<group>"; };
 		D249CF9B1C24BBEA00CDE673 /* Armor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Armor.swift; sourceTree = "<group>"; };
+		D249CFA31C27664A00CDE673 /* ConditionImmunity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConditionImmunity.swift; sourceTree = "<group>"; };
+		D249CFA51C276B3E00CDE673 /* DamageImmunity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamageImmunity.swift; sourceTree = "<group>"; };
+		D249CFA71C276B4400CDE673 /* DamageResistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamageResistance.swift; sourceTree = "<group>"; };
+		D249CFA91C276B4C00CDE673 /* DamageVulnerability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamageVulnerability.swift; sourceTree = "<group>"; };
+		D249CFAB1C27A6E700CDE673 /* DamageResistanceOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamageResistanceOption.swift; sourceTree = "<group>"; };
 		D2511FF71C12B1AD00A09F0B /* MonstersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonstersViewController.swift; sourceTree = "<group>"; };
 		D2511FF91C14BC3700A09F0B /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		D2511FFF1C14C7ED00A09F0B /* BooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +182,11 @@
 				D2511FF91C14BC3700A09F0B /* Tag.swift */,
 				D249CF8C1C233B2F00CDE673 /* AlignmentOption.swift */,
 				D249CF9B1C24BBEA00CDE673 /* Armor.swift */,
+				D249CFA51C276B3E00CDE673 /* DamageImmunity.swift */,
+				D249CFA71C276B4400CDE673 /* DamageResistance.swift */,
+				D249CFAB1C27A6E700CDE673 /* DamageResistanceOption.swift */,
+				D249CFA91C276B4C00CDE673 /* DamageVulnerability.swift */,
+				D249CFA31C27664A00CDE673 /* ConditionImmunity.swift */,
 				D2116A471C10ECAE001EDBBA /* Trait.swift */,
 				D2116A451C10EBEB001EDBBA /* Action.swift */,
 				D2116A491C10ECBC001EDBBA /* Reaction.swift */,
@@ -415,6 +430,7 @@
 				D2BDE60E1C1750170008B2F2 /* EncounterViewController.swift in Sources */,
 				D23435F41C0D617C00108D5F /* Monster.swift in Sources */,
 				D2116A511C10F4CE001EDBBA /* LairAction.swift in Sources */,
+				D249CFA61C276B3E00CDE673 /* DamageImmunity.swift in Sources */,
 				D26FBA221C1BEA0F00D44503 /* Combatant.swift in Sources */,
 				D249CF851C21DF3500CDE673 /* PointGenerator.swift in Sources */,
 				D2BDE60C1C17500A0008B2F2 /* EncountersViewController.swift in Sources */,
@@ -430,8 +446,10 @@
 				D2C6063E1C17D32900F61DBD /* TabletopViewController.swift in Sources */,
 				D25120001C14C7ED00A09F0B /* BooksViewController.swift in Sources */,
 				D2116A4F1C10F377001EDBBA /* Lair.swift in Sources */,
+				D249CFAC1C27A6E700CDE673 /* DamageResistanceOption.swift in Sources */,
 				D2511FF81C12B1AD00A09F0B /* MonstersViewController.swift in Sources */,
 				D2116A4C1C10ECC9001EDBBA /* LegendaryAction.swift in Sources */,
+				D249CFA41C27664A00CDE673 /* ConditionImmunity.swift in Sources */,
 				D23435EC1C0D5A3D00108D5F /* Model.swift in Sources */,
 				D26FBA3F1C1EA4E700D44503 /* Condition.swift in Sources */,
 				D249CF891C22602800CDE673 /* ConditionRulesViewController.swift in Sources */,
@@ -442,12 +460,14 @@
 				D26FBA391C1E366300D44503 /* Damage.swift in Sources */,
 				D2116A4A1C10ECBC001EDBBA /* Reaction.swift in Sources */,
 				D2A9AF0A1BFFEAA5009902ED /* AppDelegate.swift in Sources */,
+				D249CFA81C276B4400CDE673 /* DamageResistance.swift in Sources */,
 				D243F6431C189A7500324572 /* TabletopView.swift in Sources */,
 				D249CF9C1C24BBEA00CDE673 /* Armor.swift in Sources */,
 				D249CF8D1C233B2F00CDE673 /* AlignmentOption.swift in Sources */,
 				D2116A551C10F4F8001EDBBA /* RegionalEffect.swift in Sources */,
 				D2116A481C10ECAE001EDBBA /* Trait.swift in Sources */,
 				D26FBA321C1D39B900D44503 /* Sounds.swift in Sources */,
+				D249CFAA1C276B4C00CDE673 /* DamageVulnerability.swift in Sources */,
 				D2116A531C10F4E9001EDBBA /* LairTrait.swift in Sources */,
 				D249CF8B1C23311A00CDE673 /* Rules.swift in Sources */,
 				D26FBA341C1D3BAF00D44503 /* CombatantViewController.swift in Sources */,

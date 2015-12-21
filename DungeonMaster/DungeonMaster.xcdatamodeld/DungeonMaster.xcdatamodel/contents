@@ -41,10 +41,34 @@
         <attribute name="rawType" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="target" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Combatant" inverseName="conditions" inverseEntity="Combatant" syncable="YES"/>
     </entity>
+    <entity name="ConditionImmunity" representedClassName=".ConditionImmunity" syncable="YES">
+        <attribute name="rawCondition" attributeType="Integer 16" syncable="YES"/>
+        <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="conditionImmunities" inverseEntity="Monster" syncable="YES"/>
+    </entity>
     <entity name="Damage" representedClassName=".Damage" syncable="YES">
         <attribute name="rawPoints" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawType" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="target" maxCount="1" deletionRule="Nullify" destinationEntity="Combatant" inverseName="damages" inverseEntity="Combatant" syncable="YES"/>
+    </entity>
+    <entity name="DamageImmunity" representedClassName=".DamageImmunity" syncable="YES">
+        <attribute name="rawAttackType" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="rawDamageType" attributeType="Integer 16" syncable="YES"/>
+        <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="damageImmunities" inverseEntity="Monster" syncable="YES"/>
+    </entity>
+    <entity name="DamageResistance" representedClassName=".DamageResistance" syncable="YES">
+        <attribute name="rawAttackType" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="rawDamageType" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="spellName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="damageResistances" inverseEntity="Monster" syncable="YES"/>
+    </entity>
+    <entity name="DamageResistanceOption" representedClassName=".DamageResistanceOption" syncable="YES">
+        <attribute name="rawDamageType" attributeType="Integer 16" syncable="YES"/>
+        <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="damageResistanceOptions" inverseEntity="Monster" syncable="YES"/>
+    </entity>
+    <entity name="DamageVulnerability" representedClassName=".DamageVulnerability" syncable="YES">
+        <attribute name="rawAttackType" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="rawDamageType" attributeType="Integer 16" syncable="YES"/>
+        <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="damageVulnerabilities" inverseEntity="Monster" syncable="YES"/>
     </entity>
     <entity name="Encounter" representedClassName=".Encounter" syncable="YES">
         <attribute name="lastUsed" attributeType="Date" syncable="YES"/>
@@ -80,12 +104,9 @@
     <entity name="Monster" representedClassName=".Monster" syncable="YES">
         <attribute name="canHover" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="challenge" attributeType="Decimal" defaultValueString="0" syncable="YES"/>
-        <attribute name="conditionImmunities" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="damageImmunities" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="damageResistances" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="damageVulnerabilities" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isBlind" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="isNPC" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="isResistantToSpellDamage" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="languages" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="rawAcrobaticsSkill" optional="YES" attributeType="Integer 16" syncable="YES"/>
@@ -138,6 +159,11 @@
         <relationship name="alignmentOptions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="AlignmentOption" inverseName="monster" inverseEntity="AlignmentOption" syncable="YES"/>
         <relationship name="armor" toMany="YES" deletionRule="Cascade" destinationEntity="Armor" inverseName="monster" inverseEntity="Armor" syncable="YES"/>
         <relationship name="combatants" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Combatant" inverseName="monster" inverseEntity="Combatant" syncable="YES"/>
+        <relationship name="conditionImmunities" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ConditionImmunity" inverseName="monster" inverseEntity="ConditionImmunity" syncable="YES"/>
+        <relationship name="damageImmunities" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DamageImmunity" inverseName="monster" inverseEntity="DamageImmunity" syncable="YES"/>
+        <relationship name="damageResistanceOptions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DamageResistanceOption" inverseName="monster" inverseEntity="DamageResistanceOption" syncable="YES"/>
+        <relationship name="damageResistances" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DamageResistance" inverseName="monster" inverseEntity="DamageResistance" syncable="YES"/>
+        <relationship name="damageVulnerabilities" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DamageVulnerability" inverseName="monster" inverseEntity="DamageVulnerability" syncable="YES"/>
         <relationship name="lair" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Lair" inverseName="monster" inverseEntity="Lair" syncable="YES"/>
         <relationship name="legendaryActions" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="LegendaryAction" inverseName="monster" inverseEntity="LegendaryAction" syncable="YES"/>
         <relationship name="reactions" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Reaction" inverseName="monster" inverseEntity="Reaction" syncable="YES"/>
@@ -187,11 +213,16 @@
         <element name="LairAction" positionX="567" positionY="630" width="128" height="75"/>
         <element name="LairTrait" positionX="567" positionY="717" width="128" height="75"/>
         <element name="LegendaryAction" positionX="261" positionY="558" width="128" height="90"/>
-        <element name="Monster" positionX="79" positionY="216" width="128" height="1035"/>
+        <element name="Monster" positionX="79" positionY="216" width="128" height="1065"/>
         <element name="Reaction" positionX="261" positionY="459" width="128" height="90"/>
         <element name="RegionalEffect" positionX="565" positionY="801" width="128" height="75"/>
         <element name="Source" positionX="-92" positionY="198" width="128" height="105"/>
         <element name="Tag" positionX="-92" positionY="432" width="128" height="75"/>
         <element name="Trait" positionX="261" positionY="261" width="128" height="90"/>
+        <element name="DamageVulnerability" positionX="-18" positionY="387" width="128" height="90"/>
+        <element name="ConditionImmunity" positionX="0" positionY="405" width="128" height="75"/>
+        <element name="DamageImmunity" positionX="-54" positionY="351" width="128" height="90"/>
+        <element name="DamageResistance" positionX="-45" positionY="360" width="128" height="105"/>
+        <element name="DamageResistanceOption" positionX="-36" positionY="369" width="128" height="75"/>
     </elements>
 </model>

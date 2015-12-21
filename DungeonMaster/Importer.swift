@@ -104,6 +104,36 @@ func importIfNeeded() {
             armor.setValuesForKeysWithDictionary(armorData)
         }
         
+        let damageVulnerabilityDatas = monsterData["damageVulnerabilities"] as! [[String: AnyObject]]
+        for damageVulnerabilityDate in damageVulnerabilityDatas {
+            let damageVulnerability = DamageVulnerability(monster: monster, inManagedObjectContext: managedObjectContext)
+            damageVulnerability.setValuesForKeysWithDictionary(damageVulnerabilityDate)
+        }
+
+        let damageResistanceDatas = monsterData["damageResistances"] as! [[String: AnyObject]]
+        for damageResistanceData in damageResistanceDatas {
+            let damageResistance = DamageResistance(monster: monster, inManagedObjectContext: managedObjectContext)
+            damageResistance.setValuesForKeysWithDictionary(damageResistanceData)
+        }
+        
+        let damageResistanceOptionDatas = monsterData["damageResistanceOptions"] as! [[String: AnyObject]]
+        for damageResistanceOptionData in damageResistanceOptionDatas {
+            let damageResistanceOption = DamageResistanceOption(monster: monster, inManagedObjectContext: managedObjectContext)
+            damageResistanceOption.setValuesForKeysWithDictionary(damageResistanceOptionData)
+        }
+
+        let damageImmunityDates = monsterData["damageImmunities"] as! [[String: AnyObject]]
+        for damageImmunityData in damageImmunityDates {
+            let damageImmunity = DamageImmunity(monster: monster, inManagedObjectContext: managedObjectContext)
+            damageImmunity.setValuesForKeysWithDictionary(damageImmunityData)
+        }
+
+        let conditionImmunityDatas = monsterData["conditionImmunities"] as! [[String: AnyObject]]
+        for conditionImmunityData in conditionImmunityDatas {
+            let conditionImmunity = ConditionImmunity(monster: monster, inManagedObjectContext: managedObjectContext)
+            conditionImmunity.setValuesForKeysWithDictionary(conditionImmunityData)
+        }
+
         let info = monsterData["info"] as! [String: AnyObject]
         monster.setValuesForKeysWithDictionary(info)
         

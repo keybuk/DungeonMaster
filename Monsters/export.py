@@ -40,8 +40,9 @@ ARMOR_TYPES = [ None, "natural", "padded", "leather", "studded leather", "hide",
                 "splint", "plate", "armor scraps", "barding scraps", "patchwork" ]
 DAMAGE_TYPES = [ "acid", "bludgeoning", "cold", "fire", "force", "lightning", "necrotic", "piercing",
                  "poison", "psychic", "radiant", "slashing", "thunder" ]
-CONDITIONS = [ "blinded", "charmed", "deafened", "frightened", "grappled", "incapacitated", "invisible",
-              "paralyzed", "petrified", "poisoned", "prone", "restrained", "stunned", "unconcious" ]
+CONDITIONS = [ "blinded", "charmed", "deafened", "exhaustion", "frightened", "grappled",
+			   "incapacitated", "invisible", "paralyzed", "petrified", "poisoned", "prone",
+			   "restrained", "stunned", "unconscious" ]
 
 armor_expr = "|".join(armor for armor in ARMOR_TYPES if armor is not None)
 damage_expr = "|".join(DAMAGE_TYPES)
@@ -62,11 +63,55 @@ ABILITY_RE = re.compile(r'^(\d+) \(([+-]\d+)\)$')
 
 SAVING_THROW_SKILLS_RE = re.compile(r'^([A-Za-z ]+) ([+-]\d+)$')
 
-# blindsight \d+ ft.
-#  (blind beyond this radius)
-# darkvision \d+ ft.
-# tremorsense \d+ ft.
-# truesight \d+ ft.
+DAMAGE_VULNERABILITIES_RE = re.compile(
+	r'^(?:((?:(?:' + damage_expr + ')(?:, |$))+)' +
+	r'|(' + damage_expr + r') from magic weapons wielded by good creatures)$' # Rakshasa
+	)
+
+DAMAGE_RESISTANCES_RE = re.compile(
+	r'^(?=.)' +
+	r'(?:' +
+		r'((?:(?:' + damage_expr + ')(?:, |(?=; )|$))+)' +
+		r'(?:; |$))?' +
+	r'(?:' +
+		r'(?:(' + damage_expr + ')' +
+		r'|(' + damage_expr + ') and (' + damage_expr + ')' +
+		r'|((?:(?:' + damage_expr + '), )+)and (' + damage_expr + '))' +
+		r'(?: from nonmagical attacks' +
+		r'(?: not made with (adamantine|silvered) weapons)?' +
+		r'| from (magic) weapons' + # Demilich
+		r'| from nonmagical weapons that aren\'t (silvered)' + # Old-style nonmagical non-silvered
+		r'))?' +
+	r'$'
+	)
+
+DAMAGE_RESISTANCE_OPTIONS_RE = re.compile(
+	r'^one of the following: ((?:(?:' + damage_expr + ')(?:, ))+)or (' + damage_expr + ')$')
+
+ARCHMAGE_DAMAGE_RESISTANCE_RE = re.compile(
+	r'^damage from spells; nonmagical ' +
+	r'((?:(?:' + damage_expr + ')(?:, ))+)and (' + damage_expr + ')' +
+	r' \(from ([^)]+)\)$')
+
+# This is basically the same as above, so keep the two roughly in sync except for the special-cases.
+DAMAGE_IMMUNITIES_RE = re.compile(
+	r'^(?=.)' +
+	r'(?:' +
+		r'((?:(?:' + damage_expr + ')(?:, |(?=; )|$))+)' +
+		r'(?:; |$))?' +
+	r'(?:' +
+		r'(?:(' + damage_expr + ')' +
+		r'|(' + damage_expr + ') and (' + damage_expr + ')' +
+		r'|((?:(?:' + damage_expr + '), )+)and (' + damage_expr + '))' +
+		r'(?: from nonmagical attacks' +
+		r'(?: not made with (adamantine|silvered) weapons)?' +
+		r'| from nonmagical weapons' + # Old-style nonmagical
+		r'))?' +
+	r'$'
+	)
+
+CONDITION_IMMUNITIES_RE = re.compile(r'^(?:(?:' + condition_expr + ')(?:, |$))+$')
+
 SENSES_RE = re.compile(
 	r'^(?:blindsight (\d+) ft\.(?: \((blind beyond this radius)\))?(?:, |$))?'
 	r'(?:darkvision (\d+) ft\.(?:, |$))?'
@@ -128,6 +173,11 @@ class Exporter(monster.MonsterParser):
 		self.tags = []
 		self.alignment_options = []
 		self.armor = []
+		self.damage_vulnerabilities = []
+		self.damage_resistances = []
+		self.damage_resistance_options = []
+		self.damage_immunities = []
+		self.condition_immunities = []
 		self.info = {}
 		self.traits = []
 		self.actions = []
@@ -172,6 +222,11 @@ class Exporter(monster.MonsterParser):
 			"tags": self.tags,
 			"alignmentOptions": self.alignment_options,
 			"armor": self.armor,
+			"damageVulnerabilities": self.damage_vulnerabilities,
+			"damageResistances": self.damage_resistances,
+			"damageResistanceOptions": self.damage_resistance_options,
+			"damageImmunities": self.damage_immunities,
+			"conditionImmunities": self.condition_immunities,
 			"info": self.info,
 			"traits": self.traits,
 			"actions": self.actions,
@@ -430,19 +485,155 @@ class Exporter(monster.MonsterParser):
 				raise self.error("Unknown skill: %s" % skill)
 
 	def handle_damage_vulnerabilities(self, line):
-		self.info['damageVulnerabilities'] = line
+		match = DAMAGE_VULNERABILITIES_RE.match(line)
+		if match is None:
+			raise self.error("Damage Vulnerabilities line didn't match expected format: %s" % line)
+
+		(damage_list, good_damage) = match.groups()
+		if damage_list is not None:
+			damage_types = [ DAMAGE_TYPES.index(x) for x in damage_list.split(", ") ]
+
+			for damage_type in damage_types:
+				self.damage_vulnerabilities.append({
+					'rawDamageType': damage_type,
+					'rawAttackType': 0,
+				})
+
+		elif good_damage is not None:
+			self.damage_vulnerabilities.append({
+				'rawDamageType': DAMAGE_TYPES.index(good_damage),
+				'rawAttackType': 5,
+			})
 
 	def handle_damage_resistances(self, line):
-		self.info['damageResistances'] = line
+		match = DAMAGE_RESISTANCES_RE.match(line)
+		if match is None:
+			match = DAMAGE_RESISTANCE_OPTIONS_RE.match(line)
+			if match is not None:
+				return self.handle_damage_resistance_options(match)
+
+			raise self.error("Damage Resistances line didn't match expected format: %s" % line)
+
+		(damage_list, nonmagical_damage0, nonmagical_damage1, nonmagical_damage2,
+		 nonmagical_damage_list, nonmagical_damage3,
+		 special_weapon_type, magic_not_nonmagic, oldstyle_nonmagical_special) = match.groups()
+
+		if damage_list is not None:
+			damage_types = [ DAMAGE_TYPES.index(x) for x in damage_list.split(", ") ]
+
+			for damage_type in damage_types:
+				self.damage_resistances.append({
+					'rawDamageType': damage_type,
+					'rawAttackType': 0,
+				})
+
+		nonmagical_damage_types = None
+		if nonmagical_damage_list is not None:
+			nonmagical_damage_types = nonmagical_damage_list.split(", ")[:-1]
+			nonmagical_damage_types.append(nonmagical_damage3)
+		elif nonmagical_damage1 is not None:
+			nonmagical_damage_types = [ nonmagical_damage1, nonmagical_damage2 ]
+		elif nonmagical_damage0 is not None:
+			nonmagical_damage_types = [ nonmagical_damage0 ]
+
+		if nonmagical_damage_types is not None:
+			damage_types = [ DAMAGE_TYPES.index(x) for x in nonmagical_damage_types ]
+
+			if special_weapon_type == "adamantine" or oldstyle_nonmagical_special == "adamantine":
+				attack_type = 2
+			elif special_weapon_type == "silvered" or oldstyle_nonmagical_special == "silvered":
+				attack_type = 3
+			elif magic_not_nonmagic is not None:
+				attack_type = 4
+			else:
+				attack_type = 1
+
+			for damage_type in damage_types:
+				self.damage_resistances.append({
+					'rawDamageType': damage_type,
+					'rawAttackType': attack_type,
+				})
+
+	def handle_damage_resistance_options(self, match):
+		(damage_list, last_damage) = match.groups()
+		damage_types = [ DAMAGE_TYPES.index(x) for x in damage_list.split(", ")[:-1] ]
+		damage_types.append(DAMAGE_TYPES.index(last_damage))
+
+		for damage_type in damage_types:
+			self.damage_resistance_options.append({
+				'rawDamageType': damage_type,
+			})
 
 	def handle_archmage_damage_resistance(self, line):
-		self.info['damageResistances'] = line
+		match = ARCHMAGE_DAMAGE_RESISTANCE_RE.match(line)
+		if match is None:
+			raise self.error("Archmage Damage Reistance line didn't match expected format: %s" % line)
+
+		(damage_list, last_damage, spell_name) = match.groups()
+		damage_types = [ DAMAGE_TYPES.index(x) for x in damage_list.split(", ")[:-1] ]
+		damage_types.append(DAMAGE_TYPES.index(last_damage))
+
+		for damage_type in damage_types:
+			self.damage_resistances.append({
+				'rawDamageType': damage_type,
+				'rawAttackType': 1,
+				'spellName': spell_name,
+			})
+
+		self.info['isResistantToSpellDamage'] = True
 
 	def handle_damage_immunities(self, line):
-		self.info['damageImmunities'] = line
+		match = DAMAGE_IMMUNITIES_RE.match(line)
+		if match is None:
+			raise self.error("Damage Immunities line didn't match expected format: %s" % line)
+
+		(damage_list, nonmagical_damage0, nonmagical_damage1, nonmagical_damage2,
+		 nonmagical_damage_list, nonmagical_damage3, special_weapon_type) = match.groups()
+
+		if damage_list is not None:
+			damage_types = [ DAMAGE_TYPES.index(x) for x in damage_list.split(", ") ]
+
+			for damage_type in damage_types:
+				self.damage_immunities.append({
+					'rawDamageType': damage_type,
+					'rawAttackType': 0,
+				})
+
+		nonmagical_damage_types = None
+		if nonmagical_damage_list is not None:
+			nonmagical_damage_types = nonmagical_damage_list.split(", ")[:-1]
+			nonmagical_damage_types.append(nonmagical_damage3)
+		elif nonmagical_damage1 is not None:
+			nonmagical_damage_types = [ nonmagical_damage1, nonmagical_damage2 ]
+		elif nonmagical_damage0 is not None:
+			nonmagical_damage_types = [ nonmagical_damage0 ]
+
+		if nonmagical_damage_types is not None:
+			damage_types = [ DAMAGE_TYPES.index(x) for x in nonmagical_damage_types ]
+
+			if special_weapon_type == "adamantine":
+				attack_type = 2
+			elif special_weapon_type == "silvered":
+				attack_type = 3
+			else:
+				attack_type = 1
+
+			for damage_type in damage_types:
+				self.damage_immunities.append({
+					'rawDamageType': damage_type,
+					'rawAttackType': attack_type,
+				})
 
 	def handle_condition_immunities(self, line):
-		self.info['conditionImmunities'] = line
+		match = CONDITION_IMMUNITIES_RE.match(line)
+		if match is None:
+			raise self.error("Condition Immunities line didn't match expected format: %s" % line)
+
+		conditions = [ CONDITIONS.index(x) for x in line.split(", ") ]
+		for condition in conditions:
+			self.condition_immunities.append({
+				'rawCondition': condition
+			})
 
 	def handle_senses(self, line):
 		match = SENSES_RE.match(line)
