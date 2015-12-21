@@ -689,6 +689,58 @@ final class Monster: NSManagedObject {
     }
     @NSManaged private var rawTruesight: NSNumber?
     
+    /// Whether this monster is capable of speaking all languages.
+    @NSManaged var canSpeakAllLanguages: Bool
+    
+    /// Languages that this monster can speak.
+    ///
+    /// Each member is a `Language` shared with other monsters that can also speak or understand it.
+    @NSManaged var languagesSpoken: NSSet
+    
+    /// Languages that monsters created from this stat block can speak.
+    var languagesSpokenOption: LanguageOption? {
+        get {
+            return rawLanguagesSpokenOption != nil ? LanguageOption(rawValue: rawLanguagesSpokenOption!.integerValue)! : nil
+        }
+        set(newLanguagesSpokenOption) {
+            rawLanguagesSpokenOption = newLanguagesSpokenOption != nil ? NSNumber(integer: newLanguagesSpokenOption!.rawValue) : nil
+        }
+    }
+    @NSManaged private var rawLanguagesSpokenOption: NSNumber?
+    
+    /// Whether this monster can understand all languages (usually for the purpose of commands).
+    @NSManaged var canUnderstandAllLanguages: Bool
+
+    /// Languages that this monster can understand, but not speak.
+    ///
+    /// Each member is a `Language` shared with other monsters that can also speak or understand it.
+    @NSManaged var languagesUnderstood: NSSet
+    
+    /// Languages that monsters created from this stat block can understand.
+    var languagesUnderstoodOption: LanguageOption? {
+        get {
+            return rawLanguagesUnderstoodOption != nil ? LanguageOption(rawValue: rawLanguagesUnderstoodOption!.integerValue)! : nil
+        }
+        set(newLanguagesUnderstoodOption) {
+            rawLanguagesUnderstoodOption = newLanguagesUnderstoodOption != nil ? NSNumber(integer: newLanguagesUnderstoodOption!.rawValue) : nil
+        }
+    }
+    @NSManaged private var rawLanguagesUnderstoodOption: NSNumber?
+
+    /// Distance (in feet) within which the monster can communicate telepathically.
+    var telepathy: Int? {
+        get {
+            return rawTelepathy?.integerValue
+        }
+        set(newTelepathy) {
+            rawTelepathy = newTelepathy != nil ? NSNumber(integer: newTelepathy!) : nil
+        }
+    }
+    @NSManaged private var rawTelepathy: NSNumber?
+    
+    /// Whether the monster's telepathy ability is limited to the languages it can speak.
+    @NSManaged var telepathyIsLimited: Bool
+
     /// The challenge rating of this monster.
     ///
     /// Represented as an NSDecimalNumber since ⅛ (0.125), ¼ (0.25), and ½ (0.5) are possible ratings, and we want to represent them without getting into fuzzy comparisons that we'd end up with using Floats or Doubles.
@@ -709,9 +761,6 @@ final class Monster: NSManagedObject {
     var proficiencyBonus: Int {
         return sharedRules.challengeProficiencyBonus[challenge]!
     }
-    
-    /// The last un-parsed field!
-    @NSManaged var languages: String?
     
     /// Special traits of this monster.
     ///

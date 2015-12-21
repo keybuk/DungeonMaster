@@ -119,6 +119,33 @@ SENSES_RE = re.compile(
 	r'(?:truesight (\d+) ft\.(?:, |$))?'
 	r'passive Perception (\d+)$')
 
+language_expr = r'[A-Z][a-z-]+(?: [A-Z][a-z]+|\' cant)*'
+
+LANGUAGES_RE = re.compile(
+	r'^(?=.)(?:-|' +
+	r'(?:(?:' +
+		r'((?:' + language_expr + r'(?:, |(?= plus )|$))+)' +
+		r'|(any|the) languages it knew in life(?:, |$)'
+		r'|one language known by its (creator)(?:, |$)'
+		r'|any (one) language(?: \((usually Common)\))?(?:, |$)'
+		r'|any (two|four|six) languages(?:, |$)'
+		r'|(all)(?:, |$)' +
+	r')(?: (plus one other) language'
+		r'| (plus any two) languages'
+		r'| (plus up to five) other languages'
+	r')?)?' +
+	r'(?:(?:' +
+		r'understands (' + language_expr + ') but (?:can\'t|doesn\'t) speak(?: it)?' +
+		r'|understands (' + language_expr + ') and (' + language_expr + ') but can\'t speak(?: them)?' +
+		r'|understands ((?:(?:' + language_expr + r')(?:, |$))+)and (' + language_expr + ') but can\'t speak(?: them)?' +
+		r'|understands (all|the) languages it knew in life but can\'t speak' +
+		r'|understands the languages of its (creator) but can\'t speak' +
+		r'|understands (commands) given in any language but can\'t speak' +
+	r')(?:, |$))?' +
+	r'(?:telepathy (\d+) ft\.(?: \(works only with creatures that understand (' + language_expr + r')\))?)?' +
+	r')$'
+	)
+
 DICE_RE = re.compile(r'^(?:[1-9][0-9]*(?:d(?:2|4|6|8|10|12|20|100))?(?: *[+-] *(?=[^ ]))?)+$')
 DICE_ANYWHERE_RE = re.compile(r'(?:[1-9][0-9]*(?:d(?:2|4|6|8|10|12|20|100))?(?: *[+-] *(?=[^ ]))?)+')
 SPELL_RE = re.compile(r'/([a-z ]+)/')
@@ -178,6 +205,8 @@ class Exporter(monster.MonsterParser):
 		self.damage_resistance_options = []
 		self.damage_immunities = []
 		self.condition_immunities = []
+		self.languages_spoken = []
+		self.languages_understood = []
 		self.info = {}
 		self.traits = []
 		self.actions = []
@@ -227,6 +256,8 @@ class Exporter(monster.MonsterParser):
 			"damageResistanceOptions": self.damage_resistance_options,
 			"damageImmunities": self.damage_immunities,
 			"conditionImmunities": self.condition_immunities,
+			"languagesSpoken": self.languages_spoken,
+			"languagesUnderstood": self.languages_understood,
 			"info": self.info,
 			"traits": self.traits,
 			"actions": self.actions,
@@ -665,9 +696,67 @@ class Exporter(monster.MonsterParser):
 			raise self.error("Passive Perception didn't match expected value (%d): %d" % (expectedPassive, passive))
 
 	def handle_languages(self, line):
-		# TODO: easy to parse
-		if line != "-":
-			self.info['languages'] = line
+		match = LANGUAGES_RE.match(line)
+		if match is None:
+			raise self.error("Languages didn't match expected format: %s" % line)
+
+		(language_list, speaks_knew, speaks_creator, speaks_one, speaks_common, speaks_option,
+		 speaks_all, plus_one, plus_two, plus_five,
+		 understands0, understands1, understands2, understands_list, understands3,
+		 understands_knew, understands_creator, understands_commands,
+		 telepathy, limited_telepathy) = match.groups()
+		if language_list is not None:
+			languages = language_list.split(", ")
+			if languages[-1] == "":
+				languages.pop()
+			self.languages_spoken.extend(languages)
+
+		if speaks_knew is not None:
+			self.info['rawLanguagesSpokenOption'] = 1
+		if speaks_creator is not None:
+			self.info['rawLanguagesSpokenOption'] = 3
+		if speaks_common is not None:
+			self.info['rawLanguagesSpokenOption'] = 0
+		elif speaks_one is not None:
+			self.info['rawLanguagesSpokenOption'] = 4
+		if speaks_option == "two":
+			self.info['rawLanguagesSpokenOption'] = 5
+		if speaks_option == "four":
+			self.info['rawLanguagesSpokenOption'] = 6
+		if speaks_option == "six":
+			self.info['rawLanguagesSpokenOption'] = 8
+
+		if speaks_all is not None:
+			self.info['canSpeakAllLanguages'] = True
+
+		if plus_one:
+			self.info['rawLanguagesSpokenOption'] = 4
+		if plus_two:
+			self.info['rawLanguagesSpokenOption'] = 5
+		if plus_five:
+			self.info['rawLanguagesSpokenOption'] = 7
+
+		if understands_list is not None:
+			self.languages_understood.extend(understands_list.split(", ")[:-1])
+			self.languages_understood.append(understands3)
+		elif understands1 is not None:
+			self.languages_understood.append(understands1)
+			self.languages_understood.append(understands2)
+		elif understands0 is not None:
+			self.languages_understood.append(understands0)
+
+		if understands_knew is not None:
+			self.info['rawLanguagesUnderstoodOption'] = 1
+		if understands_creator is not None:
+			self.info['rawLanguagesUnderstoodOption'] = 2
+
+		if understands_commands is not None:
+			self.info['canUnderstandAllLanguages'] = True
+
+		if telepathy is not None:
+			self.info['rawTelepathy'] = int(telepathy)
+			if limited_telepathy is not None:
+				self.info['telepathyIsLimited'] = True
 
 	def handle_challenge(self, line):
 		match = CHALLENGE_RE.match(line)

@@ -37,6 +37,7 @@
 		D249CFA81C276B4400CDE673 /* DamageResistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D249CFA71C276B4400CDE673 /* DamageResistance.swift */; };
 		D249CFAA1C276B4C00CDE673 /* DamageVulnerability.swift in Sources */ = {isa = PBXBuildFile; fileRef = D249CFA91C276B4C00CDE673 /* DamageVulnerability.swift */; };
 		D249CFAC1C27A6E700CDE673 /* DamageResistanceOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = D249CFAB1C27A6E700CDE673 /* DamageResistanceOption.swift */; };
+		D249CFAE1C27B3EC00CDE673 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = D249CFAD1C27B3EC00CDE673 /* Language.swift */; };
 		D2511FF81C12B1AD00A09F0B /* MonstersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2511FF71C12B1AD00A09F0B /* MonstersViewController.swift */; };
 		D2511FFA1C14BC3700A09F0B /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2511FF91C14BC3700A09F0B /* Tag.swift */; };
 		D25120001C14C7ED00A09F0B /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2511FFF1C14C7ED00A09F0B /* BooksViewController.swift */; };
@@ -112,6 +113,7 @@
 		D249CFA71C276B4400CDE673 /* DamageResistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamageResistance.swift; sourceTree = "<group>"; };
 		D249CFA91C276B4C00CDE673 /* DamageVulnerability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamageVulnerability.swift; sourceTree = "<group>"; };
 		D249CFAB1C27A6E700CDE673 /* DamageResistanceOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamageResistanceOption.swift; sourceTree = "<group>"; };
+		D249CFAD1C27B3EC00CDE673 /* Language.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		D2511FF71C12B1AD00A09F0B /* MonstersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonstersViewController.swift; sourceTree = "<group>"; };
 		D2511FF91C14BC3700A09F0B /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		D2511FFF1C14C7ED00A09F0B /* BooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				D249CFAB1C27A6E700CDE673 /* DamageResistanceOption.swift */,
 				D249CFA91C276B4C00CDE673 /* DamageVulnerability.swift */,
 				D249CFA31C27664A00CDE673 /* ConditionImmunity.swift */,
+				D249CFAD1C27B3EC00CDE673 /* Language.swift */,
 				D2116A471C10ECAE001EDBBA /* Trait.swift */,
 				D2116A451C10EBEB001EDBBA /* Action.swift */,
 				D2116A491C10ECBC001EDBBA /* Reaction.swift */,
@@ -448,6 +451,7 @@
 				D2116A4F1C10F377001EDBBA /* Lair.swift in Sources */,
 				D249CFAC1C27A6E700CDE673 /* DamageResistanceOption.swift in Sources */,
 				D2511FF81C12B1AD00A09F0B /* MonstersViewController.swift in Sources */,
+				D249CFAE1C27B3EC00CDE673 /* Language.swift in Sources */,
 				D2116A4C1C10ECC9001EDBBA /* LegendaryAction.swift in Sources */,
 				D249CFA41C27664A00CDE673 /* ConditionImmunity.swift in Sources */,
 				D23435EC1C0D5A3D00108D5F /* Model.swift in Sources */,

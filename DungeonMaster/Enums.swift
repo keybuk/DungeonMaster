@@ -256,35 +256,26 @@ enum ConditionType: Int {
     }
 }
 
-enum Language {
-    // Standard Languages
-    case Common
-    case Dwarvish
-    case Elvish
-    case Giant
-    case Gnomish
-    case Goblin
-    case Halfling
-    case Orc
-    
-    // Exotic Languages
-    case Abyssal
-    case Celestial
-    case Draconic
-    case DeepSpeech
-    case Infernal
-    case Primordial
-    case Sylvan
-    case Undercommon
-    
-    // Primordial Dialects
-    case Auran
-    case Aquan
-    case Ignan
-    case Terran
-    
-    // Monster-specific Languages
-    case Aarakocra
+/// Options for languages that a monster can understand or speak.
+/// - **UsuallyCommon**: the monster will usually understand or speak Common.
+/// - **KnewInLife**: the monster can understand or speak any languages it knew in life.
+/// - **OfItsCreator**: the monster can understand or speak the languages of its creator.
+/// - **OneOfItsCreator**: the monster can understand or speak a single language known by its creator.
+/// - **AnyOne**: the monster can understand or speak any one language.
+/// - **AnyTwo**: the monster can understand or speak any two languages.
+/// - **AnyFour**: the monster can understand or speak any four languages.
+/// - **UpToFive**: the monster can understand or speak up to five languages.
+/// - **AnySix**: the monster can understand or speak any six languages.
+enum LanguageOption: Int {
+    case UsuallyCommon
+    case KnewInLife
+    case OfItsCreator
+    case OneOfItsCreator
+    case AnyOne
+    case AnyTwo
+    case AnyFour
+    case UpToFive
+    case AnySix
 }
 
 enum MagicSchool {

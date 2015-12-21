@@ -102,7 +102,7 @@ struct Rules {
     var conditionDescription: [[String]] {
         return data["conditionDescription"]! as! [[String]]
     }
-
+    
     /// Dictionary mapping challenge rating to XP earned for defeating a monster of that rating.
     var challengeXP: [NSDecimalNumber: Int] {
         var result = [NSDecimalNumber: Int]()

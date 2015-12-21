@@ -54,6 +54,7 @@ func importIfNeeded() {
     }
     
     var tags = [String:Tag]()
+    var languages = [String:Language]()
     
     // Import monsters.
     let monsterDatas = data["monsters"] as! [NSDictionary]
@@ -133,6 +134,32 @@ func importIfNeeded() {
             let conditionImmunity = ConditionImmunity(monster: monster, inManagedObjectContext: managedObjectContext)
             conditionImmunity.setValuesForKeysWithDictionary(conditionImmunityData)
         }
+
+        var monsterLanguages = [Language]()
+        let languageSpokenNames = monsterData["languagesSpoken"] as! [String]
+        for languageName in languageSpokenNames {
+            if let language = languages[languageName] {
+                monsterLanguages.append(language)
+            } else {
+                let language = Language(name: languageName, inManagedObjectContext: managedObjectContext)
+                languages[languageName] = language
+                monsterLanguages.append(language)
+            }
+        }
+        monster.languagesSpoken = NSSet(array: monsterLanguages)
+        
+        monsterLanguages.removeAll()
+        let languageUnderstoodNames = monsterData["languagesUnderstood"] as! [String]
+        for languageName in languageUnderstoodNames {
+            if let language = languages[languageName] {
+                monsterLanguages.append(language)
+            } else {
+                let language = Language(name: languageName, inManagedObjectContext: managedObjectContext)
+                languages[languageName] = language
+                monsterLanguages.append(language)
+            }
+        }
+        monster.languagesUnderstood = NSSet(array: monsterLanguages)
 
         let info = monsterData["info"] as! [String: AnyObject]
         monster.setValuesForKeysWithDictionary(info)

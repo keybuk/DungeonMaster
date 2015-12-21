@@ -21,6 +21,7 @@ enum Model: String {
     case DamageResistanceOption
     case DamageVulnerability
     case ConditionImmunity
+    case Language
     case Trait
     case Action
     case Reaction

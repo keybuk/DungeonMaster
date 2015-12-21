@@ -463,9 +463,133 @@ class DetailViewController: UIViewController {
                 }
                 text.appendAttributedString(NSAttributedString(string: "passive Perception \(monster.passivePerception)\n", attributes: statsValueStyle))
 
+                var languageStrings = [String]()
                 text.appendAttributedString(NSAttributedString(string: "Languages ", attributes: statsLabelStyle))
-                if let languages = monster.languages {
-                    text.appendAttributedString(NSAttributedString(string: "\(languages)\n", attributes: statsValueStyle))
+                
+                if monster.canSpeakAllLanguages {
+                    languageStrings.append("all")
+                } else if monster.languagesSpoken.count > 0 {
+                    languageStrings.appendContentsOf(monster.languagesSpoken.map({ ($0 as! Language).name }).sort(<))
+                    
+                    // Special case for "plus..."
+                    if let languagesSpokenOption = monster.languagesSpokenOption {
+                        var thisString = languageStrings.removeLast()
+                        
+                        switch languagesSpokenOption {
+                        case .AnyOne:
+                            thisString += " plus one other language"
+                        case .AnyTwo:
+                            thisString += " plus any two languages"
+                        case .AnyFour:
+                            thisString += " plus any four languages"
+                        case .UpToFive:
+                            thisString += " plus up to five other languages"
+                        case .AnySix:
+                            thisString += " plus any six languages"
+                        default:
+                            break
+                        }
+                        
+                        languageStrings.append(thisString)
+                    }
+                } else if let languagesSpokenOption = monster.languagesSpokenOption {
+                    switch languagesSpokenOption {
+                    case .UsuallyCommon:
+                        languageStrings.append("any one language (usually Common)")
+                    case .KnewInLife:
+                        languageStrings.append("the languages it knew in life")
+                    case .OfItsCreator:
+                        languageStrings.append("the languages of its creator")
+                    case .OneOfItsCreator:
+                        languageStrings.append("one language known by its creator")
+                    case .AnyOne:
+                        languageStrings.append("any one language")
+                    case .AnyTwo:
+                        languageStrings.append("any two languages")
+                    case .AnyFour:
+                        languageStrings.append("any four languages")
+                    case .UpToFive:
+                        languageStrings.append("up to five languages")
+                    case .AnySix:
+                        languageStrings.append("any six languages")
+                    }
+                }
+        
+                if monster.canUnderstandAllLanguages {
+                    if monster.type == .Construct {
+                        languageStrings.append("understands commands given in any language but can't speak")
+                    } else {
+                        languageStrings.append("understands all languages but can't speak")
+                    }
+                } else if monster.languagesUnderstood.count == 1 {
+                    let language = monster.languagesUnderstood.anyObject() as! Language
+                    if languageStrings.count > 0 {
+                        languageStrings.append("understands \(language.name) but can't speak it")
+                    } else {
+                        languageStrings.append("understands \(language.name) but can't speak")
+                    }
+                } else if monster.languagesUnderstood.count > 0 {
+                    var languageNames = monster.languagesUnderstood.map({ ($0 as! Language).name }).sort(<)
+                    
+                    var thisString = "understands "
+                    if languageNames.count == 2 {
+                        thisString += "\(languageNames[0]) and \(languageNames[1])"
+                    } else {
+                        let lastName = languageNames.removeLast()
+                        thisString += "\(languageNames.joinWithSeparator(", ")), and \(lastName)"
+                    }
+                    thisString += " but can't speak"
+                    if languageStrings.count > 0 {
+                        thisString += " them"
+                    }
+                    
+                    languageStrings.append(thisString)
+                } else if let languagesUnderstoodOption = monster.languagesUnderstoodOption {
+                    var thisString = "understands "
+                    
+                    switch languagesUnderstoodOption {
+                    case .UsuallyCommon:
+                        thisString += "any one language (usually Common)"
+                    case .KnewInLife:
+                        thisString += "the languages it knew in life"
+                    case .OfItsCreator:
+                        thisString += "the languages of its creator"
+                    case .OneOfItsCreator:
+                        thisString += "one language known by its creator"
+                    case .AnyOne:
+                        thisString += "any one language"
+                    case .AnyTwo:
+                        thisString += "any two languages"
+                    case .AnyFour:
+                        thisString += "any four languages"
+                    case .UpToFive:
+                        thisString += "up to five languages"
+                    case .AnySix:
+                        thisString += "any six languages"
+                    }
+            
+                    thisString += " but can't speak"
+                    if languageStrings.count > 0 {
+                        thisString += " them"
+                    }
+                    
+                    languageStrings.append(thisString)
+                }
+                
+                if let telepathy = monster.telepathy {
+                    var languageString = "telepathy \(telepathy) ft."
+                    
+                    if monster.telepathyIsLimited {
+                        let languages = monster.languagesSpoken.map({ ($0 as! Language).name }).sort(<).joinWithSeparator(", ")
+
+                        languageString += " (works only with creatures that understand \(languages)))"
+                    }
+                    
+                    languageStrings.append(languageString)
+                }
+                
+                if languageStrings.count > 0 {
+                    text.appendAttributedString(NSAttributedString(string: "\(languageStrings.joinWithSeparator(", "))\n", attributes: statsValueStyle))
                 } else {
                     text.appendAttributedString(NSAttributedString(string: "—\n", attributes: statsValueStyle))
                 }
