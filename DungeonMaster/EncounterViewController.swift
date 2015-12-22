@@ -106,6 +106,9 @@ class EncounterViewController: UITableViewController {
                 combatantViewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
                 combatantViewController.navigationItem.leftItemsSupplementBackButton = true
             }
+        } else if segue.identifier == "AddMonsterSegue" {
+            let monstersViewController = segue.destinationViewController as! MonstersViewController
+            monstersViewController.addMode = true
         }
     }
     

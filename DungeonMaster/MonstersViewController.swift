@@ -17,6 +17,8 @@ class MonstersViewController: UIViewController {
     
     @IBOutlet var topConstraintOutsideSearch: NSLayoutConstraint!
     @IBOutlet var topConstraintInsideSearch: NSLayoutConstraint!
+    
+    var addMode = false
 
     var searchController: UISearchController?
     var hiddenBooks: Set<Book>?
@@ -82,6 +84,11 @@ class MonstersViewController: UIViewController {
                 controller.detailItem = monster
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
                 controller.navigationItem.leftItemsSupplementBackButton = true
+                if let index = controller.navigationItem.rightBarButtonItems?.indexOf(controller.addButton) {
+                    if !addMode {
+                        controller.navigationItem.rightBarButtonItems?.removeAtIndex(index)
+                    }
+                }
                 if let index = controller.navigationItem.rightBarButtonItems?.indexOf(controller.doneButton) {
                     controller.navigationItem.rightBarButtonItems?.removeAtIndex(index)
                 }

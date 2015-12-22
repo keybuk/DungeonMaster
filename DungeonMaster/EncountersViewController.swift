@@ -17,6 +17,7 @@ class EncountersViewController: UITableViewController {
         clearsSelectionOnViewWillAppear = true
         
         navigationItem.leftBarButtonItem = self.editButtonItem()
+        navigationItem.leftItemsSupplementBackButton = true
     }
     
     override func didReceiveMemoryWarning() {
