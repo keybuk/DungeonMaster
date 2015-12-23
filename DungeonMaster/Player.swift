@@ -79,7 +79,7 @@ final class Player: NSManagedObject {
     ///
     /// Based on the character's current XP.
     var level: Int {
-        return sharedRules.levelXP.filter({ $0.1 < XP }).map({ $0.0 }).maxElement()!
+        return sharedRules.levelXP.filter({ $0.1 <= XP }).map({ $0.0 }).maxElement()!
     }
     
     /// Passive perception score for the character.
