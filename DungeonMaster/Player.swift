@@ -105,11 +105,9 @@ final class Player: NSManagedObject {
     /// Each member is a `PlayerSkill`.
     @NSManaged var skills: NSSet
     
-    convenience init(name: String, inManagedObjectContext context: NSManagedObjectContext) {
+    convenience init(inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Player, inManagedObjectContext: context)
         self.init(entity: entity, insertIntoManagedObjectContext: context)
-        
-        self.name = name
     }
     
     /// Returns whether the player is proficient in a given saving throw.
