@@ -112,4 +112,14 @@ final class Player: NSManagedObject {
         self.name = name
     }
     
+    /// Returns whether the player is proficient in a given saving throw.
+    func isProficient(savingThrow savingThrow: Ability) -> Bool {
+        return savingThrows.map({ ($0 as! PlayerSavingThrow).savingThrow }).contains(savingThrow)
+    }
+    
+    /// Returns whether the player is proficient in a given skill.
+    func isProficient(skill skill: Skill) -> Bool {
+        return skills.map({ ($0 as! PlayerSkill).skill }).contains(skill)
+    }
+    
 }
