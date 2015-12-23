@@ -48,7 +48,7 @@ enum Ability: Int {
 /// Skill categorises the different possible skills of D&D monsters and characters.
 ///
 /// Skills are grouped according to `Ability`, there are no skills for the `Constitution` ability.
-enum Skill {
+enum Skill: Equatable, Hashable {
     enum StrengthSkill: Int {
         case Athletics
     }
@@ -118,6 +118,10 @@ enum Skill {
         }
     }
     
+    var hashValue: Int {
+        return [ rawAbilityValue, rawSkillValue ].hashValue
+    }
+
     init?(rawAbilityValue: Int, rawSkillValue: Int) {
         switch rawAbilityValue {
         case 0:
@@ -159,6 +163,10 @@ enum Skill {
     var longStringValue: String {
         return "\(ability.stringValue) (\(stringValue))"
     }
+}
+
+func ==(lhs: Skill, rhs: Skill) -> Bool {
+    return lhs.rawAbilityValue == rhs.rawAbilityValue && lhs.rawSkillValue == rhs.rawSkillValue
 }
 
 /// Size categorises the different range of monster and character sizes.
@@ -270,7 +278,7 @@ enum Environment {
 /// Race categorises the basic races of D&D.
 ///
 /// Races can have sub-types which are represented here as nested enums.
-enum Race {
+enum Race: Equatable, Hashable {
     // Player's Handbook races.
     enum DwarfSubrace: Int {
         case HillDwarf
@@ -391,6 +399,10 @@ enum Race {
         }
     }
     
+    var hashValue: Int {
+        return [ rawRaceValue, rawSubraceValue ?? 0 ].hashValue
+    }
+    
     init?(rawRaceValue: Int, rawSubraceValue: Int?) {
         switch rawRaceValue {
         case 0:
@@ -462,6 +474,10 @@ enum Race {
     var size: Size {
         return Size(rawValue: sharedRules.raceSize[rawRaceValue])!
     }
+}
+
+func ==(lhs: Race, rhs: Race) -> Bool {
+    return lhs.rawRaceValue == rhs.rawRaceValue && ((lhs.rawSubraceValue == nil && rhs.rawSubraceValue == nil) || (lhs.rawSubraceValue != nil && rhs.rawSubraceValue != nil && lhs.rawSubraceValue! == rhs.rawSubraceValue!))
 }
 
 /// CharacterClass organises the different classes of player characters.
