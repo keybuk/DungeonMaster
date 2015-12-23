@@ -120,4 +120,14 @@ final class Player: NSManagedObject {
         return skills.map({ ($0 as! PlayerSkill).skill }).contains(skill)
     }
     
+    // MARK: Validation
+    
+    func validateName(ioObject: AutoreleasingUnsafeMutablePointer<AnyObject?>) throws {
+        guard let name = ioObject.memory as? String where name != "" else {
+            let errorString = "Name can't be empty"
+            let userDict = [ NSLocalizedDescriptionKey: errorString ]
+            throw NSError(domain: "Player", code: NSManagedObjectValidationError, userInfo: userDict)
+        }
+    }
+    
 }
