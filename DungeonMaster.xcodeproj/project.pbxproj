@@ -55,6 +55,13 @@
 		D298E8F11C29E08F007461A9 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298E8F01C29E08F007461A9 /* Player.swift */; };
 		D298E8F31C29F0B5007461A9 /* PlayerSavingThrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298E8F21C29F0B5007461A9 /* PlayerSavingThrow.swift */; };
 		D298E8F51C29F112007461A9 /* PlayerSkill.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298E8F41C29F112007461A9 /* PlayerSkill.swift */; };
+		D298E8F71C2A27B8007461A9 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298E8F61C2A27B8007461A9 /* PlayerViewController.swift */; };
+		D298E8F91C2A4CF1007461A9 /* PlayerSkillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298E8F81C2A4CF1007461A9 /* PlayerSkillViewController.swift */; };
+		D298E8FB1C2A5146007461A9 /* PlayerCharacterClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298E8FA1C2A5146007461A9 /* PlayerCharacterClassViewController.swift */; };
+		D298E8FD1C2A5151007461A9 /* PlayerBackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298E8FC1C2A5151007461A9 /* PlayerBackgroundViewController.swift */; };
+		D298E8FF1C2A515C007461A9 /* PlayerAlignmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298E8FE1C2A515C007461A9 /* PlayerAlignmentViewController.swift */; };
+		D298E9011C2A555E007461A9 /* PlayerSavingThrowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298E9001C2A555E007461A9 /* PlayerSavingThrowViewController.swift */; };
+		D298E9031C2A5597007461A9 /* PlayerRaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298E9021C2A5597007461A9 /* PlayerRaceViewController.swift */; };
 		D2A9AF0A1BFFEAA5009902ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A9AF091BFFEAA5009902ED /* AppDelegate.swift */; };
 		D2A9AF0D1BFFEAA5009902ED /* DungeonMaster.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2A9AF0B1BFFEAA5009902ED /* DungeonMaster.xcdatamodeld */; };
 		D2A9AF111BFFEAA5009902ED /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A9AF101BFFEAA5009902ED /* DetailViewController.swift */; };
@@ -135,6 +142,13 @@
 		D298E8F01C29E08F007461A9 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		D298E8F21C29F0B5007461A9 /* PlayerSavingThrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerSavingThrow.swift; sourceTree = "<group>"; };
 		D298E8F41C29F112007461A9 /* PlayerSkill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerSkill.swift; sourceTree = "<group>"; };
+		D298E8F61C2A27B8007461A9 /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		D298E8F81C2A4CF1007461A9 /* PlayerSkillViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerSkillViewController.swift; sourceTree = "<group>"; };
+		D298E8FA1C2A5146007461A9 /* PlayerCharacterClassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerCharacterClassViewController.swift; sourceTree = "<group>"; };
+		D298E8FC1C2A5151007461A9 /* PlayerBackgroundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerBackgroundViewController.swift; sourceTree = "<group>"; };
+		D298E8FE1C2A515C007461A9 /* PlayerAlignmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerAlignmentViewController.swift; sourceTree = "<group>"; };
+		D298E9001C2A555E007461A9 /* PlayerSavingThrowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerSavingThrowViewController.swift; sourceTree = "<group>"; };
+		D298E9021C2A5597007461A9 /* PlayerRaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerRaceViewController.swift; sourceTree = "<group>"; };
 		D2A9AF061BFFEAA5009902ED /* DungeonMaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DungeonMaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2A9AF091BFFEAA5009902ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2A9AF0C1BFFEAA5009902ED /* DungeonMaster.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DungeonMaster.xcdatamodel; sourceTree = "<group>"; };
@@ -294,6 +308,13 @@
 				D2511FFF1C14C7ED00A09F0B /* BooksViewController.swift */,
 				D2A9AF101BFFEAA5009902ED /* DetailViewController.swift */,
 				D298E8EE1C29D6E1007461A9 /* PlayersViewController.swift */,
+				D298E8F61C2A27B8007461A9 /* PlayerViewController.swift */,
+				D298E9021C2A5597007461A9 /* PlayerRaceViewController.swift */,
+				D298E8FA1C2A5146007461A9 /* PlayerCharacterClassViewController.swift */,
+				D298E8FC1C2A5151007461A9 /* PlayerBackgroundViewController.swift */,
+				D298E8FE1C2A515C007461A9 /* PlayerAlignmentViewController.swift */,
+				D298E9001C2A555E007461A9 /* PlayerSavingThrowViewController.swift */,
+				D298E8F81C2A4CF1007461A9 /* PlayerSkillViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -442,7 +463,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D298E9011C2A555E007461A9 /* PlayerSavingThrowViewController.swift in Sources */,
 				D2BDE60E1C1750170008B2F2 /* EncounterViewController.swift in Sources */,
+				D298E8FB1C2A5146007461A9 /* PlayerCharacterClassViewController.swift in Sources */,
 				D23435F41C0D617C00108D5F /* Monster.swift in Sources */,
 				D2116A511C10F4CE001EDBBA /* LairAction.swift in Sources */,
 				D249CFA61C276B3E00CDE673 /* DamageImmunity.swift in Sources */,
@@ -465,6 +488,7 @@
 				D249CFAC1C27A6E700CDE673 /* DamageResistanceOption.swift in Sources */,
 				D2511FF81C12B1AD00A09F0B /* MonstersViewController.swift in Sources */,
 				D249CFAE1C27B3EC00CDE673 /* Language.swift in Sources */,
+				D298E9031C2A5597007461A9 /* PlayerRaceViewController.swift in Sources */,
 				D2116A4C1C10ECC9001EDBBA /* LegendaryAction.swift in Sources */,
 				D249CFA41C27664A00CDE673 /* ConditionImmunity.swift in Sources */,
 				D298E8F31C29F0B5007461A9 /* PlayerSavingThrow.swift in Sources */,
@@ -474,8 +498,10 @@
 				D2A9AF0D1BFFEAA5009902ED /* DungeonMaster.xcdatamodeld in Sources */,
 				D26FBA3B1C1E3FE400D44503 /* DamageViewController.swift in Sources */,
 				D2511FFA1C14BC3700A09F0B /* Tag.swift in Sources */,
+				D298E8F91C2A4CF1007461A9 /* PlayerSkillViewController.swift in Sources */,
 				D23435EE1C0D5F9E00108D5F /* Book.swift in Sources */,
 				D26FBA391C1E366300D44503 /* Damage.swift in Sources */,
+				D298E8FF1C2A515C007461A9 /* PlayerAlignmentViewController.swift in Sources */,
 				D298E8F51C29F112007461A9 /* PlayerSkill.swift in Sources */,
 				D2116A4A1C10ECBC001EDBBA /* Reaction.swift in Sources */,
 				D2A9AF0A1BFFEAA5009902ED /* AppDelegate.swift in Sources */,
@@ -491,7 +517,9 @@
 				D2116A531C10F4E9001EDBBA /* LairTrait.swift in Sources */,
 				D249CF8B1C23311A00CDE673 /* Rules.swift in Sources */,
 				D26FBA341C1D3BAF00D44503 /* CombatantViewController.swift in Sources */,
+				D298E8FD1C2A5151007461A9 /* PlayerBackgroundViewController.swift in Sources */,
 				D2A9AF111BFFEAA5009902ED /* DetailViewController.swift in Sources */,
+				D298E8F71C2A27B8007461A9 /* PlayerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

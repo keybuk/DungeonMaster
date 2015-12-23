@@ -59,16 +59,29 @@ class PlayersViewController: UITableViewController {
     }
     var _fetchedResultsController: NSFetchedResultsController?
 
-
-    /*
     // MARK: Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    var selectNextInsert = false
+    var newIndexPathToSelect: NSIndexPath?
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ShowPlayerSegue" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let player = fetchedResultsController.objectAtIndexPath(indexPath) as! Player
+                let playerViewController = (segue.destinationViewController as! UINavigationController).topViewController as! PlayerViewController
+                playerViewController.player = player
+                playerViewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
+                playerViewController.navigationItem.leftItemsSupplementBackButton = true
+            }
+        } else if segue.identifier == "AddPlayerSegue" {
+            let playerViewController = (segue.destinationViewController as! UINavigationController).topViewController as! PlayerViewController
+
+            selectNextInsert = true
+            playerViewController.player = Player(inManagedObjectContext: managedObjectContext)
+            playerViewController.newPlayer = true
+
+            playerViewController.setEditing(true, animated: true)
+        }
     }
-    */
 
 }
 
@@ -134,6 +147,10 @@ extension PlayersViewController: NSFetchedResultsControllerDelegate {
         switch type {
         case .Insert:
             tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+            if selectNextInsert {
+                newIndexPathToSelect = newIndexPath
+                selectNextInsert = false
+            }
         case .Delete:
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
         case .Update:
@@ -148,6 +165,10 @@ extension PlayersViewController: NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         tableView.endUpdates()
+        if let indexPath = newIndexPathToSelect {
+            tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: .None)
+            newIndexPathToSelect = nil
+        }
     }
     
 }
@@ -165,9 +186,21 @@ class PlayerCell: UITableViewCell {
     var player: Player! {
         didSet {
             nameLabel.text = player.name
-            raceLabel.text = player.race.stringValue
-            classLabel.text = "\(player.characterClass.stringValue) \(player.level)"
-            backgroundLabel.text = player.background.stringValue
+            if player.primitiveValueForKey("rawRace") != nil {
+                raceLabel.text = player.race.stringValue
+            } else {
+                raceLabel.text = nil
+            }
+            if player.primitiveValueForKey("rawCharacterClass") != nil {
+                classLabel.text = "\(player.characterClass.stringValue) \(player.level)"
+            } else {
+                classLabel.text = nil
+            }
+            if player.primitiveValueForKey("rawBackground") != nil {
+                backgroundLabel.text = player.background.stringValue
+            } else {
+                backgroundLabel.text = nil
+            }
             
             let xpFormatter = NSNumberFormatter()
             xpFormatter.numberStyle = .DecimalStyle

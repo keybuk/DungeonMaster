@@ -20,6 +20,7 @@ func importIfNeeded() {
     // Shenanigans to stop Swift complaining about "unreachable code" as it optimizes out the other path.
     func inSimulator() -> Bool { return TARGET_OS_SIMULATOR != 0 }
     if inSimulator() {
+        return
         print("Running in simulator: importing data from \(plistVersion)")
     } else {
         if dataVersion != nil {
