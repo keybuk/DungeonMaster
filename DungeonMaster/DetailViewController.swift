@@ -149,7 +149,7 @@ class DetailViewController: UIViewController {
                 }
                 
                 if let alignment = monster.alignment {
-                    text.appendAttributedString(NSAttributedString(string: ", \(alignment.stringValue)\n", attributes: sizeTypeAlignmentStyle))
+                    text.appendAttributedString(NSAttributedString(string: ", \(alignment.stringValue.lowercaseString)\n", attributes: sizeTypeAlignmentStyle))
                 } else if monster.alignmentOptions.filter({ ($0 as! AlignmentOption).weight != nil }).count > 0 {
                     // By weight
                     let weightSortDescriptor = NSSortDescriptor(key: "rawWeight", ascending: false)
@@ -158,7 +158,7 @@ class DetailViewController: UIViewController {
                     let alignmentString = monster.alignmentOptions.sortedArrayUsingDescriptors([ weightSortDescriptor, alignmentSortDescriptor ]).map {
                         let alignmentOption = $0 as! AlignmentOption
                         let formattedWeight = NSString(format: "%.0f", alignmentOption.weight! * 100.0)
-                        return "\(alignmentOption.alignment.stringValue) (\(formattedWeight)%)"
+                        return "\(alignmentOption.alignment.stringValue.lowercaseString) (\(formattedWeight)%)"
                     }.joinWithSeparator(" or ")
                     
                     text.appendAttributedString(NSAttributedString(string: ", \(alignmentString)\n", attributes: sizeTypeAlignmentStyle))

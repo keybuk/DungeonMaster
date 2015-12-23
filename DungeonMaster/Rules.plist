@@ -78,16 +78,16 @@
 	</array>
 	<key>alignment</key>
 	<array>
-		<string>unaligned</string>
-		<string>lawful good</string>
-		<string>lawful neutral</string>
-		<string>lawful evil</string>
-		<string>neutral good</string>
-		<string>neutral</string>
-		<string>neutral evil</string>
-		<string>chaotic good</string>
-		<string>chaotic neutral</string>
-		<string>chaotic evil</string>
+		<string>Unaligned</string>
+		<string>Lawful Good</string>
+		<string>Lawful Neutral</string>
+		<string>Lawful Evil</string>
+		<string>Neutral Good</string>
+		<string>Neutral</string>
+		<string>Neutral Evil</string>
+		<string>Chaotic Good</string>
+		<string>Chaotic Neutral</string>
+		<string>Chaotic Evil</string>
 	</array>
 	<key>monsterType</key>
 	<array>
