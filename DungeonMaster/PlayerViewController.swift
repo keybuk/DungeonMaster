@@ -622,6 +622,10 @@ class PlayerXPCell: UITableViewCell {
 }
 
 extension PlayerXPCell: UITextFieldDelegate {
+    
+    func textFieldShouldClear(textField: UITextField) -> Bool {
+        return player.inserted && player.XP == 0
+    }
 
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         let validSet = NSCharacterSet.decimalDigitCharacterSet()
@@ -662,6 +666,10 @@ class PlayerPassivePerceptionCell: UITableViewCell {
 }
 
 extension PlayerPassivePerceptionCell: UITextFieldDelegate {
+    
+    func textFieldShouldClear(textField: UITextField) -> Bool {
+        return player.inserted && player.passivePerception == 10
+    }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         let validSet = NSCharacterSet.decimalDigitCharacterSet()
