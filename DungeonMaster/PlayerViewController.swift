@@ -13,12 +13,12 @@ class PlayerViewController: UITableViewController {
     
     @IBOutlet var cancelButtonItem: UIBarButtonItem!
 
+    /// Player to be edited.
     var player: Player!
-    var newPlayer = false
-
-    var oldLeftBarButtonItem: UIBarButtonItem?
-    var oldLeftItemsSupplementBackButton: Bool?
     
+    /// When true, the player name field becomes the first responder when the view appears.
+    var playerNameBecomesFirstResponder = false
+
     var notificationObserver: NSObjectProtocol?
 
     override func viewDidLoad() {
@@ -41,9 +41,11 @@ class PlayerViewController: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        if newPlayer {
-            let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! PlayerNameCell
-            cell.textField.becomeFirstResponder()
+        if playerNameBecomesFirstResponder {
+            if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as? PlayerNameCell {
+                cell.textField.becomeFirstResponder()
+            }
+            playerNameBecomesFirstResponder = false
         }
     }
     
@@ -98,6 +100,8 @@ class PlayerViewController: UITableViewController {
     
     // MARK: Edit handling
 
+    var oldLeftBarButtonItem: UIBarButtonItem?
+    var oldLeftItemsSupplementBackButton: Bool?
     override func setEditing(editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         
@@ -131,7 +135,7 @@ class PlayerViewController: UITableViewController {
 
     func validatePlayer() -> Bool {
         do {
-            if newPlayer {
+            if player.inserted {
                 try player.validateForInsert()
             } else {
                 try player.validateForUpdate()
@@ -146,7 +150,7 @@ class PlayerViewController: UITableViewController {
     }
     
     func undoChanges() {
-        if newPlayer {
+        if player.inserted {
             managedObjectContext.deleteObject(player)
         } else {
             managedObjectContext.refreshObject(player, mergeChanges: false)
@@ -162,6 +166,20 @@ class PlayerViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         pushToSubview = true
+        
+        if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as? PlayerNameCell {
+            cell.textField.resignFirstResponder()
+        }
+        if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0)) as? PlayerPlayerNameCell {
+            cell.textField.resignFirstResponder()
+        }
+        if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 2)) as? PlayerXPCell {
+            cell.textField.resignFirstResponder()
+        }
+        if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 2)) as? PlayerPassivePerceptionCell {
+            cell.textField.resignFirstResponder()
+        }
+
         if segue.identifier == "PlayerRaceSegue" {
             let playerRaceViewController = segue.destinationViewController as! PlayerRaceViewController
             if player.primitiveValueForKey("rawRace") != nil {

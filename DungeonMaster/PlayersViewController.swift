@@ -77,9 +77,10 @@ class PlayersViewController: UITableViewController {
 
             selectNextInsert = true
             playerViewController.player = Player(inManagedObjectContext: managedObjectContext)
-            playerViewController.newPlayer = true
-
             playerViewController.setEditing(true, animated: true)
+            playerViewController.playerNameBecomesFirstResponder = true
+            playerViewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
+            playerViewController.navigationItem.leftItemsSupplementBackButton = true
         }
     }
 

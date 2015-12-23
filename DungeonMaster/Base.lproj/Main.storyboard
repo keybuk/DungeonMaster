@@ -165,7 +165,7 @@
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Character Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bHo-Bm-xen">
                                             <rect key="frame" x="15" y="8" width="577" height="27.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                             <connections>
                                                 <action selector="textFieldEditingChanged:" destination="gbr-9p-XxZ" eventType="editingChanged" id="Z8r-UK-kNk"/>
                                             </connections>
@@ -217,7 +217,7 @@
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Player Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fEj-IP-XRy">
                                             <rect key="frame" x="15" y="8" width="577" height="27.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                             <connections>
                                                 <action selector="textFieldEditingChanged:" destination="892-Sa-lge" eventType="editingChanged" id="nNN-Be-tNa"/>
                                             </connections>
