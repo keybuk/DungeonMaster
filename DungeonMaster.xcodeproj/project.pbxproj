@@ -51,6 +51,10 @@
 		D26FBA3D1C1E52CA00D44503 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FBA3C1C1E52CA00D44503 /* Enums.swift */; };
 		D26FBA3F1C1EA4E700D44503 /* Condition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FBA3E1C1EA4E700D44503 /* Condition.swift */; };
 		D26FBA411C1FA17400D44503 /* ConditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FBA401C1FA17400D44503 /* ConditionViewController.swift */; };
+		D298E8EF1C29D6E1007461A9 /* PlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298E8EE1C29D6E1007461A9 /* PlayersViewController.swift */; };
+		D298E8F11C29E08F007461A9 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298E8F01C29E08F007461A9 /* Player.swift */; };
+		D298E8F31C29F0B5007461A9 /* PlayerSavingThrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298E8F21C29F0B5007461A9 /* PlayerSavingThrow.swift */; };
+		D298E8F51C29F112007461A9 /* PlayerSkill.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298E8F41C29F112007461A9 /* PlayerSkill.swift */; };
 		D2A9AF0A1BFFEAA5009902ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A9AF091BFFEAA5009902ED /* AppDelegate.swift */; };
 		D2A9AF0D1BFFEAA5009902ED /* DungeonMaster.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2A9AF0B1BFFEAA5009902ED /* DungeonMaster.xcdatamodeld */; };
 		D2A9AF111BFFEAA5009902ED /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A9AF101BFFEAA5009902ED /* DetailViewController.swift */; };
@@ -127,6 +131,10 @@
 		D26FBA3C1C1E52CA00D44503 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		D26FBA3E1C1EA4E700D44503 /* Condition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Condition.swift; sourceTree = "<group>"; };
 		D26FBA401C1FA17400D44503 /* ConditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConditionViewController.swift; sourceTree = "<group>"; };
+		D298E8EE1C29D6E1007461A9 /* PlayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayersViewController.swift; sourceTree = "<group>"; };
+		D298E8F01C29E08F007461A9 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		D298E8F21C29F0B5007461A9 /* PlayerSavingThrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerSavingThrow.swift; sourceTree = "<group>"; };
+		D298E8F41C29F112007461A9 /* PlayerSkill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerSkill.swift; sourceTree = "<group>"; };
 		D2A9AF061BFFEAA5009902ED /* DungeonMaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DungeonMaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2A9AF091BFFEAA5009902ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2A9AF0C1BFFEAA5009902ED /* DungeonMaster.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DungeonMaster.xcdatamodel; sourceTree = "<group>"; };
@@ -198,6 +206,9 @@
 				D2116A501C10F4CE001EDBBA /* LairAction.swift */,
 				D2116A521C10F4E9001EDBBA /* LairTrait.swift */,
 				D2116A541C10F4F8001EDBBA /* RegionalEffect.swift */,
+				D298E8F01C29E08F007461A9 /* Player.swift */,
+				D298E8F21C29F0B5007461A9 /* PlayerSavingThrow.swift */,
+				D298E8F41C29F112007461A9 /* PlayerSkill.swift */,
 				D2F9D12E1C1A71D8005F2D9A /* Encounter.swift */,
 				D26FBA211C1BEA0F00D44503 /* Combatant.swift */,
 				D26FBA381C1E366300D44503 /* Damage.swift */,
@@ -282,6 +293,7 @@
 				D2511FF71C12B1AD00A09F0B /* MonstersViewController.swift */,
 				D2511FFF1C14C7ED00A09F0B /* BooksViewController.swift */,
 				D2A9AF101BFFEAA5009902ED /* DetailViewController.swift */,
+				D298E8EE1C29D6E1007461A9 /* PlayersViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -434,6 +446,7 @@
 				D23435F41C0D617C00108D5F /* Monster.swift in Sources */,
 				D2116A511C10F4CE001EDBBA /* LairAction.swift in Sources */,
 				D249CFA61C276B3E00CDE673 /* DamageImmunity.swift in Sources */,
+				D298E8F11C29E08F007461A9 /* Player.swift in Sources */,
 				D26FBA221C1BEA0F00D44503 /* Combatant.swift in Sources */,
 				D249CF851C21DF3500CDE673 /* PointGenerator.swift in Sources */,
 				D2BDE60C1C17500A0008B2F2 /* EncountersViewController.swift in Sources */,
@@ -454,6 +467,7 @@
 				D249CFAE1C27B3EC00CDE673 /* Language.swift in Sources */,
 				D2116A4C1C10ECC9001EDBBA /* LegendaryAction.swift in Sources */,
 				D249CFA41C27664A00CDE673 /* ConditionImmunity.swift in Sources */,
+				D298E8F31C29F0B5007461A9 /* PlayerSavingThrow.swift in Sources */,
 				D23435EC1C0D5A3D00108D5F /* Model.swift in Sources */,
 				D26FBA3F1C1EA4E700D44503 /* Condition.swift in Sources */,
 				D249CF891C22602800CDE673 /* ConditionRulesViewController.swift in Sources */,
@@ -462,6 +476,7 @@
 				D2511FFA1C14BC3700A09F0B /* Tag.swift in Sources */,
 				D23435EE1C0D5F9E00108D5F /* Book.swift in Sources */,
 				D26FBA391C1E366300D44503 /* Damage.swift in Sources */,
+				D298E8F51C29F112007461A9 /* PlayerSkill.swift in Sources */,
 				D2116A4A1C10ECBC001EDBBA /* Reaction.swift in Sources */,
 				D2A9AF0A1BFFEAA5009902ED /* AppDelegate.swift in Sources */,
 				D249CFA81C276B4400CDE673 /* DamageResistance.swift in Sources */,
@@ -469,6 +484,7 @@
 				D249CF9C1C24BBEA00CDE673 /* Armor.swift in Sources */,
 				D249CF8D1C233B2F00CDE673 /* AlignmentOption.swift in Sources */,
 				D2116A551C10F4F8001EDBBA /* RegionalEffect.swift in Sources */,
+				D298E8EF1C29D6E1007461A9 /* PlayersViewController.swift in Sources */,
 				D2116A481C10ECAE001EDBBA /* Trait.swift in Sources */,
 				D26FBA321C1D39B900D44503 /* Sounds.swift in Sources */,
 				D249CFAA1C276B4C00CDE673 /* DamageVulnerability.swift in Sources */,

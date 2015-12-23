@@ -8,6 +8,215 @@
 		<string>Official Adventure</string>
 		<string>Online Supplement</string>
 	</array>
+	<key>ability</key>
+	<array>
+		<string>Strength</string>
+		<string>Dexterity</string>
+		<string>Constitution</string>
+		<string>Intelligence</string>
+		<string>Wisdom</string>
+		<string>Charisma</string>
+	</array>
+	<key>skill</key>
+	<array>
+		<array>
+			<string>Athletics</string>
+		</array>
+		<array>
+			<string>Acrobatics</string>
+			<string>Sleight of Hand</string>
+			<string>Stealth</string>
+		</array>
+		<array/>
+		<array>
+			<string>Arcana</string>
+			<string>History</string>
+			<string>Investigation</string>
+			<string>Nature</string>
+			<string>Religion</string>
+		</array>
+		<array>
+			<string>Animal Handling</string>
+			<string>Insight</string>
+			<string>Medicine</string>
+			<string>Perception</string>
+			<string>Survival</string>
+		</array>
+		<array>
+			<string>Deception</string>
+			<string>Intimidation</string>
+			<string>Performance</string>
+			<string>Persuasion</string>
+		</array>
+	</array>
+	<key>size</key>
+	<array>
+		<string>tiny</string>
+		<string>small</string>
+		<string>medium</string>
+		<string>large</string>
+		<string>huge</string>
+		<string>gargantuan</string>
+	</array>
+	<key>sizeSpace</key>
+	<array>
+		<real>2.5</real>
+		<integer>5</integer>
+		<integer>5</integer>
+		<integer>10</integer>
+		<integer>15</integer>
+		<integer>20</integer>
+	</array>
+	<key>sizeHitDiceSides</key>
+	<array>
+		<integer>4</integer>
+		<integer>6</integer>
+		<integer>8</integer>
+		<integer>10</integer>
+		<integer>12</integer>
+		<integer>20</integer>
+	</array>
+	<key>alignment</key>
+	<array>
+		<string>unaligned</string>
+		<string>lawful good</string>
+		<string>lawful neutral</string>
+		<string>lawful evil</string>
+		<string>neutral good</string>
+		<string>neutral</string>
+		<string>neutral evil</string>
+		<string>chaotic good</string>
+		<string>chaotic neutral</string>
+		<string>chaotic evil</string>
+	</array>
+	<key>monsterType</key>
+	<array>
+		<string>aberration</string>
+		<string>beast</string>
+		<string>celestial</string>
+		<string>construct</string>
+		<string>dragon</string>
+		<string>elemental</string>
+		<string>fey</string>
+		<string>fiend</string>
+		<string>giant</string>
+		<string>humanoid</string>
+		<string>monstrosity</string>
+		<string>ooze</string>
+		<string>plant</string>
+		<string>undead</string>
+	</array>
+	<key>race</key>
+	<array>
+		<string>Dwarf</string>
+		<string>Elf</string>
+		<string>Halfling</string>
+		<string>Human</string>
+		<string>Dragonborn</string>
+		<string>Gnome</string>
+		<string>Half-Elf</string>
+		<string>Half-Orc</string>
+		<string>Tiefling</string>
+		<string>Aasimar</string>
+		<string>Aarakocra</string>
+		<string>Genasi</string>
+		<string>Goliath</string>
+	</array>
+	<key>subrace</key>
+	<array>
+		<array>
+			<string>Hill Dwarf</string>
+			<string>Mountain Dwarf</string>
+			<string>Gray Dwarf (Duergar)</string>
+		</array>
+		<array>
+			<string>High Elf</string>
+			<string>Wood Elf</string>
+			<string>Dark Elf (Drow)</string>
+			<string>Eladrin</string>
+		</array>
+		<array>
+			<string>Lightfoot Halfling</string>
+			<string>Stout Halfling</string>
+		</array>
+		<array/>
+		<array/>
+		<array>
+			<string>Forest Gnome</string>
+			<string>Rock Gnome</string>
+			<string>Deep Gnome (Svirfneblin)</string>
+		</array>
+		<array/>
+		<array/>
+		<array/>
+		<array/>
+		<array/>
+		<array>
+			<string>Air Genasi</string>
+			<string>Earth Genasi</string>
+			<string>Fire Genasi</string>
+			<string>Water Genasi</string>
+		</array>
+		<array/>
+	</array>
+	<key>raceSize</key>
+	<array>
+		<integer>2</integer>
+		<integer>2</integer>
+		<integer>1</integer>
+		<integer>2</integer>
+		<integer>2</integer>
+		<integer>1</integer>
+		<integer>2</integer>
+		<integer>2</integer>
+		<integer>2</integer>
+		<integer>2</integer>
+		<integer>2</integer>
+		<integer>2</integer>
+		<integer>2</integer>
+	</array>
+	<key>characterClass</key>
+	<array>
+		<string>Barbarian</string>
+		<string>Bard</string>
+		<string>Cleric</string>
+		<string>Druid</string>
+		<string>Fighter</string>
+		<string>Monk</string>
+		<string>Paladin</string>
+		<string>Ranger</string>
+		<string>Rogue</string>
+		<string>Sorcerer</string>
+		<string>Warlock</string>
+		<string>Wizard</string>
+	</array>
+	<key>background</key>
+	<array>
+		<string>Acolyte</string>
+		<string>Charlatan</string>
+		<string>Criminal</string>
+		<string>Entertainer</string>
+		<string>Folk Hero</string>
+		<string>Guild Artisan</string>
+		<string>Hermit</string>
+		<string>Noble</string>
+		<string>Outlander</string>
+		<string>Sage</string>
+		<string>Sailor</string>
+		<string>Soldier</string>
+		<string>Urchin</string>
+		<string>City Watch</string>
+		<string>Clan Crafter</string>
+		<string>Cloistered Scholar</string>
+		<string>Courtier</string>
+		<string>Faction Agent</string>
+		<string>Far Traveler</string>
+		<string>Inheritor</string>
+		<string>Knight of the Order</string>
+		<string>Mercenary Veteran</string>
+		<string>Urban Bounty Hunter</string>
+		<string>Waterdhavian Noble</string>
+	</array>
 	<key>levelXP</key>
 	<dict>
 		<key>1</key>
@@ -280,63 +489,6 @@
 		<key>20</key>
 		<integer>40000</integer>
 	</dict>
-	<key>size</key>
-	<array>
-		<string>tiny</string>
-		<string>small</string>
-		<string>medium</string>
-		<string>large</string>
-		<string>huge</string>
-		<string>gargantuan</string>
-	</array>
-	<key>sizeSpace</key>
-	<array>
-		<real>2.5</real>
-		<integer>5</integer>
-		<integer>5</integer>
-		<integer>10</integer>
-		<integer>15</integer>
-		<integer>20</integer>
-	</array>
-	<key>sizeHitDiceSides</key>
-	<array>
-		<integer>4</integer>
-		<integer>6</integer>
-		<integer>8</integer>
-		<integer>10</integer>
-		<integer>12</integer>
-		<integer>20</integer>
-	</array>
-	<key>monsterType</key>
-	<array>
-		<string>aberration</string>
-		<string>beast</string>
-		<string>celestial</string>
-		<string>construct</string>
-		<string>dragon</string>
-		<string>elemental</string>
-		<string>fey</string>
-		<string>fiend</string>
-		<string>giant</string>
-		<string>humanoid</string>
-		<string>monstrosity</string>
-		<string>ooze</string>
-		<string>plant</string>
-		<string>undead</string>
-	</array>
-	<key>alignment</key>
-	<array>
-		<string>unaligned</string>
-		<string>lawful good</string>
-		<string>lawful neutral</string>
-		<string>lawful evil</string>
-		<string>neutral good</string>
-		<string>neutral</string>
-		<string>neutral evil</string>
-		<string>chaotic good</string>
-		<string>chaotic neutral</string>
-		<string>chaotic evil</string>
-	</array>
 	<key>armorType</key>
 	<array>
 		<string>none</string>

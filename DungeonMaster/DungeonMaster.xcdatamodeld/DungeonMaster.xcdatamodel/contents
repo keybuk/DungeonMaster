@@ -188,6 +188,28 @@
             </compoundIndex>
         </compoundIndexes>
     </entity>
+    <entity name="Player" representedClassName=".Player" syncable="YES">
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="playerName" attributeType="String" syncable="YES"/>
+        <attribute name="rawAlignment" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="rawBackground" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="rawCharacterClass" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="rawPassivePerception" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
+        <attribute name="rawRace" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="rawSubrace" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="rawXP" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="savingThrows" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="PlayerSavingThrow" inverseName="player" inverseEntity="PlayerSavingThrow" syncable="YES"/>
+        <relationship name="skills" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="PlayerSkill" inverseName="player" inverseEntity="PlayerSkill" syncable="YES"/>
+    </entity>
+    <entity name="PlayerSavingThrow" representedClassName=".PlayerSavingThrow" syncable="YES">
+        <attribute name="rawSavingThrow" attributeType="Integer 16" syncable="YES"/>
+        <relationship name="player" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="savingThrows" inverseEntity="Player" syncable="YES"/>
+    </entity>
+    <entity name="PlayerSkill" representedClassName=".PlayerSkill" syncable="YES">
+        <attribute name="rawAbility" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="rawSkill" attributeType="Integer 16" syncable="YES"/>
+        <relationship name="player" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="skills" inverseEntity="Player" syncable="YES"/>
+    </entity>
     <entity name="Reaction" representedClassName=".Reaction" syncable="YES">
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="text" attributeType="String" syncable="YES"/>
@@ -226,9 +248,10 @@
         <element name="DamageResistanceOption" positionX="-36" positionY="369" width="128" height="75"/>
         <element name="DamageVulnerability" positionX="-18" positionY="387" width="128" height="90"/>
         <element name="Encounter" positionX="-54" positionY="351" width="128" height="90"/>
-        <element name="Lair" positionX="385" positionY="666" width="128" height="208"/>
+        <element name="Lair" positionX="385" positionY="666" width="128" height="210"/>
         <element name="LairAction" positionX="567" positionY="630" width="128" height="75"/>
         <element name="LairTrait" positionX="567" positionY="717" width="128" height="75"/>
+        <element name="Language" positionX="-27" positionY="378" width="128" height="90"/>
         <element name="LegendaryAction" positionX="261" positionY="558" width="128" height="90"/>
         <element name="Monster" positionX="79" positionY="216" width="128" height="1170"/>
         <element name="Reaction" positionX="261" positionY="459" width="128" height="90"/>
@@ -236,6 +259,8 @@
         <element name="Source" positionX="-92" positionY="198" width="128" height="105"/>
         <element name="Tag" positionX="-92" positionY="432" width="128" height="75"/>
         <element name="Trait" positionX="261" positionY="261" width="128" height="90"/>
-        <element name="Language" positionX="-27" positionY="378" width="128" height="90"/>
+        <element name="PlayerSavingThrow" positionX="-54" positionY="351" width="128" height="75"/>
+        <element name="PlayerSkill" positionX="-45" positionY="360" width="128" height="90"/>
+        <element name="Player" positionX="-36" positionY="369" width="128" height="210"/>
     </elements>
 </model>

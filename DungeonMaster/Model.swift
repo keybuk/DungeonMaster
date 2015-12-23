@@ -30,6 +30,9 @@ enum Model: String {
     case LairAction
     case LairTrait
     case RegionalEffect
+    case Player
+    case PlayerSavingThrow
+    case PlayerSkill
     case Encounter
     case Combatant
     case Damage

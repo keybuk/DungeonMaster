@@ -18,11 +18,21 @@ struct Rules {
         data = NSDictionary(contentsOfFile: filename)!
     }
     
-    // Array of book type names.
+    /// Array of book type names.
     var bookType: [String] {
         return data["bookType"]! as! [String]
     }
     
+    /// Array of ability names.
+    var ability: [String] {
+        return data["ability"]! as! [String]
+    }
+    
+    /// Array of skill names.
+    var skill: [[String]] {
+        return data["skill"]! as! [[String]]
+    }
+
     /// Array of size names.
     var size: [String] {
         return data["size"]! as! [String]
@@ -38,16 +48,50 @@ struct Rules {
         return (data["sizeHitDiceSides"]! as! [NSNumber]).map { $0.integerValue }
     }
     
-    /// Array of monster type names.
-    var monsterType: [String] {
-        return data["monsterType"]! as! [String]
-    }
-    
     /// Array of alignment names.
     var alignment: [String] {
         return data["alignment"]! as! [String]
     }
     
+    /// Array of monster type names.
+    var monsterType: [String] {
+        return data["monsterType"]! as! [String]
+    }
+    
+    /// Array of player race names.
+    var race: [String] {
+        return data["race"]! as! [String]
+    }
+    
+    /// Array of player subrace names.
+    var subrace: [[String]] {
+        return data["subrace"]! as! [[String]]
+    }
+    
+    /// Array mapping races to sizes.
+    var raceSize: [Int] {
+        return (data["raceSize"]! as! [NSNumber]).map { $0.integerValue }
+    }
+    
+    /// Array of character class names.
+    var characterClass: [String] {
+        return data["characterClass"]! as! [String]
+    }
+    
+    /// Array of character background names.
+    var background: [String] {
+        return data["background"]! as! [String]
+    }
+
+    /// Dictionary mapping level to XP threshold for obtaining that level.
+    var levelXP: [Int: Int] {
+        var result = [Int: Int]()
+        for (level, xp) in data["levelXP"]! as! [String: NSNumber] {
+            result[Int(level)!] = xp.integerValue
+        }
+        return result
+    }
+
     /// Array of armor type names.
     var armorType: [String] {
         return data["armorType"]! as! [String]
