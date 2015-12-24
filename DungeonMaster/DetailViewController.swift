@@ -245,100 +245,31 @@ class DetailViewController: UIViewController {
                 }
                 text.appendAttributedString(NSAttributedString(string: "\n", attributes: statsValueStyle))
 
-                let str = String(format: "%d (%+d)", monster.strengthScore, monster.strengthModifier)
-                let dex = String(format: "%d (%+d)", monster.dexterityScore, monster.dexterityModifier)
-                let con = String(format: "%d (%+d)", monster.constitutionScore, monster.constitutionModifier)
-                let int = String(format: "%d (%+d)", monster.intelligenceScore, monster.intelligenceModifier)
-                let wis = String(format: "%d (%+d)", monster.wisdomScore, monster.wisdomModifier)
-                let cha = String(format: "%d (%+d)", monster.charismaScore, monster.charismaModifier)
+                let str = String(format: "%d (%+d)", monster.strengthScore, monster.modifierFor(ability: .Strength))
+                let dex = String(format: "%d (%+d)", monster.dexterityScore, monster.modifierFor(ability: .Dexterity))
+                let con = String(format: "%d (%+d)", monster.constitutionScore, monster.modifierFor(ability: .Constitution))
+                let int = String(format: "%d (%+d)", monster.intelligenceScore, monster.modifierFor(ability: .Intelligence))
+                let wis = String(format: "%d (%+d)", monster.wisdomScore, monster.modifierFor(ability: .Wisdom))
+                let cha = String(format: "%d (%+d)", monster.charismaScore, monster.modifierFor(ability: .Charisma))
                 
                 text.appendAttributedString(NSAttributedString(string: "\tSTR\tDEX\tCON\tINT\tWIS\tCHA\n", attributes: abilityScoresLabelStyle))
                 text.appendAttributedString(NSAttributedString(string: "\t\(str)\t\(dex)\t\(con)\t\(int)\t\(wis)\t\(cha)\n", attributes: abilityScoresValueStyle))
                 
-                var savingThrows = [String]()
-                if monster.strengthSavingThrow != monster.strengthModifier {
-                    savingThrows.append(String(format: "Str %+d", monster.strengthSavingThrow))
-                }
-                if monster.dexteritySavingThrow != monster.dexterityModifier {
-                    savingThrows.append(String(format: "Dex %+d", monster.dexteritySavingThrow))
-                }
-                if monster.constitutionSavingThrow != monster.constitutionModifier {
-                    savingThrows.append(String(format: "Con %+d", monster.constitutionSavingThrow))
-                }
-                if monster.intelligenceSavingThrow != monster.intelligenceModifier {
-                    savingThrows.append(String(format: "Int %+d", monster.intelligenceSavingThrow))
-                }
-                if monster.wisdomSavingThrow != monster.wisdomModifier {
-                    savingThrows.append(String(format: "Wis %+d", monster.wisdomSavingThrow))
-                }
-                if monster.charismaSavingThrow != monster.charismaModifier {
-                    savingThrows.append(String(format: "Cha %+d", monster.charismaSavingThrow))
-                }
-
-                if savingThrows.count > 0 {
-                    let savingThrowsString = savingThrows.joinWithSeparator(", ")
+                if monster.savingThrows.count > 0 {
+                    let sortDescriptor = NSSortDescriptor(key: "rawSavingThrow", ascending: true)
+                    let savingThrowsString = monster.savingThrows.sortedArrayUsingDescriptors([ sortDescriptor ]).map({
+                        String(format: "%@ %+d", ($0 as! MonsterSavingThrow).savingThrow.shortStringValue, ($0 as! MonsterSavingThrow).modifier)
+                    }).joinWithSeparator(", ")
+                    
                     text.appendAttributedString(NSAttributedString(string: "Saving Throws ", attributes: statsLabelStyle))
                     text.appendAttributedString(NSAttributedString(string: "\(savingThrowsString)\n", attributes: statsValueStyle))
                 }
                 
-                var skills = [String]()
-                if monster.acrobaticsSkill != monster.dexterityModifier {
-                    skills.append(String(format: "Acrobatics %+d", monster.acrobaticsSkill))
-                }
-                if monster.animalHandlingSkill != monster.wisdomModifier {
-                    skills.append(String(format: "Animal Handling %+d", monster.animalHandlingSkill))
-                }
-                if monster.arcanaSkill != monster.intelligenceModifier {
-                    skills.append(String(format: "Arcana %+d", monster.arcanaSkill))
-                }
-                if monster.athleticsSkill != monster.strengthModifier {
-                    skills.append(String(format: "Athletics %+d", monster.athleticsSkill))
-                }
-                if monster.deceptionSkill != monster.charismaModifier {
-                    skills.append(String(format: "Deception %+d", monster.deceptionSkill))
-                }
-                if monster.historySkill != monster.intelligenceModifier {
-                    skills.append(String(format: "History %+d", monster.historySkill))
-                }
-                if monster.insightSkill != monster.wisdomModifier {
-                    skills.append(String(format: "Insight %+d", monster.insightSkill))
-                }
-                if monster.intimidationSkill != monster.charismaModifier {
-                    skills.append(String(format: "Intimidation %+d", monster.intimidationSkill))
-                }
-                if monster.investigationSkill != monster.intelligenceModifier {
-                    skills.append(String(format: "Investigation %+d", monster.investigationSkill))
-                }
-                if monster.medicineSkill != monster.wisdomModifier {
-                    skills.append(String(format: "Medicine %+d", monster.medicineSkill))
-                }
-                if monster.natureSkill != monster.intelligenceModifier {
-                    skills.append(String(format: "Nature %+d", monster.natureSkill))
-                }
-                if monster.perceptionSkill != monster.wisdomModifier {
-                    skills.append(String(format: "Perception %+d", monster.perceptionSkill))
-                }
-                if monster.performanceSkill != monster.charismaModifier {
-                    skills.append(String(format: "Performance %+d", monster.performanceSkill))
-                }
-                if monster.persuasionSkill != monster.charismaModifier {
-                    skills.append(String(format: "Persuasion %+d", monster.persuasionSkill))
-                }
-                if monster.religionSkill != monster.intelligenceModifier {
-                    skills.append(String(format: "Religion %+d", monster.religionSkill))
-                }
-                if monster.sleightOfHandSkill != monster.dexterityModifier {
-                    skills.append(String(format: "Sleight of Hand %+d", monster.sleightOfHandSkill))
-                }
-                if monster.stealthSkill != monster.dexterityModifier {
-                    skills.append(String(format: "Stealth %+d", monster.stealthSkill))
-                }
-                if monster.survivalSkill != monster.wisdomModifier {
-                    skills.append(String(format: "Survival %+d", monster.survivalSkill))
-                }
+                if monster.skills.count > 0 {
+                    let skillsString = monster.skills.map({
+                        String(format: "%@ %+d", ($0 as! MonsterSkill).skill.stringValue, ($0 as! MonsterSkill).modifier)
+                    }).sort().joinWithSeparator(", ")
 
-                if skills.count > 0 {
-                    let skillsString = skills.joinWithSeparator(", ")
                     text.appendAttributedString(NSAttributedString(string: "Skills ", attributes: statsLabelStyle))
                     text.appendAttributedString(NSAttributedString(string: "\(skillsString)\n", attributes: statsValueStyle))
                 }

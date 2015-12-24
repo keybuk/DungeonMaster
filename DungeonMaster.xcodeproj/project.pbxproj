@@ -42,6 +42,8 @@
 		D2511FFA1C14BC3700A09F0B /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2511FF91C14BC3700A09F0B /* Tag.swift */; };
 		D25120001C14C7ED00A09F0B /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2511FFF1C14C7ED00A09F0B /* BooksViewController.swift */; };
 		D25120021C14FC0A00A09F0B /* ExtendedNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25120011C14FC0A00A09F0B /* ExtendedNavigationBarView.swift */; };
+		D2622AA11C2BCDDD000D6100 /* MonsterSavingThrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2622AA01C2BCDDD000D6100 /* MonsterSavingThrow.swift */; };
+		D2622AA31C2BCDEC000D6100 /* MonsterSkill.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2622AA21C2BCDEC000D6100 /* MonsterSkill.swift */; };
 		D26FBA221C1BEA0F00D44503 /* Combatant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FBA211C1BEA0F00D44503 /* Combatant.swift */; };
 		D26FBA321C1D39B900D44503 /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FBA311C1D39B900D44503 /* Sounds.swift */; };
 		D26FBA341C1D3BAF00D44503 /* CombatantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FBA331C1D3BAF00D44503 /* CombatantViewController.swift */; };
@@ -129,6 +131,8 @@
 		D2511FF91C14BC3700A09F0B /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		D2511FFF1C14C7ED00A09F0B /* BooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
 		D25120011C14FC0A00A09F0B /* ExtendedNavigationBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtendedNavigationBarView.swift; sourceTree = "<group>"; };
+		D2622AA01C2BCDDD000D6100 /* MonsterSavingThrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonsterSavingThrow.swift; sourceTree = "<group>"; };
+		D2622AA21C2BCDEC000D6100 /* MonsterSkill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonsterSkill.swift; sourceTree = "<group>"; };
 		D26FBA211C1BEA0F00D44503 /* Combatant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Combatant.swift; sourceTree = "<group>"; };
 		D26FBA311C1D39B900D44503 /* Sounds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
 		D26FBA331C1D3BAF00D44503 /* CombatantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombatantViewController.swift; sourceTree = "<group>"; };
@@ -203,6 +207,8 @@
 				D23435ED1C0D5F9E00108D5F /* Book.swift */,
 				D23435F01C0D608B00108D5F /* Source.swift */,
 				D23435F31C0D617C00108D5F /* Monster.swift */,
+				D2622AA01C2BCDDD000D6100 /* MonsterSavingThrow.swift */,
+				D2622AA21C2BCDEC000D6100 /* MonsterSkill.swift */,
 				D2511FF91C14BC3700A09F0B /* Tag.swift */,
 				D249CF8C1C233B2F00CDE673 /* AlignmentOption.swift */,
 				D249CF9B1C24BBEA00CDE673 /* Armor.swift */,
@@ -479,6 +485,7 @@
 				D23435FB1C0FEFA000108D5F /* Dice.swift in Sources */,
 				D26FBA411C1FA17400D44503 /* ConditionViewController.swift in Sources */,
 				D20049231C1A127500A645E9 /* TabletopStatsView.swift in Sources */,
+				D2622AA31C2BCDEC000D6100 /* MonsterSkill.swift in Sources */,
 				D26FBA3D1C1E52CA00D44503 /* Enums.swift in Sources */,
 				D23435F61C0D634100108D5F /* Importer.swift in Sources */,
 				D2F9D12F1C1A71D8005F2D9A /* Encounter.swift in Sources */,
@@ -488,6 +495,7 @@
 				D249CFAC1C27A6E700CDE673 /* DamageResistanceOption.swift in Sources */,
 				D2511FF81C12B1AD00A09F0B /* MonstersViewController.swift in Sources */,
 				D249CFAE1C27B3EC00CDE673 /* Language.swift in Sources */,
+				D2622AA11C2BCDDD000D6100 /* MonsterSavingThrow.swift in Sources */,
 				D298E9031C2A5597007461A9 /* PlayerRaceViewController.swift in Sources */,
 				D2116A4C1C10ECC9001EDBBA /* LegendaryAction.swift in Sources */,
 				D249CFA41C27664A00CDE673 /* ConditionImmunity.swift in Sources */,

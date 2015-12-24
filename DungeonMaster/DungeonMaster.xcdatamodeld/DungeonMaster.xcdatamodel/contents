@@ -115,53 +115,29 @@
         <attribute name="isNPC" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="isResistantToSpellDamage" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
-        <attribute name="rawAcrobaticsSkill" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawAlignment" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="rawAnimalHandlingSkill" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="rawArcanaSkill" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="rawAthleticsSkill" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawBlindsight" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawBurrowSpeed" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="rawCharismaSavingThrow" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawCharismaScore" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="rawClimbSpeed" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="rawConstitutionSavingThrow" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawConstitutionScore" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="rawDarkvision" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="rawDeceptionSkill" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="rawDexteritySavingThrow" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawDexterityScore" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="rawFlySpeed" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="rawHistorySkill" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawHitDice" attributeType="String" syncable="YES"/>
         <attribute name="rawHitPoints" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="rawInsightSkill" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="rawIntelligenceSavingThrow" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawIntelligenceScore" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
-        <attribute name="rawIntimidationSkill" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="rawInvestigationSkill" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawLanguagesSpokenOption" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawLanguagesUnderstoodOption" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="rawMedicineSkill" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="rawNatureSkill" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="rawPerceptionSkill" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="rawPerformanceSkill" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="rawPersuasionSkill" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="rawReligionSkill" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawSize" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="rawSleightOfHandSkill" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawSpeed" attributeType="Integer 16" defaultValueString="30" syncable="YES"/>
-        <attribute name="rawStealthSkill" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="rawStrengthSavingThrow" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawStrengthScore" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
-        <attribute name="rawSurvivalSkill" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawSwarmSize" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawSwimSpeed" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawTelepathy" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawTremorsense" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawTruesight" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawType" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="rawWisdomSavingThrow" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawWisdomScore" attributeType="Integer 16" defaultValueString="10" syncable="YES"/>
         <attribute name="requiresRace" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="telepathyIsLimited" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
@@ -179,6 +155,8 @@
         <relationship name="languagesUnderstood" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Language" inverseName="monstersUnderstanding" inverseEntity="Language" syncable="YES"/>
         <relationship name="legendaryActions" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="LegendaryAction" inverseName="monster" inverseEntity="LegendaryAction" syncable="YES"/>
         <relationship name="reactions" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Reaction" inverseName="monster" inverseEntity="Reaction" syncable="YES"/>
+        <relationship name="savingThrows" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="MonsterSavingThrow" inverseName="monster" inverseEntity="MonsterSavingThrow" syncable="YES"/>
+        <relationship name="skills" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="MonsterSkill" inverseName="monster" inverseEntity="MonsterSkill" syncable="YES"/>
         <relationship name="sources" toMany="YES" deletionRule="Cascade" destinationEntity="Source" inverseName="monster" inverseEntity="Source" syncable="YES"/>
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="monsters" inverseEntity="Tag" syncable="YES"/>
         <relationship name="traits" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Trait" inverseName="monster" inverseEntity="Trait" syncable="YES"/>
@@ -187,6 +165,17 @@
                 <index value="name"/>
             </compoundIndex>
         </compoundIndexes>
+    </entity>
+    <entity name="MonsterSavingThrow" representedClassName=".MonsterSavingThrow" syncable="YES">
+        <attribute name="rawModifier" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="rawSavingThrow" attributeType="Integer 16" syncable="YES"/>
+        <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="savingThrows" inverseEntity="Monster" syncable="YES"/>
+    </entity>
+    <entity name="MonsterSkill" representedClassName=".MonsterSkill" syncable="YES">
+        <attribute name="rawAbility" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="rawModifier" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="rawSkill" attributeType="Integer 16" syncable="YES"/>
+        <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="skills" inverseEntity="Monster" syncable="YES"/>
     </entity>
     <entity name="Player" representedClassName=".Player" syncable="YES">
         <attribute name="name" attributeType="String" syncable="YES"/>
@@ -241,8 +230,8 @@
         <element name="Book" positionX="-261" positionY="198" width="128" height="90"/>
         <element name="Combatant" positionX="-54" positionY="351" width="128" height="210"/>
         <element name="CombatantCondition" positionX="-36" positionY="369" width="128" height="75"/>
-        <element name="ConditionImmunity" positionX="0" positionY="405" width="128" height="75"/>
         <element name="CombatantDamage" positionX="-45" positionY="360" width="128" height="90"/>
+        <element name="ConditionImmunity" positionX="0" positionY="405" width="128" height="75"/>
         <element name="DamageImmunity" positionX="-54" positionY="351" width="128" height="90"/>
         <element name="DamageResistance" positionX="-45" positionY="360" width="128" height="105"/>
         <element name="DamageResistanceOption" positionX="-36" positionY="369" width="128" height="75"/>
@@ -253,7 +242,7 @@
         <element name="LairTrait" positionX="567" positionY="717" width="128" height="75"/>
         <element name="Language" positionX="-27" positionY="378" width="128" height="90"/>
         <element name="LegendaryAction" positionX="261" positionY="558" width="128" height="90"/>
-        <element name="Monster" positionX="79" positionY="216" width="128" height="1170"/>
+        <element name="Monster" positionX="79" positionY="216" width="128" height="840"/>
         <element name="Player" positionX="-36" positionY="369" width="128" height="210"/>
         <element name="PlayerSavingThrow" positionX="-54" positionY="351" width="128" height="75"/>
         <element name="PlayerSkill" positionX="-45" positionY="360" width="128" height="90"/>
@@ -262,5 +251,7 @@
         <element name="Source" positionX="-92" positionY="198" width="128" height="105"/>
         <element name="Tag" positionX="-92" positionY="432" width="128" height="75"/>
         <element name="Trait" positionX="261" positionY="261" width="128" height="90"/>
+        <element name="MonsterSavingThrow" positionX="-54" positionY="351" width="128" height="90"/>
+        <element name="MonsterSkill" positionX="-45" positionY="360" width="128" height="105"/>
     </elements>
 </model>

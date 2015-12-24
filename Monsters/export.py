@@ -63,6 +63,18 @@ ABILITY_RE = re.compile(r'^(\d+) \(([+-]\d+)\)$')
 
 SAVING_THROW_SKILLS_RE = re.compile(r'^([A-Za-z ]+) ([+-]\d+)$')
 
+SHORT_ABILITIES = [ "Str", "Dex", "Con", "Int", "Wis", "Cha" ]
+LONG_ABILITIES = [ "Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma" ]
+
+SKILLS = [
+	[ "Athletics" ],
+	[ "Acrobatics", "Sleight of Hand", "Stealth" ],
+	[],
+	[ "Arcana", "History", "Investigation", "Nature", "Religion" ],
+	[ "Animal Handling", "Insight", "Medicine", "Perception", "Survival" ],
+	[ "Deception", "Intimidation", "Performance", "Persuasion" ]
+]
+
 DAMAGE_VULNERABILITIES_RE = re.compile(
 	r'^(?:((?:(?:' + damage_expr + ')(?:, |$))+)' +
 	r'|(' + damage_expr + r') from magic weapons wielded by good creatures)$' # Rakshasa
@@ -201,6 +213,8 @@ class Exporter(monster.MonsterParser):
 		self.tags = []
 		self.alignment_options = []
 		self.armor = []
+		self.saving_throws = {}
+		self.skills = {}
 		self.damage_vulnerabilities = []
 		self.damage_resistances = []
 		self.damage_resistance_options = []
@@ -214,6 +228,9 @@ class Exporter(monster.MonsterParser):
 		self.reactions = []
 		self.legendary_actions = []
 		self.lair = None
+
+		self.wisdom = None
+		self.perception = None
 
 	def check_line(self, line):
 		if " ," in line:
@@ -253,6 +270,8 @@ class Exporter(monster.MonsterParser):
 			"tags": self.tags,
 			"alignmentOptions": self.alignment_options,
 			"armor": self.armor,
+			"savingThrows": self.saving_throws,
+			"skills": self.skills,
 			"damageVulnerabilities": self.damage_vulnerabilities,
 			"damageResistances": self.damage_resistances,
 			"damageResistanceOptions": self.damage_resistance_options,
@@ -458,20 +477,15 @@ class Exporter(monster.MonsterParser):
 				raise self.error("Saving throw doesn't match expected format: %s" % saving_throw)
 
 			(name, modifier) = match.groups()
-			if name == "Str" or name == "Strength":
-				self.info['rawStrengthSavingThrow'] = int(modifier)
-			elif name == "Dex" or name == "Dexterity":
-				self.info['rawDexteritySavingThrow'] = int(modifier)
-			elif name == "Con" or name == "Constitution":
-				self.info['rawConstitutionSavingThrow'] = int(modifier)
-			elif name == "Int" or name == "Intelligence":
-				self.info['rawIntelligenceSavingThrow'] = int(modifier)
-			elif name == "Wis" or name == "Wisdom":
-				self.info['rawWisdomSavingThrow'] = int(modifier)
-			elif name == "Cha" or name == "Charisma":
-				self.info['rawCharismaSavingThrow'] = int(modifier)
-			else:
-				raise self.error("Unknown ability in saving throw: %s" % saving_throw)
+			try:
+				rawValue = SHORT_ABILITIES.index(name)
+			except ValueError:
+				try:
+					rawValue = LONG_ABILITIES.index(name)
+				except ValueError:
+					raise self.error("Unknown ability in saving throw: %s" % saving_throw)
+
+			self.saving_throws[str(rawValue)] = int(modifier)
 
 	def handle_skills(self, line):
 		skills = line.split(", ")
@@ -481,44 +495,21 @@ class Exporter(monster.MonsterParser):
 				raise self.error("Skill doesn't match expected format: %s" % skill)
 
 			(name, modifier) = match.groups()
-			if name == "Acrobatics":
-				self.info['rawAcrobaticsSkill'] = int(modifier)
-			elif name == "Animal Handling":
-				self.info['rawAnimalHandlingSkill'] = int(modifier)
-			elif name == "Arcana":
-				self.info['rawArcanaSkill'] = int(modifier)
-			elif name == "Athletics":
-				self.info['rawAthleticsSkill'] = int(modifier)
-			elif name == "Deception":
-				self.info['rawDeceptionSkill'] = int(modifier)
-			elif name == "History":
-				self.info['rawHistorySkill'] = int(modifier)
-			elif name == "Insight":
-				self.info['rawInsightSkill'] = int(modifier)
-			elif name == "Intimidation":
-				self.info['rawIntimidationSkill'] = int(modifier)
-			elif name == "Investigation":
-				self.info['rawInvestigationSkill'] = int(modifier)
-			elif name == "Medicine":
-				self.info['rawMedicineSkill'] = int(modifier)
-			elif name == "Nature":
-				self.info['rawNatureSkill'] = int(modifier)
-			elif name == "Perception":
-				self.info['rawPerceptionSkill'] = int(modifier)
-			elif name == "Performance":
-				self.info['rawPerformanceSkill'] = int(modifier)
-			elif name == "Persuasion":
-				self.info['rawPersuasionSkill'] = int(modifier)
-			elif name == "Religion":
-				self.info['rawReligionSkill'] = int(modifier)
-			elif name == "Sleight of Hand":
-				self.info['rawSleightOfHandSkill'] = int(modifier)
-			elif name == "Stealth":
-				self.info['rawStealthSkill'] = int(modifier)
-			elif name == "Survival":
-				self.info['rawSurvivalSkill'] = int(modifier)
+			for rawAbilityValue, skills in enumerate(SKILLS):
+				try:
+					rawSkillValue = skills.index(name)
+					break
+				except ValueError:
+					pass
 			else:
 				raise self.error("Unknown skill: %s" % skill)
+
+			if name == "Perception":
+				self.perception = int(modifier)
+
+			if rawAbilityValue not in self.skills:
+				self.skills[str(rawAbilityValue)] = {}
+			self.skills[str(rawAbilityValue)][str(rawSkillValue)] = int(modifier)
 
 	def handle_damage_vulnerabilities(self, line):
 		match = DAMAGE_VULNERABILITIES_RE.match(line)
@@ -691,8 +682,8 @@ class Exporter(monster.MonsterParser):
 
 		# Don't store passive perception, just verify it matches the calculated value.
 		expectedPassive = 10
-		if 'rawPerceptionSkill' in self.info:
-			expectedPassive = 10 + int(self.info['rawPerceptionSkill'])
+		if self.perception is not None:
+			expectedPassive = 10 + self.perception
 		else:
 			score = int(self.info['rawWisdomScore'])
 			expectedPassive = 10 + (int(score) - 10) / 2

@@ -134,6 +134,22 @@ func importIfNeeded() {
             armor.setValuesForKeysWithDictionary(armorData)
         }
         
+        let savingThrowData = monsterData["savingThrows"] as! [String: NSNumber]
+        for (savingThrowNumber, savingThrowModifier) in savingThrowData {
+            let savingThrow = Ability(rawValue: Int(savingThrowNumber)!)!
+            let monsterSavingThrow = MonsterSavingThrow(monster: monster, savingThrow: savingThrow, inManagedObjectContext: managedObjectContext)
+            monsterSavingThrow.modifier = savingThrowModifier.integerValue
+        }
+        
+        let skillAbilityData = monsterData["skills"] as! [String: [String: NSNumber]]
+        for (skillAbilityNumber, skillData) in skillAbilityData {
+            for (skillNumber, skillModifier) in skillData {
+                let skill = Skill(rawAbilityValue: Int(skillAbilityNumber)!, rawSkillValue: Int(skillNumber)!)!
+                let monsterSkill = MonsterSkill(monster: monster, skill: skill, inManagedObjectContext: managedObjectContext)
+                monsterSkill.modifier = skillModifier.integerValue
+            }
+        }
+        
         let damageVulnerabilityDatas = monsterData["damageVulnerabilities"] as! [[String: AnyObject]]
         for damageVulnerabilityDate in damageVulnerabilityDatas {
             let damageVulnerability = DamageVulnerability(monster: monster, inManagedObjectContext: managedObjectContext)
@@ -253,100 +269,100 @@ func importIfNeeded() {
         }
         
         // Sanity check saving throws and skills against modifiers and proficiency bonus.
-        if monster.strengthSavingThrow != monster.strengthModifier && monster.strengthSavingThrow != monster.strengthModifier + monster.proficiencyBonus {
-            print("\(monster.name) has unusual strength saving throw: \(monster.strengthSavingThrow), expected \(monster.strengthModifier) or \(monster.strengthModifier + monster.proficiencyBonus)")
+        if monster.modifierFor(savingThrow: .Strength) != monster.modifierFor(ability: .Strength) && monster.modifierFor(savingThrow: .Strength) != monster.modifierFor(ability: .Strength) + monster.proficiencyBonus {
+            print("\(monster.name) has unusual strength saving throw: \(monster.modifierFor(savingThrow: .Strength)), expected \(monster.modifierFor(ability: .Strength)) or \(monster.modifierFor(ability: .Strength) + monster.proficiencyBonus)")
         }
 
-        if monster.athleticsSkill != monster.strengthModifier && monster.athleticsSkill != monster.strengthModifier + monster.proficiencyBonus && monster.athleticsSkill != monster.strengthModifier + monster.proficiencyBonus * 2 {
-            print("\(monster.name) has unusual Str (Athletics) skill: \(monster.athleticsSkill), expected \(monster.strengthModifier), \(monster.strengthModifier + monster.proficiencyBonus), or \(monster.strengthModifier + monster.proficiencyBonus * 2)")
+        if monster.modifierFor(skill: .Strength(.Athletics)) != monster.modifierFor(ability: .Strength) && monster.modifierFor(skill: .Strength(.Athletics)) != monster.modifierFor(ability: .Strength) + monster.proficiencyBonus && monster.modifierFor(skill: .Strength(.Athletics)) != monster.modifierFor(ability: .Strength) + monster.proficiencyBonus * 2 {
+            print("\(monster.name) has unusual Str (Athletics) skill: \(monster.modifierFor(skill: .Strength(.Athletics))), expected \(monster.modifierFor(ability: .Strength)), \(monster.modifierFor(ability: .Strength) + monster.proficiencyBonus), or \(monster.modifierFor(ability: .Strength) + monster.proficiencyBonus * 2)")
         }
 
-        if monster.dexteritySavingThrow != monster.dexterityModifier && monster.dexteritySavingThrow != monster.dexterityModifier + monster.proficiencyBonus {
-            print("\(monster.name) has unusual dexterity saving throw: \(monster.dexteritySavingThrow), expected \(monster.dexterityModifier) or \(monster.dexterityModifier + monster.proficiencyBonus)")
+        if monster.modifierFor(savingThrow: .Dexterity) != monster.modifierFor(ability: .Dexterity) && monster.modifierFor(savingThrow: .Dexterity) != monster.modifierFor(ability: .Dexterity) + monster.proficiencyBonus {
+            print("\(monster.name) has unusual dexterity saving throw: \(monster.modifierFor(savingThrow: .Dexterity)), expected \(monster.modifierFor(ability: .Dexterity)) or \(monster.modifierFor(ability: .Dexterity) + monster.proficiencyBonus)")
         }
 
-        if monster.acrobaticsSkill != monster.dexterityModifier && monster.acrobaticsSkill != monster.dexterityModifier + monster.proficiencyBonus && monster.acrobaticsSkill != monster.dexterityModifier + monster.proficiencyBonus * 2 {
-            print("\(monster.name) has unusual Dex (Acrobatics) skill: \(monster.acrobaticsSkill), expected \(monster.dexterityModifier), \(monster.dexterityModifier + monster.proficiencyBonus), or \(monster.dexterityModifier + monster.proficiencyBonus * 2)")
+        if monster.modifierFor(skill: .Dexterity(.Acrobatics)) != monster.modifierFor(ability: .Dexterity) && monster.modifierFor(skill: .Dexterity(.Acrobatics)) != monster.modifierFor(ability: .Dexterity) + monster.proficiencyBonus && monster.modifierFor(skill: .Dexterity(.Acrobatics)) != monster.modifierFor(ability: .Dexterity) + monster.proficiencyBonus * 2 {
+            print("\(monster.name) has unusual Dex (Acrobatics) skill: \(monster.modifierFor(skill: .Dexterity(.Acrobatics))), expected \(monster.modifierFor(ability: .Dexterity)), \(monster.modifierFor(ability: .Dexterity) + monster.proficiencyBonus), or \(monster.modifierFor(ability: .Dexterity) + monster.proficiencyBonus * 2)")
         }
 
-        if monster.sleightOfHandSkill != monster.dexterityModifier && monster.sleightOfHandSkill != monster.dexterityModifier + monster.proficiencyBonus && monster.sleightOfHandSkill != monster.dexterityModifier + monster.proficiencyBonus * 2 {
-            print("\(monster.name) has unusual Dex (Sleight of Hand) skill: \(monster.sleightOfHandSkill), expected \(monster.dexterityModifier), \(monster.dexterityModifier + monster.proficiencyBonus), or \(monster.dexterityModifier + monster.proficiencyBonus * 2)")
+        if monster.modifierFor(skill: .Dexterity(.SleightOfHand)) != monster.modifierFor(ability: .Dexterity) && monster.modifierFor(skill: .Dexterity(.SleightOfHand)) != monster.modifierFor(ability: .Dexterity) + monster.proficiencyBonus && monster.modifierFor(skill: .Dexterity(.SleightOfHand)) != monster.modifierFor(ability: .Dexterity) + monster.proficiencyBonus * 2 {
+            print("\(monster.name) has unusual Dex (Sleight of Hand) skill: \(monster.modifierFor(skill: .Dexterity(.SleightOfHand))), expected \(monster.modifierFor(ability: .Dexterity)), \(monster.modifierFor(ability: .Dexterity) + monster.proficiencyBonus), or \(monster.modifierFor(ability: .Dexterity) + monster.proficiencyBonus * 2)")
         }
         
-        if monster.stealthSkill != monster.dexterityModifier && monster.stealthSkill != monster.dexterityModifier + monster.proficiencyBonus && monster.stealthSkill != monster.dexterityModifier + monster.proficiencyBonus * 2 {
-            print("\(monster.name) has unusual Dex (Stealth) skill: \(monster.stealthSkill), expected \(monster.dexterityModifier), \(monster.dexterityModifier + monster.proficiencyBonus), or \(monster.dexterityModifier + monster.proficiencyBonus * 2)")
+        if monster.modifierFor(skill: .Dexterity(.Stealth)) != monster.modifierFor(ability: .Dexterity) && monster.modifierFor(skill: .Dexterity(.Stealth)) != monster.modifierFor(ability: .Dexterity) + monster.proficiencyBonus && monster.modifierFor(skill: .Dexterity(.Stealth)) != monster.modifierFor(ability: .Dexterity) + monster.proficiencyBonus * 2 {
+            print("\(monster.name) has unusual Dex (Stealth) skill: \(monster.modifierFor(skill: .Dexterity(.Stealth))), expected \(monster.modifierFor(ability: .Dexterity)), \(monster.modifierFor(ability: .Dexterity) + monster.proficiencyBonus), or \(monster.modifierFor(ability: .Dexterity) + monster.proficiencyBonus * 2)")
         }
 
-        if monster.constitutionSavingThrow != monster.constitutionModifier && monster.constitutionSavingThrow != monster.constitutionModifier + monster.proficiencyBonus {
-            print("\(monster.name) has unusual constitution saving throw: \(monster.constitutionSavingThrow), expected \(monster.constitutionModifier) or \(monster.constitutionModifier + monster.proficiencyBonus)")
+        if monster.modifierFor(savingThrow: .Constitution) != monster.modifierFor(ability: .Constitution) && monster.modifierFor(savingThrow: .Constitution) != monster.modifierFor(ability: .Constitution) + monster.proficiencyBonus {
+            print("\(monster.name) has unusual constitution saving throw: \(monster.modifierFor(savingThrow: .Constitution)), expected \(monster.modifierFor(ability: .Constitution)) or \(monster.modifierFor(ability: .Constitution) + monster.proficiencyBonus)")
         }
         
-        if monster.intelligenceSavingThrow != monster.intelligenceModifier && monster.intelligenceSavingThrow != monster.intelligenceModifier + monster.proficiencyBonus {
-            print("\(monster.name) has unusual intelligence saving throw: \(monster.intelligenceSavingThrow), expected \(monster.intelligenceModifier) or \(monster.intelligenceModifier + monster.proficiencyBonus)")
+        if monster.modifierFor(savingThrow: .Intelligence) != monster.modifierFor(ability: .Intelligence) && monster.modifierFor(savingThrow: .Intelligence) != monster.modifierFor(ability: .Intelligence) + monster.proficiencyBonus {
+            print("\(monster.name) has unusual intelligence saving throw: \(monster.modifierFor(savingThrow: .Intelligence)), expected \(monster.modifierFor(ability: .Intelligence)) or \(monster.modifierFor(ability: .Intelligence) + monster.proficiencyBonus)")
         }
 
-        if monster.arcanaSkill != monster.intelligenceModifier && monster.arcanaSkill != monster.intelligenceModifier + monster.proficiencyBonus && monster.arcanaSkill != monster.intelligenceModifier + monster.proficiencyBonus * 2 {
-            print("\(monster.name) has unusual Int (Arcana) skill: \(monster.arcanaSkill), expected \(monster.intelligenceModifier), \(monster.intelligenceModifier + monster.proficiencyBonus), or \(monster.intelligenceModifier + monster.proficiencyBonus * 2)")
+        if monster.modifierFor(skill: .Intelligence(.Arcana)) != monster.modifierFor(ability: .Intelligence) && monster.modifierFor(skill: .Intelligence(.Arcana)) != monster.modifierFor(ability: .Intelligence) + monster.proficiencyBonus && monster.modifierFor(skill: .Intelligence(.Arcana)) != monster.modifierFor(ability: .Intelligence) + monster.proficiencyBonus * 2 {
+            print("\(monster.name) has unusual Int (Arcana) skill: \(monster.modifierFor(skill: .Intelligence(.Arcana))), expected \(monster.modifierFor(ability: .Intelligence)), \(monster.modifierFor(ability: .Intelligence) + monster.proficiencyBonus), or \(monster.modifierFor(ability: .Intelligence) + monster.proficiencyBonus * 2)")
         }
     
-        if monster.historySkill != monster.intelligenceModifier && monster.historySkill != monster.intelligenceModifier + monster.proficiencyBonus && monster.historySkill != monster.intelligenceModifier + monster.proficiencyBonus * 2 {
-            print("\(monster.name) has unusual Int (History) skill: \(monster.historySkill), expected \(monster.intelligenceModifier), \(monster.intelligenceModifier + monster.proficiencyBonus), or \(monster.intelligenceModifier + monster.proficiencyBonus * 2)")
+        if monster.modifierFor(skill: .Intelligence(.History)) != monster.modifierFor(ability: .Intelligence) && monster.modifierFor(skill: .Intelligence(.History)) != monster.modifierFor(ability: .Intelligence) + monster.proficiencyBonus && monster.modifierFor(skill: .Intelligence(.History)) != monster.modifierFor(ability: .Intelligence) + monster.proficiencyBonus * 2 {
+            print("\(monster.name) has unusual Int (History) skill: \(monster.modifierFor(skill: .Intelligence(.History))), expected \(monster.modifierFor(ability: .Intelligence)), \(monster.modifierFor(ability: .Intelligence) + monster.proficiencyBonus), or \(monster.modifierFor(ability: .Intelligence) + monster.proficiencyBonus * 2)")
         }
         
-        if monster.investigationSkill != monster.intelligenceModifier && monster.investigationSkill != monster.intelligenceModifier + monster.proficiencyBonus && monster.investigationSkill != monster.intelligenceModifier + monster.proficiencyBonus * 2 {
-            print("\(monster.name) has unusual Int (Investigation) skill: \(monster.investigationSkill), expected \(monster.intelligenceModifier), \(monster.intelligenceModifier + monster.proficiencyBonus), or \(monster.intelligenceModifier + monster.proficiencyBonus * 2)")
+        if monster.modifierFor(skill: .Intelligence(.Investigation)) != monster.modifierFor(ability: .Intelligence) && monster.modifierFor(skill: .Intelligence(.Investigation)) != monster.modifierFor(ability: .Intelligence) + monster.proficiencyBonus && monster.modifierFor(skill: .Intelligence(.Investigation)) != monster.modifierFor(ability: .Intelligence) + monster.proficiencyBonus * 2 {
+            print("\(monster.name) has unusual Int (Investigation) skill: \(monster.modifierFor(skill: .Intelligence(.Investigation))), expected \(monster.modifierFor(ability: .Intelligence)), \(monster.modifierFor(ability: .Intelligence) + monster.proficiencyBonus), or \(monster.modifierFor(ability: .Intelligence) + monster.proficiencyBonus * 2)")
         }
         
-        if monster.natureSkill != monster.intelligenceModifier && monster.natureSkill != monster.intelligenceModifier + monster.proficiencyBonus && monster.natureSkill != monster.intelligenceModifier + monster.proficiencyBonus * 2 {
-            print("\(monster.name) has unusual Int (Nature) skill: \(monster.natureSkill), expected \(monster.intelligenceModifier), \(monster.intelligenceModifier + monster.proficiencyBonus), or \(monster.intelligenceModifier + monster.proficiencyBonus * 2)")
+        if monster.modifierFor(skill: .Intelligence(.Nature)) != monster.modifierFor(ability: .Intelligence) && monster.modifierFor(skill: .Intelligence(.Nature)) != monster.modifierFor(ability: .Intelligence) + monster.proficiencyBonus && monster.modifierFor(skill: .Intelligence(.Nature)) != monster.modifierFor(ability: .Intelligence) + monster.proficiencyBonus * 2 {
+            print("\(monster.name) has unusual Int (Nature) skill: \(monster.modifierFor(skill: .Intelligence(.Nature))), expected \(monster.modifierFor(ability: .Intelligence)), \(monster.modifierFor(ability: .Intelligence) + monster.proficiencyBonus), or \(monster.modifierFor(ability: .Intelligence) + monster.proficiencyBonus * 2)")
         }
 
-        if monster.religionSkill != monster.intelligenceModifier && monster.religionSkill != monster.intelligenceModifier + monster.proficiencyBonus && monster.religionSkill != monster.intelligenceModifier + monster.proficiencyBonus * 2 {
-            print("\(monster.name) has unusual Int (Religion) skill: \(monster.religionSkill), expected \(monster.intelligenceModifier), \(monster.intelligenceModifier + monster.proficiencyBonus), or \(monster.intelligenceModifier + monster.proficiencyBonus * 2)")
+        if monster.modifierFor(skill: .Intelligence(.Religion)) != monster.modifierFor(ability: .Intelligence) && monster.modifierFor(skill: .Intelligence(.Religion)) != monster.modifierFor(ability: .Intelligence) + monster.proficiencyBonus && monster.modifierFor(skill: .Intelligence(.Religion)) != monster.modifierFor(ability: .Intelligence) + monster.proficiencyBonus * 2 {
+            print("\(monster.name) has unusual Int (Religion) skill: \(monster.modifierFor(skill: .Intelligence(.Religion))), expected \(monster.modifierFor(ability: .Intelligence)), \(monster.modifierFor(ability: .Intelligence) + monster.proficiencyBonus), or \(monster.modifierFor(ability: .Intelligence) + monster.proficiencyBonus * 2)")
         }
         
-        if monster.wisdomSavingThrow != monster.wisdomModifier && monster.wisdomSavingThrow != monster.wisdomModifier + monster.proficiencyBonus {
-            print("\(monster.name) has unusual wisdom saving throw: \(monster.wisdomSavingThrow), expected \(monster.wisdomModifier) or \(monster.wisdomModifier + monster.proficiencyBonus)")
+        if monster.modifierFor(savingThrow: .Wisdom) != monster.modifierFor(ability: .Wisdom) && monster.modifierFor(savingThrow: .Wisdom) != monster.modifierFor(ability: .Wisdom) + monster.proficiencyBonus {
+            print("\(monster.name) has unusual wisdom saving throw: \(monster.modifierFor(savingThrow: .Wisdom)), expected \(monster.modifierFor(ability: .Wisdom)) or \(monster.modifierFor(ability: .Wisdom) + monster.proficiencyBonus)")
         }
 
-        if monster.animalHandlingSkill != monster.wisdomModifier && monster.animalHandlingSkill != monster.wisdomModifier + monster.proficiencyBonus && monster.animalHandlingSkill != monster.wisdomModifier + monster.proficiencyBonus * 2 {
-            print("\(monster.name) has unusual Wis (Animal Handling) skill: \(monster.animalHandlingSkill), expected \(monster.wisdomModifier), \(monster.wisdomModifier + monster.proficiencyBonus), or \(monster.wisdomModifier + monster.proficiencyBonus * 2)")
+        if monster.modifierFor(skill: .Wisdom(.AnimalHandling)) != monster.modifierFor(ability: .Wisdom) && monster.modifierFor(skill: .Wisdom(.AnimalHandling)) != monster.modifierFor(ability: .Wisdom) + monster.proficiencyBonus && monster.modifierFor(skill: .Wisdom(.AnimalHandling)) != monster.modifierFor(ability: .Wisdom) + monster.proficiencyBonus * 2 {
+            print("\(monster.name) has unusual Wis (Animal Handling) skill: \(monster.modifierFor(skill: .Wisdom(.AnimalHandling))), expected \(monster.modifierFor(ability: .Wisdom)), \(monster.modifierFor(ability: .Wisdom) + monster.proficiencyBonus), or \(monster.modifierFor(ability: .Wisdom) + monster.proficiencyBonus * 2)")
         }
 
-        if monster.medicineSkill != monster.wisdomModifier && monster.medicineSkill != monster.wisdomModifier + monster.proficiencyBonus && monster.medicineSkill != monster.wisdomModifier + monster.proficiencyBonus * 2 {
-            print("\(monster.name) has unusual Wis (Medicine) skill: \(monster.medicineSkill), expected \(monster.wisdomModifier), \(monster.wisdomModifier + monster.proficiencyBonus), or \(monster.wisdomModifier + monster.proficiencyBonus * 2)")
+        if monster.modifierFor(skill: .Wisdom(.Medicine)) != monster.modifierFor(ability: .Wisdom) && monster.modifierFor(skill: .Wisdom(.Medicine)) != monster.modifierFor(ability: .Wisdom) + monster.proficiencyBonus && monster.modifierFor(skill: .Wisdom(.Medicine)) != monster.modifierFor(ability: .Wisdom) + monster.proficiencyBonus * 2 {
+            print("\(monster.name) has unusual Wis (Medicine) skill: \(monster.modifierFor(skill: .Wisdom(.Medicine))), expected \(monster.modifierFor(ability: .Wisdom)), \(monster.modifierFor(ability: .Wisdom) + monster.proficiencyBonus), or \(monster.modifierFor(ability: .Wisdom) + monster.proficiencyBonus * 2)")
         }
         
-        if monster.perceptionSkill != monster.wisdomModifier && monster.perceptionSkill != monster.wisdomModifier + monster.proficiencyBonus && monster.perceptionSkill != monster.wisdomModifier + monster.proficiencyBonus * 2 {
-            print("\(monster.name) has unusual Wis (Perception) skill: \(monster.perceptionSkill), expected \(monster.wisdomModifier), \(monster.wisdomModifier + monster.proficiencyBonus), or \(monster.wisdomModifier + monster.proficiencyBonus * 2)")
+        if monster.modifierFor(skill: .Wisdom(.Perception)) != monster.modifierFor(ability: .Wisdom) && monster.modifierFor(skill: .Wisdom(.Perception)) != monster.modifierFor(ability: .Wisdom) + monster.proficiencyBonus && monster.modifierFor(skill: .Wisdom(.Perception)) != monster.modifierFor(ability: .Wisdom) + monster.proficiencyBonus * 2 {
+            print("\(monster.name) has unusual Wis (Perception) skill: \(monster.modifierFor(skill: .Wisdom(.Perception))), expected \(monster.modifierFor(ability: .Wisdom)), \(monster.modifierFor(ability: .Wisdom) + monster.proficiencyBonus), or \(monster.modifierFor(ability: .Wisdom) + monster.proficiencyBonus * 2)")
         }
 
-        if monster.insightSkill != monster.wisdomModifier && monster.insightSkill != monster.wisdomModifier + monster.proficiencyBonus && monster.insightSkill != monster.wisdomModifier + monster.proficiencyBonus * 2 {
-            print("\(monster.name) has unusual Wis (Insight) skill: \(monster.insightSkill), expected \(monster.wisdomModifier), \(monster.wisdomModifier + monster.proficiencyBonus), or \(monster.wisdomModifier + monster.proficiencyBonus * 2)")
+        if monster.modifierFor(skill: .Wisdom(.Insight)) != monster.modifierFor(ability: .Wisdom) && monster.modifierFor(skill: .Wisdom(.Insight)) != monster.modifierFor(ability: .Wisdom) + monster.proficiencyBonus && monster.modifierFor(skill: .Wisdom(.Insight)) != monster.modifierFor(ability: .Wisdom) + monster.proficiencyBonus * 2 {
+            print("\(monster.name) has unusual Wis (Insight) skill: \(monster.modifierFor(skill: .Wisdom(.Insight))), expected \(monster.modifierFor(ability: .Wisdom)), \(monster.modifierFor(ability: .Wisdom) + monster.proficiencyBonus), or \(monster.modifierFor(ability: .Wisdom) + monster.proficiencyBonus * 2)")
         }
         
-        if monster.survivalSkill != monster.wisdomModifier && monster.survivalSkill != monster.wisdomModifier + monster.proficiencyBonus && monster.survivalSkill != monster.wisdomModifier + monster.proficiencyBonus * 2 {
-            print("\(monster.name) has unusual Wis (Survival) skill: \(monster.survivalSkill), expected \(monster.wisdomModifier), \(monster.wisdomModifier + monster.proficiencyBonus), or \(monster.wisdomModifier + monster.proficiencyBonus * 2)")
+        if monster.modifierFor(skill: .Wisdom(.Survival)) != monster.modifierFor(ability: .Wisdom) && monster.modifierFor(skill: .Wisdom(.Survival)) != monster.modifierFor(ability: .Wisdom) + monster.proficiencyBonus && monster.modifierFor(skill: .Wisdom(.Survival)) != monster.modifierFor(ability: .Wisdom) + monster.proficiencyBonus * 2 {
+            print("\(monster.name) has unusual Wis (Survival) skill: \(monster.modifierFor(skill: .Wisdom(.Survival))), expected \(monster.modifierFor(ability: .Wisdom)), \(monster.modifierFor(ability: .Wisdom) + monster.proficiencyBonus), or \(monster.modifierFor(ability: .Wisdom) + monster.proficiencyBonus * 2)")
         }
 
-        if monster.charismaSavingThrow != monster.charismaModifier && monster.charismaSavingThrow != monster.charismaModifier + monster.proficiencyBonus {
-            print("\(monster.name) has unusual charisma saving throw: \(monster.charismaSavingThrow), expected \(monster.charismaModifier) or \(monster.charismaModifier + monster.proficiencyBonus)")
+        if monster.modifierFor(savingThrow: .Charisma) != monster.modifierFor(ability: .Charisma) && monster.modifierFor(savingThrow: .Charisma) != monster.modifierFor(ability: .Charisma) + monster.proficiencyBonus {
+            print("\(monster.name) has unusual charisma saving throw: \(monster.modifierFor(savingThrow: .Charisma)), expected \(monster.modifierFor(ability: .Charisma)) or \(monster.modifierFor(ability: .Charisma) + monster.proficiencyBonus)")
         }
 
-        if monster.deceptionSkill != monster.charismaModifier && monster.deceptionSkill != monster.charismaModifier + monster.proficiencyBonus && monster.deceptionSkill != monster.charismaModifier + monster.proficiencyBonus * 2 {
-            print("\(monster.name) has unusual Cha (Deception) skill: \(monster.deceptionSkill), expected \(monster.charismaModifier), \(monster.charismaModifier + monster.proficiencyBonus), or \(monster.charismaModifier + monster.proficiencyBonus * 2)")
+        if monster.modifierFor(skill: .Charisma(.Deception)) != monster.modifierFor(ability: .Charisma) && monster.modifierFor(skill: .Charisma(.Deception)) != monster.modifierFor(ability: .Charisma) + monster.proficiencyBonus && monster.modifierFor(skill: .Charisma(.Deception)) != monster.modifierFor(ability: .Charisma) + monster.proficiencyBonus * 2 {
+            print("\(monster.name) has unusual Cha (Deception) skill: \(monster.modifierFor(skill: .Charisma(.Deception))), expected \(monster.modifierFor(ability: .Charisma)), \(monster.modifierFor(ability: .Charisma) + monster.proficiencyBonus), or \(monster.modifierFor(ability: .Charisma) + monster.proficiencyBonus * 2)")
         }
 
-        if monster.intimidationSkill != monster.charismaModifier && monster.intimidationSkill != monster.charismaModifier + monster.proficiencyBonus && monster.intimidationSkill != monster.charismaModifier + monster.proficiencyBonus * 2 {
-            print("\(monster.name) has unusual Cha (Intimidation) skill: \(monster.intimidationSkill), expected \(monster.charismaModifier), \(monster.charismaModifier + monster.proficiencyBonus), or \(monster.charismaModifier + monster.proficiencyBonus * 2)")
+        if monster.modifierFor(skill: .Charisma(.Intimidation)) != monster.modifierFor(ability: .Charisma) && monster.modifierFor(skill: .Charisma(.Intimidation)) != monster.modifierFor(ability: .Charisma) + monster.proficiencyBonus && monster.modifierFor(skill: .Charisma(.Intimidation)) != monster.modifierFor(ability: .Charisma) + monster.proficiencyBonus * 2 {
+            print("\(monster.name) has unusual Cha (Intimidation) skill: \(monster.modifierFor(skill: .Charisma(.Intimidation))), expected \(monster.modifierFor(ability: .Charisma)), \(monster.modifierFor(ability: .Charisma) + monster.proficiencyBonus), or \(monster.modifierFor(ability: .Charisma) + monster.proficiencyBonus * 2)")
         }
 
-        if monster.performanceSkill != monster.charismaModifier && monster.performanceSkill != monster.charismaModifier + monster.proficiencyBonus && monster.performanceSkill != monster.charismaModifier + monster.proficiencyBonus * 2 {
-            print("\(monster.name) has unusual Cha (Performance) skill: \(monster.performanceSkill), expected \(monster.charismaModifier), \(monster.charismaModifier + monster.proficiencyBonus), or \(monster.charismaModifier + monster.proficiencyBonus * 2)")
+        if monster.modifierFor(skill: .Charisma(.Performance)) != monster.modifierFor(ability: .Charisma) && monster.modifierFor(skill: .Charisma(.Performance)) != monster.modifierFor(ability: .Charisma) + monster.proficiencyBonus && monster.modifierFor(skill: .Charisma(.Performance)) != monster.modifierFor(ability: .Charisma) + monster.proficiencyBonus * 2 {
+            print("\(monster.name) has unusual Cha (Performance) skill: \(monster.modifierFor(skill: .Charisma(.Performance))), expected \(monster.modifierFor(ability: .Charisma)), \(monster.modifierFor(ability: .Charisma) + monster.proficiencyBonus), or \(monster.modifierFor(ability: .Charisma) + monster.proficiencyBonus * 2)")
         }
 
-        if monster.persuasionSkill != monster.charismaModifier && monster.persuasionSkill != monster.charismaModifier + monster.proficiencyBonus && monster.persuasionSkill != monster.charismaModifier + monster.proficiencyBonus * 2 {
-                print("\(monster.name) has unusual Cha (Persuasion) skill: \(monster.persuasionSkill), expected \(monster.charismaModifier), \(monster.charismaModifier + monster.proficiencyBonus), or \(monster.charismaModifier + monster.proficiencyBonus * 2)")
+        if monster.modifierFor(skill: .Charisma(.Persuasion)) != monster.modifierFor(ability: .Charisma) && monster.modifierFor(skill: .Charisma(.Persuasion)) != monster.modifierFor(ability: .Charisma) + monster.proficiencyBonus && monster.modifierFor(skill: .Charisma(.Persuasion)) != monster.modifierFor(ability: .Charisma) + monster.proficiencyBonus * 2 {
+                print("\(monster.name) has unusual Cha (Persuasion) skill: \(monster.modifierFor(skill: .Charisma(.Persuasion))), expected \(monster.modifierFor(ability: .Charisma)), \(monster.modifierFor(ability: .Charisma) + monster.proficiencyBonus), or \(monster.modifierFor(ability: .Charisma) + monster.proficiencyBonus * 2)")
         }
     }
     
