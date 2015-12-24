@@ -29,7 +29,7 @@ enum BookType: Int {
 enum Ability: Int {
     case Strength
     case Dexterity
-    case Constiution
+    case Constitution
     case Intelligence
     case Wisdom
     case Charisma
