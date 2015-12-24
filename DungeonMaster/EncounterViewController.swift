@@ -204,15 +204,7 @@ extension EncounterViewController: NSFetchedResultsControllerDelegate {
         case .Delete:
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
         case .Update:
-            let combatant = fetchedResultsController.objectAtIndexPath(indexPath!) as! Combatant
-            switch combatant.role {
-            case .Foe, .Friend:
-                let cell = tableView.cellForRowAtIndexPath(indexPath!) as! CombatantMonsterCell
-                cell.combatant = combatant
-            case .Player:
-                let cell = tableView.cellForRowAtIndexPath(indexPath!) as! CombatantPlayerCell
-                cell.combatant = combatant
-            }
+            tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
         case .Move:
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
             tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
