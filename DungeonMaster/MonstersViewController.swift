@@ -127,20 +127,11 @@ class MonstersViewController: UIViewController {
         // Load previously saved hidden books. Handled here rather than in viewDidLoad because this happens first, and reloading data straight after would be ugly.
         let defaults = NSUserDefaults.standardUserDefaults()
         if let hiddenBookNames = defaults.objectForKey("HiddenBooks") as? [String] {
-            let fetchRequest = NSFetchRequest()
-            let entity = NSEntityDescription.entity(Model.Book, inManagedObjectContext: managedObjectContext)
-            fetchRequest.entity = entity
-            
+            let fetchRequest = NSFetchRequest(entity: Model.Book)
             fetchRequest.predicate = NSPredicate(format: "name in %@", hiddenBookNames)
             
-            do {
-                let books = try managedObjectContext.executeFetchRequest(fetchRequest) as! [Book]
-                hiddenBooks = Set<Book>(books)
-            } catch {
-                let error = error as NSError
-                print("Unresolved error \(error), \(error.userInfo)")
-                abort()
-            }
+            let books = try! managedObjectContext.executeFetchRequest(fetchRequest) as! [Book]
+            hiddenBooks = Set<Book>(books)
         }
         
         // Create and execute the fetch request.
@@ -151,9 +142,7 @@ class MonstersViewController: UIViewController {
     var _fetchedResultsController: NSFetchedResultsController?
     
     func updateFetchRequestController(search search: String? = nil) {
-        let fetchRequest = NSFetchRequest()
-        let entity = NSEntityDescription.entity(Model.Monster, inManagedObjectContext: managedObjectContext)
-        fetchRequest.entity = entity
+        let fetchRequest = NSFetchRequest(entity: Model.Monster)
         fetchRequest.fetchBatchSize = 20
 
         // Sorting by name is enough for section handling by initial to work.
@@ -197,17 +186,11 @@ class MonstersViewController: UIViewController {
         
         // Edit the section name key path and cache name if appropriate.
         // nil for section name key path means "no sections".
-        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: sectionNameKeyPath, cacheName: nil)
-        aFetchedResultsController.delegate = self
-        _fetchedResultsController = aFetchedResultsController
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: sectionNameKeyPath, cacheName: nil)
+        fetchedResultsController.delegate = self
+        _fetchedResultsController = fetchedResultsController
         
-        do {
-            try _fetchedResultsController!.performFetch()
-        } catch {
-            let error = error as NSError
-            print("Unresolved error \(error), \(error.userInfo)")
-            abort()
-        }
+        try! _fetchedResultsController!.performFetch()
     }
     
     func updateFetchedResults(search search: String? = nil) {

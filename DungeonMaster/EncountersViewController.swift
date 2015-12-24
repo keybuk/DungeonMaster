@@ -32,9 +32,7 @@ class EncountersViewController: UITableViewController {
             return _fetchedResultsController!
         }
         
-        let fetchRequest = NSFetchRequest()
-        let entity = NSEntityDescription.entity(Model.Encounter, inManagedObjectContext: managedObjectContext)
-        fetchRequest.entity = entity
+        let fetchRequest = NSFetchRequest(entity: Model.Encounter)
         
         let sortDescriptor = NSSortDescriptor(key: "lastUsed", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
@@ -43,13 +41,8 @@ class EncountersViewController: UITableViewController {
         fetchedResultsController.delegate = self
         _fetchedResultsController = fetchedResultsController
         
-        do {
-            try _fetchedResultsController!.performFetch()
-        } catch {
-            let error = error as NSError
-            print("Unresolved error \(error), \(error.userInfo)")
-            abort()
-        }
+        try! _fetchedResultsController!.performFetch()
+
         return _fetchedResultsController!
     }
     var _fetchedResultsController: NSFetchedResultsController?

@@ -29,9 +29,7 @@ class BooksViewController: UITableViewController {
             return _fetchedResultsController!
         }
         
-        let fetchRequest = NSFetchRequest()
-        let entity = NSEntityDescription.entity(Model.Book, inManagedObjectContext: managedObjectContext)
-        fetchRequest.entity = entity
+        let fetchRequest = NSFetchRequest(entity: Model.Book)
         
         let typeSortDescriptor = NSSortDescriptor(key: "rawType", ascending: true)
         let nameSortDescriptor = NSSortDescriptor(key: "name", ascending: true)
@@ -39,17 +37,11 @@ class BooksViewController: UITableViewController {
         
         // Edit the section name key path and cache name if appropriate.
         // nil for section name key path means "no sections".
-        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: "rawType", cacheName: nil)
-        aFetchedResultsController.delegate = self
-        _fetchedResultsController = aFetchedResultsController
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: "rawType", cacheName: nil)
+        fetchedResultsController.delegate = self
+        _fetchedResultsController = fetchedResultsController
         
-        do {
-            try _fetchedResultsController!.performFetch()
-        } catch {
-            let error = error as NSError
-            print("Unresolved error \(error), \(error.userInfo)")
-            abort()
-        }
+        try! _fetchedResultsController!.performFetch()
         
         return _fetchedResultsController!
     }

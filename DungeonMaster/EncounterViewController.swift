@@ -50,9 +50,7 @@ class EncounterViewController: UITableViewController {
         }
         
         // We use a predicate on the Combatant table, matching against the encounter, rather than just using "encounter.combatants" so that we can be a delegate and get change notifications.
-        let fetchRequest = NSFetchRequest()
-        let entity = NSEntityDescription.entity(Model.Combatant, inManagedObjectContext: managedObjectContext)
-        fetchRequest.entity = entity
+        let fetchRequest = NSFetchRequest(entity: Model.Combatant)
         
         let predicate = NSPredicate(format: "encounter = %@", encounter)
         fetchRequest.predicate = predicate
@@ -65,13 +63,8 @@ class EncounterViewController: UITableViewController {
         fetchedResultsController.delegate = self
         _fetchedResultsController = fetchedResultsController
         
-        do {
-            try _fetchedResultsController!.performFetch()
-        } catch {
-            let error = error as NSError
-            print("Unresolved error \(error), \(error.userInfo)")
-            abort()
-        }
+        try! _fetchedResultsController!.performFetch()
+    
         return _fetchedResultsController!
     }
     var _fetchedResultsController: NSFetchedResultsController?

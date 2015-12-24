@@ -47,13 +47,7 @@ class PlayersViewController: UITableViewController {
         fetchedResultsController.delegate = self
         _fetchedResultsController = fetchedResultsController
         
-        do {
-            try _fetchedResultsController!.performFetch()
-        } catch {
-            let error = error as NSError
-            print("Unresolved error \(error), \(error.userInfo)")
-            abort()
-        }
+        try! _fetchedResultsController!.performFetch()
         
         return _fetchedResultsController!
     }
