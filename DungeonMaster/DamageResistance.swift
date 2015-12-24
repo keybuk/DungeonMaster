@@ -6,8 +6,8 @@
 //  Copyright © 2015 Scott James Remnant. All rights reserved.
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 /// DamageResistance represents a class of damage and attack that a monster is resistant to.
 final class DamageResistance: NSManagedObject {

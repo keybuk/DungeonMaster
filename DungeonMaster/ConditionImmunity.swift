@@ -6,8 +6,8 @@
 //  Copyright © 2015 Scott James Remnant. All rights reserved.
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 /// ConditionImmunity represents a condition that a monster is immune to.
 final class ConditionImmunity: NSManagedObject {

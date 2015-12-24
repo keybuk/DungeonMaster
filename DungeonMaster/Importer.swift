@@ -6,8 +6,8 @@
 //  Copyright © 2015 Scott James Remnant. All rights reserved.
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 func importIfNeeded() {
     let filename = NSBundle.mainBundle().pathForResource("Data", ofType: "plist")!

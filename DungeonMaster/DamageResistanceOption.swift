@@ -6,8 +6,8 @@
 //  Copyright © 2015 Scott James Remnant. All rights reserved.
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 /// DamageResistanceOption represents the set of possible damage resistances to be chosen for the monster.
 final class DamageResistanceOption: NSManagedObject {

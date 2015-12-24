@@ -6,8 +6,8 @@
 //  Copyright © 2015 Scott James Remnant. All rights reserved.
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 /// Source represents an individual reference to source material.
 final class Source: NSManagedObject {

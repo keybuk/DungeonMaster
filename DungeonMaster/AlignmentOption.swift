@@ -6,8 +6,8 @@
 //  Copyright © 2015 Scott James Remnant. All rights reserved.
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 /// AlignmentOption represents a single option, in a set, for choosing the alignment of a monster.
 final class AlignmentOption: NSManagedObject {

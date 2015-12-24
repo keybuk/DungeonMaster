@@ -6,8 +6,8 @@
 //  Copyright © 2015 Scott James Remnant. All rights reserved.
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 /// DamageImmunity represents a class of damage and attack that a monster is immune to.
 final class DamageImmunity: NSManagedObject {

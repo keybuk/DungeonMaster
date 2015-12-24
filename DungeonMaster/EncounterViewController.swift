@@ -6,8 +6,8 @@
 //  Copyright © 2015 Scott James Remnant. All rights reserved.
 //
 
-import UIKit
 import CoreData
+import UIKit
 
 class EncounterViewController: UITableViewController {
     

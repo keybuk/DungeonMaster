@@ -6,8 +6,8 @@
 //  Copyright © 2015 Scott James Remnant. All rights reserved.
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 /// Book represents a specific book, supplement, online update, etc. in which references to material can be found.
 final class Book: NSManagedObject {

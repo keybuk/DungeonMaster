@@ -6,9 +6,9 @@
 //  Copyright © 2015 Scott James Remnant. All rights reserved.
 //
 
-import Foundation
 import CoreData
-import UIKit
+import CoreGraphics
+import Foundation
 
 final class Combatant: NSManagedObject {
     

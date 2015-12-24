@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import UIKit
+import CoreGraphics
 
 /// Box represents an arbitrary box of values denoted by two intervals for those values.
 private struct Box {

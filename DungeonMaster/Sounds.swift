@@ -6,8 +6,8 @@
 //  Copyright © 2015 Scott James Remnant. All rights reserved.
 //
 
-import Foundation
 import AudioToolbox
+import Foundation
 
 enum Sound: String {
     case Dice = "dice"
