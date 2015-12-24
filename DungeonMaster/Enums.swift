@@ -722,3 +722,13 @@ enum MagicSchool {
     case Necromancy
     case Transmutation
 }
+
+/// Role of a creature in combat.
+/// - **Foe**: a monster controlled by the DM, unfriendly to the players.
+/// - **Friend**: a monster controlled by the DM, friendly to the players.
+/// - **Player**: a monster or character controlled by a player.
+enum CombatRole: Int {
+    case Foe
+    case Friend
+    case Player
+}

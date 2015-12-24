@@ -22,21 +22,22 @@ final class Encounter: NSManagedObject {
         }
         
         let sortDescriptor = NSSortDescriptor(key: "monster.challenge", ascending: false)
-        let sortedCombatants = combatants.sortedArrayUsingDescriptors([sortDescriptor]) as! [Combatant]
+        let sortedCombatants = (combatants.sortedArrayUsingDescriptors([sortDescriptor]) as! [Combatant])
         if sortedCombatants.count > 0 {
-            let monster = sortedCombatants[0].monster
-            let count = sortedCombatants.filter { return $0.monster == monster }.count
+            if let monster = sortedCombatants[0].monster {
+                let count = sortedCombatants.filter { return $0.monster == monster }.count
 
-            if count > 1 {
-                if count < sortedCombatants.count {
-                    return "\(count) \(monster.name)s and \(sortedCombatants.count - count) others"
+                if count > 1 {
+                    if count < sortedCombatants.count {
+                        return "\(count) \(monster.name)s and \(sortedCombatants.count - count) others"
+                    } else {
+                        return "\(count) \(monster.name)s"
+                    }
+                } else if sortedCombatants.count > 1 {
+                    return "\(monster.name) and \(sortedCombatants.count - 1) others"
                 } else {
-                    return "\(count) \(monster.name)s"
+                    return "\(monster.name)"
                 }
-            } else if sortedCombatants.count > 1 {
-                return "\(monster.name) and \(sortedCombatants.count - 1) others"
-            } else {
-                return "\(monster.name)"
             }
         }
         

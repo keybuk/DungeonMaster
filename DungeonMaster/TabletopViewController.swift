@@ -91,7 +91,12 @@ extension TabletopViewController: TabletopViewDataSource {
     
     func tabletopView(tabletopView: TabletopView, nameForItem index: Int) -> String {
         let combatant = fetchedResultsController.fetchedObjects![index] as! Combatant
-        return combatant.monster.name
+        return combatant.monster != nil ? combatant.monster!.name : combatant.player!.name
+    }
+    
+    func tabletopView(tabletopView: TabletopView, shouldShowHealthForItem index: Int) -> Bool {
+        let combatant = fetchedResultsController.fetchedObjects![index] as! Combatant
+        return combatant.role != .Player
     }
     
     func tabletopView(tabletopView: TabletopView, healthForItem index: Int) -> Float {

@@ -105,6 +105,11 @@ final class Player: NSManagedObject {
     /// Each member is a `PlayerSkill`.
     @NSManaged var skills: NSSet
     
+    /// Encounters that the character is involved in.
+    ///
+    /// Each member is a `Combatant` linking the character to its encounter, and describing the current state of the character such as conditions, etc.
+    @NSManaged var combatants: NSSet
+
     convenience init(inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Player, inManagedObjectContext: context)
         self.init(entity: entity, insertIntoManagedObjectContext: context)

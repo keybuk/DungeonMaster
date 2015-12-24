@@ -124,79 +124,73 @@ class CombatantViewController: UITableViewController {
 // MARK: UITableViewDataSource
 extension CombatantViewController {
     
-    enum TableSections: Int {
+    enum TableSection: Int {
         case Details
         case Conditions
-        case Damages
+        case Damage
         case Notes
-        case SectionCount
+        
+        static let count: Int = 4
     }
     
-    enum TableDetailsRows: Int {
-        case MonsterName
-        case HitPoints
+    enum DetailsTableRow: Int {
+        case Name
         case Initiative
-        case RowCount
+        case HitPoints
+        
+        static let count: Int = 3
     }
     
     // MARK: Sections
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return TableSections.SectionCount.rawValue
+        return TableSection.count
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch TableSections(rawValue: section)! {
+        switch TableSection(rawValue: section)! {
         case .Details:
-            return TableDetailsRows.RowCount.rawValue
+            // Name, Initiative, Hit Points if foe.
+            return combatant.role == .Foe ? DetailsTableRow.count : DetailsTableRow.count - 1
         case .Conditions:
             return combatant.conditions.count + 1
-        case .Damages:
+        case .Damage:
             return combatant.damages.count + 1
         case .Notes:
             return 1
-        default:
-            abort()
         }
     }
 
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch TableSections(rawValue: section)! {
+        switch TableSection(rawValue: section)! {
         case .Details:
             return nil
         case .Conditions:
             return "Conditions"
-        case .Damages:
+        case .Damage:
             return "Damage"
         case .Notes:
             return "Notes"
-        default:
-            abort()
         }
     }
     
     // MARK: Rows
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        switch TableSections(rawValue: indexPath.section)! {
+        switch TableSection(rawValue: indexPath.section)! {
         case .Details:
-            let tableRow = TableDetailsRows(rawValue: indexPath.row)!
-            switch tableRow {
-            case .MonsterName:
+            switch DetailsTableRow(rawValue: indexPath.row)! {
+            case .Name:
                 let cell = tableView.dequeueReusableCellWithIdentifier("CombatantNameCell", forIndexPath: indexPath) as! CombatantNameCell
-                cell.nameLabel.text = combatant.monster.name
-                return cell
-            case .HitPoints:
-                let cell = tableView.dequeueReusableCellWithIdentifier("DiceRollCell", forIndexPath: indexPath) as! DiceRollCell
-                cell.diceCombo = combatant.monster.hitDice
-                cell.label.text = "Hit Points"
-                cell.textField.text = "\(combatant.hitPoints)"
-                // Should read up on control events and figure out if this is right or not.
-                cell.textField.addTarget(self, action: "hitPointsEditingChanged:", forControlEvents: .EditingChanged)
+                cell.nameLabel.text = combatant.monster != nil ? combatant.monster!.name : combatant.player!.name
                 return cell
             case .Initiative:
                 let cell = tableView.dequeueReusableCellWithIdentifier("DiceRollCell", forIndexPath: indexPath) as! DiceRollCell
-                cell.diceCombo = combatant.monster.initiativeDice
+                if combatant.role != .Player {
+                    cell.diceCombo = combatant.monster!.initiativeDice
+                } else {
+                    cell.diceCombo = nil
+                }
                 cell.label.text = "Initiative"
                 if let initiative = combatant.initiative {
                     cell.textField.text = "\(initiative)"
@@ -205,8 +199,14 @@ extension CombatantViewController {
                 }
                 cell.textField.addTarget(self, action: "initiativeEditingChanged:", forControlEvents: .EditingChanged)
                 return cell
-            default:
-                abort()
+            case .HitPoints:
+                let cell = tableView.dequeueReusableCellWithIdentifier("DiceRollCell", forIndexPath: indexPath) as! DiceRollCell
+                cell.diceCombo = combatant.monster!.hitDice
+                cell.label.text = "Hit Points"
+                cell.textField.text = "\(combatant.hitPoints)"
+                // Should read up on control events and figure out if this is right or not.
+                cell.textField.addTarget(self, action: "hitPointsEditingChanged:", forControlEvents: .EditingChanged)
+                return cell
             }
         case .Conditions:
             if indexPath.row == 0 {
@@ -218,7 +218,7 @@ extension CombatantViewController {
                 cell.condition = condition
                 return cell
             }
-        case .Damages:
+        case .Damage:
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCellWithIdentifier("AddDamageCell", forIndexPath: indexPath) as! AddDamageCell
                 let hitPoints = combatant.hitPoints - combatant.damagePoints
@@ -245,54 +245,38 @@ extension CombatantViewController {
             let cell = tableView.dequeueReusableCellWithIdentifier("NotesCell", forIndexPath: indexPath) as! NotesCell
             cell.textView.text = combatant.notes
             return cell
-        default:
-            abort()
         }
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        switch TableSections(rawValue: indexPath.section)! {
-        case .Details:
-            return 44.0
-        case .Conditions:
-            return 44.0
-        case .Damages:
+        switch TableSection(rawValue: indexPath.section)! {
+        case .Details, .Conditions, .Damage:
             return 44.0
         case .Notes:
             return 144.0
-        default:
-            abort()
         }
     }
 
     // MARK: Edit support
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        switch TableSections(rawValue: indexPath.section)! {
-        case .Details:
+        switch TableSection(rawValue: indexPath.section)! {
+        case .Details, .Notes:
             return false
-        case .Conditions:
+        case .Conditions, .Damage:
             return indexPath.row > 0
-        case .Damages:
-            return indexPath.row > 0
-        case .Notes:
-            return false
-        default:
-            abort()
         }
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        switch TableSections(rawValue: indexPath.section)! {
+        switch TableSection(rawValue: indexPath.section)! {
         case .Conditions:
             if indexPath.row > 0 {
                 let condition = combatant.conditions.objectAtIndex(indexPath.row - 1) as! CombatantCondition
                 managedObjectContext.deleteObject(condition)
                 saveContext()
-            } else {
-                abort()
             }
-        case .Damages:
+        case .Damage:
             if indexPath.row > 0 {
                 let damage = combatant.damages.objectAtIndex(combatant.damages.count - indexPath.row) as! CombatantDamage
                 let points = damage.points
@@ -300,11 +284,9 @@ extension CombatantViewController {
                 
                 combatant.damagePoints -= points
                 saveContext()
-            } else {
-                abort()
             }
         default:
-            abort()
+            break
         }
     }
 
@@ -314,7 +296,7 @@ extension CombatantViewController {
 extension CombatantViewController {
     
     override func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
-        switch TableSections(rawValue: indexPath.section)! {
+        switch TableSection(rawValue: indexPath.section)! {
         case .Conditions:
             if indexPath.row > 0 {
                 let cell = tableView.cellForRowAtIndexPath(indexPath)! as! CombatantConditionCell
@@ -329,38 +311,28 @@ extension CombatantViewController {
 
                 conditionRulesViewController.condition = condition
                 presentViewController(conditionRulesViewController, animated: true, completion: nil)
-            } else {
-                abort()
             }
         default:
-            abort()
+            break
         }
-
     }
-    
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        switch TableSections(rawValue: indexPath.section)! {
+        switch TableSection(rawValue: indexPath.section)! {
         case .Details:
-            let tableRow = TableDetailsRows(rawValue: indexPath.row)!
-            switch tableRow {
-            case .HitPoints, .Initiative:
+            switch DetailsTableRow(rawValue: indexPath.row)! {
+            case .Initiative, .HitPoints:
                 let cell = tableView.cellForRowAtIndexPath(indexPath) as! DiceRollCell
                 cell.textField.becomeFirstResponder()
             default:
                 break
             }
-        case .Conditions:
-            // Handled by a segue action in the storyboard.
-            break
-        case .Damages:
+        case  .Conditions, .Damage:
             // Handled by a segue action in the storyboard.
             break
         case .Notes:
             let cell = tableView.cellForRowAtIndexPath(indexPath) as! NotesCell
             cell.textView.becomeFirstResponder()
-        default:
-            abort()
         }
     }
 
@@ -391,16 +363,21 @@ class DiceRollCell: UITableViewCell {
     @IBOutlet var textField: UITextField!
     @IBOutlet var button: UIButton!
     
-    var diceCombo: DiceCombo! {
+    var diceCombo: DiceCombo? {
         didSet {
-            button.setTitle("\(diceCombo.description)", forState: .Normal)
+            if diceCombo != nil {
+                button.setTitle("\(diceCombo!.description)", forState: .Normal)
+                button.hidden = false
+            } else {
+                button.hidden = true
+            }
         }
     }
     
     @IBAction func buttonTapped(sender: UIButton) {
         PlaySound(.Dice)
-        diceCombo = diceCombo.reroll()
-        textField.text = "\(diceCombo.value)"
+        diceCombo = diceCombo!.reroll()
+        textField.text = "\(diceCombo!.value)"
         // This seems a very hacky way to do this...
         textField.sendActionsForControlEvents(.EditingChanged)
     }

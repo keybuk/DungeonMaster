@@ -28,14 +28,16 @@
         <attribute name="dateCreated" attributeType="Date" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rawDamagePoints" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="rawHitPoints" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="rawHitPoints" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="rawInitiative" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawLocationX" optional="YES" attributeType="Float" syncable="YES"/>
         <attribute name="rawLocationY" optional="YES" attributeType="Float" syncable="YES"/>
+        <attribute name="rawRole" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="conditions" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="CombatantCondition" inverseName="target" inverseEntity="CombatantCondition" syncable="YES"/>
         <relationship name="damages" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="CombatantDamage" inverseName="target" inverseEntity="CombatantDamage" syncable="YES"/>
         <relationship name="encounter" maxCount="1" deletionRule="Nullify" destinationEntity="Encounter" inverseName="combatants" inverseEntity="Encounter" syncable="YES"/>
-        <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="combatants" inverseEntity="Monster" syncable="YES"/>
+        <relationship name="monster" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="combatants" inverseEntity="Monster" syncable="YES"/>
+        <relationship name="player" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="combatants" inverseEntity="Player" syncable="YES"/>
     </entity>
     <entity name="CombatantCondition" representedClassName=".CombatantCondition" syncable="YES">
         <attribute name="rawType" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -187,6 +189,7 @@
         <attribute name="rawRace" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawSubrace" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawXP" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="combatants" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Combatant" inverseName="player" inverseEntity="Combatant" syncable="YES"/>
         <relationship name="savingThrows" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PlayerSavingThrow" inverseName="player" inverseEntity="PlayerSavingThrow" syncable="YES"/>
         <relationship name="skills" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PlayerSkill" inverseName="player" inverseEntity="PlayerSkill" syncable="YES"/>
     </entity>
@@ -228,7 +231,7 @@
         <element name="AlignmentOption" positionX="-54" positionY="351" width="128" height="90"/>
         <element name="Armor" positionX="-45" positionY="360" width="128" height="150"/>
         <element name="Book" positionX="-261" positionY="198" width="128" height="90"/>
-        <element name="Combatant" positionX="-54" positionY="351" width="128" height="210"/>
+        <element name="Combatant" positionX="-54" positionY="351" width="128" height="240"/>
         <element name="CombatantCondition" positionX="-36" positionY="369" width="128" height="75"/>
         <element name="CombatantDamage" positionX="-45" positionY="360" width="128" height="90"/>
         <element name="ConditionImmunity" positionX="0" positionY="405" width="128" height="75"/>
@@ -243,7 +246,9 @@
         <element name="Language" positionX="-27" positionY="378" width="128" height="90"/>
         <element name="LegendaryAction" positionX="261" positionY="558" width="128" height="90"/>
         <element name="Monster" positionX="79" positionY="216" width="128" height="840"/>
-        <element name="Player" positionX="-36" positionY="369" width="128" height="210"/>
+        <element name="MonsterSavingThrow" positionX="-54" positionY="351" width="128" height="90"/>
+        <element name="MonsterSkill" positionX="-45" positionY="360" width="128" height="105"/>
+        <element name="Player" positionX="-36" positionY="369" width="128" height="225"/>
         <element name="PlayerSavingThrow" positionX="-54" positionY="351" width="128" height="75"/>
         <element name="PlayerSkill" positionX="-45" positionY="360" width="128" height="90"/>
         <element name="Reaction" positionX="261" positionY="459" width="128" height="90"/>
@@ -251,7 +256,5 @@
         <element name="Source" positionX="-92" positionY="198" width="128" height="105"/>
         <element name="Tag" positionX="-92" positionY="432" width="128" height="75"/>
         <element name="Trait" positionX="261" positionY="261" width="128" height="90"/>
-        <element name="MonsterSavingThrow" positionX="-54" positionY="351" width="128" height="90"/>
-        <element name="MonsterSkill" positionX="-45" positionY="360" width="128" height="105"/>
     </elements>
 </model>

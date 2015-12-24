@@ -23,7 +23,10 @@ typealias TabletopLocation = CGPoint
     /// Returns the name of the item with the given index on the table top.
     func tabletopView(tabletopView: TabletopView, nameForItem index: Int) -> String
     
-    /// Returns the health of the item with the given index on the table stop. Health should be in the range 0.0–1.0.
+    /// Returns whether a health bar should be shown for the item wiht the given index on the table top.
+    func tabletopView(tabletopView: TabletopView, shouldShowHealthForItem index: Int) -> Bool
+
+    /// Returns the health of the item with the given index on the table top. Health should be in the range 0.0–1.0.
     func tabletopView(tabletopView: TabletopView, healthForItem index: Int) -> Float
     
 }
@@ -463,12 +466,8 @@ typealias TabletopLocation = CGPoint
     // MARK: Stats popup.
     
     func statsViewForItem(index: Int) -> TabletopStatsView {
-        let name = dataSource!.tabletopView(self, nameForItem: index)
-        let health = dataSource!.tabletopView(self, healthForItem: index)
-        
-        let view = TabletopStatsView()    
-        view.label.text = name
-        view.progress.progress = health
+        let view = TabletopStatsView()
+        updateStatsView(view, index: index)
         
         view.tapHandler = {
             self.delegate?.tabletopView(self, didSelectItem: index)
@@ -480,12 +479,20 @@ typealias TabletopLocation = CGPoint
     }
     
     func updateStatsForItem(index: Int) {
-        let name = dataSource!.tabletopView(self, nameForItem: index)
-        let health = dataSource!.tabletopView(self, healthForItem: index)
-
         let view = statsViews[index]
-        view.label.text = name
-        view.progress.progress = health
+        updateStatsView(view, index: index)
+    }
+    
+    func updateStatsView(view: TabletopStatsView, index: Int) {
+        view.label.text = dataSource!.tabletopView(self, nameForItem: index)
+        
+        if dataSource!.tabletopView(self, shouldShowHealthForItem: index) {
+            let health = dataSource!.tabletopView(self, healthForItem: index)
+            view.progress.hidden = false
+            view.progress.progress = health
+        } else {
+            view.progress.hidden = true
+        }
     }
 
 }

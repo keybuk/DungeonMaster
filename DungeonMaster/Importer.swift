@@ -37,12 +37,12 @@ func importIfNeeded() {
     var combatants = [String:[Combatant]]()
     let combatantFetchRequest = NSFetchRequest(entity: Model.Combatant)
     for combatant in try! managedObjectContext.executeFetchRequest(combatantFetchRequest) as! [Combatant] {
-        guard combatant.monster.sources.count > 0 else { continue }
+        guard let count = combatant.monster?.sources.count where count > 0 else { continue }
 
-        if let referingCombatants = combatants[combatant.monster.name] {
-            combatants[combatant.monster.name] = referingCombatants + [ combatant ]
+        if let referingCombatants = combatants[combatant.monster!.name] {
+            combatants[combatant.monster!.name] = referingCombatants + [ combatant ]
         } else {
-            combatants[combatant.monster.name] = [ combatant ]
+            combatants[combatant.monster!.name] = [ combatant ]
         }
     }
     

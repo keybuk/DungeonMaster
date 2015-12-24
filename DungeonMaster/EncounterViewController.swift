@@ -75,7 +75,9 @@ class EncounterViewController: UITableViewController {
         let controller = segue.sourceViewController as! DetailViewController
         let monster = controller.detailItem as! Monster
         
-        let _ = Combatant(encounter: encounter, monster: monster, inManagedObjectContext: managedObjectContext)
+        let combatant = Combatant(encounter: encounter, monster: monster, inManagedObjectContext: managedObjectContext)
+        combatant.role = .Foe
+
         saveContext()
     }
 
@@ -112,11 +114,14 @@ class EncounterViewController: UITableViewController {
         
         var initiativeDice = [Monster: DiceCombo]()
         for case let combatant as Combatant in encounter.combatants {
-            if let combo = initiativeDice[combatant.monster] {
+            guard combatant.role != .Player else { continue }
+            guard let monster = combatant.monster else { continue }
+            
+            if let combo = initiativeDice[monster] {
                 combatant.initiative = combo.value
             } else {
-                let combo = combatant.monster.initiativeDice.reroll()
-                initiativeDice[combatant.monster] = combo
+                let combo = monster.initiativeDice.reroll()
+                initiativeDice[monster] = combo
                 combatant.initiative = combo.value
             }
         }
@@ -140,10 +145,17 @@ extension EncounterViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("CombatantCell", forIndexPath: indexPath) as! CombatantCell
         let combatant = fetchedResultsController.objectAtIndexPath(indexPath) as! Combatant
-        cell.combatant = combatant
-        return cell
+        switch combatant.role {
+        case .Foe, .Friend:
+            let cell = tableView.dequeueReusableCellWithIdentifier("CombatantMonsterCell", forIndexPath: indexPath) as! CombatantMonsterCell
+            cell.combatant = combatant
+            return cell
+        case .Player:
+            let cell = tableView.dequeueReusableCellWithIdentifier("CombatantPlayerCell", forIndexPath: indexPath) as! CombatantPlayerCell
+            cell.combatant = combatant
+            return cell
+        }
     }
     
     // MARK: Edit support
@@ -192,9 +204,15 @@ extension EncounterViewController: NSFetchedResultsControllerDelegate {
         case .Delete:
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
         case .Update:
-            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! CombatantCell
             let combatant = fetchedResultsController.objectAtIndexPath(indexPath!) as! Combatant
-            cell.combatant = combatant
+            switch combatant.role {
+            case .Foe, .Friend:
+                let cell = tableView.cellForRowAtIndexPath(indexPath!) as! CombatantMonsterCell
+                cell.combatant = combatant
+            case .Player:
+                let cell = tableView.cellForRowAtIndexPath(indexPath!) as! CombatantPlayerCell
+                cell.combatant = combatant
+            }
         case .Move:
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
             tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
@@ -209,7 +227,7 @@ extension EncounterViewController: NSFetchedResultsControllerDelegate {
 
 // MARK: -
 
-class CombatantCell: UITableViewCell {
+class CombatantMonsterCell: UITableViewCell {
     
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var progress: UIProgressView!
@@ -217,10 +235,29 @@ class CombatantCell: UITableViewCell {
     
     var combatant: Combatant! {
         didSet {
-            nameLabel.text = combatant.monster.name
+            nameLabel.text = combatant.monster!.name
             progress.progress = combatant.health
             
-            acLabel.text = "\(combatant.equippedArmor.armorClass)"
+            acLabel.text = "\(combatant.armorClass!)"
+        }
+    }
+
+}
+
+class CombatantPlayerCell: UITableViewCell {
+    
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var ppLabel: UILabel!
+    
+    var combatant: Combatant! {
+        didSet {
+            if let monster = combatant.monster {
+                nameLabel.text = monster.name
+                ppLabel.text = "\(monster.passivePerception)"
+            } else if let player = combatant.player {
+                nameLabel.text = player.name
+                ppLabel.text = "\(player.passivePerception)"
+            }
         }
     }
 
