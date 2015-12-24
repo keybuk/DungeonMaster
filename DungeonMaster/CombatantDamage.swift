@@ -9,7 +9,7 @@
 import CoreData
 import Foundation
 
-final class Damage: NSManagedObject {
+final class CombatantDamage: NSManagedObject {
     
     @NSManaged var target: Combatant
     
@@ -34,7 +34,7 @@ final class Damage: NSManagedObject {
     @NSManaged private var rawType: NSNumber
 
     convenience init(target: Combatant, points: Int, type: DamageType, inManagedObjectContext context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entity(Model.Damage, inManagedObjectContext: context)
+        let entity = NSEntityDescription.entity(Model.CombatantDamage, inManagedObjectContext: context)
         self.init(entity: entity, insertIntoManagedObjectContext: context)
         
         self.target = target

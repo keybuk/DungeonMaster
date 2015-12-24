@@ -576,7 +576,7 @@ class PlayerAlignmentCell: UITableViewCell {
     var player: Player! {
         didSet {
             if player.primitiveValueForKey("rawAlignment") != nil {
-                label?.text = player.alignment.stringValue.capitalizedString
+                label?.text = player.alignment.stringValue
                 label?.textColor = UIColor.blackColor()
             } else {
                 label?.text = "Alignment"

@@ -35,8 +35,8 @@ enum Model: String {
     case PlayerSkill
     case Encounter
     case Combatant
-    case Damage
-    case Condition
+    case CombatantDamage
+    case CombatantCondition
 
     static let name = "DungeonMaster"
     

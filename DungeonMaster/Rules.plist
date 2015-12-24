@@ -51,12 +51,12 @@
 	</array>
 	<key>size</key>
 	<array>
-		<string>tiny</string>
-		<string>small</string>
-		<string>medium</string>
-		<string>large</string>
-		<string>huge</string>
-		<string>gargantuan</string>
+		<string>Tiny</string>
+		<string>Small</string>
+		<string>Medium</string>
+		<string>Large</string>
+		<string>Huge</string>
+		<string>Gargantuan</string>
 	</array>
 	<key>sizeSpace</key>
 	<array>
@@ -91,20 +91,20 @@
 	</array>
 	<key>monsterType</key>
 	<array>
-		<string>aberration</string>
-		<string>beast</string>
-		<string>celestial</string>
-		<string>construct</string>
-		<string>dragon</string>
-		<string>elemental</string>
-		<string>fey</string>
-		<string>fiend</string>
-		<string>giant</string>
-		<string>humanoid</string>
-		<string>monstrosity</string>
-		<string>ooze</string>
-		<string>plant</string>
-		<string>undead</string>
+		<string>Aberration</string>
+		<string>Beast</string>
+		<string>Celestial</string>
+		<string>Construct</string>
+		<string>Dragon</string>
+		<string>Elemental</string>
+		<string>Fey</string>
+		<string>Fiend</string>
+		<string>Giant</string>
+		<string>Humanoid</string>
+		<string>Monstrosity</string>
+		<string>Ooze</string>
+		<string>Plant</string>
+		<string>Undead</string>
 	</array>
 	<key>race</key>
 	<array>
@@ -491,23 +491,23 @@
 	</dict>
 	<key>armorType</key>
 	<array>
-		<string>none</string>
-		<string>natural armor</string>
-		<string>padded armor</string>
-		<string>leather armor</string>
-		<string>studded leather</string>
-		<string>hide armor</string>
-		<string>chain shirt</string>
-		<string>scale mail</string>
-		<string>breastplate</string>
-		<string>half plate</string>
-		<string>ring mail</string>
-		<string>chain mail</string>
-		<string>splint</string>
-		<string>plate</string>
-		<string>armor scraps</string>
-		<string>barding scraps</string>
-		<string>patchwork armor</string>
+		<string>None</string>
+		<string>Natural Armor</string>
+		<string>Padded Armor</string>
+		<string>Leather Armor</string>
+		<string>Studded Leather</string>
+		<string>Hide Armor</string>
+		<string>Chain Shirt</string>
+		<string>Scale Mail</string>
+		<string>Breastplate</string>
+		<string>Half Plate</string>
+		<string>Ring Mail</string>
+		<string>Chain Mail</string>
+		<string>Splint</string>
+		<string>Plate</string>
+		<string>Armor Scraps</string>
+		<string>Barding Scraps</string>
+		<string>Patchwork Armor</string>
 	</array>
 	<key>armorClass</key>
 	<array>
@@ -591,37 +591,37 @@
 	</array>
 	<key>damageType</key>
 	<array>
-		<string>acid</string>
-		<string>bludgeoning</string>
-		<string>cold</string>
-		<string>fire</string>
-		<string>force</string>
-		<string>lightning</string>
-		<string>necrotic</string>
-		<string>piercing</string>
-		<string>poison</string>
-		<string>psychic</string>
-		<string>radiant</string>
-		<string>slashing</string>
-		<string>thunder</string>
+		<string>Acid</string>
+		<string>Bludgeoning</string>
+		<string>Cold</string>
+		<string>Fire</string>
+		<string>Force</string>
+		<string>Lightning</string>
+		<string>Necrotic</string>
+		<string>Piercing</string>
+		<string>Poison</string>
+		<string>Psychic</string>
+		<string>Radiant</string>
+		<string>Slashing</string>
+		<string>Thunder</string>
 	</array>
-	<key>conditionType</key>
+	<key>condition</key>
 	<array>
-		<string>blinded</string>
-		<string>charmed</string>
-		<string>deafened</string>
-		<string>exhaustion</string>
-		<string>frightened</string>
-		<string>grappled</string>
-		<string>incapacitated</string>
-		<string>invisible</string>
-		<string>paralyzed</string>
-		<string>petrified</string>
-		<string>poisoned</string>
-		<string>prone</string>
-		<string>restrained</string>
-		<string>stunned</string>
-		<string>unconscious</string>
+		<string>Blinded</string>
+		<string>Charmed</string>
+		<string>Deafened</string>
+		<string>Exhaustion</string>
+		<string>Frightened</string>
+		<string>Grappled</string>
+		<string>Incapacitated</string>
+		<string>Invisible</string>
+		<string>Paralyzed</string>
+		<string>Petrified</string>
+		<string>Poisoned</string>
+		<string>Prone</string>
+		<string>Restrained</string>
+		<string>Stunned</string>
+		<string>Unconscious</string>
 	</array>
 	<key>conditionDescription</key>
 	<array>

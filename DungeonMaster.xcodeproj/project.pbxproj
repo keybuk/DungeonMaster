@@ -46,10 +46,10 @@
 		D26FBA321C1D39B900D44503 /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FBA311C1D39B900D44503 /* Sounds.swift */; };
 		D26FBA341C1D3BAF00D44503 /* CombatantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FBA331C1D3BAF00D44503 /* CombatantViewController.swift */; };
 		D26FBA371C1DE2CE00D44503 /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = D26FBA361C1DE2CE00D44503 /* Sounds */; };
-		D26FBA391C1E366300D44503 /* Damage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FBA381C1E366300D44503 /* Damage.swift */; };
+		D26FBA391C1E366300D44503 /* CombatantDamage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FBA381C1E366300D44503 /* CombatantDamage.swift */; };
 		D26FBA3B1C1E3FE400D44503 /* DamageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FBA3A1C1E3FE400D44503 /* DamageViewController.swift */; };
 		D26FBA3D1C1E52CA00D44503 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FBA3C1C1E52CA00D44503 /* Enums.swift */; };
-		D26FBA3F1C1EA4E700D44503 /* Condition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FBA3E1C1EA4E700D44503 /* Condition.swift */; };
+		D26FBA3F1C1EA4E700D44503 /* CombatantCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FBA3E1C1EA4E700D44503 /* CombatantCondition.swift */; };
 		D26FBA411C1FA17400D44503 /* ConditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FBA401C1FA17400D44503 /* ConditionViewController.swift */; };
 		D298E8EF1C29D6E1007461A9 /* PlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298E8EE1C29D6E1007461A9 /* PlayersViewController.swift */; };
 		D298E8F11C29E08F007461A9 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298E8F01C29E08F007461A9 /* Player.swift */; };
@@ -133,10 +133,10 @@
 		D26FBA311C1D39B900D44503 /* Sounds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
 		D26FBA331C1D3BAF00D44503 /* CombatantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombatantViewController.swift; sourceTree = "<group>"; };
 		D26FBA361C1DE2CE00D44503 /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
-		D26FBA381C1E366300D44503 /* Damage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Damage.swift; sourceTree = "<group>"; };
+		D26FBA381C1E366300D44503 /* CombatantDamage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombatantDamage.swift; sourceTree = "<group>"; };
 		D26FBA3A1C1E3FE400D44503 /* DamageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamageViewController.swift; sourceTree = "<group>"; };
 		D26FBA3C1C1E52CA00D44503 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
-		D26FBA3E1C1EA4E700D44503 /* Condition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Condition.swift; sourceTree = "<group>"; };
+		D26FBA3E1C1EA4E700D44503 /* CombatantCondition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombatantCondition.swift; sourceTree = "<group>"; };
 		D26FBA401C1FA17400D44503 /* ConditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConditionViewController.swift; sourceTree = "<group>"; };
 		D298E8EE1C29D6E1007461A9 /* PlayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayersViewController.swift; sourceTree = "<group>"; };
 		D298E8F01C29E08F007461A9 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -225,8 +225,8 @@
 				D298E8F41C29F112007461A9 /* PlayerSkill.swift */,
 				D2F9D12E1C1A71D8005F2D9A /* Encounter.swift */,
 				D26FBA211C1BEA0F00D44503 /* Combatant.swift */,
-				D26FBA381C1E366300D44503 /* Damage.swift */,
-				D26FBA3E1C1EA4E700D44503 /* Condition.swift */,
+				D26FBA381C1E366300D44503 /* CombatantDamage.swift */,
+				D26FBA3E1C1EA4E700D44503 /* CombatantCondition.swift */,
 				D23435F51C0D634100108D5F /* Importer.swift */,
 			);
 			name = "Data Model";
@@ -493,14 +493,14 @@
 				D249CFA41C27664A00CDE673 /* ConditionImmunity.swift in Sources */,
 				D298E8F31C29F0B5007461A9 /* PlayerSavingThrow.swift in Sources */,
 				D23435EC1C0D5A3D00108D5F /* Model.swift in Sources */,
-				D26FBA3F1C1EA4E700D44503 /* Condition.swift in Sources */,
+				D26FBA3F1C1EA4E700D44503 /* CombatantCondition.swift in Sources */,
 				D249CF891C22602800CDE673 /* ConditionRulesViewController.swift in Sources */,
 				D2A9AF0D1BFFEAA5009902ED /* DungeonMaster.xcdatamodeld in Sources */,
 				D26FBA3B1C1E3FE400D44503 /* DamageViewController.swift in Sources */,
 				D2511FFA1C14BC3700A09F0B /* Tag.swift in Sources */,
 				D298E8F91C2A4CF1007461A9 /* PlayerSkillViewController.swift in Sources */,
 				D23435EE1C0D5F9E00108D5F /* Book.swift in Sources */,
-				D26FBA391C1E366300D44503 /* Damage.swift in Sources */,
+				D26FBA391C1E366300D44503 /* CombatantDamage.swift in Sources */,
 				D298E8FF1C2A515C007461A9 /* PlayerAlignmentViewController.swift in Sources */,
 				D298E8F51C29F112007461A9 /* PlayerSkill.swift in Sources */,
 				D2116A4A1C10ECBC001EDBBA /* Reaction.swift in Sources */,

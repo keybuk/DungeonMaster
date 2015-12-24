@@ -633,7 +633,7 @@ enum DamageType: Int {
     }
 }
 
-enum ConditionType: Int {
+enum Condition: Int {
     // TODO: deal with exhaustion, and its six levels
     case Blinded
     case Charmed
@@ -653,7 +653,7 @@ enum ConditionType: Int {
     
     /// Returns the string equivalent of the condition.
     var stringValue: String {
-        return sharedRules.conditionType[rawValue]
+        return sharedRules.condition[rawValue]
     }
     
     /// Returns an array of rules texts for the condition.

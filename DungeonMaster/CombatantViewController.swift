@@ -79,14 +79,14 @@ class CombatantViewController: UITableViewController {
     @IBAction func unwindFromCondition(segue: UIStoryboardSegue) {
         let conditionViewController = segue.sourceViewController as! ConditionViewController
         
-        let _ = Condition(target: combatant, type: conditionViewController.type!, inManagedObjectContext: managedObjectContext)
+        let _ = CombatantCondition(target: combatant, type: conditionViewController.type!, inManagedObjectContext: managedObjectContext)
         saveContext()
     }
 
     @IBAction func unwindFromDamage(segue: UIStoryboardSegue) {
         let damageViewController = segue.sourceViewController as! DamageViewController
         
-        let damage = Damage(target: combatant, points: damageViewController.points!, type: damageViewController.type!, inManagedObjectContext: managedObjectContext)
+        let damage = CombatantDamage(target: combatant, points: damageViewController.points!, type: damageViewController.type!, inManagedObjectContext: managedObjectContext)
         
         combatant.damagePoints += damage.points
         saveContext()
@@ -213,8 +213,8 @@ extension CombatantViewController {
                 let cell = tableView.dequeueReusableCellWithIdentifier("AddConditionCell", forIndexPath: indexPath)
                 return cell
             } else {
-                let cell = tableView.dequeueReusableCellWithIdentifier("ConditionCell", forIndexPath: indexPath) as! ConditionCell
-                let condition = combatant.conditions.objectAtIndex(indexPath.row - 1) as! Condition
+                let cell = tableView.dequeueReusableCellWithIdentifier("CombatantConditionCell", forIndexPath: indexPath) as! CombatantConditionCell
+                let condition = combatant.conditions.objectAtIndex(indexPath.row - 1) as! CombatantCondition
                 cell.condition = condition
                 return cell
             }
@@ -225,14 +225,14 @@ extension CombatantViewController {
                 cell.hitPointsLabel.text = "\(hitPoints)"
                 return cell
             } else {
-                let cell = tableView.dequeueReusableCellWithIdentifier("DamageCell", forIndexPath: indexPath) as! DamageCell
+                let cell = tableView.dequeueReusableCellWithIdentifier("DamageCell", forIndexPath: indexPath) as! CombatantDamageCell
                 let damageIndex = combatant.damages.count - indexPath.row
-                let damage = combatant.damages.objectAtIndex(damageIndex) as! Damage
+                let damage = combatant.damages.objectAtIndex(damageIndex) as! CombatantDamage
                 cell.damage = damage
                 
                 var hitPoints = combatant.hitPoints
                 for index in 0..<damageIndex {
-                    let damage = combatant.damages.objectAtIndex(index) as! Damage
+                    let damage = combatant.damages.objectAtIndex(index) as! CombatantDamage
                     hitPoints -= damage.points
                 }
                 hitPoints = max(hitPoints, 0)
@@ -286,7 +286,7 @@ extension CombatantViewController {
         switch TableSections(rawValue: indexPath.section)! {
         case .Conditions:
             if indexPath.row > 0 {
-                let condition = combatant.conditions.objectAtIndex(indexPath.row - 1) as! Condition
+                let condition = combatant.conditions.objectAtIndex(indexPath.row - 1) as! CombatantCondition
                 managedObjectContext.deleteObject(condition)
                 saveContext()
             } else {
@@ -294,7 +294,7 @@ extension CombatantViewController {
             }
         case .Damages:
             if indexPath.row > 0 {
-                let damage = combatant.damages.objectAtIndex(combatant.damages.count - indexPath.row) as! Damage
+                let damage = combatant.damages.objectAtIndex(combatant.damages.count - indexPath.row) as! CombatantDamage
                 let points = damage.points
                 managedObjectContext.deleteObject(damage)
                 
@@ -317,7 +317,7 @@ extension CombatantViewController {
         switch TableSections(rawValue: indexPath.section)! {
         case .Conditions:
             if indexPath.row > 0 {
-                let cell = tableView.cellForRowAtIndexPath(indexPath)! as! ConditionCell
+                let cell = tableView.cellForRowAtIndexPath(indexPath)! as! CombatantConditionCell
                 let condition = cell.condition.type
 
                 
@@ -413,11 +413,11 @@ class NotesCell: UITableViewCell {
 
 }
 
-class ConditionCell: UITableViewCell {
+class CombatantConditionCell: UITableViewCell {
 
-    var condition: Condition! {
+    var condition: CombatantCondition! {
         didSet {
-            textLabel?.text = condition.type.stringValue.capitalizedString
+            textLabel?.text = condition.type.stringValue
         }
     }
 
@@ -429,16 +429,16 @@ class AddDamageCell: UITableViewCell {
 
 }
 
-class DamageCell: UITableViewCell {
+class CombatantDamageCell: UITableViewCell {
     
     @IBOutlet var pointsLabel: UILabel!
     @IBOutlet var typeLabel: UILabel!
     @IBOutlet var hitPointsLabel: UILabel!
     
-    var damage: Damage! {
+    var damage: CombatantDamage! {
         didSet {
             pointsLabel.text = "\(damage.points)"
-            typeLabel.text = damage.type.stringValue.capitalizedString
+            typeLabel.text = damage.type.stringValue
         }
     }
 

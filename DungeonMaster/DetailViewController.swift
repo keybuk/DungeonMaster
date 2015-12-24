@@ -132,9 +132,9 @@ class DetailViewController: UIViewController {
                 
                 let sizeType: String
                 if let swarmSize = monster.swarmSize {
-                    sizeType = "\(swarmSize.stringValue.capitalizedString) swarm of \(monster.size.stringValue.capitalizedString) \(monster.type.stringValue)s"
+                    sizeType = "\(swarmSize.stringValue) swarm of \(monster.size.stringValue) \(monster.type.stringValue)s"
                 } else {
-                    sizeType = "\(monster.size.stringValue.capitalizedString) \(monster.type.stringValue)"
+                    sizeType = "\(monster.size.stringValue) \(monster.type.stringValue.lowercaseString)"
                 }
                 text.appendAttributedString(NSAttributedString(string: "\(sizeType)", attributes: sizeTypeAlignmentStyle))
 
@@ -193,7 +193,7 @@ class DetailViewController: UIViewController {
                     case .None:
                         armorString += "\(armor.armorClass)"
                     default:
-                        var typeString = armor.type.stringValue
+                        var typeString = armor.type.stringValue.lowercaseString
                         if let magicModifier = armor.magicModifier {
                             typeString = String(format: "%+d", magicModifier) + " \(typeString)"
                         }
@@ -212,7 +212,7 @@ class DetailViewController: UIViewController {
                 
                 let conditionArmorPredicate = NSPredicate(format: "rawCondition != nil")
                 for case let armor as Armor in monster.armor.filteredSetUsingPredicate(conditionArmorPredicate) {
-                    armorString += ", \(armor.armorClass) while \(armor.condition!.stringValue)"
+                    armorString += ", \(armor.armorClass) while \(armor.condition!.stringValue.lowercaseString)"
                 }
                 
                 text.appendAttributedString(NSAttributedString(string: "Armor Class ", attributes: statsLabelStyle))
@@ -358,7 +358,7 @@ class DetailViewController: UIViewController {
                     
                     if allAttackDamages.count > 0 {
                         damageList += allAttackDamages.map({
-                            DamageType(rawValue: (($0 as! NSManagedObject).valueForKey("rawDamageType") as! NSNumber).integerValue)!.stringValue
+                            DamageType(rawValue: (($0 as! NSManagedObject).valueForKey("rawDamageType") as! NSNumber).integerValue)!.stringValue.lowercaseString
                         }).sort(<).joinWithSeparator(", ")
                         
                         if allAttackDamages.count < damages.count || spellDamage {
@@ -378,7 +378,7 @@ class DetailViewController: UIViewController {
                         }
                         
                         var damageStrings = otherAttackDamages.map({
-                            DamageType(rawValue: (($0 as! NSManagedObject).valueForKey("rawDamageType") as! NSNumber).integerValue)!.stringValue
+                            DamageType(rawValue: (($0 as! NSManagedObject).valueForKey("rawDamageType") as! NSNumber).integerValue)!.stringValue.lowercaseString
                         }).sort(<)
                         let lastDamageString = damageStrings.removeLast()
                         
@@ -425,7 +425,7 @@ class DetailViewController: UIViewController {
                 } else if monster.damageResistanceOptions.count > 0 {
                     text.appendAttributedString(NSAttributedString(string: "Damage Resistances ", attributes: statsLabelStyle))
 
-                    var damageStrings = monster.damageResistanceOptions.map({ ($0 as! DamageResistanceOption).damageType.stringValue }).sort(<)
+                    var damageStrings = monster.damageResistanceOptions.map({ ($0 as! DamageResistanceOption).damageType.stringValue.lowercaseString }).sort(<)
                     let lastDamageString = damageStrings.removeLast()
                     
                     text.appendAttributedString(NSAttributedString(string: "one of the following: \(damageStrings.joinWithSeparator(", ")), or \(lastDamageString)\n", attributes: statsValueStyle))
@@ -439,7 +439,7 @@ class DetailViewController: UIViewController {
                 if monster.conditionImmunities.count > 0 {
                     text.appendAttributedString(NSAttributedString(string: "Condition Immunities ", attributes: statsLabelStyle))
                     
-                    let conditionStrings = monster.conditionImmunities.map({ ($0 as! ConditionImmunity).condition.stringValue }).sort(<).joinWithSeparator(", ")
+                    let conditionStrings = monster.conditionImmunities.map({ ($0 as! ConditionImmunity).condition.stringValue.lowercaseString }).sort(<).joinWithSeparator(", ")
                     text.appendAttributedString(NSAttributedString(string: "\(conditionStrings)\n", attributes: statsValueStyle))
                 }
 

@@ -138,8 +138,8 @@ struct Rules {
     }
 
     /// Array of condition names.
-    var conditionType: [String] {
-        return data["conditionType"]! as! [String]
+    var condition: [String] {
+        return data["condition"]! as! [String]
     }
 
     /// Array of condition rules texts.

@@ -12,7 +12,7 @@ class ConditionViewController: UITableViewController {
 
     @IBOutlet var addButton: UIBarButtonItem!
 
-    var type: ConditionType?
+    var type: Condition?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +33,7 @@ extension ConditionViewController: UIPickerViewDataSource {
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return sharedRules.conditionType.count + 1
+        return sharedRules.condition.count + 1
     }
 
 }
@@ -46,7 +46,7 @@ extension ConditionViewController: UIPickerViewDelegate {
         case 0:
             return NSAttributedString(string: "Condition", attributes: [NSForegroundColorAttributeName: UIColor.lightGrayColor()])
         default:
-            return NSAttributedString(string: ConditionType(rawValue: row - 1)!.stringValue.capitalizedString)
+            return NSAttributedString(string: Condition(rawValue: row - 1)!.stringValue)
         }
     }
     
@@ -55,7 +55,7 @@ extension ConditionViewController: UIPickerViewDelegate {
         case 0:
             type = nil
         default:
-            type = ConditionType(rawValue: row - 1)
+            type = Condition(rawValue: row - 1)
         }
         
         addButton.enabled = (type != nil)

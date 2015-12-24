@@ -22,8 +22,8 @@ final class Combatant: NSManagedObject {
         var armors = monster.armor.filteredSetUsingPredicate(basicArmorPredicate)
     
         if conditions.count > 0 {
-            let conditionTypes: [NSNumber] = conditions.map({ NSNumber(integer: ($0 as! Condition).type.rawValue) })
-            let conditionsPredicate = NSPredicate(format: "rawCondition IN %@", conditionTypes)
+            let rawConditions: [NSNumber] = conditions.map({ NSNumber(integer: ($0 as! CombatantCondition).type.rawValue) })
+            let conditionsPredicate = NSPredicate(format: "rawCondition IN %@", rawConditions)
             
             let conditionArmors = monster.armor.filteredSetUsingPredicate(conditionsPredicate)
             if conditionArmors.count > 0 {

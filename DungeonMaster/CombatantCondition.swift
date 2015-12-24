@@ -1,5 +1,5 @@
 //
-//  Condition.swift
+//  CombatantCondition.swift
 //  DungeonMaster
 //
 //  Created by Scott James Remnant on 12/13/15.
@@ -9,13 +9,13 @@
 import CoreData
 import Foundation
 
-final class Condition: NSManagedObject {
+final class CombatantCondition: NSManagedObject {
     
     @NSManaged var target: Combatant
     
-    var type: ConditionType {
+    var type: Condition {
         get {
-            return ConditionType(rawValue: rawType.integerValue)!
+            return Condition(rawValue: rawType.integerValue)!
         }
         set(newType) {
             rawType = NSNumber(integer: newType.rawValue)
@@ -23,8 +23,8 @@ final class Condition: NSManagedObject {
     }
     @NSManaged private var rawType: NSNumber
 
-    convenience init(target: Combatant, type: ConditionType, inManagedObjectContext context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entity(Model.Condition, inManagedObjectContext: context)
+    convenience init(target: Combatant, type: Condition, inManagedObjectContext context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entity(Model.CombatantCondition, inManagedObjectContext: context)
         self.init(entity: entity, insertIntoManagedObjectContext: context)
         
         self.target = target

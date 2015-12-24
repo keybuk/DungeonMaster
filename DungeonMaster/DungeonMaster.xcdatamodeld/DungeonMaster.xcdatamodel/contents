@@ -32,23 +32,23 @@
         <attribute name="rawInitiative" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawLocationX" optional="YES" attributeType="Float" syncable="YES"/>
         <attribute name="rawLocationY" optional="YES" attributeType="Float" syncable="YES"/>
-        <relationship name="conditions" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Condition" inverseName="target" inverseEntity="Condition" syncable="YES"/>
-        <relationship name="damages" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Damage" inverseName="target" inverseEntity="Damage" syncable="YES"/>
+        <relationship name="conditions" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="CombatantCondition" inverseName="target" inverseEntity="CombatantCondition" syncable="YES"/>
+        <relationship name="damages" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="CombatantDamage" inverseName="target" inverseEntity="CombatantDamage" syncable="YES"/>
         <relationship name="encounter" maxCount="1" deletionRule="Nullify" destinationEntity="Encounter" inverseName="combatants" inverseEntity="Encounter" syncable="YES"/>
         <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="combatants" inverseEntity="Monster" syncable="YES"/>
     </entity>
-    <entity name="Condition" representedClassName=".Condition" syncable="YES">
+    <entity name="CombatantCondition" representedClassName=".CombatantCondition" syncable="YES">
         <attribute name="rawType" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="target" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Combatant" inverseName="conditions" inverseEntity="Combatant" syncable="YES"/>
+    </entity>
+    <entity name="CombatantDamage" representedClassName=".CombatantDamage" syncable="YES">
+        <attribute name="rawPoints" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="rawType" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="target" maxCount="1" deletionRule="Nullify" destinationEntity="Combatant" inverseName="damages" inverseEntity="Combatant" syncable="YES"/>
     </entity>
     <entity name="ConditionImmunity" representedClassName=".ConditionImmunity" syncable="YES">
         <attribute name="rawCondition" attributeType="Integer 16" syncable="YES"/>
         <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="conditionImmunities" inverseEntity="Monster" syncable="YES"/>
-    </entity>
-    <entity name="Damage" representedClassName=".Damage" syncable="YES">
-        <attribute name="rawPoints" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="rawType" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="target" maxCount="1" deletionRule="Nullify" destinationEntity="Combatant" inverseName="damages" inverseEntity="Combatant" syncable="YES"/>
     </entity>
     <entity name="DamageImmunity" representedClassName=".DamageImmunity" syncable="YES">
         <attribute name="rawAttackType" attributeType="Integer 16" syncable="YES"/>
@@ -240,9 +240,9 @@
         <element name="Armor" positionX="-45" positionY="360" width="128" height="150"/>
         <element name="Book" positionX="-261" positionY="198" width="128" height="90"/>
         <element name="Combatant" positionX="-54" positionY="351" width="128" height="210"/>
-        <element name="Condition" positionX="-36" positionY="369" width="128" height="75"/>
+        <element name="CombatantCondition" positionX="-36" positionY="369" width="128" height="75"/>
         <element name="ConditionImmunity" positionX="0" positionY="405" width="128" height="75"/>
-        <element name="Damage" positionX="-45" positionY="360" width="128" height="90"/>
+        <element name="CombatantDamage" positionX="-45" positionY="360" width="128" height="90"/>
         <element name="DamageImmunity" positionX="-54" positionY="351" width="128" height="90"/>
         <element name="DamageResistance" positionX="-45" positionY="360" width="128" height="105"/>
         <element name="DamageResistanceOption" positionX="-36" positionY="369" width="128" height="75"/>

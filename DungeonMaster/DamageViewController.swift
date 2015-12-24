@@ -66,7 +66,7 @@ extension DamageViewController: UIPickerViewDelegate {
         case 0:
             return NSAttributedString(string: "Damage Type", attributes: [NSForegroundColorAttributeName: UIColor.lightGrayColor()])
         default:
-            return NSAttributedString(string: DamageType(rawValue: row - 1)!.stringValue.capitalizedString)
+            return NSAttributedString(string: DamageType(rawValue: row - 1)!.stringValue)
         }
     }
 

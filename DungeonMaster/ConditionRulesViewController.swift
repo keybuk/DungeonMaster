@@ -12,7 +12,7 @@ class ConditionRulesViewController: UIViewController {
 
     @IBOutlet var textView: UITextView!
     
-    var condition: ConditionType!
+    var condition: Condition!
     
     override func viewDidLoad() {
         super.viewDidLoad()

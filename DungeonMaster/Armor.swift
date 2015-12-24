@@ -54,9 +54,9 @@ final class Armor: NSManagedObject {
     @NSManaged var includesShield: Bool
     
     /// Monster condition during which this armor is automatically equipped.
-    var condition: ConditionType? {
+    var condition: Condition? {
         get {
-            return rawCondition != nil ? ConditionType(rawValue: rawCondition!.integerValue) : nil
+            return rawCondition != nil ? Condition(rawValue: rawCondition!.integerValue) : nil
         }
         set(newCondition) {
             rawCondition = newCondition != nil ? NSNumber(integer: newCondition!.rawValue) : nil

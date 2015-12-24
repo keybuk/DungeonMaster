@@ -16,9 +16,9 @@ final class ConditionImmunity: NSManagedObject {
     @NSManaged var monster: Monster
     
     /// Condition that the monster is immune to.
-    var condition: ConditionType {
+    var condition: Condition {
         get {
-            return ConditionType(rawValue: rawCondition.integerValue)!
+            return Condition(rawValue: rawCondition.integerValue)!
         }
         set(newCondition) {
             rawCondition = NSNumber(integer: newCondition.rawValue)
