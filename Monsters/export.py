@@ -275,6 +275,9 @@ class Exporter(monster.MonsterParser):
 		self.name = name
 		self.names.append(unicode(name, 'utf8'))
 
+	def handle_old_name(self, name):
+		self.names.append(unicode(name, 'utf8'))
+
 	def handle_source(self, source, page, section):
 		try:
 			index = self.bookTags.index(source)

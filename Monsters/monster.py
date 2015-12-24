@@ -2,7 +2,10 @@
 # -*- coding: utf8 -*-
 
 import os
+import re
 import sys
+
+SOURCE_RE = re.compile(r'^([a-z]+) (\d+)(?:; (.*))?$')
 
 class ParseException(Exception):
 	def __init__(self, filename, lineno, *args):
@@ -33,13 +36,20 @@ class MonsterParser(object):
 		line = self.next_line(error_message="Expected name")
 		self.handle_name(line)
 
-		line = self.next_line(error_message="Expected sources")
-		self.handle_sources(line)
+		while True:
+			line = self.next_line(error_message="Expected source, or other metadata")
 
-		line = self.next_line(error_message="Expected NPC, or, size, type, and alignment")
-		if line == "NPC":
-			self.handle_npc()
-			line = self.next_line(error_message="Expected size, type, and alignment")
+			match = SOURCE_RE.match(line)
+			if line == "npc":
+				self.handle_npc()
+			elif line.startswith("was "):
+				self.handle_old_name(line[4:])
+			elif match is not None:
+				(source, page, section) = match.groups()
+				self.handle_source(source, int(page), section)
+			else:
+				break
+
 		self.handle_size_type_alignment(line)
 
 		self.blank_line(error_message="Expected blank line after header")
@@ -261,15 +271,8 @@ class MonsterParser(object):
 	def handle_name(self, name):
 		pass
 
-	def handle_sources(self, line):
-		for source_text in line.split("|"):
-			section = None
-			if "; " in source_text:
-				(source_text, section) = source_text.split("; ", 1)
-			(source, page) = source_text.split(" ", 1)
-			page = int(page)
-
-			self.handle_source(source, page, section)
+	def handle_old_name(self, name):
+		pass
 
 	def handle_source(self, source, page, section):
 		pass
