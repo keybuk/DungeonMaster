@@ -19,6 +19,9 @@ enum BookType: Int {
     // TODO: category for Sword Coast Adventures? official expansion or core rulebook?
     // TODO: category for Unearthed Arcana?
     
+    /// Array of all cases.
+    static let cases: [BookType] = [ .CoreRulebook, .OfficialAdventure, .OnlineSupplement ]
+    
     /// Returns the string equivalent of the book type.
     var stringValue: String {
         return sharedRules.bookType[rawValue]
@@ -33,6 +36,9 @@ enum Ability: Int {
     case Intelligence
     case Wisdom
     case Charisma
+    
+    /// Array of all cases.
+    static let cases: [Ability] = [ .Strength, .Dexterity, .Constitution, .Intelligence, .Wisdom, .Charisma ]
     
     /// Returns the string equivalent of the ability.
     var stringValue: String {
@@ -145,6 +151,9 @@ enum Skill: Equatable, Hashable {
         }
     }
     
+    /// Array of all cases.
+    static let cases: [Skill] = [ .Strength(.Athletics), .Dexterity(.Acrobatics), .Dexterity(.SleightOfHand), .Dexterity(.Stealth), .Intelligence(.Arcana), .Intelligence(.History), .Intelligence(.Investigation), .Intelligence(.Nature), .Intelligence(.Religion), .Wisdom(.AnimalHandling), .Wisdom(.Insight), .Wisdom(.Medicine), .Wisdom(.Perception), .Wisdom(.Survival), .Charisma(.Deception), .Charisma(.Intimidation), .Charisma(.Performance), .Charisma(.Persuasion) ]
+
     /// Returns the string equivalent of the skill.
     ///
     /// This consists of only the second part, e.g. "Athletics".
@@ -178,6 +187,9 @@ enum Size: Int {
     case Huge
     case Gargantuan
     
+    /// Array of all cases.
+    static let cases: [Size] = [ .Tiny, .Small, .Medium, .Large, .Huge, .Gargantuan ]
+    
     /// Returns the string equivalent of the size.
     var stringValue: String {
         return sharedRules.size[rawValue]
@@ -207,34 +219,24 @@ enum Alignment: Int {
     case ChaoticNeutral
     case ChaoticEvil
     
+    /// Array of all cases.
+    static let cases: [Alignment] = [ .Unaligned, .LawfulGood, .LawfulNeutral, .LawfulEvil, .NeutralGood, .Neutral, .NeutralEvil, .ChaoticGood, .ChaoticNeutral, .ChaoticEvil ]
+    
+    /// The set of lawful alignments.
+    static let lawfulAlignments: Set<Alignment> = [ .LawfulGood, .LawfulNeutral, .LawfulEvil ]
+    
+    /// The set of choatic alignments.
+    static let chaoticAlignments: Set<Alignment> = [ .ChaoticGood, .ChaoticNeutral, .ChaoticEvil ]
+    
+    /// The set of good alignments.
+    static let goodAlignments: Set<Alignment> = [ .LawfulGood, .NeutralGood, .ChaoticGood ]
+    
+    /// The set of evil alignments.
+    static let evilAlignments: Set<Alignment> = [ .LawfulEvil, .NeutralEvil, .ChaoticEvil ]
+    
     /// Returns the string equivalent of the alignment.
     var stringValue: String {
         return sharedRules.alignment[rawValue]
-    }
-    
-    /// Returns a set of all alignments.
-    static var allAlignments: Set<Alignment> {
-        return [ .LawfulGood, .LawfulNeutral, .LawfulEvil, .NeutralGood, .Neutral, .NeutralEvil, .ChaoticGood, .ChaoticNeutral, .ChaoticEvil ]
-    }
-    
-    /// Returns a set of all lawful alignments.
-    static var lawfulAlignments: Set<Alignment> {
-        return [ .LawfulGood, .LawfulNeutral, .LawfulEvil ]
-    }
-    
-    /// Returns a set of all choatic alignments.
-    static var chaoticAlignments: Set<Alignment> {
-        return [ .ChaoticGood, .ChaoticNeutral, .ChaoticEvil ]
-    }
-    
-    /// Returns a set of all good alignments.
-    static var goodAlignments: Set<Alignment> {
-        return [ .LawfulGood, .NeutralGood, .ChaoticGood ]
-    }
-    
-    /// Returns a set of all evil alignments.
-    static var evilAlignments: Set<Alignment> {
-        return [ .LawfulEvil, .NeutralEvil, .ChaoticEvil ]
     }
 }
 
@@ -254,6 +256,9 @@ enum MonsterType: Int {
     case Ooze
     case Plant
     case Undead
+    
+    /// Array of all cases.
+    static let cases: [MonsterType] = [ .Aberration, .Beast, .Celestial, .Construct, .Dragon, .Elemental, .Fey, .Fiend, .Giant, .Humanoid, .Monstrosity, .Ooze, .Plant, .Undead ]
     
     /// Returns the string equivalent of the monster type.
     var stringValue: String {
@@ -454,6 +459,9 @@ enum Race: Equatable, Hashable {
         }
     }
     
+    /// Array of all cases.
+    static let cases: [Race] = [ .Dwarf(.HillDwarf), .Dwarf(.MountainDwarf), .Dwarf(.GrayDwarf), .Elf(.HighElf), .Elf(.WoodElf), .Elf(.Drow), .Elf(.Eladrin), .Halfling(.Lightfoot), .Halfling(.Stout), .Human, .Dragonborn, .Gnome(.ForestGnome), .Gnome(.RockGnome), .Gnome(.DeepGnome), .HalfElf, .HalfOrc, .Tiefling, .Aasimar, .Aarakocra, .Genasi(.AirGenasi), .Genasi(.EarthGenasi), .Genasi(.FireGenasi), .Genasi(.WaterGenasi), .Goliath ]
+
     /// Returns the string equivalent of the race.
     ///
     /// This consists of the full subrace name, e.g. "Wood Elf".
@@ -473,6 +481,11 @@ enum Race: Equatable, Hashable {
     /// Returns the size of creatures of this race.
     var size: Size {
         return Size(rawValue: sharedRules.raceSize[rawRaceValue])!
+    }
+    
+    /// Returns the string equivalent of the given primary race raw value.
+    static func stringValue(rawRaceValue rawRaceValue: Int) -> String {
+        return sharedRules.race[rawRaceValue]
     }
 }
 
@@ -494,6 +507,9 @@ enum CharacterClass: Int {
     case Sorcerer
     case Warlock
     case Wizard
+    
+    /// Array of all cases.
+    static let cases: [CharacterClass] = [ .Barbarian, .Bard, .Cleric, .Druid, .Fighter, .Monk, .Paladin, .Ranger, .Rogue, .Sorcerer, .Warlock, .Wizard ]
     
     /// Returns the string equivalent of the character class.
     var stringValue: String {
@@ -531,6 +547,9 @@ enum Background: Int {
     case UrbanBountyHunter
     case WaterdhavianNoble
     
+    /// Array of all cases.
+    static let cases: [Background] = [ .Acolyte, .Charlatan, .Criminal, .Entertainer, .FolkHero, .GuildArtisan, .Hermit, .Noble, .Outlander, .Sage, .Sailor, .Soldier, .Urchin, .CityWatch, .ClanCrafter, .CloisteredScholar, .Courtier, .FactionAgent, .FarTraveler, .Inheritor, .KnightOfTheOrder, .MercenaryVeteran, .UrbanBountyHunter, .WaterdhavianNoble ]
+    
     /// Returns the string equivalent of the background.
     var stringValue: String {
         return sharedRules.background[rawValue]
@@ -564,6 +583,9 @@ enum ArmorType: Int {
     case Scraps
     case BardingScraps
     case Patchwork
+    
+    /// Array of all cases.
+    static let cases: [ArmorType] = [ .None, .Natural, .Padded, .Leather, .StuddedLeather, .Hide, .ChainShirt, .ScaleMail, .Breastplate, .HalfPlate, .RingMail, .ChainMail, .Splint, .Plate, .Scraps, .BardingScraps, .Patchwork ]
     
     /// Returns the string equivalent of the armor.
     var stringValue: String {
@@ -627,6 +649,9 @@ enum DamageType: Int {
     case Slashing
     case Thunder
     
+    /// Array of all cases.
+    static let cases: [DamageType] = [ .Acid, .Bludgeoning, .Cold, .Fire, .Force, .Lightning, .Necrotic, .Piercing, .Poison, .Psychic, .Radiant, .Slashing, .Thunder ]
+    
     /// Returns the string equivalent of the damage type.
     var stringValue: String {
         return sharedRules.damageType[rawValue]
@@ -650,6 +675,9 @@ enum Condition: Int {
     case Restrained
     case Stunned
     case Unconcious
+    
+    /// Array of all cases.
+    static let cases: [Condition] = [ .Blinded, .Charmed, .Deafened, .Exhaustion, .Frightened, .Grappled, .Incapacitated, .Invisible, .Paralyzed, .Petrified, .Poisoned, .Prone, .Restrained, .Stunned, .Unconcious ]
     
     /// Returns the string equivalent of the condition.
     var stringValue: String {

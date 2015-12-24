@@ -32,7 +32,7 @@ extension PlayerSavingThrowViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sharedRules.ability.count
+        return Ability.cases.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

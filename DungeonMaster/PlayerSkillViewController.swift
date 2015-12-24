@@ -28,15 +28,15 @@ class PlayerSkillViewController: UITableViewController {
 extension PlayerSkillViewController {
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return sharedRules.ability.count
+        return Ability.cases.count
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sharedRules.skill[section].count
+        return Skill.cases.filter({ $0.rawSkillValue == section }).count
     }
 
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sharedRules.ability[section]
+        return Ability(rawValue: section)!.stringValue
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

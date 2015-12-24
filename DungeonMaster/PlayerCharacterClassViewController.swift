@@ -31,7 +31,7 @@ extension PlayerCharacterClassViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sharedRules.characterClass.count
+        return CharacterClass.cases.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

@@ -27,22 +27,22 @@ class PlayerRaceViewController: UITableViewController {
 extension PlayerRaceViewController {
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return sharedRules.race.count
+        return Set(Race.cases.map({ $0.rawRaceValue })).count
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return max(sharedRules.subrace[section].count, 1)
+        return max(Race.cases.filter({ $0.rawRaceValue == section }).count, 1)
     }
 
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sharedRules.race[section]
+        return Race.stringValue(rawRaceValue: section)
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("RaceCell", forIndexPath: indexPath)
         
         let race: Race
-        if sharedRules.subrace[indexPath.section].count > 0 {
+        if Race.cases.filter({ $0.rawRaceValue == indexPath.section }).count > 0 {
             race = Race(rawRaceValue: indexPath.section, rawSubraceValue: indexPath.row)!
         } else {
             race = Race(rawRaceValue: indexPath.section, rawSubraceValue: nil)!
@@ -65,7 +65,7 @@ extension PlayerRaceViewController {
 extension PlayerRaceViewController {
     
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        if sharedRules.subrace[indexPath.section].count > 0 {
+        if Race.cases.filter({ $0.rawRaceValue == indexPath.section }).count > 0 {
             selectedRace = Race(rawRaceValue: indexPath.section, rawSubraceValue: indexPath.row)!
         } else {
             selectedRace = Race(rawRaceValue: indexPath.section, rawSubraceValue: nil)!

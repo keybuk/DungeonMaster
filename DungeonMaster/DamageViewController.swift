@@ -53,7 +53,7 @@ extension DamageViewController: UIPickerViewDataSource {
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return sharedRules.damageType.count + 1
+        return DamageType.cases.count + 1
     }
     
 }

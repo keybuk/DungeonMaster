@@ -33,7 +33,7 @@ extension ConditionViewController: UIPickerViewDataSource {
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return sharedRules.condition.count + 1
+        return Condition.cases.count + 1
     }
 
 }

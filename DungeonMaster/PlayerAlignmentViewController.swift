@@ -31,7 +31,7 @@ extension PlayerAlignmentViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sharedRules.alignment.count - 1
+        return Alignment.cases.count - 1
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

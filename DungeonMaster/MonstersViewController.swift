@@ -171,8 +171,8 @@ class MonstersViewController: UIViewController {
         }
         
         if let search = search {
-            let typeList = sharedRules.monsterType.enumerate().filter({ $0.1.lowercaseString.containsString(search.lowercaseString) }).map({ $0.0 })
-            
+            let typeList = MonsterType.cases.filter({ $0.stringValue.lowercaseString.containsString(search.lowercaseString) }).map({ $0.rawValue })
+    
             searchPredicate = NSPredicate(format: "rawType IN %@ OR name CONTAINS[cd] %@ OR ANY tags.name CONTAINS[cd] %@", typeList as NSArray, search, search)
         }
         

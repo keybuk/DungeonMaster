@@ -168,15 +168,15 @@ class DetailViewController: UIViewController {
                     let alignmentSet = Set<Alignment>(monster.alignmentOptions.map({ ($0 as! AlignmentOption).alignment }))
                     
                     let alignmentString: String
-                    if alignmentSet == Alignment.allAlignments {
+                    if alignmentSet == Set(Alignment.cases) {
                         alignmentString = "any alignment"
                     } else if alignmentSet == Alignment.chaoticAlignments {
                         alignmentString = "any chaotic alignment"
                     } else if alignmentSet == Alignment.evilAlignments {
                         alignmentString = "any evil alignment"
-                    } else if alignmentSet == Alignment.allAlignments.subtract(Alignment.goodAlignments) {
+                    } else if alignmentSet == Set(Alignment.cases).subtract(Alignment.goodAlignments) {
                         alignmentString = "any non-good alignment"
-                    } else if alignmentSet == Alignment.allAlignments.subtract(Alignment.lawfulAlignments) {
+                    } else if alignmentSet == Set(Alignment.cases).subtract(Alignment.lawfulAlignments) {
                         alignmentString = "any non-lawful alignment"
                     } else {
                         alignmentString = "various alignments"
