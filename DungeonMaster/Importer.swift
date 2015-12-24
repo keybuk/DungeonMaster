@@ -20,7 +20,6 @@ func importIfNeeded() {
     // Shenanigans to stop Swift complaining about "unreachable code" as it optimizes out the other path.
     func inSimulator() -> Bool { return TARGET_OS_SIMULATOR != 0 }
     if inSimulator() {
-        return
         print("Running in simulator: importing data from \(plistVersion)")
     } else {
         if dataVersion != nil {
@@ -34,14 +33,36 @@ func importIfNeeded() {
         }
     }
     
-    do {
-        try NSFileManager.defaultManager().removeItemAtURL(Model.storeURL)
-    } catch NSCocoaError.FileNoSuchFileError {
-        // Ignore removing non-existant database.
-    } catch {
-        let nserror = error as NSError
-        NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
-        abort()
+    // Combatants can reference monsters, which may be about to be deleted. Collect the names of these monsters so we can find them again later.
+    var combatants = [String:[Combatant]]()
+    let combatantFetchRequest = NSFetchRequest(entity: Model.Combatant)
+    for combatant in try! managedObjectContext.executeFetchRequest(combatantFetchRequest) as! [Combatant] {
+        guard combatant.monster.sources.count > 0 else { continue }
+
+        if let referingCombatants = combatants[combatant.monster.name] {
+            combatants[combatant.monster.name] = referingCombatants + [ combatant ]
+        } else {
+            combatants[combatant.monster.name] = [ combatant ]
+        }
+    }
+    
+    // Delete all books. The delete will cascade and remove all information sourced from the books.
+    let bookFetchRequest = NSFetchRequest(entity: Model.Book)
+    for book in try! managedObjectContext.executeFetchRequest(bookFetchRequest) as! [Book] {
+        managedObjectContext.deleteObject(book)
+    }
+    
+    // Collect the set of tags and languages so we can re-use them on the next import.
+    var tags = [String:Tag]()
+    let tagFetchRequest = NSFetchRequest(entity: Model.Tag)
+    for tag in try! managedObjectContext.executeFetchRequest(tagFetchRequest) as! [Tag] {
+        tags[tag.name] = tag
+    }
+    
+    var languages = [String:Language]()
+    let languageFetchRequest = NSFetchRequest(entity: Model.Language)
+    for language in try! managedObjectContext.executeFetchRequest(languageFetchRequest) as! [Language] {
+        languages[language.name] = language
     }
     
     // Import books.
@@ -54,14 +75,21 @@ func importIfNeeded() {
         books.append(book)
     }
     
-    var tags = [String:Tag]()
-    var languages = [String:Language]()
-    
     // Import monsters.
     let monsterDatas = data["monsters"] as! [NSDictionary]
     for monsterData in monsterDatas {
         let name = monsterData["name"] as! String
         let monster = Monster(name: name, inManagedObjectContext: managedObjectContext)
+        
+        // Combatant might refer to a monster by an old name.
+        let names = monsterData["names"] as! [String]
+        for name in names {
+            if let referingCombatants = combatants[name] {
+                for combatant in referingCombatants {
+                    combatant.monster = monster
+                }
+            }
+        }
         
         let sourceDatas = monsterData["sources"] as! [NSDictionary]
         for sourceData in sourceDatas {
@@ -321,18 +349,20 @@ func importIfNeeded() {
                 print("\(monster.name) has unusual Cha (Persuasion) skill: \(monster.persuasionSkill), expected \(monster.charismaModifier), \(monster.charismaModifier + monster.proficiencyBonus), or \(monster.charismaModifier + monster.proficiencyBonus * 2)")
         }
     }
-
-    do {
-        try managedObjectContext.save()
-
-        defaults.setObject(plistVersion, forKey: "DataVersion")
-        defaults.synchronize()
-    } catch {
-        // Replace this implementation with code to handle the error appropriately.
-        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-        let nserror = error as NSError
-        NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
-        abort()
+    
+    // Check that all the combatants got a monster.
+    for (monsterName, referingCombatants) in combatants {
+        for combatant in referingCombatants {
+            if combatant.primitiveValueForKey("monster") == nil {
+                print("Monster referred to by combatant is missing: \(monsterName)")
+                break
+            }
+        }
     }
 
+    // Done.
+    try! managedObjectContext.save()
+
+    defaults.setObject(plistVersion, forKey: "DataVersion")
+    defaults.synchronize()
 }

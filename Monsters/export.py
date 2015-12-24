@@ -196,6 +196,7 @@ class Exporter(monster.MonsterParser):
 		self.bookTags = bookTags
 
 		self.name = None
+		self.names = []
 		self.sources = []
 		self.tags = []
 		self.alignment_options = []
@@ -247,6 +248,7 @@ class Exporter(monster.MonsterParser):
 	def object(self):
 		object = {
 			"name": unicode(self.name, 'utf8'),
+			"names": self.names,
 			"sources": self.sources,
 			"tags": self.tags,
 			"alignmentOptions": self.alignment_options,
@@ -271,7 +273,7 @@ class Exporter(monster.MonsterParser):
 
 	def handle_name(self, name):
 		self.name = name
-		self.info['name'] = unicode(name, 'utf8')
+		self.names.append(unicode(name, 'utf8'))
 
 	def handle_source(self, source, page, section):
 		try:

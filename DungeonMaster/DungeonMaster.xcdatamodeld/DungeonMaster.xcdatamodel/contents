@@ -32,7 +32,7 @@
         <attribute name="rawInitiative" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawLocationX" optional="YES" attributeType="Float" syncable="YES"/>
         <attribute name="rawLocationY" optional="YES" attributeType="Float" syncable="YES"/>
-        <relationship name="conditions" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Condition" inverseName="target" inverseEntity="Condition" syncable="YES"/>
+        <relationship name="conditions" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Condition" inverseName="target" inverseEntity="Condition" syncable="YES"/>
         <relationship name="damages" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Damage" inverseName="target" inverseEntity="Damage" syncable="YES"/>
         <relationship name="encounter" maxCount="1" deletionRule="Nullify" destinationEntity="Encounter" inverseName="combatants" inverseEntity="Encounter" syncable="YES"/>
         <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="combatants" inverseEntity="Monster" syncable="YES"/>
@@ -168,7 +168,7 @@
         <relationship name="actions" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Action" inverseName="monster" inverseEntity="Action" syncable="YES"/>
         <relationship name="alignmentOptions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="AlignmentOption" inverseName="monster" inverseEntity="AlignmentOption" syncable="YES"/>
         <relationship name="armor" toMany="YES" deletionRule="Cascade" destinationEntity="Armor" inverseName="monster" inverseEntity="Armor" syncable="YES"/>
-        <relationship name="combatants" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Combatant" inverseName="monster" inverseEntity="Combatant" syncable="YES"/>
+        <relationship name="combatants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Combatant" inverseName="monster" inverseEntity="Combatant" syncable="YES"/>
         <relationship name="conditionImmunities" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ConditionImmunity" inverseName="monster" inverseEntity="ConditionImmunity" syncable="YES"/>
         <relationship name="damageImmunities" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DamageImmunity" inverseName="monster" inverseEntity="DamageImmunity" syncable="YES"/>
         <relationship name="damageResistanceOptions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DamageResistanceOption" inverseName="monster" inverseEntity="DamageResistanceOption" syncable="YES"/>
@@ -223,7 +223,7 @@
         <attribute name="rawPage" attributeType="Integer 16" syncable="YES"/>
         <attribute name="section" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="book" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="sources" inverseEntity="Book" syncable="YES"/>
-        <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="sources" inverseEntity="Monster" syncable="YES"/>
+        <relationship name="monster" maxCount="1" deletionRule="Cascade" destinationEntity="Monster" inverseName="sources" inverseEntity="Monster" syncable="YES"/>
     </entity>
     <entity name="Tag" representedClassName=".Tag" syncable="YES">
         <attribute name="name" attributeType="String" syncable="YES"/>
