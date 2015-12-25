@@ -142,33 +142,80 @@ class EncounterViewController: UITableViewController {
 extension EncounterViewController {
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return fetchedResultsController.sections?.count ?? 0
+        return (fetchedResultsController.sections?.count ?? 0) + 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sectionInfo = fetchedResultsController.sections![section]
-        return sectionInfo.numberOfObjects
+        if section == (fetchedResultsController.sections?.count ?? 0) {
+            return 1
+        } else {
+            let sectionInfo = fetchedResultsController.sections![section]
+            return sectionInfo.numberOfObjects
+        }
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == (fetchedResultsController.sections?.count ?? 0) {
+            return "Difficulty"
+        } else {
+            return nil
+        }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let combatant = fetchedResultsController.objectAtIndexPath(indexPath) as! Combatant
-        switch combatant.role {
-        case .Foe, .Friend:
-            let cell = tableView.dequeueReusableCellWithIdentifier("CombatantMonsterCell", forIndexPath: indexPath) as! CombatantMonsterCell
-            cell.combatant = combatant
+        if indexPath.section == (fetchedResultsController.sections?.count ?? 0) {
+            let cell = tableView.dequeueReusableCellWithIdentifier("DifficultyCell", forIndexPath: indexPath) as! EncounterDifficultyCell
+            
+            if let difficulty = encounter.calculateDifficulty() {
+                
+                switch difficulty {
+                case .Deadly:
+                    cell.difficultyLabel.text = "Deadly"
+                case .Hard:
+                    cell.difficultyLabel.text = "Hard"
+                case .Medium:
+                    cell.difficultyLabel.text = "Medium"
+                case .Easy:
+                    cell.difficultyLabel.text = "Easy"
+                case .None:
+                    cell.difficultyLabel.text = "—"
+                }
+                
+                let xp = encounter.totalXP()
+                let xpFormatter = NSNumberFormatter()
+                xpFormatter.numberStyle = .DecimalStyle
+                cell.xpLabel.text = "\(xpFormatter.stringFromNumber(xp)!) XP"
+
+            } else {
+                cell.difficultyLabel.text = "—"
+                cell.xpLabel.text = "Incomplete encounter"
+
+            }
+            
             return cell
-        case .Player:
-            let cell = tableView.dequeueReusableCellWithIdentifier("CombatantPlayerCell", forIndexPath: indexPath) as! CombatantPlayerCell
-            cell.combatant = combatant
-            return cell
+        } else {
+            let combatant = fetchedResultsController.objectAtIndexPath(indexPath) as! Combatant
+            switch combatant.role {
+            case .Foe, .Friend:
+                let cell = tableView.dequeueReusableCellWithIdentifier("CombatantMonsterCell", forIndexPath: indexPath) as! CombatantMonsterCell
+                cell.combatant = combatant
+                return cell
+            case .Player:
+                let cell = tableView.dequeueReusableCellWithIdentifier("CombatantPlayerCell", forIndexPath: indexPath) as! CombatantPlayerCell
+                cell.combatant = combatant
+                return cell
+            }
         }
     }
     
     // MARK: Edit support
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+        if indexPath.section == (fetchedResultsController.sections?.count ?? 0) {
+            return false
+        } else {
+            return true
+        }
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -183,6 +230,15 @@ extension EncounterViewController {
 
 // MARK: UITableViewDelegate
 extension EncounterViewController {
+    
+    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        if indexPath.section == (fetchedResultsController.sections?.count ?? 0) {
+            return nil
+        } else {
+            return indexPath
+        }
+    }
+
 }
 
 // MARK: NSFetchedResultsControllerDelegate
@@ -218,6 +274,8 @@ extension EncounterViewController: NSFetchedResultsControllerDelegate {
     }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        let indexPath = NSIndexPath(forRow: 0, inSection: fetchedResultsController.sections?.count ?? 0)
+        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         tableView.endUpdates()
     }
     
@@ -258,5 +316,12 @@ class CombatantPlayerCell: UITableViewCell {
             }
         }
     }
+
+}
+
+class EncounterDifficultyCell: UITableViewCell {
+
+    @IBOutlet var difficultyLabel: UILabel!
+    @IBOutlet var xpLabel: UILabel!
 
 }

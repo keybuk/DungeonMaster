@@ -723,6 +723,20 @@ enum MagicSchool {
     case Transmutation
 }
 
+/// Difficulty of an encounter.
+/// - **None**: the encounter poses no difficulty to the players.
+/// - **Easy**: victory is pretty much guaranteed, aside from the loss of a few hit points.
+/// - **Medium**: characters should emerge victorious, aside from one or two scary moments.
+/// - **Hard**: a slim chance that one or more characers might die.
+/// - **Deadly**: an encounter that could be lethal for one or more characters.
+enum EncounterDifficulty {
+    case None
+    case Easy
+    case Medium
+    case Hard
+    case Deadly
+}
+
 /// Role of a creature in combat.
 /// - **Foe**: a monster controlled by the DM, unfriendly to the players.
 /// - **Friend**: a monster controlled by the DM, friendly to the players.

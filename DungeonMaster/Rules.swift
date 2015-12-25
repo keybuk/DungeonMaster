@@ -91,6 +91,16 @@ struct Rules {
         }
         return result
     }
+    
+    /// Dictionary mapping level for encounter difficulty thresholds.
+    var levelXPThreshold: [Int: [Int]] {
+        var result = [Int: [Int]]()
+        for (level, thresholds) in data["levelXPThreshold"]! as! [String: [NSNumber]] {
+            
+            result[Int(level)!] = thresholds.map({ $0.integerValue })
+        }
+        return result
+    }
 
     /// Array of armor type names.
     var armorType: [String] {
@@ -163,6 +173,15 @@ struct Rules {
             result[NSDecimalNumber(string: challenge)] = proficiencyBonus.integerValue
         }
         return result
+    }
+
+    /// Reverse-sorted array of tuples mapping number of monsters to XP multiplier for at least that many.
+    var monsterXPMultiplier: [(Int, Float)] {
+        var result = [(Int, Float)]()
+        for (number, multiplier) in data["monsterXPMultiplier"]! as! [String: NSNumber] {
+            result.append((Int(number)!, multiplier.floatValue))
+        }
+        return result.sort({ $0.0 > $1.0 })
     }
 
 }
