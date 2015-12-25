@@ -20,12 +20,12 @@ typealias TabletopLocation = CGPoint
     /// Returns the location on the table top of the item with the given index.
     func tabletopView(tabletopView: TabletopView, locationForItem index: Int) -> TabletopLocation
     
+    /// Returns whether an item on the table top can be controlled by the DM.
+    func tabletopView(tabletopView: TabletopView, isItemPlayerControlled index: Int) -> Bool
+    
     /// Returns the name of the item with the given index on the table top.
     func tabletopView(tabletopView: TabletopView, nameForItem index: Int) -> String
     
-    /// Returns whether a health bar should be shown for the item wiht the given index on the table top.
-    func tabletopView(tabletopView: TabletopView, shouldShowHealthForItem index: Int) -> Bool
-
     /// Returns the health of the item with the given index on the table top. Health should be in the range 0.0–1.0.
     func tabletopView(tabletopView: TabletopView, healthForItem index: Int) -> Float
     
@@ -79,6 +79,9 @@ typealias TabletopLocation = CGPoint
     /// Center locations of each item on the table top in the range -1.0...1.0.
     var locations = [TabletopLocation]()
     
+    /// For each item, whether or not it is played controlled.
+    var playerControlled = [Bool]()
+    
     /// Associated stats view of each item on the table top.
     var statsViews = [TabletopStatsView]()
 
@@ -131,6 +134,7 @@ typealias TabletopLocation = CGPoint
         
         locations.removeAll()
         statsViews.removeAll()
+        playerControlled.removeAll()
 
         touchingIndex = nil
         startingLocation = nil
@@ -141,10 +145,13 @@ typealias TabletopLocation = CGPoint
 
         if let count = dataSource?.numberOfItemsInTabletopView(self) {
             for index in 0..<count {
-                let location = dataSource!.tabletopView(self, locationForItem: index)
-                let statsView = statsViewForItem(index)
+                let playerControl = dataSource!.tabletopView(self, isItemPlayerControlled: index)
+                playerControlled.append(playerControl)
 
+                let location = dataSource!.tabletopView(self, locationForItem: index)
                 locations.append(location)
+
+                let statsView = statsViewForItem(index)
                 statsViews.append(statsView)
             }
         }
@@ -221,6 +228,9 @@ typealias TabletopLocation = CGPoint
     }
     
     func doInsertItemAtIndex(index: Int) {
+        let playerControl = dataSource!.tabletopView(self, isItemPlayerControlled: index)
+        playerControlled.insert(playerControl, atIndex: index)
+
         let location = dataSource!.tabletopView(self, locationForItem: index)
         let statsView = statsViewForItem(index)
     
@@ -238,9 +248,11 @@ typealias TabletopLocation = CGPoint
     }
     
     func doUpdateItemAtIndex(index: Int) {
+        let playerControl = dataSource!.tabletopView(self, isItemPlayerControlled: index)
+        playerControlled[index] = playerControl
+
         let oldLocation = locations[index]
         let location = dataSource!.tabletopView(self, locationForItem: index)
-
         locations[index] = location
         
         if touchingIndex != nil && touchingIndex! == index {
@@ -268,7 +280,8 @@ typealias TabletopLocation = CGPoint
 
         let location = locations.removeAtIndex(index)
         let statsView = statsViews.removeAtIndex(index)
-        
+        playerControlled.removeAtIndex(index)
+
         setNeedsDisplayForLocation(location)
         statsView.removeFromSuperview()
     }
@@ -376,11 +389,24 @@ typealias TabletopLocation = CGPoint
                 CGContextSetFillColorWithColor(context, itemFillColor.CGColor)
             }
             
-            let point = locationToPoint(location)
-            CGContextAddArc(context, point.x, point.y, itemRadius, 0.0, CGFloat(2.0 * π), 0)
-            CGContextFillPath(context)
-            CGContextAddArc(context, point.x, point.y, itemRadius, 0.0, CGFloat(2.0 * π), 0)
-            CGContextStrokePath(context)
+            if playerControlled[index] {
+                let angle = CGFloat(π / 3.0)
+                
+                let point = locationToPoint(location)
+                CGContextMoveToPoint(context, point.x - itemRadius, point.y)
+                
+                CGContextAddLineToPoint(context, point.x - cos(angle) * itemRadius, point.y + sin(angle) * itemRadius)
+                CGContextAddLineToPoint(context, point.x + cos(angle) * itemRadius, point.y + sin(angle) * itemRadius)
+                CGContextAddLineToPoint(context, point.x + itemRadius, point.y)
+                CGContextAddLineToPoint(context, point.x + cos(angle) * itemRadius, point.y - sin(angle) * itemRadius)
+                CGContextAddLineToPoint(context, point.x - cos(angle) * itemRadius, point.y - sin(angle) * itemRadius)
+                CGContextClosePath(context)
+            } else {
+                let point = locationToPoint(location)
+                CGContextAddArc(context, point.x, point.y, itemRadius, 0.0, CGFloat(2.0 * π), 0)
+            }
+
+            CGContextDrawPath(context, .FillStroke)
         }
     }
     
@@ -484,14 +510,12 @@ typealias TabletopLocation = CGPoint
     }
     
     func updateStatsView(view: TabletopStatsView, index: Int) {
-        view.label.text = dataSource!.tabletopView(self, nameForItem: index)
+        view.name = dataSource!.tabletopView(self, nameForItem: index)
         
-        if dataSource!.tabletopView(self, shouldShowHealthForItem: index) {
-            let health = dataSource!.tabletopView(self, healthForItem: index)
-            view.progress.hidden = false
-            view.progress.progress = health
+        if !playerControlled[index] {
+            view.health = dataSource!.tabletopView(self, healthForItem: index)
         } else {
-            view.progress.hidden = true
+            view.health = nil
         }
     }
 

@@ -18,6 +18,31 @@ class TabletopStatsView: UIView {
     
     /// Progress bar may be used to render the health of the item.
     var progress: UIProgressView!
+
+    var name: String {
+        get {
+            return label.text!
+        }
+        set(name) {
+            label.text = name
+        }
+    }
+    
+    var health: Float? {
+        get {
+            return progress.hidden ? nil : progress.progress
+        }
+        set(health) {
+            if health != nil {
+                progress.hidden = false
+                progress.progress = health!
+                frame.size.height = 36.0
+            } else {
+                progress.hidden = true
+                frame.size.height = 32.0
+            }
+        }
+    }
     
     /// Action handler for taps on the view.
     var tapHandler: (() -> Void)?
