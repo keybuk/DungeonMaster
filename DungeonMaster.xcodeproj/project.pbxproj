@@ -45,6 +45,7 @@
 		D2622AA11C2BCDDD000D6100 /* MonsterSavingThrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2622AA01C2BCDDD000D6100 /* MonsterSavingThrow.swift */; };
 		D2622AA31C2BCDEC000D6100 /* MonsterSkill.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2622AA21C2BCDEC000D6100 /* MonsterSkill.swift */; };
 		D2622AA51C2CA2C8000D6100 /* CombatantRoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2622AA41C2CA2C8000D6100 /* CombatantRoleViewController.swift */; };
+		D2622AA71C2CB4C7000D6100 /* EncounterPlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2622AA61C2CB4C7000D6100 /* EncounterPlayersViewController.swift */; };
 		D26FBA221C1BEA0F00D44503 /* Combatant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FBA211C1BEA0F00D44503 /* Combatant.swift */; };
 		D26FBA321C1D39B900D44503 /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FBA311C1D39B900D44503 /* Sounds.swift */; };
 		D26FBA341C1D3BAF00D44503 /* CombatantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FBA331C1D3BAF00D44503 /* CombatantViewController.swift */; };
@@ -135,6 +136,7 @@
 		D2622AA01C2BCDDD000D6100 /* MonsterSavingThrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonsterSavingThrow.swift; sourceTree = "<group>"; };
 		D2622AA21C2BCDEC000D6100 /* MonsterSkill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonsterSkill.swift; sourceTree = "<group>"; };
 		D2622AA41C2CA2C8000D6100 /* CombatantRoleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombatantRoleViewController.swift; sourceTree = "<group>"; };
+		D2622AA61C2CB4C7000D6100 /* EncounterPlayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncounterPlayersViewController.swift; sourceTree = "<group>"; };
 		D26FBA211C1BEA0F00D44503 /* Combatant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Combatant.swift; sourceTree = "<group>"; };
 		D26FBA311C1D39B900D44503 /* Sounds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
 		D26FBA331C1D3BAF00D44503 /* CombatantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombatantViewController.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 			children = (
 				D2BDE60B1C17500A0008B2F2 /* EncountersViewController.swift */,
 				D2BDE60D1C1750170008B2F2 /* EncounterViewController.swift */,
+				D2622AA61C2CB4C7000D6100 /* EncounterPlayersViewController.swift */,
 				D26FBA331C1D3BAF00D44503 /* CombatantViewController.swift */,
 				D2622AA41C2CA2C8000D6100 /* CombatantRoleViewController.swift */,
 				D26FBA401C1FA17400D44503 /* ConditionViewController.swift */,
@@ -490,6 +493,7 @@
 				D20049231C1A127500A645E9 /* TabletopStatsView.swift in Sources */,
 				D2622AA31C2BCDEC000D6100 /* MonsterSkill.swift in Sources */,
 				D26FBA3D1C1E52CA00D44503 /* Enums.swift in Sources */,
+				D2622AA71C2CB4C7000D6100 /* EncounterPlayersViewController.swift in Sources */,
 				D23435F61C0D634100108D5F /* Importer.swift in Sources */,
 				D2F9D12F1C1A71D8005F2D9A /* Encounter.swift in Sources */,
 				D2C6063E1C17D32900F61DBD /* TabletopViewController.swift in Sources */,

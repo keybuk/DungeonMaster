@@ -150,6 +150,7 @@ final class Combatant: NSManagedObject {
         
         self.encounter = encounter
         self.player = player
+        self.role = .Player
         
         dateCreated = NSDate()
     }

@@ -71,17 +71,6 @@ class EncounterViewController: UITableViewController {
 
     // MARK: Navigation
     
-    @IBAction func unwindFromMonster(segue: UIStoryboardSegue) {
-        let controller = segue.sourceViewController as! DetailViewController
-        let monster = controller.detailItem as! Monster
-        
-        let combatant = Combatant(encounter: encounter, monster: monster, inManagedObjectContext: managedObjectContext)
-        combatant.role = .Foe
-
-        saveContext()
-    }
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "TabletopSegue" {
             let tabletopViewController = (segue.destinationViewController as! UINavigationController).topViewController as! TabletopViewController
@@ -95,7 +84,7 @@ class EncounterViewController: UITableViewController {
         } else if segue.identifier == "CombatantSegue" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let combatant = fetchedResultsController.objectAtIndexPath(indexPath) as! Combatant
-
+                
                 let combatantViewController = (segue.destinationViewController as! UINavigationController).topViewController as! CombatantViewController
                 combatantViewController.combatant = combatant
                 combatantViewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
@@ -104,9 +93,26 @@ class EncounterViewController: UITableViewController {
         } else if segue.identifier == "AddMonsterSegue" {
             let monstersViewController = segue.destinationViewController as! MonstersViewController
             monstersViewController.addMode = true
+        } else if segue.identifier == "PlayersPopoverSegue" {
+            let encounterPlayersViewController = (segue.destinationViewController as! UINavigationController).topViewController as! EncounterPlayersViewController
+            encounterPlayersViewController.encounter = encounter
         }
     }
     
+    @IBAction func unwindFromMonster(segue: UIStoryboardSegue) {
+        let controller = segue.sourceViewController as! DetailViewController
+        let monster = controller.detailItem as! Monster
+        
+        let combatant = Combatant(encounter: encounter, monster: monster, inManagedObjectContext: managedObjectContext)
+        combatant.role = .Foe
+
+        saveContext()
+    }
+    
+    @IBAction func unwindFromPlayers(segue: UIStoryboardSegue) {
+        
+    }
+
     // MARK: Actions
     
     @IBAction func initiativeTapped(sender: UIBarButtonItem) {
