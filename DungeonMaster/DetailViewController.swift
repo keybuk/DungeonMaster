@@ -277,7 +277,7 @@ class DetailViewController: UIViewController {
                 func damageList(damages: NSSet, spellDamage: Bool = false) -> String {
                     var damageList = ""
 
-                    let allAttacksPredicate = NSPredicate(format: "rawAttackType = %@", NSNumber(integer: AttackType.All.rawValue))
+                    let allAttacksPredicate = NSPredicate(format: "rawAttackType == %@", NSNumber(integer: AttackType.All.rawValue))
                     let allAttackDamages = damages.filteredSetUsingPredicate(allAttacksPredicate)
                     
                     if spellDamage {

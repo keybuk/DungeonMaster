@@ -48,7 +48,7 @@ class TabletopViewController: UIViewController {
         // We use a predicate on the Combatant table, matching against the encounter, rather than just using "encounter.combatants" so that we can be a delegate and get change notifications.
         let fetchRequest = NSFetchRequest(entity: Model.Combatant)
         
-        let predicate = NSPredicate(format: "encounter = %@", encounter)
+        let predicate = NSPredicate(format: "encounter == %@", encounter)
         fetchRequest.predicate = predicate
         
         let sortDescriptor = NSSortDescriptor(key: "dateCreated", ascending: true)
