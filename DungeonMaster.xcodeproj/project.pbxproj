@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D20049231C1A127500A645E9 /* TabletopStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20049221C1A127500A645E9 /* TabletopStatsView.swift */; };
+		D209FEF91C30578F0024B0A3 /* MarkupParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D209FEF81C30578F0024B0A3 /* MarkupParser.swift */; };
+		D209FEFB1C3057B20024B0A3 /* MarkupParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D209FEFA1C3057B20024B0A3 /* MarkupParserTest.swift */; };
 		D2116A461C10EBEB001EDBBA /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2116A451C10EBEB001EDBBA /* Action.swift */; };
 		D2116A481C10ECAE001EDBBA /* Trait.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2116A471C10ECAE001EDBBA /* Trait.swift */; };
 		D2116A4A1C10ECBC001EDBBA /* Reaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2116A491C10ECBC001EDBBA /* Reaction.swift */; };
@@ -99,6 +101,8 @@
 
 /* Begin PBXFileReference section */
 		D20049221C1A127500A645E9 /* TabletopStatsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabletopStatsView.swift; sourceTree = "<group>"; };
+		D209FEF81C30578F0024B0A3 /* MarkupParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkupParser.swift; sourceTree = "<group>"; };
+		D209FEFA1C3057B20024B0A3 /* MarkupParserTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkupParserTest.swift; sourceTree = "<group>"; };
 		D2116A451C10EBEB001EDBBA /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		D2116A471C10ECAE001EDBBA /* Trait.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trait.swift; sourceTree = "<group>"; };
 		D2116A491C10ECBC001EDBBA /* Reaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reaction.swift; sourceTree = "<group>"; };
@@ -270,8 +274,9 @@
 				D2BDE6101C1755040008B2F2 /* Views */,
 				D2A9AF091BFFEAA5009902ED /* AppDelegate.swift */,
 				D23435FA1C0FEFA000108D5F /* Dice.swift */,
-				D249CF8A1C23311A00CDE673 /* Rules.swift */,
 				D249CF841C21DF3500CDE673 /* PointGenerator.swift */,
+				D209FEF81C30578F0024B0A3 /* MarkupParser.swift */,
+				D249CF8A1C23311A00CDE673 /* Rules.swift */,
 				D26FBA311C1D39B900D44503 /* Sounds.swift */,
 				D2A9AF121BFFEAA5009902ED /* Main.storyboard */,
 				D2A9AF151BFFEAA5009902ED /* Assets.xcassets */,
@@ -290,6 +295,7 @@
 				D2A9AF231BFFEAA5009902ED /* DungeonMasterTests.swift */,
 				D23435FC1C0FF84F00108D5F /* DiceTest.swift */,
 				D249CF821C21DDF300CDE673 /* PointGeneratorTest.swift */,
+				D209FEFA1C3057B20024B0A3 /* MarkupParserTest.swift */,
 				D2A9AF251BFFEAA5009902ED /* Info.plist */,
 			);
 			path = DungeonMasterTests;
@@ -498,6 +504,7 @@
 				D2F9D12F1C1A71D8005F2D9A /* Encounter.swift in Sources */,
 				D2C6063E1C17D32900F61DBD /* TabletopViewController.swift in Sources */,
 				D25120001C14C7ED00A09F0B /* BooksViewController.swift in Sources */,
+				D209FEF91C30578F0024B0A3 /* MarkupParser.swift in Sources */,
 				D2116A4F1C10F377001EDBBA /* Lair.swift in Sources */,
 				D249CFAC1C27A6E700CDE673 /* DamageResistanceOption.swift in Sources */,
 				D2511FF81C12B1AD00A09F0B /* MonstersViewController.swift in Sources */,
@@ -546,6 +553,7 @@
 				D23435FD1C0FF84F00108D5F /* DiceTest.swift in Sources */,
 				D2A9AF241BFFEAA5009902ED /* DungeonMasterTests.swift in Sources */,
 				D249CF831C21DDF300CDE673 /* PointGeneratorTest.swift in Sources */,
+				D209FEFB1C3057B20024B0A3 /* MarkupParserTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
