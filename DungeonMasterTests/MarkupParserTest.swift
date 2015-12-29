@@ -113,6 +113,35 @@ class MarkupParserTest: XCTestCase {
         XCTAssertEqual(range.length, 16)
     }
     
+    func testParagraphSpacingBefore() {
+        let lines = [ "This is a test", "and so is this." ]
+        
+        let markupParser = MarkupParser()
+        markupParser.paragraphSpacingBefore = markupParser.paragraphSpacing
+        markupParser.parse(lines)
+        
+        XCTAssertEqual(markupParser.text.string, "This is a test\nand so is this.\n")
+        
+        var range = NSRange()
+        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        XCTAssertNotNil(style)
+        XCTAssertEqual(style!.paragraphSpacingBefore, markupParser.paragraphSpacing)
+        XCTAssertEqual(style!.paragraphSpacing, 0.0)
+        XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
+        XCTAssertEqual(style!.headIndent, 0.0)
+        XCTAssertEqual(range.location, 0)
+        XCTAssertEqual(range.length, 15)
+        
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 15, effectiveRange: &range) as? NSParagraphStyle
+        XCTAssertNotNil(style)
+        XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
+        XCTAssertEqual(style!.paragraphSpacing, 0.0)
+        XCTAssertEqual(style!.firstLineHeadIndent, markupParser.paragraphIndent)
+        XCTAssertEqual(style!.headIndent, 0.0)
+        XCTAssertEqual(range.location, 15)
+        XCTAssertEqual(range.length, 16)
+    }
+    
     // MARK: Bulleted lists
 
     func testBulletItem() {
