@@ -142,6 +142,27 @@ class MarkupParserTest: XCTestCase {
         XCTAssertEqual(range.length, 16)
     }
     
+    func testIndentThis() {
+        let lines = [ "This is a test", "and so is this." ]
+        
+        let markupParser = MarkupParser()
+        markupParser.paragraphStyle = .IndentThis
+        markupParser.parse(lines)
+        
+        XCTAssertEqual(markupParser.text.string, "This is a test\nand so is this.\n")
+        
+        // Since both paragraphs will have the same style, they will be treated as one block.
+        var range = NSRange()
+        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        XCTAssertNotNil(style)
+        XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
+        XCTAssertEqual(style!.paragraphSpacing, 0.0)
+        XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
+        XCTAssertEqual(style!.headIndent, markupParser.paragraphIndent)
+        XCTAssertEqual(range.location, 0)
+        XCTAssertEqual(range.length, 31)
+    }
+    
     // MARK: Headings
     
     func testHeadingAtStart() {
