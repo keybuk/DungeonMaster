@@ -2130,7 +2130,7 @@ Cantrips (at will): fire bolt, minor illusion, prestidigitation, shocking grasp
 3rd level (3 slots): counterspell, fireball, major image
 4th level (3 slots): confusion, greater invisibility
 5th level (2 slots): mislead, seeming
-6th level (1 slot): globe ofinvulnerability</string>
+6th level (1 slot): globe of invulnerability</string>
 				</dict>
 			</array>
 		</dict>
@@ -3714,7 +3714,7 @@ Whenever the charmed target takes damage, the target can repeat the saving throw
 				</dict>
 				<key>lairActions</key>
 				<array>
-					<string>• The aboleth casts [phantasmal force] (no components required) on any number of creatures it can see within 60 feet of it. While maintaining concentration on this effect, the aboleth can't take other lair actions. If a target succeeds on the saving throw or if the effect ends for it, the target is immune to the aboleth's phantasmal force lair action for the next 24 hours, although such a creature can choose to be affected.</string>
+					<string>• The aboleth casts [phantasmal force] (no components required) on any number of creatures it can see within 60 feet of it. While maintaining concentration on this effect, the aboleth can't take other lair actions. If a target succeeds on the saving throw or if the effect ends for it, the target is immune to the aboleth's [phantasmal force] lair action for the next 24 hours, although such a creature can choose to be affected.</string>
 					<string>• Pools of water within 90 feet of the aboleth surge outward in a grasping tide. Any creature on the ground within 20 feet of such a pool must succeed on a DC 14 Strength saving throw or be pulled up to 20 feet into the water and knocked prone. The aboleth can't use this lair action again until it has used a different one.</string>
 					<string>• Water in the aboleth's lair magically becomes a conduit for the creature's rage. The aboleth can target any number of creatures it can see in such water within 90 feet of it. A target must succeed on a DC 14 Wisdom saving throw or take 7 (2d6) psychic damage. The aboleth can't use this lair action again until it has used a different one.</string>
 				</array>
@@ -4017,9 +4017,9 @@ In a new form, the deva retains its game statistics and ability to speak, but it
 					<key>name</key>
 					<string>Innate Spellcasting</string>
 					<key>text</key>
-					<string>The deva's spellcasting ability is Charisma (spell save DC 17).The deva can innately cast the following spells, requiring only verbal components:
-At will: detect evil and good
-1/day each: commune, raise dead</string>
+					<string>The deva's spellcasting ability is Charisma (spell save DC 17). The deva can innately cast the following spells, requiring only verbal components:
+} At will: [detect evil and good]
+} 1/day each: [commune], [raise dead]</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -4221,9 +4221,9 @@ At will: detect evil and good
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The planetar's spellcasting ability is Charisma (spell save DC 20). The planetar can innately cast the following spells, requiring no material components:
-At will: detect evil and good, invisibility (self only)
-3/day each: blade barrier, dispel evil and good, flame strike, raise dead
-1/day each: commune, control weather, insect plague</string>
+} At will: [detect evil and good], [invisibility] (self only)
+} 3/day each: [blade barrier], [dispel evil and good], [flame strike], [raise dead]
+} 1/day each: [commune], [control weather], [insect plague]</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -4471,9 +4471,9 @@ At will: detect evil and good, invisibility (self only)
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The solar's spellcasting ability is Charisma (spell save DC 25). It can innately cast the following spells, requiring no material components:
-At will: detect evil and good, invisibility (self only)
-3/day each: blade barrier, dispel evil and good, resurrection
-1/day each: commune, control weather</string>
+} At will: [detect evil and good], [invisibility] (self only)
+} 3/day each: [blade barrier], [dispel evil and good], [resurrection]
+} 1/day each: [commune], [control weather]</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -5850,18 +5850,18 @@ If the behir takes 30 damage or more on a single turn from the swallowed creatur
 					<string>Eye Rays</string>
 					<key>text</key>
 					<string>The beholder shoots three of the following magical eye rays at random (reroll duplicates), choosing one to three targets it can see within 120 feet of it:
-1. Charm Ray. The targeted creature must succeed on a DC 16 Wisdom saving throw or be charmed by the beholder for 1 hour, or until the beholder harms the creature.
-2. Paralyzing Ray. The targeted creature must succeed on a DC 16 Constitution saving throw or be paralyzed for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
-3. Fear Ray. The targeted creature must succeed on a DC 16 Wisdom saving throw or be frightened for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
-4. Slowing Ray. The targeted creature must succeed on a DC 16 Dexterity saving throw. On a failed save, the target's speed is halved for 1 minute. In addition, the creature can't take reactions, and it can take either an action or a bonus action on its turn, not both. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
-5. Enervation Ray. The targeted creature must make a DC 16 Constitution saving throw, taking 36 (8d8) necrotic damage on a failed save, or half as much damage on a successful one.
-6. Telekinetic Ray. If the target is a creature, it must succeed on a DC 16 Strength saving throw or the beholder moves it up to 30 feet in any direction. It is restrained by the ray's telekinetic grip until the start of the beholder's next turn or until the beholder is incapacitated.
+*1. Charm Ray.* The targeted creature must succeed on a DC 16 Wisdom saving throw or be charmed by the beholder for 1 hour, or until the beholder harms the creature.
+*2. Paralyzing Ray.* The targeted creature must succeed on a DC 16 Constitution saving throw or be paralyzed for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
+*3. Fear Ray.* The targeted creature must succeed on a DC 16 Wisdom saving throw or be frightened for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
+*4. Slowing Ray.* The targeted creature must succeed on a DC 16 Dexterity saving throw. On a failed save, the target's speed is halved for 1 minute. In addition, the creature can't take reactions, and it can take either an action or a bonus action on its turn, not both. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
+*5. Enervation Ray.* The targeted creature must make a DC 16 Constitution saving throw, taking 36 (8d8) necrotic damage on a failed save, or half as much damage on a successful one.
+*6. Telekinetic Ray.* If the target is a creature, it must succeed on a DC 16 Strength saving throw or the beholder moves it up to 30 feet in any direction. It is restrained by the ray's telekinetic grip until the start of the beholder's next turn or until the beholder is incapacitated.
 If the target is an object weighing 300 pounds or less that isn't being worn or carried, it is moved up to 30 feet in any direction. The beholder can also exert fine control on objects with this ray, such as manipulating a simple tool or opening a door or a container.
-7. Sleep Ray. The targeted creature must succeed on a DC 16 Wisdom saving throw or fall asleep and remain unconscious for 1 minute. The target awakens if it takes damage or another creature takes an action to wake it. This ray has no effect on constructs and undead.
-8. Petrification Ray. The targeted creature must make a DC 16 Dexterity saving throw. On a failed save, the creature begins to turn to stone and is restrained. It must repeat the saving throw at the end of its next turn. On a success, the effect ends. On a failure, the creature is petrified until freed by the [greater restoration] spell or other magic.
-9. Disintegration Ray. If the target is a creature, it must succeed on a DC 16 Dexterity saving throw or take 45 (10d8) force damage. If this damage reduces the creature to 0 hit points, its body becomes a pile of fine gray dust.
+*7. Sleep Ray.* The targeted creature must succeed on a DC 16 Wisdom saving throw or fall asleep and remain unconscious for 1 minute. The target awakens if it takes damage or another creature takes an action to wake it. This ray has no effect on constructs and undead.
+*8. Petrification Ray.* The targeted creature must make a DC 16 Dexterity saving throw. On a failed save, the creature begins to turn to stone and is restrained. It must repeat the saving throw at the end of its next turn. On a success, the effect ends. On a failure, the creature is petrified until freed by the [greater restoration] spell or other magic.
+*9. Disintegration Ray.* If the target is a creature, it must succeed on a DC 16 Dexterity saving throw or take 45 (10d8) force damage. If this damage reduces the creature to 0 hit points, its body becomes a pile of fine gray dust.
 If the target is a Large or smaller nonmagical object or creation of magical force, it is disintegrated without a saving throw. If the target is a Huge or larger object or creation of magical force, this ray disintegrates a 10-foot cube of it.
-10. Death Ray. The targeted creature must succeed on a DC 16 Dexterity saving throw or take 55 (10d10) necrotic damage. The target dies if the ray reduces it to 0 hit points.</string>
+*10. Death Ray.* The targeted creature must succeed on a DC 16 Dexterity saving throw or take 55 (10d10) necrotic damage. The target dies if the ray reduces it to 0 hit points.</string>
 				</dict>
 			</array>
 			<key>alignmentOptions</key>
@@ -6043,18 +6043,18 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 					<string>Eye Rays</string>
 					<key>text</key>
 					<string>The death tyrant shoots three of the following magical eye rays at random (reroll duplicates), choosing one to three targets it can see within 120 feet of it:
-1. Charm Ray. The targeted creature must succeed on a DC 17 Wisdom saving throw or be charmed by the tyrant for 1 hour, or until the beholder harms the creature.
-2. Paralyzing Ray. The targeted creature must succeed on a DC 17 Constitution saving throw or be paralyzed for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
-3. Fear Ray. The targeted creature must succeed on a DC 17 Wisdom saving throw or be frightened for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
-4. Slowing Ray. The targeted creature must succeed on a DC 17 Dexterity saving throw. On a failed save, the target's speed is halved for 1 minute. In addition, the creature can't take reactions, and it can take either an action or a bonus action on its turn, not both. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
-5. Enervation Ray. The targeted creature must make a DC 17 Constitution saving throw, taking 36 (8d8) necrotic damage on a failed save, or half as much damage on a successful one.
-6. Telekinetic Ray. If the target is a creature, it must succeed on a DC 17 Strength saving throw or the tyrant moves it up to 30 feet in any direction. The target is restrained by the ray's telekinetic grip until the start of the tyrant's next turn or until the tyrant is incapacitated.
+*1. Charm Ray.* The targeted creature must succeed on a DC 17 Wisdom saving throw or be charmed by the tyrant for 1 hour, or until the beholder harms the creature.
+*2. Paralyzing Ray.* The targeted creature must succeed on a DC 17 Constitution saving throw or be paralyzed for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
+*3. Fear Ray.* The targeted creature must succeed on a DC 17 Wisdom saving throw or be frightened for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
+*4. Slowing Ray.* The targeted creature must succeed on a DC 17 Dexterity saving throw. On a failed save, the target's speed is halved for 1 minute. In addition, the creature can't take reactions, and it can take either an action or a bonus action on its turn, not both. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
+*5. Enervation Ray.* The targeted creature must make a DC 17 Constitution saving throw, taking 36 (8d8) necrotic damage on a failed save, or half as much damage on a successful one.
+*6. Telekinetic Ray.* If the target is a creature, it must succeed on a DC 17 Strength saving throw or the tyrant moves it up to 30 feet in any direction. The target is restrained by the ray's telekinetic grip until the start of the tyrant's next turn or until the tyrant is incapacitated.
 If the target is an object weighing 300 pounds or less that isn't being worn or carried, it is moved up to 30 feet in any direction. The tyrant can also exert fine control on objects with this ray, such as manipulating a simple tool or opening a door or a container.
-7. Sleep Ray. The targeted creature must succeed on a DC 17 Wisdom saving throw or fall asleep and remain unconscious for 1 minute. The target awakens if it takes damage or another creature takes an action to wake it. This ray has no effect on constructs and undead.
-8. Petrification Ray. The targeted creature must make a DC 17 Dexterity saving throw. On a failed save, the creature begins to turn to stone and is restrained. It must repeat the saving throw at the end of its next turn. On a success, the effect ends. On a failure, the creature is petrified until freed by the [greater restoration] spell or other magic.
-9. Disintegration Ray. If the target is a creature, it must succeed on a DC 17 Dexterity saving throw or take 45 (10d8) force damage. If this damage reduces the creature to 0 hit points, its body becomes a pile of fine gray dust.
+*7. Sleep Ray.* The targeted creature must succeed on a DC 17 Wisdom saving throw or fall asleep and remain unconscious for 1 minute. The target awakens if it takes damage or another creature takes an action to wake it. This ray has no effect on constructs and undead.
+*8. Petrification Ray.* The targeted creature must make a DC 17 Dexterity saving throw. On a failed save, the creature begins to turn to stone and is restrained. It must repeat the saving throw at the end of its next turn. On a success, the effect ends. On a failure, the creature is petrified until freed by the [greater restoration] spell or other magic.
+*9. Disintegration Ray.* If the target is a creature, it must succeed on a DC 17 Dexterity saving throw or take 45 (10d8) force damage. If this damage reduces the creature to 0 hit points, its body becomes a pile of fine gray dust.
 If the target is a Large or smaller nonmagical object or creation of magical force, it is disintegrated without a saving throw. If the target is a Huge or larger object or creation of magical force, this ray disintegrates a 10 foot cube of it.
-10. Death Ray. The targeted creature must succeed on a DC 17 Dexterity saving throw or take 55 (10d10) necrotic damage. The target dies if the ray reduces it to 0 hit points.</string>
+*10. Death Ray.* The targeted creature must succeed on a DC 17 Dexterity saving throw or take 55 (10d10) necrotic damage. The target dies if the ray reduces it to 0 hit points.</string>
 				</dict>
 			</array>
 			<key>alignmentOptions</key>
@@ -6266,10 +6266,10 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 					<string>Eye Rays</string>
 					<key>text</key>
 					<string>The spectator shoots up to two of the following magical eye rays at one or two creatures it can see within 90 feet of it. It can use each ray only once on a turn.
-1. Confusion Ray. The target must succeed on a DC 13 Wisdom saving throw, or it can't take reactions until the end of its next turn. On its turn, the target can't move, and it uses its action to make a melee or ranged attack against a randomly determined creature within range. If the target can't attack, it does nothing on its turn.
-2. Paralyzing Ray. The target must succeed on a DC 13 Constitution saving throw or be paralyzed for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
-3. Fear Ray. The target must succeed on a DC 13 Wisdom saving throw or be frightened for 1 minute. The target can repeat the saving throw at the end of each of its turns, with disadvantage if the spectator is visible to the target, ending the effect on itself on a success.
-4. Wounding Ray. The target must make a DC 13 Constitution saving throw, taking 16 (3d10) necrotic damage on a failed save, or half as much damage on a successful one.</string>
+*1. Confusion Ray.* The target must succeed on a DC 13 Wisdom saving throw, or it can't take reactions until the end of its next turn. On its turn, the target can't move, and it uses its action to make a melee or ranged attack against a randomly determined creature within range. If the target can't attack, it does nothing on its turn.
+*2. Paralyzing Ray.* The target must succeed on a DC 13 Constitution saving throw or be paralyzed for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
+*3. Fear Ray.* The target must succeed on a DC 13 Wisdom saving throw or be frightened for 1 minute. The target can repeat the saving throw at the end of each of its turns, with disadvantage if the spectator is visible to the target, ending the effect on itself on a success.
+*4. Wounding Ray.* The target must make a DC 13 Constitution saving throw, taking 16 (3d10) necrotic damage on a failed save, or half as much damage on a successful one.</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -7661,8 +7661,8 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The cambion's spellcasting ability is Charisma (spell save DC 14). The cambion can innately cast the following spells, requiring no material components:
-3/day each: alter self, command, detect magic
-1/day: plane shift (self only)</string>
+} 3/day each: [alter self], [command], [detect magic]
+} 1/day: [plane shift] (self only)</string>
 				</dict>
 			</array>
 		</dict>
@@ -8730,9 +8730,9 @@ In a new form, the couatl retains its game statistics and ability to speak, but 
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The couatl's spellcasting ability is Charisma (spell save DC 14). It can innately cast the following spells, requiring only verbal components:
-At will: detect evil and good, detect magic, detect thoughts
-3/day each: bless, create food and water, cure wounds, lesser restoration, protection from poison, sanctuary, shield
-1/day each: dream, greater restoration, scrying</string>
+} At will: [detect evil and good], [detect magic], [detect thoughts]
+} 3/day each: [bless], [create food and water], [cure wounds], [lesser restoration], [protection from poison], [sanctuary], [shield]
+} 1/day each: [dream], [greater restoration], [scrying]</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -9350,11 +9350,11 @@ A creature can detach the darkmantle by making a successful DC 13 Strength check
 					<string>Spellcasting</string>
 					<key>text</key>
 					<string>The death knight is a 19th-level spellcaster. Its spellcasting ability is Charisma (spell save DC 18, +10 to hit with spell attacks). It has the following paladin spells prepared:
-1st level (4 slots): command, compelled duel, searing smite
-2nd level (3 slots): hold person, magic weapon
-3rd level (3 slots): dispel magic, elemental weapon
-4th level (3 slots): banishment, staggering smite
-5th level (2 slots): destructive wave (necrotic)</string>
+} 1st level (4 slots): [command], [compelled duel], [searing smite]
+} 2nd level (3 slots): [hold person], [magic weapon]
+} 3rd level (3 slots): [dispel magic], [elemental weapon]
+} 4th level (3 slots): [banishment], [staggering smite]
+} 5th level (2 slots): [destructive wave] (necrotic)</string>
 				</dict>
 			</array>
 		</dict>
@@ -10045,8 +10045,8 @@ In its crypt, a demilich has access to lair actions and additional uses for its 
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The barlgura's spellcasting ability is Wisdom (spell save DC 13). The barlgura can innately cast the following spells, requiring no material components:
-1/day each: entangle, phantasmal force
-2/day each: disguise self, invisibility (self only)</string>
+} 1/day each: [entangle], [phantasmal force]
+} 2/day each: [disguise self], [invisibility] (self only)</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -10586,8 +10586,8 @@ In its crypt, a demilich has access to lair actions and additional uses for its 
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The glabrezu's spellcasting ability is Intelligence (spell save DC 16). The glabrezu can innately cast the following spells, requiring no material components:
-At will: darkness, detect magic, dispel magic
-1/day each: confusion, fly, power word stun</string>
+} At will: [darkness], [detect magic], [dispel magic]
+} 1/day each: [confusion], [fly], [power word stun]</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -12440,8 +12440,8 @@ While in mist form, the yochlol can enter a creature's space and stop there. Eac
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The yochlol's spellcasting ability is Charisma (spell save DC 14). The yochlol can innately cast the following spells, requiring no material components:
-At will: detect thoughts, web
-1/day: dominate person</string>
+} At will: [detect thoughts], [web]
+} 1/day: [dominate person]</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -14426,8 +14426,8 @@ The wall lasts for 1 minute or until the devil is incapacitated or dies. The wal
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The pit fiend's spellcasting ability is Charisma (spell save DC 21). The pit fiend can innately cast the following spells, requiring no material components:
-At will: detect magic, fireball
-3/day each: hold monster, wall of fire</string>
+} At will: [detect magic], [fireball]
+} 3/day each: [hold monster], [wall of fire]</string>
 				</dict>
 			</array>
 		</dict>
@@ -20015,8 +20015,8 @@ If the dragon wishes to move through a wall, it can do so without slowing down. 
 					<string>Breath Weapons (Recharge 5–6)</string>
 					<key>text</key>
 					<string>The dragon uses one of the following breath weapons:
-Fire Breath. The dragon exhales fire in an 90-foot line that is 10 feet wide. Each creature in that line must make a DC 21 Dexterity saving throw, taking 56 (16d6) fire damage on a failed save, or half as much damage on a successful one.
-Sleep Breath. The dragon exhales sleep gas in a 90-foot cone. Each creature in that area must succeed on a DC 21 Constitution saving throw or fall unconscious for 10 minutes. This effect ends for a creature if the creature takes damage or someone uses an action to wake it.</string>
+} **Fire Breath.** The dragon exhales fire in an 90-foot line that is 10 feet wide. Each creature in that line must make a DC 21 Dexterity saving throw, taking 56 (16d6) fire damage on a failed save, or half as much damage on a successful one.
+} **Sleep Breath.** The dragon exhales sleep gas in a 90-foot cone. Each creature in that area must succeed on a DC 21 Constitution saving throw or fall unconscious for 10 minutes. This effect ends for a creature if the creature takes damage or someone uses an action to wake it.</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -20232,8 +20232,8 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 					<string>Breath Weapons (Recharge 5–6)</string>
 					<key>text</key>
 					<string>The dragon uses one of the following breath weapons.
-Fire Breath. The dragon exhales fire in an 60-foot line that is 5 feet wide. Each creature in that line must make a DC 18 Dexterity saving throw, taking 45 (13d6) fire damage on a failed save, or half as much damage on a successful one.
-Sleep Breath. The dragon exhales sleep gas in a 60-foot cone. Each creature in that area must succeed on a DC 18 Constitution saving throw or fall unconscious for 10 minutes. This effect ends for a creature if the creature takes damage or someone uses an action to wake it.</string>
+} **Fire Breath.** The dragon exhales fire in an 60-foot line that is 5 feet wide. Each creature in that line must make a DC 18 Dexterity saving throw, taking 45 (13d6) fire damage on a failed save, or half as much damage on a successful one.
+} **Sleep Breath.** The dragon exhales sleep gas in a 60-foot cone. Each creature in that area must succeed on a DC 18 Constitution saving throw or fall unconscious for 10 minutes. This effect ends for a creature if the creature takes damage or someone uses an action to wake it.</string>
 				</dict>
 			</array>
 			<key>alignmentOptions</key>
@@ -20458,8 +20458,8 @@ Sleep Breath. The dragon exhales sleep gas in a 60-foot cone. Each creature in t
 					<string>Breath Weapons (Recharge 5–6)</string>
 					<key>text</key>
 					<string>The dragon uses one of the following breath weapons.
-Fire Breath. The dragon exhales fire in a 40-foot line that is 5 feet wide. Each creature in that line must make a DC 14 Dexterity saving throw, taking 42 (12d6) fire damage on a failed save, or half as much damage on a successful one.
-Sleep Breath. The dragon exhales sleep gas in a 30-foot cone. Each creature in that area must succeed on a DC 14 Constitution saving throw or fall unconscious for 5 minutes. This effect ends for a creature if the creature takes damage or someone uses an action to wake it.</string>
+} **Fire Breath.** The dragon exhales fire in a 40-foot line that is 5 feet wide. Each creature in that line must make a DC 14 Dexterity saving throw, taking 42 (12d6) fire damage on a failed save, or half as much damage on a successful one.
+} **Sleep Breath.** The dragon exhales sleep gas in a 30-foot cone. Each creature in that area must succeed on a DC 14 Constitution saving throw or fall unconscious for 5 minutes. This effect ends for a creature if the creature takes damage or someone uses an action to wake it.</string>
 				</dict>
 			</array>
 			<key>alignmentOptions</key>
@@ -20615,8 +20615,8 @@ Sleep Breath. The dragon exhales sleep gas in a 30-foot cone. Each creature in t
 					<string>Breath Weapons (Recharge 5–6)</string>
 					<key>text</key>
 					<string>The dragon uses one of the following breath weapons.
-Fire Breath. The dragon exhales fire in an 20-foot line that is 5 feet wide. Each creature in that line must make a DC 11 Dexterity saving throw, taking 14 (4d6) fire damage on a failed save, or half as much damage on a successful one.
-Sleep Breath. The dragon exhales sleep gas in a 15-foot cone. Each creature in that area must succeed on a DC 11 Constitution saving throw or fall unconscious for 1 minute. This effect ends for a creature if the creature takes damage or someone uses an action to wake it.</string>
+} **Fire Breath.** The dragon exhales fire in an 20-foot line that is 5 feet wide. Each creature in that line must make a DC 11 Dexterity saving throw, taking 14 (4d6) fire damage on a failed save, or half as much damage on a successful one.
+} **Sleep Breath.** The dragon exhales sleep gas in a 15-foot cone. Each creature in that area must succeed on a DC 11 Constitution saving throw or fall unconscious for 1 minute. This effect ends for a creature if the creature takes damage or someone uses an action to wake it.</string>
 				</dict>
 			</array>
 			<key>alignmentOptions</key>
@@ -20790,8 +20790,8 @@ Sleep Breath. The dragon exhales sleep gas in a 15-foot cone. Each creature in t
 					<string>Breath Weapons (Recharge 5–6)</string>
 					<key>text</key>
 					<string>The dragon uses one of the following breath weapons.
-Lightning Breath. The dragon exhales lightning in a 120-foot line that is 10 feet wide. Each creature in that line must make a DC 23 Dexterity saving throw, taking 88 (16d10) lightning damage on a failed save, or half as much damage on a successful one.
-Repulsion Breath. The dragon exhales repulsion energy in a 30-foot cone. Each creature in that area must succeed on a DC 23 Strength saving throw. On a failed save, the creature is pushed 60 feet away from the dragon.</string>
+} **Lightning Breath.** The dragon exhales lightning in a 120-foot line that is 10 feet wide. Each creature in that line must make a DC 23 Dexterity saving throw, taking 88 (16d10) lightning damage on a failed save, or half as much damage on a successful one.
+} **Repulsion Breath.** The dragon exhales repulsion energy in a 30-foot cone. Each creature in that area must succeed on a DC 23 Strength saving throw. On a failed save, the creature is pushed 60 feet away from the dragon.</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -21003,8 +21003,8 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 					<string>Breath Weapons (Recharge 5–6)</string>
 					<key>text</key>
 					<string>The dragon uses one of the following breath weapons.
-Lightning Breath. The dragon exhales lightning in a 90-foot line that is 5 feet wide. Each creature in that line must make a DC 19 Dexterity saving throw, taking 66 (12d10) lightning damage on a failed save, or half as much damage on a successful one.
-Repulsion Breath. The dragon exhales repulsion energy in a 30-foot cone. Each creature in that area must succeed on a DC 19 Strength saving throw. On a failed save, the creature is pushed 60 feet away from the dragon.</string>
+} **Lightning Breath.** The dragon exhales lightning in a 90-foot line that is 5 feet wide. Each creature in that line must make a DC 19 Dexterity saving throw, taking 66 (12d10) lightning damage on a failed save, or half as much damage on a successful one.
+} **Repulsion Breath.** The dragon exhales repulsion energy in a 30-foot cone. Each creature in that area must succeed on a DC 19 Strength saving throw. On a failed save, the creature is pushed 60 feet away from the dragon.</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -21238,8 +21238,8 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 					<string>Breath Weapons (Recharge 5–6)</string>
 					<key>text</key>
 					<string>The dragon uses one of the following breath weapons.
-Lightning Breath. The dragon exhales lightning in a 60-foot line that is 5 feet wide. Each creature in that line must make a DC 15 Dexterity saving throw, taking 55 (10d10) lightning damage on a failed save, or half as much damage on a successful one.
-Repulsion Breath. The dragon exhales repulsion energy in a 30-foot cone. Each creature in that area must succeed on a DC 15 Strength saving throw. On a failed save, the creature is pushed 40 feet away from the dragon.</string>
+} **Lightning Breath.** The dragon exhales lightning in a 60-foot line that is 5 feet wide. Each creature in that line must make a DC 15 Dexterity saving throw, taking 55 (10d10) lightning damage on a failed save, or half as much damage on a successful one.
+} **Repulsion Breath.** The dragon exhales repulsion energy in a 30-foot cone. Each creature in that area must succeed on a DC 15 Strength saving throw. On a failed save, the creature is pushed 40 feet away from the dragon.</string>
 				</dict>
 			</array>
 			<key>alignmentOptions</key>
@@ -21396,8 +21396,8 @@ Repulsion Breath. The dragon exhales repulsion energy in a 30-foot cone. Each cr
 					<string>Breath Weapons (Recharge 5–6)</string>
 					<key>text</key>
 					<string>The dragon uses one of the following breath weapons.
-Lightning Breath. The dragon exhales lightning in a 40-foot line that is 5 feet wide. Each creature in that line must make a DC 12 Dexterity saving throw, taking 16 (3d10) lightning damage on a failed save, or half as much damage on a successful one.
-Repulsion Breath. The dragon exhales repulsion energy in a 30-foot cone. Each creature in that area must succeed on a DC 12 Strength saving throw. On a failed save, the creature is pushed 30 feet away from the dragon.</string>
+} **Lightning Breath.** The dragon exhales lightning in a 40-foot line that is 5 feet wide. Each creature in that line must make a DC 12 Dexterity saving throw, taking 16 (3d10) lightning damage on a failed save, or half as much damage on a successful one.
+} **Repulsion Breath.** The dragon exhales repulsion energy in a 30-foot cone. Each creature in that area must succeed on a DC 12 Strength saving throw. On a failed save, the creature is pushed 30 feet away from the dragon.</string>
 				</dict>
 			</array>
 			<key>alignmentOptions</key>
@@ -21577,8 +21577,8 @@ Repulsion Breath. The dragon exhales repulsion energy in a 30-foot cone. Each cr
 					<string>Breath Weapons (Recharge 5–6)</string>
 					<key>text</key>
 					<string>The dragon uses one of the following breath weapons.
-Acid Breath. The dragon exhales acid in an 90-foot line that is 10 feet wide. Each creature in that line must make a DC 22 Dexterity saving throw, taking 63 (14d8) acid damage on a failed save, or half as much damage on a successful one.
-Slowing Breath. The dragon exhales gas in a 90-foot cone. Each creature in that area must succeed on a DC 22 Constitution saving throw. On a failed save, the creature can't use reactions, its speed is halved, and it can't make more than one attack on its turn. In addition, the creature can use either an action or a bonus action on its turn, but not both. These effects last for 1 minute. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself with a successful save.</string>
+} **Acid Breath.** The dragon exhales acid in an 90-foot line that is 10 feet wide. Each creature in that line must make a DC 22 Dexterity saving throw, taking 63 (14d8) acid damage on a failed save, or half as much damage on a successful one.
+} **Slowing Breath.** The dragon exhales gas in a 90-foot cone. Each creature in that area must succeed on a DC 22 Constitution saving throw. On a failed save, the creature can't use reactions, its speed is halved, and it can't make more than one attack on its turn. In addition, the creature can use either an action or a bonus action on its turn, but not both. These effects last for 1 minute. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself with a successful save.</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -21789,8 +21789,8 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 					<string>Breath Weapons (Recharge 5–6)</string>
 					<key>text</key>
 					<string>The dragon uses one of the following breath weapons.
-Acid Breath. The dragon exhales acid in an 60-foot line that is 5 feet wide. Each creature in that line must make a DC 18 Dexterity saving throw, taking 54 (12d8) acid damage on a failed save, or half as much damage on a successful one.
-Slowing Breath. The dragon exhales gas in a 60-foot cone. Each creature in that area must succeed on a DC 18 Constitution saving throw. On a failed save, the creature can't use reactions, its speed is halved, and it can't make more than one attack on its turn. In addition, the creature can use either an action or a bonus action on its turn, but not both. These effects last for 1 minute. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself with a successful save.</string>
+} **Acid Breath.** The dragon exhales acid in an 60-foot line that is 5 feet wide. Each creature in that line must make a DC 18 Dexterity saving throw, taking 54 (12d8) acid damage on a failed save, or half as much damage on a successful one.
+} **Slowing Breath.** The dragon exhales gas in a 60-foot cone. Each creature in that area must succeed on a DC 18 Constitution saving throw. On a failed save, the creature can't use reactions, its speed is halved, and it can't make more than one attack on its turn. In addition, the creature can use either an action or a bonus action on its turn, but not both. These effects last for 1 minute. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself with a successful save.</string>
 				</dict>
 			</array>
 			<key>alignmentOptions</key>
@@ -22010,8 +22010,8 @@ Slowing Breath. The dragon exhales gas in a 60-foot cone. Each creature in that 
 					<string>Breath Weapons (Recharge 5–6)</string>
 					<key>text</key>
 					<string>The dragon uses one of the following breath weapons.
-Acid Breath. The dragon exhales acid in an 40-foot line that is 5 feet wide. Each creature in that line must make a DC 14 Dexterity saving throw, taking 40 (9d8) acid damage on a failed save, or half as much damage on a successful one.
-Slowing Breath. The dragon exhales gas in a 30-foot cone. Each creature in that area must succeed on a DC 14 Constitution saving throw. On a failed save, the creature can't use reactions, its speed is halved, and it can't make more than one attack on its turn. In addition, the creature can use either an action or a bonus action on its turn, but not both. These effects last for 1 minute. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself with a successful save.</string>
+} **Acid Breath.** The dragon exhales acid in an 40-foot line that is 5 feet wide. Each creature in that line must make a DC 14 Dexterity saving throw, taking 40 (9d8) acid damage on a failed save, or half as much damage on a successful one.
+} **Slowing Breath.** The dragon exhales gas in a 30-foot cone. Each creature in that area must succeed on a DC 14 Constitution saving throw. On a failed save, the creature can't use reactions, its speed is halved, and it can't make more than one attack on its turn. In addition, the creature can use either an action or a bonus action on its turn, but not both. These effects last for 1 minute. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself with a successful save.</string>
 				</dict>
 			</array>
 			<key>alignmentOptions</key>
@@ -22167,8 +22167,8 @@ Slowing Breath. The dragon exhales gas in a 30-foot cone. Each creature in that 
 					<string>Breath Weapons (Recharge 5–6)</string>
 					<key>text</key>
 					<string>The dragon uses one of the following breath weapons.
-Acid Breath. The dragon exhales acid in an 20-foot line that is 5 feet wide. Each creature in that line must make a DC 11 Dexterity saving throw, taking 18 (4d8) acid damage on a failed save, or half as much damage on a successful one.
-Slowing Breath. The dragon exhales gas in a 15-foot cone. Each creature in that area must succeed on a DC 11 Constitution saving throw. On a failed save, the creature can't use reactions, its speed is halved, and it can't make more than one attack on its turn. In addition, the creature can use either an action or a bonus action on its turn, but not both. These effects last for 1 minute. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself with a successful save.</string>
+} **Acid Breath.** The dragon exhales acid in an 20-foot line that is 5 feet wide. Each creature in that line must make a DC 11 Dexterity saving throw, taking 18 (4d8) acid damage on a failed save, or half as much damage on a successful one.
+} **Slowing Breath.** The dragon exhales gas in a 15-foot cone. Each creature in that area must succeed on a DC 11 Constitution saving throw. On a failed save, the creature can't use reactions, its speed is halved, and it can't make more than one attack on its turn. In addition, the creature can use either an action or a bonus action on its turn, but not both. These effects last for 1 minute. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself with a successful save.</string>
 				</dict>
 			</array>
 			<key>alignmentOptions</key>
@@ -22342,8 +22342,8 @@ Slowing Breath. The dragon exhales gas in a 15-foot cone. Each creature in that 
 					<string>Breath Weapons (Recharge 5–6)</string>
 					<key>text</key>
 					<string>The dragon uses one of the following breath weapons.
-Fire Breath. The dragon exhales fire in a 90-foot cone. Each creature in that area must make a DC 24 Dexterity saving throw, taking 71 (13d10) fire damage on a failed save, or half as much damage on a successful one.
-Weakening Breath. The dragon exhales gas in a 90-foot cone. Each creature in that area must succeed on a DC 24 Strength saving throw or have disadvantage on Strength-based attack rolls, Strength checks, and Strength saving throws for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.</string>
+} **Fire Breath.** The dragon exhales fire in a 90-foot cone. Each creature in that area must make a DC 24 Dexterity saving throw, taking 71 (13d10) fire damage on a failed save, or half as much damage on a successful one.
+} **Weakening Breath.** The dragon exhales gas in a 90-foot cone. Each creature in that area must succeed on a DC 24 Strength saving throw or have disadvantage on Strength-based attack rolls, Strength checks, and Strength saving throws for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -22560,8 +22560,8 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 					<string>Breath Weapons (Recharge 5–6)</string>
 					<key>text</key>
 					<string>The dragon uses one of the following breath weapons.
-Fire Breath. The dragon exhales fire in a 60-foot cone. Each creature in that area must make a DC 21 Dexterity saving throw, taking 66 (12d10) fire damage on a failed save, or half as much damage on a successful one.
-Weakening Breath. The dragon exhales gas in a 60-foot cone. Each creature in that area must succeed on a DC 21 Strength saving throw or have disadvantage on Strength-based attack rolls, Strength checks, and Strength saving throws for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.</string>
+} **Fire Breath.** The dragon exhales fire in a 60-foot cone. Each creature in that area must make a DC 21 Dexterity saving throw, taking 66 (12d10) fire damage on a failed save, or half as much damage on a successful one.
+} **Weakening Breath.** The dragon exhales gas in a 60-foot cone. Each creature in that area must succeed on a DC 21 Strength saving throw or have disadvantage on Strength-based attack rolls, Strength checks, and Strength saving throws for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -22794,8 +22794,8 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 					<string>Breath Weapons (Recharge 5–6)</string>
 					<key>text</key>
 					<string>The dragon uses one of the following breath weapons.
-Fire Breath. The dragon exhales fire in a 30-foot cone. Each creature in that area must make a DC 17 Dexterity saving throw, taking 55 (10d10) fire damage on a failed save, or half as much damage on a successful one.
-Weakening Breath. The dragon exhales gas in a 30-foot cone. Each creature in that area must succeed on a DC 17 Strength saving throw or have disadvantage on Strength-based attack rolls, Strength checks, and Strength saving throws for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.</string>
+} **Fire Breath.** The dragon exhales fire in a 30-foot cone. Each creature in that area must make a DC 17 Dexterity saving throw, taking 55 (10d10) fire damage on a failed save, or half as much damage on a successful one.
+} **Weakening Breath.** The dragon exhales gas in a 30-foot cone. Each creature in that area must succeed on a DC 17 Strength saving throw or have disadvantage on Strength-based attack rolls, Strength checks, and Strength saving throws for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.</string>
 				</dict>
 			</array>
 			<key>alignmentOptions</key>
@@ -23138,8 +23138,8 @@ Weakening Breath. The dragon exhales gas in a 15-foot cone. Each creature in tha
 					<string>Breath Weapons (Recharge 5–6)</string>
 					<key>text</key>
 					<string>The dragon uses one of the following breath weapons.
-Cold Breath. The dragon exhales an icy blast in a 90-foot cone. Each creature in that area must make a DC 24 Constitution saving throw, taking 67 (15d8) cold damage on a failed save, or half as much damage on a successful one.
-Paralyzing Breath. The dragon exhales paralyzing gas in a 90-foot cone. Each creature in that area must succeed on a DC 24 Constitution saving throw or be paralyzed for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.</string>
+} **Cold Breath.** The dragon exhales an icy blast in a 90-foot cone. Each creature in that area must make a DC 24 Constitution saving throw, taking 67 (15d8) cold damage on a failed save, or half as much damage on a successful one.
+} **Paralyzing Breath.** The dragon exhales paralyzing gas in a 90-foot cone. Each creature in that area must succeed on a DC 24 Constitution saving throw or be paralyzed for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -23348,8 +23348,8 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 					<string>Breath Weapons (Recharge 5–6)</string>
 					<key>text</key>
 					<string>The dragon uses one of the following breath weapons.
-Cold Breath. The dragon exhales an icy blast in a 60-foot cone. Each creature in that area must make a DC 20 Constitution saving throw, taking 58 (13d8) cold damage on a failed save, or half as much damage on a successful one.
-Paralyzing Breath. The dragon exhales paralyzing gas in a 60-foot cone. Each creature in that area must succeed on a DC 20 Constitution saving throw or be paralyzed for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.</string>
+} **Cold Breath.** The dragon exhales an icy blast in a 60-foot cone. Each creature in that area must make a DC 20 Constitution saving throw, taking 58 (13d8) cold damage on a failed save, or half as much damage on a successful one.
+} **Paralyzing Breath.** The dragon exhales paralyzing gas in a 60-foot cone. Each creature in that area must succeed on a DC 20 Constitution saving throw or be paralyzed for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -23574,8 +23574,8 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 					<string>Breath Weapons (Recharge 5–6)</string>
 					<key>text</key>
 					<string>The dragon uses one of the following breath weapons.
-Cold Breath. The dragon exhales an icy blast in a 30-foot cone. Each creature in that area must make a DC 17 Constitution saving throw, taking 54 (12d8) cold damage on a failed save, or half as much damage on a successful one.
-Paralyzing Breath. The dragon exhales paralyzing gas in a 30-foot cone. Each creature in that area must succeed on a DC 17 Constitution saving throw or be paralyzed for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.</string>
+} **Cold Breath.** The dragon exhales an icy blast in a 30-foot cone. Each creature in that area must make a DC 17 Constitution saving throw, taking 54 (12d8) cold damage on a failed save, or half as much damage on a successful one.
+} **Paralyzing Breath.** The dragon exhales paralyzing gas in a 30-foot cone. Each creature in that area must succeed on a DC 17 Constitution saving throw or be paralyzed for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.</string>
 				</dict>
 			</array>
 			<key>alignmentOptions</key>
@@ -23729,8 +23729,8 @@ Paralyzing Breath. The dragon exhales paralyzing gas in a 30-foot cone. Each cre
 					<string>Breath Weapons (Recharge 5–6)</string>
 					<key>text</key>
 					<string>The dragon uses one of the following breath weapons.
-Cold Breath. The dragon exhales an icy blast in a 15-foot cone. Each creature in that area must make a DC 13 Constitution saving throw, taking 18 (4d8) cold damage on a failed save, or half as much damage on a successful one.
-Paralyzing Breath. The dragon exhales paralyzing gas in a 15-foot cone. Each creature in that area must succeed on a DC 13 Constitution saving throw or be paralyzed for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.</string>
+} **Cold Breath.** The dragon exhales an icy blast in a 15-foot cone. Each creature in that area must make a DC 13 Constitution saving throw, taking 18 (4d8) cold damage on a failed save, or half as much damage on a successful one.
+} **Paralyzing Breath.** The dragon exhales paralyzing gas in a 15-foot cone. Each creature in that area must succeed on a DC 13 Constitution saving throw or be paralyzed for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.</string>
 				</dict>
 			</array>
 			<key>alignmentOptions</key>
@@ -24177,8 +24177,8 @@ Paralyzing Breath. The dragon exhales paralyzing gas in a 15-foot cone. Each cre
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The drider's innate spellcasting ability is Wisdom (spell save DC 13). The drider can innately cast the following spells, requiring no material components:
-At will: dancing lights
-1/day each: darkness, faerie fire</string>
+} At will: [dancing lights]
+} 1/day each: [darkness], [faerie fire]</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -24341,9 +24341,9 @@ The dryad can have no more than one humanoid and up to three beasts charmed at a
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The dryad's innate spellcasting ability is Charisma (spell save DC 14). The dryad can innately cast the following spells, requiring no material components:
-At will: druidcraft
-3/day each: entangle, goodberry
-1/day each: barkskin, pass without trace, shillelagh</string>
+} At will: [druidcraft]
+} 3/day each: [entangle], [goodberry]
+} 1/day each: [barkskin], [pass without trace], [shillelagh]</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -25504,8 +25504,8 @@ The elemental can grapple one Large creature or up to two Medium or smaller crea
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The drow's spellcasting ability is Charisma (spell save DC 11). It can innately cast the following spells, requiring no material components:
-At will: dancing lights
-1/day each: darkness, faerie fire</string>
+} At will: [dancing lights]
+} 1/day each: [darkness], [faerie fire]</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -25673,8 +25673,8 @@ At will: dancing lights
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The drow's spellcasting ability is Charisma (spell save DC 12). It can innately cast the following spells, requiring no material components:
-At will: dancing lights
-1/day each: darkness, faerie fire, levitate (self only)</string>
+} At will: [dancing lights]
+} 1/day each: [darkness], [faerie fire], [levitate] (self only)</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -25848,20 +25848,20 @@ At will: dancing lights
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The drow's innate spellcasting ability is Charisma (spell save DC 12). It can innately cast the following spells, requiring no material components:
-At will: dancing lights
-1/day each: darkness, faerie fire, levitate (self only)</string>
+} At will: [dancing lights]
+} 1/day each: [darkness], [faerie fire], [levitate] (self only)</string>
 				</dict>
 				<dict>
 					<key>name</key>
 					<string>Spellcasting</string>
 					<key>text</key>
 					<string>The drow is a 10th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 14, +6 to hit with spell attacks). The drow has the following wizard spells prepared:
-Cantrips (at will): mage hand, minor illusion, poison spray, ray of frost
-1st level (4 slots): mage armor, magic missile, shield, witch bolt
-2nd level (3 slots): alter self, misty step, web
-3rd level (3 slots): fly, lightning bolt
-4th level (3 slots): Evard's black tentacles, greater invisibility
-5th level (2 slots): cloudkill</string>
+} Cantrips (at will): [mage hand], [minor illusion], [poison spray], [ray of frost]
+} 1st level (4 slots): [mage armor], [magic missile], [shield], [witch bolt]
+} 2nd level (3 slots): [alter self], [misty step], [web]
+} 3rd level (3 slots): [fly], [lightning bolt]
+} 4th level (3 slots): [Evard's black tentacles], [greater invisibility]
+} 5th level (2 slots): [cloudkill]</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -26028,20 +26028,20 @@ Cantrips (at will): mage hand, minor illusion, poison spray, ray of frost
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The drow's innate spellcasting ability is Charisma (spell save DC 15). She can innately cast the following spells, requiring no material components:
-At will: dancing lights
-1/day each: darkness, faerie fire, levitate (self only)</string>
+} At will: [dancing lights]
+} 1/day each: [darkness], [faerie fire], [levitate] (self only)</string>
 				</dict>
 				<dict>
 					<key>name</key>
 					<string>Spellcasting</string>
 					<key>text</key>
 					<string>The drow is a 10th-level spellcaster. Her spellcasting ability is Wisdom (save DC 14, +6 to hit with spell attacks). The drow has the following cleric spells prepared:
-Cantrips (at will): guidance, poison spray, resistance, spare the dying, thaumaturgy
-1st level (4 slots): animal friendship, cure wounds, detect poison and disease, ray of sickness
-2nd level (3 slots): lesser restoration, protection from poison, web
-3rd level (3 slots): conjure animals (2 giant spiders), dispel magic
-4th level (3 slots): divination, freedom of movement
-5th level (2 slots): insect plague, mass cure wounds</string>
+} Cantrips (at will): [guidance], [poison spray], [resistance], [spare the dying], [thaumaturgy]
+} 1st level (4 slots): [animal friendship], [cure wounds], [detect poison and disease], [ray of sickness]
+} 2nd level (3 slots): [lesser restoration], [protection from poison], [web]
+} 3rd level (3 slots): [conjure animals] (2 giant spiders), [dispel magic]
+} 4th level (3 slots): [divination], [freedom of movement]
+} 5th level (2 slots): [insect plague], [mass cure wounds]</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -26237,8 +26237,8 @@ Cantrips (at will): guidance, poison spray, resistance, spare the dying, thaumat
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The empyrean's innate spellcasting ability is Charisma (spell save DC 23, +15 to hit with spell attacks). It can innately cast the following spells, requiring no material components:
-At will: greater restoration, pass without trace, water breathing, water walk
-1/day each: commune, dispel evil and good, earthquake, fire storm, plane shift (self only)</string>
+} At will: [greater restoration], [pass without trace], [water breathing], [water walk]
+} 1/day each: [commune], [dispel evil and good], [earthquake], [fire storm], [plane shift] (self only)</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -26800,9 +26800,9 @@ At will: greater restoration, pass without trace, water breathing, water walk
 					<key>text</key>
 					<string>The flameskull is a 5th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 13, +5 to hit with spell attacks). It requires no somatic or material components to cast its spells. The flameskull has the following wizard spells prepared:
 Cantrip (at will): mage hand
-1st level (3 slots): magic missile, shield
-2nd level (2 slots): blur, flaming sphere
-3rd level (1 slot): fireball</string>
+} 1st level (3 slots): [magic missile], [shield]
+} 2nd level (2 slots): [blur], [flaming sphere]
+} 3rd level (1 slot): [fireball]</string>
 				</dict>
 			</array>
 		</dict>
@@ -27885,9 +27885,9 @@ Spores invade an infected creature's system, killing the creature in a number of
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The dao's innate spellcasting ability is Charisma (spell save DC 14, +6 to hit with spell attacks). It can innately cast the following spells, requiring no material components:
-At will: detect evil and good, detect magic, stone shape
-3/day each: passwall, move earth, tongues
-1/day each: conjure elemental (earth elemental only), gaseous form, invisibility, phantasmal killer, plane shift, wall of stone</string>
+} At will: [detect evil and good], [detect magic], [stone shape]
+} 3/day each: [passwall], [move earth], [tongues]
+} 1/day each: [conjure elemental] (earth elemental only), [gaseous form], [invisibility], [phantasmal killer], [plane shift], [wall of stone]</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -28058,9 +28058,9 @@ A creature can use its action to free a creature restrained by the whirlwind, in
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The djinni's innate spellcasting ability is Charisma (spell save DC 17, +9 to hit with spell attacks). It can innately cast the following spells, requiring no material components:
-At will: detect evil and good, detect magic, thunderwave
-3/day each: create food and water (can create wine instead of water), tongues, wind walk
-1/day each: conjure elemental (air elemental only), creation, gaseous form, invisibility, major image, plane shift</string>
+} At will: [detect evil and good], [detect magic], [thunderwave]
+} 3/day each: [create food and water] (can create wine instead of water), [tongues], [wind walk]
+} 1/day each: [conjure elemental] (air elemental only), [creation], [gaseous form], [invisibility], [major image], [plane shift]</string>
 				</dict>
 			</array>
 		</dict>
@@ -28224,9 +28224,9 @@ At will: detect evil and good, detect magic, thunderwave
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The efreeti's innate spellcasting ability is Charisma (spell save DC 15, +7 to hit with spell attacks). It can innately cast the following spells, requiring no material components:
-At will: detect magic
-3/day: enlarge/reduce, tongues
-1/day each: conjure elemental (fire elemental only), gaseous form, invisibility, major image, plane shift, wall of fire</string>
+} At will: [detect magic]
+} 3/day: [enlarge/reduce], [tongues]
+} 1/day each: [conjure elemental] (fire elemental only), [gaseous form], [invisibility], [major image], [plane shift], [wall of fire]</string>
 				</dict>
 			</array>
 		</dict>
@@ -28400,9 +28400,9 @@ At will: detect magic
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The marid's innate spellcasting ability is Charisma (spell save DC 16, +8 to hit with spell attacks). It can innately cast the following spells, requiring no material components:
-At will: create or destroy water, detect evil and good, detect magic, fog cloud, purify food and drink
-3/day each: tongues, water breathing, water walk
-1/day each: conjure elemental (water elemental only), control water, gaseous form, invisibility, plane shift</string>
+} At will: [create or destroy water], [detect evil and good], [detect magic], [fog cloud], [purify food and drink]
+} 3/day each: [tongues], [water breathing], [water walk]
+} 1/day each: [conjure elemental] (water elemental only), [control water], [gaseous form], [invisibility], [plane shift]</string>
 				</dict>
 			</array>
 		</dict>
@@ -29152,9 +29152,9 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The giant's innate spellcasting ability is Charisma. It can innately cast the following spells, requiring no material components:
-At will: detect magic, fog cloud, light
-3/day each: feather fall, fly, misty step, telekinesis
-1/day each: control weather, gaseous form</string>
+} At will: [detect magic], [fog cloud], [light]
+} 3/day each: [feather fall], [fly], [misty step], [telekinesis]
+} 1/day each: [control weather], [gaseous form]</string>
 				</dict>
 			</array>
 		</dict>
@@ -29935,8 +29935,8 @@ At will: detect magic, fog cloud, light
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The giant's innate spellcasting ability is Charisma (spell save DC 17). It can innately cast the following spells, requiring no material components:
-At will: detect magic, feather fall, levitate, light
-3/day each: control weather, water breathing</string>
+} At will: [detect magic], [feather fall], [levitate], [light]
+} 3/day each: [control weather], [water breathing]</string>
 				</dict>
 			</array>
 		</dict>
@@ -30207,8 +30207,8 @@ At will: detect magic, feather fall, levitate, light
 					<string>Innate Spellcasting (Psionics)</string>
 					<key>text</key>
 					<string>The githyanki's innate spellcasting ability is Intelligence. It can innately cast the following spells, requiring no components:
-At will: mage hand (the hand is invisible)
-3/day each: jump, misty step, nondetection (self only)</string>
+} At will: [mage hand] (the hand is invisible)
+} 3/day each: [jump], [misty step], [nondetection] (self only)</string>
 				</dict>
 			</array>
 		</dict>
@@ -30339,9 +30339,9 @@ At will: mage hand (the hand is invisible)
 					<string>Innate Spellcasting (Psionics)</string>
 					<key>text</key>
 					<string>The githyanki's innate spellcasting ability is Intelligence (spell save DC 13, +5 to hit with spell attacks). It can innately cast the following spells, requiring no components:
-At will: mage hand (the hand is invisible)
-3/day each: jump, misty step, nondetection (self only), tongues
-1/day each: plane shift, telekinesis</string>
+} At will: [mage hand] (the hand is invisible)
+} 3/day each: [jump], [misty step], [nondetection] (self only), [tongues]
+} 1/day each: [plane shift], [telekinesis]</string>
 				</dict>
 			</array>
 		</dict>
@@ -30479,8 +30479,8 @@ At will: mage hand (the hand is invisible)
 					<string>Innate Spellcasting (Psionics)</string>
 					<key>text</key>
 					<string>The githzerai's innate spellcasting ability is Wisdom. It can innately cast the following spells, requiring no components:
-At will: mage hand (the hand is invisible)
-3/day each: feather fall, jump, see invisibility, shield</string>
+} At will: [mage hand] (the hand is invisible)
+} 3/day each: [feather fall], [jump], [see invisibility], [shield]</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -30629,9 +30629,9 @@ At will: mage hand (the hand is invisible)
 					<string>Innate Spellcasting (Psionics)</string>
 					<key>text</key>
 					<string>The githzerai's spellcasting ability is Wisdom (spell save DC 14, +6 to hit with spell attacks). It can innately cast the following spells, requiring no components:
-At will: mage hand (the hand is invisible)
-3/day each: feather fall, jump, see invisibility, shield
-1/day each: phantasmal killer, plane shift</string>
+} At will: [mage hand] (the hand is invisible)
+} 3/day each: [feather fall], [jump], [see invisibility], [shield]
+} 1/day each: [phantasmal killer], [plane shift]</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -31226,8 +31226,8 @@ At will: mage hand (the hand is invisible)
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The gnome's innate spellcasting ability is Intelligence (spell save DC 11). It can innately cast the following spells, requiring no material components:
-At will: nondetection (self only)
-1/day each: blindness/deafness, blur, disguise self</string>
+} At will: [nondetection] (self only)
+} 1/day each: [blindness/deafness], [blur], [disguise self]</string>
 				</dict>
 			</array>
 		</dict>
@@ -33305,7 +33305,7 @@ The changes wrought by this effect fail to hold up to physical inspection. For e
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The hag's innate spellcasting ability is Charisma (spell save DC 12). She can innately cast the following spells, requiring no material components:
-At will: dancing lights, minor illusion, vicious mockery</string>
+} At will: [dancing lights], [minor illusion], [vicious mockery]</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -33334,7 +33334,7 @@ At will: dancing lights, minor illusion, vicious mockery</string>
 					<key>name</key>
 					<string>Etherealness</string>
 					<key>text</key>
-					<string>The hag magically enters the Ethereal Plane from the Material Plane, or vice versa. To do so, the hag must have a heartstone in her possession.</string>
+					<string>The hag magically enters the Ethereal Plane from the Material Plane, or vice versa. To do so, the hag must have a [heartstone] in her possession.</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -33501,8 +33501,8 @@ At will: dancing lights, minor illusion, vicious mockery</string>
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The hag's innate spellcasting ability is Charisma (spell save DC 14, +6 to hit with spell attacks). She can innately cast the following spells, requiring no material components:
-At will: detect magic, magic missile
-2/day each: plane shift (self only), ray of enfeeblement, sleep</string>
+} At will: [detect magic], [magic missile]
+} 2/day each: [plane shift] (self only), [ray of enfeeblement], [sleep]</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -36643,12 +36643,12 @@ If the kraken takes 50 damage or more on a single turn from a creature inside it
 					<string>Spellcasting</string>
 					<key>text</key>
 					<string>The kuo-toa is a 10th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 14, +6 to hit with spell attacks). The kuo-toa has the following cleric spells prepared:
-Cantrips (at will): guidance, sacred flame, thaumaturgy
-1st level (4 slots): detect magic, sanctuary, shield of faith
-2nd level (3 slots): hold person, spiritual weapon
-3rd level (3 slots): spirit guardians, tongues
-4th level (3 slots): control water, divination
-5th level (2 slots): mass cure wounds, scrying</string>
+} Cantrips (at will): [guidance], [sacred flame], [thaumaturgy]
+} 1st level (4 slots): [detect magic], [sanctuary], [shield of faith]
+} 2nd level (3 slots): [hold person], [spiritual weapon]
+} 3rd level (3 slots): [spirit guardians], [tongues]
+} 4th level (3 slots): [control water], [divination]
+} 5th level (2 slots): [mass cure wounds], [scrying]</string>
 				</dict>
 			</array>
 		</dict>
@@ -36823,8 +36823,8 @@ Cantrips (at will): guidance, sacred flame, thaumaturgy
 					<string>Spellcasting</string>
 					<key>text</key>
 					<string>The kuo-toa is a 2nd-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). The kuo-toa has the following cleric spells prepared:
-Cantrips (at will): sacred flame, thaumaturgy
-1st level (3 slots): bane, shield of faith</string>
+} Cantrips (at will): [sacred flame], [thaumaturgy]
+} 1st level (3 slots): [bane], [shield of faith]</string>
 				</dict>
 			</array>
 		</dict>
@@ -37138,9 +37138,9 @@ Cantrips (at will): sacred flame, thaumaturgy
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The lamia's innate spellcasting ability is Charisma (spell save DC 13). It can innately cast the following spells, requiring no material components.
-At will: disguise self (any humanoid form), major image
-3/day each: charm person, mirror image, scrying, suggestion
-1/day: geas</string>
+} At will: [disguise self] (any humanoid form), [major image]
+} 3/day each: [charm person], [mirror image], [scrying], [suggestion]
+} 1/day: [geas]</string>
 				</dict>
 			</array>
 		</dict>
@@ -37411,16 +37411,16 @@ A lich encountered in its lair has a challenge rating of 22 (41,000 XP).</string
 					<string>Spellcasting</string>
 					<key>text</key>
 					<string>The lich is an 18th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 20, +12 to hit with spell attacks). The lich has the following wizard spells prepared:
-Cantrips (at will): mage hand, prestidigitation, ray of frost
-1st level (4 slots): detect magic, magic missile, shield, thunderwave
-2nd level (3 slots): detect thoughts, invisibility, Melf's acid arrow, mirror image
-3rd level (3 slots): animate dead, counterspell, dispel magic, fireball
-4th level (3 slots): blight, dimension door
-5th level (3 slots): cloudkill, scrying
-6th level (1 slot): disintegrate, globe of invulnerability
-7th level (1 slot): finger of death, plane shift
-8th level (1 slot): dominate monster, power word stun
-9th level (1 slot): power word kill</string>
+} Cantrips (at will): [mage hand], [prestidigitation], [ray of frost]
+} 1st level (4 slots): [detect magic], [magic missile], [shield], [thunderwave]
+} 2nd level (3 slots): [detect thoughts], [invisibility], [Melf's acid arrow], [mirror image]
+} 3rd level (3 slots): [animate dead], [counterspell], [dispel magic], [fireball]
+} 4th level (3 slots): [blight], [dimension door]
+} 5th level (3 slots): [cloudkill], [scrying]
+} 6th level (1 slot): [disintegrate], [globe of invulnerability]
+} 7th level (1 slot): [finger of death], [plane shift]
+} 8th level (1 slot): [dominate monster], [power word stun]
+} 9th level (1 slot): [power word kill]</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -37759,10 +37759,10 @@ Cantrips (at will): mage hand, prestidigitation, ray of frost
 					<string>Spellcasting (Lizardfolk Form Only)</string>
 					<key>text</key>
 					<string>The lizardfolk is a 5th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). The lizardfolk has the following druid spells prepared:
-Cantrips (at will): druidcraft, produce flame, thorn whip
-1st level (4 slots): entangle, fog cloud
-2nd level (3 slots): heat metal, spike growth
-3rd level (2 slots): conjure animals (reptiles only), plant growth</string>
+} Cantrips (at will): [druidcraft], [produce flame], [thorn whip]
+} 1st level (4 slots): [entangle], [fog cloud]
+} 2nd level (3 slots): [heat metal], [spike growth]
+} 3rd level (2 slots): [conjure animals] (reptiles only), [plant growth]</string>
 				</dict>
 			</array>
 		</dict>
@@ -38553,7 +38553,7 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 					<key>name</key>
 					<string>Innate Spellcasting (1/Day)</string>
 					<key>text</key>
-					<string>The mephit can innately cast sleep, requiring no material components. Its innate spellcasting ability is Charisma.</string>
+					<string>The mephit can innately cast [sleep], requiring no material components. Its innate spellcasting ability is Charisma.</string>
 				</dict>
 			</array>
 		</dict>
@@ -38737,7 +38737,7 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 					<key>name</key>
 					<string>Innate Spellcasting (1/Day)</string>
 					<key>text</key>
-					<string>The mephit can innately cast fog cloud, requiring no material components. Its innate spellcasting ability is Charisma.</string>
+					<string>The mephit can innately cast [fog cloud], requiring no material components. Its innate spellcasting ability is Charisma.</string>
 				</dict>
 			</array>
 		</dict>
@@ -39990,8 +39990,8 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 					<string>Innate Spellcasting (Psionics)</string>
 					<key>text</key>
 					<string>The mind flayer's innate spellcasting ability is Intelligence (spell save DC 15). It can innately cast the following spells, requiring no components:
-At will: detect thoughts, levitate
-1/day each: dominate monster, plane shift (self only)</string>
+} At will: [detect thoughts], [levitate]
+} 1/day each: [dominate monster], [plane shift] (self only)</string>
 				</dict>
 			</array>
 		</dict>
@@ -41306,13 +41306,13 @@ A mummy lord encountered in its lair has a challenge rating of 16 (15,000 XP).</
 					<string>Spellcasting</string>
 					<key>text</key>
 					<string>The mummy lord is a 10th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 17, +9 to hit with spell attacks). The mummy lord has the following cleric spells prepared:
-Cantrips (at will): sacred flame, thaumaturgy
-1st level (4 slots): command, guiding bolt, shield of faith
-2nd level (3 slots): hold person, silence, spiritual weapon
-3rd level (3 slots) : animate dead, dispel magic
-4th level (3 slots) : divination, guardian of faith
-5th level (2 slots): contagion, insect plague
-6th level (1 slot): harm</string>
+} Cantrips (at will): [sacred flame], [thaumaturgy]
+} 1st level (4 slots): [command], [guiding bolt], [shield of faith]
+} 2nd level (3 slots): [hold person], [silence], [spiritual weapon]
+} 3rd level (3 slots): [animate dead], [dispel magic]
+} 4th level (3 slots): [divination], [guardian of faith]
+} 5th level (2 slots): [contagion], [insect plague]
+} 6th level (1 slot): [harm]</string>
 				</dict>
 			</array>
 		</dict>
@@ -42025,15 +42025,15 @@ Cantrips (at will): sacred flame, thaumaturgy
 					<key>text</key>
 					<string>The naga is a 5th-level spellcaster (spell save DC 12, +4 to hit with spell attacks) that needs only verbal components to cast its spells.
 If the naga was a guardian naga in life, its spellcasting ability is Wisdom, and it has the following cleric spells prepared:
-Cantrips (at will): mending, sacred flame, thaumaturgy
-1st level (4 slots): command, shield of faith
-2nd level (3 slots): calm emotions, hold person
-3rd level (2 slots): bestow curse
+} Cantrips (at will): [mending], [sacred flame], [thaumaturgy]
+} 1st level (4 slots): [command], [shield of faith]
+} 2nd level (3 slots): [calm emotions], [hold person]
+} 3rd level (2 slots): [bestow curse]
 If the naga was a spirit naga in life, its spellcasting ability is Intelligence, and it has the following wizard spells prepared:
-Cantrips (at will): mage hand, minor illusion, ray of frost
-1st level (4 slots): charm person, sleep
-2nd level (3 slots): detect thoughts, hold person
-3rd level (2 slots): lightning bolt</string>
+} Cantrips (at will): [mage hand], [minor illusion], [ray of frost]
+} 1st level (4 slots): [charm person], [sleep]
+} 2nd level (3 slots): [detect thoughts], [hold person]
+} 3rd level (2 slots): [lightning bolt]</string>
 				</dict>
 			</array>
 		</dict>
@@ -42182,12 +42182,12 @@ Cantrips (at will): mage hand, minor illusion, ray of frost
 					<string>Spellcasting</string>
 					<key>text</key>
 					<string>The naga is a 10th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 14, +6 to hit with spell attacks), and it needs only verbal components to cast its spells. It has the following wizard spells prepared:
-Cantrips (at will): mage hand, minor illusion, ray of frost
-1st level (4 slots): charm person, detect magic, sleep
-2nd level (3 slots): detect thoughts, hold person
-3rd level (3 slots): lightning bolt, water breathing
-4th level (3 slots): blight, dimension door
-5th level (2 slots): dominate person</string>
+} Cantrips (at will): [mage hand], [minor illusion], [ray of frost]
+} 1st level (4 slots): [charm person], [detect magic], [sleep]
+} 2nd level (3 slots): [detect thoughts], [hold person]
+} 3rd level (3 slots): [lightning bolt], [water breathing]
+} 4th level (3 slots): [blight], [dimension door]
+} 5th level (2 slots): [dominate person]</string>
 				</dict>
 			</array>
 		</dict>
@@ -42344,13 +42344,13 @@ Cantrips (at will): mage hand, minor illusion, ray of frost
 					<string>Spellcasting</string>
 					<key>text</key>
 					<string>The naga is an 11th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 16, +8 to hit with spell attacks), and it needs only verbal components to cast its spells. It has the following cleric spells prepared:
-Cantrips (at will): mending, sacred flame, thaumaturgy
-1st level (4 slots): command, cure wounds, shield of faith
-2nd level (3 slots): calm emotions, hold person
-3rd level (3 slots): bestow curse, clairvoyance
-4th level (3 slots): banishment, freedom of movement
-5th level (2 slots): flame strike, geas
-6th level (1 slot): true seeing</string>
+} Cantrips (at will): [mending], [sacred flame], [thaumaturgy]
+} 1st level (4 slots): [command], [cure wounds], [shield of faith]
+} 2nd level (3 slots): [calm emotions], [hold person]
+} 3rd level (3 slots): [bestow curse], [clairvoyance]
+} 4th level (3 slots): [banishment], [freedom of movement]
+} 5th level (2 slots): [flame strike], [geas]
+} 6th level (1 slot): [true seeing]</string>
 				</dict>
 			</array>
 		</dict>
@@ -43094,8 +43094,8 @@ Cantrips (at will): mending, sacred flame, thaumaturgy
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The oni's innate spellcasting ability is Charisma (spell save DC 13). The oni can innately cast the following spells, requiring no material components:
-At will: darkness, invisibility
-1/day each: charm person, cone of cold, gaseous form, sleep</string>
+} At will: [darkness], [invisibility]
+} 1/day each: [charm person], [cone of cold], [gaseous form], [sleep]</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -44296,9 +44296,9 @@ The ooze can eat through 2-inch-thick, nonmagical metal in 1 round.</string>
 					<string>Spellcasting</string>
 					<key>text</key>
 					<string>The orc is a 3rd-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 11, +3 to hit with spell attacks). The orc has the following cleric spells prepared:
-Cantrips (at will): guidance, resistance, thaumaturgy
-1st level (4 slots): bless, command
-2nd level (2 slots): augury, spiritual weapon (spear)</string>
+} Cantrips (at will): [guidance], [resistance], [thaumaturgy]
+} 1st level (4 slots): [bless], [command]
+} 2nd level (2 slots): [augury], [spiritual weapon] (spear)</string>
 				</dict>
 			</array>
 		</dict>
@@ -45320,8 +45320,8 @@ Cantrips (at will): guidance, resistance, thaumaturgy
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The pixie's innate spellcasting ability is Charisma (spell save DC 12). It can innately cast the following spells, requiring only its pixie dust as a component:
-At will: druidcraft
-1/day each: confusion, dancing lights, detect evil and good, detect thoughts, dispel magic, entangle, fly, phantasmal force, polymorph, sleep</string>
+} At will: [druidcraft]
+} 1/day each: [confusion], [dancing lights], [detect evil and good], [detect thoughts], [dispel magic], [entangle], [fly], [phantasmal force], [polymorph], [sleep]</string>
 				</dict>
 			</array>
 		</dict>
@@ -45784,7 +45784,7 @@ If the worm takes 30 damage or more on a single turn from a creature inside it, 
 					<key>name</key>
 					<string>Claw</string>
 					<key>text</key>
-					<string>*Melee Weapon Attack:* +7 to hit, reach 5 ft., one target. *Hit:* 9 (2d6 + 2) slashing damage, and the target is cursed if it is a creature. The magical curse takes effect whenever the target takes a short or long rest, filling the target's thoughts with horrible images and dreams. The cursed target gains no benefit from finishing a short or long rest. The curse lasts until it is lifted by a remove curse spell or similar magic.</string>
+					<string>*Melee Weapon Attack:* +7 to hit, reach 5 ft., one target. *Hit:* 9 (2d6 + 2) slashing damage, and the target is cursed if it is a creature. The magical curse takes effect whenever the target takes a short or long rest, filling the target's thoughts with horrible images and dreams. The cursed target gains no benefit from finishing a short or long rest. The curse lasts until it is lifted by a [remove curse] spell or similar magic.</string>
 				</dict>
 			</array>
 			<key>alignmentOptions</key>
@@ -45932,9 +45932,9 @@ If the worm takes 30 damage or more on a single turn from a creature inside it, 
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The rakshasa's innate spellcasting ability is Charisma (spell save DC 18, +10 to hit with spell attacks). The rakshasa can innately cast the following spells, requiring no material components:
-At will: detect thoughts, disguise self, mage hand, minor illusion
-3/day each: charm person, detect magic, invisibility, major image, suggestion
-1/day each: dominate person, fly, plane shift, true seeing</string>
+} At will: [detect thoughts], [disguise self], [mage hand], [minor illusion]
+} 3/day each: [charm person], [detect magic], [invisibility], [major image], [suggestion]
+} 1/day each: [dominate person], [fly], [plane shift], [true seeing]</string>
 				</dict>
 			</array>
 		</dict>
@@ -47179,10 +47179,10 @@ If the object touched is either metal armor or a metal shield being worn or carr
 					<string>Spellcasting</string>
 					<key>text</key>
 					<string>The sahuagin is a 6th-level spellcaster. Her spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). She has the following cleric spells prepared:
-Cantrips (at will): guidance, thaumaturgy
-1st level (4 slots): bless, detect magic, guiding bolt
-2nd level (3 slots): hold person, spiritual weapon (trident)
-3rd level (3 slots): mass healing word, tongues</string>
+} Cantrips (at will): [guidance], [thaumaturgy]
+} 1st level (4 slots): [bless], [detect magic], [guiding bolt]
+} 2nd level (3 slots): [hold person], [spiritual weapon] (trident)
+} 3rd level (3 slots): [mass healing word], [tongues]</string>
 				</dict>
 			</array>
 		</dict>
@@ -49158,7 +49158,7 @@ If the disease is cured before the tadpole's emergence, the unborn slaad is disi
 					<key>name</key>
 					<string>Claw</string>
 					<key>text</key>
-					<string>*Melee Weapon Attack:* +8 to hit, reach 5 ft., one target. *Hit:* 12 (2d6 + 5) slashing damage. If the target is a humanoid, it must succeed on a DC 15 Constitution saving throw or be infected with a disease called chaos phage. While infected, the target can't regain hit points, and its hit point maximum is reduced by 10 (3d6) every 24 hours. If the disease reduces the target's hit point maximum to 0, the target instantly transforms into a red slaad or, if it has the ability to cast spells of 3rd level or higher, a green slaad. Only a wish spell can reverse the transformation.</string>
+					<string>*Melee Weapon Attack:* +8 to hit, reach 5 ft., one target. *Hit:* 12 (2d6 + 5) slashing damage. If the target is a humanoid, it must succeed on a DC 15 Constitution saving throw or be infected with a disease called chaos phage. While infected, the target can't regain hit points, and its hit point maximum is reduced by 10 (3d6) every 24 hours. If the disease reduces the target's hit point maximum to 0, the target instantly transforms into a red slaad or, if it has the ability to cast spells of 3rd level or higher, a green slaad. Only a [wish] spell can reverse the transformation.</string>
 				</dict>
 			</array>
 			<key>alignmentOptions</key>
@@ -49504,9 +49504,9 @@ If the disease is cured before the tadpole's emergence, the unborn slaad is disi
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The slaad's innate spellcasting ability is Charisma (spell save DC 12). The slaad can innately cast the following spells, requiring no material components:
-At will: detect magic, detect thoughts, mage hand
-2/day each: fear, invisibility (self only)
-1/day: fireball</string>
+} At will: [detect magic], [detect thoughts], [mage hand]
+} 2/day each: [fear], [invisibility] (self only)
+} 1/day: [fireball]</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -49707,9 +49707,9 @@ At will: detect magic, detect thoughts, mage hand
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The slaad's innate spellcasting ability is Charisma (spell save DC 14). The slaad can innately cast the following spells, requiring no material components:
-At will: detect magic, detect thoughts, invisibility (self only), mage hand, major image
-2/day each: fear, fly, fireball, tongues
-1/day: plane shift (self only)</string>
+} At will: [detect magic], [detect thoughts], [invisibility] (self only), [mage hand], [major image]
+} 2/day each: [fear], [fly], [fireball], [tongues]
+} 1/day: [plane shift] (self only)</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -49916,9 +49916,9 @@ At will: detect magic, detect thoughts, invisibility (self only), mage hand, maj
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The slaad's innate spellcasting ability is Charisma (spell save DC 15, +7 to hit with spell attacks). The slaad can innately cast the following spells, requiring no material components:
-At will: detect magic, detect thoughts, invisibility (self only), mage hand, major image
-2/day each: fear, fireball, fly, tongues
-1/day each: cloudkill, plane shift</string>
+} At will: [detect magic], [detect thoughts], [invisibility] (self only), [mage hand], [major image]
+} 2/day each: [fear], [fireball], [fly], [tongues]
+} 1/day each: [cloudkill], [plane shift]</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -50634,13 +50634,13 @@ Third Roar. Each creature makes a DC 18 Constitution saving throw. On a failed s
 					<string>Spellcasting</string>
 					<key>text</key>
 					<string>The sphinx is a 12th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 18, +10 to hit with spell attacks). It requires no material components to cast its spells. The sphinx has the following cleric spells prepared:
-Cantrips (at will): sacred flame, spare the dying, thaumaturgy
-1st level (4 slots): command, detect evil and good, detect magic
-2nd level (3 slots): lesser restoration, zone of truth
-3rd level (3 slots): dispel magic, tongues
-4th level (3 slots): banishment, freedom of movement
-5th level (2 slots): flame strike, greater restoration
-6th level (1 slot): heroes' feast</string>
+} Cantrips (at will): [sacred flame], [spare the dying], [thaumaturgy]
+} 1st level (4 slots): [command], [detect evil and good], [detect magic]
+} 2nd level (3 slots): [lesser restoration], [zone of truth]
+} 3rd level (3 slots): [dispel magic], [tongues]
+} 4th level (3 slots): [banishment], [freedom of movement]
+} 5th level (2 slots): [flame strike], [greater restoration]
+} 6th level (1 slot): [heroes' feast]</string>
 				</dict>
 			</array>
 		</dict>
@@ -50864,12 +50864,12 @@ Cantrips (at will): sacred flame, spare the dying, thaumaturgy
 					<string>Spellcasting</string>
 					<key>text</key>
 					<string>The sphinx is a 9th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 16, +8 to hit with spell attacks). It requires no material components to cast its spells. The sphinx has the following wizard spells prepared:
-Cantrips (at will): mage hand, minor illusion, prestidigitation
-1st level (4 slots): detect magic, identify, shield
-2nd level (3 slots): darkness, locate object, suggestion
-3rd level (3 slots): dispel magic, remove curse, tongues
-4th level (3 slots): banishment, greater invisibility
-5th level (1 slot): legend lore</string>
+} Cantrips (at will): [mage hand], [minor illusion], [prestidigitation]
+} 1st level (4 slots): [detect magic], [identify], [shield]
+} 2nd level (3 slots): [darkness], [locate object], [suggestion]
+} 3rd level (3 slots): [dispel magic], [remove curse], [tongues]
+} 4th level (3 slots): [banishment], [greater invisibility]
+} 5th level (1 slot): [legend lore]</string>
 				</dict>
 			</array>
 		</dict>
@@ -52590,8 +52590,8 @@ Unless surprised, a creature can avert its eyes to avoid the saving throw at the
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The unicorn's innate spellcasting ability is Charisma (spell save DC 14). The unicorn can innately cast the following spells, requiring no components:
-At will: detect evil and good, druidcraft, pass without trace
-1/day each: calm emotions, dispel evil and good, entangle</string>
+} At will: [detect evil and good], [druidcraft], [pass without trace]
+} 1/day each: [calm emotions], [dispel evil and good], [entangle]</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -52877,10 +52877,10 @@ While it has 0 hit points in mist form, it can't revert to its vampire form, and
 					<string>Vampire Weaknesses</string>
 					<key>text</key>
 					<string>The vampire has the following flaws:
-Forbiddance. The vampire can't enter a residence without an invitation from one of the occupants,
-Harmed by Running Water. The vampire takes 20 acid damage if it ends its turn in running water.
-Stake to the Heart. If a piercing weapon made of wood is driven into the vampire's heart while the vampire is incapacitated in its resting place, the vampire is paralyzed until the stake is removed.
-Sunlight Hypersensitivity. The vampire takes 20 radiant damage when it starts its turn in sunlight. While in sunlight, it has disadvantage on attack rolls and ability checks.</string>
+*Forbiddance.* The vampire can't enter a residence without an invitation from one of the occupants,
+*Harmed by Running Water.* The vampire takes 20 acid damage if it ends its turn in running water.
+*Stake to the Heart.* If a piercing weapon made of wood is driven into the vampire's heart while the vampire is incapacitated in its resting place, the vampire is paralyzed until the stake is removed.
+*Sunlight Hypersensitivity.* The vampire takes 20 radiant damage when it starts its turn in sunlight. While in sunlight, it has disadvantage on attack rolls and ability checks.</string>
 				</dict>
 			</array>
 		</dict>
@@ -53081,10 +53081,10 @@ Sunlight Hypersensitivity. The vampire takes 20 radiant damage when it starts it
 					<string>Vampire Weaknesses</string>
 					<key>text</key>
 					<string>The vampire has the following flaws:
-Forbiddance. The vampire can't enter a residence without an invitation from one of the occupants.
-Harmed by Running Water. The vampire takes 20 acid damage when it ends its turn in running water.
-Stake to the Heart. The vampire is destroyed if a piercing weapon made of wood is driven into its heart while it is incapacitated in its resting place.
-Sunlight Hypersensitivity. The vampire takes 20 radiant damage when it starts its turn in sunlight. While in sunlight, it has disadvantage on attack rolls and ability checks.</string>
+*Forbiddance.* The vampire can't enter a residence without an invitation from one of the occupants.
+*Harmed by Running Water.* The vampire takes 20 acid damage when it ends its turn in running water.
+*Stake to the Heart.* The vampire is destroyed if a piercing weapon made of wood is driven into its heart while it is incapacitated in its resting place.
+*Sunlight Hypersensitivity.* The vampire takes 20 radiant damage when it starts its turn in sunlight. While in sunlight, it has disadvantage on attack rolls and ability checks.</string>
 				</dict>
 			</array>
 		</dict>
@@ -54782,9 +54782,9 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 					<string>Innate Spellcasting (Abomination Form Only)</string>
 					<key>text</key>
 					<string>The yuan-ti's innate spellcasting ability is Charisma (spell save DC 15). The yuan-ti can innately cast the following spells, requiring no material components:
-At will: animal friendship (snakes only)
-3/day: suggestion
-1/day: fear</string>
+} At will: [animal friendship] (snakes only)
+} 3/day: [suggestion]
+} 1/day: [fear]</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -55012,8 +55012,8 @@ At will: animal friendship (snakes only)
 					<string>Innate Spellcasting (Yuan-ti Form Only)</string>
 					<key>text</key>
 					<string>The yuan-ti's innate spellcasting ability is Charisma (spell save DC 13). The yuan-ti can innately cast the following spells, requiring no material components:
-At will: animal friendship (snakes only)
-3/day: suggestion</string>
+} At will: [animal friendship] (snakes only)
+} 3/day: [suggestion]</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -55200,8 +55200,8 @@ Type 3: Human head and upper body with a serpentine lower body instead of legs</
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The yuan-ti's spellcasting ability is Charisma (spell save DC 12). The yuan-ti can innately cast the following spells, requiring no material components:
-At will: animal friendship (snakes only)
-3/day each: poison spray, suggestion</string>
+} At will: [animal friendship] (snakes only)
+} 3/day each: [poison spray], [suggestion]</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -55418,7 +55418,7 @@ At will: animal friendship (snakes only)
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The arcanaloth's innate spellcasting ability is Charisma (spell save DC 15). The arcanaloth can innately cast the following spells, requiring no material components:
-At will: alter self, darkness, heat metal, invisibility (self only), magic missile</string>
+} At will: [alter self], [darkness], [heat metal], [invisibility] (self only), [magic missile]</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -55437,15 +55437,15 @@ At will: alter self, darkness, heat metal, invisibility (self only), magic missi
 					<string>Spellcasting</string>
 					<key>text</key>
 					<string>The arcanaloth is a 16th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 17, +9 to hit with spell attacks). The arcanaloth has the following wizard spells prepared:
-Cantrips (at will): fire bolt, mage hand, minor illusion, prestidigitation
-1st level (4 slots): detect magic, identify, shield, Tenser's floating disk
-2nd level (3 slots): detect thoughts, mirror image, phantasmal force, suggestion
-3rd level (3 slots): counterspell, fear, fireball
-4th level (3 slots): banishment, dimension door
-5th level (2 slots): contact other plane, hold monster
-6th level (1 slot): chain lightning
-7th level (1 slot): finger of death
-8th level (1 slot): mind blank</string>
+} Cantrips (at will): [fire bolt], [mage hand], [minor illusion], [prestidigitation]
+} 1st level (4 slots): [detect magic], [identify], [shield], [Tenser's floating disk]
+} 2nd level (3 slots): [detect thoughts], [mirror image], [phantasmal force], [suggestion]
+} 3rd level (3 slots): [counterspell], [fear], [fireball]
+} 4th level (3 slots): [banishment], [dimension door]
+} 5th level (2 slots): [contact other plane], [hold monster]
+} 6th level (1 slot): [chain lightning]
+} 7th level (1 slot): [finger of death]
+} 8th level (1 slot): [mind blank]</string>
 				</dict>
 			</array>
 		</dict>
@@ -55652,8 +55652,8 @@ Cantrips (at will): fire bolt, mage hand, minor illusion, prestidigitation
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The mezzoloth's innate spellcasting ability is Charisma (spell save DC 11). The mezzoloth can innately cast the following spells, requiring no material components:
-2/day each: darkness, dispel magic
-1/day: cloudkill</string>
+} 2/day each: [darkness], [dispel magic]
+} 1/day: [cloudkill]</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -55884,7 +55884,7 @@ Cantrips (at will): fire bolt, mage hand, minor illusion, prestidigitation
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The nycaloth's innate spellcasting ability is Charisma. The nycaloth can innately cast the following spells, requiring no material components:
-At will: darkness, detect magic, dispel magic, invisibility (self only), mirror image</string>
+} At will: [darkness], [detect magic], [dispel magic], [invisibility] (self only), [mirror image]</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -56115,9 +56115,9 @@ At will: darkness, detect magic, dispel magic, invisibility (self only), mirror 
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>The ultroloth's innate spellcasting ability is Charisma (spell save DC 17). The ultroloth can innately cast the following spells, requiring no material components:
-At will: alter self, clairvoyance, darkness, detect magic, detect thoughts, dispel magic, invisibility (self only), suggestion
-3/day each: dimension door, fear, wall of fire
-1/day each: fire storm, mass suggestion</string>
+} At will: [alter self], [clairvoyance], [darkness], [detect magic], [detect thoughts], [dispel magic], [invisibility] (self only), [suggestion]
+} 3/day each: [dimension door], [fear], [wall of fire]
+} 1/day each: [fire storm], [mass suggestion]</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -56429,10 +56429,10 @@ At will: alter self, clairvoyance, darkness, detect magic, detect thoughts, disp
 					<string>Eye Ray</string>
 					<key>text</key>
 					<string>The zombie uses a random magical eye ray, choosing a target that it can see within 60 feet of it.
-1. Paralyzing Ray. The targeted creature must succeed on a DC 14 Constitution saving throw or be paralyzed for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
-2. Fear Ray. The targeted creature must succeed on a DC 14 Wisdom saving throw or be frightened for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
-3. Enervation Ray. The targeted creature must make a DC 14 Constitution saving throw, taking 36 (8d8) necrotic damage on a failed save, or half as much damage on a successful one.
-4. Disintegration Ray. If the target is a creature, it must succeed on a DC 14 Dexterity saving throw or take 45 (10d8) force damage. If this damage reduces the creature to 0 hit points, its body becomes a pile of fine gray dust.
+*1. Paralyzing Ray.* The targeted creature must succeed on a DC 14 Constitution saving throw or be paralyzed for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
+*2. Fear Ray.* The targeted creature must succeed on a DC 14 Wisdom saving throw or be frightened for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
+*3. Enervation Ray.* The targeted creature must make a DC 14 Constitution saving throw, taking 36 (8d8) necrotic damage on a failed save, or half as much damage on a successful one.
+*4. Disintegration Ray.* If the target is a creature, it must succeed on a DC 14 Dexterity saving throw or take 45 (10d8) force damage. If this damage reduces the creature to 0 hit points, its body becomes a pile of fine gray dust.
 If the target is a Large or smaller nonmagical object or creation of magical force, it is disintegrated without a saving throw. If the target is a Huge or larger nonmagical object or creation of magical force, this ray disintegrates a 10-foot cube of it.</string>
 				</dict>
 			</array>
@@ -70783,8 +70783,8 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 					<string>Spellcasting</string>
 					<key>text</key>
 					<string>The acolyte is a 1st-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). The acolyte has following cleric spells prepared:
-Cantrips (at will): light, sacred flame, thaumaturgy
-1st level (3 slots): bless, cure wounds, sanctuary</string>
+} Cantrips (at will): [light], [sacred flame], [thaumaturgy]
+} 1st level (3 slots): [bless], [cure wounds], [sanctuary]</string>
 				</dict>
 			</array>
 		</dict>
@@ -70979,17 +70979,17 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 					<string>Spellcasting</string>
 					<key>text</key>
 					<string>The archmage is an 18th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 17, +9 to hit with spell attacks). The archmage can cast [disguise self] and [invisibility] at will and has the following wizard spells prepared:
-Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking grasp
-1st level (4 slots): detect magic, identify, mage armor,* magic missile
-2nd level (3 slots): detect thoughts, mirror image, misty step
-3rd level (3 slots): counterspell, fly, lightning bolt
-4th level (3 slots): banishment, fire shield, stoneskin*
-5th level (3 slots): cone of cold, scrying, wall of force
-6th level (1 slot): globe of invulnerability
-7th level (1 slot): teleport
-8th level (1 slot): mind blank*
-9th level (1 slot): time stop
-* The archmage casts these spells on itself before combat.</string>
+} Cantrips (at will): [fire bolt], [light], [mage hand], [prestidigitation], [shocking grasp]
+} 1st level (4 slots): [detect magic], [identify], [mage armor],* [magic missile]
+} 2nd level (3 slots): [detect thoughts], [mirror image], [misty step]
+} 3rd level (3 slots): [counterspell], [fly], [lightning bolt]
+} 4th level (3 slots): [banishment], [fire shield], [stoneskin]*
+} 5th level (3 slots): [cone of cold], [scrying], [wall of force]
+} 6th level (1 slot): [globe of invulnerability]
+} 7th level (1 slot): [teleport]
+} 8th level (1 slot): [mind blank]*
+} 9th level (1 slot): [time stop]
+* *The archmage casts these spells on itself before combat.*</string>
 				</dict>
 			</array>
 		</dict>
@@ -72162,9 +72162,9 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 					<string>Spellcasting</string>
 					<key>text</key>
 					<string>The fanatic is a 4th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 11, +3 to hit with spell attacks). The fanatic has the following cleric spells prepared:
-Cantrips (at will): light, sacred flame, thaumaturgy
-1st level (4 slots): command, inflict wounds, shield of faith
-2nd level (3 slots): hold person, spiritual weapon</string>
+} Cantrips (at will): [light], [sacred flame], [thaumaturgy]
+} 1st level (4 slots): [command], [inflict wounds], [shield of faith]
+} 2nd level (3 slots): [hold person], [spiritual weapon]</string>
 				</dict>
 			</array>
 		</dict>
@@ -72341,9 +72341,9 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 					<string>Spellcasting</string>
 					<key>text</key>
 					<string>The druid is a 4th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). It has the following druid spells prepared:
-Cantrips (at will): druidcraft, produce flame, shillelagh
-1st level (4 slots): entangle, longstrider, speak with animals, thunderwave
-2nd level (3 slots): animal messenger, barkskin</string>
+} Cantrips (at will): [druidcraft], [produce flame], [shillelagh]
+} 1st level (4 slots): [entangle], [longstrider], [speak with animals], [thunderwave]
+} 2nd level (3 slots): [animal messenger], [barkskin]</string>
 				</dict>
 			</array>
 		</dict>
@@ -73074,12 +73074,12 @@ Cantrips (at will): druidcraft, produce flame, shillelagh
 					<string>Spellcasting</string>
 					<key>text</key>
 					<string>The mage is a 9th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 14, +6 to hit with spell attacks). The mage has the following wizard spells prepared:
-Cantrips (at will): fire bolt, light, mage hand, prestidigitation
-1st level (4 slots): detect magic, mage armor, magic missile, shield
-2nd level (3 slots): misty step, suggestion
-3rd level (3 slots): counterspell, fireball, fly
-4th level (3 slots): greater invisibility, ice storm
-5th level (1 slot): cone of cold</string>
+} Cantrips (at will): [fire bolt], [light], [mage hand], [prestidigitation]
+} 1st level (4 slots): [detect magic], [mage armor], [magic missile], [shield]
+} 2nd level (3 slots): [misty step], [suggestion]
+} 3rd level (3 slots): [counterspell], [fireball], [fly]
+} 4th level (3 slots): [greater invisibility], [ice storm]
+} 5th level (1 slot): [cone of cold]</string>
 				</dict>
 			</array>
 		</dict>
@@ -73433,10 +73433,10 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation
 					<string>Spellcasting</string>
 					<key>text</key>
 					<string>The priest is a 5th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 13, +5 to hit with spell attacks). The priest has the following cleric spells prepared:
-Cantrips (at will): light, sacred flame, thaumaturgy
-1st level (4 slots): cure wounds, guiding bolt, sanctuary
-2nd level (3 slots): lesser restoration, spiritual weapon
-3rd level (2 slots): dispel magic, spirit guardians</string>
+} Cantrips (at will): [light], [sacred flame], [thaumaturgy]
+} 1st level (4 slots): [cure wounds], [guiding bolt], [sanctuary]
+} 2nd level (3 slots): [lesser restoration], [spiritual weapon]
+} 3rd level (2 slots): [dispel magic], [spirit guardians]</string>
 				</dict>
 			</array>
 		</dict>
@@ -75672,7 +75672,7 @@ A humanoid slain by this attack rises 24 hours later as a zombie under Naergoth'
 		</dict>
 	</array>
 	<key>version</key>
-	<integer>1451443102</integer>
+	<integer>1451454004</integer>
 </dict>
 </plist>
 
