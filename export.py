@@ -912,7 +912,7 @@ def main():
 		"lmop", "hotdq", "hotdqs", "trot", "trots", "pota", "potas", ]
 
 	monsters = []
-	for filename in monster.local_files():
+	for filename in monster.local_files('Monsters'):
 		parser = Exporter(filename, bookTags=bookTags)
 		try:
 			try:

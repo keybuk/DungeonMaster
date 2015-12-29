@@ -369,10 +369,10 @@ class MonsterParser(object):
 		pass
 
 
-def local_files():
+def local_files(file_type):
 	files = sys.argv[1:]
 	if not len(files):
-		basedir = os.path.dirname(sys.argv[0])
+		basedir = os.path.join(os.path.dirname(sys.argv[0]), file_type)
 		for subdir in os.listdir(basedir):
 			subdir = os.path.join(basedir, subdir)
 			if not os.path.isdir(subdir):
