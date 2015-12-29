@@ -22,11 +22,15 @@ enum MarkupParagraphStyle {
 ///
 /// The following inline markup is recognized in paragraphs and bulleted lists:
 /// - \*text\* is output emphasised in *italics*.
-/// - \*\*text\*\* is output emphasised in ***bold and italics***.
-/// - \*\*\*text\*\*\* is output in a **headline font**.
+/// - \*\*text\*\* is output emphasised in **bold**.
+/// - \*\*\*text\*\*\* is output in a ***bold and italics***.
 /// - [text] is recognized as a link to another monster or spell named "text".
 /// - [text](alternate text) is also recognized as a link to "text", but displayed as "alternate text".
 /// - "text" (double quotes) is rendered with smart quotes as “text”.
+///
+/// Headings can be created by beginning the line with "# ", e.g.:
+///
+///     # This is a heading
 ///
 /// Bulleted lists can be created by beginning the line with "• ", e.g.:
 ///
