@@ -67,6 +67,9 @@ class MarkupParser {
     /// Spacing between table columns.
     var tableSpacing: CGFloat = 10.0
     
+    /// Color to apply to links.
+    var linkColor: UIColor?
+    
     /// Parsed text.
     var text: NSAttributedString {
         return mutableText
@@ -434,13 +437,17 @@ class MarkupParser {
                             
                         }
                         
-                        // Add the text in the link to the output.
-                        mutableText.appendAttributedString(NSAttributedString(string: linkText, attributes: [
+                        var attributes = [
                             NSFontAttributeName: UIFont(descriptor: bodyFontDescriptor, size: 0.0),
                             NSParagraphStyleAttributeName: paragraphStyle,
-                            NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue,
                             linkAttributeName: linkName
-                            ]))
+                        ]
+                        if let linkColor = linkColor {
+                            attributes[NSForegroundColorAttributeName] = linkColor
+                        }
+                        
+                        // Add the text in the link to the output.
+                        mutableText.appendAttributedString(NSAttributedString(string: linkText, attributes: attributes))
                         
                     } else {
                         // Didn't find an end to the link; just add the start operator to the output.

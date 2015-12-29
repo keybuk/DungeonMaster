@@ -1460,6 +1460,35 @@ class MarkupParserTest: XCTestCase {
         XCTAssertEqual(range.location, 15)
         XCTAssertEqual(range.length, 19)
     }
+    
+    func testLinkWithColor() {
+        let lines = [ "This is a [test string] containing a link" ]
+        
+        let markupParser = MarkupParser()
+        markupParser.linkColor = UIColor.redColor()
+        markupParser.parse(lines)
+        
+        XCTAssertEqual(markupParser.text.string, "This is a test string containing a link\n")
+        
+        var range = NSRange()
+        var link = markupParser.text.attribute(markupParser.linkAttributeName, atIndex: 0, effectiveRange: &range) as? String
+        XCTAssertNil(link)
+        XCTAssertEqual(range.location, 0)
+        XCTAssertEqual(range.length, 10)
+        
+        link = markupParser.text.attribute(markupParser.linkAttributeName, atIndex: 10, effectiveRange: &range) as? String
+        XCTAssertEqual(link, "test string")
+        XCTAssertEqual(range.location, 10)
+        XCTAssertEqual(range.length, 11)
+        
+        let color = markupParser.text.attribute(NSForegroundColorAttributeName, atIndex: 10, effectiveRange: &range) as? UIColor
+        XCTAssertNotNil(color)
+        
+        link = markupParser.text.attribute(markupParser.linkAttributeName, atIndex: 21, effectiveRange: &range) as? String
+        XCTAssertNil(link)
+        XCTAssertEqual(range.location, 21)
+        XCTAssertEqual(range.length, 19)
+    }
 
     // MARK: Mixed inline styles
     
