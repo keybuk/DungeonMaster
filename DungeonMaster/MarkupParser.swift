@@ -112,24 +112,36 @@ class MarkupParser {
     
     /// Parse lines of text.
     ///
-    /// Each line is treated as a complete paragraph, bulleted list item, or table row, and a newline automatically appended to the resulting string.
+    /// Each line is treated as a complete paragraph, bulleted list item, or table row, and a newline automatically appended to the attributed stirng.
+    ///
+    /// Multiple calls to `parse` extend the attributed string.
     func parse(lines: [String]) {
         for line in lines {
-            parse(line)
+            if line.containsString("|") {
+                parseTableLine(line)
+            } else if line.hasPrefix("•") {
+                parseBulletLine(line)
+            } else {
+                parseTextLine(line)
+            }
         }
     }
     
-    /// Parse a single line of text.
+    /// Parse a block of text.
     ///
-    /// The line is treated as a complete paragraph, bulleted list item, or table row, and a newline automatically appended to the resulting string.
+    /// The line begins a new complete paragraph, bulleted list item, or table row. Embedded newlines in the text result in the next line also being considered as a new complete paragraph, bulleted list item, or table row. A newline is automatically appended to the attributed string.
+    ///
+    /// Multiple calls to `parse` extend the attributed string.
     func parse(line: String) {
-        if line.containsString("|") {
-            parseTableLine(line)
-        } else if line.hasPrefix("•") {
-            parseBulletLine(line)
-        } else {
-            parseTextLine(line)
-        }
+        parse(line.componentsSeparatedByString("\n"))
+    }
+    
+    /// Reset the parser.
+    ///
+    /// After this call, the attribtued string is empty, and the parser treats a new call to `parse` as beginning new markup.
+    func reset() {
+        lastBlock = LastBlock.None
+        mutableText = NSMutableAttributedString()
     }
 
     private func parseTableLine(line: String) {

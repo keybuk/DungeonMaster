@@ -11,6 +11,57 @@ import XCTest
 
 class MarkupParserTest: XCTestCase {
     
+    // MARK: - Basic functionality
+    
+    func testParseOneLines() {
+        let lines = [ "This is a test" ]
+        
+        let markupParser = MarkupParser()
+        markupParser.parse(lines)
+        
+        XCTAssertEqual(markupParser.text.string, "This is a test\n")
+    }
+    
+    func testParseMultipleLines() {
+        let lines = [ "This is a test", "and so is this." ]
+        
+        let markupParser = MarkupParser()
+        markupParser.parse(lines)
+        
+        XCTAssertEqual(markupParser.text.string, "This is a test\nand so is this.\n")
+    }
+    
+    func testParseOneLine() {
+        let markupParser = MarkupParser()
+        markupParser.parse("This is a test")
+        
+        XCTAssertEqual(markupParser.text.string, "This is a test\n")
+    }
+    
+    func testParseMultipleLine() {
+        let markupParser = MarkupParser()
+        markupParser.parse("This is a test")
+        markupParser.parse("and so is this.")
+        
+        XCTAssertEqual(markupParser.text.string, "This is a test\nand so is this.\n")
+    }
+    
+    func testParseEmbeddedNewline() {
+        let markupParser = MarkupParser()
+        markupParser.parse("This is a test\nand so is this.")
+        
+        XCTAssertEqual(markupParser.text.string, "This is a test\nand so is this.\n")
+    }
+    
+    func testReset() {
+        let markupParser = MarkupParser()
+        markupParser.parse("This is a test")
+        markupParser.reset()
+        markupParser.parse("and so is this.")
+        
+        XCTAssertEqual(markupParser.text.string, "and so is this.\n")
+    }
+    
     // MARK: - Blocks
     
     // MARK: Basic paragraphs
