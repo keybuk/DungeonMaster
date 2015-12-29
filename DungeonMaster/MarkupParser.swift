@@ -68,6 +68,7 @@ class MarkupParser {
     private let emphasisedFontDescriptor: [UIFontDescriptor]
     private let tableFontDescriptor: UIFontDescriptor
     private let tableHeadingFontDescriptor: UIFontDescriptor
+    private let headingFontDescriptor: UIFontDescriptor
     
     private let textParagraphStyle: NSParagraphStyle
     private let bulletParagraphStyle: NSParagraphStyle
@@ -83,11 +84,12 @@ class MarkupParser {
         emphasisedFontDescriptor = [
             bodyFontDescriptor,
             bodyFontDescriptor.fontDescriptorWithSymbolicTraits(.TraitItalic),
+            bodyFontDescriptor.fontDescriptorWithSymbolicTraits(.TraitBold),
             bodyFontDescriptor.fontDescriptorWithSymbolicTraits([ .TraitBold, .TraitItalic ]),
-            UIFontDescriptor.preferredFontDescriptorWithTextStyle(UIFontTextStyleHeadline),
         ]
         tableFontDescriptor = UIFontDescriptor.preferredFontDescriptorWithTextStyle(UIFontTextStyleCaption1)
         tableHeadingFontDescriptor = tableFontDescriptor.fontDescriptorWithSymbolicTraits(.TraitBold)
+        headingFontDescriptor = UIFontDescriptor.preferredFontDescriptorWithTextStyle(UIFontTextStyleHeadline)
         
         let textParagraphStyle = NSMutableParagraphStyle()
         textParagraphStyle.alignment = .Natural
@@ -110,6 +112,7 @@ class MarkupParser {
         case None
         case Table(Int, [CGFloat], [NSTextAlignment])
         case Bullet
+        case Heading
         case Paragraph
     }
     
@@ -124,6 +127,8 @@ class MarkupParser {
                 parseTableLine(line)
             } else if line.hasPrefix("•") {
                 parseBulletLine(line)
+            } else if line.hasPrefix("#") {
+                parseHeadingLine(line)
             } else {
                 parseTextLine(line)
             }
@@ -154,7 +159,7 @@ class MarkupParser {
         paragraphStyle.tabStops = []
         
         switch lastBlock {
-        case .Table(_, _, _):
+        case .Table(_, _, _), .Heading:
             break
         case .None:
             paragraphStyle.paragraphSpacingBefore = paragraphSpacingBefore
@@ -269,7 +274,7 @@ class MarkupParser {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.setParagraphStyle(bulletParagraphStyle)
         switch lastBlock {
-        case .Bullet:
+        case .Bullet, .Heading:
             break
         case .None:
             paragraphStyle.paragraphSpacingBefore = paragraphSpacingBefore
@@ -287,11 +292,34 @@ class MarkupParser {
         lastBlock = .Bullet
     }
     
+    private func parseHeadingLine(line: String) {
+        // Improved font.
+        let line = line.substringFromIndex(line.startIndex.advancedBy(1)).stringByTrimmingCharactersInSet(whitespace)
+
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.setParagraphStyle(textParagraphStyle)
+        switch lastBlock {
+        case .None:
+            paragraphStyle.paragraphSpacingBefore = paragraphSpacingBefore
+        default:
+            paragraphStyle.paragraphSpacingBefore = paragraphSpacing
+        }
+
+        mutableText.appendAttributedString(NSAttributedString(string: "\(line)\n", attributes: [
+            NSFontAttributeName: UIFont(descriptor: headingFontDescriptor, size: 0.0),
+            NSParagraphStyleAttributeName: paragraphStyle,
+            ]))
+        
+        lastBlock = .Heading
+    }
+    
     private func parseTextLine(line: String) {
         // Indent all except the first paragraphs in a block.
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.setParagraphStyle(textParagraphStyle)
         switch lastBlock {
+        case .Heading:
+            break
         case .Paragraph:
             paragraphStyle.firstLineHeadIndent = paragraphIndent
         case .None:
