@@ -181,17 +181,17 @@ class PlayerCell: UITableViewCell {
     var player: Player! {
         didSet {
             nameLabel.text = player.name
-            if player.primitiveValueForKey("rawRace") != nil {
+            if let _ = player.primitiveValueForKey("rawRace") {
                 raceLabel.text = player.race.stringValue
             } else {
                 raceLabel.text = nil
             }
-            if player.primitiveValueForKey("rawCharacterClass") != nil {
+            if let _ = player.primitiveValueForKey("rawCharacterClass") {
                 classLabel.text = "\(player.characterClass.stringValue) \(player.level)"
             } else {
                 classLabel.text = nil
             }
-            if player.primitiveValueForKey("rawBackground") != nil {
+            if let _ = player.primitiveValueForKey("rawBackground") {
                 backgroundLabel.text = player.background.stringValue
             } else {
                 backgroundLabel.text = nil

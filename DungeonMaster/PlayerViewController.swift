@@ -182,22 +182,22 @@ class PlayerViewController: UITableViewController {
 
         if segue.identifier == "PlayerRaceSegue" {
             let playerRaceViewController = segue.destinationViewController as! PlayerRaceViewController
-            if player.primitiveValueForKey("rawRace") != nil {
+            if let _ = player.primitiveValueForKey("rawRace") {
                 playerRaceViewController.selectedRace = player.race
             }
         } else if segue.identifier == "PlayerCharacterClassSegue" {
             let playerCharacterClassViewController = segue.destinationViewController as! PlayerCharacterClassViewController
-            if player.primitiveValueForKey("rawCharacterClass") != nil {
+            if let _ = player.primitiveValueForKey("rawCharacterClass") {
                 playerCharacterClassViewController.selectedCharacterClass = player.characterClass
             }
         } else if segue.identifier == "PlayerBackgroundSegue" {
             let playerBackgroundViewController = segue.destinationViewController as! PlayerBackgroundViewController
-            if player.primitiveValueForKey("rawBackground") != nil {
+            if let _ = player.primitiveValueForKey("rawBackground") {
                 playerBackgroundViewController.selectedBackground = player.background
             }
         } else if segue.identifier == "PlayerAlignmentSegue" {
             let playerAlignmentViewController = segue.destinationViewController as! PlayerAlignmentViewController
-            if player.primitiveValueForKey("rawAlignment") != nil {
+            if let _ = player.primitiveValueForKey("rawAlignment") {
                 playerAlignmentViewController.selectedAlignment = player.alignment
             }
         } else if segue.identifier == "AddPlayerSavingThrowSegue" {
@@ -521,7 +521,7 @@ class PlayerRaceCell: UITableViewCell {
     
     var player: Player! {
         didSet {
-            if player.primitiveValueForKey("rawRace") != nil {
+            if let _ = player.primitiveValueForKey("rawRace") {
                 label?.text = player.race.stringValue
                 label?.textColor = UIColor.blackColor()
             } else {
@@ -539,7 +539,7 @@ class PlayerCharacterClassCell: UITableViewCell {
 
     var player: Player! {
         didSet {
-            if player.primitiveValueForKey("rawCharacterClass") != nil {
+            if let _ = player.primitiveValueForKey("rawCharacterClass") {
                 label?.text = player.characterClass.stringValue
                 label?.textColor = UIColor.blackColor()
             } else {
@@ -557,7 +557,7 @@ class PlayerBackgroundCell: UITableViewCell {
 
     var player: Player! {
         didSet {
-            if player.primitiveValueForKey("rawBackground") != nil {
+            if let _ = player.primitiveValueForKey("rawBackground") {
                 label?.text = player.background.stringValue
                 label?.textColor = UIColor.blackColor()
             } else {
@@ -575,7 +575,7 @@ class PlayerAlignmentCell: UITableViewCell {
 
     var player: Player! {
         didSet {
-            if player.primitiveValueForKey("rawAlignment") != nil {
+            if let _ = player.primitiveValueForKey("rawAlignment") {
                 label?.text = player.alignment.stringValue
                 label?.textColor = UIColor.blackColor()
             } else {
