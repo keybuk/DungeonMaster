@@ -217,7 +217,7 @@ class MonsterParser(object):
 			self.lineno += 1
 			line = line.rstrip("\r\n")
 			# Any line beginning with # can be ignored as a comment.
-			if line.startswith("#"):
+			if line.startswith("//"):
 				return self.next_line(error_message=error_message)
 			self.check_line(line)
 			return line

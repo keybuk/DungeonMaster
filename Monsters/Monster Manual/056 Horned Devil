@@ -3,10 +3,10 @@ mm 74; Devils
 Large fiend (devil), lawful evil
 
 Armor Class 18 (natural armor)
-# The errata stats "We realized after the book went to print that we changed
-# the wrong part of the entry-should be 178 (17d10 + 85)." I'm sticking with
-# what the Monster Manual actually has, until they reprint it again
-# differently, since it's likely they'll just stick with 148 now.
+// The errata stats "We realized after the book went to print that we changed
+// the wrong part of the entry-should be 178 (17d10 + 85)." I'm sticking with
+// what the Monster Manual actually has, until they reprint it again
+// differently, since it's likely they'll just stick with 148 now.
 Hit Points 148 (17d10 + 55)
 Speed 20 ft., fly 60 ft.
 
