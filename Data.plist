@@ -1295,7 +1295,7 @@ Cantrips (at will): fire bolt, prestidigitation, shocking grasp
 					<key>text</key>
 					<string>Frulam is a 5th-level spellcaster that uses Wisdom as her spellcasting ability (spell save DC 14, +6 to hit with spell attacks). Frulam has the following spells prepared from the cleric spell list:
 Cantrips (at will): light, sacred flame, thaumaturgy
-1st level (4 slots): command, curewounds, healing word, sanctuary
+1st level (4 slots): command, cure wounds, healing word, sanctuary
 2nd level (3 slots): calm emotions, hold person, spiritual weapon
 3rd level (2 slots): mass healing word, spirit guardians</string>
 				</dict>
@@ -1937,9 +1937,8 @@ Cantrips (at will): mage hand, minor illusion, prestidigitation, ray of frost
 					<key>text</key>
 					<string>Pharblex is a 6th-level spellcaster that uses Wisdom as his spellcasting ability (spell save DC 13, +5 to hit with spell attacks). Pharblex has the following spells prepared from the druid spell list:
 Cantrips (at will): druidcraft, guidance, poison cloud
-1st level (4 slots): cure wounds, entangle, healing word,
-thunderwave
-2nd level (3 slots): barkskin, beast sense, spikegrowth
+1st level (4 slots): cure wounds, entangle, healing word, thunderwave
+2nd level (3 slots): barkskin, beast sense, spike growth
 3rd level (3 slots): plant growth, water walk</string>
 				</dict>
 				<dict>
@@ -2118,7 +2117,7 @@ thunderwave
 					<key>name</key>
 					<string>Special Equipment</string>
 					<key>text</key>
-					<string>Rath has a staff of fire, and scrolls of dimension door, featherfall, and fireball.</string>
+					<string>Rath has a staff of fire, and scrolls of dimension door, feather fall, and fireball.</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -2507,8 +2506,7 @@ Cantrips (at will): fire bolt, minor illusion, prestidigitation, shocking grasp
 					<string>Talis is a 9th-level spellcaster that uses Wisdom as her spellcasting ability (spell save DC 14, +6 to hit with spell attacks). Talis has the following spells prepared from the cleric spell list:
 Cantrips (at will): guidance, resistance, thaumaturgy
 1st level (4 slots): command, cure wounds, healing word, inflict wounds
-2nd level (3 slots): blindness/deafness, lesser restoration, spiritual
-weapon (spear)
+2nd level (3 slots): blindness/deafness, lesser restoration, spiritual weapon (spear)
 3rd level (3 slots): dispel magic, mass healing word, sending
 4th level (3 slots): death ward, freedom of movement
 5th level (1 slot): insect plague</string>
@@ -5939,7 +5937,7 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<key>info</key>
 				<dict>
 					<key>lairActionsLimit</key>
-					<string></string>
+					<string>The beholder can't repeat an effect until they have all been used, and it can't use the same effect two rounds in a row.</string>
 					<key>lairActionsText</key>
 					<string>When fighting inside its lair, a beholder can invoke the ambient magic to take lair actions. On initiative count 20 (losing initiative ties), the beholder can take one lair action to cause one of the following effects:</string>
 					<key>regionalEffectsDuration</key>
@@ -6158,7 +6156,7 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 				<key>info</key>
 				<dict>
 					<key>lairActionsLimit</key>
-					<string></string>
+					<string>The death tyrant can't repeat an effect until all three have been used, and it can't use the same effect on consecutive rounds.</string>
 					<key>lairActionsText</key>
 					<string>When fighting inside its lair, a death tyrant can invoke the ambient magic to take lair actions. On initiative count 20 (losing initiative ties), the death tyrant can take one lair action to cause one of the following effects:</string>
 					<key>regionalEffectsDuration</key>
@@ -70985,7 +70983,7 @@ Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking gras
 1st level (4 slots): detect magic, identify, mage armor,* magic missile
 2nd level (3 slots): detect thoughts, mirror image, misty step
 3rd level (3 slots): counterspell, fly, lightning bolt
-4th level (3 slots): banishment,  fire shield, stoneskin*
+4th level (3 slots): banishment, fire shield, stoneskin*
 5th level (3 slots): cone of cold, scrying, wall of force
 6th level (1 slot): globe of invulnerability
 7th level (1 slot): teleport
@@ -75674,7 +75672,7 @@ A humanoid slain by this attack rises 24 hours later as a zombie under Naergoth'
 		</dict>
 	</array>
 	<key>version</key>
-	<integer>1450972826</integer>
+	<integer>1451438713</integer>
 </dict>
 </plist>
 

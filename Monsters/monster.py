@@ -154,7 +154,8 @@ class MonsterParser(object):
 				# This monster has limiting text to its lair actions:
 				limiting_lines = None
 				if line is not None and line != line.upper():
-					limiting_lines = self.parse_lines()
+					limiting_lines = [ line ]
+					limiting_lines += self.parse_lines()
 					line = None
 
 				self.handle_lair_actions(intro_lines, lair_actions, limiting_lines)
