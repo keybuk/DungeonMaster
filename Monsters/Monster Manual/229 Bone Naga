@@ -22,15 +22,15 @@ Challenge 4 (1,100 XP)
 Spellcasting.
 The naga is a 5th-level spellcaster (spell save DC 12, +4 to hit with spell attacks) that needs only verbal components to cast its spells.
 If the naga was a guardian naga in life, its spellcasting ability is Wisdom, and it has the following cleric spells prepared:
-Cantrips (at will): mending, sacred flame, thaumaturgy
-1st level (4 slots): command, shield of faith
-2nd level (3 slots): calm emotions, hold person
-3rd level (2 slots): bestow curse
+} Cantrips (at will): [mending], [sacred flame], [thaumaturgy]
+} 1st level (4 slots): [command], [shield of faith]
+} 2nd level (3 slots): [calm emotions], [hold person]
+} 3rd level (2 slots): [bestow curse]
 If the naga was a spirit naga in life, its spellcasting ability is Intelligence, and it has the following wizard spells prepared:
-Cantrips (at will): mage hand, minor illusion, ray of frost
-1st level (4 slots): charm person, sleep
-2nd level (3 slots): detect thoughts, hold person
-3rd level (2 slots): lightning bolt
+} Cantrips (at will): [mage hand], [minor illusion], [ray of frost]
+} 1st level (4 slots): [charm person], [sleep]
+} 2nd level (3 slots): [detect thoughts], [hold person]
+} 3rd level (2 slots): [lightning bolt]
 
 ACTIONS
 

@@ -29,10 +29,10 @@ The sahuagin can magically command any shark within 120 feet of her, using a lim
 
 Spellcasting.
 The sahuagin is a 6th-level spellcaster. Her spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). She has the following cleric spells prepared:
-Cantrips (at will): guidance, thaumaturgy
-1st level (4 slots): bless, detect magic, guiding bolt
-2nd level (3 slots): hold person, spiritual weapon (trident)
-3rd level (3 slots): mass healing word, tongues
+} Cantrips (at will): [guidance], [thaumaturgy]
+} 1st level (4 slots): [bless], [detect magic], [guiding bolt]
+} 2nd level (3 slots): [hold person], [spiritual weapon] (trident)
+} 3rd level (3 slots): [mass healing word], [tongues]
 
 ACTIONS
 

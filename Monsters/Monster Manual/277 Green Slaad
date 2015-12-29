@@ -24,9 +24,9 @@ The slaad can use its action to polymorph into a Small or Medium humanoid, or ba
 
 Innate Spellcasting.
 The slaad's innate spellcasting ability is Charisma (spell save DC 12). The slaad can innately cast the following spells, requiring no material components:
-At will: detect magic, detect thoughts, mage hand
-2/day each: fear, invisibility (self only)
-1/day: fireball
+} At will: [detect magic], [detect thoughts], [mage hand]
+} 2/day each: [fear], [invisibility] (self only)
+} 1/day: [fireball]
 
 Magic Resistance.
 The slaad has advantage on saving throws against spells and other magical effects.

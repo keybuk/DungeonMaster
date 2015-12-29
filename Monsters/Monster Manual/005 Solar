@@ -30,9 +30,9 @@ The solar knows if it hears a lie.
 
 Innate Spellcasting.
 The solar's spellcasting ability is Charisma (spell save DC 25). It can innately cast the following spells, requiring no material components:
-At will: detect evil and good, invisibility (self only)
-3/day each: blade barrier, dispel evil and good, resurrection
-1/day each: commune, control weather
+} At will: [detect evil and good], [invisibility] (self only)
+} 3/day each: [blade barrier], [dispel evil and good], [resurrection]
+} 1/day each: [commune], [control weather]
 
 Magic Resistance.
 The solar has advantage on saving throws against spells and other magical effects.

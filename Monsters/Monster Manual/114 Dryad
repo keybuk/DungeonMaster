@@ -20,9 +20,9 @@ Challenge 1 (200 XP)
 
 Innate Spellcasting.
 The dryad's innate spellcasting ability is Charisma (spell save DC 14). The dryad can innately cast the following spells, requiring no material components:
-At will: druidcraft
-3/day each: entangle, goodberry
-1/day each: barkskin, pass without trace, shillelagh
+} At will: [druidcraft]
+} 3/day each: [entangle], [goodberry]
+} 1/day each: [barkskin], [pass without trace], [shillelagh]
 
 Magic Resistance.
 The dryad has advantage on saving throws against spells and other magical effects.
