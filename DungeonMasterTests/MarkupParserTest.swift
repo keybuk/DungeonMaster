@@ -288,6 +288,63 @@ class MarkupTest: XCTestCase {
         XCTAssertEqual(range.length, 32)
     }
     
+    func testFillTableWithNumeric() {
+        let lines = [ "Foo | Foo", "1 | foo", "2 | foo" ]
+        
+        let parser = MarkupParser()
+        parser.tableWidth = 300.0 + 3 * parser.tableSpacing
+        let text = parser.parse(lines)
+        
+        XCTAssertEqual(text.string, "\tFoo\tFoo\n\t1\tfoo\n\t2\tfoo\n")
+        
+        // Only the right column should be expanded, since the left is numeric.
+        var range = NSRange()
+        var style = text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        XCTAssertNotNil(style)
+        XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
+        XCTAssertEqual(style!.paragraphSpacing, 0.0)
+        XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
+        XCTAssertEqual(style!.headIndent, 0.0)
+        XCTAssertEqual(style!.tabStops.count, 2)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Center)
+        XCTAssertGreaterThan(style!.tabStops[0].location, parser.tableSpacing)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertLessThan(style!.tabStops[1].location, parser.tableSpacing * 2 + 150.0)
+        XCTAssertEqual(range.location, 0)
+        XCTAssertEqual(range.length, 9)
+        
+        var font = text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        XCTAssertNotNil(font)
+        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
+        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertEqual(range.location, 0)
+        XCTAssertEqual(range.length, 9)
+        
+        let headingTabStops = style!.tabStops
+        
+        // Body should otherwise match.
+        style = text.attribute(NSParagraphStyleAttributeName, atIndex: 9, effectiveRange: &range) as? NSParagraphStyle
+        XCTAssertNotNil(style)
+        XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
+        XCTAssertEqual(style!.paragraphSpacing, 0.0)
+        XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
+        XCTAssertEqual(style!.headIndent, 0.0)
+        XCTAssertEqual(style!.tabStops.count, 2)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Center)
+        XCTAssertEqual(style!.tabStops[0].location, headingTabStops[0].location)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].location, headingTabStops[1].location)
+        XCTAssertEqual(range.location, 9)
+        XCTAssertEqual(range.length, 14)
+        
+        font = text.attribute(NSFontAttributeName, atIndex: 9, effectiveRange: &range) as? UIFont
+        XCTAssertNotNil(font)
+        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
+        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertEqual(range.location, 9)
+        XCTAssertEqual(range.length, 14)
+    }
+
     // MARK: Mixed blocks
     
     func testBulletAfterText() {

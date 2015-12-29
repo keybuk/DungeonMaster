@@ -124,20 +124,26 @@ class MarkupParser {
                     
                 }
                 
-                // Lay out the tab stops at the appropriate places for the columns.
-                let expectedColumnWidths = tableWidths.reduce(0.0, combine: +)
-                let availableColumnWidths = tableWidth != nil ? (tableWidth! - CGFloat(tableWidths.count + 1) * tableSpacing) : 0.0
+                // Calculate the expected widths of Left-aligned columns, and the available space for them.
+                var expectedColumnWidths: CGFloat = 0.0, fixedColumnWidths: CGFloat = 0.0
+                for (alignment, width) in zip(tableAlignments, tableWidths) {
+                    if alignment == .Left {
+                        expectedColumnWidths += width
+                    } else {
+                        fixedColumnWidths += width
+                    }
+                }
+                
+                let availableColumnWidths = tableWidth != nil ? (tableWidth! - CGFloat(tableWidths.count + 1) * tableSpacing - fixedColumnWidths) : 0.0
 
+                // Lay out the tab stops at the appropriate places for the columns.
                 var location = tableSpacing
                 for (alignment, width) in zip(tableAlignments, tableWidths) {
-                    var expandedWidth = width
-                    if expectedColumnWidths < availableColumnWidths {
-                        expandedWidth = round(width / expectedColumnWidths * availableColumnWidths)
-                    }
-                    
-                    var columnLocation = location
+                    var expandedWidth = width, columnLocation = location
                     if alignment == .Center {
                         columnLocation += expandedWidth / 2.0
+                    } else if expectedColumnWidths < availableColumnWidths {
+                        expandedWidth = round(width / expectedColumnWidths * availableColumnWidths)
                     }
                     
                     paragraphStyle.tabStops.append(NSTextTab(textAlignment: alignment, location: columnLocation, options: [String:AnyObject]()))
