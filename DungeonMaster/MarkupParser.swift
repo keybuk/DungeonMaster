@@ -32,7 +32,7 @@ class MarkupParser {
     private let bulletParagraphStyle: NSParagraphStyle
     
     private var lastBlock: LastBlock
-    private var text: NSMutableAttributedString
+    var text: NSMutableAttributedString
 
     init() {
         whitespace = NSCharacterSet.whitespaceCharacterSet()
@@ -72,21 +72,22 @@ class MarkupParser {
         case Paragraph
     }
     
-
-    func parse(lines: [String]) -> NSAttributedString {
+    func parse(lines: [String]) {
         for line in lines {
-            if line.containsString("|") {
-                parseTableLine(line)
-            } else if line.hasPrefix("•") {
-                parseBulletLine(line)
-            } else {
-                parseTextLine(line)
-            }
+            parse(line)
         }
-
-        return text
     }
     
+    func parse(line: String) {
+        if line.containsString("|") {
+            parseTableLine(line)
+        } else if line.hasPrefix("•") {
+            parseBulletLine(line)
+        } else {
+            parseTextLine(line)
+        }
+    }
+
     private func parseTableLine(line: String) {
         // Tables are rendered as a series of tabbed data, with the stop distances adjusted each line to match.
         let paragraphStyle = NSMutableParagraphStyle()
