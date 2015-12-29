@@ -19,7 +19,8 @@ class ConditionRulesViewController: UIViewController {
 
         let markupParser = MarkupParser()
         markupParser.tableWidth = textView.frame.size.width
-        
+        markupParser.linkColor = textView.tintColor
+
         markupParser.parse("***\(condition.stringValue)***")
         markupParser.parse(condition.rulesDescription)
 
