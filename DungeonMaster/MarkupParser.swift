@@ -60,34 +60,41 @@ class MarkupParser {
     }
 
     func parse(lines: [String]) -> NSAttributedString {
+        enum LastBlock {
+            case None
+            case Table(Int, [CGFloat], [NSTextAlignment])
+            case Bullet
+            case Paragraph
+        }
+        var lastBlock = LastBlock.None
+        
         let text = NSMutableAttributedString()
-        var firstBlock = true, lastWasParagraph = false
-        var tableIndex: Int?, tableWidths = [CGFloat](), tableAlignments = [NSTextAlignment]()
         for line in lines {
             if line.containsString("|") {
                 // Tables are rendered as a series of tabbed data, with the stop distances adjusted each line to match.
                 let paragraphStyle = NSMutableParagraphStyle()
                 paragraphStyle.lineBreakMode = .ByClipping
                 paragraphStyle.tabStops = []
-                if lastWasParagraph {
-                    paragraphStyle.paragraphSpacingBefore = paragraphSpacing
-                }
-
-                // First row has a bold heading font, resets the save table information, and has its alignment ignored.
+                
+                let font: UIFont
+                var tableIndex = text.length
+                var tableWidths = [CGFloat]()
+                var tableAlignments = [NSTextAlignment]()
                 var ignoreAlignment = false
-                let fontDescriptor: UIFontDescriptor
-                if tableIndex == nil {
-                    fontDescriptor = tableHeadingFontDescriptor
-                    
-                    tableIndex = text.length
-                    tableWidths.removeAll()
-                    tableAlignments.removeAll()
-                    
+                switch lastBlock {
+                case .Table(let index, let widths, let alignments):
+                    font = UIFont(descriptor: tableFontDescriptor, size: 0.0)
+                    tableIndex = index
+                    tableWidths = widths
+                    tableAlignments = alignments
+                case .Bullet, .Paragraph:
+                    paragraphStyle.paragraphSpacingBefore = paragraphSpacing
+                    fallthrough
+                default:
+                    // First row always has its font set to the heading font, and the alignment ignored and .Center used instead (until overriden by a later row).
+                    font = UIFont(descriptor: tableHeadingFontDescriptor, size: 0.0)
                     ignoreAlignment = true
-                } else {
-                    fontDescriptor = tableFontDescriptor
                 }
-                let font = UIFont(descriptor: fontDescriptor, size: 0.0)
 
                 // Split the line into columns, and recompose as a tab-separated string.
                 var string = ""
@@ -138,7 +145,7 @@ class MarkupParser {
                 }
 
                 // Reset the tab stops in the existing rendered portion of the table.
-                var index = tableIndex!
+                var index = tableIndex
                 while index < text.length {
                     var range = NSRange()
                     if let priorStyle = text.attribute(NSParagraphStyleAttributeName, atIndex: index, effectiveRange: &range) as? NSParagraphStyle {
@@ -161,8 +168,8 @@ class MarkupParser {
                     NSFontAttributeName: font,
                     NSParagraphStyleAttributeName: paragraphStyle
                     ]))
-
-                lastWasParagraph = false
+                
+                lastBlock = .Table(tableIndex, tableWidths, tableAlignments)
             } else if line.hasPrefix("•") {
                 // Bulleted list are rendered as paragraph blocks with special intents.
                 let line = line.substringFromIndex(line.startIndex.advancedBy(1))
@@ -170,7 +177,10 @@ class MarkupParser {
                 // If the bullet list follows a paragraph, preceed it with paragraph spacing.
                 let paragraphStyle = NSMutableParagraphStyle()
                 paragraphStyle.setParagraphStyle(bulletParagraphStyle)
-                if lastWasParagraph {
+                switch lastBlock {
+                case .None, .Bullet:
+                    break
+                default:
                     paragraphStyle.paragraphSpacingBefore = paragraphSpacing
                 }
                 
@@ -181,25 +191,24 @@ class MarkupParser {
                     ]))
                 text.appendAttributedString(parseText(line, paragraphStyle: paragraphStyle, appendNewline: true))
                 
-                lastWasParagraph = false
-                tableIndex = nil
+                lastBlock = .Bullet
             } else {
                 // Indent all except the first paragraphs in a block.
                 let paragraphStyle = NSMutableParagraphStyle()
                 paragraphStyle.setParagraphStyle(textParagraphStyle)
-                if lastWasParagraph {
+                switch lastBlock {
+                case .None:
+                    break
+                case .Paragraph:
                     paragraphStyle.firstLineHeadIndent = paragraphIndent
-                } else if !firstBlock {
+                default:
                     paragraphStyle.paragraphSpacingBefore = paragraphSpacing
                 }
                 
                 text.appendAttributedString(parseText(line, paragraphStyle: paragraphStyle, appendNewline: true))
 
-                lastWasParagraph = true
-                tableIndex = nil
+                lastBlock = .Paragraph
             }
-            
-            firstBlock = false
         }
 
         return text
