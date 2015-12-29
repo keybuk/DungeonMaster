@@ -173,8 +173,8 @@ typealias TabletopLocation = CGPoint
     
     /// Inserts a new item, with the given index, onto the table top.
     func insertItemAtIndex(index: Int) {
-        if batchInserts != nil {
-            batchInserts?.addIndex(index)
+        if let batchInserts = batchInserts {
+            batchInserts.addIndex(index)
         } else {
             doInsertItemAtIndex(index)
 
@@ -185,8 +185,8 @@ typealias TabletopLocation = CGPoint
     
     /// Updates an item, with the given index, refreshing its location and display.
     func updateItemAtIndex(index: Int) {
-        if batchUpdates != nil {
-            batchUpdates?.addIndex(index)
+        if let batchUpdates = batchUpdates {
+            batchUpdates.addIndex(index)
         } else {
             doUpdateItemAtIndex(index)
             
@@ -197,8 +197,8 @@ typealias TabletopLocation = CGPoint
     
     /// Deletes an item, with the given index, and removes it from the table top.
     func deleteItemAtIndex(index: Int) {
-        if batchDeletes != nil {
-            batchDeletes?.addIndex(index)
+        if let batchDeletes = batchDeletes {
+            batchDeletes.addIndex(index)
         } else {
             doDeleteItemAtIndex(index)
             
@@ -255,8 +255,8 @@ typealias TabletopLocation = CGPoint
         let location = dataSource!.tabletopView(self, locationForItem: index)
         locations[index] = location
         
-        if touchingIndex != nil && touchingIndex! == index {
-            touchingIndex = nil
+        if let touchingIndex = touchingIndex where touchingIndex == index {
+            self.touchingIndex = nil
             startingLocation = nil
         }
 
@@ -311,7 +311,7 @@ typealias TabletopLocation = CGPoint
             
             // If an item is too close, skip this point.
             let squareRadius = itemRadius * 1.5 * itemRadius * 1.5
-            if minimumDistance != nil && minimumDistance! < squareRadius {
+            if let minimumDistance = minimumDistance where minimumDistance < squareRadius {
                 continue
             }
             

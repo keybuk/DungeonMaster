@@ -41,7 +41,7 @@ extension PlayerAlignmentViewController {
         
         cell.textLabel?.text = alignment.stringValue
         
-        if selectedAlignment != nil && indexPath.row == selectedAlignment!.rawValue - 1 {
+        if let selectedAlignment = selectedAlignment where indexPath.row == selectedAlignment.rawValue - 1 {
             cell.accessoryType = .Checkmark
         } else {
             cell.accessoryType = .None

@@ -50,7 +50,7 @@ extension PlayerRaceViewController {
         
         cell.textLabel?.text = race.stringValue
         
-        if selectedRace != nil && indexPath.section == selectedRace!.rawRaceValue && indexPath.row == selectedRace!.rawSubraceValue ?? 0 {
+        if let selectedRace = selectedRace where indexPath.section == selectedRace.rawRaceValue && indexPath.row == selectedRace.rawSubraceValue ?? 0 {
             cell.accessoryType = .Checkmark
         } else {
             cell.accessoryType = .None

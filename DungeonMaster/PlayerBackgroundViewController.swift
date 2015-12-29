@@ -41,7 +41,7 @@ extension PlayerBackgroundViewController {
         
         cell.textLabel?.text = background.stringValue
         
-        if selectedBackground != nil && indexPath.row == selectedBackground!.rawValue {
+        if let selectedBackground = selectedBackground where indexPath.row == selectedBackground.rawValue {
             cell.accessoryType = .Checkmark
         } else {
             cell.accessoryType = .None

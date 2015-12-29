@@ -22,12 +22,12 @@ func importIfNeeded() {
     if inSimulator() {
         print("Running in simulator: importing data from \(plistVersion)")
     } else {
-        if dataVersion != nil {
+        if let dataVersion = dataVersion {
             if dataVersion == plistVersion {
                 return
             }
             
-            print("Importing data from \(plistVersion), replacing \(dataVersion!)")
+            print("Importing data from \(plistVersion), replacing \(dataVersion)")
         } else {
             print("Importing data from \(plistVersion)")
         }

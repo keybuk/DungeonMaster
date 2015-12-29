@@ -45,8 +45,8 @@ class EncounterViewController: UITableViewController {
     // MARK: Fetched results controller
     
     var fetchedResultsController: NSFetchedResultsController {
-        if _fetchedResultsController != nil {
-            return _fetchedResultsController!
+        if let fetchedResultsController = _fetchedResultsController {
+            return fetchedResultsController
         }
         
         // We use a predicate on the Combatant table, matching against the encounter, rather than just using "encounter.combatants" so that we can be a delegate and get change notifications.

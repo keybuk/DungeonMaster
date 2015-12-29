@@ -106,8 +106,8 @@ class MonstersViewController: UIViewController {
             updateFetchedResults()
             
             let defaults = NSUserDefaults.standardUserDefaults()
-            if hiddenBooks != nil {
-                let bookNames = hiddenBooks!.map { book -> String in
+            if let hiddenBooks = hiddenBooks {
+                let bookNames = hiddenBooks.map { book -> String in
                     return book.name
                 }
                 defaults.setObject(bookNames, forKey: "HiddenBooks")
@@ -120,8 +120,8 @@ class MonstersViewController: UIViewController {
     // MARK: Fetched results controller
     
     var fetchedResultsController: NSFetchedResultsController {
-        if _fetchedResultsController != nil {
-            return _fetchedResultsController!
+        if let fetchedResultsController = _fetchedResultsController {
+            return fetchedResultsController
         }
         
         // Load previously saved hidden books. Handled here rather than in viewDidLoad because this happens first, and reloading data straight after would be ugly.
@@ -176,11 +176,11 @@ class MonstersViewController: UIViewController {
             searchPredicate = NSPredicate(format: "rawType IN %@ OR name CONTAINS[cd] %@ OR ANY tags.name CONTAINS[cd] %@", typeList as NSArray, search, search)
         }
         
-        if booksPredicate != nil && searchPredicate != nil {
-            fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [booksPredicate!, searchPredicate!])
-        } else if booksPredicate != nil {
+        if let booksPredicate = booksPredicate, searchPredicate = searchPredicate {
+            fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [booksPredicate, searchPredicate])
+        } else if let booksPredicate = booksPredicate {
             fetchRequest.predicate = booksPredicate
-        } else if searchPredicate != nil {
+        } else if let searchPredicate = searchPredicate {
             fetchRequest.predicate = searchPredicate
         }
         

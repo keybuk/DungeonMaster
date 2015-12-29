@@ -25,8 +25,8 @@ class BooksViewController: UITableViewController {
     // MARK: Fetched results controller
     
     var fetchedResultsController: NSFetchedResultsController {
-        if _fetchedResultsController != nil {
-            return _fetchedResultsController!
+        if let fetchedResultsController = _fetchedResultsController {
+            return fetchedResultsController
         }
         
         let fetchRequest = NSFetchRequest(entity: Model.Book)
@@ -53,7 +53,7 @@ class BooksViewController: UITableViewController {
         let book = fetchedResultsController.objectAtIndexPath(indexPath) as! Book
         
         cell.textLabel?.text = book.name
-        if hiddenBooks != nil && hiddenBooks!.contains(book) {
+        if let hiddenBooks = hiddenBooks where hiddenBooks.contains(book) {
             cell.accessoryType = .None
         } else {
             cell.accessoryType = .Checkmark

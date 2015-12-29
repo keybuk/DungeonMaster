@@ -17,8 +17,8 @@ final class Encounter: NSManagedObject {
     @NSManaged var combatants: NSSet
 
     var title: String {
-        if name != nil {
-            return name!
+        if let name = name {
+            return name
         }
         
         let sortDescriptor = NSSortDescriptor(key: "monster.challenge", ascending: false)

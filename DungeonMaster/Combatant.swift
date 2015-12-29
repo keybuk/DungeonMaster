@@ -88,16 +88,16 @@ final class Combatant: NSManagedObject {
     ///
     /// This is only available for monsters controlled by the DM, it will always return `nil` for those with a `role` of `Player`.
     var armorClass: Int? {
-        guard monster != nil else { return nil }
+        guard let monster = monster else { return nil }
         
         let basicArmorPredicate = NSPredicate(format: "rawCondition == nil")
-        var armors = monster!.armor.filteredSetUsingPredicate(basicArmorPredicate)
+        var armors = monster.armor.filteredSetUsingPredicate(basicArmorPredicate)
         
         if conditions.count > 0 {
             let rawConditions: [NSNumber] = conditions.map({ NSNumber(integer: ($0 as! CombatantCondition).type.rawValue) })
             let conditionsPredicate = NSPredicate(format: "rawCondition IN %@", rawConditions)
             
-            let conditionArmors = monster!.armor.filteredSetUsingPredicate(conditionsPredicate)
+            let conditionArmors = monster.armor.filteredSetUsingPredicate(conditionsPredicate)
             if conditionArmors.count > 0 {
                 armors = conditionArmors
             }

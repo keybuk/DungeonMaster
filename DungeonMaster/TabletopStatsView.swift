@@ -33,9 +33,9 @@ class TabletopStatsView: UIView {
             return progress.hidden ? nil : progress.progress
         }
         set(health) {
-            if health != nil {
+            if let health = health {
                 progress.hidden = false
-                progress.progress = health!
+                progress.progress = health
                 frame.size.height = 36.0
             } else {
                 progress.hidden = true

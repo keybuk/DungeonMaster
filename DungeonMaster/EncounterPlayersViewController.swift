@@ -25,8 +25,8 @@ class EncounterPlayersViewController: UITableViewController {
     // MARK: Fetched results controller
     
     var fetchedResultsController: NSFetchedResultsController {
-        if _fetchedResultsController != nil {
-            return _fetchedResultsController!
+        if let fetchedResultsController = _fetchedResultsController {
+            return fetchedResultsController
         }
         
         let fetchRequest = NSFetchRequest(entity: Model.Player)

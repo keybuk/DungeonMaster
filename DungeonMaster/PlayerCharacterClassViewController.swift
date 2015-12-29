@@ -41,7 +41,7 @@ extension PlayerCharacterClassViewController {
         
         cell.textLabel?.text = characterClass.stringValue
         
-        if selectedCharacterClass != nil && indexPath.row == selectedCharacterClass!.rawValue {
+        if let selectedCharacterClass = selectedCharacterClass where indexPath.row == selectedCharacterClass.rawValue {
             cell.accessoryType = .Checkmark
         } else {
             cell.accessoryType = .None

@@ -191,7 +191,7 @@ extension CombatantViewController {
                 case .Player:
                     cell.textLabel?.text = "Player"
                 }
-                if combatant.monster != nil {
+                if let _ = combatant.monster {
                     cell.accessoryType = .DisclosureIndicator
                 } else {
                     cell.accessoryType = .None
@@ -388,8 +388,8 @@ class DiceRollCell: UITableViewCell {
     
     var diceCombo: DiceCombo? {
         didSet {
-            if diceCombo != nil {
-                button.setTitle("\(diceCombo!.description)", forState: .Normal)
+            if let diceCombo = diceCombo {
+                button.setTitle("\(diceCombo.description)", forState: .Normal)
                 button.hidden = false
             } else {
                 button.hidden = true
