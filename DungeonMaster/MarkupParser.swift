@@ -8,18 +8,56 @@
 
 import UIKit
 
+/// MarkupParser parses the markup format used by rules, and monster and spell lists into an `NSAttributedString` for display.
+///
+/// The markup format is extremely lightweight, and is similar to Markdown in someways.
+///
+/// The following inline markup is recognized in paragraphs and bulleted lists:
+/// - \*text\* is output emphasised in *italics*.
+/// - \*\*text\*\* is output emphasised in ***bold and italics***.
+/// - \*\*\*text\*\*\* is output in a **headline font**.
+/// - [text] is recognized as a link to another monster or spell named "text".
+/// - [text](alternate text) is also recognized as a link to "text", but displayed as "alternate text".
+/// - "text" (double quotes) is rendered with smart quotes as “text”.
+///
+/// Bulleted lists can be created by beginning the line with "• ", e.g.:
+///
+///     • Bullet item.
+///     • Second bullet item.
+///
+/// Tables can be constructed using "|" as the column separator, e.g.:
+///
+///     d100 | Result
+///     00–49 | Nothing happens
+///     50–99 | Something happens
+///
+/// Columns with numeric data are center-aligned, while other data is left-aligned.
 class MarkupParser {
     
+    /// Links in the text have the following attribute set to the link name.
+    ///
+    /// You can obtain the target of links, and their locations, using `markupParser.text.attribute(markupParser.linkAttributeName, atIndex: ..., effectiveRange: ...)`
     let linkAttributeName = "DungeonMaster.MarkupParser.LinkAttribute"
     
+    /// Paragraph indent used on following paragraphs, and in bulleted lists.
     var paragraphIndent: CGFloat = 20.0
     
+    /// Spacing between paragraphs, bulleted lists, and tables.
     var paragraphSpacing: CGFloat = 10.0
     
+    /// Width to render tables.
+    ///
+    /// Tables are ordinarily set to be rendered only as wide as is necessary for the data within. By setting this value, non-numeric table columns will be proportionally stretched to fill the entire width.
     var tableWidth: CGFloat?
  
+    /// Spacing between table columns.
     var tableSpacing: CGFloat = 10.0
     
+    /// Parsed text.
+    var text: NSAttributedString {
+        return mutableText
+    }
+
     private let whitespace: NSCharacterSet
     private let operators: NSCharacterSet
     
@@ -32,7 +70,7 @@ class MarkupParser {
     private let bulletParagraphStyle: NSParagraphStyle
     
     private var lastBlock: LastBlock
-    var text: NSMutableAttributedString
+    private var mutableText: NSMutableAttributedString
 
     init() {
         whitespace = NSCharacterSet.whitespaceCharacterSet()
@@ -62,7 +100,7 @@ class MarkupParser {
         self.bulletParagraphStyle = bulletParagraphStyle
         
         lastBlock = LastBlock.None
-        text = NSMutableAttributedString()
+        mutableText = NSMutableAttributedString()
     }
     
     enum LastBlock {
@@ -72,12 +110,18 @@ class MarkupParser {
         case Paragraph
     }
     
+    /// Parse lines of text.
+    ///
+    /// Each line is treated as a complete paragraph, bulleted list item, or table row, and a newline automatically appended to the resulting string.
     func parse(lines: [String]) {
         for line in lines {
             parse(line)
         }
     }
     
+    /// Parse a single line of text.
+    ///
+    /// The line is treated as a complete paragraph, bulleted list item, or table row, and a newline automatically appended to the resulting string.
     func parse(line: String) {
         if line.containsString("|") {
             parseTableLine(line)
@@ -95,7 +139,7 @@ class MarkupParser {
         paragraphStyle.tabStops = []
         
         let font: UIFont
-        var tableIndex = text.length
+        var tableIndex = mutableText.length
         var tableWidths = [CGFloat]()
         var tableAlignments = [NSTextAlignment]()
         var ignoreAlignment = false
@@ -170,17 +214,17 @@ class MarkupParser {
         
         // Reset the tab stops in the existing rendered portion of the table.
         var index = tableIndex
-        while index < text.length {
+        while index < mutableText.length {
             var range = NSRange()
-            if let priorStyle = text.attribute(NSParagraphStyleAttributeName, atIndex: index, effectiveRange: &range) as? NSParagraphStyle {
+            if let priorStyle = mutableText.attribute(NSParagraphStyleAttributeName, atIndex: index, effectiveRange: &range) as? NSParagraphStyle {
                 if priorStyle.paragraphSpacingBefore != 0.0 {
                     let newStyle = NSMutableParagraphStyle()
                     newStyle.setParagraphStyle(priorStyle)
                     newStyle.tabStops = paragraphStyle.tabStops
                     
-                    text.addAttribute(NSParagraphStyleAttributeName, value: newStyle, range: range)
+                    mutableText.addAttribute(NSParagraphStyleAttributeName, value: newStyle, range: range)
                 } else {
-                    text.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: range)
+                    mutableText.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: range)
                 }
             }
             
@@ -188,7 +232,7 @@ class MarkupParser {
         }
         
         // Append the new row.
-        text.appendAttributedString(NSAttributedString(string: "\(string)\n", attributes: [
+        mutableText.appendAttributedString(NSAttributedString(string: "\(string)\n", attributes: [
             NSFontAttributeName: font,
             NSParagraphStyleAttributeName: paragraphStyle
             ]))
@@ -211,11 +255,11 @@ class MarkupParser {
         }
         
         // Append the bullet and a tab stop to move the following text to the right point.
-        text.appendAttributedString(NSAttributedString(string: "•\t", attributes: [
+        mutableText.appendAttributedString(NSAttributedString(string: "•\t", attributes: [
             NSFontAttributeName: UIFont(descriptor: bodyFontDescriptor, size: 0.0),
             NSParagraphStyleAttributeName: paragraphStyle,
             ]))
-        text.appendAttributedString(parseText(line, paragraphStyle: paragraphStyle, appendNewline: true))
+        mutableText.appendAttributedString(parseText(line, paragraphStyle: paragraphStyle, appendNewline: true))
         
         lastBlock = .Bullet
     }
@@ -233,7 +277,7 @@ class MarkupParser {
             paragraphStyle.paragraphSpacingBefore = paragraphSpacing
         }
         
-        text.appendAttributedString(parseText(line, paragraphStyle: paragraphStyle, appendNewline: true))
+        mutableText.appendAttributedString(parseText(line, paragraphStyle: paragraphStyle, appendNewline: true))
         
         lastBlock = .Paragraph
     }
@@ -247,7 +291,7 @@ class MarkupParser {
             if let operatorRange = line.rangeOfCharacterFromSet(operators, options: [], range: range) {
                 // Might be an initial piece of text before the first operator in the line.
                 if range.startIndex != operatorRange.startIndex {
-                    text.appendAttributedString(NSAttributedString(string: line.substringWithRange(range.startIndex..<operatorRange.startIndex), attributes: [
+                    mutableText.appendAttributedString(NSAttributedString(string: line.substringWithRange(range.startIndex..<operatorRange.startIndex), attributes: [
                         NSFontAttributeName: UIFont(descriptor: bodyFontDescriptor, size: 0.0),
                         NSParagraphStyleAttributeName: paragraphStyle,
                         ]))
@@ -276,7 +320,7 @@ class MarkupParser {
                             
                             let overlength = operatorRange.startIndex.distanceTo(index) - emphasisness
                             let string = line.substringWithRange(operatorRange.startIndex..<operatorRange.startIndex.advancedBy(overlength))
-                            text.appendAttributedString(NSAttributedString(string: string, attributes: [
+                            mutableText.appendAttributedString(NSAttributedString(string: string, attributes: [
                                 NSFontAttributeName: UIFont(descriptor: bodyFontDescriptor, size: 0.0),
                                 NSParagraphStyleAttributeName: paragraphStyle,
                                 ]))
@@ -288,7 +332,7 @@ class MarkupParser {
                             string += "\n"
                         }
                         
-                        text.appendAttributedString(NSAttributedString(string: string, attributes: [
+                        mutableText.appendAttributedString(NSAttributedString(string: string, attributes: [
                             NSFontAttributeName: UIFont(descriptor: emphasisedFontDescriptor[emphasisness], size: 0.0),
                             NSParagraphStyleAttributeName: paragraphStyle,
                             ]))
@@ -297,7 +341,7 @@ class MarkupParser {
                         if endOperatorRange.startIndex.distanceTo(endIndex) > emphasisness {
                             let overlength = endOperatorRange.startIndex.distanceTo(endIndex) - emphasisness
                             let string = line.substringWithRange(endOperatorRange.startIndex.advancedBy(overlength)..<endIndex)
-                            text.appendAttributedString(NSAttributedString(string: string, attributes: [
+                            mutableText.appendAttributedString(NSAttributedString(string: string, attributes: [
                                 NSFontAttributeName: UIFont(descriptor: bodyFontDescriptor, size: 0.0),
                                 NSParagraphStyleAttributeName: paragraphStyle,
                                 ]))
@@ -312,7 +356,7 @@ class MarkupParser {
                         
                     } else {
                         // Didn't find the end emphasis; add the entire emphasis operator range to the output and continue from after it.
-                        text.appendAttributedString(NSAttributedString(string: line.substringWithRange(operatorRange.startIndex..<index), attributes: [
+                        mutableText.appendAttributedString(NSAttributedString(string: line.substringWithRange(operatorRange.startIndex..<index), attributes: [
                             NSFontAttributeName: UIFont(descriptor: bodyFontDescriptor, size: 0.0),
                             NSParagraphStyleAttributeName: paragraphStyle,
                             ]))
@@ -337,7 +381,7 @@ class MarkupParser {
                         }
                         
                         // Add the text in the link to the output.
-                        text.appendAttributedString(NSAttributedString(string: linkText, attributes: [
+                        mutableText.appendAttributedString(NSAttributedString(string: linkText, attributes: [
                             NSFontAttributeName: UIFont(descriptor: bodyFontDescriptor, size: 0.0),
                             NSParagraphStyleAttributeName: paragraphStyle,
                             NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue,
@@ -346,7 +390,7 @@ class MarkupParser {
                         
                     } else {
                         // Didn't find an end to the link; just add the start operator to the output.
-                        text.appendAttributedString(NSAttributedString(string: line.substringWithRange(operatorRange), attributes: [
+                        mutableText.appendAttributedString(NSAttributedString(string: line.substringWithRange(operatorRange), attributes: [
                             NSFontAttributeName: UIFont(descriptor: bodyFontDescriptor, size: 0.0),
                             NSParagraphStyleAttributeName: paragraphStyle,
                             ]))
@@ -358,12 +402,12 @@ class MarkupParser {
                     if let endOperatorRange = line.rangeOfString("\"", options: [], range: operatorRange.endIndex..<range.endIndex, locale: nil) {
                         // Replace the quotes with smart quotes.
                         let string = "“\(line.substringWithRange(operatorRange.endIndex..<endOperatorRange.startIndex))”"
-                        text.appendAttributedString(parseText(string, paragraphStyle: paragraphStyle, appendNewline: false))
+                        mutableText.appendAttributedString(parseText(string, paragraphStyle: paragraphStyle, appendNewline: false))
 
                         range = endOperatorRange.endIndex..<range.endIndex
                     } else {
                         // Didn't find an end to the quote; just add the start quote to the output as a non-smart quote.
-                        text.appendAttributedString(NSAttributedString(string: line.substringWithRange(operatorRange), attributes: [
+                        mutableText.appendAttributedString(NSAttributedString(string: line.substringWithRange(operatorRange), attributes: [
                             NSFontAttributeName: UIFont(descriptor: bodyFontDescriptor, size: 0.0),
                             NSParagraphStyleAttributeName: paragraphStyle,
                             ]))
@@ -382,7 +426,7 @@ class MarkupParser {
                 }
                 
                 if trailing != "" {
-                    text.appendAttributedString(NSAttributedString(string: trailing, attributes: [
+                    mutableText.appendAttributedString(NSAttributedString(string: trailing, attributes: [
                         NSFontAttributeName: UIFont(descriptor: bodyFontDescriptor, size: 0.0),
                         NSParagraphStyleAttributeName: paragraphStyle,
                         ]))
@@ -395,7 +439,7 @@ class MarkupParser {
         return text
     }
     
-    func alignmentForColumn(column: String) -> NSTextAlignment {
+    private func alignmentForColumn(column: String) -> NSTextAlignment {
         for character in column.characters {
             switch character {
             case "0"..."9", "+", "-", "–", "—":
