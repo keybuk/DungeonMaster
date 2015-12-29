@@ -17,41 +17,15 @@ class ConditionRulesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let text = NSTextStorage()
+        let markupParser = MarkupParser()
+        markupParser.tableWidth = textView.frame.size.width
         
-        let nameFont = UIFontDescriptor.preferredFontDescriptorWithTextStyle(UIFontTextStyleHeadline)
-        
-        let nameParaStyle = NSParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
-        nameParaStyle.paragraphSpacing = 6.0
-        
-        let nameStyle = [
-            NSFontAttributeName: UIFont(descriptor: nameFont, size: 0.0),
-            NSParagraphStyleAttributeName: nameParaStyle
-        ]
-
-        text.appendAttributedString(NSAttributedString(string: "\(condition.stringValue)\n", attributes: nameStyle))
-
-        
-        let bodyFont = UIFontDescriptor.preferredFontDescriptorWithTextStyle(UIFontTextStyleBody)
-        
-        let listParaStyle = NSParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
-        listParaStyle.headIndent = 20.0
-        listParaStyle.tabStops = [
-            NSTextTab(textAlignment: .Left, location: 20.0, options: [String:AnyObject]()),
-        ]
-
-        let listStyle = [
-            NSFontAttributeName: UIFont(descriptor: bodyFont, size: 0.0),
-            NSParagraphStyleAttributeName: listParaStyle
-        ]
-        
-        for ruleText in condition.rulesDescription {
-            text.appendAttributedString(NSAttributedString(string: "•\t\(ruleText)\n", attributes: listStyle))
-        }
+        markupParser.parse("***\(condition.stringValue)***")
+        markupParser.parse(condition.rulesDescription)
 
         // Set the text with scroll disabled to stop it going to the bottom.
         textView.scrollEnabled = false
-        textView.attributedText = text
+        textView.attributedText = markupParser.text
     }
 
     override func viewDidAppear(animated: Bool) {
