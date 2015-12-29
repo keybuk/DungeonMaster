@@ -142,27 +142,27 @@ class MarkupParserTest: XCTestCase {
         XCTAssertEqual(range.length, 16)
     }
     
-    func testIndentThis() {
-        let lines = [ "This is a test", "and so is this." ]
+    // MARK: Indented paragraphs
+    
+    func testIndented() {
+        let lines = [ "} This is a test" ]
         
         let markupParser = MarkupParser()
-        markupParser.paragraphStyle = .IndentThis
         markupParser.parse(lines)
         
-        XCTAssertEqual(markupParser.text.string, "This is a test\nand so is this.\n")
+        XCTAssertEqual(markupParser.text.string, "This is a test\n")
         
-        // Since both paragraphs will have the same style, they will be treated as one block.
         var range = NSRange()
-        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        let style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, markupParser.paragraphIndent)
         XCTAssertEqual(range.location, 0)
-        XCTAssertEqual(range.length, 31)
+        XCTAssertEqual(range.length, 15)
     }
-    
+
     // MARK: Headings
     
     func testHeadingAtStart() {
@@ -592,6 +592,99 @@ class MarkupParserTest: XCTestCase {
 
     // MARK: Mixed blocks
     
+    func testIndentedAfterText() {
+        let lines = [ "This is a test", "} and so is this." ]
+        
+        let markupParser = MarkupParser()
+        markupParser.parse(lines)
+        
+        XCTAssertEqual(markupParser.text.string, "This is a test\nand so is this.\n")
+        
+        var range = NSRange()
+        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        XCTAssertNotNil(style)
+        XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
+        XCTAssertEqual(style!.paragraphSpacing, 0.0)
+        XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
+        XCTAssertEqual(style!.headIndent, 0.0)
+        XCTAssertEqual(range.location, 0)
+        XCTAssertEqual(range.length, 15)
+        
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 15, effectiveRange: &range) as? NSParagraphStyle
+        XCTAssertNotNil(style)
+        XCTAssertEqual(style!.paragraphSpacingBefore, markupParser.paragraphSpacing)
+        XCTAssertEqual(style!.paragraphSpacing, 0.0)
+        XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
+        XCTAssertEqual(style!.headIndent, markupParser.paragraphIndent)
+        XCTAssertEqual(range.location, 15)
+        XCTAssertEqual(range.length, 16)
+    }
+    
+    func testIndentedAfterHeading() {
+        let lines = [ "# This is a test", "} and so is this." ]
+        
+        let markupParser = MarkupParser()
+        markupParser.parse(lines)
+        
+        XCTAssertEqual(markupParser.text.string, "This is a test\nand so is this.\n")
+        
+        var range = NSRange()
+        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        XCTAssertNotNil(style)
+        XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
+        XCTAssertEqual(style!.paragraphSpacing, 0.0)
+        XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
+        XCTAssertEqual(style!.headIndent, 0.0)
+        XCTAssertEqual(range.location, 0)
+        XCTAssertEqual(range.length, 15)
+        
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 15, effectiveRange: &range) as? NSParagraphStyle
+        XCTAssertNotNil(style)
+        XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
+        XCTAssertEqual(style!.paragraphSpacing, 0.0)
+        XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
+        XCTAssertEqual(style!.headIndent, markupParser.paragraphIndent)
+        XCTAssertEqual(range.location, 15)
+        XCTAssertEqual(range.length, 16)
+    }
+    
+    func testIndentedBetweenText() {
+        let lines = [ "This is a test", "} and so is this.", "And this." ]
+        
+        let markupParser = MarkupParser()
+        markupParser.parse(lines)
+        
+        XCTAssertEqual(markupParser.text.string, "This is a test\nand so is this.\nAnd this.\n")
+        
+        var range = NSRange()
+        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        XCTAssertNotNil(style)
+        XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
+        XCTAssertEqual(style!.paragraphSpacing, 0.0)
+        XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
+        XCTAssertEqual(style!.headIndent, 0.0)
+        XCTAssertEqual(range.location, 0)
+        XCTAssertEqual(range.length, 15)
+        
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 15, effectiveRange: &range) as? NSParagraphStyle
+        XCTAssertNotNil(style)
+        XCTAssertEqual(style!.paragraphSpacingBefore, markupParser.paragraphSpacing)
+        XCTAssertEqual(style!.paragraphSpacing, 0.0)
+        XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
+        XCTAssertEqual(style!.headIndent, markupParser.paragraphIndent)
+        XCTAssertEqual(range.location, 15)
+        XCTAssertEqual(range.length, 16)
+        
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 31, effectiveRange: &range) as? NSParagraphStyle
+        XCTAssertNotNil(style)
+        XCTAssertEqual(style!.paragraphSpacingBefore, markupParser.paragraphSpacing)
+        XCTAssertEqual(style!.paragraphSpacing, 0.0)
+        XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
+        XCTAssertEqual(style!.headIndent, 0.0)
+        XCTAssertEqual(range.location, 31)
+        XCTAssertEqual(range.length, 10)
+    }
+
     func testBulletAfterText() {
         let lines = [ "Choose between:", "• Daddy", "• Chips" ]
         

@@ -556,15 +556,12 @@ class DetailViewController: UIViewController {
                 if monster.legendaryActions.count > 0 {
                     text.appendAttributedString(NSAttributedString(string: "Legendary Actions\n", attributes: titleStyle))
                 
-                    markupParser.paragraphStyle = .IndentThis
-                    
                     for case let legendaryAction as LegendaryAction in monster.legendaryActions {
-                        markupParser.parse("**\(legendaryAction.name).** \(legendaryAction.text)")
+                        markupParser.parse("} **\(legendaryAction.name).** \(legendaryAction.text)")
                     }
                     
                     text.appendAttributedString(markupParser.text)
                     markupParser.reset()
-                    markupParser.paragraphStyle = .IndentNext
                 }
                 
                 if let lair = monster.lair {
