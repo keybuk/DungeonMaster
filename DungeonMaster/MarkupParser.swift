@@ -31,6 +31,9 @@ class MarkupParser {
     private let textParagraphStyle: NSParagraphStyle
     private let bulletParagraphStyle: NSParagraphStyle
     
+    private var lastBlock: LastBlock
+    private var text: NSMutableAttributedString
+
     init() {
         whitespace = NSCharacterSet.whitespaceCharacterSet()
         operators = NSCharacterSet(charactersInString: "*[\"")
@@ -57,167 +60,181 @@ class MarkupParser {
             NSTextTab(textAlignment: .Left, location: paragraphIndent, options: [String: AnyObject]())
         ]
         self.bulletParagraphStyle = bulletParagraphStyle
+        
+        lastBlock = LastBlock.None
+        text = NSMutableAttributedString()
     }
+    
+    enum LastBlock {
+        case None
+        case Table(Int, [CGFloat], [NSTextAlignment])
+        case Bullet
+        case Paragraph
+    }
+    
 
     func parse(lines: [String]) -> NSAttributedString {
-        enum LastBlock {
-            case None
-            case Table(Int, [CGFloat], [NSTextAlignment])
-            case Bullet
-            case Paragraph
-        }
-        var lastBlock = LastBlock.None
-        
-        let text = NSMutableAttributedString()
         for line in lines {
             if line.containsString("|") {
-                // Tables are rendered as a series of tabbed data, with the stop distances adjusted each line to match.
-                let paragraphStyle = NSMutableParagraphStyle()
-                paragraphStyle.lineBreakMode = .ByClipping
-                paragraphStyle.tabStops = []
-                
-                let font: UIFont
-                var tableIndex = text.length
-                var tableWidths = [CGFloat]()
-                var tableAlignments = [NSTextAlignment]()
-                var ignoreAlignment = false
-                switch lastBlock {
-                case .Table(let index, let widths, let alignments):
-                    font = UIFont(descriptor: tableFontDescriptor, size: 0.0)
-                    tableIndex = index
-                    tableWidths = widths
-                    tableAlignments = alignments
-                case .Bullet, .Paragraph:
-                    paragraphStyle.paragraphSpacingBefore = paragraphSpacing
-                    fallthrough
-                default:
-                    // First row always has its font set to the heading font, and the alignment ignored and .Center used instead (until overriden by a later row).
-                    font = UIFont(descriptor: tableHeadingFontDescriptor, size: 0.0)
-                    ignoreAlignment = true
-                }
-
-                // Split the line into columns, and recompose as a tab-separated string.
-                var string = ""
-                let columns = line.componentsSeparatedByString("|")
-                for (index, column) in columns.enumerate() {
-                    let column = column.stringByTrimmingCharactersInSet(whitespace)
-                    
-                    // Calculate the column width, and save if it's larger than the previous width.
-                    var width = ceil((column as NSString).sizeWithAttributes([ NSFontAttributeName: font ]).width)
-                    if index < tableWidths.count {
-                        width = max(width, tableWidths[index])
-                        tableWidths[index] = width
-                    } else {
-                        tableWidths.append(width)
-                    }
-                    
-                    // Figure out the alignment, and revert to .Left if .Center wouldn't apply to any one row.
-                    var alignment = ignoreAlignment ? .Center : alignmentForColumn(column)
-                    if index < tableAlignments.count {
-                        alignment = alignment == tableAlignments[index] ? alignment : .Left
-                        tableAlignments[index] = alignment
-                    } else {
-                        tableAlignments.append(alignment)
-                    }
-                    
-                    string += "\t\(column)"
-                    
-                }
-                
-                // Calculate the expected widths of Left-aligned columns, and the available space for them.
-                var expectedColumnWidths: CGFloat = 0.0, fixedColumnWidths: CGFloat = 0.0
-                for (alignment, width) in zip(tableAlignments, tableWidths) {
-                    if alignment == .Left {
-                        expectedColumnWidths += width
-                    } else {
-                        fixedColumnWidths += width
-                    }
-                }
-                
-                let availableColumnWidths = tableWidth != nil ? (tableWidth! - CGFloat(tableWidths.count + 1) * tableSpacing - fixedColumnWidths) : 0.0
-
-                // Lay out the tab stops at the appropriate places for the columns.
-                var location = tableSpacing
-                for (alignment, width) in zip(tableAlignments, tableWidths) {
-                    var expandedWidth = width, columnLocation = location
-                    if alignment == .Center {
-                        columnLocation += expandedWidth / 2.0
-                    } else if expectedColumnWidths < availableColumnWidths {
-                        expandedWidth = round(width / expectedColumnWidths * availableColumnWidths)
-                    }
-                    
-                    paragraphStyle.tabStops.append(NSTextTab(textAlignment: alignment, location: columnLocation, options: [String:AnyObject]()))
-                    location += expandedWidth + tableSpacing
-                }
-
-                // Reset the tab stops in the existing rendered portion of the table.
-                var index = tableIndex
-                while index < text.length {
-                    var range = NSRange()
-                    if let priorStyle = text.attribute(NSParagraphStyleAttributeName, atIndex: index, effectiveRange: &range) as? NSParagraphStyle {
-                        if priorStyle.paragraphSpacingBefore != 0.0 {
-                            let newStyle = NSMutableParagraphStyle()
-                            newStyle.setParagraphStyle(priorStyle)
-                            newStyle.tabStops = paragraphStyle.tabStops
-
-                            text.addAttribute(NSParagraphStyleAttributeName, value: newStyle, range: range)
-                        } else {
-                            text.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: range)
-                        }
-                    }
-                    
-                    index = range.location + range.length
-                }
-                
-                // Append the new row.
-                text.appendAttributedString(NSAttributedString(string: "\(string)\n", attributes: [
-                    NSFontAttributeName: font,
-                    NSParagraphStyleAttributeName: paragraphStyle
-                    ]))
-                
-                lastBlock = .Table(tableIndex, tableWidths, tableAlignments)
+                parseTableLine(line)
             } else if line.hasPrefix("•") {
-                // Bulleted list are rendered as paragraph blocks with special intents.
-                let line = line.substringFromIndex(line.startIndex.advancedBy(1))
-                
-                // If the bullet list follows a paragraph, preceed it with paragraph spacing.
-                let paragraphStyle = NSMutableParagraphStyle()
-                paragraphStyle.setParagraphStyle(bulletParagraphStyle)
-                switch lastBlock {
-                case .None, .Bullet:
-                    break
-                default:
-                    paragraphStyle.paragraphSpacingBefore = paragraphSpacing
-                }
-                
-                // Append the bullet and a tab stop to move the following text to the right point.
-                text.appendAttributedString(NSAttributedString(string: "•\t", attributes: [
-                    NSFontAttributeName: UIFont(descriptor: bodyFontDescriptor, size: 0.0),
-                    NSParagraphStyleAttributeName: paragraphStyle,
-                    ]))
-                text.appendAttributedString(parseText(line, paragraphStyle: paragraphStyle, appendNewline: true))
-                
-                lastBlock = .Bullet
+                parseBulletLine(line)
             } else {
-                // Indent all except the first paragraphs in a block.
-                let paragraphStyle = NSMutableParagraphStyle()
-                paragraphStyle.setParagraphStyle(textParagraphStyle)
-                switch lastBlock {
-                case .None:
-                    break
-                case .Paragraph:
-                    paragraphStyle.firstLineHeadIndent = paragraphIndent
-                default:
-                    paragraphStyle.paragraphSpacingBefore = paragraphSpacing
-                }
-                
-                text.appendAttributedString(parseText(line, paragraphStyle: paragraphStyle, appendNewline: true))
-
-                lastBlock = .Paragraph
+                parseTextLine(line)
             }
         }
 
         return text
+    }
+    
+    private func parseTableLine(line: String) {
+        // Tables are rendered as a series of tabbed data, with the stop distances adjusted each line to match.
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineBreakMode = .ByClipping
+        paragraphStyle.tabStops = []
+        
+        let font: UIFont
+        var tableIndex = text.length
+        var tableWidths = [CGFloat]()
+        var tableAlignments = [NSTextAlignment]()
+        var ignoreAlignment = false
+        switch lastBlock {
+        case .Table(let index, let widths, let alignments):
+            font = UIFont(descriptor: tableFontDescriptor, size: 0.0)
+            tableIndex = index
+            tableWidths = widths
+            tableAlignments = alignments
+        case .Bullet, .Paragraph:
+            paragraphStyle.paragraphSpacingBefore = paragraphSpacing
+            fallthrough
+        default:
+            // First row always has its font set to the heading font, and the alignment ignored and .Center used instead (until overriden by a later row).
+            font = UIFont(descriptor: tableHeadingFontDescriptor, size: 0.0)
+            ignoreAlignment = true
+        }
+        
+        // Split the line into columns, and recompose as a tab-separated string.
+        var string = ""
+        let columns = line.componentsSeparatedByString("|")
+        for (index, column) in columns.enumerate() {
+            let column = column.stringByTrimmingCharactersInSet(whitespace)
+            
+            // Calculate the column width, and save if it's larger than the previous width.
+            var width = ceil((column as NSString).sizeWithAttributes([ NSFontAttributeName: font ]).width)
+            if index < tableWidths.count {
+                width = max(width, tableWidths[index])
+                tableWidths[index] = width
+            } else {
+                tableWidths.append(width)
+            }
+            
+            // Figure out the alignment, and revert to .Left if .Center wouldn't apply to any one row.
+            var alignment = ignoreAlignment ? .Center : alignmentForColumn(column)
+            if index < tableAlignments.count {
+                alignment = alignment == tableAlignments[index] ? alignment : .Left
+                tableAlignments[index] = alignment
+            } else {
+                tableAlignments.append(alignment)
+            }
+            
+            string += "\t\(column)"
+            
+        }
+        
+        // Calculate the expected widths of Left-aligned columns, and the available space for them.
+        var expectedColumnWidths: CGFloat = 0.0, fixedColumnWidths: CGFloat = 0.0
+        for (alignment, width) in zip(tableAlignments, tableWidths) {
+            if alignment == .Left {
+                expectedColumnWidths += width
+            } else {
+                fixedColumnWidths += width
+            }
+        }
+        
+        let availableColumnWidths = tableWidth != nil ? (tableWidth! - CGFloat(tableWidths.count + 1) * tableSpacing - fixedColumnWidths) : 0.0
+        
+        // Lay out the tab stops at the appropriate places for the columns.
+        var location = tableSpacing
+        for (alignment, width) in zip(tableAlignments, tableWidths) {
+            var expandedWidth = width, columnLocation = location
+            if alignment == .Center {
+                columnLocation += expandedWidth / 2.0
+            } else if expectedColumnWidths < availableColumnWidths {
+                expandedWidth = round(width / expectedColumnWidths * availableColumnWidths)
+            }
+            
+            paragraphStyle.tabStops.append(NSTextTab(textAlignment: alignment, location: columnLocation, options: [String:AnyObject]()))
+            location += expandedWidth + tableSpacing
+        }
+        
+        // Reset the tab stops in the existing rendered portion of the table.
+        var index = tableIndex
+        while index < text.length {
+            var range = NSRange()
+            if let priorStyle = text.attribute(NSParagraphStyleAttributeName, atIndex: index, effectiveRange: &range) as? NSParagraphStyle {
+                if priorStyle.paragraphSpacingBefore != 0.0 {
+                    let newStyle = NSMutableParagraphStyle()
+                    newStyle.setParagraphStyle(priorStyle)
+                    newStyle.tabStops = paragraphStyle.tabStops
+                    
+                    text.addAttribute(NSParagraphStyleAttributeName, value: newStyle, range: range)
+                } else {
+                    text.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: range)
+                }
+            }
+            
+            index = range.location + range.length
+        }
+        
+        // Append the new row.
+        text.appendAttributedString(NSAttributedString(string: "\(string)\n", attributes: [
+            NSFontAttributeName: font,
+            NSParagraphStyleAttributeName: paragraphStyle
+            ]))
+        
+        lastBlock = .Table(tableIndex, tableWidths, tableAlignments)
+    }
+    
+    private func parseBulletLine(line: String) {
+        // Bulleted list are rendered as paragraph blocks with special intents.
+        let line = line.substringFromIndex(line.startIndex.advancedBy(1))
+        
+        // If the bullet list follows a paragraph, preceed it with paragraph spacing.
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.setParagraphStyle(bulletParagraphStyle)
+        switch lastBlock {
+        case .None, .Bullet:
+            break
+        default:
+            paragraphStyle.paragraphSpacingBefore = paragraphSpacing
+        }
+        
+        // Append the bullet and a tab stop to move the following text to the right point.
+        text.appendAttributedString(NSAttributedString(string: "•\t", attributes: [
+            NSFontAttributeName: UIFont(descriptor: bodyFontDescriptor, size: 0.0),
+            NSParagraphStyleAttributeName: paragraphStyle,
+            ]))
+        text.appendAttributedString(parseText(line, paragraphStyle: paragraphStyle, appendNewline: true))
+        
+        lastBlock = .Bullet
+    }
+    
+    private func parseTextLine(line: String) {
+        // Indent all except the first paragraphs in a block.
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.setParagraphStyle(textParagraphStyle)
+        switch lastBlock {
+        case .None:
+            break
+        case .Paragraph:
+            paragraphStyle.firstLineHeadIndent = paragraphIndent
+        default:
+            paragraphStyle.paragraphSpacingBefore = paragraphSpacing
+        }
+        
+        text.appendAttributedString(parseText(line, paragraphStyle: paragraphStyle, appendNewline: true))
+        
+        lastBlock = .Paragraph
     }
 
     private func parseText(line: String, paragraphStyle: NSParagraphStyle, appendNewline: Bool) -> NSAttributedString {
