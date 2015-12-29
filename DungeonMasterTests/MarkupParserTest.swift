@@ -1435,6 +1435,17 @@ class MarkupParserTest: XCTestCase {
         // In contrast to emphasis, the newline should be still outside the quote.
         XCTAssertEqual(markupParser.text.string, "“This is a test”\n")
     }
+    
+    // MARK: Single quotes
+
+    func testSingleQuote() {
+        let lines = [ "This is' a test" ]
+        
+        let markupParser = MarkupParser()
+        markupParser.parse(lines)
+        
+        XCTAssertEqual(markupParser.text.string, "This is’ a test\n")
+    }
 
     // MARK: Links
 
@@ -1616,6 +1627,43 @@ class MarkupParserTest: XCTestCase {
         XCTAssertEqual(range.length, 23)
     }
     
+    func testLinkWithSingleQuote() {
+        let lines = [ "This is a [test' string] containing a link" ]
+        
+        let markupParser = MarkupParser()
+        markupParser.parse(lines)
+        
+        // Output should be a smart quote.
+        XCTAssertEqual(markupParser.text.string, "This is a test’ string containing a link\n")
+        
+        var range = NSRange()
+        var link = markupParser.text.attribute(markupParser.linkAttributeName, atIndex: 0, effectiveRange: &range) as? String
+        XCTAssertNil(link)
+        XCTAssertEqual(range.location, 0)
+        XCTAssertEqual(range.length, 10)
+        
+        // But the link name should be an ordinary apostrophe.
+        link = markupParser.text.attribute(markupParser.linkAttributeName, atIndex: 10, effectiveRange: &range) as? String
+        XCTAssertEqual(link, "test' string")
+        XCTAssertEqual(range.location, 10)
+        XCTAssertEqual(range.length, 12)
+        
+        link = markupParser.text.attribute(markupParser.linkAttributeName, atIndex: 22, effectiveRange: &range) as? String
+        XCTAssertNil(link)
+        XCTAssertEqual(range.location, 22)
+        XCTAssertEqual(range.length, 19)
+    }
+    
+    func testLinkWithAlternateTextAndSingleQuote() {
+        let lines = [ "This is a [test string](test' string) containing a link" ]
+        
+        let markupParser = MarkupParser()
+        markupParser.parse(lines)
+        
+        // Output should be a smart quote.
+        XCTAssertEqual(markupParser.text.string, "This is a test’ string containing a link\n")
+    }
+
     // MARK: - Mixed block and inline styles
     
     func testBulletItemWithEmphasis() {

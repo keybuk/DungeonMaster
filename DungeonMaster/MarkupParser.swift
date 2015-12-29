@@ -187,7 +187,7 @@ class MarkupParser {
         var string = ""
         let columns = line.componentsSeparatedByString("|")
         for (index, column) in columns.enumerate() {
-            let column = column.stringByTrimmingCharactersInSet(whitespace)
+            let column = replaceSingleQuotes(column.stringByTrimmingCharactersInSet(whitespace))
             
             // Calculate the column width, and save if it's larger than the previous width.
             var width = ceil((column as NSString).sizeWithAttributes([ NSFontAttributeName: font ]).width)
@@ -297,7 +297,7 @@ class MarkupParser {
     
     private func parseHeadingLine(line: String) {
         // Improved font.
-        let line = line.substringFromIndex(line.startIndex.advancedBy(1)).stringByTrimmingCharactersInSet(whitespace)
+        let line = replaceSingleQuotes(line.substringFromIndex(line.startIndex.advancedBy(1)).stringByTrimmingCharactersInSet(whitespace))
 
         let paragraphStyle = NSMutableParagraphStyle()
         switch lastBlock {
@@ -364,7 +364,8 @@ class MarkupParser {
             if let operatorRange = line.rangeOfCharacterFromSet(operators, options: [], range: range) {
                 // Might be an initial piece of text before the first operator in the line.
                 if range.startIndex != operatorRange.startIndex {
-                    mutableText.appendAttributedString(NSAttributedString(string: line.substringWithRange(range.startIndex..<operatorRange.startIndex), attributes: [
+                    let string = line.substringWithRange(range.startIndex..<operatorRange.startIndex)
+                    mutableText.appendAttributedString(NSAttributedString(string: replaceSingleQuotes(string), attributes: [
                         NSFontAttributeName: UIFont(descriptor: bodyFontDescriptor, size: 0.0),
                         NSParagraphStyleAttributeName: paragraphStyle,
                         ]))
@@ -405,7 +406,7 @@ class MarkupParser {
                             string += "\n"
                         }
                         
-                        mutableText.appendAttributedString(NSAttributedString(string: string, attributes: [
+                        mutableText.appendAttributedString(NSAttributedString(string: replaceSingleQuotes(string), attributes: [
                             NSFontAttributeName: UIFont(descriptor: emphasisedFontDescriptor[emphasisness], size: 0.0),
                             NSParagraphStyleAttributeName: paragraphStyle,
                             ]))
@@ -429,7 +430,8 @@ class MarkupParser {
                         
                     } else {
                         // Didn't find the end emphasis; add the entire emphasis operator range to the output and continue from after it.
-                        mutableText.appendAttributedString(NSAttributedString(string: line.substringWithRange(operatorRange.startIndex..<index), attributes: [
+                        let string = line.substringWithRange(operatorRange.startIndex..<index)
+                        mutableText.appendAttributedString(NSAttributedString(string: replaceSingleQuotes(string), attributes: [
                             NSFontAttributeName: UIFont(descriptor: bodyFontDescriptor, size: 0.0),
                             NSParagraphStyleAttributeName: paragraphStyle,
                             ]))
@@ -463,7 +465,7 @@ class MarkupParser {
                         }
                         
                         // Add the text in the link to the output.
-                        mutableText.appendAttributedString(NSAttributedString(string: linkText, attributes: attributes))
+                        mutableText.appendAttributedString(NSAttributedString(string: replaceSingleQuotes(linkText), attributes: attributes))
                         
                     } else {
                         // Didn't find an end to the link; just add the start operator to the output.
@@ -479,7 +481,7 @@ class MarkupParser {
                     if let endOperatorRange = line.rangeOfString("\"", options: [], range: operatorRange.endIndex..<range.endIndex, locale: nil) {
                         // Replace the quotes with smart quotes.
                         let string = "“\(line.substringWithRange(operatorRange.endIndex..<endOperatorRange.startIndex))”"
-                        mutableText.appendAttributedString(parseText(string, paragraphStyle: paragraphStyle, appendNewline: false))
+                        mutableText.appendAttributedString(parseText(replaceSingleQuotes(string), paragraphStyle: paragraphStyle, appendNewline: false))
 
                         range = endOperatorRange.endIndex..<range.endIndex
                     } else {
@@ -503,7 +505,7 @@ class MarkupParser {
                 }
                 
                 if trailing != "" {
-                    mutableText.appendAttributedString(NSAttributedString(string: trailing, attributes: [
+                    mutableText.appendAttributedString(NSAttributedString(string: replaceSingleQuotes(trailing), attributes: [
                         NSFontAttributeName: UIFont(descriptor: bodyFontDescriptor, size: 0.0),
                         NSParagraphStyleAttributeName: paragraphStyle,
                         ]))
@@ -527,6 +529,10 @@ class MarkupParser {
         }
         
         return .Center
+    }
+    
+    private func replaceSingleQuotes(string: String) -> String {
+        return string.stringByReplacingOccurrencesOfString("'", withString: "’")
     }
     
 }
