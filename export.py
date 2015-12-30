@@ -5,6 +5,7 @@ import re
 import sys
 import time
 
+import base
 import monster
 import plistlib
 
@@ -201,10 +202,10 @@ XP = {
 	"30": "155,000",
 }
 
-class Exporter(monster.MonsterParser):
+class MonsterExporter(monster.MonsterParser):
 
 	def __init__(self, filename, bookTags):
-		super(Exporter, self).__init__(filename)
+		super(MonsterExporter, self).__init__(filename)
 		self.bookTags = bookTags
 
 		self.name = None
@@ -912,13 +913,13 @@ def main():
 		"lmop", "hotdq", "hotdqs", "trot", "trots", "pota", "potas", ]
 
 	monsters = []
-	for filename in monster.local_files('Monsters'):
-		parser = Exporter(filename, bookTags=bookTags)
+	for filename in base.local_files('Monsters'):
+		parser = MonsterExporter(filename, bookTags=bookTags)
 		try:
 			try:
 				parser.parse()
 				monsters.append(parser.object())
-			except monster.ParseException, e:
+			except base.ParseException, e:
 				print >>sys.stderr, "%s:%d:%s" % (e.filename, e.lineno, e.message)
 		finally:
 			parser.close()
