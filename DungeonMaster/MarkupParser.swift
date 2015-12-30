@@ -111,6 +111,7 @@ class MarkupParser {
         case Heading
         case IndentParagraph
         case Paragraph
+        case LineBreak
     }
     
     /// Parse lines of text.
@@ -120,7 +121,9 @@ class MarkupParser {
     /// Multiple calls to `parse` extend the attributed string.
     func parse(lines: [String]) {
         for line in lines {
-            if line.containsString("|") {
+            if line == "" {
+                lastBlock = .LineBreak
+            } else if line.containsString("|") {
                 parseTableLine(line)
             } else if line.hasPrefix("•") {
                 parseBulletLine(line)
