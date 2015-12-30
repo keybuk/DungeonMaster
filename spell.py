@@ -24,6 +24,21 @@ class SpellParser(base.Parser):
 			else:
 				break
 
+		self.handle_level_school(line)
+
+		self.blank_line(error_message="Expected blank line after header")
+
+		lines = {
+			"Casting Time:": self.handle_casting_time,
+			"Range:": self.handle_range,
+			"Components:": self.handle_components,
+			"Duration:": self.handle_duration,
+		}
+		self.label_block(lines, all=True)
+
+		lines = self.parse_all_lines()
+		self.handle_description(lines)
+
 	def handle_name(self, name):
 		pass
 
@@ -33,6 +48,55 @@ class SpellParser(base.Parser):
 	def handle_source(self, source, page, section):
 		pass
 
+	def handle_level_school(self, line):
+		pass
+
+	def handle_casting_time(self, line):
+		pass
+
+	def handle_range(self, line):
+		pass
+
+	def handle_components(self, line):
+		pass
+
+	def handle_duration(self, line):
+		pass
+
+	def handle_description(self, lines):
+		pass
+
+
+SCHOOLS = [ "abjuration", "conjuration", "divination", "enchantment", "evocation", "illusion",
+			"necromancy", "transmutation" ]
+
+schools_expr = "|".join(SCHOOLS)
+schools_title_expr = "|".join(school.title() for school in SCHOOLS)
+
+LEVEL_SCHOOL_RE = re.compile(
+	r'^(?:(\d+)(?:st|nd|rd|th)-level (' + schools_expr + r')(?: \((ritual)\))?' +
+	r'|(' + schools_title_expr + r') cantrip)$'
+	)
+
+CASTING_TIME_RE = re.compile(
+	r'^(?:1 (?:(action)(?: or (\d+) (minutes?|hours?))?|(bonus action)|(reaction), which you take (.*))' +
+	r'|(\d+) (minutes?|hours?))$'
+	)
+
+RANGE_RE = re.compile(
+	r'^(?:(\d+) (feet|mile)' +
+	r'|(Self)(?: \((\d+)-(foot|mile)( radius| line| cone| cube|-radius sphere)\))?' +
+	r'|(Special)|(Touch)|(Unlimited))$'
+	)
+
+COMPONENTS_RE = re.compile(
+	r'^(?=.)(?:(V)(?:, |$))?(?:(S)(?:, |$))?(?:M \(([^\)]*)\))?$'
+	)
+
+DURATION_RE = re.compile(
+	r'^(?:1 (round)|(Concentration,? )?(?:[Uu]p to )?(\d+) (minutes?|hours?|days?)' +
+	r'|(Instantaneous)|(Special)|Until (dispelled)( or triggered)?)$'
+	)
 
 class SpellExporter(SpellParser):
 
@@ -43,12 +107,14 @@ class SpellExporter(SpellParser):
 		self.name = None
 		self.names = []
 		self.sources = []
+		self.info = {}
 
 	def object(self):
 		object = {
 			"name": unicode(self.name, 'utf8'),
 			"names": self.names,
 			"sources": self.sources,
+			"info": self.info,
 		}
 
 		return object
@@ -76,3 +142,139 @@ class SpellExporter(SpellParser):
 
 		self.sources.append(source)
 
+	def handle_level_school(self, line):
+		match = LEVEL_SCHOOL_RE.match(line)
+		if match is None:
+			raise self.error("Level/School didn't match expected format: %s" % line)
+
+		(level, school, ritual, cantrip_school) = match.groups()
+
+		if level is not None:
+			self.info['rawLevel'] = int(level)
+			self.info['rawSchool'] = SCHOOLS.index(school)
+		else:
+			self.info['rawLevel'] = 0
+			self.info['rawSchool'] = SCHOOLS.index(cantrip_school.lower())
+
+		if ritual is not None:
+			self.info['canCastAsRitual'] = True
+
+	def handle_casting_time(self, line):
+		match = CASTING_TIME_RE.match(line)
+		if match is None:
+			raise self.error("Casting Time didn't match expected format: %s" % line)
+
+		(action, action_alt_time, action_alt_unit, bonus_action, reaction, reaction_clause,
+		 time, unit) = match.groups()
+
+		if action is not None:
+			self.info['canCastAsAction'] = True
+
+			if action_alt_unit == 'hour' or action_alt_unit == 'hours':
+				self.info['rawCastingTime'] = int(action_alt_time) * 60
+			elif action_alt_unit == 'minute' or action_alt_unit == 'minutes':
+				self.info['rawCastingTime'] = int(action_alt_unit)
+
+		elif bonus_action is not None:
+			self.info['canCastAsBonusAction'] = True
+
+		elif reaction is not None:
+			self.info['canCastAsReaction'] = True
+			self.info['reactionResponse'] = unicode(reaction_clause, 'utf8')
+
+		elif unit == 'hour' or unit == 'hours':
+			self.info['rawCastingTime'] = int(time) * 60
+
+		elif unit == 'minute' or unit == 'minutes':
+			self.info['rawCastingTime'] = int(time)
+
+	def handle_range(self, line):
+		match = RANGE_RE.match(line)
+		if match is None:
+			raise self.error("Range didn't match expected format: %s" % line)
+
+		(distance, unit, range_self, self_distance, self_unit, self_shape,
+		 special, touch, unlimited) = match.groups()
+
+		if range_self is not None:
+			self.info['rawRange'] = 1
+
+			if self_unit == 'mile':
+				self.info['rawRangeDistance'] = int(self_distance) * 5280
+			elif self_unit == 'foot':
+				self.info['rawRangeDistance'] = int(self_distance)
+
+			if self_shape == ' radius':
+				self.info['rawRangeShape'] = 0
+			elif self_shape == '-radius sphere':
+				self.info['rawRangeShape'] = 1
+			elif self_shape == ' cube':
+				self.info['rawRangeShape'] = 2
+			elif self_shape == ' cone':
+				self.info['rawRangeShape'] = 3
+			elif self_shape == ' line':
+				self.info['rawRangeShape'] = 4
+
+		elif touch is not None:
+			self.info['rawRange'] = 2
+		elif special is not None:
+			self.info['rawRange'] = 3
+		elif unlimited is not None:
+			self.info['rawRange'] = 4
+		else:
+			self.info['rawRange'] = 0
+			if unit == 'mile':
+				self.info['rawRangeDistance'] = int(distance) * 5280
+			elif unit == 'feet':
+				self.info['rawRangeDistance'] = int(distance)
+
+	def handle_components(self, line):
+		match = COMPONENTS_RE.match(line)
+		if match is None:
+			raise self.error("Components didn't match expected format: %s" % line)
+
+		(verbal, somatic, materials) = match.groups()
+
+		if verbal is not None:
+			self.info['hasVerbalComponent'] = True
+		if somatic is not None:
+			self.info['hasSomaticComponent'] = True
+		if materials is not None:
+			self.info['hasMaterialComponent'] = True
+			self.info['materialComponent'] = unicode(materials, 'utf8')
+
+	def handle_duration(self, line):
+		match = DURATION_RE.match(line)
+		if match is None:
+			raise self.error("Duration didn't match expected format: %s" % line)
+
+		(one_round, concentration, time, unit,
+		 instantaneous, special, dispelled, or_triggered) = match.groups()
+
+		if special:
+			self.info['rawDuration'] = 4
+		elif one_round:
+			self.info['rawDuration'] = 1
+		elif or_triggered:
+			self.info['rawDuration'] = 3
+		elif dispelled:
+			self.info['rawDuration'] = 2
+		else:
+			self.info['rawDuration'] = 0
+
+			if unit == 'day' or unit == 'days':
+				self.info['rawDurationTime'] = int(time) * 60 * 24
+			elif unit == 'hour' or unit == 'hours':
+				self.info['rawDurationTime'] = int(time) * 60
+			elif unit == 'minute' or unit == 'minutes':
+				self.info['rawDurationTime'] = int(time)
+			elif instantaneous:
+				self.info['rawDurationTime'] = 0
+
+		if concentration:
+			self.info['requiresConcentration'] = True
+
+	def handle_description(self, lines):
+		text = "\n".join(lines)
+
+		self.info['text'] = unicode(text, 'utf8')

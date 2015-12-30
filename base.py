@@ -66,6 +66,19 @@ class Parser(object):
 
 		return lines
 
+	def parse_all_lines(self):
+		lines = []
+		while True:
+			line = self.next_line()
+			if line is None:
+				break
+			lines.append(line)
+
+		if lines[-1] == "":
+			raise self.error("Blank line at end of file")
+
+		return lines
+
 	def check_line(self, line):
 		pass
 

@@ -66,7 +66,7 @@ def main():
 		}
 	]
 	bookTags = [
-		"phb", "mm", "dmg", "pbr", "dmbr",
+		"phb", "mm", "dmg", "pbr",  "dmbr",
 		"lmop", "hotdq", "hotdqs", "trot", "trots", "pota", "potas", ]
 
 	monsters = []
