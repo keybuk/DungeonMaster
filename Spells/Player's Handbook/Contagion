@@ -4,7 +4,8 @@ phb 227
 
 Casting Time: 1 action
 Range: Touch
-Component: V, S
+// PHB has "Component:" here, clearly a typo and not worth special-casing.
+Components: V, S
 Duration: 7 days
 
 Your touch inflicts disease. Make a melee spell attack against a creature within your reach. On a hit, you afflict the creature with a disease of your choice from any of the ones described below.
