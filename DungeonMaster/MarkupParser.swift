@@ -96,7 +96,7 @@ class MarkupParser {
             bodyFontDescriptor.fontDescriptorWithSymbolicTraits(.TraitBold),
             bodyFontDescriptor.fontDescriptorWithSymbolicTraits([ .TraitBold, .TraitItalic ]),
         ]
-        tableFontDescriptor = UIFontDescriptor.preferredFontDescriptorWithTextStyle(UIFontTextStyleCaption1)
+        tableFontDescriptor = bodyFontDescriptor.fontDescriptorWithSize(floor(bodyFontDescriptor.pointSize * 0.9))
         tableHeadingFontDescriptor = tableFontDescriptor.fontDescriptorWithSymbolicTraits(.TraitBold)
         headingFontDescriptor = UIFontDescriptor.preferredFontDescriptorWithTextStyle(UIFontTextStyleHeadline)
         
@@ -106,7 +106,7 @@ class MarkupParser {
     
     enum LastBlock {
         case None
-        case Table(Int, [CGFloat], [NSTextAlignment])
+        case Table(Int, Int, [CGFloat], [NSTextAlignment])
         case Bullet
         case Heading
         case IndentParagraph
@@ -156,9 +156,11 @@ class MarkupParser {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineBreakMode = .ByClipping
         paragraphStyle.tabStops = []
+        paragraphStyle.lineHeightMultiple = 1/0.9 * 1.2
+        paragraphStyle.lineSpacing = tableFontDescriptor.pointSize * 0.5
         
         switch lastBlock {
-        case .Table(_, _, _), .Heading:
+        case .Table(_, _, _, _), .Heading:
             break
         case .None:
             paragraphStyle.paragraphSpacingBefore = paragraphSpacingBefore
@@ -168,13 +170,15 @@ class MarkupParser {
         
         let font: UIFont
         var tableIndex = mutableText.length
+        var tableRows = 0
         var tableWidths = [CGFloat]()
         var tableAlignments = [NSTextAlignment]()
         var ignoreAlignment = false
         switch lastBlock {
-        case .Table(let index, let widths, let alignments):
+        case .Table(let index, let rows, let widths, let alignments):
             font = UIFont(descriptor: tableFontDescriptor, size: 0.0)
             tableIndex = index
+            tableRows = rows
             tableWidths = widths
             tableAlignments = alignments
         default:
@@ -256,13 +260,20 @@ class MarkupParser {
             index = range.location + range.length
         }
         
-        // Append the new row.
-        mutableText.appendAttributedString(NSAttributedString(string: "\(string)\n", attributes: [
+        // Get sexy with the coloring.
+        var attributes = [
             NSFontAttributeName: font,
-            NSParagraphStyleAttributeName: paragraphStyle
-            ]))
+            NSParagraphStyleAttributeName: paragraphStyle,
+        ]
+        if tableRows % 2 == 1 {
+            attributes[NSBackgroundColorAttributeName] = UIColor(white: 0.0, alpha: 0.05)
+        }
         
-        lastBlock = .Table(tableIndex, tableWidths, tableAlignments)
+        
+        // Append the new row.
+        mutableText.appendAttributedString(NSAttributedString(string: "\(string)\n", attributes: attributes))
+        
+        lastBlock = .Table(tableIndex, tableRows + 1, tableWidths, tableAlignments)
     }
     
     private func parseBulletLine(line: String) {
