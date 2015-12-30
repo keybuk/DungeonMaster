@@ -366,6 +366,30 @@ func importIfNeeded() {
         }
     }
     
+    // Import spells.
+    let spellDatas = data["spells"] as! [NSDictionary]
+    for spellData in spellDatas {
+        let name = spellData["name"] as! String
+        let spell = Spell(name: name, inManagedObjectContext: managedObjectContext)
+        
+        let sourceDatas = spellData["sources"] as! [NSDictionary]
+        for sourceData in sourceDatas {
+            let bookIndex = sourceData["book"]!.integerValue
+            let book = books[bookIndex]
+            
+            let page = sourceData["page"]!.integerValue
+            
+            let source = Source(book: book, page: page, spell: spell, inManagedObjectContext: managedObjectContext)
+            
+            if let section = sourceData["section"] as? String {
+                source.section = section
+            }
+        }
+        
+        let info = spellData["info"] as! [String: AnyObject]
+        spell.setValuesForKeysWithDictionary(info)
+    }
+    
     // Check that all the combatants got a monster.
     for (monsterName, referingCombatants) in combatants {
         for combatant in referingCombatants {

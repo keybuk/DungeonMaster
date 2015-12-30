@@ -732,6 +732,33 @@ enum MagicSchool: Int {
     }
 }
 
+/// SpellRange represents the base of the range of a spell.
+enum SpellRange: Int {
+    case Distance
+    case CenteredOnSelf
+    case Touch
+    case Special
+    case Unlimited
+}
+
+/// SpellRangeShape represents the shape of a spell's effect.
+enum SpellRangeShape: Int {
+    case Radius
+    case Sphere
+    case Cube
+    case Cone
+    case Line
+}
+
+/// SpellDuration represents the durations of .
+enum SpellDuration: Int {
+    case Time
+    case Round
+    case UntilDispelled
+    case UntilDispelledOrTriggered
+    case Special
+}
+
 /// Difficulty of an encounter.
 /// - **None**: the encounter poses no difficulty to the players.
 /// - **Easy**: victory is pretty much guaranteed, aside from the loss of a few hit points.

@@ -215,7 +215,31 @@
         <attribute name="rawPage" attributeType="Integer 16" syncable="YES"/>
         <attribute name="section" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="book" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="sources" inverseEntity="Book" syncable="YES"/>
-        <relationship name="monster" maxCount="1" deletionRule="Cascade" destinationEntity="Monster" inverseName="sources" inverseEntity="Monster" syncable="YES"/>
+        <relationship name="monster" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Monster" inverseName="sources" inverseEntity="Monster" syncable="YES"/>
+        <relationship name="spell" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Spell" inverseName="sources" inverseEntity="Spell" syncable="YES"/>
+    </entity>
+    <entity name="Spell" representedClassName=".Spell" syncable="YES">
+        <attribute name="canCastAsAction" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="canCastAsBonusAction" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="canCastAsReaction" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="canCastAsRitual" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="hasMaterialComponent" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="hasSomaticComponent" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="hasVerbalComponent" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="materialComponent" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="rawCastingTime" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="rawDuration" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="rawDurationTime" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="rawLevel" attributeType="Integer 16" defaultValueString="1" syncable="YES"/>
+        <attribute name="rawRange" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="rawRangeDistance" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="rawRangeShape" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="rawSchool" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="reactionResponse" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="requiresConcentration" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="text" attributeType="String" syncable="YES"/>
+        <relationship name="sources" toMany="YES" deletionRule="Cascade" destinationEntity="Source" inverseName="spell" inverseEntity="Source" syncable="YES"/>
     </entity>
     <entity name="Tag" representedClassName=".Tag" syncable="YES">
         <attribute name="name" attributeType="String" syncable="YES"/>
@@ -253,8 +277,9 @@
         <element name="PlayerSkill" positionX="-45" positionY="360" width="128" height="90"/>
         <element name="Reaction" positionX="261" positionY="459" width="128" height="90"/>
         <element name="RegionalEffect" positionX="565" positionY="801" width="128" height="75"/>
-        <element name="Source" positionX="-92" positionY="198" width="128" height="105"/>
+        <element name="Source" positionX="-92" positionY="198" width="128" height="120"/>
         <element name="Tag" positionX="-92" positionY="432" width="128" height="75"/>
         <element name="Trait" positionX="261" positionY="261" width="128" height="90"/>
+        <element name="Spell" positionX="-54" positionY="351" width="128" height="360"/>
     </elements>
 </model>

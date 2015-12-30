@@ -19,6 +19,7 @@
 		D2116A531C10F4E9001EDBBA /* LairTrait.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2116A521C10F4E9001EDBBA /* LairTrait.swift */; };
 		D2116A551C10F4F8001EDBBA /* RegionalEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2116A541C10F4F8001EDBBA /* RegionalEffect.swift */; };
 		D2116A571C10F791001EDBBA /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2116A561C10F791001EDBBA /* Data.plist */; };
+		D21BACED1C3365E8007E2934 /* Spell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BACEC1C3365E8007E2934 /* Spell.swift */; };
 		D23435EC1C0D5A3D00108D5F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23435EB1C0D5A3D00108D5F /* Model.swift */; };
 		D23435EE1C0D5F9E00108D5F /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23435ED1C0D5F9E00108D5F /* Book.swift */; };
 		D23435F21C0D608B00108D5F /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23435F01C0D608B00108D5F /* Source.swift */; };
@@ -112,6 +113,7 @@
 		D2116A521C10F4E9001EDBBA /* LairTrait.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LairTrait.swift; sourceTree = "<group>"; };
 		D2116A541C10F4F8001EDBBA /* RegionalEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionalEffect.swift; sourceTree = "<group>"; };
 		D2116A561C10F791001EDBBA /* Data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Data.plist; path = ../Data.plist; sourceTree = "<group>"; };
+		D21BACEC1C3365E8007E2934 /* Spell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spell.swift; sourceTree = "<group>"; };
 		D23435EB1C0D5A3D00108D5F /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		D23435ED1C0D5F9E00108D5F /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		D23435F01C0D608B00108D5F /* Source.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				D2116A501C10F4CE001EDBBA /* LairAction.swift */,
 				D2116A521C10F4E9001EDBBA /* LairTrait.swift */,
 				D2116A541C10F4F8001EDBBA /* RegionalEffect.swift */,
+				D21BACEC1C3365E8007E2934 /* Spell.swift */,
 				D298E8F01C29E08F007461A9 /* Player.swift */,
 				D298E8F21C29F0B5007461A9 /* PlayerSavingThrow.swift */,
 				D298E8F41C29F112007461A9 /* PlayerSkill.swift */,
@@ -516,6 +519,7 @@
 				D298E8F31C29F0B5007461A9 /* PlayerSavingThrow.swift in Sources */,
 				D23435EC1C0D5A3D00108D5F /* Model.swift in Sources */,
 				D26FBA3F1C1EA4E700D44503 /* CombatantCondition.swift in Sources */,
+				D21BACED1C3365E8007E2934 /* Spell.swift in Sources */,
 				D249CF891C22602800CDE673 /* ConditionRulesViewController.swift in Sources */,
 				D2A9AF0D1BFFEAA5009902ED /* DungeonMaster.xcdatamodeld in Sources */,
 				D26FBA3B1C1E3FE400D44503 /* DamageViewController.swift in Sources */,
