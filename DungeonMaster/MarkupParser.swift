@@ -107,6 +107,7 @@ class MarkupParser {
     enum LastBlock {
         case None
         case Table(Int, Int, [CGFloat], [NSTextAlignment])
+        case FinishedTable
         case Bullet
         case Heading
         case IndentParagraph
@@ -121,20 +122,25 @@ class MarkupParser {
     /// Multiple calls to `parse` extend the attributed string.
     func parse(lines: [String]) {
         for line in lines {
-            if line == "" {
-                lastBlock = .LineBreak
-            } else if line.containsString("|") {
+            if line.containsString("|") {
                 parseTableLine(line)
-            } else if line.hasPrefix("•") {
-                parseBulletLine(line)
-            } else if line.hasPrefix("#") {
-                parseHeadingLine(line)
-            } else if line.hasPrefix("}") {
-                parseIndentLine(line)
             } else {
-                parseTextLine(line)
+                layoutTableIfNeeded()
+                if line.hasPrefix("•") {
+                    parseBulletLine(line)
+                } else if line.hasPrefix("#") {
+                    parseHeadingLine(line)
+                } else if line.hasPrefix("}") {
+                    parseIndentLine(line)
+                } else if line != "" {
+                    parseTextLine(line)
+                } else {
+                    lastBlock = .LineBreak
+                }
             }
         }
+        
+        layoutTableIfNeeded()
     }
     
     /// Parse a block of text.
@@ -153,9 +159,9 @@ class MarkupParser {
         lastBlock = LastBlock.None
         mutableText = NSMutableAttributedString()
     }
-
+    
     private func parseTableLine(line: String) {
-        // Tables are rendered as a series of tabbed data, with the stop distances adjusted each line to match.
+        // Tables are rendered as a series of tabbed data.
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineBreakMode = .ByClipping
         paragraphStyle.tabStops = []
@@ -171,29 +177,29 @@ class MarkupParser {
             paragraphStyle.paragraphSpacingBefore = paragraphSpacing
         }
         
+        // Build up the table row-per-row.
         let font: UIFont
         var tableIndex = mutableText.length
         var tableRows = 0
         var tableWidths = [CGFloat]()
         var tableAlignments = [NSTextAlignment]()
-        var ignoreAlignment = false
-        switch lastBlock {
-        case .Table(let index, let rows, let widths, let alignments):
-            font = UIFont(descriptor: tableFontDescriptor, size: 0.0)
+        
+        if case .Table(let index, let rows, let widths, let alignments) = lastBlock {
             tableIndex = index
             tableRows = rows
             tableWidths = widths
             tableAlignments = alignments
-        default:
-            // First row always has its font set to the heading font, and the alignment ignored and .Center used instead (until overriden by a later row).
+
+            // Body rows use the standard font.
+            font = UIFont(descriptor: tableFontDescriptor, size: 0.0)
+        } else {
+            // First row always has its font set to the heading font.
             font = UIFont(descriptor: tableHeadingFontDescriptor, size: 0.0)
-            ignoreAlignment = true
         }
         
-        // Split the line into columns, and recompose as a tab-separated string.
-        var string = ""
-        let columns = line.componentsSeparatedByString("|")
-        for (index, column) in columns.enumerate() {
+        // Split the line into columns, and calculate the render widths and alignment.
+        var columns = [String]()
+        for (index, column) in line.componentsSeparatedByString("|").enumerate() {
             let column = replaceSingleQuotes(column.stringByTrimmingCharactersInSet(whitespace))
             
             // Calculate the column width, and save if it's larger than the previous width.
@@ -206,7 +212,7 @@ class MarkupParser {
             }
             
             // Figure out the alignment, and revert to .Left if .Center wouldn't apply to any one row.
-            var alignment = ignoreAlignment ? .Center : alignmentForColumn(column)
+            var alignment = tableRows == 0 ? .Center : alignmentForColumn(column)
             if index < tableAlignments.count {
                 alignment = alignment == tableAlignments[index] ? alignment : .Left
                 tableAlignments[index] = alignment
@@ -214,53 +220,7 @@ class MarkupParser {
                 tableAlignments.append(alignment)
             }
             
-            string += "\t\(column)"
-            
-        }
-        
-        // Calculate the expected widths of Left-aligned columns, and the available space for them.
-        var expectedColumnWidths: CGFloat = 0.0, fixedColumnWidths: CGFloat = 0.0
-        for (alignment, width) in zip(tableAlignments, tableWidths) {
-            if alignment == .Left {
-                expectedColumnWidths += width
-            } else {
-                fixedColumnWidths += width
-            }
-        }
-        
-        let availableColumnWidths = tableWidth != nil ? (tableWidth! - CGFloat(tableWidths.count + 1) * tableSpacing - fixedColumnWidths) : 0.0
-        
-        // Lay out the tab stops at the appropriate places for the columns.
-        var location = tableSpacing
-        for (alignment, width) in zip(tableAlignments, tableWidths) {
-            var expandedWidth = width, columnLocation = location
-            if alignment == .Center {
-                columnLocation += expandedWidth / 2.0
-            } else if expectedColumnWidths < availableColumnWidths {
-                expandedWidth = round(width / expectedColumnWidths * availableColumnWidths)
-            }
-            
-            paragraphStyle.tabStops.append(NSTextTab(textAlignment: alignment, location: columnLocation, options: [String:AnyObject]()))
-            location += expandedWidth + tableSpacing
-        }
-        
-        // Reset the tab stops in the existing rendered portion of the table.
-        var index = tableIndex
-        while index < mutableText.length {
-            var range = NSRange()
-            if let priorStyle = mutableText.attribute(NSParagraphStyleAttributeName, atIndex: index, effectiveRange: &range) as? NSParagraphStyle {
-                if priorStyle.paragraphSpacingBefore != 0.0 {
-                    let newStyle = NSMutableParagraphStyle()
-                    newStyle.setParagraphStyle(priorStyle)
-                    newStyle.tabStops = paragraphStyle.tabStops
-                    
-                    mutableText.addAttribute(NSParagraphStyleAttributeName, value: newStyle, range: range)
-                } else {
-                    mutableText.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: range)
-                }
-            }
-            
-            index = range.location + range.length
+            columns.append(column)
         }
         
         // Get sexy with the coloring.
@@ -272,11 +232,74 @@ class MarkupParser {
             attributes[NSBackgroundColorAttributeName] = UIColor(white: 0.0, alpha: 0.05)
         }
         
-        
         // Append the new row.
-        mutableText.appendAttributedString(NSAttributedString(string: "\(string)\n", attributes: attributes))
+        let row = "\t" + columns.joinWithSeparator("\t")
+        mutableText.appendAttributedString(NSAttributedString(string: "\(row)\n", attributes: attributes))
         
         lastBlock = .Table(tableIndex, tableRows + 1, tableWidths, tableAlignments)
+    }
+    
+    private func alignmentForColumn(column: String) -> NSTextAlignment {
+        for character in column.characters {
+            switch character {
+            case "0"..."9", "+", "-", "–", "—":
+                continue
+            default:
+                return .Left
+            }
+        }
+        
+        return .Center
+    }
+
+    private func layoutTableIfNeeded() {
+        guard case .Table(let tableIndex, _, let tableWidths, let tableAlignments) = lastBlock else { return }
+        
+        // Calculate the combined column widths.
+        var flexibleColumnWidths: CGFloat = 0.0, fixedColumnWidths: CGFloat = 0.0
+        for (alignment, width) in zip(tableAlignments, tableWidths) {
+            if alignment == .Left {
+                flexibleColumnWidths += width
+            } else {
+                fixedColumnWidths += width
+            }
+        }
+        
+        // If the parser has a fixed table width set, calculate how much space is available for the flexible columns.
+        let availableColumnWidths = tableWidth != nil ? (tableWidth! - CGFloat(tableWidths.count + 1) * tableSpacing - fixedColumnWidths) : 0.0
+        
+        // Lay out the tab stops at the appropriate places for the columns.
+        var location = tableSpacing
+        var tabStops = [NSTextTab]()
+        for (alignment, width) in zip(tableAlignments, tableWidths) {
+            var width = width, columnLocation = location
+            if alignment == .Center {
+                columnLocation += width / 2.0
+            } else if flexibleColumnWidths < availableColumnWidths {
+                width = round(width / flexibleColumnWidths * availableColumnWidths)
+            }
+            
+            tabStops.append(NSTextTab(textAlignment: alignment, location: columnLocation, options: [String:AnyObject]()))
+            location += width + tableSpacing
+        }
+        
+        // Apply the tab stops to the table by updating the previous paragraph styles
+        var index = tableIndex
+        while index < mutableText.length {
+            var range = NSRange()
+            if let priorStyle = mutableText.attribute(NSParagraphStyleAttributeName, atIndex: index, effectiveRange: &range) as? NSParagraphStyle {
+                let paragraphStyle = NSMutableParagraphStyle()
+                paragraphStyle.setParagraphStyle(priorStyle)
+                paragraphStyle.tabStops = tabStops
+                
+                mutableText.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: range)
+            }
+            
+            index = range.location + range.length
+        }
+        
+        // Since the table has been laid out, we can't extend it any further. Make sure that the next parse() call starts a new table if it has one.
+        lastBlock = .FinishedTable
     }
     
     private func parseBulletLine(line: String) {
@@ -530,19 +553,6 @@ class MarkupParser {
         }
         
         return text
-    }
-    
-    private func alignmentForColumn(column: String) -> NSTextAlignment {
-        for character in column.characters {
-            switch character {
-            case "0"..."9", "+", "-", "–", "—":
-                continue
-            default:
-                return .Left
-            }
-        }
-        
-        return .Center
     }
     
     private func replaceSingleQuotes(string: String) -> String {
