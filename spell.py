@@ -94,7 +94,7 @@ COMPONENTS_RE = re.compile(
 	)
 
 DURATION_RE = re.compile(
-	r'^(?:1 (round)|(Concentration,? )?(?:[Uu]p to )?(\d+) (minutes?|hours?|days?)' +
+	r'^(?:1 (round)|(?:(Concentration,? up to )|(Up to ))?(\d+) (minutes?|hours?|days?)' +
 	r'|(Instantaneous)|(Special)|Until (dispelled)( or triggered)?)$'
 	)
 
@@ -248,31 +248,32 @@ class SpellExporter(SpellParser):
 		if match is None:
 			raise self.error("Duration didn't match expected format: %s" % line)
 
-		(one_round, concentration, time, unit,
+		(one_round, concentration, max_time, time, unit,
 		 instantaneous, special, dispelled, or_triggered) = match.groups()
 
 		if special:
-			self.info['rawDuration'] = 4
+			self.info['rawDuration'] = 6
 		elif one_round:
-			self.info['rawDuration'] = 1
-		elif or_triggered:
 			self.info['rawDuration'] = 3
+		elif or_triggered:
+			self.info['rawDuration'] = 5
 		elif dispelled:
+			self.info['rawDuration'] = 4
+		elif instantaneous:
+			self.info['rawDuration'] = 0
+		elif concentration or max_time:
+			if concentration:
+				self.info['requiresConcentration'] = True
 			self.info['rawDuration'] = 2
 		else:
-			self.info['rawDuration'] = 0
+			self.info['rawDuration'] = 1
 
-			if unit == 'day' or unit == 'days':
-				self.info['rawDurationTime'] = int(time) * 60 * 24
-			elif unit == 'hour' or unit == 'hours':
-				self.info['rawDurationTime'] = int(time) * 60
-			elif unit == 'minute' or unit == 'minutes':
-				self.info['rawDurationTime'] = int(time)
-			elif instantaneous:
-				self.info['rawDurationTime'] = 0
-
-		if concentration:
-			self.info['requiresConcentration'] = True
+		if unit == 'day' or unit == 'days':
+			self.info['rawDurationTime'] = int(time) * 60 * 24
+		elif unit == 'hour' or unit == 'hours':
+			self.info['rawDurationTime'] = int(time) * 60
+		elif unit == 'minute' or unit == 'minutes':
+			self.info['rawDurationTime'] = int(time)
 
 	def handle_description(self, lines):
 		text = "\n".join(lines)

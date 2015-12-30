@@ -146,7 +146,7 @@ final class Spell: NSManagedObject {
     
     /// Duration of the spell (in minutes).
     ///
-    /// Present when `duration` is `.Time`. When the spell is instantaneous, the value 0 is given.
+    /// Present when `duration` is `.Time` or `.MaxTime`.
     var durationTime: Int? {
         get {
             return rawDurationTime?.integerValue
@@ -158,6 +158,8 @@ final class Spell: NSManagedObject {
     @NSManaged private var rawDurationTime: NSNumber?
     
     /// True if the spell requires concentration throughout its duration.
+    ///
+    /// Only ever `true` when `duration` is `MaxTime`, since concentration spells cannot force a fixed time.
     @NSManaged var requiresConcentration: Bool
     
     /// Text description accompanying the spell.

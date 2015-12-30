@@ -75690,8 +75690,6 @@ A humanoid slain by this attack rises 24 hours later as a zombie under Naergoth'
 				<true/>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>0</integer>
 				<key>rawRange</key>
@@ -75740,7 +75738,7 @@ This spell's damage increases by 1d6 when you reach 5th level (2d6), 11th level 
 				<key>materialComponent</key>
 				<string>a tiny strip of white cloth</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>480</integer>
 				<key>rawLevel</key>
@@ -75793,7 +75791,7 @@ This spell's damage increases by 1d6 when you reach 5th level (2d6), 11th level 
 				<key>rawCastingTime</key>
 				<integer>1</integer>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>480</integer>
 				<key>rawLevel</key>
@@ -75841,7 +75839,7 @@ An audible alarm produces the sound of a hand bell for 10 seconds within 60 feet
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -75894,7 +75892,7 @@ An audible alarm produces the sound of a hand bell for 10 seconds within 60 feet
 				<key>materialComponent</key>
 				<string>a morsel of food</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>1440</integer>
 				<key>rawLevel</key>
@@ -75953,7 +75951,7 @@ An audible alarm produces the sound of a hand bell for 10 seconds within 60 feet
 				<key>materialComponent</key>
 				<string>a morsel of food</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>1440</integer>
 				<key>rawLevel</key>
@@ -76012,8 +76010,6 @@ When the messenger arrives, it delivers your message to the creature that you de
 				<integer>1</integer>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>3</integer>
 				<key>rawRange</key>
@@ -76066,7 +76062,7 @@ The creature is under your control for 24 hours, after which it stops obeying an
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -76131,7 +76127,7 @@ If you command an object to attack, it can make a single melee attack against a 
 				<key>materialComponent</key>
 				<string>a pinch of powdered iron or iron filings</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -76194,7 +76190,7 @@ A magic weapon's properties and powers are suppressed if it is used against a ta
 				<key>materialComponent</key>
 				<string>a bit of bat fur</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -76248,7 +76244,7 @@ As an action, you can move the eye up to 30 feet in any direction. There is no l
 				<key>materialComponent</key>
 				<string>gold dust worth at least 25 gp, which the spell consumes</string>
 				<key>rawDuration</key>
-				<integer>2</integer>
+				<integer>4</integer>
 				<key>rawLevel</key>
 				<integer>2</integer>
 				<key>rawRange</key>
@@ -76295,7 +76291,7 @@ While affected by this spell, the object is more diffcult to break or force open
 				<key>materialComponent</key>
 				<string>a cup of water</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -76344,7 +76340,7 @@ While affected by this spell, the object is more diffcult to break or force open
 				<key>rawCastingTime</key>
 				<integer>60</integer>
 				<key>rawDuration</key>
-				<integer>4</integer>
+				<integer>6</integer>
 				<key>rawLevel</key>
 				<integer>9</integer>
 				<key>rawRange</key>
@@ -76400,8 +76396,6 @@ If you are returned to your body prematurely, your companions remain in their as
 				<integer>1</integer>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>2</integer>
 				<key>rawRange</key>
@@ -76453,7 +76447,7 @@ If you cast the spell two or more times before completing your next long rest, t
 				<key>materialComponent</key>
 				<string>a drop of blood</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -76506,7 +76500,7 @@ If you cast the spell two or more times before completing your next long rest, t
 				<key>materialComponent</key>
 				<string>an item distasteful to the target</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -76555,7 +76549,7 @@ If the target is native to a different plane of existence than the one you're on
 				<key>materialComponent</key>
 				<string>a handful of oak bark</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -76607,7 +76601,7 @@ If the target is native to a different plane of existence than the one you're on
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -76655,7 +76649,7 @@ If the target is native to a different plane of existence than the one you're on
 				<key>hasSomaticComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -76707,7 +76701,7 @@ If the target is native to a different plane of existence than the one you're on
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -76753,7 +76747,7 @@ A [remove curse] spell ends this effect. At the DM's option, you may choose an a
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>10</integer>
 				<key>rawLevel</key>
@@ -76802,7 +76796,7 @@ When a creature enters the wall's area for the first time on a turn or starts it
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>1</integer>
+				<integer>3</integer>
 				<key>rawLevel</key>
 				<integer>0</integer>
 				<key>rawRange</key>
@@ -76848,7 +76842,7 @@ When a creature enters the wall's area for the first time on a turn or starts it
 				<key>materialComponent</key>
 				<string>a sprinkling of holy water</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -76898,8 +76892,6 @@ When a creature enters the wall's area for the first time on a turn or starts it
 				<true/>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>4</integer>
 				<key>rawRange</key>
@@ -76944,7 +76936,7 @@ If you target a nonmagical plant that isn't a creature, such as a tree or shrub,
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -76995,7 +76987,7 @@ If you target a nonmagical plant that isn't a creature, such as a tree or shrub,
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -77041,8 +77033,6 @@ If you target a nonmagical plant that isn't a creature, such as a tree or shrub,
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
-				<key>rawDurationTime</key>
 				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>1</integer>
@@ -77091,7 +77081,7 @@ The fire ignites any flammable objects in the area that aren't being worn or car
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>10</integer>
 				<key>rawLevel</key>
@@ -77143,7 +77133,7 @@ If you are outdoors in stormy conditions when you cast this spell, the spell giv
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -77198,8 +77188,6 @@ Alternatively, you can make a target indifferent about creatures of your choice 
 				<string>a bit of fur; a piece of amber, glass, or a crystal rod; and three silver pins</string>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>6</integer>
 				<key>rawRange</key>
@@ -77245,7 +77233,7 @@ A target must make a Dexterity saving throw. The target takes 10d8 lightning dam
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -77292,7 +77280,7 @@ A target must make a Dexterity saving throw. The target takes 10d8 lightning dam
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>1</integer>
+				<integer>3</integer>
 				<key>rawLevel</key>
 				<integer>0</integer>
 				<key>rawRange</key>
@@ -77342,8 +77330,6 @@ This spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level 
 				<key>materialComponent</key>
 				<string>a diamond worth at least 50 gp</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
-				<key>rawDurationTime</key>
 				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>1</integer>
@@ -77405,7 +77391,7 @@ This spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level 
 				<key>rawCastingTime</key>
 				<integer>10</integer>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>10</integer>
 				<key>rawLevel</key>
@@ -77453,7 +77439,7 @@ A creature that can see the sensor (such as a creature benefiting from see invis
 				<key>materialComponent</key>
 				<string>a sliver of glass</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -77502,7 +77488,7 @@ A creature that can see the sensor (such as a creature benefiting from see invis
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>10</integer>
 				<key>rawLevel</key>
@@ -77563,7 +77549,7 @@ The fog moves 10 feet away from you at the start of each of your turns, rolling 
 				<key>materialComponent</key>
 				<string>a pinch of powder or sand that is colored red, yellow, and blue</string>
 				<key>rawDuration</key>
-				<integer>1</integer>
+				<integer>3</integer>
 				<key>rawLevel</key>
 				<integer>1</integer>
 				<key>rawRange</key>
@@ -77621,7 +77607,7 @@ Starting with the creature that has the lowest current hit points, each creature
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>1</integer>
+				<integer>3</integer>
 				<key>rawLevel</key>
 				<integer>1</integer>
 				<key>rawRange</key>
@@ -77678,7 +77664,7 @@ Some typical commands and their effects follow. You might issue a command other 
 				<key>rawCastingTime</key>
 				<integer>1</integer>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -77722,7 +77708,7 @@ If you cast the spell two or more times before finishing your next long rest, th
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -77771,7 +77757,7 @@ The spell ends if you attack any other creature, if you cast a spell that target
 				<key>materialComponent</key>
 				<string>a pinch of soot and salt</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -77820,8 +77806,6 @@ This spell doesn't decode secret messages in a text or a glyph, such as an arcan
 				<key>materialComponent</key>
 				<string>a small crystal or glass cone</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
-				<key>rawDurationTime</key>
 				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>5</integer>
@@ -77874,7 +77858,7 @@ A creature killed by this spell becomes a frozen statue until it thaws.
 				<key>materialComponent</key>
 				<string>three nut shells</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -77944,7 +77928,7 @@ At the end of each of its turns, an affected target can make a Wisdom saving thr
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -78004,7 +77988,7 @@ The DM has the creatures' statistics.
 				<key>rawCastingTime</key>
 				<integer>1</integer>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -78056,7 +78040,7 @@ The DM has the elemental's statistics.
 				<key>rawCastingTime</key>
 				<integer>1</integer>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -78095,7 +78079,7 @@ On a successful save, you can ask the entity up to five questions. You must ask 
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>10080</integer>
 				<key>rawLevel</key>
@@ -78145,7 +78129,7 @@ Since this spell induces a natural disease in its target, any effect that remove
 				<key>materialComponent</key>
 				<string>ruby dust worth 50 gp, which the spell consumes</string>
 				<key>rawDuration</key>
-				<integer>2</integer>
+				<integer>4</integer>
 				<key>rawLevel</key>
 				<integer>2</integer>
 				<key>rawRange</key>
@@ -78197,7 +78181,7 @@ Since this spell induces a natural disease in its target, any effect that remove
 				<key>materialComponent</key>
 				<string>a drop of water and a pinch of dust</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>10</integer>
 				<key>rawLevel</key>
@@ -78257,7 +78241,7 @@ The first time each turn that an object enters the vortex, the object takes 2d8 
 				<key>rawCastingTime</key>
 				<integer>10</integer>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>480</integer>
 				<key>rawLevel</key>
@@ -78333,8 +78317,6 @@ Stage | Condition
 				<true/>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>3</integer>
 				<key>rawRange</key>
@@ -78381,8 +78363,6 @@ Stage | Condition
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
-				<key>rawDurationTime</key>
 				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>3</integer>
@@ -78431,7 +78411,7 @@ Stage | Condition
 				<key>rawCastingTime</key>
 				<integer>1</integer>
 				<key>rawDuration</key>
-				<integer>4</integer>
+				<integer>6</integer>
 				<key>rawLevel</key>
 				<integer>5</integer>
 				<key>rawRange</key>
@@ -78487,8 +78467,6 @@ Using any material created by this spell as another spell's material component c
 				<true/>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>1</integer>
 				<key>rawRange</key>
@@ -78535,7 +78513,7 @@ Using any material created by this spell as another spell's material component c
 				<key>materialComponent</key>
 				<string>a bit of phosphorus or wychwood, or a glowworm</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -78586,7 +78564,7 @@ As a bonus action on your turn, you can move the lights up to 60 feet to a new s
 				<key>materialComponent</key>
 				<string>bat fur and a drop of pitch or piece of coal</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>10</integer>
 				<key>rawLevel</key>
@@ -78636,7 +78614,7 @@ If any of this spell's area overlaps with an area of light created by a spell of
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -78690,7 +78668,7 @@ If any of this spell's area overlaps with an area of darkness created by a spell
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>480</integer>
 				<key>rawLevel</key>
@@ -78740,7 +78718,7 @@ If the spell is still in effect when the target is subjected to an effect that w
 				<key>materialComponent</key>
 				<string>a tiny ball of bat guano and sulfur</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -78791,8 +78769,6 @@ The fire damages objects in the area and ignites flammable objects that aren't b
 				<true/>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>5</integer>
 				<key>rawRange</key>
@@ -78832,7 +78808,7 @@ The fire damages objects in the area and ignites flammable objects that aren't b
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>10</integer>
 				<key>rawLevel</key>
@@ -78887,7 +78863,7 @@ The spell can penetrate most barriers, but it is blocked by 1 foot of stone, 1 i
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>10</integer>
 				<key>rawLevel</key>
@@ -78940,7 +78916,7 @@ The spell can penetrate most barriers, but it is blocked by 1 foot of stone, 1 i
 				<key>materialComponent</key>
 				<string>a yew leaf</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>10</integer>
 				<key>rawLevel</key>
@@ -78985,7 +78961,7 @@ The spell can penetrate most barriers, but it is blocked by 1 foot of stone, 1 i
 				<key>materialComponent</key>
 				<string>a copper piece</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -79046,8 +79022,6 @@ Once you detect the presence of a creature in this way, you can read its thought
 				<true/>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>4</integer>
 				<key>rawRange</key>
@@ -79093,7 +79067,7 @@ If you would arrive in a place already occupied by an object or a creature, you 
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -79143,8 +79117,6 @@ To discern that you are disguised, a creature can use its action to inspect your
 				<key>materialComponent</key>
 				<string>a lodestone and a pinch of dust</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
-				<key>rawDurationTime</key>
 				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>6</integer>
@@ -79197,7 +79169,7 @@ This spell automatically disintegrates a Large or smaller nonmagical object or a
 				<key>materialComponent</key>
 				<string>holy water or powdered silver and iron</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -79241,8 +79213,6 @@ You can end the spell early by using either of the following special functions.
 				<true/>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>3</integer>
 				<key>rawRange</key>
@@ -79285,8 +79255,6 @@ You can end the spell early by using either of the following special functions.
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
-				<key>rawDurationTime</key>
 				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>1</integer>
@@ -79339,8 +79307,6 @@ You can end the spell early by using either of the following special functions.
 				<string>incense and a sacrificial offering appropriate to your religion, together worth at least 25 gp, which the spell consumes</string>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>4</integer>
 				<key>rawRange</key>
@@ -79382,8 +79348,6 @@ If you cast the spell two or more times before finishing your next long rest, th
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
-				<key>rawDurationTime</key>
 				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>7</integer>
@@ -79433,7 +79397,7 @@ Regardless of its current hit points, a celestial, an elemental, a fey, or a fie
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -79485,7 +79449,7 @@ Each time the target takes damage, it makes a new Wisdom saving throw against th
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -79537,7 +79501,7 @@ Each time the target takes damage, it makes a new Wisdom saving throw against th
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -79593,7 +79557,7 @@ Each time the target takes damage, it makes a new Wisdom saving throw against th
 				<key>rawCastingTime</key>
 				<integer>1</integer>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>480</integer>
 				<key>rawLevel</key>
@@ -79640,8 +79604,6 @@ If you have a body part, lock of hair, clipping from a nail, or similar portion 
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
-				<key>rawDurationTime</key>
 				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>0</integer>
@@ -79700,7 +79662,7 @@ If you have a body part, lock of hair, clipping from a nail, or similar portion 
 				<key>materialComponent</key>
 				<string>a pinch of dirt, a piece of rock, and a lump of clay</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -79755,8 +79717,6 @@ A fissure that opens beneath a structure causes it to automatically collapse (se
 				<true/>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>0</integer>
 				<key>rawRange</key>
@@ -79801,7 +79761,7 @@ The spell creates more than one beam when you reach higher levels: two beams at 
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -79846,7 +79806,7 @@ The spell creates more than one beam when you reach higher levels: two beams at 
 				<key>materialComponent</key>
 				<string>a pinch of powdered iron</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -79903,7 +79863,7 @@ If the target is a creature, everything it is wearing and carrying changes size 
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -79959,7 +79919,7 @@ When the spell ends, the conjured plants wilt away.</string>
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>480</integer>
 				<key>rawLevel</key>
@@ -80012,7 +79972,7 @@ This spell has no effect if you cast it while you are on the Ethereal Plane or a
 				<key>materialComponent</key>
 				<string>a piece of tentacle from a giant octopus or a giant squid</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -80074,7 +80034,7 @@ A creature restrained by the tentacles can use its action to make a Strength or 
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>10</integer>
 				<key>rawLevel</key>
@@ -80118,7 +80078,7 @@ A creature restrained by the tentacles can use its action to make a Strength or 
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -80171,7 +80131,7 @@ Any attack roll against an affected creature or object has advantage if the atta
 				<key>materialComponent</key>
 				<string>a small amount of alcohol or distilled spirits</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -80220,7 +80180,7 @@ Any attack roll against an affected creature or object has advantage if the atta
 				<key>materialComponent</key>
 				<string>a white feather or the heart of a hen</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -80273,7 +80233,7 @@ While frightened by this spell, a creature must take the Dash action and move aw
 				<key>materialComponent</key>
 				<string>a small feather or piece of down</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -80337,7 +80297,7 @@ While frightened by this spell, a creature must take the Dash action and move aw
 				<key>rawCastingTime</key>
 				<integer>1</integer>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1440</integer>
 				<key>rawLevel</key>
@@ -80385,8 +80345,6 @@ For the duration, as long as you are on the same plane of existence as the desti
 				<true/>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>7</integer>
 				<key>rawRange</key>
@@ -80432,8 +80390,6 @@ its ability.</string>
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
-				<key>rawDurationTime</key>
 				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>0</integer>
@@ -80483,7 +80439,7 @@ This spell's damage increases by 1d10 when you reach 5th level (2d10), 11th leve
 				<key>materialComponent</key>
 				<string>a bit of phosphorus or a firefly</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>10</integer>
 				<key>rawLevel</key>
@@ -80536,8 +80492,6 @@ In addition, whenever a creature within 5 feet of you hits you with a melee atta
 				<true/>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>7</integer>
 				<key>rawRange</key>
@@ -80586,8 +80540,6 @@ The fire damages objects in the area and ignites flammable objects that aren't b
 				<key>materialComponent</key>
 				<string>a tiny ball of bat guano and sulfur</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
-				<key>rawDurationTime</key>
 				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>3</integer>
@@ -80638,7 +80590,7 @@ The fire spreads around corners. It ignites flammable objects in the area that a
 				<key>materialComponent</key>
 				<string>leaf of sumac</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>10</integer>
 				<key>rawLevel</key>
@@ -80692,8 +80644,6 @@ The flaming blade sheds bright light in a 10-foot radius and dim light for an ad
 				<string>pinch of sulfur</string>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>5</integer>
 				<key>rawRange</key>
@@ -80742,7 +80692,7 @@ The flaming blade sheds bright light in a 10-foot radius and dim light for an ad
 				<key>materialComponent</key>
 				<string>a bit of tallow, a pinch of brimstone, and a dusting of powdered iron</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -80797,7 +80747,7 @@ When you move the sphere, you can direct it over barriers up to 5 feet tall and 
 				<key>materialComponent</key>
 				<string>a wing feather from any bird</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>10</integer>
 				<key>rawLevel</key>
@@ -80844,7 +80794,7 @@ When you move the sphere, you can direct it over barriers up to 5 feet tall and 
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -80903,7 +80853,7 @@ When you move the sphere, you can direct it over barriers up to 5 feet tall and 
 				<key>rawCastingTime</key>
 				<integer>1</integer>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>480</integer>
 				<key>rawLevel</key>
@@ -80952,7 +80902,7 @@ This spell immediately ends if you cast it again before its duration ends.</stri
 				<key>materialComponent</key>
 				<string>a leather strap, bound around thearm or a similar appendage</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -80999,7 +80949,7 @@ The target can also spend 5 feet of movement to automatically escape from nonmag
 				<key>materialComponent</key>
 				<string>a small amount of makeup applied to the face as this spell is cast</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -81049,7 +80999,7 @@ The target can also spend 5 feet of movement to automatically escape from nonmag
 				<key>materialComponent</key>
 				<string>a bit of gauze and a wisp of smoke</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -81113,7 +81063,7 @@ While in the form of a misty cloud, the target can't talk or manipulate objects,
 				<key>materialComponent</key>
 				<string>a diamond worth at least 5,000 gp</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -81162,7 +81112,7 @@ When you cast this spell, you can speak the name of a specific creature (a pseud
 				<key>rawCastingTime</key>
 				<integer>1</integer>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>43200</integer>
 				<key>rawLevel</key>
@@ -81209,7 +81159,7 @@ You can end the spell early by using an action to dismiss it. A [remove curse], 
 				<key>materialComponent</key>
 				<string>a glass or crystal bead that shatters when the spell ends</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -81265,7 +81215,7 @@ Any spell of 5th level or lower cast from outside the barrier can't affect creat
 				<key>rawCastingTime</key>
 				<integer>60</integer>
 				<key>rawDuration</key>
-				<integer>3</integer>
+				<integer>5</integer>
 				<key>rawLevel</key>
 				<integer>3</integer>
 				<key>rawRange</key>
@@ -81320,7 +81270,7 @@ When you inscribe the glyph, choose *explosive runes* or a *spell glyph*.
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -81371,8 +81321,6 @@ When you inscribe the glyph, choose *explosive runes* or a *spell glyph*.
 				<string>diamond dust worth at least 100 gp, which the spell consumes</string>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>5</integer>
 				<key>rawRange</key>
@@ -81416,7 +81364,7 @@ When you inscribe the glyph, choose *explosive runes* or a *spell glyph*.
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>480</integer>
 				<key>rawLevel</key>
@@ -81463,7 +81411,7 @@ Any creature hostile to you that moves to a space within 10 feet of the guardian
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -81509,7 +81457,7 @@ Any creature hostile to you that moves to a space within 10 feet of the guardian
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>1</integer>
+				<integer>3</integer>
 				<key>rawLevel</key>
 				<integer>1</integer>
 				<key>rawRange</key>
@@ -81558,7 +81506,7 @@ Any creature hostile to you that moves to a space within 10 feet of the guardian
 				<key>materialComponent</key>
 				<string>a legume seed</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -81621,7 +81569,7 @@ As a bonus action on each of your turns before the spell ends, you can change th
 				<key>rawCastingTime</key>
 				<integer>1440</integer>
 				<key>rawDuration</key>
-				<integer>2</integer>
+				<integer>4</integer>
 				<key>rawLevel</key>
 				<integer>5</integer>
 				<key>rawRange</key>
@@ -81676,8 +81624,6 @@ Second, you can bind an extra effect to the area. Choose the effect from the fol
 				<true/>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>6</integer>
 				<key>rawRange</key>
@@ -81725,7 +81671,7 @@ Second, you can bind an extra effect to the area. Choose the effect from the fol
 				<key>materialComponent</key>
 				<string>a shaving of licorice root</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -81775,8 +81721,6 @@ When the spell ends, the target can't move or take actions until after its next 
 				<true/>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>6</integer>
 				<key>rawRange</key>
@@ -81819,8 +81763,6 @@ When the spell ends, the target can't move or take actions until after its next 
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
-				<key>rawDurationTime</key>
 				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>1</integer>
@@ -81870,7 +81812,7 @@ When the spell ends, the target can't move or take actions until after its next 
 				<key>materialComponent</key>
 				<string>a piece of iron and a flame</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -81920,8 +81862,6 @@ If a creature is holding or wearing the object and takes the damage from it, the
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
-				<key>rawDurationTime</key>
 				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>1</integer>
@@ -81974,8 +81914,6 @@ If a creature is holding or wearing the object and takes the damage from it, the
 				<integer>10</integer>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>6</integer>
 				<key>rawRange</key>
@@ -82024,7 +81962,7 @@ A creature that partakes of the feast gains several benefits. The creature is cu
 				<key>materialComponent</key>
 				<string>the petrified eye of a newt</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -82079,7 +82017,7 @@ A [remove curse] cast on the target ends this spell early.
 				<key>materialComponent</key>
 				<string>a small, straight piece of iron</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -82138,7 +82076,7 @@ A [remove curse] cast on the target ends this spell early.
 				<key>materialComponent</key>
 				<string>a small, straight piece of iron</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -82191,7 +82129,7 @@ A [remove curse] cast on the target ends this spell early.
 				<key>materialComponent</key>
 				<string>a tiny reliquary worth at least 1,000 gp containing a sacred relic, such as a scrap of cloth from a saint's robe or a piece of parchment from a religious text</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -82239,7 +82177,7 @@ A [remove curse] cast on the target ends this spell early.
 				<key>materialComponent</key>
 				<string>a glowing stick of incense or a crystal vial filled with phosphorescent material</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -82293,8 +82231,6 @@ The spell ends for an affected creature if it takes any damage or if someone els
 				<string>a pinch of dust and a few drops of water</string>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>4</integer>
 				<key>rawRange</key>
@@ -82347,8 +82283,6 @@ Hailstones turn the storm's area of effect into dificult terrain until the end o
 				<integer>1</integer>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>1</integer>
 				<key>rawRange</key>
@@ -82395,7 +82329,7 @@ If you instead touch a creature throughout the casting, you learn what spells, i
 				<key>rawCastingTime</key>
 				<integer>1</integer>
 				<key>rawDuration</key>
-				<integer>2</integer>
+				<integer>4</integer>
 				<key>rawLevel</key>
 				<integer>9</integer>
 				<key>rawRange</key>
@@ -82453,8 +82387,6 @@ You can use a particular special component to create only one prison at a time. 
 				<true/>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>1</integer>
 				<key>rawRange</key>
@@ -82501,7 +82433,7 @@ You can use a particular special component to create only one prison at a time. 
 				<key>materialComponent</key>
 				<string>a few grains of sugar, some kernels of grain, and a smear of fat</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>10</integer>
 				<key>rawLevel</key>
@@ -82555,7 +82487,7 @@ When the area appears, each creature in it must make a Constitution saving throw
 				<key>materialComponent</key>
 				<string>an eyelash encased in gum arabic</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -82606,7 +82538,7 @@ When the area appears, each creature in it must make a Constitution saving throw
 				<key>materialComponent</key>
 				<string>a grasshopper's hind leg</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -82648,8 +82580,6 @@ When the area appears, each creature in it must make a Constitution saving throw
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
-				<key>rawDurationTime</key>
 				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>2</integer>
@@ -82702,8 +82632,6 @@ When you cast the spell, a loud knock, audible from as far away as 300 feet, ema
 				<integer>10</integer>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>5</integer>
 				<key>rawRange</key>
@@ -82746,8 +82674,6 @@ The information you learn is accurate but might be couched in figurative languag
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
-				<key>rawDurationTime</key>
 				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>2</integer>
@@ -82794,7 +82720,7 @@ The information you learn is accurate but might be couched in figurative languag
 				<key>materialComponent</key>
 				<string>either a small leather loop or a piece of golden wire bent into a cup shape with a long shank on one end</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>10</integer>
 				<key>rawLevel</key>
@@ -82846,7 +82772,7 @@ When the spell ends, the target floats gently to the ground if it is still aloft
 				<key>materialComponent</key>
 				<string>a firefly or phosphorescent moss</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -82895,8 +82821,6 @@ If you target an object held or worn by a hostile creature, that creature must s
 				<key>materialComponent</key>
 				<string>a bit of fur and a rod of amber, crystal, or glass</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
-				<key>rawDurationTime</key>
 				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>3</integer>
@@ -82949,7 +82873,7 @@ The lightning ignites flammable objects in the area that aren't being worn or ca
 				<key>materialComponent</key>
 				<string>a bit of fur from a bloodhound</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -83001,7 +82925,7 @@ This spell can't locate a creature if running water at least 10 feet wide blocks
 				<key>materialComponent</key>
 				<string>a forked twig</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>10</integer>
 				<key>rawLevel</key>
@@ -83047,7 +82971,7 @@ This spell can't locate an object if any thickness of lead, even a thin sheet, b
 				<key>materialComponent</key>
 				<string>a pinch of dirt</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -83102,7 +83026,7 @@ This spell can't locate an object if any thickness of lead, even a thin sheet, b
 				<key>materialComponent</key>
 				<string>a piece of cured leather</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>480</integer>
 				<key>rawLevel</key>
@@ -83146,7 +83070,7 @@ This spell can't locate an object if any thickness of lead, even a thin sheet, b
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -83198,7 +83122,7 @@ The hand can't attack, activate magic items, or carry more than 10 pounds.</stri
 				<key>rawCastingTime</key>
 				<integer>1</integer>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -83248,7 +83172,7 @@ When you cast this spell, you can elect to cause its magic to operate in the rev
 				<key>rawCastingTime</key>
 				<integer>1</integer>
 				<key>rawDuration</key>
-				<integer>2</integer>
+				<integer>4</integer>
 				<key>rawLevel</key>
 				<integer>6</integer>
 				<key>rawRange</key>
@@ -83296,8 +83220,6 @@ When the spell ends, the container is destroyed.</string>
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
-				<key>rawDurationTime</key>
 				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>1</integer>
@@ -83349,7 +83271,7 @@ When the spell ends, the container is destroyed.</string>
 				<key>rawCastingTime</key>
 				<integer>1</integer>
 				<key>rawDuration</key>
-				<integer>2</integer>
+				<integer>4</integer>
 				<key>rawLevel</key>
 				<integer>2</integer>
 				<key>rawRange</key>
@@ -83395,7 +83317,7 @@ The triggering circumstance can be as general or as detailed as you like, though
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -83446,7 +83368,7 @@ The triggering circumstance can be as general or as detailed as you like, though
 				<key>materialComponent</key>
 				<string>a bit of fleece</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>10</integer>
 				<key>rawLevel</key>
@@ -83498,8 +83420,6 @@ Physical interaction with the image reveals it to be an illusion, because things
 				<true/>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>5</integer>
 				<key>rawRange</key>
@@ -83545,8 +83465,6 @@ Physical interaction with the image reveals it to be an illusion, because things
 				<true/>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>9</integer>
 				<key>rawRange</key>
@@ -83588,8 +83506,6 @@ Physical interaction with the image reveals it to be an illusion, because things
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
-				<key>rawDurationTime</key>
 				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>3</integer>
@@ -83637,7 +83553,7 @@ Physical interaction with the image reveals it to be an illusion, because things
 				<key>materialComponent</key>
 				<string>a snake's tongue and either a bit of honeycomb or a drop of sweet oil</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>1440</integer>
 				<key>rawLevel</key>
@@ -83687,7 +83603,7 @@ If you or any of your companions damage a creature affected by this spell, the s
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>10</integer>
 				<key>rawLevel</key>
@@ -83739,7 +83655,7 @@ When the spell ends, the target reappears in the space it left or, if that space
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>480</integer>
 				<key>rawLevel</key>
@@ -83790,8 +83706,6 @@ Minor physical damage to the stone doesn't harm you, but its partial destruction
 				<string>powdered rhubarb leaf and an adder's stomach</string>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>2</integer>
 				<key>rawRange</key>
@@ -83841,8 +83755,6 @@ Minor physical damage to the stone doesn't harm you, but its partial destruction
 				<integer>1</integer>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>0</integer>
 				<key>rawRange</key>
@@ -83889,7 +83801,7 @@ This spell can physically repair a magic item or construct, but the spell can't 
 				<key>materialComponent</key>
 				<string>a short piece of copper wire</string>
 				<key>rawDuration</key>
-				<integer>1</integer>
+				<integer>3</integer>
 				<key>rawLevel</key>
 				<integer>0</integer>
 				<key>rawRange</key>
@@ -83935,8 +83847,6 @@ You can cast this spell through solid objects if you are familiar with the targe
 				<true/>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>9</integer>
 				<key>rawRange</key>
@@ -83981,7 +83891,7 @@ The spell damages objects in the area and ignites flammable objects that aren't 
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>1440</integer>
 				<key>rawLevel</key>
@@ -84021,7 +83931,7 @@ The spell damages objects in the area and ignites flammable objects that aren't 
 				<key>materialComponent</key>
 				<string>a bit of fleece</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -84070,7 +83980,7 @@ If a creature uses its action to examine the sound or image, the creature can de
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -84128,7 +84038,7 @@ A creature is unaffected by this spell if it can't see, if it relies on senses o
 				<key>hasSomaticComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -84181,8 +84091,6 @@ You can see through its eyes and hear through its ears as if you were located wh
 				<true/>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>2</integer>
 				<key>rawRange</key>
@@ -84228,7 +84136,7 @@ You can see through its eyes and hear through its ears as if you were located wh
 				<key>materialComponent</key>
 				<string>a miniature platinum sword with a grip and pommel of copper and zinc, worth 250 gp</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -84281,7 +84189,7 @@ When the sword appears, you make a melee spell attack against a target of your c
 				<key>materialComponent</key>
 				<string>an iron blade and a small bag containing a mixture of soils—clay, loam, and sand</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>120</integer>
 				<key>rawLevel</key>
@@ -84343,7 +84251,7 @@ Similarly, this spell doesn't directly affect plant growth. The moved earth carr
 				<key>materialComponent</key>
 				<string>a pinch of diamond dust worth 25 gp sprinkled over the target, which the spell consumes</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>480</integer>
 				<key>rawLevel</key>
@@ -84385,7 +84293,7 @@ Similarly, this spell doesn't directly affect plant growth. The moved earth carr
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -84438,7 +84346,7 @@ A dancing creature must use all its movement to dance without leaving its space 
 				<key>materialComponent</key>
 				<string>a pinch of sesame seeds</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -84489,7 +84397,7 @@ When the opening disappears, any creatures or objects still in the passage creat
 				<key>materialComponent</key>
 				<string>a bit of fleece</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -84553,7 +84461,7 @@ An affected target is so convinced of the phantasm's reality that it can even ta
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -84607,8 +84515,6 @@ An affected target is so convinced of the phantasm's reality that it can even ta
 				<string>a forked, metal rod worth at least 250 gp, attuned to a particular plane of existence</string>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>7</integer>
 				<key>rawRange</key>
@@ -84654,8 +84560,6 @@ You can use this spell to banish an unwilling creature to another plane. Choose 
 				<key>rawCastingTime</key>
 				<integer>480</integer>
 				<key>rawDuration</key>
-				<integer>0</integer>
-				<key>rawDurationTime</key>
 				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>3</integer>
@@ -84710,8 +84614,6 @@ If you cast this spell over 8 hours, you enrich the land. All plants in a half-m
 				<true/>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>0</integer>
 				<key>rawRange</key>
@@ -84760,7 +84662,7 @@ This spell's damage increases by 1d12 when you reach 5th level (2d12), 11th leve
 				<key>materialComponent</key>
 				<string>a caterpillar cocoon</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -84811,8 +84713,6 @@ The target's gear melds into the new form. The creature can't activate, use, wie
 				<true/>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>9</integer>
 				<key>rawRange</key>
@@ -84854,8 +84754,6 @@ The target's gear melds into the new form. The creature can't activate, use, wie
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
-				<key>rawDurationTime</key>
 				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>8</integer>
@@ -84899,8 +84797,6 @@ The stunned target must make a Constitution saving throw at the end of each of i
 				<key>rawCastingTime</key>
 				<integer>10</integer>
 				<key>rawDuration</key>
-				<integer>0</integer>
-				<key>rawDurationTime</key>
 				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>2</integer>
@@ -84946,7 +84842,7 @@ The stunned target must make a Constitution saving throw at the end of each of i
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -84999,7 +84895,7 @@ If you cast this spell multiple times, you can have up to three of its non-insta
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>10</integer>
 				<key>rawLevel</key>
@@ -85045,7 +84941,7 @@ This spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level 
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -85095,7 +84991,7 @@ This spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level 
 				<key>materialComponent</key>
 				<string>holy water or powdered silver and iron, which the spell consumes</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>10</integer>
 				<key>rawLevel</key>
@@ -85136,7 +85032,7 @@ The protection grants several benefits. Creatures of those types have disadvanta
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -85179,8 +85075,6 @@ For the duration, the target has advantage on saving throws against being poison
 				<key>rawCastingTime</key>
 				<integer>60</integer>
 				<key>rawDuration</key>
-				<integer>0</integer>
-				<key>rawDurationTime</key>
 				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>5</integer>
@@ -85227,8 +85121,6 @@ Coming back from the dead is an ordeal. The target takes a -4 penalty to all att
 				<true/>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>0</integer>
 				<key>rawRange</key>
@@ -85274,8 +85166,6 @@ The spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level (
 				<true/>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>1</integer>
 				<key>rawRange</key>
@@ -85318,7 +85208,7 @@ The spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level (
 				<key>rawCastingTime</key>
 				<integer>1</integer>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -85363,8 +85253,6 @@ The target's severed body members (fingers, legs, tails, and so on), if any, are
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
-				<key>rawDurationTime</key>
 				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>3</integer>
@@ -85411,7 +85299,7 @@ The target's severed body members (fingers, legs, tails, and so on), if any, are
 				<key>materialComponent</key>
 				<string>a miniature cloak</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -85461,8 +85349,6 @@ The target's severed body members (fingers, legs, tails, and so on), if any, are
 				<key>rawCastingTime</key>
 				<integer>60</integer>
 				<key>rawDuration</key>
-				<integer>0</integer>
-				<key>rawDurationTime</key>
 				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>7</integer>
@@ -85514,8 +85400,6 @@ Casting this spell to restore life to a creature that has been dead for one year
 				<string>diamonds worth 300 gp, which the spell consumes</string>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>3</integer>
 				<key>rawRange</key>
@@ -85557,8 +85441,6 @@ Casting this spell to restore life to a creature that has been dead for one year
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
-				<key>rawDurationTime</key>
 				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>0</integer>
@@ -85608,7 +85490,7 @@ The spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level (
 				<key>materialComponent</key>
 				<string>a small silver mirror</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -85655,8 +85537,6 @@ If the warded creature makes an attack or casts a spell that affects an enemy cr
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
-				<key>rawDurationTime</key>
 				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>2</integer>
@@ -85713,7 +85593,7 @@ Make a ranged spell attack for each ray. On a hit, the target takes 2d6 fire dam
 				<key>rawCastingTime</key>
 				<integer>10</integer>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>10</integer>
 				<key>rawLevel</key>
@@ -85771,7 +85651,7 @@ Instead of targeting a creature, you can choose a location you have seen before 
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -85816,7 +85696,7 @@ Instead of targeting a creature, you can choose a location you have seen before 
 				<key>materialComponent</key>
 				<string>a pinch of talc and a small sprinkling of powdered silver</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -85860,7 +85740,7 @@ Instead of targeting a creature, you can choose a location you have seen before 
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>480</integer>
 				<key>rawLevel</key>
@@ -85925,7 +85805,7 @@ A creature can use its action to inspect a target and make an Intelligence (Inve
 				<key>materialComponent</key>
 				<string>a short piece of fine copper wire</string>
 				<key>rawDuration</key>
-				<integer>1</integer>
+				<integer>3</integer>
 				<key>rawLevel</key>
 				<integer>3</integer>
 				<key>rawRange</key>
@@ -85985,8 +85865,6 @@ You can send the message across any distance and even to other planes of existen
 				<string>a chip of mica</string>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>2</integer>
 				<key>rawRange</key>
@@ -86032,7 +85910,7 @@ A nonmagical object that isn't being worn or carried also takes the damage if it
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>1</integer>
+				<integer>3</integer>
 				<key>rawLevel</key>
 				<integer>1</integer>
 				<key>rawRange</key>
@@ -86080,7 +85958,7 @@ A nonmagical object that isn't being worn or carried also takes the damage if it
 				<key>materialComponent</key>
 				<string>a small parchment with a bit of holy text written on it</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>10</integer>
 				<key>rawLevel</key>
@@ -86132,7 +86010,7 @@ A nonmagical object that isn't being worn or carried also takes the damage if it
 				<key>materialComponent</key>
 				<string>mistletoe, a shamrock leaf, and a club or quarterstaff</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -86176,8 +86054,6 @@ A nonmagical object that isn't being worn or carried also takes the damage if it
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
-				<key>rawDurationTime</key>
 				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>0</integer>
@@ -86223,7 +86099,7 @@ The spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level (
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>10</integer>
 				<key>rawLevel</key>
@@ -86275,7 +86151,7 @@ The spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level (
 				<key>materialComponent</key>
 				<string>a bit of fleece</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>10</integer>
 				<key>rawLevel</key>
@@ -86329,7 +86205,7 @@ Physical interaction with the image reveals it to be an illusion, because things
 				<key>materialComponent</key>
 				<string>a pinch of fine sand, rose petals, or a cricket</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -86382,7 +86258,7 @@ Undead and creatures immune to being charmed aren't affected by this spell.
 				<key>materialComponent</key>
 				<string>a pinch of dust and a few drops of water</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -86442,7 +86318,7 @@ If a creature is concentrating in the spell's area, the creature must make a suc
 				<key>materialComponent</key>
 				<string>a drop of molasses</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -86500,8 +86376,6 @@ A creature affected by this spell makes another Wisdom saving throw at the end o
 				<true/>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>0</integer>
 				<key>rawRange</key>
@@ -86545,7 +86419,7 @@ A creature affected by this spell makes another Wisdom saving throw at the end o
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>10</integer>
 				<key>rawLevel</key>
@@ -86599,7 +86473,7 @@ A creature affected by this spell makes another Wisdom saving throw at the end o
 				<key>materialComponent</key>
 				<string>burning incense</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>10</integer>
 				<key>rawLevel</key>
@@ -86646,7 +86520,7 @@ Until the spell ends, you can ask the corpse up to five questions. The corpse kn
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>10</integer>
 				<key>rawLevel</key>
@@ -86702,7 +86576,7 @@ This spell can cause the plants created by the [entangle] spell to release a res
 				<key>materialComponent</key>
 				<string>a drop of bitumen and a spider</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -86752,7 +86626,7 @@ This spell can cause the plants created by the [entangle] spell to release a res
 				<key>materialComponent</key>
 				<string>seven sharp thorns or seven small twigs, each sharpened to a point</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>10</integer>
 				<key>rawLevel</key>
@@ -86811,7 +86685,7 @@ The transformation of the ground is camouflaged to look natural. Any creature th
 				<key>materialComponent</key>
 				<string>a holy symbol</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>10</integer>
 				<key>rawLevel</key>
@@ -86863,7 +86737,7 @@ When you cast this spell, you can designate any number of creatures you can see 
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -86910,7 +86784,7 @@ The weapon can take whatever form you choose. Clerics of deities who are associa
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -86954,7 +86828,7 @@ The weapon can take whatever form you choose. Clerics of deities who are associa
 				<key>materialComponent</key>
 				<string>a rotten egg or several skunk cabbage leaves</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -87015,8 +86889,6 @@ A moderate wind (at least 10 miles per hour) disperses the cloud after 4 rounds.
 				<string>soft clay, which must be worked into roughly the desired shape of the stone object</string>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>4</integer>
 				<key>rawRange</key>
@@ -87068,7 +86940,7 @@ A moderate wind (at least 10 miles per hour) disperses the cloud after 4 rounds.
 				<key>materialComponent</key>
 				<string>diamond dust worth 100 gp, which the spell consumes</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -87116,7 +86988,7 @@ A moderate wind (at least 10 miles per hour) disperses the cloud after 4 rounds.
 				<key>materialComponent</key>
 				<string>a snake's tongue and either a bit of honeycomb or a drop of sweet oil</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>480</integer>
 				<key>rawLevel</key>
@@ -87172,8 +87044,6 @@ If you or any of your companions damage the target, the spell ends.</string>
 				<string>fire and a piece of sunstone</string>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>8</integer>
 				<key>rawRange</key>
@@ -87219,7 +87089,7 @@ This spell dispels any darkness in its area that was created by a spell.</string
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>10</integer>
 				<key>rawLevel</key>
@@ -87270,8 +87140,6 @@ You can exert fine control on objects with your telekinetic grip, such as manipu
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
-				<key>rawDurationTime</key>
 				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>7</integer>
@@ -87341,7 +87209,7 @@ For example, if you tried to travel 120 miles, landed off target, and rolled a 5
 				<key>materialComponent</key>
 				<string>a drop of mercury</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -87381,7 +87249,7 @@ If you move more than 100 feet from the disk (typically because it can't move ar
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -87439,8 +87307,6 @@ If you cast this spell multiple times, you can have up to three of its 1-minute 
 				<string>the stem of a plant with thorns</string>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>0</integer>
 				<key>rawRange</key>
@@ -87485,8 +87351,6 @@ This spell's damage increases by 1d6 when you reach 5th level (2d6), 11th level 
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
-				<key>rawDurationTime</key>
 				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>1</integer>
@@ -87534,8 +87398,6 @@ In addition, unsecured objects that are completely within the area of effect are
 				<true/>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>9</integer>
 				<key>rawRange</key>
@@ -87580,7 +87442,7 @@ This spell ends if one of the actions you use during this period, or any effects
 				<key>materialComponent</key>
 				<string>a small clay model of a ziggurat</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -87629,8 +87491,6 @@ This spell ends if one of the actions you use during this period, or any effects
 				<integer>60</integer>
 				<key>rawDuration</key>
 				<integer>0</integer>
-				<key>rawDurationTime</key>
-				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>9</integer>
 				<key>rawRange</key>
@@ -87678,7 +87538,7 @@ The spell can even provide a new body if the original no longer exists, in which
 				<key>materialComponent</key>
 				<string>an ointment for the eyes that costs 25 gp; is made from mushroom powder, saffron, and fat; and is consumed by the spell</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -87722,7 +87582,7 @@ The spell can even provide a new body if the original no longer exists, in which
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -87767,8 +87627,6 @@ The spell can even provide a new body if the original no longer exists, in which
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
-				<key>rawDurationTime</key>
 				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>0</integer>
@@ -87818,7 +87676,7 @@ This spell's damage increases by 1d4 when you reach 5th level (2d4), 11th level 
 				<key>materialComponent</key>
 				<string>a small piece of phosphorus</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -87879,7 +87737,7 @@ One side of the wall, selected by you when you cast this spell, deals 5d8 fire d
 				<key>materialComponent</key>
 				<string>a pinch of powder made by crushing a clear gemstone</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>10</integer>
 				<key>rawLevel</key>
@@ -87926,7 +87784,7 @@ Nothing can physically pass through the wall. It is immune to all damage and can
 				<key>materialComponent</key>
 				<string>a small block of granite</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>10</integer>
 				<key>rawLevel</key>
@@ -87984,7 +87842,7 @@ If you maintain your concentration on this spell for its whole duration, the wal
 				<key>materialComponent</key>
 				<string>a pair of platinum rings worth at least 50 gp each, which you and the target must wear for the duration</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -88035,7 +87893,7 @@ The spell ends if you drop to 0 hit points or if you and the target become separ
 				<key>materialComponent</key>
 				<string>a short reed or piece of straw</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>1440</integer>
 				<key>rawLevel</key>
@@ -88093,7 +87951,7 @@ The spell ends if you drop to 0 hit points or if you and the target become separ
 				<key>materialComponent</key>
 				<string>a piece of cork</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -88144,7 +88002,7 @@ If you target a creature submerged in a liquid, the spell carries the target to 
 				<key>materialComponent</key>
 				<string>a bit of spiderweb</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>60</integer>
 				<key>rawLevel</key>
@@ -88200,7 +88058,7 @@ The webs are flammable. Any 5-foot cube of webs exposed to fire burns away in 1 
 				<key>rawCastingTime</key>
 				<integer>1</integer>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>480</integer>
 				<key>rawLevel</key>
@@ -88245,8 +88103,6 @@ If a creature is in cloud form and flying when the effect ends, the creature des
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
-				<key>rawDurationTime</key>
 				<integer>0</integer>
 				<key>rawLevel</key>
 				<integer>9</integer>
@@ -88302,7 +88158,7 @@ The stress of casting this spell to produce any effect other than duplicating an
 				<key>materialComponent</key>
 				<string>a twig from a tree that has been struck by lightning</string>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>rawDurationTime</key>
 				<integer>1</integer>
 				<key>rawLevel</key>
@@ -88351,7 +88207,7 @@ The stress of casting this spell to produce any effect other than duplicating an
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>rawDuration</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>rawDurationTime</key>
 				<integer>10</integer>
 				<key>rawLevel</key>
@@ -88390,7 +88246,7 @@ An affected creature is aware of the spell and can thus avoid answering question
 		</dict>
 	</array>
 	<key>version</key>
-	<integer>1451477108</integer>
+	<integer>1451481532</integer>
 </dict>
 </plist>
 

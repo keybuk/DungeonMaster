@@ -750,9 +750,11 @@ enum SpellRangeShape: Int {
     case Line
 }
 
-/// SpellDuration represents the durations of .
+/// SpellDuration represents the durations of a spell's effect.
 enum SpellDuration: Int {
+    case Instantaneous
     case Time
+    case MaxTime
     case Round
     case UntilDispelled
     case UntilDispelledOrTriggered
