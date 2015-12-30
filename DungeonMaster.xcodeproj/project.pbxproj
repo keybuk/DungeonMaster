@@ -20,6 +20,8 @@
 		D2116A551C10F4F8001EDBBA /* RegionalEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2116A541C10F4F8001EDBBA /* RegionalEffect.swift */; };
 		D2116A571C10F791001EDBBA /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2116A561C10F791001EDBBA /* Data.plist */; };
 		D21BACED1C3365E8007E2934 /* Spell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BACEC1C3365E8007E2934 /* Spell.swift */; };
+		D21BACEF1C339464007E2934 /* SpellsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BACEE1C339464007E2934 /* SpellsViewController.swift */; };
+		D21BACF11C339476007E2934 /* SpellDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BACF01C339476007E2934 /* SpellDetailViewController.swift */; };
 		D23435EC1C0D5A3D00108D5F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23435EB1C0D5A3D00108D5F /* Model.swift */; };
 		D23435EE1C0D5F9E00108D5F /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23435ED1C0D5F9E00108D5F /* Book.swift */; };
 		D23435F21C0D608B00108D5F /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23435F01C0D608B00108D5F /* Source.swift */; };
@@ -114,6 +116,8 @@
 		D2116A541C10F4F8001EDBBA /* RegionalEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionalEffect.swift; sourceTree = "<group>"; };
 		D2116A561C10F791001EDBBA /* Data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Data.plist; path = ../Data.plist; sourceTree = "<group>"; };
 		D21BACEC1C3365E8007E2934 /* Spell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spell.swift; sourceTree = "<group>"; };
+		D21BACEE1C339464007E2934 /* SpellsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpellsViewController.swift; sourceTree = "<group>"; };
+		D21BACF01C339476007E2934 /* SpellDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpellDetailViewController.swift; sourceTree = "<group>"; };
 		D23435EB1C0D5A3D00108D5F /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		D23435ED1C0D5F9E00108D5F /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		D23435F01C0D608B00108D5F /* Source.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
@@ -328,6 +332,8 @@
 				D2511FF71C12B1AD00A09F0B /* MonstersViewController.swift */,
 				D2511FFF1C14C7ED00A09F0B /* BooksViewController.swift */,
 				D2A9AF101BFFEAA5009902ED /* DetailViewController.swift */,
+				D21BACEE1C339464007E2934 /* SpellsViewController.swift */,
+				D21BACF01C339476007E2934 /* SpellDetailViewController.swift */,
 				D298E8EE1C29D6E1007461A9 /* PlayersViewController.swift */,
 				D298E8F61C2A27B8007461A9 /* PlayerViewController.swift */,
 				D298E9021C2A5597007461A9 /* PlayerRaceViewController.swift */,
@@ -498,6 +504,7 @@
 				D25120021C14FC0A00A09F0B /* ExtendedNavigationBarView.swift in Sources */,
 				D23435F21C0D608B00108D5F /* Source.swift in Sources */,
 				D23435FB1C0FEFA000108D5F /* Dice.swift in Sources */,
+				D21BACF11C339476007E2934 /* SpellDetailViewController.swift in Sources */,
 				D26FBA411C1FA17400D44503 /* ConditionViewController.swift in Sources */,
 				D20049231C1A127500A645E9 /* TabletopStatsView.swift in Sources */,
 				D2622AA31C2BCDEC000D6100 /* MonsterSkill.swift in Sources */,
@@ -523,6 +530,7 @@
 				D249CF891C22602800CDE673 /* ConditionRulesViewController.swift in Sources */,
 				D2A9AF0D1BFFEAA5009902ED /* DungeonMaster.xcdatamodeld in Sources */,
 				D26FBA3B1C1E3FE400D44503 /* DamageViewController.swift in Sources */,
+				D21BACEF1C339464007E2934 /* SpellsViewController.swift in Sources */,
 				D2511FFA1C14BC3700A09F0B /* Tag.swift in Sources */,
 				D298E8F91C2A4CF1007461A9 /* PlayerSkillViewController.swift in Sources */,
 				D2622AA51C2CA2C8000D6100 /* CombatantRoleViewController.swift in Sources */,
