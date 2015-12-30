@@ -157,6 +157,11 @@ struct Rules {
         return data["conditionDescription"]! as! [[String]]
     }
     
+    /// Array of magic school names.
+    var magicSchool: [String] {
+        return data["magicSchool"]! as! [String]
+    }
+    
     /// Dictionary mapping challenge rating to XP earned for defeating a monster of that rating.
     var challengeXP: [NSDecimalNumber: Int] {
         var result = [NSDecimalNumber: Int]()

@@ -693,6 +693,17 @@
 			<string>• Any attack that hits the creature is a critical hit if the attacker is within 5 feet of the creature.</string>
 		</array>
 	</array>
+	<key>magicSchool</key>
+	<array>
+		<string>Abjuration</string>
+		<string>Conjuration</string>
+		<string>Divination</string>
+		<string>Enchantment</string>
+		<string>Evocation</string>
+		<string>Illusion</string>
+		<string>Necromancy</string>
+		<string>Transmutation</string>
+	</array>
 	<key>challengeXP</key>
 	<dict>
 		<key>0</key>

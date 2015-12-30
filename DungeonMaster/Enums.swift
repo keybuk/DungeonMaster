@@ -712,7 +712,8 @@ enum LanguageOption: Int {
     case AnySix
 }
 
-enum MagicSchool {
+/// MagicSchool categorises the different schools of magic that spells can be categorized under.
+enum MagicSchool: Int {
     case Abjuration
     case Conjuration
     case Divination
@@ -721,6 +722,14 @@ enum MagicSchool {
     case Illusion
     case Necromancy
     case Transmutation
+    
+    /// Array of all cases.
+    static let cases: [MagicSchool] = [ .Abjuration, .Conjuration, .Divination, .Enchantment, .Evocation, .Illusion, .Necromancy, .Transmutation ]
+    
+    /// Returns the string equivalent of the condition.
+    var stringValue: String {
+        return sharedRules.magicSchool[rawValue]
+    }
 }
 
 /// Difficulty of an encounter.
