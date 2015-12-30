@@ -438,7 +438,6 @@ LANGUAGES_RE = re.compile(
 
 DICE_RE = re.compile(r'^(?:[1-9][0-9]*(?:d(?:2|4|6|8|10|12|20|100))?(?: *[+-] *(?=[^ ]))?)+$')
 DICE_ANYWHERE_RE = re.compile(r'(?:[1-9][0-9]*(?:d(?:2|4|6|8|10|12|20|100))?(?: *[+-] *(?=[^ ]))?)+')
-SPELL_RE = re.compile(r'/([a-z ]+)/')
 
 CHALLENGE_RE = re.compile(r'^([0-9/]+) \(([0-9,]+)(?: XP)?\)$')
 
@@ -1055,7 +1054,7 @@ class MonsterExporter(MonsterParser):
 
 	def add_action(self, list, name, lines):
 		name = name.rstrip('.')
-		text = "\n".join(SPELL_RE.sub(r'\1', line) for line in lines)
+		text = "\n".join(lines)
 
 		list.append({
 			"name": unicode(name, 'utf8'),
@@ -1083,7 +1082,7 @@ class MonsterExporter(MonsterParser):
 			self.add_action(self.legendary_actions, name, lines)
 
 	def handle_lair(self, lines):
-		text = "\n".join(SPELL_RE.sub(r'\1', line) for line in lines)
+		text = "\n".join(lines)
 
 		self.lair_info = {
 			"text": unicode(text, 'utf8'),
@@ -1100,35 +1099,35 @@ class MonsterExporter(MonsterParser):
 		}
 
 	def handle_lair_actions(self, intro_lines, lair_actions, limiting_lines):
-		intro_text = "\n".join(SPELL_RE.sub(r'\1', line) for line in intro_lines)
+		intro_text = "\n".join(intro_lines)
 		self.lair_info["lairActionsText"] = unicode(intro_text, 'utf8')
 
 		for lines in lair_actions:
-			text = "\n".join(SPELL_RE.sub(r'\1', line) for line in lines)
+			text = "\n".join(lines)
 			self.lair_actions.append(unicode(text, 'utf8'))
 
 		if limiting_lines is not None:
-			limiting_text = "\n".join(SPELL_RE.sub(r'\1', line) for line in limiting_lines)
+			limiting_text = "\n".join(limiting_lines)
 			self.lair_info["lairActionsLimit"] = unicode(limiting_text, 'utf8')
 
 	def handle_lair_traits(self, intro_lines, lair_traits, duration_lines):
-		intro_text = "\n".join(SPELL_RE.sub(r'\1', line) for line in intro_lines)
+		intro_text = "\n".join(intro_lines)
 		self.lair_info["lairTraitsText"] = unicode(intro_text, 'utf8')
 
 		for lines in lair_traits:
-			text = "\n".join(SPELL_RE.sub(r'\1', line) for line in lines)
+			text = "\n".join(lines)
 			self.lair_traits.append(unicode(text, 'utf8'))
 
-		duration_text = "\n".join(SPELL_RE.sub(r'\1', line) for line in duration_lines)
+		duration_text = "\n".join(duration_lines)
 		self.lair_info["lairTraitsDuration"] = unicode(duration_text, 'utf8')
 
 	def handle_regional_effects(self, intro_lines, regional_effects, duration_lines):
-		intro_text = "\n".join(SPELL_RE.sub(r'\1', line) for line in intro_lines)
+		intro_text = "\n".join(intro_lines)
 		self.lair_info["regionalEffectsText"] = unicode(intro_text, 'utf8')
 
 		for lines in regional_effects:
-			text = "\n".join(SPELL_RE.sub(r'\1', line) for line in lines)
+			text = "\n".join(lines)
 			self.regional_effects.append(unicode(text, 'utf8'))
 
-		duration_text = "\n".join(SPELL_RE.sub(r'\1', line) for line in duration_lines)
+		duration_text = "\n".join(duration_lines)
 		self.lair_info["regionalEffectsDuration"] = unicode(duration_text, 'utf8')
