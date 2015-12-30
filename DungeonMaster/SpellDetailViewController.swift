@@ -16,15 +16,37 @@ class SpellDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configureView()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
 
+        configureView()
+        textView.scrollEnabled = true
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        // Enable scrolling, doing this earlier just scrolls to the bottom again.
+        textView.scrollEnabled = true
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    func configureView() {
         let nameFont = UIFontDescriptor.preferredFontDescriptorWithTextStyle(UIFontTextStyleTitle1)
-
+        
         let subheadlineFont = UIFontDescriptor.preferredFontDescriptorWithTextStyle(UIFontTextStyleSubheadline)
         let subheadlineItalicFont = subheadlineFont.fontDescriptorWithSymbolicTraits(.TraitItalic)
-
+        
         let bodyFont = UIFontDescriptor.preferredFontDescriptorWithTextStyle(UIFontTextStyleBody)
         let bodyBoldFont = bodyFont.fontDescriptorWithSymbolicTraits(.TraitBold)
-
+        
         let nameAttributes = [
             NSFontAttributeName: UIFont(descriptor: nameFont, size: 0.0),
         ]
@@ -36,7 +58,7 @@ class SpellDetailViewController: UIViewController {
             NSFontAttributeName: UIFont(descriptor: subheadlineItalicFont, size: 0.0),
             NSParagraphStyleAttributeName: levelSchoolParagraphStyle
         ]
-
+        
         let statsParagraphStyle = NSMutableParagraphStyle()
         statsParagraphStyle.headIndent = 12.0
         
@@ -49,10 +71,10 @@ class SpellDetailViewController: UIViewController {
             NSFontAttributeName: UIFont(descriptor: bodyFont, size: 0.0),
             NSParagraphStyleAttributeName: statsParagraphStyle,
         ]
-
+        
         
         let text = NSMutableAttributedString()
-
+        
         text.appendAttributedString(NSAttributedString(string: "\(spell.name)\n", attributes: nameAttributes))
         
         
@@ -69,7 +91,7 @@ class SpellDetailViewController: UIViewController {
         default:
             levelSchoolString = "\(spell.level)th-level \(spell.school.stringValue.lowercaseString)"
         }
-
+        
         if spell.canCastAsRitual {
             levelSchoolString += " (ritual)"
         }
@@ -78,7 +100,7 @@ class SpellDetailViewController: UIViewController {
         
         
         text.appendAttributedString(NSAttributedString(string: "Casting Time: ", attributes: statsLabelAttributes))
-
+        
         var castingTimeString = ""
         if spell.canCastAsAction {
             castingTimeString = "1 action"
@@ -110,10 +132,10 @@ class SpellDetailViewController: UIViewController {
         }
         
         text.appendAttributedString(NSAttributedString(string: "\(castingTimeString)\n", attributes: statsValueAttributes))
-
+        
         
         text.appendAttributedString(NSAttributedString(string: "Range: ", attributes: statsLabelAttributes))
-
+        
         var rangeString = ""
         switch spell.range {
         case .Distance:
@@ -157,9 +179,9 @@ class SpellDetailViewController: UIViewController {
         case .Unlimited:
             rangeString = "Unlimited"
         }
-
+        
         text.appendAttributedString(NSAttributedString(string: "\(rangeString)\n", attributes: statsValueAttributes))
-
+        
         
         text.appendAttributedString(NSAttributedString(string: "Components: ", attributes: statsLabelAttributes))
         
@@ -173,12 +195,12 @@ class SpellDetailViewController: UIViewController {
         if spell.hasMaterialComponent {
             componentsStrings.append("M (\(spell.materialComponent!))")
         }
-
+        
         text.appendAttributedString(NSAttributedString(string: "\(componentsStrings.joinWithSeparator(", "))\n", attributes: statsValueAttributes))
-
+        
         
         text.appendAttributedString(NSAttributedString(string: "Duration: ", attributes: statsLabelAttributes))
-
+        
         var durationString = ""
         switch spell.duration {
         case .Instantaneous:
@@ -217,7 +239,7 @@ class SpellDetailViewController: UIViewController {
         }
         
         text.appendAttributedString(NSAttributedString(string: "\(durationString)\n", attributes: statsValueAttributes))
-
+        
         
         
         let markupParser = MarkupParser()
@@ -231,17 +253,6 @@ class SpellDetailViewController: UIViewController {
         // Set the text with scroll disabled to stop it going to the bottom.
         textView.scrollEnabled = false
         textView.attributedText = text
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        // Enable scrolling, doing this earlier just scrolls to the bottom again.
-        textView.scrollEnabled = true
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 }
