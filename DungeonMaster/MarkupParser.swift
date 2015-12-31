@@ -512,7 +512,17 @@ class MarkupParser {
         lastBlock = .Paragraph
     }
 
-    private func parseText(line: String, attributes: [String: AnyObject], features: MarkupParserFeatures, appendNewline: Bool) -> NSAttributedString {
+    /// Parse a section of text and return as an attributed string.
+    ///
+    /// Unlike the `parse` function, this only handles inline attributes specified in `features`, and does not modify the `text` member of the parser.
+    ///
+    /// - parameter line: the text to parse.
+    /// - parameter attributes: attributes to apply to the resulting `NSAttributedString`.
+    /// - parameter features: parser features to enable in the string.
+    /// - parameter appendNewline: whether a newline should be appended to the returned string.
+    ///
+    /// - returns: NSAttributedString resulting from parsing `line`.
+    func parseText(line: String, attributes: [String: AnyObject], features: MarkupParserFeatures, appendNewline: Bool) -> NSAttributedString {
         let line = line.stringByTrimmingCharactersInSet(whitespace)
         var range = line.startIndex..<line.endIndex
 
@@ -535,7 +545,7 @@ class MarkupParser {
                 // Might be an initial piece of text before the first operator in the line.
                 if range.startIndex != operatorRange.startIndex {
                     let string = line.substringWithRange(range.startIndex..<operatorRange.startIndex)
-                    mutableText.appendAttributedString(NSAttributedString(string: replaceSingleQuotes(string), attributes: attributes))
+                    text.appendAttributedString(NSAttributedString(string: replaceSingleQuotes(string), attributes: attributes))
                 }
                 
                 switch line[operatorRange.startIndex] {
@@ -561,7 +571,7 @@ class MarkupParser {
                             
                             let overlength = operatorRange.startIndex.distanceTo(index) - emphasisness
                             let string = line.substringWithRange(operatorRange.startIndex..<operatorRange.startIndex.advancedBy(overlength))
-                            mutableText.appendAttributedString(NSAttributedString(string: string, attributes: attributes))
+                            text.appendAttributedString(NSAttributedString(string: string, attributes: attributes))
                         }
                         
                         // Emphasised text. We special-case the situation where the entire line is emphasised, and include the newline in the emphasis.
@@ -576,13 +586,13 @@ class MarkupParser {
                         var emphasisAttributes = attributes
                         emphasisAttributes[NSFontAttributeName] = UIFont(descriptor: emphasisedFontDescriptor, size: 0.0)
                         
-                        mutableText.appendAttributedString(NSAttributedString(string: replaceSingleQuotes(string), attributes: emphasisAttributes))
+                        text.appendAttributedString(NSAttributedString(string: replaceSingleQuotes(string), attributes: emphasisAttributes))
                         
                         // If the end operator is too long, treat it as the right operator followed by *s.
                         if endOperatorRange.startIndex.distanceTo(endIndex) > emphasisness {
                             let overlength = endOperatorRange.startIndex.distanceTo(endIndex) - emphasisness
                             let string = line.substringWithRange(endOperatorRange.startIndex.advancedBy(overlength)..<endIndex)
-                            mutableText.appendAttributedString(NSAttributedString(string: string, attributes: attributes))
+                            text.appendAttributedString(NSAttributedString(string: string, attributes: attributes))
                         }
 
                         range = endIndex..<range.endIndex
@@ -595,7 +605,7 @@ class MarkupParser {
                     } else {
                         // Didn't find the end emphasis; add the entire emphasis operator range to the output and continue from after it.
                         let string = line.substringWithRange(operatorRange.startIndex..<index)
-                        mutableText.appendAttributedString(NSAttributedString(string: replaceSingleQuotes(string), attributes: attributes))
+                        text.appendAttributedString(NSAttributedString(string: replaceSingleQuotes(string), attributes: attributes))
                         
                         range = index..<range.endIndex
                     }
@@ -623,11 +633,11 @@ class MarkupParser {
                         }
                         
                         // Add the text in the link to the output.
-                        mutableText.appendAttributedString(NSAttributedString(string: replaceSingleQuotes(linkText), attributes: linkAttributes))
+                        text.appendAttributedString(NSAttributedString(string: replaceSingleQuotes(linkText), attributes: linkAttributes))
                         
                     } else {
                         // Didn't find an end to the link; just add the start operator to the output.
-                        mutableText.appendAttributedString(NSAttributedString(string: line.substringWithRange(operatorRange), attributes: attributes))
+                        text.appendAttributedString(NSAttributedString(string: line.substringWithRange(operatorRange), attributes: attributes))
                         
                         range = operatorRange.endIndex..<range.endIndex
                     }
@@ -636,12 +646,12 @@ class MarkupParser {
                     if let endOperatorRange = line.rangeOfString("\"", options: [], range: operatorRange.endIndex..<range.endIndex, locale: nil) {
                         // Replace the quotes with smart quotes.
                         let string = "“\(line.substringWithRange(operatorRange.endIndex..<endOperatorRange.startIndex))”"
-                        mutableText.appendAttributedString(parseText(replaceSingleQuotes(string), attributes: attributes, features: features, appendNewline: false))
+                        text.appendAttributedString(parseText(replaceSingleQuotes(string), attributes: attributes, features: features, appendNewline: false))
 
                         range = endOperatorRange.endIndex..<range.endIndex
                     } else {
                         // Didn't find an end to the quote; just add the start quote to the output as a non-smart quote.
-                        mutableText.appendAttributedString(NSAttributedString(string: line.substringWithRange(operatorRange), attributes: attributes))
+                        text.appendAttributedString(NSAttributedString(string: line.substringWithRange(operatorRange), attributes: attributes))
                         
                         range = operatorRange.endIndex..<range.endIndex
                     }
@@ -657,7 +667,7 @@ class MarkupParser {
                 }
                 
                 if trailing != "" {
-                    mutableText.appendAttributedString(NSAttributedString(string: replaceSingleQuotes(trailing), attributes: attributes))
+                    text.appendAttributedString(NSAttributedString(string: replaceSingleQuotes(trailing), attributes: attributes))
                 }
                 
                 break loop

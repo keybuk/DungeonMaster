@@ -62,6 +62,16 @@ class MarkupParserTest: XCTestCase {
         XCTAssertEqual(markupParser.text.string, "and so is this.\n")
     }
     
+    func testParseText() {
+        let line = "This is a test"
+        
+        let markupParser = MarkupParser()
+        let text = markupParser.parseText(line, attributes: [String:AnyObject](), features: .All, appendNewline: false)
+        
+        XCTAssertEqual(markupParser.text.string, "")
+        XCTAssertEqual(text.string, "This is a test")
+    }
+
     // MARK: - Blocks
     
     // MARK: Basic paragraphs
