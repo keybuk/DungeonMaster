@@ -72,7 +72,7 @@ class CombatantViewController: UITableViewController {
             if let index = detailViewController.navigationItem.rightBarButtonItems?.indexOf(detailViewController.addButton) {
                 detailViewController.navigationItem.rightBarButtonItems?.removeAtIndex(index)
             }
-            detailViewController.detailItem = combatant.monster
+            detailViewController.monster = combatant.monster
         } else if segue.identifier == "RoleSegue" {
             let combatantRoleViewController = segue.destinationViewController as! CombatantRoleViewController
             combatantRoleViewController.role = combatant.role

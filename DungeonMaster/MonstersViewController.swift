@@ -79,9 +79,9 @@ class MonstersViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "MonsterDetailSegue" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let monster = fetchedResultsController.objectAtIndexPath(indexPath)
+                let monster = fetchedResultsController.objectAtIndexPath(indexPath) as! Monster
                 let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
-                controller.detailItem = monster
+                controller.monster = monster
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
                 controller.navigationItem.leftItemsSupplementBackButton = true
                 if let index = controller.navigationItem.rightBarButtonItems?.indexOf(controller.addButton) {

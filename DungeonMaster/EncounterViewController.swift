@@ -101,7 +101,7 @@ class EncounterViewController: UITableViewController {
     
     @IBAction func unwindFromMonster(segue: UIStoryboardSegue) {
         let controller = segue.sourceViewController as! DetailViewController
-        let monster = controller.detailItem as! Monster
+        let monster = controller.monster
         
         let combatant = Combatant(encounter: encounter, monster: monster, inManagedObjectContext: managedObjectContext)
         combatant.role = .Foe

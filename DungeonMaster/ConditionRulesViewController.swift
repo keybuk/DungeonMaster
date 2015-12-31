@@ -12,27 +12,32 @@ class ConditionRulesViewController: UIViewController {
 
     @IBOutlet var textView: UITextView!
     
-    var condition: Condition!
+    var condition: Condition! {
+        didSet {
+            guard textView != nil else { return }
+            configureView()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let markupParser = MarkupParser()
-        markupParser.tableWidth = textView.frame.size.width
-        markupParser.linkColor = textView.tintColor
-
-        markupParser.parse("***\(condition.stringValue)***")
-        markupParser.parse(condition.rulesDescription)
-
-        // Set the text with scroll disabled to stop it going to the bottom.
+        // Disable scrolling, otherwise we end up at the bottom.
         textView.scrollEnabled = false
-        textView.attributedText = markupParser.text
+        configureView()
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+
         // Enable scrolling, doing this earlier just scrolls to the bottom again.
         textView.scrollEnabled = true
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        configureView()
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,4 +45,15 @@ class ConditionRulesViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func configureView() {
+        let markupParser = MarkupParser()
+        markupParser.tableWidth = textView.frame.size.width
+        markupParser.linkColor = textView.tintColor
+        
+        markupParser.parse("***\(condition.stringValue)***")
+        markupParser.parse(condition.rulesDescription)
+        
+        textView.attributedText = markupParser.text
+    }
+
 }

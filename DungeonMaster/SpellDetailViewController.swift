@@ -12,25 +12,32 @@ class SpellDetailViewController: UIViewController {
 
     @IBOutlet var textView: UITextView!
     
-    var spell: Spell!
+    var spell: Spell! {
+        didSet {
+            guard textView != nil else { return }
+            configureView()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Disable scrolling, otherwise we end up at the bottom.
+        textView.scrollEnabled = false
         configureView()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Enable scrolling, doing this earlier just scrolls to the bottom again.
+        textView.scrollEnabled = true
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
         configureView()
-        textView.scrollEnabled = true
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        // Enable scrolling, doing this earlier just scrolls to the bottom again.
-        textView.scrollEnabled = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -241,7 +248,6 @@ class SpellDetailViewController: UIViewController {
         text.appendAttributedString(NSAttributedString(string: "\(durationString)\n", attributes: statsValueAttributes))
         
         
-        
         let markupParser = MarkupParser()
         markupParser.tableWidth = textView.frame.size.width
         markupParser.paragraphSpacingBefore = markupParser.paragraphSpacing
@@ -250,8 +256,6 @@ class SpellDetailViewController: UIViewController {
         markupParser.parse(spell.text)
         text.appendAttributedString(markupParser.text)
         
-        // Set the text with scroll disabled to stop it going to the bottom.
-        textView.scrollEnabled = false
         textView.attributedText = text
     }
 
