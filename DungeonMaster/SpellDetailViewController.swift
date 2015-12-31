@@ -46,6 +46,12 @@ class SpellDetailViewController: UIViewController {
     }
 
     func configureView() {
+        let markupParser = MarkupParser()
+        markupParser.tableWidth = textView.frame.size.width
+        markupParser.paragraphSpacingBefore = markupParser.paragraphSpacing
+        markupParser.linkColor = textView.tintColor
+        
+    
         let nameFont = UIFontDescriptor.preferredFontDescriptorWithTextStyle(UIFontTextStyleTitle1)
         
         let subheadlineFont = UIFontDescriptor.preferredFontDescriptorWithTextStyle(UIFontTextStyleSubheadline)
@@ -138,7 +144,7 @@ class SpellDetailViewController: UIViewController {
             }
         }
         
-        text.appendAttributedString(NSAttributedString(string: "\(castingTimeString)\n", attributes: statsValueAttributes))
+        text.appendAttributedString(markupParser.parseText(castingTimeString, attributes: statsValueAttributes, features: .All, appendNewline: true))
         
         
         text.appendAttributedString(NSAttributedString(string: "Range: ", attributes: statsLabelAttributes))
@@ -203,8 +209,8 @@ class SpellDetailViewController: UIViewController {
             componentsStrings.append("M (\(spell.materialComponent!))")
         }
         
-        text.appendAttributedString(NSAttributedString(string: "\(componentsStrings.joinWithSeparator(", "))\n", attributes: statsValueAttributes))
-        
+        text.appendAttributedString(markupParser.parseText(componentsStrings.joinWithSeparator(", "), attributes: statsValueAttributes, features: .All, appendNewline: true))
+    
         
         text.appendAttributedString(NSAttributedString(string: "Duration: ", attributes: statsLabelAttributes))
         
@@ -247,11 +253,6 @@ class SpellDetailViewController: UIViewController {
         
         text.appendAttributedString(NSAttributedString(string: "\(durationString)\n", attributes: statsValueAttributes))
         
-        
-        let markupParser = MarkupParser()
-        markupParser.tableWidth = textView.frame.size.width
-        markupParser.paragraphSpacingBefore = markupParser.paragraphSpacing
-        markupParser.linkColor = textView.tintColor
         
         markupParser.parse(spell.text)
         text.appendAttributedString(markupParser.text)
