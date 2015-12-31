@@ -1878,6 +1878,33 @@ class MarkupParserTest: XCTestCase {
 
     // MARK: - Mixed block and inline styles
     
+    func testHeadingWithQuotes() {
+        let lines = [ "# This \"is\" a test" ]
+        
+        let markupParser = MarkupParser()
+        markupParser.parse(lines)
+        
+        // Test quotes rather than emphasis because the heading font doesn't have an italic variant.
+        XCTAssertEqual(markupParser.text.string, "This “is” a test\n")
+
+        var range = NSRange()
+        let style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        XCTAssertNotNil(style)
+        XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
+        XCTAssertEqual(style!.paragraphSpacing, 0.0)
+        XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
+        XCTAssertEqual(style!.headIndent, 0.0)
+        XCTAssertEqual(range.location, 0)
+        XCTAssertEqual(range.length, 17)
+        
+        let font = markupParser.text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        XCTAssertNotNil(font)
+        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
+        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertEqual(range.location, 0)
+        XCTAssertEqual(range.length, 17)
+    }
+    
     func testBulletItemWithEmphasis() {
         let lines = [ "• Daddy *and* Chips" ]
         
@@ -1945,6 +1972,172 @@ class MarkupParserTest: XCTestCase {
         XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
         XCTAssertEqual(range.location, 11)
         XCTAssertEqual(range.length, 7)
+    }
+    
+    func testTableWithEmphasis() {
+        let lines = [ "State | Capital", "Idaho | Boise", "*California* | **Sacramento**" ]
+        
+        let markupParser = MarkupParser()
+        markupParser.parse(lines)
+        
+        XCTAssertEqual(markupParser.text.string, "\tState\tCapital\n\tIdaho\tBoise\n\tCalifornia\tSacramento\n")
+        
+        // The first line of the table is the heading, and should be covered by a single style with a bold font and tab stops for each column.
+        var range = NSRange()
+        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        XCTAssertNotNil(style)
+        XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
+        XCTAssertEqual(style!.paragraphSpacing, 0.0)
+        XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
+        XCTAssertEqual(style!.headIndent, 0.0)
+        XCTAssertEqual(style!.tabStops.count, 2)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].location, markupParser.tableSpacing)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertGreaterThan(style!.tabStops[1].location, markupParser.tableSpacing * 2)
+        XCTAssertEqual(range.location, 0)
+        XCTAssertEqual(range.length, 15)
+        
+        var font = markupParser.text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        XCTAssertNotNil(font)
+        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
+        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertEqual(range.location, 0)
+        XCTAssertEqual(range.length, 15)
+        
+        let headingTabStops = style!.tabStops
+        
+        // The next line is the un-emphasised one, with a non-bold font. The tab stops must match the heading ones.
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 15, effectiveRange: &range) as? NSParagraphStyle
+        XCTAssertNotNil(style)
+        XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
+        XCTAssertEqual(style!.paragraphSpacing, 0.0)
+        XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
+        XCTAssertEqual(style!.headIndent, 0.0)
+        XCTAssertEqual(style!.tabStops.count, 2)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].location, headingTabStops[0].location)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].location, headingTabStops[1].location)
+        XCTAssertEqual(range.location, 15)
+        XCTAssertEqual(range.length, 13)
+        
+        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 15, effectiveRange: &range) as? UIFont
+        XCTAssertNotNil(font)
+        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
+        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertEqual(range.location, 15)
+        XCTAssertEqual(range.length, 13)
+        
+        // The table row's initial tab should be outside of the emphasis.
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 28, effectiveRange: &range) as? NSParagraphStyle
+        XCTAssertNotNil(style)
+        XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
+        XCTAssertEqual(style!.paragraphSpacing, 0.0)
+        XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
+        XCTAssertEqual(style!.headIndent, 0.0)
+        XCTAssertEqual(style!.tabStops.count, 2)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].location, headingTabStops[0].location)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].location, headingTabStops[1].location)
+        XCTAssertEqual(range.location, 28)
+        XCTAssertEqual(range.length, 1)
+        
+        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 28, effectiveRange: &range) as? UIFont
+        XCTAssertNotNil(font)
+        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
+        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertEqual(range.location, 28)
+        XCTAssertEqual(range.length, 1)
+        
+        // The word "California" should be in italics. The tab stops for this paragraph section should still match though.
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 29, effectiveRange: &range) as? NSParagraphStyle
+        XCTAssertNotNil(style)
+        XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
+        XCTAssertEqual(style!.paragraphSpacing, 0.0)
+        XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
+        XCTAssertEqual(style!.headIndent, 0.0)
+        XCTAssertEqual(style!.tabStops.count, 2)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].location, headingTabStops[0].location)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].location, headingTabStops[1].location)
+        XCTAssertEqual(range.location, 29)
+        XCTAssertEqual(range.length, 10)
+        
+        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 29, effectiveRange: &range) as? UIFont
+        XCTAssertNotNil(font)
+        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
+        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertEqual(range.location, 29)
+        XCTAssertEqual(range.length, 10)
+        
+        // Column separator.
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 39, effectiveRange: &range) as? NSParagraphStyle
+        XCTAssertNotNil(style)
+        XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
+        XCTAssertEqual(style!.paragraphSpacing, 0.0)
+        XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
+        XCTAssertEqual(style!.headIndent, 0.0)
+        XCTAssertEqual(style!.tabStops.count, 2)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].location, headingTabStops[0].location)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].location, headingTabStops[1].location)
+        XCTAssertEqual(range.location, 39)
+        XCTAssertEqual(range.length, 1)
+        
+        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 39, effectiveRange: &range) as? UIFont
+        XCTAssertNotNil(font)
+        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
+        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertEqual(range.location, 39)
+        XCTAssertEqual(range.length, 1)
+
+        // The word "Sacramento" should be in bold. The tab stops for this paragraph section should still match though.
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 40, effectiveRange: &range) as? NSParagraphStyle
+        XCTAssertNotNil(style)
+        XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
+        XCTAssertEqual(style!.paragraphSpacing, 0.0)
+        XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
+        XCTAssertEqual(style!.headIndent, 0.0)
+        XCTAssertEqual(style!.tabStops.count, 2)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].location, headingTabStops[0].location)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].location, headingTabStops[1].location)
+        XCTAssertEqual(range.location, 40)
+        XCTAssertEqual(range.length, 10)
+        
+        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 40, effectiveRange: &range) as? UIFont
+        XCTAssertNotNil(font)
+        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
+        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertEqual(range.location, 40)
+        XCTAssertEqual(range.length, 10)
+
+        // Final newline.
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 50, effectiveRange: &range) as? NSParagraphStyle
+        XCTAssertNotNil(style)
+        XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
+        XCTAssertEqual(style!.paragraphSpacing, 0.0)
+        XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
+        XCTAssertEqual(style!.headIndent, 0.0)
+        XCTAssertEqual(style!.tabStops.count, 2)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].location, headingTabStops[0].location)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].location, headingTabStops[1].location)
+        XCTAssertEqual(range.location, 50)
+        XCTAssertEqual(range.length, 1)
+        
+        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 50, effectiveRange: &range) as? UIFont
+        XCTAssertNotNil(font)
+        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
+        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertEqual(range.location, 50)
+        XCTAssertEqual(range.length, 1)
     }
 
     // MARK: - Recovery of invalid cases
@@ -2114,4 +2307,81 @@ class MarkupParserTest: XCTestCase {
         XCTAssertEqual(range.length, 24)
     }
 
+    func testBrokenEmphasisAcrossTableCells() {
+        let lines = [ "State | Capital", "Idaho | Boise", "*California | Sacramento*" ]
+        
+        let markupParser = MarkupParser()
+        markupParser.parse(lines)
+        
+        // Each table cell is marked up independantly, so the emphasis operators should be treated as errors and left in the text.
+        XCTAssertEqual(markupParser.text.string, "\tState\tCapital\n\tIdaho\tBoise\n\t*California\tSacramento*\n")
+        
+        // The first line of the table is the heading, and should be covered by a single style with a bold font and tab stops for each column.
+        var range = NSRange()
+        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        XCTAssertNotNil(style)
+        XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
+        XCTAssertEqual(style!.paragraphSpacing, 0.0)
+        XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
+        XCTAssertEqual(style!.headIndent, 0.0)
+        XCTAssertEqual(style!.tabStops.count, 2)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].location, markupParser.tableSpacing)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertGreaterThan(style!.tabStops[1].location, markupParser.tableSpacing * 2)
+        XCTAssertEqual(range.location, 0)
+        XCTAssertEqual(range.length, 15)
+        
+        var font = markupParser.text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        XCTAssertNotNil(font)
+        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
+        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertEqual(range.location, 0)
+        XCTAssertEqual(range.length, 15)
+        
+        let headingTabStops = style!.tabStops
+        
+        // The next two lines of the table are the body, with a non-bold font. The tab stops must match the heading ones.
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 15, effectiveRange: &range) as? NSParagraphStyle
+        XCTAssertNotNil(style)
+        XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
+        XCTAssertEqual(style!.paragraphSpacing, 0.0)
+        XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
+        XCTAssertEqual(style!.headIndent, 0.0)
+        XCTAssertEqual(style!.tabStops.count, 2)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].location, headingTabStops[0].location)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].location, headingTabStops[1].location)
+        XCTAssertEqual(range.location, 15)
+        XCTAssertEqual(range.length, 13)
+        
+        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 15, effectiveRange: &range) as? UIFont
+        XCTAssertNotNil(font)
+        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
+        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertEqual(range.location, 15)
+        XCTAssertEqual(range.length, 13)
+        
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 28, effectiveRange: &range) as? NSParagraphStyle
+        XCTAssertNotNil(style)
+        XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
+        XCTAssertEqual(style!.paragraphSpacing, 0.0)
+        XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
+        XCTAssertEqual(style!.headIndent, 0.0)
+        XCTAssertEqual(style!.tabStops.count, 2)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].location, headingTabStops[0].location)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].location, headingTabStops[1].location)
+        XCTAssertEqual(range.location, 28)
+        XCTAssertEqual(range.length, 25)
+        
+        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 28, effectiveRange: &range) as? UIFont
+        XCTAssertNotNil(font)
+        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
+        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertEqual(range.location, 28)
+        XCTAssertEqual(range.length, 25)
+    }
 }
