@@ -32,7 +32,7 @@ extension PlayerSkillViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Skill.cases.filter({ $0.rawSkillValue == section }).count
+        return Skill.cases.filter({ $0.rawAbilityValue == section }).count
     }
 
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

@@ -31,7 +31,7 @@ extension PlayerRaceViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return max(Race.cases.filter({ $0.rawRaceValue == section }).count, 1)
+        return Race.cases.filter({ $0.rawRaceValue == section }).count
     }
 
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -42,7 +42,7 @@ extension PlayerRaceViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("RaceCell", forIndexPath: indexPath)
         
         let race: Race
-        if Race.cases.filter({ $0.rawRaceValue == indexPath.section }).count > 0 {
+        if Race.cases.filter({ $0.rawRaceValue == indexPath.section }).count > 1 {
             race = Race(rawRaceValue: indexPath.section, rawSubraceValue: indexPath.row)!
         } else {
             race = Race(rawRaceValue: indexPath.section, rawSubraceValue: nil)!
