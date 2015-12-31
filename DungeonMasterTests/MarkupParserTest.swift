@@ -706,6 +706,92 @@ class MarkupParserTest: XCTestCase {
         XCTAssertEqual(range.length, 7)
     }
 
+    func testCollapseTableWithOverlong() {
+        let lines = [ "d6 | Description | Race",
+            "1 | This is a very long description that should cause the table to overflow the bounds of its line | Dwarf", "2 | Huh | Elf" ]
+        
+        let markupParser = MarkupParser()
+        markupParser.tableWidth = 300.0
+        markupParser.parse(lines)
+        
+        XCTAssertEqual(markupParser.text.string, "\td6\tDescription\tRace\n\t1\tThis is a very long\tDwarf\n\t\tdescription that should\n\t\tcause the table to overflow\n\t\tthe bounds of its line\n\t2\tHuh\tElf\n")
+        
+        // The left and right columns should be smaller than the middle
+        var range = NSRange()
+        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        XCTAssertNotNil(style)
+        XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
+        XCTAssertEqual(style!.paragraphSpacing, 0.0)
+        XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
+        XCTAssertEqual(style!.headIndent, 0.0)
+        XCTAssertEqual(style!.tabStops.count, 3)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Center)
+        XCTAssertGreaterThan(style!.tabStops[0].location, markupParser.tableSpacing)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertLessThanOrEqual(style!.tabStops[1].location, markupParser.tableSpacing * 2 + 75.0)
+        XCTAssertEqual(style!.tabStops[2].alignment, NSTextAlignment.Left)
+        XCTAssertGreaterThanOrEqual(style!.tabStops[2].location, markupParser.tableSpacing * 3 + 200.0)
+        XCTAssertEqual(range.location, 0)
+        XCTAssertEqual(range.length, 21)
+        
+        var font = markupParser.text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        XCTAssertNotNil(font)
+        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
+        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertEqual(range.location, 0)
+        XCTAssertEqual(range.length, 21)
+        
+        let headingTabStops = style!.tabStops
+        
+        // The first logical row paragraph style should extend over the entire text, including the broken column on separate physical lines.
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 21, effectiveRange: &range) as? NSParagraphStyle
+        XCTAssertNotNil(style)
+        XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
+        XCTAssertEqual(style!.paragraphSpacing, 0.0)
+        XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
+        XCTAssertEqual(style!.headIndent, 0.0)
+        XCTAssertEqual(style!.tabStops.count, 3)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Center)
+        XCTAssertEqual(style!.tabStops[0].location, headingTabStops[0].location)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].location, headingTabStops[1].location)
+        XCTAssertEqual(style!.tabStops[2].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[2].location, headingTabStops[2].location)
+        XCTAssertEqual(range.location, 21)
+        XCTAssertEqual(range.length, 110)
+        
+        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 21, effectiveRange: &range) as? UIFont
+        XCTAssertNotNil(font)
+        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
+        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertEqual(range.location, 21)
+        XCTAssertEqual(range.length, 110)
+
+        // Second logical row matches the physical one.
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 131, effectiveRange: &range) as? NSParagraphStyle
+        XCTAssertNotNil(style)
+        XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
+        XCTAssertEqual(style!.paragraphSpacing, 0.0)
+        XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
+        XCTAssertEqual(style!.headIndent, 0.0)
+        XCTAssertEqual(style!.tabStops.count, 3)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Center)
+        XCTAssertEqual(style!.tabStops[0].location, headingTabStops[0].location)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].location, headingTabStops[1].location)
+        XCTAssertEqual(style!.tabStops[2].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[2].location, headingTabStops[2].location)
+        XCTAssertEqual(range.location, 131)
+        XCTAssertEqual(range.length, 11)
+        
+        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 131, effectiveRange: &range) as? UIFont
+        XCTAssertNotNil(font)
+        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
+        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertEqual(range.location, 131)
+        XCTAssertEqual(range.length, 11)
+    }
+
     // MARK: Mixed blocks
     
     func testIndentedAfterText() {

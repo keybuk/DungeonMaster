@@ -255,28 +255,44 @@ class MarkupParser {
     private func layoutTableIfNeeded() {
         guard case .Table(let tableIndex, _, let tableWidths, let tableAlignments) = lastBlock else { return }
         
-        // Calculate the combined column widths.
+        // Calculate the combined column widths, and find the widest column.
         var flexibleColumnWidths: CGFloat = 0.0, fixedColumnWidths: CGFloat = 0.0
-        for (alignment, width) in zip(tableAlignments, tableWidths) {
+        var widestColumnWidth: CGFloat?, widestColumnIndex: Int?
+        for (index, (alignment, width)) in zip(tableAlignments, tableWidths).enumerate() {
             if alignment == .Left {
                 flexibleColumnWidths += width
+                if width > (widestColumnWidth ?? 0.0) {
+                    widestColumnWidth = width
+                    widestColumnIndex = index
+                }
             } else {
                 fixedColumnWidths += width
             }
         }
         
-        // If the parser has a fixed table width set, calculate how much space is available for the flexible columns.
-        let availableColumnWidths = tableWidth != nil ? (tableWidth! - CGFloat(tableWidths.count + 1) * tableSpacing - fixedColumnWidths) : 0.0
-        
+        // If the parser has a fixed table width set, calculate how much space is available for the flexible columns. This dictates either how much we can expand the columns (when undersized), or how much we would need to shrink the widest column (when oversized).
+        var availableColumnWidths: CGFloat?
+        if let tableWidth = tableWidth {
+            availableColumnWidths = (tableWidth - CGFloat(tableWidths.count + 1) * tableSpacing - fixedColumnWidths)
+        }
+
         // Lay out the tab stops at the appropriate places for the columns.
         var location = tableSpacing
         var tabStops = [NSTextTab]()
-        for (alignment, width) in zip(tableAlignments, tableWidths) {
+        for (index, (alignment, width)) in zip(tableAlignments, tableWidths).enumerate() {
             var width = width, columnLocation = location
             if alignment == .Center {
                 columnLocation += width / 2.0
-            } else if flexibleColumnWidths < availableColumnWidths {
-                width = round(width / flexibleColumnWidths * availableColumnWidths)
+            } else if let availableColumnWidths = availableColumnWidths {
+                if flexibleColumnWidths < availableColumnWidths {
+                    // Table needs expanding, scale the column up proportionally.
+                    width = round(width / flexibleColumnWidths * availableColumnWidths)
+                } else if let widestColumnIndex = widestColumnIndex where flexibleColumnWidths > availableColumnWidths && (flexibleColumnWidths - width) <= availableColumnWidths && index == widestColumnIndex {
+                    // Table needs collapsing, this is the widest column, and removing it would get us under again.
+                    width = availableColumnWidths - (flexibleColumnWidths - width)
+                    
+                    collapseTableColumn(index, to: width)
+                }
             }
             
             tabStops.append(NSTextTab(textAlignment: alignment, location: columnLocation, options: [String:AnyObject]()))
@@ -300,6 +316,85 @@ class MarkupParser {
         
         // Since the table has been laid out, we can't extend it any further. Make sure that the next parse() call starts a new table if it has one.
         lastBlock = .FinishedTable
+    }
+    
+    private func collapseTableColumn(columnIndex: Int, to width: CGFloat) {
+        guard case .Table(let tableIndex, _, _, _) = lastBlock else { return }
+        let delimiterCharacterSet = NSCharacterSet(charactersInString: "\t\n")
+        
+        var column: Int?
+        var fragment: String?
+        var fragments = [String]()
+        var fragmentWidth: CGFloat?
+        var fragmentWidths = [CGFloat]()
+        var savedTrailing: String?
+
+        var index = mutableText.string.startIndex.advancedBy(tableIndex)
+        while index != mutableText.string.endIndex {
+            guard let delimiterRange = mutableText.string.rangeOfCharacterFromSet(delimiterCharacterSet, options: [], range: index..<mutableText.string.endIndex) else { break }
+            let delimiter = mutableText.string[delimiterRange.startIndex]
+            let delimiterLength = delimiterRange.startIndex.distanceTo(delimiterRange.endIndex)
+
+            if let column = column where column == columnIndex {
+                // Generate string fragments to fit within width.
+                let font = mutableText.attribute(NSFontAttributeName, atIndex: mutableText.string.startIndex.distanceTo(index), effectiveRange: nil)!
+                mutableText.string.enumerateSubstringsInRange(index..<delimiterRange.startIndex, options: .ByWords) { (substring, substringRange, enclosingRange, inout stop: Bool) in
+                    let newFragment = (fragment ?? "") + (savedTrailing ?? "") + substring!
+                    let newWidth = ceil((newFragment as NSString).sizeWithAttributes([ NSFontAttributeName: font ]).width)
+                    
+                    if newWidth > width {
+                        if let fragment = fragment, fragmentWidth = fragmentWidth {
+                            fragments.append(fragment)
+                            fragmentWidths.append(fragmentWidth)
+                        }
+                        fragment = substring!
+                        fragmentWidth = ceil((substring! as NSString).sizeWithAttributes([ NSFontAttributeName: font ]).width)
+                    } else {
+                        fragment = newFragment
+                        fragmentWidth = newWidth
+                    }
+                    
+                    savedTrailing = self.mutableText.string.substringWithRange(substringRange.endIndex..<enclosingRange.endIndex)
+                }
+
+                if let fragment = fragment, fragmentWidth = fragmentWidth {
+                    fragments.append(fragment)
+                    fragmentWidths.append(fragmentWidth)
+                }
+                
+                // Replace the text in the column with the first fragment.
+                let string = fragments.removeFirst()
+                let range = NSRange(location: mutableText.string.startIndex.distanceTo(index), length: index.distanceTo(delimiterRange.startIndex))
+                mutableText.replaceCharactersInRange(range, withString: string)
+                
+                // Since we've mutated the string, we have to recalculate the index; fortunately we know how many characters we inserted and the length of the delimiter already.
+                index = mutableText.string.startIndex.advancedBy(range.location + string.characters.count + delimiterLength)
+            } else {
+                index = delimiterRange.endIndex
+            }
+
+            if delimiter == "\n" {
+                if fragments.count > 0 {
+                    // Replace the delimiter with itself, followed by a line for each of the fragments prefixed with the right numbers of indents.
+                    let prefix = [String](count: columnIndex + 1, repeatedValue: "\t").joinWithSeparator("")
+                    let string = fragments.map({ "\(prefix)\($0)\n" }).reduce("\(delimiter)", combine: +)
+                    let range = NSRange(location: mutableText.string.startIndex.distanceTo(index) - delimiterLength, length: delimiterLength)
+                    mutableText.replaceCharactersInRange(range, withString: string)
+                    
+                    // Since we've mutated the string, the index has to be recalculated once more; again this is easy because we know the range where we inserted characters, what we replaced, and that included the delimiter too this time.
+                    index = mutableText.string.startIndex.advancedBy(range.location + string.characters.count)
+                }
+                
+                column = nil
+                fragment = nil
+                fragments.removeAll()
+                fragmentWidth = nil
+                fragmentWidths.removeAll()
+                savedTrailing = nil
+            } else {
+                column = column != nil ? column! + 1 : 0
+            }
+        }
     }
     
     private func parseBulletLine(line: String) {
