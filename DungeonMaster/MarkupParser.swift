@@ -77,10 +77,11 @@ class MarkupParser {
     private let operators: NSCharacterSet
     
     private let bodyFontDescriptor: UIFontDescriptor
-    private let emphasisedFontDescriptor: [UIFontDescriptor]
     private let tableFontDescriptor: UIFontDescriptor
     private let tableHeadingFontDescriptor: UIFontDescriptor
     private let headingFontDescriptor: UIFontDescriptor
+
+    private let emphasisedTraits: [UIFontDescriptorSymbolicTraits]
     
     private var lastBlock: LastBlock
     private var mutableText: NSMutableAttributedString
@@ -90,15 +91,16 @@ class MarkupParser {
         operators = NSCharacterSet(charactersInString: "*[\"")
         
         bodyFontDescriptor = UIFontDescriptor.preferredFontDescriptorWithTextStyle(UIFontTextStyleBody)
-        emphasisedFontDescriptor = [
-            bodyFontDescriptor,
-            bodyFontDescriptor.fontDescriptorWithSymbolicTraits(.TraitItalic),
-            bodyFontDescriptor.fontDescriptorWithSymbolicTraits(.TraitBold),
-            bodyFontDescriptor.fontDescriptorWithSymbolicTraits([ .TraitBold, .TraitItalic ]),
-        ]
         tableFontDescriptor = bodyFontDescriptor.fontDescriptorWithSize(floor(bodyFontDescriptor.pointSize * 0.9))
         tableHeadingFontDescriptor = tableFontDescriptor.fontDescriptorWithSymbolicTraits(.TraitBold)
         headingFontDescriptor = UIFontDescriptor.preferredFontDescriptorWithTextStyle(UIFontTextStyleHeadline)
+        
+        emphasisedTraits = [
+            [],
+            .TraitItalic,
+            .TraitBold,
+            [ .TraitBold, .TraitItalic ]
+        ]
         
         lastBlock = LastBlock.None
         mutableText = NSMutableAttributedString()
@@ -417,12 +419,14 @@ class MarkupParser {
             NSTextTab(textAlignment: .Left, location: paragraphIndent, options: [String: AnyObject]())
         ]
 
-        // Append the bullet and a tab stop to move the following text to the right point.
-        mutableText.appendAttributedString(NSAttributedString(string: "•\t", attributes: [
+        let attributes = [
             NSFontAttributeName: UIFont(descriptor: bodyFontDescriptor, size: 0.0),
-            NSParagraphStyleAttributeName: paragraphStyle,
-            ]))
-        mutableText.appendAttributedString(parseText(line, paragraphStyle: paragraphStyle, appendNewline: true))
+            NSParagraphStyleAttributeName: paragraphStyle
+        ]
+
+        // Append the bullet and a tab stop to move the following text to the right point.
+        mutableText.appendAttributedString(NSAttributedString(string: "•\t", attributes: attributes))
+        mutableText.appendAttributedString(parseText(line, attributes: attributes, appendNewline: true))
         
         lastBlock = .Bullet
     }
@@ -439,10 +443,12 @@ class MarkupParser {
             paragraphStyle.paragraphSpacingBefore = paragraphSpacing
         }
 
-        mutableText.appendAttributedString(NSAttributedString(string: "\(line)\n", attributes: [
+        let attributes = [
             NSFontAttributeName: UIFont(descriptor: headingFontDescriptor, size: 0.0),
             NSParagraphStyleAttributeName: paragraphStyle,
-            ]))
+        ]
+
+        mutableText.appendAttributedString(NSAttributedString(string: "\(line)\n", attributes: attributes))
         
         lastBlock = .Heading
     }
@@ -463,7 +469,12 @@ class MarkupParser {
         
         paragraphStyle.headIndent = paragraphIndent
         
-        mutableText.appendAttributedString(parseText(line, paragraphStyle: paragraphStyle, appendNewline: true))
+        let attributes = [
+            NSFontAttributeName: UIFont(descriptor: bodyFontDescriptor, size: 0.0),
+            NSParagraphStyleAttributeName: paragraphStyle
+        ]
+        
+        mutableText.appendAttributedString(parseText(line, attributes: attributes, appendNewline: true))
         
         lastBlock = .IndentParagraph
     }
@@ -482,12 +493,17 @@ class MarkupParser {
             paragraphStyle.paragraphSpacingBefore = paragraphSpacing
         }
         
-        mutableText.appendAttributedString(parseText(line, paragraphStyle: paragraphStyle, appendNewline: true))
+        let attributes = [
+            NSFontAttributeName: UIFont(descriptor: bodyFontDescriptor, size: 0.0),
+            NSParagraphStyleAttributeName: paragraphStyle
+        ]
+        
+        mutableText.appendAttributedString(parseText(line, attributes: attributes, appendNewline: true))
         
         lastBlock = .Paragraph
     }
 
-    private func parseText(line: String, paragraphStyle: NSParagraphStyle, appendNewline: Bool) -> NSAttributedString {
+    private func parseText(line: String, attributes: [String: AnyObject], appendNewline: Bool) -> NSAttributedString {
         let line = line.stringByTrimmingCharactersInSet(whitespace)
         var range = line.startIndex..<line.endIndex
         
@@ -497,10 +513,7 @@ class MarkupParser {
                 // Might be an initial piece of text before the first operator in the line.
                 if range.startIndex != operatorRange.startIndex {
                     let string = line.substringWithRange(range.startIndex..<operatorRange.startIndex)
-                    mutableText.appendAttributedString(NSAttributedString(string: replaceSingleQuotes(string), attributes: [
-                        NSFontAttributeName: UIFont(descriptor: bodyFontDescriptor, size: 0.0),
-                        NSParagraphStyleAttributeName: paragraphStyle,
-                        ]))
+                    mutableText.appendAttributedString(NSAttributedString(string: replaceSingleQuotes(string), attributes: attributes))
                 }
                 
                 switch line[operatorRange.startIndex] {
@@ -521,15 +534,12 @@ class MarkupParser {
 
                         // If the start operator is too long, treat it as initial *s followed by the right operator.
                         var emphasisness = operatorRange.startIndex.distanceTo(index)
-                        if emphasisness > emphasisedFontDescriptor.count || emphasisness > endOperatorRange.startIndex.distanceTo(endIndex) {
-                            emphasisness = min(emphasisedFontDescriptor.count, endOperatorRange.startIndex.distanceTo(endIndex))
+                        if emphasisness > emphasisedTraits.count || emphasisness > endOperatorRange.startIndex.distanceTo(endIndex) {
+                            emphasisness = min(emphasisedTraits.count, endOperatorRange.startIndex.distanceTo(endIndex))
                             
                             let overlength = operatorRange.startIndex.distanceTo(index) - emphasisness
                             let string = line.substringWithRange(operatorRange.startIndex..<operatorRange.startIndex.advancedBy(overlength))
-                            mutableText.appendAttributedString(NSAttributedString(string: string, attributes: [
-                                NSFontAttributeName: UIFont(descriptor: bodyFontDescriptor, size: 0.0),
-                                NSParagraphStyleAttributeName: paragraphStyle,
-                                ]))
+                            mutableText.appendAttributedString(NSAttributedString(string: string, attributes: attributes))
                         }
                         
                         // Emphasised text. We special-case the situation where the entire line is emphasised, and include the newline in the emphasis.
@@ -538,19 +548,19 @@ class MarkupParser {
                             string += "\n"
                         }
                         
-                        mutableText.appendAttributedString(NSAttributedString(string: replaceSingleQuotes(string), attributes: [
-                            NSFontAttributeName: UIFont(descriptor: emphasisedFontDescriptor[emphasisness], size: 0.0),
-                            NSParagraphStyleAttributeName: paragraphStyle,
-                            ]))
+                        let fontDescriptor = (attributes[NSFontAttributeName] as? UIFont)?.fontDescriptor() ?? bodyFontDescriptor
+                        let emphasisedFontDescriptor = fontDescriptor.fontDescriptorWithSymbolicTraits(emphasisedTraits[emphasisness])
+                        
+                        var emphasisAttributes = attributes
+                        emphasisAttributes[NSFontAttributeName] = UIFont(descriptor: emphasisedFontDescriptor, size: 0.0)
+                        
+                        mutableText.appendAttributedString(NSAttributedString(string: replaceSingleQuotes(string), attributes: emphasisAttributes))
                         
                         // If the end operator is too long, treat it as the right operator followed by *s.
                         if endOperatorRange.startIndex.distanceTo(endIndex) > emphasisness {
                             let overlength = endOperatorRange.startIndex.distanceTo(endIndex) - emphasisness
                             let string = line.substringWithRange(endOperatorRange.startIndex.advancedBy(overlength)..<endIndex)
-                            mutableText.appendAttributedString(NSAttributedString(string: string, attributes: [
-                                NSFontAttributeName: UIFont(descriptor: bodyFontDescriptor, size: 0.0),
-                                NSParagraphStyleAttributeName: paragraphStyle,
-                                ]))
+                            mutableText.appendAttributedString(NSAttributedString(string: string, attributes: attributes))
                         }
 
                         range = endIndex..<range.endIndex
@@ -563,10 +573,7 @@ class MarkupParser {
                     } else {
                         // Didn't find the end emphasis; add the entire emphasis operator range to the output and continue from after it.
                         let string = line.substringWithRange(operatorRange.startIndex..<index)
-                        mutableText.appendAttributedString(NSAttributedString(string: replaceSingleQuotes(string), attributes: [
-                            NSFontAttributeName: UIFont(descriptor: bodyFontDescriptor, size: 0.0),
-                            NSParagraphStyleAttributeName: paragraphStyle,
-                            ]))
+                        mutableText.appendAttributedString(NSAttributedString(string: replaceSingleQuotes(string), attributes: attributes))
                         
                         range = index..<range.endIndex
                     }
@@ -587,24 +594,18 @@ class MarkupParser {
                             
                         }
                         
-                        var attributes = [
-                            NSFontAttributeName: UIFont(descriptor: bodyFontDescriptor, size: 0.0),
-                            NSParagraphStyleAttributeName: paragraphStyle,
-                            linkAttributeName: linkName
-                        ]
+                        var linkAttributes = attributes
+                        linkAttributes[linkAttributeName] = linkName
                         if let linkColor = linkColor {
-                            attributes[NSForegroundColorAttributeName] = linkColor
+                            linkAttributes[NSForegroundColorAttributeName] = linkColor
                         }
                         
                         // Add the text in the link to the output.
-                        mutableText.appendAttributedString(NSAttributedString(string: replaceSingleQuotes(linkText), attributes: attributes))
+                        mutableText.appendAttributedString(NSAttributedString(string: replaceSingleQuotes(linkText), attributes: linkAttributes))
                         
                     } else {
                         // Didn't find an end to the link; just add the start operator to the output.
-                        mutableText.appendAttributedString(NSAttributedString(string: line.substringWithRange(operatorRange), attributes: [
-                            NSFontAttributeName: UIFont(descriptor: bodyFontDescriptor, size: 0.0),
-                            NSParagraphStyleAttributeName: paragraphStyle,
-                            ]))
+                        mutableText.appendAttributedString(NSAttributedString(string: line.substringWithRange(operatorRange), attributes: attributes))
                         
                         range = operatorRange.endIndex..<range.endIndex
                     }
@@ -613,15 +614,12 @@ class MarkupParser {
                     if let endOperatorRange = line.rangeOfString("\"", options: [], range: operatorRange.endIndex..<range.endIndex, locale: nil) {
                         // Replace the quotes with smart quotes.
                         let string = "“\(line.substringWithRange(operatorRange.endIndex..<endOperatorRange.startIndex))”"
-                        mutableText.appendAttributedString(parseText(replaceSingleQuotes(string), paragraphStyle: paragraphStyle, appendNewline: false))
+                        mutableText.appendAttributedString(parseText(replaceSingleQuotes(string), attributes: attributes, appendNewline: false))
 
                         range = endOperatorRange.endIndex..<range.endIndex
                     } else {
                         // Didn't find an end to the quote; just add the start quote to the output as a non-smart quote.
-                        mutableText.appendAttributedString(NSAttributedString(string: line.substringWithRange(operatorRange), attributes: [
-                            NSFontAttributeName: UIFont(descriptor: bodyFontDescriptor, size: 0.0),
-                            NSParagraphStyleAttributeName: paragraphStyle,
-                            ]))
+                        mutableText.appendAttributedString(NSAttributedString(string: line.substringWithRange(operatorRange), attributes: attributes))
                         
                         range = operatorRange.endIndex..<range.endIndex
                     }
@@ -637,10 +635,7 @@ class MarkupParser {
                 }
                 
                 if trailing != "" {
-                    mutableText.appendAttributedString(NSAttributedString(string: replaceSingleQuotes(trailing), attributes: [
-                        NSFontAttributeName: UIFont(descriptor: bodyFontDescriptor, size: 0.0),
-                        NSParagraphStyleAttributeName: paragraphStyle,
-                        ]))
+                    mutableText.appendAttributedString(NSAttributedString(string: replaceSingleQuotes(trailing), attributes: attributes))
                 }
                 
                 break loop
