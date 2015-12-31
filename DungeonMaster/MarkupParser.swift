@@ -8,6 +8,17 @@
 
 import UIKit
 
+/// MarkupParserFeature represents the markup features that can be parsed by calls to `parseText`.
+struct MarkupParserFeatures: OptionSetType {
+    let rawValue: UInt
+    static let None = MarkupParserFeatures(rawValue: 0)
+    static let Emphasis = MarkupParserFeatures(rawValue: 1)
+    static let Links = MarkupParserFeatures(rawValue: 1 << 1)
+    static let Quotes = MarkupParserFeatures(rawValue: 1 << 2)
+    
+    static let All: MarkupParserFeatures = [ .Emphasis, .Links, .Quotes ]
+}
+
 /// MarkupParser parses the markup format used by rules, and monster and spell lists into an `NSAttributedString` for display.
 ///
 /// The markup format is extremely lightweight, and is similar to Markdown in someways.
@@ -74,7 +85,6 @@ class MarkupParser {
     }
 
     private let whitespace: NSCharacterSet
-    private let operators: NSCharacterSet
     
     private let bodyFontDescriptor: UIFontDescriptor
     private let tableFontDescriptor: UIFontDescriptor
@@ -88,7 +98,6 @@ class MarkupParser {
 
     init() {
         whitespace = NSCharacterSet.whitespaceCharacterSet()
-        operators = NSCharacterSet(charactersInString: "*[\"")
         
         bodyFontDescriptor = UIFontDescriptor.preferredFontDescriptorWithTextStyle(UIFontTextStyleBody)
         tableFontDescriptor = bodyFontDescriptor.fontDescriptorWithSize(floor(bodyFontDescriptor.pointSize * 0.9))
@@ -426,7 +435,7 @@ class MarkupParser {
 
         // Append the bullet and a tab stop to move the following text to the right point.
         mutableText.appendAttributedString(NSAttributedString(string: "•\t", attributes: attributes))
-        mutableText.appendAttributedString(parseText(line, attributes: attributes, appendNewline: true))
+        mutableText.appendAttributedString(parseText(line, attributes: attributes, features: .All, appendNewline: true))
         
         lastBlock = .Bullet
     }
@@ -474,7 +483,7 @@ class MarkupParser {
             NSParagraphStyleAttributeName: paragraphStyle
         ]
         
-        mutableText.appendAttributedString(parseText(line, attributes: attributes, appendNewline: true))
+        mutableText.appendAttributedString(parseText(line, attributes: attributes, features: .All, appendNewline: true))
         
         lastBlock = .IndentParagraph
     }
@@ -498,14 +507,27 @@ class MarkupParser {
             NSParagraphStyleAttributeName: paragraphStyle
         ]
         
-        mutableText.appendAttributedString(parseText(line, attributes: attributes, appendNewline: true))
+        mutableText.appendAttributedString(parseText(line, attributes: attributes, features: .All, appendNewline: true))
         
         lastBlock = .Paragraph
     }
 
-    private func parseText(line: String, attributes: [String: AnyObject], appendNewline: Bool) -> NSAttributedString {
+    private func parseText(line: String, attributes: [String: AnyObject], features: MarkupParserFeatures, appendNewline: Bool) -> NSAttributedString {
         let line = line.stringByTrimmingCharactersInSet(whitespace)
         var range = line.startIndex..<line.endIndex
+
+        var operatorString = ""
+        if features.contains(.Emphasis) {
+            operatorString += "*"
+        }
+        if features.contains(.Links) {
+            operatorString += "["
+        }
+        if features.contains(.Quotes) {
+            operatorString += "\""
+        }
+        let operators = NSCharacterSet(charactersInString: operatorString)
+
         
         let text = NSMutableAttributedString()
         loop: while true {
@@ -614,7 +636,7 @@ class MarkupParser {
                     if let endOperatorRange = line.rangeOfString("\"", options: [], range: operatorRange.endIndex..<range.endIndex, locale: nil) {
                         // Replace the quotes with smart quotes.
                         let string = "“\(line.substringWithRange(operatorRange.endIndex..<endOperatorRange.startIndex))”"
-                        mutableText.appendAttributedString(parseText(replaceSingleQuotes(string), attributes: attributes, appendNewline: false))
+                        mutableText.appendAttributedString(parseText(replaceSingleQuotes(string), attributes: attributes, features: features, appendNewline: false))
 
                         range = endOperatorRange.endIndex..<range.endIndex
                     } else {
