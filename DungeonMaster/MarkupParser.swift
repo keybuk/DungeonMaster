@@ -339,38 +339,47 @@ class MarkupParser {
         let delimiterCharacterSet = NSCharacterSet(charactersInString: "\t\n")
         
         var column: Int?
-        var fragment: String?
-        var fragments = [String]()
+        var fragment: NSAttributedString?
+        var fragments = [NSAttributedString]()
         var fragmentWidth: CGFloat?
         var fragmentWidths = [CGFloat]()
-        var savedTrailing: String?
+        var savedTrailing: NSAttributedString?
 
+        // What's going on here:
+        // We have to do the reflowing based on the NSAttributedStrings in the table, including preserving all of the formatting, so fragments are built by extracting and appending those attributed strings, and when we replace in the text, we also use those. For these we have to make NSRange() to pass in as arguments.
+        // But we need to use Swift's String's rangeOfCharacterFromSet() and enumerateSubstringsInRange() to do the breaking up and reflowing of the text. These give us Range<Index> instead.
+        // So we start with String and Range<Index>, we make an NSRange() to get an NSAttributedString ... and after futzing we have to update the Index again by re-generating it to avoid errors because we went past what the endIndex would have been before the futz.
         var index = mutableText.string.startIndex.advancedBy(tableIndex)
         while index != mutableText.string.endIndex {
-            guard let delimiterRange = mutableText.string.rangeOfCharacterFromSet(delimiterCharacterSet, options: [], range: index..<mutableText.string.endIndex) else { break }
-            let delimiter = mutableText.string[delimiterRange.startIndex]
-            let delimiterLength = delimiterRange.startIndex.distanceTo(delimiterRange.endIndex)
+            guard let delimiterIndexRange = mutableText.string.rangeOfCharacterFromSet(delimiterCharacterSet, options: [], range: index..<mutableText.string.endIndex) else { break }
 
             if let column = column where column == columnIndex {
                 // Generate string fragments to fit within width.
-                let font = mutableText.attribute(NSFontAttributeName, atIndex: mutableText.string.startIndex.distanceTo(index), effectiveRange: nil)!
-                mutableText.string.enumerateSubstringsInRange(index..<delimiterRange.startIndex, options: .ByWords) { (substring, substringRange, enclosingRange, inout stop: Bool) in
-                    let newFragment = (fragment ?? "") + (savedTrailing ?? "") + substring!
-                    let newWidth = ceil((newFragment as NSString).sizeWithAttributes([ NSFontAttributeName: font ]).width)
+                mutableText.string.enumerateSubstringsInRange(index..<delimiterIndexRange.startIndex, options: .ByWords) { (substring, substringRange, enclosingRange, inout stop: Bool) in
+                    let range = NSRange(location: self.mutableText.string.startIndex.distanceTo(substringRange.startIndex), length: substringRange.startIndex.distanceTo(substringRange.endIndex))
+                    let subtext = self.mutableText.attributedSubstringFromRange(range)
+
+                    let newFragment = fragment != nil ? NSMutableAttributedString(attributedString: fragment!) : NSMutableAttributedString()
+                    if let savedTrailing = savedTrailing {
+                        newFragment.appendAttributedString(savedTrailing)
+                    }
+                    newFragment.appendAttributedString(subtext)
                     
+                    let newWidth = ceil(newFragment.size().width)
                     if newWidth > width {
                         if let fragment = fragment, fragmentWidth = fragmentWidth {
                             fragments.append(fragment)
                             fragmentWidths.append(fragmentWidth)
                         }
-                        fragment = substring!
-                        fragmentWidth = ceil((substring! as NSString).sizeWithAttributes([ NSFontAttributeName: font ]).width)
+                        fragment = subtext
+                        fragmentWidth = ceil(subtext.size().width)
                     } else {
                         fragment = newFragment
                         fragmentWidth = newWidth
                     }
-                    
-                    savedTrailing = self.mutableText.string.substringWithRange(substringRange.endIndex..<enclosingRange.endIndex)
+
+                    let trailingRange = NSRange(location: self.mutableText.string.startIndex.distanceTo(substringRange.endIndex), length: substringRange.endIndex.distanceTo(enclosingRange.endIndex))
+                    savedTrailing = self.mutableText.attributedSubstringFromRange(trailingRange)
                 }
 
                 if let fragment = fragment, fragmentWidth = fragmentWidth {
@@ -379,26 +388,40 @@ class MarkupParser {
                 }
                 
                 // Replace the text in the column with the first fragment.
-                let string = fragments.removeFirst()
-                let range = NSRange(location: mutableText.string.startIndex.distanceTo(index), length: index.distanceTo(delimiterRange.startIndex))
-                mutableText.replaceCharactersInRange(range, withString: string)
+                let fragment = fragments.removeFirst()
+                let range = NSRange(location: mutableText.string.startIndex.distanceTo(index), length: index.distanceTo(delimiterIndexRange.startIndex))
+                mutableText.replaceCharactersInRange(range, withAttributedString: fragment)
                 
-                // Since we've mutated the string, we have to recalculate the index; fortunately we know how many characters we inserted and the length of the delimiter already.
-                index = mutableText.string.startIndex.advancedBy(range.location + string.characters.count + delimiterLength)
+                // Since we've mutated the string, `index.advancedBy(fragment.length)` would do the wrong thing and check against its previous notion of what the length of the string was. Thus recalculate index against the string, using the previously saved `location`.
+                index = mutableText.string.startIndex.advancedBy(range.location + fragment.length)
             } else {
-                index = delimiterRange.endIndex
+                // No mutation has occurred, we can just point at the delimiter directly.
+                index = delimiterIndexRange.startIndex
             }
-
-            if delimiter == "\n" {
+            
+            // Index now points at the delimiter, whether the string was mutated or not. `delimiterIndexRange` might not, but it's length is still valid.
+            let delimiterRange = NSRange(location: mutableText.string.startIndex.distanceTo(index), length: delimiterIndexRange.startIndex.distanceTo(delimiterIndexRange.endIndex))
+            let delimiter = mutableText.attributedSubstringFromRange(delimiterRange)
+            if delimiter.string == "\n" {
                 if fragments.count > 0 {
                     // Replace the delimiter with itself, followed by a line for each of the fragments prefixed with the right numbers of indents.
-                    let prefix = [String](count: columnIndex + 1, repeatedValue: "\t").joinWithSeparator("")
-                    let string = fragments.map({ "\(prefix)\($0)\n" }).reduce("\(delimiter)", combine: +)
-                    let range = NSRange(location: mutableText.string.startIndex.distanceTo(index) - delimiterLength, length: delimiterLength)
-                    mutableText.replaceCharactersInRange(range, withString: string)
+                    let following = NSMutableAttributedString(attributedString: delimiter)
+                    let attributes = following.attributesAtIndex(0, effectiveRange: nil)
                     
-                    // Since we've mutated the string, the index has to be recalculated once more; again this is easy because we know the range where we inserted characters, what we replaced, and that included the delimiter too this time.
-                    index = mutableText.string.startIndex.advancedBy(range.location + string.characters.count)
+                    let prefix = [String](count: columnIndex + 1, repeatedValue: "\t").joinWithSeparator("")
+                    for fragment in fragments {
+                        following.appendAttributedString(NSAttributedString(string: prefix, attributes: attributes))
+                        following.appendAttributedString(fragment)
+                        following.appendAttributedString(NSAttributedString(string: "\n", attributes: attributes))
+                    }
+
+                    mutableText.replaceCharactersInRange(delimiterRange, withAttributedString: following)
+                    
+                    // Since we've mutated the string, the index has to be recalculated once more; again this is easy because we know the range where we inserted characters and what we replaced, and that included the delimiter. So we just point past our insertion.
+                    index = mutableText.string.startIndex.advancedBy(delimiterRange.location + following.length)
+                } else {
+                    // Point past the delimiter by advancing the index.
+                    index = index.advancedBy(delimiterRange.length)
                 }
                 
                 column = nil
@@ -409,6 +432,8 @@ class MarkupParser {
                 savedTrailing = nil
             } else {
                 column = column != nil ? column! + 1 : 0
+                // Point past the delimiter by advancing the index.
+                index = index.advancedBy(delimiterRange.length)
             }
         }
     }
