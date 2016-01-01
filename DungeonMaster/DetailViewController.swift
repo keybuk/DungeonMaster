@@ -656,5 +656,28 @@ class DetailViewController: UIViewController {
         textView.attributedText = text
     }
 
+    // MARK: Actions
+    
+    @IBAction func textViewTapped(sender: UITapGestureRecognizer) {
+        let textView = sender.view! as! UITextView
+        
+        var location = sender.locationInView(textView)
+        location.x -= textView.textContainerInset.left
+        location.y -= textView.textContainerInset.top
+        
+        let index = textView.layoutManager.characterIndexForPoint(location, inTextContainer: textView.textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
+        if let linkName = textView.attributedText.attribute(MarkupParser.linkAttributeName, atIndex: index, effectiveRange: nil) as? String {
+            let fetchRequest = NSFetchRequest(entity: Model.Spell)
+            fetchRequest.predicate = NSPredicate(format: "name LIKE[cd] %@", linkName)
+            
+            let spells = try! managedObjectContext.executeFetchRequest(fetchRequest) as! [Spell]
+            if spells.count > 0 {
+                let spellDetailViewController = storyboard?.instantiateViewControllerWithIdentifier("SpellDetailViewController") as! SpellDetailViewController
+                spellDetailViewController.spell = spells.first
+                navigationController?.pushViewController(spellDetailViewController, animated: true)
+            }
+        }
+    }
+    
 }
 
