@@ -59,7 +59,7 @@ class MarkupParser {
     /// Links in the text have the following attribute set to the link name.
     ///
     /// You can obtain the target of links, and their locations, using `markupParser.text.attribute(markupParser.linkAttributeName, atIndex: ..., effectiveRange: ...)`
-    let linkAttributeName = "DungeonMaster.MarkupParser.LinkAttribute"
+    static let linkAttributeName = "DungeonMaster.MarkupParser.LinkAttribute"
     
     /// Paragraph indent used on following paragraphs, and in bulleted lists.
     var paragraphIndent: CGFloat = 20.0
@@ -658,7 +658,7 @@ class MarkupParser {
                         }
                         
                         var linkAttributes = attributes
-                        linkAttributes[linkAttributeName] = linkName
+                        linkAttributes[MarkupParser.linkAttributeName] = linkName
                         if let linkColor = linkColor {
                             linkAttributes[NSForegroundColorAttributeName] = linkColor
                         }
