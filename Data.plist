@@ -78400,6 +78400,51 @@ Stage | Condition
 		<dict>
 			<key>info</key>
 			<dict>
+				<key>canCastAsAction</key>
+				<true/>
+				<key>hasMaterialComponent</key>
+				<true/>
+				<key>hasSomaticComponent</key>
+				<true/>
+				<key>hasVerbalComponent</key>
+				<true/>
+				<key>materialComponent</key>
+				<string>a drop of water if creating water or a few grains of sand if destroying it</string>
+				<key>rawDuration</key>
+				<integer>0</integer>
+				<key>rawLevel</key>
+				<integer>1</integer>
+				<key>rawRange</key>
+				<integer>0</integer>
+				<key>rawRangeDistance</key>
+				<integer>30</integer>
+				<key>rawSchool</key>
+				<integer>7</integer>
+				<key>text</key>
+				<string>You either create or destroy water.
+***Create Water.*** You create up to 10 gallons of clean water within range in an open container. Alternatively, the water falls as rain in a 30-foot cube within range, extinguishing exposed flames in the area.
+***Destroy Water.*** You destroy up to 10 gallons of water in an open container within range. Alternatively, you destroy fog in a 30-foot cube within range.
+***At Higher Levels.*** When you cast this spell using a spell slot of 2nd level or higher, you create or destroy 10 additional gallons of water, or the size of the cube increases by 5 feet, for each slot level above 1st.</string>
+			</dict>
+			<key>name</key>
+			<string>Create or Destroy Water</string>
+			<key>names</key>
+			<array>
+				<string>Create or Destroy Water</string>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>0</integer>
+					<key>page</key>
+					<integer>229</integer>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>info</key>
+			<dict>
 				<key>hasMaterialComponent</key>
 				<true/>
 				<key>hasSomaticComponent</key>
@@ -81257,6 +81302,47 @@ When you inscribe the glyph, choose *explosive runes* or a *spell glyph*.
 					<integer>11</integer>
 					<key>page</key>
 					<integer>47</integer>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>info</key>
+			<dict>
+				<key>canCastAsAction</key>
+				<true/>
+				<key>hasMaterialComponent</key>
+				<true/>
+				<key>hasSomaticComponent</key>
+				<true/>
+				<key>hasVerbalComponent</key>
+				<true/>
+				<key>materialComponent</key>
+				<string>a sprig of mistletoe</string>
+				<key>rawDuration</key>
+				<integer>0</integer>
+				<key>rawLevel</key>
+				<integer>1</integer>
+				<key>rawRange</key>
+				<integer>2</integer>
+				<key>rawSchool</key>
+				<integer>7</integer>
+				<key>text</key>
+				<string>Up to ten berries appear in your hand and are infused with magic for the duration. A creature can use its action to eat one berry. Eating a berry restores 1 hit point, and the berry provides enough nourishment to sustain a creature for one day.
+The berries lose their potency if they have not been consumed within 24 hours of the casting of this spell.</string>
+			</dict>
+			<key>name</key>
+			<string>Goodberry</string>
+			<key>names</key>
+			<array>
+				<string>Goodberry</string>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>0</integer>
+					<key>page</key>
+					<integer>246</integer>
 				</dict>
 			</array>
 		</dict>
@@ -84344,6 +84430,51 @@ A dancing creature must use all its movement to dance without leaving its space 
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>materialComponent</key>
+				<string>ashes from a burned leaf of mistletoe and a sprig of spruce</string>
+				<key>rawDuration</key>
+				<integer>2</integer>
+				<key>rawDurationTime</key>
+				<integer>60</integer>
+				<key>rawLevel</key>
+				<integer>2</integer>
+				<key>rawRange</key>
+				<integer>1</integer>
+				<key>rawSchool</key>
+				<integer>0</integer>
+				<key>requiresConcentration</key>
+				<true/>
+				<key>text</key>
+				<string>A veil of shadows and silence radiates from you, masking you and your companions from detection.
+For the duration, each creature you choose within 30 feet of you (including you) has a +10 bonus to Dexterity (Stealth) checks and can't be tracked except by magical means. A creature that receives this bonus leaves behind no tracks or other traces of its passage.</string>
+			</dict>
+			<key>name</key>
+			<string>Pass without Trace</string>
+			<key>names</key>
+			<array>
+				<string>Pass without Trace</string>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>0</integer>
+					<key>page</key>
+					<integer>264</integer>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>info</key>
+			<dict>
+				<key>canCastAsAction</key>
+				<true/>
+				<key>hasMaterialComponent</key>
+				<true/>
+				<key>hasSomaticComponent</key>
+				<true/>
+				<key>hasVerbalComponent</key>
+				<true/>
+				<key>materialComponent</key>
 				<string>a pinch of sesame seeds</string>
 				<key>rawDuration</key>
 				<integer>1</integer>
@@ -85064,6 +85195,46 @@ For the duration, the target has advantage on saving throws against being poison
 		<dict>
 			<key>info</key>
 			<dict>
+				<key>canCastAsAction</key>
+				<true/>
+				<key>canCastAsRitual</key>
+				<true/>
+				<key>hasSomaticComponent</key>
+				<true/>
+				<key>hasVerbalComponent</key>
+				<true/>
+				<key>rawDuration</key>
+				<integer>0</integer>
+				<key>rawLevel</key>
+				<integer>1</integer>
+				<key>rawRange</key>
+				<integer>0</integer>
+				<key>rawRangeDistance</key>
+				<integer>10</integer>
+				<key>rawSchool</key>
+				<integer>7</integer>
+				<key>text</key>
+				<string>All nonmagical food and drink within a 5-foot-radius sphere centered on a point of your choice within range is purified and rendered free of poison and disease.</string>
+			</dict>
+			<key>name</key>
+			<string>Purify Food and Drink</string>
+			<key>names</key>
+			<array>
+				<string>Purify Food and Drink</string>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>0</integer>
+					<key>page</key>
+					<integer>270</integer>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>info</key>
+			<dict>
 				<key>hasMaterialComponent</key>
 				<true/>
 				<key>hasSomaticComponent</key>
@@ -85107,6 +85278,49 @@ Coming back from the dead is an ordeal. The target takes a -4 penalty to all att
 					<integer>3</integer>
 					<key>page</key>
 					<integer>99</integer>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>info</key>
+			<dict>
+				<key>canCastAsAction</key>
+				<true/>
+				<key>hasSomaticComponent</key>
+				<true/>
+				<key>hasVerbalComponent</key>
+				<true/>
+				<key>rawDuration</key>
+				<integer>2</integer>
+				<key>rawDurationTime</key>
+				<integer>1</integer>
+				<key>rawLevel</key>
+				<integer>2</integer>
+				<key>rawRange</key>
+				<integer>0</integer>
+				<key>rawRangeDistance</key>
+				<integer>60</integer>
+				<key>rawSchool</key>
+				<integer>6</integer>
+				<key>requiresConcentration</key>
+				<true/>
+				<key>text</key>
+				<string>A black beam of enervating energy springs from your finger toward a creature within range. Make a ranged spell attack against the target. On a hit, the target deals only half damage with weapon attacks that use Strength until the spell ends.
+At the end of each of the target's turns, it can make a Constitution saving throw against the spell. On a success, the spell ends.</string>
+			</dict>
+			<key>name</key>
+			<string>Ray of Enfeeblement</string>
+			<key>names</key>
+			<array>
+				<string>Ray of Enfeeblement</string>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>0</integer>
+					<key>page</key>
+					<integer>271</integer>
 				</dict>
 			</array>
 		</dict>
@@ -85428,6 +85642,51 @@ Casting this spell to restore life to a creature that has been dead for one year
 					<integer>3</integer>
 					<key>page</key>
 					<integer>100</integer>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>info</key>
+			<dict>
+				<key>canCastAsAction</key>
+				<true/>
+				<key>hasMaterialComponent</key>
+				<true/>
+				<key>hasSomaticComponent</key>
+				<true/>
+				<key>hasVerbalComponent</key>
+				<true/>
+				<key>materialComponent</key>
+				<string>powdered corn extract and a twisted loop of parchment</string>
+				<key>rawDuration</key>
+				<integer>1</integer>
+				<key>rawDurationTime</key>
+				<integer>60</integer>
+				<key>rawLevel</key>
+				<integer>2</integer>
+				<key>rawRange</key>
+				<integer>2</integer>
+				<key>rawSchool</key>
+				<integer>7</integer>
+				<key>text</key>
+				<string>You touch a length of rope that is up to 60 feet long. One end of the rope then rises into the air until the whole rope hangs perpendicular to the ground. At the upper end of the rope, an invisible entrance opens to an extradimensional space that lasts until the spell ends.
+The extradimensional space can be reached by climbing to the top of the rope. The space can hold as many as eight Medium or smaller creatures. The rope can be pulled into the space, making the rope disappear from view outside the space.
+Attacks and spells can't cross through the entrance into or out of the extradimensional space, but those inside can see out of it as if through a 3-foot-by-5-foot window centered on the rope.
+Anything inside the extradimensional space drops out when the spell ends.</string>
+			</dict>
+			<key>name</key>
+			<string>Rope Trick</string>
+			<key>names</key>
+			<array>
+				<string>Rope Trick</string>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>0</integer>
+					<key>page</key>
+					<integer>272</integer>
 				</dict>
 			</array>
 		</dict>
@@ -88246,7 +88505,7 @@ An affected creature is aware of the spell and can thus avoid answering question
 		</dict>
 	</array>
 	<key>version</key>
-	<integer>1451481532</integer>
+	<integer>1451792853</integer>
 </dict>
 </plist>
 
