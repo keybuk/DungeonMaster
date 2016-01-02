@@ -110,6 +110,9 @@ class SpellExporter(SpellParser):
 		self.info = {}
 
 	def object(self):
+		if len(self.sources) == 0:
+			raise self.error("No sources for this spell")
+
 		object = {
 			"name": unicode(self.name, 'utf8'),
 			"names": self.names,

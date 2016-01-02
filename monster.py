@@ -517,6 +517,9 @@ class MonsterExporter(MonsterParser):
 				raise self.error("Probable bad hyphenation: %s" % line)
 
 	def object(self):
+		if len(self.sources) == 0:
+			raise self.error("No sources for this monster")
+
 		object = {
 			"name": unicode(self.name, 'utf8'),
 			"names": self.names,
