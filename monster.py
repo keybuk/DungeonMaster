@@ -510,30 +510,7 @@ class MonsterExporter(MonsterParser):
 		self.perception = None
 
 	def check_line(self, line):
-		if " ," in line:
-			raise self.error("Space before comma: %s" % line)
-		if " ." in line:
-			raise self.error("Space before period: %s" % line)
-		if "·" in line:
-			raise self.error("Bad space marker: %s" % line)
-		if "’" in line:
-			raise self.error("Bad quote: %s" % line)
-		if " o f " in line or "ofthe" in line or "ofit" in line or "ofa" in line:
-			raise self.error("Spotted o f, ofthe, ofit, or ofa: %s" % line)
-		if "e ects" in line:
-			raise self.error("Spotted missing ff: %s" % line)
-		if " y " in line or " ies " in line or "amo uage" in line:
-			raise self.error("Spotted missing fl: %s" % line)
-		if "igni cant" in line or " ist " in line or " re " in line:
-			raise self.error("Spotted missing fi: %s" % line)
-		if "i cult" in line:
-			raise self.error("Spotted missing ffi: %s" % line)
-
-		if re.search(r'[0-9]-[0-9]', line):
-			raise self.error("Spotted dash that should be en-dash: %s" % line)
-
-		if re.search('r[0-9][lIJSO]|[lIJSO][0-9]|[lJSO][JSO]+|[lI]d[0-9]', line):
-			raise self.error("Suspicious number-like form: %s" % line)
+		super(MonsterExporter, self).check_line(line)
 
 		for part in DICE_ANYWHERE_RE.split(line):
 			if "- " in part:

@@ -2,6 +2,7 @@
 # -*- coding: utf8 -*-
 
 import os
+import re
 import sys
 
 class ParseException(Exception):
@@ -80,7 +81,33 @@ class Parser(object):
 		return lines
 
 	def check_line(self, line):
-		pass
+		if "  " in line:
+			raise self.error("Double space: %s" % line)
+		if "·" in line:
+			raise self.error("Bad space marker: %s" % line)
+		if " ," in line:
+			raise self.error("Space before comma: %s" % line)
+		if " ." in line:
+			raise self.error("Space before period: %s" % line)
+		if "’" in line or "“" in line or "”" in line:
+			raise self.error("Bad quote character: %s" % line)
+		if " o f " in line or "ofthe" in line or "ofit" in line or "ofa" in line:
+			raise self.error("Spotted o f, ofthe, ofit, or ofa: %s" % line)
+		if " ect" in line or "o er " in line:
+			raise self.error("Spotted missing ff: %s" % line)
+		if "di " in line or " c " in line:
+			raise self.error("Spotted missing ffi: %s" % line)
+		if "igni " in line or " ist " in line or " re " in line:
+			raise self.error("Spotted missing fi: %s" % line)
+		if " y " in line or " ies " in line or " uage" in line:
+			raise self.error("Spotted missing fl: %s" % line)
+		if "i cult" in line:
+			raise self.error("Spotted missing ffi: %s" % line)
+
+		if re.search(r'[0-9]-[0-9]', line):
+			raise self.error("Spotted dash that should be en-dash: %s" % line)
+		if re.search('r[0-9][lIJSO]|[lIJSO][0-9]|[lJSO][JSO]+|[lI]d[0-9]', line):
+			raise self.error("Suspicious number-like form: %s" % line)
 
 	def label_block(self, lines, all=False):
 		while True:
