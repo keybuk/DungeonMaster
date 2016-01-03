@@ -24,6 +24,11 @@ final class Spell: NSManagedObject {
     ///
     /// Each member is a `Source` containing a reference to the specific book, supplement, etc. the spell text can be found in, the page number, and the section if relevant.
     @NSManaged var sources: NSSet
+    
+    /// Character classes that may cast this spell.
+    ///
+    /// Each member is a `SpellClass`.
+    @NSManaged var classes: NSSet
 
     /// Level of the spell.
     ///

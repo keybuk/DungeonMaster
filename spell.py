@@ -6,6 +6,8 @@ import re
 import base
 
 SOURCE_RE = re.compile(r'^([a-z]+) (\d+)(?:; (.*))?$')
+CLASSES = [ "barbarian", "bard", "cleric", "druid", "fighter", "monk", "paladin", "ranger",
+			"rogue", "sorcerer", "warlock", "wizard" ]
 
 class SpellParser(base.Parser):
 	def parse(self):
@@ -18,6 +20,8 @@ class SpellParser(base.Parser):
 			match = SOURCE_RE.match(line)
 			if line.startswith("was "):
 				self.handle_old_name(line[4:])
+			elif line in CLASSES:
+				self.handle_class(line)
 			elif match is not None:
 				(source, page, section) = match.groups()
 				self.handle_source(source, int(page), section)
@@ -46,6 +50,9 @@ class SpellParser(base.Parser):
 		pass
 
 	def handle_source(self, source, page, section):
+		pass
+
+	def handle_class(self, character_class):
 		pass
 
 	def handle_level_school(self, line):
@@ -107,6 +114,7 @@ class SpellExporter(SpellParser):
 		self.name = None
 		self.names = []
 		self.sources = []
+		self.classes = []
 		self.info = {}
 
 	def object(self):
@@ -117,6 +125,7 @@ class SpellExporter(SpellParser):
 			"name": unicode(self.name, 'utf8'),
 			"names": self.names,
 			"sources": self.sources,
+			"classes": self.classes,
 			"info": self.info,
 		}
 
@@ -144,6 +153,14 @@ class SpellExporter(SpellParser):
 			source["section"] = section
 
 		self.sources.append(source)
+
+	def handle_class(self, character_class):
+		try:
+			index = CLASSES.index(character_class)
+		except ValueError:
+			raise self.error("Unknown class: %s" % character_class)
+
+		self.classes.append(index)
 
 	def handle_level_school(self, line):
 		match = LEVEL_SCHOOL_RE.match(line)

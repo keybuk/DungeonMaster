@@ -22,6 +22,7 @@
 		D21BACED1C3365E8007E2934 /* Spell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BACEC1C3365E8007E2934 /* Spell.swift */; };
 		D21BACEF1C339464007E2934 /* SpellsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BACEE1C339464007E2934 /* SpellsViewController.swift */; };
 		D21BACF11C339476007E2934 /* SpellDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BACF01C339476007E2934 /* SpellDetailViewController.swift */; };
+		D21BACF31C38B8FF007E2934 /* SpellClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BACF21C38B8FF007E2934 /* SpellClass.swift */; };
 		D23435EC1C0D5A3D00108D5F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23435EB1C0D5A3D00108D5F /* Model.swift */; };
 		D23435EE1C0D5F9E00108D5F /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23435ED1C0D5F9E00108D5F /* Book.swift */; };
 		D23435F21C0D608B00108D5F /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23435F01C0D608B00108D5F /* Source.swift */; };
@@ -118,6 +119,7 @@
 		D21BACEC1C3365E8007E2934 /* Spell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spell.swift; sourceTree = "<group>"; };
 		D21BACEE1C339464007E2934 /* SpellsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpellsViewController.swift; sourceTree = "<group>"; };
 		D21BACF01C339476007E2934 /* SpellDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpellDetailViewController.swift; sourceTree = "<group>"; };
+		D21BACF21C38B8FF007E2934 /* SpellClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpellClass.swift; sourceTree = "<group>"; };
 		D23435EB1C0D5A3D00108D5F /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		D23435ED1C0D5F9E00108D5F /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		D23435F01C0D608B00108D5F /* Source.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				D2116A521C10F4E9001EDBBA /* LairTrait.swift */,
 				D2116A541C10F4F8001EDBBA /* RegionalEffect.swift */,
 				D21BACEC1C3365E8007E2934 /* Spell.swift */,
+				D21BACF21C38B8FF007E2934 /* SpellClass.swift */,
 				D298E8F01C29E08F007461A9 /* Player.swift */,
 				D298E8F21C29F0B5007461A9 /* PlayerSavingThrow.swift */,
 				D298E8F41C29F112007461A9 /* PlayerSkill.swift */,
@@ -511,6 +514,7 @@
 				D26FBA3D1C1E52CA00D44503 /* Enums.swift in Sources */,
 				D2622AA71C2CB4C7000D6100 /* EncounterPlayersViewController.swift in Sources */,
 				D23435F61C0D634100108D5F /* Importer.swift in Sources */,
+				D21BACF31C38B8FF007E2934 /* SpellClass.swift in Sources */,
 				D2F9D12F1C1A71D8005F2D9A /* Encounter.swift in Sources */,
 				D2C6063E1C17D32900F61DBD /* TabletopViewController.swift in Sources */,
 				D25120001C14C7ED00A09F0B /* BooksViewController.swift in Sources */,

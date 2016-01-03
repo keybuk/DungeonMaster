@@ -239,7 +239,12 @@
         <attribute name="reactionResponse" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="requiresConcentration" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="text" attributeType="String" syncable="YES"/>
+        <relationship name="classes" toMany="YES" deletionRule="Cascade" destinationEntity="SpellClass" inverseName="spell" inverseEntity="SpellClass" syncable="YES"/>
         <relationship name="sources" toMany="YES" deletionRule="Cascade" destinationEntity="Source" inverseName="spell" inverseEntity="Source" syncable="YES"/>
+    </entity>
+    <entity name="SpellClass" representedClassName=".SpellClass" syncable="YES">
+        <attribute name="rawCharacterClass" attributeType="Integer 16" syncable="YES"/>
+        <relationship name="spell" maxCount="1" deletionRule="Nullify" destinationEntity="Spell" inverseName="classes" inverseEntity="Spell" syncable="YES"/>
     </entity>
     <entity name="Tag" representedClassName=".Tag" syncable="YES">
         <attribute name="name" attributeType="String" syncable="YES"/>
@@ -280,6 +285,7 @@
         <element name="Source" positionX="-92" positionY="198" width="128" height="120"/>
         <element name="Tag" positionX="-92" positionY="432" width="128" height="75"/>
         <element name="Trait" positionX="261" positionY="261" width="128" height="90"/>
-        <element name="Spell" positionX="-54" positionY="351" width="128" height="360"/>
+        <element name="Spell" positionX="-54" positionY="351" width="128" height="375"/>
+        <element name="SpellClass" positionX="-45" positionY="360" width="128" height="75"/>
     </elements>
 </model>

@@ -386,6 +386,12 @@ func importIfNeeded() {
             }
         }
         
+        let classValues = spellData["classes"] as! [NSNumber]
+        for classValue in classValues {
+            let characterClass = CharacterClass(rawValue: classValue.integerValue)!
+            let _ = SpellClass(spell: spell, characterClass: characterClass, inManagedObjectContext: managedObjectContext)
+        }
+        
         let info = spellData["info"] as! [String: AnyObject]
         spell.setValuesForKeysWithDictionary(info)
     }
