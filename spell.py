@@ -84,9 +84,9 @@ CASTING_TIME_RE = re.compile(
 	)
 
 RANGE_RE = re.compile(
-	r'^(?:(\d+) (feet|mile)' +
-	r'|(Self)(?: \((\d+)-(foot|mile)( radius| line| cone| cube|-radius sphere)\))?' +
-	r'|(Special)|(Touch)|(Unlimited))$'
+	r'^(?:(\d+) (feet|miles?)' +
+	r'|(Self)(?: \((\d+)-(foot|mile)( radius| line| cone| cube|-radius sphere|-radius hemisphere)\))?' +
+	r'|(Special)|(Touch)|(Sight)|(Unlimited))$'
 	)
 
 COMPONENTS_RE = re.compile(
@@ -94,7 +94,7 @@ COMPONENTS_RE = re.compile(
 	)
 
 DURATION_RE = re.compile(
-	r'^(?:1 (round)|(?:(Concentration,? up to )|(Up to ))?(\d+) (minutes?|hours?|days?)' +
+	r'^(?:(?:(Concentration,? up to )|(Up to ))?(\d+|one) (rounds?|minutes?|hours?|days?)\.?' +
 	r'|(Instantaneous)|(Special)|Until (dispelled)( or triggered)?)$'
 	)
 
@@ -197,7 +197,7 @@ class SpellExporter(SpellParser):
 			raise self.error("Range didn't match expected format: %s" % line)
 
 		(distance, unit, range_self, self_distance, self_unit, self_shape,
-		 special, touch, unlimited) = match.groups()
+		 special, touch, sight, unlimited) = match.groups()
 
 		if range_self is not None:
 			self.info['rawRange'] = 1
@@ -211,22 +211,26 @@ class SpellExporter(SpellParser):
 				self.info['rawRangeShape'] = 0
 			elif self_shape == '-radius sphere':
 				self.info['rawRangeShape'] = 1
-			elif self_shape == ' cube':
+			elif self_shape == '-radius hemisphere':
 				self.info['rawRangeShape'] = 2
-			elif self_shape == ' cone':
+			elif self_shape == ' cube':
 				self.info['rawRangeShape'] = 3
-			elif self_shape == ' line':
+			elif self_shape == ' cone':
 				self.info['rawRangeShape'] = 4
+			elif self_shape == ' line':
+				self.info['rawRangeShape'] = 5
 
 		elif touch is not None:
 			self.info['rawRange'] = 2
-		elif special is not None:
+		elif sight is not None:
 			self.info['rawRange'] = 3
-		elif unlimited is not None:
+		elif special is not None:
 			self.info['rawRange'] = 4
+		elif unlimited is not None:
+			self.info['rawRange'] = 5
 		else:
 			self.info['rawRange'] = 0
-			if unit == 'mile':
+			if unit == 'mile' or unit == 'miles':
 				self.info['rawRangeDistance'] = int(distance) * 5280
 			elif unit == 'feet':
 				self.info['rawRangeDistance'] = int(distance)
@@ -251,17 +255,15 @@ class SpellExporter(SpellParser):
 		if match is None:
 			raise self.error("Duration didn't match expected format: %s" % line)
 
-		(one_round, concentration, max_time, time, unit,
+		(concentration, max_time, time, unit,
 		 instantaneous, special, dispelled, or_triggered) = match.groups()
 
 		if special:
-			self.info['rawDuration'] = 6
-		elif one_round:
-			self.info['rawDuration'] = 3
+			self.info['rawDuration'] = 7
 		elif or_triggered:
-			self.info['rawDuration'] = 5
+			self.info['rawDuration'] = 6
 		elif dispelled:
-			self.info['rawDuration'] = 4
+			self.info['rawDuration'] = 5
 		elif instantaneous:
 			self.info['rawDuration'] = 0
 		elif concentration or max_time:
@@ -271,7 +273,16 @@ class SpellExporter(SpellParser):
 		else:
 			self.info['rawDuration'] = 1
 
-		if unit == 'day' or unit == 'days':
+		if time == "one":
+			time = "1"
+
+		if unit == 'round' or unit == 'rounds':
+			if concentration or max_time:
+				self.info['rawDuration'] = 4
+			else:
+				self.info['rawDuration'] = 3
+			self.info['rawDurationTime'] = int(time)
+		elif unit == 'day' or unit == 'days':
 			self.info['rawDurationTime'] = int(time) * 60 * 24
 		elif unit == 'hour' or unit == 'hours':
 			self.info['rawDurationTime'] = int(time) * 60

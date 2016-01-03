@@ -144,9 +144,9 @@ final class Spell: NSManagedObject {
     }
     @NSManaged var rawDuration: NSNumber
     
-    /// Duration of the spell (in minutes).
+    /// Duration of the spell (in minutes or rounds).
     ///
-    /// Present when `duration` is `.Time` or `.MaxTime`.
+    /// Present, and in minutes, when `duration` is `.Time` or `.MaxTime`; present, and in rounds, when `duration` is `.Rounds` or `.MaxRounds`.
     var durationTime: Int? {
         get {
             return rawDurationTime?.integerValue

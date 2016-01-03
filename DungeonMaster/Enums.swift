@@ -737,6 +737,7 @@ enum SpellRange: Int {
     case Distance
     case CenteredOnSelf
     case Touch
+    case Sight
     case Special
     case Unlimited
 }
@@ -745,6 +746,7 @@ enum SpellRange: Int {
 enum SpellRangeShape: Int {
     case Radius
     case Sphere
+    case Hemisphere
     case Cube
     case Cone
     case Line
@@ -755,7 +757,8 @@ enum SpellDuration: Int {
     case Instantaneous
     case Time
     case MaxTime
-    case Round
+    case Rounds
+    case MaxRounds
     case UntilDispelled
     case UntilDispelledOrTriggered
     case Special

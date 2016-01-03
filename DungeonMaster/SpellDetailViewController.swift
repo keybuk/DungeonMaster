@@ -178,6 +178,8 @@ class SpellDetailViewController: UIViewController {
                     rangeString += " radius)"
                 case .Sphere:
                     rangeString += "-radius sphere)"
+                case .Hemisphere:
+                    rangeString += "-radius hemisphere)"
                 case .Cube:
                     rangeString += " cube)"
                 case .Cone:
@@ -188,6 +190,8 @@ class SpellDetailViewController: UIViewController {
             }
         case .Touch:
             rangeString = "Touch"
+        case .Sight:
+            rangeString = "Sight"
         case .Special:
             rangeString = "Special"
         case .Unlimited:
@@ -242,8 +246,21 @@ class SpellDetailViewController: UIViewController {
                     durationString += "\(durationTime) minute"
                 }
             }
-        case .Round:
-            durationString = "1 round"
+        case .MaxRounds:
+            if spell.requiresConcentration {
+                durationString = "Concentration, up to "
+            } else {
+                durationString = "Up to "
+            }
+            fallthrough
+        case .Rounds:
+            if let durationTime = spell.durationTime {
+                if durationTime > 1 {
+                    durationString += "\(durationTime) rounds"
+                } else {
+                    durationString += "\(durationTime) round"
+                }
+            }
         case .UntilDispelled:
             durationString = "Until dispelled"
         case .UntilDispelledOrTriggered:
