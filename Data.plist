@@ -136,6 +136,9 @@
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -250,6 +253,9 @@
 				</dict>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -391,6 +397,9 @@
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -566,6 +575,9 @@ Cantrips (at will): mage hand, prestidigitation, ray of frost, shocking grasp
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -735,6 +747,9 @@ Cantrips (at will): light, mage hand, prestidigitation
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -889,6 +904,9 @@ Cantrips (at will): light, mage hand, prestidigitation
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -1048,6 +1066,9 @@ Cantrips (at will): light, mage hand, prestidigitation
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -1220,6 +1241,9 @@ Cantrips (at will): fire bolt, prestidigitation, shocking grasp
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -1376,6 +1400,9 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -1502,6 +1529,9 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -1684,6 +1714,9 @@ Cantrips (at will): mage hand, minor illusion, prestidigitation, ray of frost
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -1842,6 +1875,9 @@ Cantrips (at will): mage hand, minor illusion, prestidigitation, ray of frost
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -2018,6 +2054,9 @@ Cantrips (at will): druidcraft, guidance, poison cloud
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -2225,6 +2264,9 @@ Cantrips (at will): fire bolt, minor illusion, prestidigitation, shocking grasp
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -2415,6 +2457,9 @@ Cantrips (at will): fire bolt, minor illusion, prestidigitation, shocking grasp
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -2586,6 +2631,9 @@ Cantrips (at will): guidance, resistance, thaumaturgy
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -2737,6 +2785,9 @@ Cantrips (at will): guidance, resistance, thaumaturgy
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -2956,6 +3007,9 @@ Cantrips (at will): light, mage hand, shocking grasp
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -3096,6 +3150,9 @@ Cantrips (at will): light, mage hand, shocking grasp
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -3273,6 +3330,9 @@ Cantrips (at will): mage hand, ray of frost, shocking grasp
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -3398,6 +3458,9 @@ Cantrips (at will): mage hand, ray of frost, shocking grasp
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -3532,6 +3595,10 @@ Cantrips (at will): mage hand, ray of frost, shocking grasp
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>6</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -3681,6 +3748,10 @@ Whenever the charmed target takes damage, the target can repeat the saving throw
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -3939,6 +4010,9 @@ In a new form, the deva retains its game statistics and ability to speak, but it
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canSpeakAllLanguages</key>
@@ -4132,6 +4206,9 @@ In a new form, the deva retains its game statistics and ability to speak, but it
 				</dict>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -4366,6 +4443,9 @@ In a new form, the deva retains its game statistics and ability to speak, but it
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canSpeakAllLanguages</key>
@@ -4590,6 +4670,9 @@ In a new form, the deva retains its game statistics and ability to speak, but it
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -4766,6 +4849,9 @@ In a new form, the deva retains its game statistics and ability to speak, but it
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -4946,6 +5032,9 @@ In a new form, the deva retains its game statistics and ability to speak, but it
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -5098,6 +5187,11 @@ In a new form, the deva retains its game statistics and ability to speak, but it
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>4</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -5232,6 +5326,9 @@ In a new form, the deva retains its game statistics and ability to speak, but it
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -5477,6 +5574,11 @@ In a new form, the deva retains its game statistics and ability to speak, but it
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>1</integer>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canHover</key>
@@ -5614,6 +5716,10 @@ In a new form, the deva retains its game statistics and ability to speak, but it
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>6</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -5770,6 +5876,10 @@ If the behir takes 30 damage or more on a single turn from the swallowed creatur
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -5914,6 +6024,10 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -6134,6 +6248,10 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canHover</key>
@@ -6329,6 +6447,10 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canHover</key>
@@ -6486,6 +6608,10 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -6614,6 +6740,10 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 					<key>rawDamageType</key>
 					<integer>3</integer>
 				</dict>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -6767,6 +6897,10 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -6898,6 +7032,12 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -7060,6 +7200,9 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -7214,6 +7357,12 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -7356,6 +7505,10 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>7</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -7573,6 +7726,10 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -7735,6 +7892,10 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -7881,6 +8042,11 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>4</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -8038,6 +8204,13 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>6</integer>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -8189,6 +8362,10 @@ Any creature in that area can't regain hit points. Any humanoid that dies there 
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -8358,6 +8535,10 @@ A duplicate has the cloaker's AC and uses its saving throws. If an attack hits a
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -8500,6 +8681,10 @@ A duplicate has the cloaker's AC and uses its saving throws. If an attack hits a
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>4</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -8662,6 +8847,13 @@ In a new form, the couatl retains its game statistics and ability to speak, but 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canSpeakAllLanguages</key>
@@ -8823,6 +9015,9 @@ In a new form, the couatl retains its game statistics and ability to speak, but 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -8962,6 +9157,15 @@ In a new form, the couatl retains its game statistics and ability to speak, but 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>6</integer>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -9096,6 +9300,10 @@ A creature can detach the darkmantle by making a successful DC 13 Strength check
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -9266,6 +9474,9 @@ A creature can detach the darkmantle by making a successful DC 13 Strength check
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -9509,6 +9720,9 @@ A creature can detach the darkmantle by making a successful DC 13 Strength check
 				</dict>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -9769,6 +9983,9 @@ In its crypt, a demilich has access to lair actions and additional uses for its 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -9959,6 +10176,9 @@ In its crypt, a demilich has access to lair actions and additional uses for its 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -10145,6 +10365,9 @@ In its crypt, a demilich has access to lair actions and additional uses for its 
 				</dict>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -10340,6 +10563,9 @@ In its crypt, a demilich has access to lair actions and additional uses for its 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -10514,6 +10740,9 @@ In its crypt, a demilich has access to lair actions and additional uses for its 
 				</dict>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -10716,6 +10945,9 @@ In its crypt, a demilich has access to lair actions and additional uses for its 
 				</dict>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -10927,6 +11159,9 @@ In its crypt, a demilich has access to lair actions and additional uses for its 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -11101,6 +11336,9 @@ In its crypt, a demilich has access to lair actions and additional uses for its 
 				</dict>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -11279,6 +11517,9 @@ In its crypt, a demilich has access to lair actions and additional uses for its 
 				</dict>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -11499,6 +11740,9 @@ In its crypt, a demilich has access to lair actions and additional uses for its 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -11687,6 +11931,9 @@ In its crypt, a demilich has access to lair actions and additional uses for its 
 				</dict>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -11922,6 +12169,9 @@ In its crypt, a demilich has access to lair actions and additional uses for its 
 					<integer>10</integer>
 				</dict>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -12143,6 +12393,9 @@ In its crypt, a demilich has access to lair actions and additional uses for its 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -12337,6 +12590,9 @@ While in mist form, the yochlol can enter a creature's space and stop there. Eac
 				</dict>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -12566,6 +12822,9 @@ While in mist form, the yochlol can enter a creature's space and stop there. Eac
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -12776,6 +13035,9 @@ While in mist form, the yochlol can enter a creature's space and stop there. Eac
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -12972,6 +13234,9 @@ While in mist form, the yochlol can enter a creature's space and stop there. Eac
 				</dict>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -13179,6 +13444,9 @@ Each animated chain is an object with AC 20, 20 hit points, resistance to pierci
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -13369,6 +13637,9 @@ Each animated chain is an object with AC 20, 20 hit points, resistance to pierci
 				</dict>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -13571,6 +13842,9 @@ Each animated chain is an object with AC 20, 20 hit points, resistance to pierci
 				</dict>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -13777,6 +14051,9 @@ The wall lasts for 1 minute or until the devil is incapacitated or dies. The wal
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -13959,6 +14236,9 @@ The wall lasts for 1 minute or until the devil is incapacitated or dies. The wal
 				</dict>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -14146,6 +14426,9 @@ The wall lasts for 1 minute or until the devil is incapacitated or dies. The wal
 				</dict>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -14336,6 +14619,9 @@ The wall lasts for 1 minute or until the devil is incapacitated or dies. The wal
 				</dict>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -14546,6 +14832,9 @@ The wall lasts for 1 minute or until the devil is incapacitated or dies. The wal
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -14694,6 +14983,10 @@ The wall lasts for 1 minute or until the devil is incapacitated or dies. The wal
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>4</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -14821,6 +15114,10 @@ The wall lasts for 1 minute or until the devil is incapacitated or dies. The wal
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>4</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -14936,6 +15233,11 @@ The wall lasts for 1 minute or until the devil is incapacitated or dies. The wal
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -15070,6 +15372,12 @@ The wall lasts for 1 minute or until the devil is incapacitated or dies. The wal
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>1</integer>
+				<integer>4</integer>
+				<integer>6</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -15206,6 +15514,10 @@ The wall lasts for 1 minute or until the devil is incapacitated or dies. The wal
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>4</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -15340,6 +15652,10 @@ The wall lasts for 1 minute or until the devil is incapacitated or dies. The wal
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>4</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -15466,6 +15782,10 @@ The wall lasts for 1 minute or until the devil is incapacitated or dies. The wal
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -15604,6 +15924,11 @@ The wall lasts for 1 minute or until the devil is incapacitated or dies. The wal
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+				<integer>10</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -15831,6 +16156,10 @@ The wall lasts for 1 minute or until the devil is incapacitated or dies. The wal
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -16027,6 +16356,10 @@ The wall lasts for 1 minute or until the devil is incapacitated or dies. The wal
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -16216,6 +16549,10 @@ The wall lasts for 1 minute or until the devil is incapacitated or dies. The wal
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>7</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -16420,6 +16757,10 @@ The wall lasts for 1 minute or until the devil is incapacitated or dies. The wal
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>7</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -16647,6 +16988,10 @@ The wall lasts for 1 minute or until the devil is incapacitated or dies. The wal
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -16801,6 +17146,9 @@ The wall lasts for 1 minute or until the devil is incapacitated or dies. The wal
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -16981,6 +17329,11 @@ The wall lasts for 1 minute or until the devil is incapacitated or dies. The wal
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -17179,6 +17532,11 @@ The wall lasts for 1 minute or until the devil is incapacitated or dies. The wal
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -17409,6 +17767,11 @@ A blue dragon will collapse the caverns that make up its lair if that lair is in
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -17557,6 +17920,9 @@ A blue dragon will collapse the caverns that make up its lair if that lair is in
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -17735,6 +18101,10 @@ A blue dragon will collapse the caverns that make up its lair if that lair is in
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -17948,6 +18318,10 @@ A blue dragon will collapse the caverns that make up its lair if that lair is in
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -18187,6 +18561,10 @@ Each 10-foot-cube of thickets has AC 5, 30 hit points, resistance to bludgeoning
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -18362,6 +18740,9 @@ Each 10-foot-cube of thickets has AC 5, 30 hit points, resistance to bludgeoning
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -18542,6 +18923,11 @@ Each 10-foot-cube of thickets has AC 5, 30 hit points, resistance to bludgeoning
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>5</integer>
+				<integer>6</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -18740,6 +19126,11 @@ Each 10-foot-cube of thickets has AC 5, 30 hit points, resistance to bludgeoning
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>5</integer>
+				<integer>6</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -18964,6 +19355,11 @@ Throughout the lair complex, servants erect monuments to the dragon's power, tel
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>5</integer>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -19118,6 +19514,9 @@ Throughout the lair complex, servants erect monuments to the dragon's power, tel
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -19292,6 +19691,10 @@ Throughout the lair complex, servants erect monuments to the dragon's power, tel
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -19498,6 +19901,10 @@ Throughout the lair complex, servants erect monuments to the dragon's power, tel
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -19737,6 +20144,10 @@ If the dragon wishes to move through a wall, it can do so without slowing down. 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -19893,6 +20304,9 @@ If the dragon wishes to move through a wall, it can do so without slowing down. 
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -20078,6 +20492,10 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -20288,6 +20706,10 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -20515,6 +20937,10 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -20670,6 +21096,9 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -20853,6 +21282,10 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>1</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -21066,6 +21499,10 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>1</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -21295,6 +21732,10 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>1</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -21451,6 +21892,9 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -21640,6 +22084,10 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>5</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -21845,6 +22293,10 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>5</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -22067,6 +22519,10 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>5</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -22222,6 +22678,9 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -22405,6 +22864,11 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>4</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -22623,6 +23087,11 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>4</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -22851,6 +23320,11 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>4</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -23012,6 +23486,9 @@ Weakening Breath. The dragon exhales gas in a 15-foot cone. Each creature in tha
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -23201,6 +23678,11 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>6</integer>
+				<integer>10</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -23411,6 +23893,11 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>6</integer>
+				<integer>10</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -23631,6 +24118,11 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>6</integer>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -23784,6 +24276,9 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -23951,6 +24446,11 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -24100,6 +24600,10 @@ In a new form, the dragon retains its alignment, hit points, Hit Dice, ability t
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -24273,6 +24777,10 @@ The dryad can have no more than one humanoid and up to three beasts charmed at a
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -24445,6 +24953,10 @@ The dryad can have no more than one humanoid and up to three beasts charmed at a
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -24658,6 +25170,11 @@ If the saving throw is successful, the target takes half the bludgeoning damage 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canHover</key>
@@ -24854,6 +25371,10 @@ If the saving throw is successful, the target takes half the bludgeoning damage 
 					<key>rawDamageType</key>
 					<integer>12</integer>
 				</dict>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -25063,6 +25584,10 @@ If the saving throw is successful, the target takes half the bludgeoning damage 
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -25282,6 +25807,12 @@ The elemental can grapple one Large creature or up to two Medium or smaller crea
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>1</integer>
+				<integer>7</integer>
+				<integer>9</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -25426,6 +25957,10 @@ The elemental can grapple one Large creature or up to two Medium or smaller crea
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -25583,6 +26118,10 @@ The elemental can grapple one Large creature or up to two Medium or smaller crea
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -25754,6 +26293,10 @@ The elemental can grapple one Large creature or up to two Medium or smaller crea
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -25938,6 +26481,9 @@ The elemental can grapple one Large creature or up to two Medium or smaller crea
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -26140,6 +26686,9 @@ The elemental can grapple one Large creature or up to two Medium or smaller crea
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canSpeakAllLanguages</key>
@@ -26335,6 +26884,10 @@ The elemental can grapple one Large creature or up to two Medium or smaller crea
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -26498,6 +27051,12 @@ The elemental can grapple one Large creature or up to two Medium or smaller crea
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>5</integer>
+				<integer>6</integer>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -26698,6 +27257,10 @@ The elemental can grapple one Large creature or up to two Medium or smaller crea
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canHover</key>
@@ -26875,6 +27438,10 @@ Cantrip (at will): mage hand
 					<integer>9</integer>
 				</dict>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -27032,6 +27599,10 @@ The transformed creature can repeat the saving throw whenever it finishes a long
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -27184,6 +27755,10 @@ The transformed creature can repeat the saving throw whenever it finishes a long
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canHover</key>
@@ -27320,6 +27895,10 @@ Spores invade an infected creature's system, killing the creature in a number of
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -27464,6 +28043,10 @@ Spores invade an infected creature's system, killing the creature in a number of
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -27645,6 +28228,11 @@ Spores invade an infected creature's system, killing the creature in a number of
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -27791,6 +28379,10 @@ Spores invade an infected creature's system, killing the creature in a number of
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -27979,6 +28571,10 @@ A creature can use its action to free a creature restrained by the whirlwind, in
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>1</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -28138,6 +28734,10 @@ A creature can use its action to free a creature restrained by the whirlwind, in
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -28316,6 +28916,11 @@ A creature can use its action to free a creature restrained by the whirlwind, in
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -28605,6 +29210,11 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canHover</key>
@@ -28773,6 +29383,12 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>7</integer>
+				<integer>8</integer>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -28928,6 +29544,12 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>7</integer>
+				<integer>8</integer>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -29072,6 +29694,10 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>6</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -29233,6 +29859,11 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>6</integer>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -29384,6 +30015,11 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -29529,6 +30165,10 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>5</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -29662,6 +30302,12 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>5</integer>
+				<integer>6</integer>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -29846,6 +30492,11 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -30013,6 +30664,10 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -30141,6 +30796,9 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -30275,6 +30933,9 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -30406,6 +31067,9 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -30551,6 +31215,9 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -30710,6 +31377,13 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -30860,6 +31534,13 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -30998,6 +31679,13 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -31130,6 +31818,10 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -31294,6 +31986,13 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -31443,6 +32142,13 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -31646,6 +32352,9 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -31856,6 +32565,9 @@ The possession lasts until the body drops to 0 hit points, the ghost ends it as 
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -32093,6 +32805,9 @@ The golem's creator, if within 60 feet of the berserk golem, can try to calm it 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -32297,6 +33012,9 @@ The golem's creator, if within 60 feet of the berserk golem, can try to calm it 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -32457,6 +33175,12 @@ The golem's creator, if within 60 feet of the berserk golem, can try to calm it 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -32610,6 +33334,10 @@ The target is also grappled (escape DC 15). If the target is Medium or smaller, 
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -32773,6 +33501,11 @@ The target is also grappled (escape DC 15). If the target is Medium or smaller, 
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -32940,6 +33673,11 @@ The target is also grappled (escape DC 15). If the target is Medium or smaller, 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -33069,6 +33807,14 @@ The target is also grappled (escape DC 15). If the target is Medium or smaller, 
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>6</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -33217,6 +33963,12 @@ The changes wrought by this effect fail to hold up to physical inspection. For e
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>5</integer>
+				<integer>7</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -33424,6 +34176,9 @@ The changes wrought by this effect fail to hold up to physical inspection. For e
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -33581,6 +34336,11 @@ The changes wrought by this effect fail to hold up to physical inspection. For e
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -33775,6 +34535,9 @@ Unless the target is surprised or the revelation of the hag's true form is sudde
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -33926,6 +34689,13 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>1</integer>
+				<integer>3</integer>
+				<integer>5</integer>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -34054,6 +34824,11 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>6</integer>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -34263,6 +35038,9 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -34426,6 +35204,12 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -34558,6 +35342,14 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -34716,6 +35508,14 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -34873,6 +35673,9 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -35020,6 +35823,9 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -35145,6 +35951,10 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -35289,6 +36099,10 @@ A target that successfully saves is immune to this harpy's song for the next 24 
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>7</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -35479,6 +36293,10 @@ If the host body dies, the intellect devourer must leave it. A [protection from 
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -35673,6 +36491,10 @@ If the host body dies, the intellect devourer must leave it. A [protection from 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canHover</key>
@@ -35823,6 +36645,18 @@ If the host body dies, the intellect devourer must leave it. A [protection from 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>5</integer>
+				<integer>6</integer>
+				<integer>7</integer>
+				<integer>8</integer>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -35963,6 +36797,18 @@ If the host body dies, the intellect devourer must leave it. A [protection from 
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>5</integer>
+				<integer>6</integer>
+				<integer>7</integer>
+				<integer>8</integer>
+				<integer>10</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -36165,6 +37011,10 @@ If the kraken takes 50 damage or more on a single turn from a creature inside it
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>9</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -36372,6 +37222,10 @@ If the kraken takes 50 damage or more on a single turn from a creature inside it
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -36539,6 +37393,9 @@ If the kraken takes 50 damage or more on a single turn from a creature inside it
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -36721,6 +37578,10 @@ If the kraken takes 50 damage or more on a single turn from a creature inside it
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -36897,6 +37758,10 @@ If the kraken takes 50 damage or more on a single turn from a creature inside it
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -37064,6 +37929,10 @@ If the kraken takes 50 damage or more on a single turn from a creature inside it
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -37270,6 +38139,9 @@ If the kraken takes 50 damage or more on a single turn from a creature inside it
 				</dict>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -37511,6 +38383,11 @@ A lich encountered in its lair has a challenge rating of 22 (41,000 XP).</string
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -37676,6 +38553,11 @@ A lich encountered in its lair has a challenge rating of 22 (41,000 XP).</string
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>7</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -37843,6 +38725,9 @@ A lich encountered in its lair has a challenge rating of 22 (41,000 XP).</string
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -38018,6 +38903,9 @@ A lich encountered in its lair has a challenge rating of 22 (41,000 XP).</string
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -38165,6 +39053,14 @@ A lich encountered in its lair has a challenge rating of 22 (41,000 XP).</string
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -38307,6 +39203,10 @@ A lich encountered in its lair has a challenge rating of 22 (41,000 XP).</string
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -38469,6 +39369,10 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 					<key>rawDamageType</key>
 					<integer>3</integer>
 				</dict>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -38648,6 +39552,10 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 					<integer>3</integer>
 				</dict>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -38826,6 +39734,10 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 					<integer>2</integer>
 				</dict>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -38986,6 +39898,10 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>7</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -39149,6 +40065,10 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>10</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -39316,6 +40236,10 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>9</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -39449,6 +40373,11 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -39598,6 +40527,11 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -39745,6 +40679,11 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+				<integer>10</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -39897,6 +40836,10 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -40058,6 +41001,10 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -40204,6 +41151,9 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -40343,6 +41293,9 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -40480,6 +41433,9 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -40615,6 +41571,9 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -40759,6 +41718,9 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -40959,6 +41921,10 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 					<integer>3</integer>
 				</dict>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -41154,6 +42120,10 @@ If the medusa sees itself reflected on a polished surface within 30 feet of it a
 					<key>rawDamageType</key>
 					<integer>3</integer>
 				</dict>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -41379,6 +42349,10 @@ A mummy lord encountered in its lair has a challenge rating of 16 (15,000 XP).</
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -41535,6 +42509,10 @@ A mummy lord encountered in its lair has a challenge rating of 16 (15,000 XP).</
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -41662,6 +42640,10 @@ A mummy lord encountered in its lair has a challenge rating of 16 (15,000 XP).</
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -41817,6 +42799,9 @@ A mummy lord encountered in its lair has a challenge rating of 16 (15,000 XP).</
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -41963,6 +42948,10 @@ A mummy lord encountered in its lair has a challenge rating of 16 (15,000 XP).</
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -42107,6 +43096,10 @@ If the naga was a spirit naga in life, its spellcasting ability is Intelligence,
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -42268,6 +43261,11 @@ If the naga was a spirit naga in life, its spellcasting ability is Intelligence,
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -42423,6 +43421,9 @@ If the naga was a spirit naga in life, its spellcasting ability is Intelligence,
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -42565,6 +43566,10 @@ If the naga was a spirit naga in life, its spellcasting ability is Intelligence,
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -42715,6 +43720,18 @@ If the naga was a spirit naga in life, its spellcasting ability is Intelligence,
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>6</integer>
+				<integer>7</integer>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -42869,6 +43886,16 @@ If the naga was a spirit naga in life, its spellcasting ability is Intelligence,
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>5</integer>
+				<integer>6</integer>
+				<integer>8</integer>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -43004,6 +44031,11 @@ If the naga was a spirit naga in life, its spellcasting ability is Intelligence,
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>10</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -43216,6 +44248,10 @@ If the naga was a spirit naga in life, its spellcasting ability is Intelligence,
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -43396,6 +44432,10 @@ An engulfed creature can try to escape by taking an action to make a DC 12 Stren
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -43566,6 +44606,10 @@ The cube can hold only one Large creature or up to four Medium or smaller creatu
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -43755,6 +44799,10 @@ The ooze can eat through 2-inch-thick, nonmagical metal in 1 round.</string>
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -43906,6 +44954,16 @@ The ooze can eat through 2-inch-thick, nonmagical metal in 1 round.</string>
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>6</integer>
+				<integer>7</integer>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -44069,6 +45127,9 @@ The ooze can eat through 2-inch-thick, nonmagical metal in 1 round.</string>
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -44206,6 +45267,16 @@ The ooze can eat through 2-inch-thick, nonmagical metal in 1 round.</string>
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>6</integer>
+				<integer>7</integer>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -44371,6 +45442,15 @@ The ooze can eat through 2-inch-thick, nonmagical metal in 1 round.</string>
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>6</integer>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -44526,6 +45606,10 @@ The ooze can eat through 2-inch-thick, nonmagical metal in 1 round.</string>
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -44669,6 +45753,10 @@ The ooze can eat through 2-inch-thick, nonmagical metal in 1 round.</string>
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -44801,6 +45889,12 @@ The ooze can eat through 2-inch-thick, nonmagical metal in 1 round.</string>
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -44963,6 +46057,11 @@ The ooze can eat through 2-inch-thick, nonmagical metal in 1 round.</string>
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>5</integer>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -45110,6 +46209,10 @@ The ooze can eat through 2-inch-thick, nonmagical metal in 1 round.</string>
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -45246,6 +46349,10 @@ The ooze can eat through 2-inch-thick, nonmagical metal in 1 round.</string>
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -45387,6 +46494,15 @@ The ooze can eat through 2-inch-thick, nonmagical metal in 1 round.</string>
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>5</integer>
+				<integer>6</integer>
+				<integer>10</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -45557,6 +46673,11 @@ If the worm takes 30 damage or more on a single turn from a creature inside it, 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -45702,6 +46823,10 @@ If the worm takes 30 damage or more on a single turn from a creature inside it, 
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -45858,6 +46983,10 @@ If the worm takes 30 damage or more on a single turn from a creature inside it, 
 					<integer>7</integer>
 				</dict>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -46007,6 +47136,10 @@ If the worm takes 30 damage or more on a single turn from a creature inside it, 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -46147,6 +47280,10 @@ If the remorhaz takes 30 damage or more on a single turn from a creature inside 
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -46324,6 +47461,15 @@ If the remorhaz takes 30 damage or more on a single turn from a creature inside 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>5</integer>
+				<integer>7</integer>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -46486,6 +47632,14 @@ If the remorhaz takes 30 damage or more on a single turn from a creature inside 
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>5</integer>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -46632,6 +47786,10 @@ If the remorhaz takes 30 damage or more on a single turn from a creature inside 
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -46792,6 +47950,10 @@ If the object touched is either metal armor or a metal shield being worn or carr
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -46937,6 +48099,11 @@ If the object touched is either metal armor or a metal shield being worn or carr
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -47088,6 +48255,11 @@ If the object touched is either metal armor or a metal shield being worn or carr
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -47260,6 +48432,11 @@ If the object touched is either metal armor or a metal shield being worn or carr
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -47450,6 +48627,10 @@ If the object touched is either metal armor or a metal shield being worn or carr
 					<integer>2</integer>
 				</dict>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -47617,6 +48798,10 @@ If the object touched is either metal armor or a metal shield being worn or carr
 					<integer>2</integer>
 				</dict>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -47759,6 +48944,10 @@ If the object touched is either metal armor or a metal shield being worn or carr
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -47964,6 +49153,10 @@ If the object touched is either metal armor or a metal shield being worn or carr
 					<integer>3</integer>
 				</dict>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>4</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -48123,6 +49316,11 @@ If the object touched is either metal armor or a metal shield being worn or carr
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>7</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -48286,6 +49484,10 @@ If the object touched is either metal armor or a metal shield being worn or carr
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>10</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -48457,6 +49659,10 @@ If the object touched is either metal armor or a metal shield being worn or carr
 					<integer>1</integer>
 				</dict>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -48615,6 +49821,10 @@ If the object touched is either metal armor or a metal shield being worn or carr
 					<integer>1</integer>
 				</dict>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -48753,6 +49963,9 @@ If the object touched is either metal armor or a metal shield being worn or carr
 					<key>rawDamageType</key>
 					<integer>1</integer>
 				</dict>
+			</array>
+			<key>environments</key>
+			<array>
 			</array>
 			<key>info</key>
 			<dict>
@@ -48908,6 +50121,9 @@ If the disease is cured before the tadpole's emergence, the unborn slaad is disi
 				</dict>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -49070,6 +50286,9 @@ If the disease is cured before the tadpole's emergence, the unborn slaad is disi
 				</dict>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -49236,6 +50455,9 @@ If the disease is cured before the tadpole's emergence, the unborn slaad is disi
 				</dict>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -49422,6 +50644,9 @@ If the disease is cured before the tadpole's emergence, the unborn slaad is disi
 				</dict>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -49626,6 +50851,10 @@ If the disease is cured before the tadpole's emergence, the unborn slaad is disi
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>10</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -49834,6 +51063,9 @@ If the disease is cured before the tadpole's emergence, the unborn slaad is disi
 				</dict>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -50093,6 +51325,11 @@ If the disease is cured before the tadpole's emergence, the unborn slaad is disi
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canHover</key>
@@ -50343,6 +51580,9 @@ If the target is an object that isn't being worn or carried, the poltergeist hur
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canHover</key>
@@ -50523,6 +51763,10 @@ Third Roar. Each creature makes a DC 18 Constitution saving throw. On a failed s
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -50739,6 +51983,10 @@ Third Roar. Each creature makes a DC 18 Constitution saving throw. On a failed s
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -50948,6 +52196,10 @@ Third Roar. Each creature makes a DC 18 Constitution saving throw. On a failed s
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -51083,6 +52335,18 @@ The stirge can detach itself by spending 5 feet of its movement. It does so afte
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>6</integer>
+				<integer>7</integer>
+				<integer>8</integer>
+				<integer>10</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -51274,6 +52538,10 @@ The fiend can have only one target charmed at a time. If it charms another, the 
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>10</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -51509,6 +52777,10 @@ If the tarrasque takes 60 damage or more on a single turn from a creature inside
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -51680,6 +52952,11 @@ If the tarrasque takes 60 damage or more on a single turn from a creature inside
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+				<integer>4</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -51850,6 +53127,10 @@ If the tarrasque takes 60 damage or more on a single turn from a creature inside
 					<integer>3</integer>
 				</dict>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -51985,6 +53266,10 @@ If the tarrasque takes 60 damage or more on a single turn from a creature inside
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -52145,6 +53430,15 @@ If the tarrasque takes 60 damage or more on a single turn from a creature inside
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
+				<integer>3</integer>
+				<integer>5</integer>
+				<integer>6</integer>
+				<integer>7</integer>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -52302,6 +53596,10 @@ If the tarrasque takes 60 damage or more on a single turn from a creature inside
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -52479,6 +53777,10 @@ Unless surprised, a creature can avert its eyes to avoid the saving throw at the
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -52711,6 +54013,9 @@ Each time the vampire or the vampire's companions do anything harmful to the tar
 				</dict>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -52977,6 +54282,11 @@ While it has 0 hit points in mist form, it can't revert to its vampire form, and
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -53203,6 +54513,11 @@ While it has 0 hit points in mist form, it can't revert to its vampire form, and
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -53390,6 +54705,13 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+				<integer>7</integer>
+				<integer>8</integer>
+				<integer>10</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -53624,6 +54946,12 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>7</integer>
+				<integer>10</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -53875,6 +55203,10 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canHover</key>
@@ -54026,6 +55358,11 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>5</integer>
+				<integer>6</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -54179,6 +55516,10 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -54346,6 +55687,10 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -54519,6 +55864,10 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -54696,6 +56045,12 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>7</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -54921,6 +56276,12 @@ A humanoid slain by this attack rises 24 hours later as a zombie under the wight
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -55110,6 +56471,13 @@ Type 3: Human head and upper body with a serpentine lower body instead of legs</
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>7</integer>
+				<integer>10</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -55328,6 +56696,9 @@ Type 3: Human head and upper body with a serpentine lower body instead of legs</
 				</dict>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -55576,6 +56947,9 @@ Type 3: Human head and upper body with a serpentine lower body instead of legs</
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -55794,6 +57168,9 @@ Type 3: Human head and upper body with a serpentine lower body instead of legs</
 				</dict>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -56035,6 +57412,9 @@ Type 3: Human head and upper body with a serpentine lower body instead of legs</
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -56200,6 +57580,10 @@ Type 3: Human head and upper body with a serpentine lower body instead of legs</
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -56350,6 +57734,9 @@ Type 3: Human head and upper body with a serpentine lower body instead of legs</
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -56497,6 +57884,10 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canHover</key>
@@ -56634,6 +58025,10 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -56774,6 +58169,10 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 					<key>rawDamageType</key>
 					<integer>3</integer>
 				</dict>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -56917,6 +58316,10 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 					<integer>3</integer>
 				</dict>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -57047,6 +58450,11 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>4</integer>
+				<integer>5</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -57162,6 +58570,11 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>5</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -57285,6 +58698,9 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -57411,6 +58827,9 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -57563,6 +58982,10 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -57704,6 +59127,10 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -57837,6 +59264,15 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>6</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -57972,6 +59408,12 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -58119,6 +59561,12 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
+				<integer>3</integer>
+				<integer>5</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -58254,6 +59702,10 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -58369,6 +59821,13 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>10</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -58516,6 +59975,13 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>7</integer>
+				<integer>9</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -58641,6 +60107,10 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>1</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -58772,6 +60242,11 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>7</integer>
+				<integer>10</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -58920,6 +60395,10 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -59054,6 +60533,11 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>4</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -59175,6 +60659,11 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>5</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -59320,6 +60809,10 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -59435,6 +60928,13 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>1</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>6</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -59571,6 +61071,10 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>4</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -59698,6 +61202,12 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -59827,6 +61337,13 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -59947,6 +61464,9 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -60109,6 +61629,10 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -60249,6 +61773,10 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -60374,6 +61902,11 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -60507,6 +62040,12 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -60634,6 +62173,11 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+				<integer>10</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -60767,6 +62311,14 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>7</integer>
+				<integer>8</integer>
+				<integer>9</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -60891,6 +62443,10 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>1</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -61035,6 +62591,10 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -61175,6 +62735,13 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>1</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>6</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -61320,6 +62887,13 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -61451,6 +63025,10 @@ If the target is a Large or smaller nonmagical object or creation of magical for
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -61581,6 +63159,11 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>7</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -61730,6 +63313,12 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -61858,6 +63447,13 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -61984,6 +63580,14 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>7</integer>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -62116,6 +63720,10 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>9</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -62271,6 +63879,12 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
+				<integer>3</integer>
+				<integer>5</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -62417,6 +64031,15 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>7</integer>
+				<integer>8</integer>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -62541,6 +64164,13 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>7</integer>
+				<integer>8</integer>
+				<integer>10</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -62684,6 +64314,10 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -62801,6 +64435,10 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>9</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -62931,6 +64569,10 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>9</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -63074,6 +64716,14 @@ If the frog dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>7</integer>
+				<integer>8</integer>
+				<integer>10</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -63245,6 +64895,14 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>7</integer>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -63389,6 +65047,11 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+				<integer>4</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -63525,6 +65188,12 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -63642,6 +65311,12 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -63776,6 +65451,14 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -63927,6 +65610,13 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>6</integer>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -64053,6 +65743,9 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -64189,6 +65882,10 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>9</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -64327,6 +66024,13 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -64453,6 +66157,11 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+				<integer>4</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -64586,6 +66295,10 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>9</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -64735,6 +66448,13 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>6</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -64892,6 +66612,9 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -65018,6 +66741,10 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -65139,6 +66866,12 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>5</integer>
+				<integer>10</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -65272,6 +67005,12 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+				<integer>5</integer>
+				<integer>10</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -65411,6 +67150,9 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -65560,6 +67302,11 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
+				<integer>3</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -65715,6 +67462,12 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -65861,6 +67614,15 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>8</integer>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -66004,6 +67766,15 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -66141,6 +67912,10 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -66289,6 +68064,10 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -66414,6 +68193,10 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -66529,6 +68312,10 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>9</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -66662,6 +68449,11 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>7</integer>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -66791,6 +68583,12 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>5</integer>
+				<integer>7</integer>
+				<integer>10</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -66926,6 +68724,10 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>9</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -67070,6 +68872,10 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>4</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -67191,6 +68997,11 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>4</integer>
+				<integer>10</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -67319,6 +69130,11 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
+				<integer>6</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -67458,6 +69274,10 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -67568,6 +69388,9 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -67692,6 +69515,9 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -67887,6 +69713,13 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>5</integer>
+				<integer>6</integer>
+				<integer>8</integer>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -68077,6 +69910,16 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>7</integer>
+				<integer>8</integer>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -68261,6 +70104,9 @@ If the toad dies, a swallowed creature is no longer restrained by it and can esc
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -68434,6 +70280,9 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 				</dict>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -68612,6 +70461,9 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 				</dict>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -68804,6 +70656,9 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -68975,6 +70830,11 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>7</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -69159,6 +71019,10 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>9</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -69350,6 +71214,11 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>7</integer>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -69538,6 +71407,13 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>5</integer>
+				<integer>7</integer>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -69680,6 +71556,11 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>4</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -69827,6 +71708,12 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>2</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -69962,6 +71849,10 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -70094,6 +71985,9 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -70239,6 +72133,10 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -70386,6 +72284,12 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -70542,6 +72446,12 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -70700,6 +72610,10 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>10</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -70904,6 +72818,10 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -71085,6 +73003,10 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>10</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -71278,6 +73200,15 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>5</integer>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -71434,6 +73365,15 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>5</integer>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -71582,6 +73522,15 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>5</integer>
+				<integer>6</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -71742,6 +73691,16 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -71897,6 +73856,10 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>10</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -72075,6 +74038,10 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>10</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -72260,6 +74227,18 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>6</integer>
+				<integer>7</integer>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -72443,6 +74422,10 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -72621,6 +74604,16 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>6</integer>
+				<integer>10</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -72803,6 +74796,10 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>10</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -72987,6 +74984,10 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -73167,6 +75168,10 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -73339,6 +75344,10 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>10</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -73536,6 +75545,18 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>6</integer>
+				<integer>7</integer>
+				<integer>8</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -73719,6 +75740,10 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>10</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -73906,6 +75931,10 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -74063,6 +76092,18 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			</array>
 			<key>damageVulnerabilities</key>
 			<array>
+			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>6</integer>
+				<integer>7</integer>
+				<integer>8</integer>
 			</array>
 			<key>info</key>
 			<dict>
@@ -74239,6 +76280,17 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>6</integer>
+				<integer>8</integer>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -74403,6 +76455,9 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -74585,6 +76640,9 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -74759,6 +76817,9 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -74916,6 +76977,9 @@ A creature reduced to 0 hit points by a swarm of centipedes is stable but poison
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -75111,6 +77175,9 @@ A humanoid slain by this attack rises 24 hours later as a zombie under Naergoth'
 			<key>damageVulnerabilities</key>
 			<array>
 			</array>
+			<key>environments</key>
+			<array>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>challenge</key>
@@ -75279,6 +77346,9 @@ A humanoid slain by this attack rises 24 hours later as a zombie under Naergoth'
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -75512,6 +77582,9 @@ A humanoid slain by this attack rises 24 hours later as a zombie under Naergoth'
 			<array>
 			</array>
 			<key>damageVulnerabilities</key>
+			<array>
+			</array>
+			<key>environments</key>
 			<array>
 			</array>
 			<key>info</key>
@@ -76523,7 +78596,7 @@ Any creature or object entering the portal exits from the other portal as if the
 				<integer>0</integer>
 				<key>text</key>
 				<string>You touch a closed door, window, gate, chest, or other entryway, and it becomes locked for the duration. You and the creatures you designate when you cast this spell can open the object normally. You can also set a password that, when spoken within 5 feet of the object, suppresses this spell for 1 minute. Otherwise, it is impassable until it is broken or the spell is dispelled or suppressed. Casting [knock] on the object suppresses [arcane lock] for 10 minutes.
-While affected by this spell, the object is more diffcult to break or force open; the DC to break it or pick any locks on it increases by 10.</string>
+While affected by this spell, the object is more difficult to break or force open; the DC to break it or pick any locks on it increases by 10.</string>
 			</dict>
 			<key>name</key>
 			<string>Arcane Lock</string>
@@ -77410,7 +79483,7 @@ When you cast the spell and as a bonus action on your subsequent turns, you can 
 				<key>requiresConcentration</key>
 				<true/>
 				<key>text</key>
-				<string>You create a vertical wall of whirling, razor-sharp blades made of magical energy. The wall appears within range and lasts for the duration. You can make a straight wall up to 100 feet long, 20 feet high, and 5 feet thick, or a ringed wall up to 60 feet in diameter, 20 feet high, and 5 feet thick. The wall provides three-quarters cover to creatures behind it, and its space is dificult terrain.
+				<string>You create a vertical wall of whirling, razor-sharp blades made of magical energy. The wall appears within range and lasts for the duration. You can make a straight wall up to 100 feet long, 20 feet high, and 5 feet thick, or a ringed wall up to 60 feet in diameter, 20 feet high, and 5 feet thick. The wall provides three-quarters cover to creatures behind it, and its space is difficult terrain.
 When a creature enters the wall's area for the first time on a turn or starts its turn there, the creature must make a Dexterity saving throw. On a failed save, the creature takes 6d10 slashing damage. On a successful save, the creature takes half as much damage.</string>
 			</dict>
 			<key>name</key>
@@ -78458,7 +80531,7 @@ At any time after the clone matures, if the original creature dies, its soul tra
 				<key>requiresConcentration</key>
 				<true/>
 				<key>text</key>
-				<string>You filll the air with spinning daggers in a cube 5 feet on each side, centered on a point you choose within range. A creature takes 4d4 slashing damage when it enters the spell's area for the first time on a turn or starts its turn there.
+				<string>You fill the air with spinning daggers in a cube 5 feet on each side, centered on a point you choose within range. A creature takes 4d4 slashing damage when it enters the spell's area for the first time on a turn or starts its turn there.
 ***At Higher Levels.*** When you cast this spell using a spell slot of 3rd level or higher, the damage increases by 2d4 for each slot level above 2nd.</string>
 			</dict>
 			<key>name</key>
@@ -79572,7 +81645,7 @@ Since this spell induces a natural disease in its target, any effect that remove
 ***Filth Fever.*** A raging fever sweeps through the creature's body. The creature has disadvantage on Strength checks, Strength saving throws, and attack rolls that use Strength.
 ***Flesh Rot.*** The creature's flesh decays. The creature has disadvantage on Charisma checks and vulnerability to all damage.
 ***Mindfire.*** The creature's mind becomes feverish. The creature has disadvantage on Intelligence checks and Intelligence saving throws, and the creature behaves as if under the effects of the [confusion] spell during combat.
-*Seizure.* The creature is overcome with shaking. The creature has disadvantage on Dexterity checks, Dexterity saving throws, and attack rolls that use Dexterity.
+***Seizure.*** The creature is overcome with shaking. The creature has disadvantage on Dexterity checks, Dexterity saving throws, and attack rolls that use Dexterity.
 ***Slimy Doom.*** The creature begins to bleed uncontrollably. The creature has disadvantage on Constitution checks and Constitution saving throws. In addition, whenever the creature takes damage, it is stunned until the end of its next turn.</string>
 			</dict>
 			<key>name</key>
@@ -83811,7 +85884,7 @@ This spell immediately ends if you cast it again before its duration ends.</stri
 				<key>hasVerbalComponent</key>
 				<true/>
 				<key>materialComponent</key>
-				<string>a leather strap, bound around thearm or a similar appendage</string>
+				<string>a leather strap, bound around the arm or a similar appendage</string>
 				<key>rawDuration</key>
 				<integer>1</integer>
 				<key>rawDurationTime</key>
@@ -83823,7 +85896,7 @@ This spell immediately ends if you cast it again before its duration ends.</stri
 				<key>rawSchool</key>
 				<integer>0</integer>
 				<key>text</key>
-				<string>You touch a willing creature. For the duration, the target's movement is unaffected by diffcult terrain, and spells and other magical effects can neither reduce the target's speed nor cause the target to be paralyzed or restrained.
+				<string>You touch a willing creature. For the duration, the target's movement is unaffected by difficult terrain, and spells and other magical effects can neither reduce the target's speed nor cause the target to be paralyzed or restrained.
 The target can also spend 5 feet of movement to automatically escape from nonmagical restraints, such as manacles or a creature that has it grappled. Finally, being underwater imposes no penalties on the target's movement or attacks.</string>
 			</dict>
 			<key>name</key>
@@ -83935,7 +86008,7 @@ The target can also spend 5 feet of movement to automatically escape from nonmag
 				<key>requiresConcentration</key>
 				<true/>
 				<key>text</key>
-				<string>You transform a willing creature you touch, along with everything it's wearing and carrying, into a misty cloud for the duration. The spell ends if the creature drops to 0 hit points. An incorporeal creature isn't afected.
+				<string>You transform a willing creature you touch, along with everything it's wearing and carrying, into a misty cloud for the duration. The spell ends if the creature drops to 0 hit points. An incorporeal creature isn't affected.
 While in this form, the target's only method of movement is a flying speed of 10 feet. The target can enter and occupy the space of another creature. The target has resistance to nonmagical damage, and it has advantage on Strength, Dexterity, and Constitution saving throws. The target can pass through small holes, narrow openings, and even mere cracks, though it treats liquids as though they were solid surfaces. The target can't fall and remains hovering in the air even when stunned or otherwise incapacitated.
 While in the form of a misty cloud, the target can't talk or manipulate objects, and any objects it was carrying or holding can't be dropped, used, or otherwise interacted with. The target can't attack or cast spells.</string>
 			</dict>
@@ -85880,7 +87953,7 @@ The spell ends for an affected creature if it takes any damage or if someone els
 				<integer>4</integer>
 				<key>text</key>
 				<string>A hail of rock-hard ice pounds to the ground in a 20-foot-radius, 40-foot-high cylinder centered on a point within range. Each creature in the cylinder must make a Dexterity saving throw. A creature takes 2d8 bludgeoning damage and 4d6 cold damage on a failed save, or half as much damage on a successful one.
-Hailstones turn the storm's area of effect into dificult terrain until the end of your next turn.
+Hailstones turn the storm's area of effect into difficult terrain until the end of your next turn.
 ***At Higher Levels.*** When you cast this spell using a spell slot of 5th level or higher, the bludgeoning damage increases by 1d8 for each slot level above 4th.</string>
 			</dict>
 			<key>name</key>
@@ -85975,7 +88048,7 @@ If you instead touch a creature throughout the casting, you learn what spells, i
 				<key>hasSomaticComponent</key>
 				<true/>
 				<key>materialComponent</key>
-				<string>a lead-based ink worth atleast 10 gp, which the spell consumes</string>
+				<string>a lead-based ink worth at least 10 gp, which the spell consumes</string>
 				<key>rawCastingTime</key>
 				<integer>1</integer>
 				<key>rawDuration</key>
@@ -89185,7 +91258,7 @@ An affected target is so convinced of the phantasm's reality that it can even ta
 				<key>requiresConcentration</key>
 				<true/>
 				<key>text</key>
-				<string>You tap into the nightmares of a creature you can see within range and create an illusory manifestation of its deepest fears, visible only to that creature. The target must make a Wisdom saving throw. On a failed save, the target becomes frightened for the duration. At the start of each of the target's turns before the spell ends, the target must succeed on a Wisdom saving throw or take 4d10 psychic damage. On a successful save, the spell ends.
+				<string>You tap into the nightmares of a creature you can see within range and create an illusory manifestation of its deepest fears, visible only to that creature. The target must make a Wisdom saving throw. On a failed save, the target becomes frightened for the duration. At the end of each of the target's turns before the spell ends, the target must succeed on a Wisdom saving throw or take 4d10 psychic damage. On a successful save, the spell ends.
 ***At Higher Levels.*** When you cast this spell using a spell slot of 5th level or higher, the damage increases by 1d10 for each slot level above 4th.</string>
 			</dict>
 			<key>name</key>
@@ -89561,7 +91634,7 @@ This spell's damage increases by 1d12 when you reach 5th level (2d12), 11th leve
 				<key>requiresConcentration</key>
 				<true/>
 				<key>text</key>
-				<string>This spell transforms a creature that you can see within range into a new form. An unwilling creature must make a Wisdom saving throw to avoid the effect. A shapechanger automatically succeeds on this saving throw.
+				<string>This spell transforms a creature that you can see within range into a new form. An unwilling creature must make a Wisdom saving throw to avoid the effect. The spell has no effect on a shapechanger or a creature with 0 hit points.
 The transformation lasts for the duration, or until the target drops to 0 hit points or dies. The new form can be any beast whose challenge rating is equal to or less than the target's (or the target's level, if it doesn't have a challenge rating). The target's game statistics, including mental ability scores, are replaced by the statistics of the chosen beast. It retains its alignment and personality.
 The target assumes the hit points of its new form. When it reverts to its normal form, the creature returns to the number of hit points it had before it transformed. If it reverts as a result of dropping to 0 hit points, any excess damage carries over to its normal form. As long as the excess damage doesn't reduce the creature's normal form to 0 hit points, it isn't knocked unconscious.
 The creature is limited in the actions it can perform by the nature of its new form, and it can't speak, cast spells, or take any other action that requires hands or speech.
@@ -93912,7 +95985,7 @@ You can use this transportation ability once per round for the duration. You mus
 				<true/>
 				<key>text</key>
 				<string>Choose one creature or nonmagical object that you can see within range. You transform the creature into a different creature, the creature into an object, or the object into a creature (the object must be neither worn nor carried by another creature). The transformation lasts for the duration, or until the target drops to 0 hit points or dies. If you concentrate on this spell for the full duration, the transformation becomes permanent.
-Shapechangers aren't affected by this spell. An unwilling creature can make a Wisdom saving throw, and if it succeeds, it isn't affected by this spell.
+This spell has no effect on a shapechanger or a creature with 0 hit points. An unwilling creature can make a Wisdom saving throw, and if it succeeds, it isn't affected by this spell.
 ***Creature into Creature.*** If you turn a creature into another kind of creature, the new form can be any kind you choose whose challenge rating is equal to or less than the target's (or its level, if the target doesn't have a challenge rating). The target's game statistics, including mental ability scores, are replaced by the statistics of the new form. It retains its alignment and personality.
 The target assumes the hit points of its new form, and when it reverts to its normal form, the creature returns to the number of hit points it had before it transformed. If it reverts as a result of dropping to 0 hit points, any excess damage carries over to its normal form. As long as the excess damage doesn't reduce the creature's normal form to 0 hit points, it isn't knocked unconscious.
 The creature is limited in the actions it can perform by the nature of its new form, and it can't speak, cast spells, or take any other action that requires hands or speech unless its new form is capable of such actions.
@@ -94849,7 +96922,7 @@ The webs are flammable. Any 5-foot cube of webs exposed to fire burns away in 1 
 				<key>requiresConcentration</key>
 				<true/>
 				<key>text</key>
-				<string>Drawing on the deepest fears of a group of creatures, you create illusory creatures in their minds, visible only to them. Each creature in a 30-foot-radius sphere centered on a point of your choice within range must make a Wisdom saving throw. On a failed save, a creature becomes frightened for the duration. The illusion calls on the creature's deepest fears, manifesting its worst nightmares as an implacable threat. At the start of each of the frightened creature's turns, it must succeed on a Wisdom saving throw or take 4d10 psychic damage. On a successful save, the spell ends for that creature.</string>
+				<string>Drawing on the deepest fears of a group of creatures, you create illusory creatures in their minds, visible only to them. Each creature in a 30-foot-radius sphere centered on a point of your choice within range must make a Wisdom saving throw. On a failed save, a creature becomes frightened for the duration. The illusion calls on the creature's deepest fears, manifesting its worst nightmares as an implacable threat. At the end of each of the frightened creature's turns, it must succeed on a Wisdom saving throw or take 4d10 psychic damage. On a successful save, the spell ends for that creature.</string>
 			</dict>
 			<key>name</key>
 			<string>Weird</string>
@@ -97758,7 +99831,7 @@ This spell's damage increases by 1d6 when you reach 5th level (2d6), 11th level 
 		</dict>
 	</array>
 	<key>version</key>
-	<integer>1451820854</integer>
+	<integer>1451827119</integer>
 </dict>
 </plist>
 

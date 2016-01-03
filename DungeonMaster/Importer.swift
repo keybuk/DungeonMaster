@@ -105,6 +105,12 @@ func importIfNeeded() {
             }
         }
         
+        let environmentValues = monsterData["environments"] as! [NSNumber]
+        for environmentValue in environmentValues {
+            let environment = Environment(rawValue: environmentValue.integerValue)!
+            let _ = MonsterEnvironment(monster: monster, environment: environment, inManagedObjectContext: managedObjectContext)
+        }
+        
         var monsterTags = [Tag]()
         let tagNames = monsterData["tags"] as! [String]
         for tagName in tagNames {

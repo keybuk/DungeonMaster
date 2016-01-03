@@ -27,6 +27,11 @@ final class Monster: NSManagedObject {
     ///
     /// Each member is a `Source` containing a reference to the specific book, supplement, etc. the monster text can be found in, the page number, and the section if relevant.
     @NSManaged var sources: NSSet
+    
+    /// Environments in which the monster can be found.
+    ///
+    /// Each member is a `MonsterEnvironment`.
+    @NSManaged var environments: NSSet
 
     /// When the monster represents a swarm of (usually) smaller monsters, this property is set to the size of the swarm itself.
     ///

@@ -2,6 +2,12 @@ Bandit
 mm 343; Nonplayer Characters
 dmbr 53; Nonplayer Characters
 hotdqs 6
+arctic
+coastal
+desert
+forest
+hill
+urban
 Medium humanoid (any race), any non-lawful alignment
 
 Armor Class 12 (leather armor)

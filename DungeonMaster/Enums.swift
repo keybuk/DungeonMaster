@@ -266,7 +266,8 @@ enum MonsterType: Int {
     }
 }
 
-enum Environment {
+/// Environment categorises the different environments in which monsters can be found.
+enum Environment: Int {
     case Arctic
     case Coastal
     case Desert
@@ -278,6 +279,14 @@ enum Environment {
     case Underdark
     case Underwater
     case Urban
+    
+    /// Array of all cases.
+    static let cases: [Environment] = [ .Arctic, .Coastal, .Desert, .Forest, .Grassland, .Hill, .Mountain, .Swamp, .Underdark, .Underwater, .Urban ]
+    
+    /// Returns the string equivalent of the environment.
+    var stringValue: String {
+        return sharedRules.environment[rawValue]
+    }
 }
 
 /// Race categorises the basic races of D&D.

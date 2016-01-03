@@ -107,6 +107,20 @@
 		<string>Plant</string>
 		<string>Undead</string>
 	</array>
+	<key>environment</key>
+	<array>
+		<string>Arctic</string>
+		<string>Coastal</string>
+		<string>Desert</string>
+		<string>Forest</string>
+		<string>Grassland</string>
+		<string>Hill</string>
+		<string>Mountain</string>
+		<string>Swamp</string>
+		<string>Underdark</string>
+		<string>Underwater</string>
+		<string>Urban</string>
+	</array>
 	<key>race</key>
 	<array>
 		<string>Dwarf</string>

@@ -23,6 +23,7 @@
 		D21BACEF1C339464007E2934 /* SpellsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BACEE1C339464007E2934 /* SpellsViewController.swift */; };
 		D21BACF11C339476007E2934 /* SpellDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BACF01C339476007E2934 /* SpellDetailViewController.swift */; };
 		D21BACF31C38B8FF007E2934 /* SpellClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BACF21C38B8FF007E2934 /* SpellClass.swift */; };
+		D21BACF51C38E7B8007E2934 /* MonsterEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BACF41C38E7B8007E2934 /* MonsterEnvironment.swift */; };
 		D23435EC1C0D5A3D00108D5F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23435EB1C0D5A3D00108D5F /* Model.swift */; };
 		D23435EE1C0D5F9E00108D5F /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23435ED1C0D5F9E00108D5F /* Book.swift */; };
 		D23435F21C0D608B00108D5F /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23435F01C0D608B00108D5F /* Source.swift */; };
@@ -120,6 +121,7 @@
 		D21BACEE1C339464007E2934 /* SpellsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpellsViewController.swift; sourceTree = "<group>"; };
 		D21BACF01C339476007E2934 /* SpellDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpellDetailViewController.swift; sourceTree = "<group>"; };
 		D21BACF21C38B8FF007E2934 /* SpellClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpellClass.swift; sourceTree = "<group>"; };
+		D21BACF41C38E7B8007E2934 /* MonsterEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonsterEnvironment.swift; sourceTree = "<group>"; };
 		D23435EB1C0D5A3D00108D5F /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		D23435ED1C0D5F9E00108D5F /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		D23435F01C0D608B00108D5F /* Source.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				D23435ED1C0D5F9E00108D5F /* Book.swift */,
 				D23435F01C0D608B00108D5F /* Source.swift */,
 				D23435F31C0D617C00108D5F /* Monster.swift */,
+				D21BACF41C38E7B8007E2934 /* MonsterEnvironment.swift */,
 				D2622AA01C2BCDDD000D6100 /* MonsterSavingThrow.swift */,
 				D2622AA21C2BCDEC000D6100 /* MonsterSkill.swift */,
 				D2511FF91C14BC3700A09F0B /* Tag.swift */,
@@ -500,6 +503,7 @@
 				D2116A511C10F4CE001EDBBA /* LairAction.swift in Sources */,
 				D249CFA61C276B3E00CDE673 /* DamageImmunity.swift in Sources */,
 				D298E8F11C29E08F007461A9 /* Player.swift in Sources */,
+				D21BACF51C38E7B8007E2934 /* MonsterEnvironment.swift in Sources */,
 				D26FBA221C1BEA0F00D44503 /* Combatant.swift in Sources */,
 				D249CF851C21DF3500CDE673 /* PointGenerator.swift in Sources */,
 				D2BDE60C1C17500A0008B2F2 /* EncountersViewController.swift in Sources */,

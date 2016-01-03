@@ -13,11 +13,12 @@ enum Model: String {
     case Book
     case Source
     case Monster
+    case MonsterEnvironment
+    case MonsterSavingThrow
+    case MonsterSkill
     case Tag
     case AlignmentOption
     case Armor
-    case MonsterSavingThrow
-    case MonsterSkill
     case DamageImmunity
     case DamageResistance
     case DamageResistanceOption

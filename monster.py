@@ -7,6 +7,9 @@ import base
 
 SOURCE_RE = re.compile(r'^([a-z]+) (\d+)(?:; (.*))?$')
 
+ENVIRONMENTS = [ 'arctic', 'coastal', 'desert', 'forest', 'grassland', 'hill', 'mountain',
+			     'swamp', 'underdark', 'underwater', 'urban' ]
+
 class MonsterParser(base.Parser):
 	def parse(self):
 		line = self.next_line(error_message="Expected name")
@@ -20,6 +23,8 @@ class MonsterParser(base.Parser):
 				self.handle_npc()
 			elif line.startswith("was "):
 				self.handle_old_name(line[4:])
+			elif line in ENVIRONMENTS:
+				self.handle_environment(line)
 			elif match is not None:
 				(source, page, section) = match.groups()
 				self.handle_source(source, int(page), section)
@@ -196,6 +201,9 @@ class MonsterParser(base.Parser):
 		pass
 
 	def handle_npc(self):
+		pass
+
+	def handle_environment(self, environment):
 		pass
 
 	def handle_size_type_alignment(self, line):
@@ -487,6 +495,7 @@ class MonsterExporter(MonsterParser):
 		self.name = None
 		self.names = []
 		self.sources = []
+		self.environments = []
 		self.tags = []
 		self.alignment_options = []
 		self.armor = []
@@ -524,6 +533,7 @@ class MonsterExporter(MonsterParser):
 			"name": unicode(self.name, 'utf8'),
 			"names": self.names,
 			"sources": self.sources,
+			"environments": self.environments,
 			"tags": self.tags,
 			"alignmentOptions": self.alignment_options,
 			"armor": self.armor,
@@ -572,6 +582,14 @@ class MonsterExporter(MonsterParser):
 
 	def handle_npc(self):
 		self.info['isNPC'] = True
+
+	def handle_environment(self, environment):
+		try:
+			index = ENVIRONMENTS.index(environment)
+		except ValueError:
+			raise self.error("Unknown environment: %s" % environment)
+
+		self.environments.append(index)
 
 	def handle_size_type_alignment(self, line):
 		match = SIZE_TYPE_TAG_ALIGNMENT_RE.match(line)

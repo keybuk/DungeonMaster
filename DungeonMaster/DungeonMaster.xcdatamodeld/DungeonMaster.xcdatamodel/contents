@@ -152,6 +152,7 @@
         <relationship name="damageResistanceOptions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DamageResistanceOption" inverseName="monster" inverseEntity="DamageResistanceOption" syncable="YES"/>
         <relationship name="damageResistances" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DamageResistance" inverseName="monster" inverseEntity="DamageResistance" syncable="YES"/>
         <relationship name="damageVulnerabilities" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DamageVulnerability" inverseName="monster" inverseEntity="DamageVulnerability" syncable="YES"/>
+        <relationship name="environments" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="MonsterEnvironment" inverseName="monster" inverseEntity="MonsterEnvironment" syncable="YES"/>
         <relationship name="lair" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Lair" inverseName="monster" inverseEntity="Lair" syncable="YES"/>
         <relationship name="languagesSpoken" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Language" inverseName="monstersSpeaking" inverseEntity="Language" syncable="YES"/>
         <relationship name="languagesUnderstood" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Language" inverseName="monstersUnderstanding" inverseEntity="Language" syncable="YES"/>
@@ -167,6 +168,10 @@
                 <index value="name"/>
             </compoundIndex>
         </compoundIndexes>
+    </entity>
+    <entity name="MonsterEnvironment" representedClassName=".MonsterEnvironment" syncable="YES">
+        <attribute name="rawEnvironment" attributeType="Integer 16" syncable="YES"/>
+        <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="environments" inverseEntity="Monster" syncable="YES"/>
     </entity>
     <entity name="MonsterSavingThrow" representedClassName=".MonsterSavingThrow" syncable="YES">
         <attribute name="rawModifier" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -274,7 +279,7 @@
         <element name="LairTrait" positionX="567" positionY="717" width="128" height="75"/>
         <element name="Language" positionX="-27" positionY="378" width="128" height="90"/>
         <element name="LegendaryAction" positionX="261" positionY="558" width="128" height="90"/>
-        <element name="Monster" positionX="79" positionY="216" width="128" height="840"/>
+        <element name="Monster" positionX="79" positionY="216" width="128" height="855"/>
         <element name="MonsterSavingThrow" positionX="-54" positionY="351" width="128" height="90"/>
         <element name="MonsterSkill" positionX="-45" positionY="360" width="128" height="105"/>
         <element name="Player" positionX="-36" positionY="369" width="128" height="225"/>
@@ -283,9 +288,10 @@
         <element name="Reaction" positionX="261" positionY="459" width="128" height="90"/>
         <element name="RegionalEffect" positionX="565" positionY="801" width="128" height="75"/>
         <element name="Source" positionX="-92" positionY="198" width="128" height="120"/>
-        <element name="Tag" positionX="-92" positionY="432" width="128" height="75"/>
-        <element name="Trait" positionX="261" positionY="261" width="128" height="90"/>
         <element name="Spell" positionX="-54" positionY="351" width="128" height="375"/>
         <element name="SpellClass" positionX="-45" positionY="360" width="128" height="75"/>
+        <element name="Tag" positionX="-92" positionY="432" width="128" height="75"/>
+        <element name="Trait" positionX="261" positionY="261" width="128" height="90"/>
+        <element name="MonsterEnvironment" positionX="-36" positionY="369" width="128" height="75"/>
     </elements>
 </model>

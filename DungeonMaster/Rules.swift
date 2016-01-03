@@ -58,6 +58,11 @@ struct Rules {
         return data["monsterType"]! as! [String]
     }
     
+    /// Array of environments.
+    var environment: [String] {
+        return data["environment"]! as! [String]
+    }
+    
     /// Array of player race names.
     var race: [String] {
         return data["race"]! as! [String]
