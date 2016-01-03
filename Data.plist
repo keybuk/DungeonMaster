@@ -75692,6 +75692,11 @@ A humanoid slain by this attack rises 24 hours later as a zombie under Naergoth'
 	<key>spells</key>
 	<array>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -75737,6 +75742,11 @@ This spell's damage increases by 1d6 when you reach 5th level (2d6), 11th level 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -75788,6 +75798,11 @@ This spell's damage increases by 1d6 when you reach 5th level (2d6), 11th level 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>7</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsRitual</key>
@@ -75842,6 +75857,11 @@ An audible alarm produces the sound of a hand bell for 10 seconds within 60 feet
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -75891,6 +75911,12 @@ An audible alarm produces the sound of a hand bell for 10 seconds within 60 feet
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>3</integer>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -75948,6 +75974,12 @@ An audible alarm produces the sound of a hand bell for 10 seconds within 60 feet
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>3</integer>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -76008,6 +76040,10 @@ When the messenger arrives, it delivers your message to the creature that you de
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -76052,6 +76088,11 @@ The target's gear melds into the new form. The target can't activate, wield, or 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -76109,6 +76150,12 @@ The creature is under your control for 24 hours, after which it stops obeying an
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -76170,6 +76217,10 @@ If you command an object to attack, it can make a single melee attack against a 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -76216,6 +76267,11 @@ If you move so that an affected creature is forced to pass through the barrier, 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -76279,6 +76335,11 @@ A magic weapon's properties and powers are suppressed if it is used against a ta
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -76328,6 +76389,10 @@ A creature that successfully saves against this effect is immune to it for 1 min
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -76382,6 +76447,12 @@ As an action, you can move the eye up to 30 feet in any direction. There is no l
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -76426,6 +76497,10 @@ Any creature or object entering the portal exits from the other portal as if the
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -76473,6 +76548,10 @@ While affected by this spell, the object is more diffcult to break or force open
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -76522,6 +76601,10 @@ While affected by this spell, the object is more diffcult to break or force open
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -76563,6 +76646,12 @@ While affected by this spell, the object is more diffcult to break or force open
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -76616,6 +76705,10 @@ If you are returned to your body prematurely, your companions remain in their as
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsRitual</key>
@@ -76670,6 +76763,10 @@ If you cast the spell two or more times before completing your next long rest, t
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -76712,6 +76809,10 @@ If you cast the spell two or more times before completing your next long rest, t
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -76754,6 +76855,10 @@ If you cast the spell two or more times before completing your next long rest, t
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -76796,6 +76901,11 @@ If you cast the spell two or more times before completing your next long rest, t
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -76837,6 +76947,11 @@ The awakened beast or plant is charmed by you for 30 days or until you or your c
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -76890,6 +77005,10 @@ The awakened beast or plant is charmed by you for 30 days or until you or your c
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsBonusAction</key>
@@ -76928,6 +77047,14 @@ The awakened beast or plant is charmed by you for 30 days or until you or your c
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>6</integer>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -76977,6 +77104,11 @@ If the target is native to a different plane of existence than the one you're on
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -77033,6 +77165,10 @@ If the target is native to a different plane of existence than the one you're on
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -77081,6 +77217,11 @@ If the target is native to a different plane of existence than the one you're on
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -77133,6 +77274,12 @@ If the target is native to a different plane of existence than the one you're on
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -77179,6 +77326,10 @@ A [remove curse] spell ends this effect. At the DM's option, you may choose an a
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -77232,6 +77383,10 @@ When you cast the spell and as a bonus action on your subsequent turns, you can 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -77281,6 +77436,13 @@ When a creature enters the wall's area for the first time on a turn or starts it
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -77325,6 +77487,11 @@ When a creature enters the wall's area for the first time on a turn or starts it
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -77378,6 +77545,13 @@ When a creature enters the wall's area for the first time on a turn or starts it
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -77425,6 +77599,10 @@ If you target a nonmagical plant that isn't a creature, such as a tree or shrub,
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsBonusAction</key>
@@ -77464,6 +77642,13 @@ A creature blinded by this spell makes another Constitution saving throw at the 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -77515,6 +77700,11 @@ A creature blinded by this spell makes another Constitution saving throw at the 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -77554,6 +77744,11 @@ While on the Ethereal Plane, you can see and hear the plane you originated from,
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -77598,6 +77793,10 @@ While on the Ethereal Plane, you can see and hear the plane you originated from,
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsBonusAction</key>
@@ -77637,6 +77836,11 @@ While on the Ethereal Plane, you can see and hear the plane you originated from,
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -77685,6 +77889,10 @@ The fire ignites any flammable objects in the area that aren't being worn or car
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -77737,6 +77945,11 @@ If you are outdoors in stormy conditions when you cast this spell, the spell giv
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -77787,6 +78000,11 @@ Alternatively, you can make a target indifferent about creatures of your choice 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -77837,6 +78055,14 @@ A target must make a Dexterity saving throw. The target takes 10d8 lightning dam
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>3</integer>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -77884,6 +78110,12 @@ A target must make a Dexterity saving throw. The target takes 10d8 lightning dam
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -77932,6 +78164,11 @@ This spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -77993,6 +78230,12 @@ This spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -78036,6 +78279,10 @@ This spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -78078,6 +78325,13 @@ This spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -78126,6 +78380,10 @@ A creature that can see the sensor (such as a creature benefiting from see invis
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -78167,6 +78425,13 @@ At any time after the clone matures, if the original creature dies, its soul tra
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -78220,6 +78485,11 @@ At any time after the clone matures, if the original creature dies, its soul tra
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -78277,6 +78547,11 @@ The fog moves 10 feet away from you at the start of each of your turns, rolling 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -78343,6 +78618,11 @@ Starting with the creature that has the lowest current hit points, each creature
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -78394,6 +78674,10 @@ Some typical commands and their effects follow. You might issue a command other 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsRitual</key>
@@ -78446,6 +78730,11 @@ If you cast the spell two or more times before finishing your next long rest, th
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsRitual</key>
@@ -78491,6 +78780,10 @@ For example, you could determine the location of powerful undead in the area, th
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsBonusAction</key>
@@ -78532,6 +78825,13 @@ The spell ends if you attack any other creature, if you cast a spell that target
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -78583,6 +78883,10 @@ This spell doesn't decode secret messages in a text or a glyph, such as an arcan
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -78626,6 +78930,11 @@ A target isn't compelled to move into an obviously deadly hazard, such as a fire
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -78678,6 +78987,13 @@ A creature killed by this spell becomes a frozen statue until it thaws.
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>3</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -78752,6 +79068,11 @@ At the end of each of its turns, an affected target can make a Wisdom saving thr
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -78808,6 +79129,10 @@ The DM has the creatures' statistics.
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -78852,6 +79177,10 @@ The DM has the creatures' statistics.
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasSomaticComponent</key>
@@ -78897,6 +79226,11 @@ The DM has the celestial's statistics.
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -78953,6 +79287,11 @@ The DM has the elemental's statistics.
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasSomaticComponent</key>
@@ -78999,6 +79338,11 @@ The DM has the fey creature's statistics.
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasSomaticComponent</key>
@@ -79049,6 +79393,10 @@ The DM has the creatures' statistics.
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -79091,6 +79439,11 @@ The DM has the creatures' statistics.
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -79145,6 +79498,11 @@ The DM has the creatures' statistics.
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsRitual</key>
@@ -79184,6 +79542,11 @@ On a successful save, you can ask the entity up to five questions. You must ask 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -79230,6 +79593,10 @@ Since this spell induces a natural disease in its target, any effect that remove
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -79274,6 +79641,11 @@ The contingent spell takes effect only on you, even if it can normally target ot
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -79326,6 +79698,12 @@ The contingent spell takes effect only on you, even if it can normally target ot
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -79386,6 +79764,12 @@ The first time each turn that an object enters the vortex, the object takes 2d8 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -79467,6 +79851,10 @@ Stage | Condition
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -79513,6 +79901,12 @@ When you cast this spell, you can designate any creatures you choose, and the sp
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsReaction</key>
@@ -79558,6 +79952,11 @@ When you cast this spell, you can designate any creatures you choose, and the sp
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -79602,6 +80001,11 @@ When you cast this spell, you can designate any creatures you choose, and the sp
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -79647,6 +80051,12 @@ When you cast this spell, you can designate any creatures you choose, and the sp
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -79693,6 +80103,11 @@ The creature is under your control for 24 hours, after which it stops obeying an
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -79752,6 +80167,13 @@ Using any material created by this spell as another spell's material component c
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -79796,6 +80218,10 @@ On your subsequent turns, you must use your action to maintain control over the 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -79834,6 +80260,14 @@ On your subsequent turns, you must use your action to maintain control over the 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>6</integer>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -79877,6 +80311,12 @@ On your subsequent turns, you must use your action to maintain control over the 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -79930,6 +80370,12 @@ As a bonus action on your turn, you can move the lights up to 60 feet to a new s
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -79982,6 +80428,13 @@ If any of this spell's area overlaps with an area of light created by a spell of
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+				<integer>7</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -80024,6 +80477,14 @@ If any of this spell's area overlaps with an area of light created by a spell of
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>6</integer>
+				<integer>7</integer>
+				<integer>9</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -80078,6 +80539,11 @@ If any of this spell's area overlaps with an area of darkness created by a spell
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -80124,6 +80590,11 @@ If the spell is still in effect when the target is subjected to an effect that w
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -80180,6 +80651,11 @@ The fire damages objects in the area and ignites flammable objects that aren't b
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -80219,6 +80695,10 @@ Each time you cast this spell, you can create a new demiplane, or have the shado
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -80257,6 +80737,11 @@ Each time you cast this spell, you can create a new demiplane, or have the shado
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -80310,6 +80795,16 @@ The spell can penetrate most barriers, but it is blocked by 1 foot of stone, 1 i
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>6</integer>
+				<integer>7</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -80359,6 +80854,13 @@ The spell can penetrate most barriers, but it is blocked by 1 foot of stone, 1 i
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>6</integer>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -80406,6 +80908,12 @@ The spell can penetrate most barriers, but it is blocked by 1 foot of stone, 1 i
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -80472,6 +80980,13 @@ Once you detect the presence of a creature in this way, you can read its thought
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -80516,6 +81031,12 @@ If you would arrive in a place already occupied by an object or a creature, you 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -80562,6 +81083,11 @@ To discern that you are disguised, a creature can use its action to inspect your
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -80614,6 +81140,11 @@ This spell automatically disintegrates a Large or smaller nonmagical object or a
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -80661,6 +81192,16 @@ You can end the spell early by using either of the following special functions.
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>6</integer>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -80706,6 +81247,10 @@ You can end the spell early by using either of the following special functions.
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -80749,6 +81294,10 @@ You can end the spell early by using either of the following special functions.
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -80799,6 +81348,10 @@ If you cast the spell two or more times before finishing your next long rest, th
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsBonusAction</key>
@@ -80839,6 +81392,10 @@ If you cast the spell two or more times before finishing your next long rest, th
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsBonusAction</key>
@@ -80886,6 +81443,11 @@ Regardless of its current hit points, a celestial, an elemental, a fey, or a fie
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+				<integer>9</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -80938,6 +81500,13 @@ Each time the target takes damage, it makes a new Wisdom saving throw against th
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -80990,6 +81559,12 @@ Each time the target takes damage, it makes a new Wisdom saving throw against th
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -81042,6 +81617,10 @@ Each time the target takes damage, it makes a new Wisdom saving throw against th
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsRitual</key>
@@ -81087,6 +81666,12 @@ If another creature is holding or carrying the item, crushing the sapphire doesn
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -81138,6 +81723,10 @@ If you have a body part, lock of hair, clipping from a nail, or similar portion 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -81192,6 +81781,11 @@ If you have a body part, lock of hair, clipping from a nail, or similar portion 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>9</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -81250,6 +81844,10 @@ A fissure that opens beneath a structure causes it to automatically collapse (se
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -81295,6 +81893,10 @@ The spell creates more than one beam when you reach higher levels: two beams at 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -81336,6 +81938,13 @@ The spell creates more than one beam when you reach higher levels: two beams at 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>9</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -81387,6 +81996,11 @@ The spell creates more than one beam when you reach higher levels: two beams at 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -81448,6 +82062,10 @@ If the target is a creature, everything it is wearing and carrying changes size 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsBonusAction</key>
@@ -81488,6 +82106,10 @@ While restrained by this spell, the target takes 1d6 piercing damage at the star
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -81544,6 +82166,11 @@ When the spell ends, the conjured plants wilt away.</string>
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -81584,6 +82211,14 @@ When the spell ends, the conjured plants wilt away.</string>
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -81633,6 +82268,10 @@ This spell has no effect if you cast it while you are on the Ethereal Plane or a
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -81699,6 +82338,12 @@ A creature restrained by the tentacles can use its action to make a Strength or 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsBonusAction</key>
@@ -81745,6 +82390,13 @@ A creature restrained by the tentacles can use its action to make a Strength or 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -81788,6 +82440,10 @@ A creature restrained by the tentacles can use its action to make a Strength or 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasSomaticComponent</key>
@@ -81828,6 +82484,11 @@ Creatures or magic items can't be created or transmuted by this spell. You also 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -81875,6 +82536,11 @@ Any attack roll against an affected creature or object has advantage if the atta
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -81924,6 +82590,13 @@ Any attack roll against an affected creature or object has advantage if the atta
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -81979,6 +82652,12 @@ While frightened by this spell, a creature must take the Dash action and move aw
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsReaction</key>
@@ -82041,6 +82720,13 @@ While frightened by this spell, a creature must take the Dash action and move aw
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>3</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -82086,6 +82772,13 @@ The spell can also be ended by [greater restoration], [heal], or [wish].</string
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -82131,6 +82824,10 @@ For the spell's duration, or until you use an action to touch the target and dis
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsRitual</key>
@@ -82181,6 +82878,10 @@ Finally, when you cast a spell with a range of touch, your familiar can deliver 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasSomaticComponent</key>
@@ -82223,6 +82924,12 @@ You can't have more than one steed bonded by this spell at a time. As an action,
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -82274,6 +82981,12 @@ For the duration, as long as you are on the same plane of existence as the desti
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -82313,6 +83026,12 @@ This spell merely reveals that a trap is present. You don't learn the location o
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -82359,6 +83078,11 @@ its ability.</string>
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -82404,6 +83128,10 @@ This spell's damage increases by 1d10 when you reach 5th level (2d10), 11th leve
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -82460,6 +83188,11 @@ In addition, whenever a creature within 5 feet of you hits you with a melee atta
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -82505,6 +83238,11 @@ The fire damages objects in the area and ignites flammable objects that aren't b
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -82555,6 +83293,10 @@ The fire spreads around corners. It ignites flammable objects in the area that a
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsBonusAction</key>
@@ -82608,6 +83350,10 @@ The flaming blade sheds bright light in a 10-foot radius and dim light for an ad
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -82657,6 +83403,11 @@ The flaming blade sheds bright light in a 10-foot radius and dim light for an ad
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -82712,6 +83463,11 @@ When you move the sphere, you can direct it over barriers up to 5 feet tall and 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -82761,6 +83517,12 @@ If you maintain your concentration on this spell for the entire possible duratio
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -82812,6 +83574,13 @@ If you maintain your concentration on this spell for the entire possible duratio
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+				<integer>7</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -82867,6 +83636,10 @@ If you maintain your concentration on this spell for the entire possible duratio
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsRitual</key>
@@ -82914,6 +83687,12 @@ The spell's area can't overlap with the area of another [forbiddance] spell. If 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -82963,6 +83742,13 @@ This spell can't be dispelled by [dispel magic].</string>
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>3</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -83012,6 +83798,13 @@ This spell immediately ends if you cast it again before its duration ends.</stri
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -83061,6 +83854,13 @@ The target can also spend 5 feet of movement to automatically escape from nonmag
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -83109,6 +83909,12 @@ The target can also spend 5 feet of movement to automatically escape from nonmag
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -83173,6 +83979,12 @@ While in the form of a misty cloud, the target can't talk or manipulate objects,
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -83228,6 +84040,14 @@ When you cast this spell, you can speak the name of a specific creature (a pseud
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>6</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasVerbalComponent</key>
@@ -83269,6 +84089,11 @@ You can end the spell early by using an action to dismiss it. A [remove curse], 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -83314,6 +84139,10 @@ The spell also effectively extends the time limit on raising the target from the
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -83360,6 +84189,11 @@ The DM might allow you to choose different targets. For example, if you transfor
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -83396,6 +84230,11 @@ The DM might allow you to choose different targets. For example, if you transfor
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -83452,6 +84291,12 @@ Any spell of 5th level or lower cast from outside the barrier can't affect creat
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -83511,6 +84356,11 @@ When you inscribe the glyph, choose *explosive runes* or a *spell glyph*.
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -83552,6 +84402,11 @@ The berries lose their potency if they have not been consumed within 24 hours of
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsBonusAction</key>
@@ -83595,6 +84450,10 @@ Until the spell ends, you can direct the vine to lash out at the same creature o
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -83640,6 +84499,12 @@ When the grease appears, each creature standing in its area must succeed on a De
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -83686,6 +84551,12 @@ When the grease appears, each creature standing in its area must succeed on a De
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -83736,6 +84607,10 @@ When the grease appears, each creature standing in its area must succeed on a De
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -83781,6 +84656,11 @@ Any creature hostile to you that moves to a space within 10 feet of the guardian
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -83837,6 +84717,11 @@ for one year.</string>
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -83883,6 +84768,10 @@ for one year.</string>
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -83930,6 +84819,12 @@ for one year.</string>
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -83993,6 +84888,10 @@ As a bonus action on each of your turns before the spell ends, you can change th
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsBonusAction</key>
@@ -84032,6 +84931,10 @@ As a bonus action on each of your turns before the spell ends, you can change th
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -84090,6 +84993,13 @@ Second, you can bind an extra effect to the area. Choose the effect from the fol
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>3</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -84135,6 +85045,10 @@ The tactile characteristics of the terrain are unchanged, so creatures entering 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -84179,6 +85093,11 @@ The tactile characteristics of the terrain are unchanged, so creatures entering 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -84232,6 +85151,11 @@ When the spell ends, the target can't move or take actions until after its next 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -84277,6 +85201,12 @@ When the spell ends, the target can't move or take actions until after its next 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsBonusAction</key>
@@ -84320,6 +85250,11 @@ When the spell ends, the target can't move or take actions until after its next 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -84374,6 +85309,10 @@ If a creature is holding or wearing the object and takes the damage from it, the
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsReaction</key>
@@ -84421,6 +85360,11 @@ If a creature is holding or wearing the object and takes the damage from it, the
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -84470,6 +85414,11 @@ A creature that partakes of the feast gains several benefits. The creature is cu
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -84511,6 +85460,10 @@ A creature that partakes of the feast gains several benefits. The creature is cu
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsBonusAction</key>
@@ -84566,6 +85519,13 @@ A [remove curse] cast on the target ends this spell early.
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -84625,6 +85585,15 @@ A [remove curse] cast on the target ends this spell early.
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -84678,6 +85647,10 @@ A [remove curse] cast on the target ends this spell early.
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -84728,6 +85701,10 @@ A [remove curse] cast on the target ends this spell early.
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>10</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -84775,6 +85752,10 @@ The void creates a warp in the fabric of space, and the area is difficult terrai
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsBonusAction</key>
@@ -84816,6 +85797,13 @@ The void creates a warp in the fabric of space, and the area is difficult terrai
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -84867,6 +85855,12 @@ The spell ends for an affected creature if it takes any damage or if someone els
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -84917,6 +85911,11 @@ Hailstones turn the storm's area of effect into dificult terrain until the end o
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsRitual</key>
@@ -84966,6 +85965,12 @@ If you instead touch a creature throughout the casting, you learn what spells, i
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsRitual</key>
@@ -85011,6 +86016,11 @@ A creature with truesight can read the hidden message.</string>
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -85072,6 +86082,11 @@ You can use a particular special component to create only one prison at a time. 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -85116,6 +86131,10 @@ The cloud moves 10 feet directly away from you in a direction that you choose at
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -85159,6 +86178,12 @@ The cloud moves 10 feet directly away from you in a direction that you choose at
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>9</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -85213,6 +86238,13 @@ When the area appears, each creature in it must make a Constitution saving throw
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -85264,6 +86296,13 @@ When the area appears, each creature in it must make a Constitution saving throw
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+				<integer>7</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -85312,6 +86351,12 @@ When the area appears, each creature in it must make a Constitution saving throw
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -85357,6 +86402,12 @@ When you cast the spell, a loud knock, audible from as far away as 300 feet, ema
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -85404,6 +86455,10 @@ The information you learn is accurate but might be couched in figurative languag
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -85446,6 +86501,11 @@ After 60 days, there is a cumulative 5 percent chance per day that the spell's e
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsRitual</key>
@@ -85496,6 +86556,14 @@ Until the spell ends, you can command the interior to become dimly lit or dark. 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>6</integer>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -85538,6 +86606,11 @@ Until the spell ends, you can command the interior to become dimly lit or dark. 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -85592,6 +86665,13 @@ When the spell ends, the target floats gently to the ground if it is still aloft
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -85639,6 +86719,10 @@ If you target an object held or worn by a hostile creature, that creature must s
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsBonusAction</key>
@@ -85682,6 +86766,11 @@ The piece of ammunition or weapon then returns to its normal form.
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -85734,6 +86823,12 @@ The lightning ignites flammable objects in the area that aren't being worn or ca
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>3</integer>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -85776,6 +86871,15 @@ The lightning ignites flammable objects in the area that aren't being worn or ca
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>6</integer>
+				<integer>7</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -85828,6 +86932,15 @@ This spell can't locate a creature if running water at least 10 feet wide blocks
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>6</integer>
+				<integer>7</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -85874,6 +86987,13 @@ This spell can't locate an object if any thickness of lead, even a thin sheet, b
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>3</integer>
+				<integer>7</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -85929,6 +87049,11 @@ This spell can't locate an object if any thickness of lead, even a thin sheet, b
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -85977,6 +87102,13 @@ This spell can't locate an object if any thickness of lead, even a thin sheet, b
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -86025,6 +87157,13 @@ The hand can't attack, activate magic items, or carry more than 10 pounds.</stri
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>6</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -86075,6 +87214,10 @@ When you cast this spell, you can elect to cause its magic to operate in the rev
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -86127,6 +87270,11 @@ When the spell ends, the container is destroyed.</string>
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -86172,6 +87320,11 @@ When the spell ends, the container is destroyed.</string>
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsRitual</key>
@@ -86224,6 +87377,11 @@ The triggering circumstance can be as general or as detailed as you like, though
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>6</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsBonusAction</key>
@@ -86271,6 +87429,13 @@ The triggering circumstance can be as general or as detailed as you like, though
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -86326,6 +87491,12 @@ Physical interaction with the image reveals it to be an illusion, because things
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -86371,6 +87542,10 @@ Physical interaction with the image reveals it to be an illusion, because things
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -86415,6 +87590,10 @@ Physical interaction with the image reveals it to be an illusion, because things
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsBonusAction</key>
@@ -86458,6 +87637,13 @@ Physical interaction with the image reveals it to be an illusion, because things
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -86510,6 +87696,10 @@ If you or any of your companions damage a creature affected by this spell, the s
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -86560,6 +87750,11 @@ When the spell ends, the target reappears in the space it left or, if that space
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -86608,6 +87803,10 @@ Minor physical damage to the stone doesn't harm you, but its partial destruction
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -86657,6 +87856,14 @@ Minor physical damage to the stone doesn't harm you, but its partial destruction
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -86704,6 +87911,12 @@ This spell can physically repair a magic item or construct, but the spell can't 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -86755,6 +87968,11 @@ You can cast this spell through solid objects if you are familiar with the targe
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -86800,6 +88018,11 @@ The spell damages objects in the area and ignites flammable objects that aren't 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -86838,6 +88061,13 @@ The spell damages objects in the area and ignites flammable objects that aren't 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -86889,6 +88119,12 @@ If a creature uses its action to examine the sound or image, the creature can de
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>3</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasSomaticComponent</key>
@@ -86930,6 +88166,12 @@ Creatures with truesight can see through the illusion to the terrain's true form
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -86990,6 +88232,11 @@ A creature is unaffected by this spell if it can't see, if it relies on senses o
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -87042,6 +88289,12 @@ You can see through its eyes and hear through its ears as if you were located wh
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsBonusAction</key>
@@ -87082,6 +88335,11 @@ You can see through its eyes and hear through its ears as if you were located wh
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -87129,6 +88387,10 @@ A [remove curse] or [greater restoration] spell cast on the target restores the 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -87179,6 +88441,10 @@ On each of your turns after you cast this spell, you can use an action to move t
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -87225,6 +88491,11 @@ At the start of each of your turns, the hound attempts to bite one creature with
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -87271,6 +88542,10 @@ You can create any floor plan you like, but the space can't exceed 50 cubes, eac
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -87324,6 +88599,11 @@ Casting this spell on the same spot every day for a year makes this effect perma
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -87377,6 +88657,12 @@ When the sword appears, you make a melee spell attack against a target of your c
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -87439,6 +88725,12 @@ Similarly, this spell doesn't directly affect plant growth. The moved earth carr
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>7</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -87487,6 +88779,10 @@ Similarly, this spell doesn't directly affect plant growth. The moved earth carr
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -87533,6 +88829,10 @@ type or of that alignment.</string>
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -87579,6 +88879,10 @@ You can refrain from firing the globe after completing the spell, if you wish. A
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -87628,6 +88932,11 @@ A [disintegrate] spell targeting the globe destroys it without harming anything 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -87675,6 +88984,11 @@ A dancing creature must use all its movement to dance without leaving its space 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -87720,6 +89034,10 @@ For the duration, each creature you choose within 30 feet of you (including you)
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -87771,6 +89089,12 @@ When the opening disappears, any creatures or objects still in the passage creat
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -87839,6 +89163,10 @@ An affected target is so convinced of the phantasm's reality that it can even ta
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -87888,6 +89216,10 @@ An affected target is so convinced of the phantasm's reality that it can even ta
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsRitual</key>
@@ -87931,6 +89263,10 @@ For the duration, you or a creature you choose can ride the steed. The creature 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasSomaticComponent</key>
@@ -87974,6 +89310,13 @@ A creature enlisted to join your group counts as a member of it, receiving a ful
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -88020,6 +89363,14 @@ A bound creature must follow your instructions to the best of its ability. You m
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -88068,6 +89419,12 @@ You can use this spell to banish an unwilling creature to another plane. Choose 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>3</integer>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -88123,6 +89480,13 @@ If you cast this spell over 8 hours, you enrich the land. All plants in a half-m
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -88168,6 +89532,13 @@ This spell's damage increases by 1d12 when you reach 5th level (2d12), 11th leve
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>3</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -88224,6 +89595,10 @@ The target's gear melds into the new form. The creature can't activate, use, wie
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -88260,6 +89635,13 @@ The target's gear melds into the new form. The creature can't activate, use, wie
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -88302,6 +89684,13 @@ The target's gear melds into the new form. The creature can't activate, use, wie
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -88345,6 +89734,10 @@ The stunned target must make a Constitution saving throw at the end of each of i
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasVerbalComponent</key>
@@ -88388,6 +89781,13 @@ The stunned target must make a Constitution saving throw at the end of each of i
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -88441,6 +89841,11 @@ If you cast this spell multiple times, you can have up to three of its non-insta
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -88489,6 +89894,10 @@ If you cast this spell multiple times, you can have up to three of its non-insta
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -88540,6 +89949,10 @@ While this layer is in place, spells can't be cast through the wall. The layer i
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -88586,6 +89999,11 @@ This spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -88631,6 +90049,11 @@ Physical interaction with the image reveals it to be an illusion, because things
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -88680,6 +90103,14 @@ Physical interaction with the image reveals it to be an illusion, because things
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>7</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -88726,6 +90157,13 @@ Physical interaction with the image reveals it to be an illusion, because things
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>6</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -88771,6 +90209,13 @@ The protection grants several benefits. Creatures of those types have disadvanta
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>6</integer>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -88810,6 +90255,12 @@ For the duration, the target has advantage on saving throws against being poison
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -88850,6 +90301,11 @@ For the duration, the target has advantage on saving throws against being poison
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -88899,6 +90355,10 @@ Coming back from the dead is an ordeal. The target takes a -4 penalty to all att
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -88946,6 +90406,11 @@ Until the spell ends, the targets can communicate telepathically through the bon
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -88989,6 +90454,11 @@ At the end of each of the target's turns, it can make a Constitution saving thro
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -89034,6 +90504,11 @@ The spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level (
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -89073,6 +90548,12 @@ The spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level (
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -89122,6 +90603,10 @@ The target's severed body members (fingers, legs, tails, and so on), if any, are
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -89181,6 +90666,12 @@ The reincarnated creature recalls its former life and experiences. It retains th
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -89223,6 +90714,11 @@ The reincarnated creature recalls its former life and experiences. It retains th
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -89273,6 +90769,11 @@ The reincarnated creature recalls its former life and experiences. It retains th
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -89323,6 +90824,12 @@ Casting this spell to restore life to a creature that has been dead for one year
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -89371,6 +90878,11 @@ At the end of the duration, affected objects and creatures fall back down.</stri
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -89417,6 +90929,10 @@ At the end of the duration, affected objects and creatures fall back down.</stri
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -89462,6 +90978,10 @@ Anything inside the extradimensional space drops out when the spell ends.</strin
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -89507,6 +91027,10 @@ The spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level (
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsBonusAction</key>
@@ -89558,6 +91082,11 @@ If the warded creature makes an attack or casts a spell that affects an enemy cr
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -89610,6 +91139,14 @@ Make a ranged spell attack for each ray. On a hit, the target takes 2d6 fire dam
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -89674,6 +91211,10 @@ Instead of targeting a creature, you can choose a location you have seen before 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsBonusAction</key>
@@ -89713,6 +91254,12 @@ Instead of targeting a creature, you can choose a location you have seen before 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -89761,6 +91308,12 @@ Instead of targeting a creature, you can choose a location you have seen before 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -89822,6 +91375,12 @@ A creature can use its action to inspect a target and make an Intelligence (Inve
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -89883,6 +91442,10 @@ You can send the message across any distance and even to other planes of existen
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -89925,6 +91488,11 @@ You can set a condition for the spell to end early. The condition can be anythin
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -89974,6 +91542,13 @@ During this spell's duration, you can use your action to assume a different form
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -90024,6 +91599,11 @@ A nonmagical object that isn't being worn or carried also takes the damage if it
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsReaction</key>
@@ -90070,6 +91650,11 @@ A nonmagical object that isn't being worn or carried also takes the damage if it
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsBonusAction</key>
@@ -90122,6 +91707,10 @@ A nonmagical object that isn't being worn or carried also takes the damage if it
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsBonusAction</key>
@@ -90170,6 +91759,11 @@ A nonmagical object that isn't being worn or carried also takes the damage if it
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -90213,6 +91807,12 @@ The spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level (
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -90263,6 +91863,12 @@ The spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level (
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -90317,6 +91923,10 @@ Physical interaction with the image reveals it to be an illusion, because things
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -90360,6 +91970,12 @@ If you cast this spell again, any currently active duplicates you created with t
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -90413,6 +92029,12 @@ Undead and creatures immune to being charmed aren't affected by this spell.
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -90473,6 +92095,11 @@ If a creature is concentrating in the spell's area, the creature must make a suc
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -90534,6 +92161,10 @@ A creature affected by this spell makes another Wisdom saving throw at the end o
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -90576,6 +92207,12 @@ A creature affected by this spell makes another Wisdom saving throw at the end o
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>3</integer>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -90628,6 +92265,11 @@ A creature affected by this spell makes another Wisdom saving throw at the end o
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -90679,6 +92321,12 @@ Until the spell ends, you can ask the corpse up to five questions. The corpse kn
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>3</integer>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -90731,6 +92379,12 @@ This spell can cause the plants created by the [entangle] spell to release a res
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -90781,6 +92435,11 @@ This spell can cause the plants created by the [entangle] spell to release a res
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -90840,6 +92499,10 @@ The transformation of the ground is camouflaged to look natural. Any creature th
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -90896,6 +92559,10 @@ When you cast this spell, you can designate any number of creatures you can see 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsBonusAction</key>
@@ -90945,6 +92612,10 @@ The weapon can take whatever form you choose. Clerics of deities who are associa
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsBonusAction</key>
@@ -90983,6 +92654,12 @@ The weapon can take whatever form you choose. Clerics of deities who are associa
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -91043,6 +92720,12 @@ A moderate wind (at least 10 miles per hour) disperses the cloud after 4 rounds.
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -91095,6 +92778,12 @@ A moderate wind (at least 10 miles per hour) disperses the cloud after 4 rounds.
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>7</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -91145,6 +92834,10 @@ A moderate wind (at least 10 miles per hour) disperses the cloud after 4 rounds.
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -91190,6 +92883,13 @@ Each round you maintain concentration on this spell, the storm produces addition
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -91243,6 +92943,12 @@ If you or any of your companions damage the target, the spell ends.</string>
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -91293,6 +92999,12 @@ For the duration, a mote of brilliant radiance shines in your hand. It sheds bri
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -91343,6 +93055,10 @@ This spell dispels any darkness in its area that was created by a spell.</string
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsBonusAction</key>
@@ -91388,6 +93104,12 @@ On each of your turns until the spell ends, you can use a bonus action to make t
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -91440,6 +93162,11 @@ When you inscribe the glyph, choose one of the options below for its effect. Onc
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -91487,6 +93214,11 @@ At the end of each of its turns, and each time it takes damage, the target can m
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -91540,6 +93272,10 @@ You can exert fine control on objects with your telekinetic grip, such as manipu
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -91583,6 +93319,12 @@ Until the spell ends, you and the target can instantaneously share words, images
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -91644,6 +93386,12 @@ For example, if you tried to travel 120 miles, landed off target, and rolled a 5
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -91688,6 +93436,10 @@ You can create a permanent teleportation circle by casting this spell in the sam
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -91736,6 +93488,10 @@ If you move more than 100 feet from the disk (typically because it can't move ar
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -91787,6 +93543,10 @@ If you cast this spell multiple times, you can have up to three of its 1-minute 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -91836,6 +93596,10 @@ This spell's damage increases by 1d6 when you reach 5th level (2d6), 11th level 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsBonusAction</key>
@@ -91874,6 +93638,13 @@ This spell's damage increases by 1d6 when you reach 5th level (2d6), 11th level 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>3</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -91922,6 +93693,11 @@ In addition, unsecured objects that are completely within the area of effect are
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -91963,6 +93739,14 @@ This spell ends if one of the actions you use during this period, or any effects
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -92009,6 +93793,10 @@ This spell ends if one of the actions you use during this period, or any effects
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -92049,6 +93837,11 @@ This spell ends if one of the actions you use during this period, or any effects
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -92090,6 +93883,12 @@ You can use this transportation ability once per round for the duration. You mus
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -92144,6 +93943,11 @@ If the spell becomes permanent, you no longer control the creature. It might rem
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -92192,6 +93996,14 @@ The spell can even provide a new body if the original no longer exists, in which
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -92240,6 +94052,13 @@ The spell can even provide a new body if the original no longer exists, in which
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -92280,6 +94099,10 @@ The spell can even provide a new body if the original no longer exists, in which
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasSomaticComponent</key>
@@ -92323,6 +94146,12 @@ A creature caught in the wall can move by swimming. Because of the force of the 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -92372,6 +94201,11 @@ the spell ends.</string>
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -92419,6 +94253,10 @@ the spell ends.</string>
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -92462,6 +94300,12 @@ This spell's damage increases by 1d4 when you reach 5th level (2d4), 11th level 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -92523,6 +94367,10 @@ One side of the wall, selected by you when you cast this spell, deals 5d8 fire d
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -92570,6 +94418,10 @@ Nothing can physically pass through the wall. It is immune to all damage and can
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -92619,6 +94471,12 @@ The wall is an object that can be damaged and thus breached. It has AC 12 and 30
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -92677,6 +94535,10 @@ If you maintain your concentration on this spell for its whole duration, the wal
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -92726,6 +94588,10 @@ A creature can move through the wall, albeit slowly and painfully. For every 1 f
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -92775,6 +94641,13 @@ The spell ends if you drop to 0 hit points or if you and the target become separ
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+				<integer>7</integer>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -92833,6 +94706,13 @@ The spell ends if you drop to 0 hit points or if you and the target become separ
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>7</integer>
+				<integer>9</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -92886,6 +94766,11 @@ If you target a creature submerged in a liquid, the spell carries the target to 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -92942,6 +94827,10 @@ The webs are flammable. Any 5-foot cube of webs exposed to fire burns away in 1 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -92984,6 +94873,10 @@ The webs are flammable. Any 5-foot cube of webs exposed to fire burns away in 1 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>hasMaterialComponent</key>
@@ -93035,6 +94928,11 @@ If a creature is in cloud form and flying when the effect ends, the creature des
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>3</integer>
+				<integer>7</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -93083,6 +94981,11 @@ The strong wind keeps fog, smoke, and other gases at bay. Small or smaller flyin
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -93132,6 +95035,12 @@ The stress of casting this spell to produce any effect other than duplicating an
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -93185,6 +95094,10 @@ The stress of casting this spell to produce any effect other than duplicating an
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>2</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -93222,6 +95135,10 @@ You must designate a sanctuary by casting this spell within a location, such as 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsBonusAction</key>
@@ -93260,6 +95177,12 @@ You must designate a sanctuary by casting this spell within a location, such as 
 			</array>
 		</dict>
 		<dict>
+			<key>classes</key>
+			<array>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>6</integer>
+			</array>
 			<key>info</key>
 			<dict>
 				<key>canCastAsAction</key>
@@ -93306,9 +95229,191 @@ An affected creature is aware of the spell and can thus avoid answering question
 				</dict>
 			</array>
 		</dict>
+		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
+			<key>info</key>
+			<dict>
+				<key>canCastAsAction</key>
+				<true/>
+				<key>hasMaterialComponent</key>
+				<true/>
+				<key>hasVerbalComponent</key>
+				<true/>
+				<key>materialComponent</key>
+				<string>a weapon</string>
+				<key>rawDuration</key>
+				<integer>3</integer>
+				<key>rawDurationTime</key>
+				<integer>1</integer>
+				<key>rawLevel</key>
+				<integer>0</integer>
+				<key>rawRange</key>
+				<integer>0</integer>
+				<key>rawRangeDistance</key>
+				<integer>5</integer>
+				<key>rawSchool</key>
+				<integer>4</integer>
+				<key>text</key>
+				<string>As part of the action used to cast this spell, you must make a melee attack with a weapon against one creature within the spell's range, otherwise the spell fails. On a hit, the target suffers the attack's normal effects, and it becomes sheathed in booming energy until the start of your next turn. If the target willingly moves before then, it immediately takes 1d8 thunder damage, and the spell ends.
+This spell's damage increases when you reach higher levels. At 5th level, the melee attack deals an extra 1d8 thunder damage to the target, and the damage the target takes for moving increases to 2d8. Both damage rolls increase by 1d8 at 11th level and 17th level.</string>
+			</dict>
+			<key>name</key>
+			<string>Booming Blade</string>
+			<key>names</key>
+			<array>
+				<string>Booming Blade</string>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>14</integer>
+					<key>page</key>
+					<integer>142</integer>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
+			<key>info</key>
+			<dict>
+				<key>canCastAsAction</key>
+				<true/>
+				<key>hasMaterialComponent</key>
+				<true/>
+				<key>hasVerbalComponent</key>
+				<true/>
+				<key>materialComponent</key>
+				<string>a weapon</string>
+				<key>rawDuration</key>
+				<integer>0</integer>
+				<key>rawLevel</key>
+				<integer>0</integer>
+				<key>rawRange</key>
+				<integer>0</integer>
+				<key>rawRangeDistance</key>
+				<integer>5</integer>
+				<key>rawSchool</key>
+				<integer>4</integer>
+				<key>text</key>
+				<string>As part of the action used to cast this spell, you must make a melee attack with a weapon against one creature within the spell's range, otherwise the spell fails. On a hit, the target suffers the attack's normal effects, and green fire leaps from the target to a different creature of your choice that you can see within 5 feet of it. The second creature takes fire damage equal to your spellcasting ability modifier.
+This spell's damage increases when you reach higher levels. At 5th level, the melee attack deals an extra 1d8 fire damage to the target, and the fire damage to the second creature increases to 1d8 + your spellcasting ability modifier. Both damage rolls increase by 1d8 at 11th level and 17th level.</string>
+			</dict>
+			<key>name</key>
+			<string>Green-Flame Blade</string>
+			<key>names</key>
+			<array>
+				<string>Green-Flame Blade</string>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>14</integer>
+					<key>page</key>
+					<integer>143</integer>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
+			<key>info</key>
+			<dict>
+				<key>canCastAsAction</key>
+				<true/>
+				<key>hasVerbalComponent</key>
+				<true/>
+				<key>rawDuration</key>
+				<integer>0</integer>
+				<key>rawLevel</key>
+				<integer>0</integer>
+				<key>rawRange</key>
+				<integer>0</integer>
+				<key>rawRangeDistance</key>
+				<integer>15</integer>
+				<key>rawSchool</key>
+				<integer>4</integer>
+				<key>text</key>
+				<string>You create a lash of lightning energy that strikes at one creature of your choice that you can see within range. The target must succeed on a Strength saving throw or be pulled up to 10 feet in a straight line toward you and then take 1d8 lightning damage if it is within 5 feet of you.
+This spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level (3d8), and 17th level (4d8).</string>
+			</dict>
+			<key>name</key>
+			<string>Lightning Lure</string>
+			<key>names</key>
+			<array>
+				<string>Lightning Lure</string>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>14</integer>
+					<key>page</key>
+					<integer>143</integer>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>classes</key>
+			<array>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
+			<key>info</key>
+			<dict>
+				<key>canCastAsAction</key>
+				<true/>
+				<key>hasVerbalComponent</key>
+				<true/>
+				<key>rawDuration</key>
+				<integer>0</integer>
+				<key>rawLevel</key>
+				<integer>0</integer>
+				<key>rawRange</key>
+				<integer>0</integer>
+				<key>rawRangeDistance</key>
+				<integer>5</integer>
+				<key>rawSchool</key>
+				<integer>1</integer>
+				<key>text</key>
+				<string>You create a momentary circle of spectral blades that sweep around you. Each creature within range, other than you, must succeed on a Dexterity saving throw or take 1d6 force damage.
+This spell's damage increases by 1d6 when you reach 5th level (2d6), 11th level (3d6), and 17th level (4d6).</string>
+			</dict>
+			<key>name</key>
+			<string>Sword Burst</string>
+			<key>names</key>
+			<array>
+				<string>Sword Burst</string>
+			</array>
+			<key>sources</key>
+			<array>
+				<dict>
+					<key>book</key>
+					<integer>14</integer>
+					<key>page</key>
+					<integer>143</integer>
+				</dict>
+			</array>
+		</dict>
 	</array>
 	<key>version</key>
-	<integer>1451814932</integer>
+	<integer>1451817430</integer>
 </dict>
 </plist>
 
