@@ -15,12 +15,12 @@ import Foundation
 enum BookType: Int {
     case CoreRulebook
     case OfficialAdventure
+    case CampaignSourcebook
     case OnlineSupplement
-    // TODO: category for Sword Coast Adventures? official expansion or core rulebook?
     // TODO: category for Unearthed Arcana?
     
     /// Array of all cases.
-    static let cases: [BookType] = [ .CoreRulebook, .OfficialAdventure, .OnlineSupplement ]
+    static let cases: [BookType] = [ .CoreRulebook, .OfficialAdventure, .CampaignSourcebook, .OnlineSupplement ]
     
     /// Returns the string equivalent of the book type.
     var stringValue: String {

@@ -26,13 +26,13 @@
 			<key>name</key>
 			<string>Player's Basic Rules</string>
 			<key>type</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>name</key>
 			<string>Dungeon Master's Basic Rules</string>
 			<key>type</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>name</key>
@@ -50,7 +50,7 @@
 			<key>name</key>
 			<string>Hoard of the Dragon Queen Online Supplement</string>
 			<key>type</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>name</key>
@@ -62,7 +62,7 @@
 			<key>name</key>
 			<string>The Rise of Tiamat Online Supplement</string>
 			<key>type</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>name</key>
@@ -74,13 +74,25 @@
 			<key>name</key>
 			<string>Princes of the Apocalypse Online Supplement</string>
 			<key>type</key>
-			<integer>2</integer>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Elemental Evil Player's Companion</string>
+			<key>type</key>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>name</key>
 			<string>Out of the Abyss</string>
 			<key>type</key>
 			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Sword Coast Adventurer's Guide</string>
+			<key>type</key>
+			<integer>2</integer>
 		</dict>
 	</array>
 	<key>monsters</key>
@@ -93296,7 +93308,7 @@ An affected creature is aware of the spell and can thus avoid answering question
 		</dict>
 	</array>
 	<key>version</key>
-	<integer>1451813602</integer>
+	<integer>1451814932</integer>
 </dict>
 </plist>
 

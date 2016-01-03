@@ -26,11 +26,11 @@ def main():
 		},
 		{
 			"name": "Player's Basic Rules",
-			"type": 2,
+			"type": 3,
 		},
 		{
 			"name": "Dungeon Master's Basic Rules",
-			"type": 2,
+			"type": 3,
 		},
 		{
 			"name": "Lost Mine of Phandelver",
@@ -42,7 +42,7 @@ def main():
 		},
 		{
 			"name": "Hoard of the Dragon Queen Online Supplement",
-			"type": 2,
+			"type": 3,
 		},
 		{
 			"name": "The Rise of Tiamat",
@@ -50,7 +50,7 @@ def main():
 		},
 		{
 			"name": "The Rise of Tiamat Online Supplement",
-			"type": 2,
+			"type": 3,
 		},
 		{
 			"name": "Princes of the Apocalypse",
@@ -58,16 +58,25 @@ def main():
 		},
 		{
 			"name": "Princes of the Apocalypse Online Supplement",
-			"type": 2,
+			"type": 3,
+		},
+		{
+			"name": "Elemental Evil Player's Companion",
+			"type": 3,
 		},
 		{
 			"name": "Out of the Abyss",
 			"type": 1,
+		},
+		{
+			"name": "Sword Coast Adventurer's Guide",
+			"type": 2,
 		}
 	]
 	bookTags = [
 		"phb", "mm", "dmg", "pbr",  "dmbr",
-		"lmop", "hotdq", "hotdqs", "trot", "trots", "pota", "potas", ]
+		"lmop", "hotdq", "hotdqs", "trot", "trots", "pota", "potas", "eepc", "oota",
+		"scag" ]
 
 	monsters = []
 	for filename in base.local_files('Monsters'):
