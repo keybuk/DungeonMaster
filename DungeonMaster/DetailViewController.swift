@@ -90,14 +90,16 @@ class DetailViewController: UIViewController {
         
         
         let abilityScoresParaStyle = NSParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
+        
+        let cellWidth = textView.frame.size.width / 6
 
         abilityScoresParaStyle.tabStops = [
-            NSTextTab(textAlignment: .Center, location:  40.0, options: [String:AnyObject]()),
-            NSTextTab(textAlignment: .Center, location: 120.0, options: [String:AnyObject]()),
-            NSTextTab(textAlignment: .Center, location: 200.0, options: [String:AnyObject]()),
-            NSTextTab(textAlignment: .Center, location: 280.0, options: [String:AnyObject]()),
-            NSTextTab(textAlignment: .Center, location: 360.0, options: [String:AnyObject]()),
-            NSTextTab(textAlignment: .Center, location: 440.0, options: [String:AnyObject]()),
+            NSTextTab(textAlignment: .Center, location: 0.5 * cellWidth, options: [String:AnyObject]()),
+            NSTextTab(textAlignment: .Center, location: 1.5 * cellWidth, options: [String:AnyObject]()),
+            NSTextTab(textAlignment: .Center, location: 2.5 * cellWidth, options: [String:AnyObject]()),
+            NSTextTab(textAlignment: .Center, location: 3.5 * cellWidth, options: [String:AnyObject]()),
+            NSTextTab(textAlignment: .Center, location: 4.5 * cellWidth, options: [String:AnyObject]()),
+            NSTextTab(textAlignment: .Center, location: 5.5 * cellWidth, options: [String:AnyObject]()),
             ]
         
         let abilityScoresLabelParaStyle = abilityScoresParaStyle.mutableCopy() as! NSMutableParagraphStyle
