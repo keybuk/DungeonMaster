@@ -1140,7 +1140,7 @@
         <!--Adventure-->
         <scene sceneID="3TV-8c-eHS">
             <objects>
-                <viewController storyboardIdentifier="AdventureViewController" title="Adventure" id="YAX-F3-Z4O" customClass="AdventureViewController" customModule="DungeonMaster" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AdventureViewController" title="Adventure" id="YAX-F3-Z4O" userLabel="Adventure" customClass="AdventureViewController" customModule="DungeonMaster" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yUU-UT-RG9"/>
                         <viewControllerLayoutGuide type="bottom" id="osP-a5-iN7"/>
@@ -1159,6 +1159,9 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="image" keyPath="placeholderImage" value="D&amp;D Ampersand"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="YAX-F3-Z4O" id="EjU-uM-MW8"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1564,7 +1567,7 @@
                             <inset key="sectionInset" minX="96" minY="48" maxX="96" maxY="48"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AdventureCell" id="S3V-ZX-wTg" customClass="AdventureCell" customModule="DungeonMaster" customModuleProvider="target">
+                            <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AdventureCell" id="S3V-ZX-wTg" userLabel="Adventure Cell" customClass="AdventureCell" customModule="DungeonMaster" customModuleProvider="target">
                                 <rect key="frame" x="172" y="112" width="256" height="320"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">

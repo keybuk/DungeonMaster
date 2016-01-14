@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AdventureViewController: UIViewController {
+class AdventureViewController: UIViewController, AdjustableImageViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var adventure: Adventure!
 
@@ -57,6 +57,8 @@ class AdventureViewController: UIViewController {
         oldLeftItemsSupplementBackButton = navigationItem.leftItemsSupplementBackButton
         navigationItem.leftBarButtonItem = deleteBarButtonItem
         navigationItem.leftItemsSupplementBackButton = false
+        
+        adjustableImageView.editing = true
     }
     
     @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
@@ -68,6 +70,9 @@ class AdventureViewController: UIViewController {
         navigationItem.leftItemsSupplementBackButton = oldLeftItemsSupplementBackButton
         oldLeftItemsSupplementBackButton = nil
         
+        adjustableImageView.editing = false
+        
+        adventure.lastModified = NSDate()
         try! managedObjectContext.save()
     }
 
@@ -85,4 +90,41 @@ class AdventureViewController: UIViewController {
         
         presentViewController(controller, animated: true, completion: nil)
     }
+    
+    // MARK: AdjustableImageViewDelegate
+    
+    func adjustableImageViewShouldChangeImage(adjustableImageView: AdjustableImageView) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .PhotoLibrary
+        imagePicker.modalPresentationStyle = .Popover
+        imagePicker.delegate = self
+        
+        if let presentation = imagePicker.popoverPresentationController {
+            presentation.sourceView = adjustableImageView
+            presentation.sourceRect = adjustableImageView.bounds
+        }
+        
+        presentViewController(imagePicker, animated: true, completion: nil)
+    }
+    
+    func adjustableImageViewDidChangeArea(adjustableImageView: AdjustableImageView) {
+        adventure.image.fraction = adjustableImageView.fraction
+        adventure.image.origin = adjustableImageView.origin
+    }
+    
+    // MARK: UIImagePickerControllerDelegate
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            adjustableImageView.image = image
+            
+            // Setting the image provides a new fraction and origin, make sure we save those too.
+            adventure.image.image = adjustableImageView.image
+            adventure.image.fraction = adjustableImageView.fraction
+            adventure.image.origin = adjustableImageView.origin
+        }
+        
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+
 }
