@@ -1551,6 +1551,15 @@
                                     <rect key="frame" x="0.0" y="0.0" width="256" height="320"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Adventure" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="R1s-F9-ZG8">
+                                            <rect key="frame" x="8" y="264" width="240" height="48"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="S3V-ZX-wTg" id="HbH-lj-Rut"/>
+                                            </connections>
+                                        </textView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bZ5-9F-tSw" customClass="AdjustableImageView" customModule="DungeonMaster" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="256" height="256"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1564,15 +1573,6 @@
                                                 <outlet property="delegate" destination="S3V-ZX-wTg" id="Wet-UQ-o6n"/>
                                             </connections>
                                         </view>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Adventure" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="R1s-F9-ZG8">
-                                            <rect key="frame" x="8" y="264" width="240" height="48"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
-                                            <connections>
-                                                <outlet property="delegate" destination="S3V-ZX-wTg" id="HbH-lj-Rut"/>
-                                            </connections>
-                                        </textView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>

@@ -156,9 +156,29 @@ class AdventuresViewController: UICollectionViewController, NSFetchedResultsCont
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return fetchedResultsController.sections?.count ?? 0
     }
+    
+    var noAdventuresLabel: UILabel!
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let sectionInfo = fetchedResultsController.sections![section]
+        
+        if sectionInfo.numberOfObjects == 0 {
+            noAdventuresLabel = UILabel()
+            noAdventuresLabel.text = "Tap ‘+’ to create an Adventure."
+            noAdventuresLabel.textColor = UIColor.lightGrayColor()
+            noAdventuresLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+            noAdventuresLabel.translatesAutoresizingMaskIntoConstraints = false
+            noAdventuresLabel.sizeToFit()
+            
+            collectionView.addSubview(noAdventuresLabel)
+            
+            noAdventuresLabel.centerXAnchor.constraintEqualToAnchor(collectionView.centerXAnchor).active = true
+            noAdventuresLabel.centerYAnchor.constraintEqualToAnchor(collectionView.centerYAnchor).active = true
+        } else if let label = noAdventuresLabel {
+            label.removeFromSuperview()
+            noAdventuresLabel = nil
+        }
+        
         return sectionInfo.numberOfObjects
     }
 
