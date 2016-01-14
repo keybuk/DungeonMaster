@@ -34,8 +34,8 @@ class AdventuresViewController: UICollectionViewController, NSFetchedResultsCont
             if let indexPaths = collectionView?.indexPathsForSelectedItems() {
                 let adventure = fetchedResultsController.objectAtIndexPath(indexPaths[0]) as! Adventure
                 
-                let adventureViewController = segue.destinationViewController as! AdventureViewController
-                adventureViewController.adventure = adventure
+                let viewController = segue.destinationViewController as! AdventureViewController
+                viewController.adventure = adventure
             }
         }
     }
