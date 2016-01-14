@@ -207,12 +207,9 @@ class AdventuresViewController: UICollectionViewController, NSFetchedResultsCont
                 self.collectionView?.insertItemsAtIndexPaths([ newIndexPath! ])
             }
         case .Update:
-            // Don't process updates to items that are still in the inserted state, since the cell is probably in editing mode or transitioning to/from it.
-            let adventure = controller.objectAtIndexPath(indexPath!) as! Adventure
-            if !adventure.inserted {
-                changeBlocks.append {
-                    self.collectionView?.reloadItemsAtIndexPaths([ indexPath! ])
-                }
+            if let cell = collectionView?.cellForItemAtIndexPath(indexPath!) as? AdventureCell where !cell.editing {
+                let adventure = controller.objectAtIndexPath(indexPath!) as! Adventure
+                cell.adventure = adventure
             }
         case .Delete:
             changeBlocks.append {
