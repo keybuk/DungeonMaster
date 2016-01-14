@@ -1167,6 +1167,7 @@
                             <constraint firstItem="EMR-zE-jsa" firstAttribute="top" secondItem="yUU-UT-RG9" secondAttribute="bottom" id="U7C-KM-dCd"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Adventure" id="qxG-eE-Kya"/>
                     <connections>
                         <outlet property="adjustableImageView" destination="EMR-zE-jsa" id="tEc-k4-t61"/>
                     </connections>
