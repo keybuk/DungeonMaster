@@ -83,6 +83,7 @@
 		D2A9AF2F1BFFEAA5009902ED /* DungeonMasterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A9AF2E1BFFEAA5009902ED /* DungeonMasterUITests.swift */; };
 		D2BDE60C1C17500A0008B2F2 /* EncountersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDE60B1C17500A0008B2F2 /* EncountersViewController.swift */; };
 		D2BDE60E1C1750170008B2F2 /* EncounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDE60D1C1750170008B2F2 /* EncounterViewController.swift */; };
+		D2C1B7541C39C466002B324D /* AdventuresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C1B7531C39C466002B324D /* AdventuresViewController.swift */; };
 		D2C6063E1C17D32900F61DBD /* TabletopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C6063D1C17D32900F61DBD /* TabletopViewController.swift */; };
 		D2C8F0041C3AE705003AD18F /* AdjustableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8F0031C3AE705003AD18F /* AdjustableImageView.swift */; };
 		D2C8F0071C3DAD6E003AD18F /* Adventure.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8F0061C3DAD6E003AD18F /* Adventure.swift */; };
@@ -190,6 +191,7 @@
 		D2A9AF301BFFEAA5009902ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2BDE60B1C17500A0008B2F2 /* EncountersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncountersViewController.swift; sourceTree = "<group>"; };
 		D2BDE60D1C1750170008B2F2 /* EncounterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncounterViewController.swift; sourceTree = "<group>"; };
+		D2C1B7531C39C466002B324D /* AdventuresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdventuresViewController.swift; sourceTree = "<group>"; };
 		D2C6063D1C17D32900F61DBD /* TabletopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabletopViewController.swift; sourceTree = "<group>"; };
 		D2C8F0031C3AE705003AD18F /* AdjustableImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjustableImageView.swift; sourceTree = "<group>"; };
 		D2C8F0061C3DAD6E003AD18F /* Adventure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Adventure.swift; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 		D2BDE60F1C1754F00008B2F2 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D2C1B7531C39C466002B324D /* AdventuresViewController.swift */,
 				D2BDE60B1C17500A0008B2F2 /* EncountersViewController.swift */,
 				D2BDE60D1C1750170008B2F2 /* EncounterViewController.swift */,
 				D2622AA61C2CB4C7000D6100 /* EncounterPlayersViewController.swift */,
@@ -568,6 +571,7 @@
 				D2116A481C10ECAE001EDBBA /* Trait.swift in Sources */,
 				D26FBA321C1D39B900D44503 /* Sounds.swift in Sources */,
 				D249CFAA1C276B4C00CDE673 /* DamageVulnerability.swift in Sources */,
+				D2C1B7541C39C466002B324D /* AdventuresViewController.swift in Sources */,
 				D2C8F0091C3DB18E003AD18F /* AdventureImage.swift in Sources */,
 				D2116A531C10F4E9001EDBBA /* LairTrait.swift in Sources */,
 				D249CF8B1C23311A00CDE673 /* Rules.swift in Sources */,
