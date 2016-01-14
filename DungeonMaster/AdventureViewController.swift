@@ -8,13 +8,14 @@
 
 import UIKit
 
-class AdventureViewController: UIViewController, AdjustableImageViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class AdventureViewController: UIViewController, UITextViewDelegate, AdjustableImageViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var adventure: Adventure!
 
     @IBOutlet var editBarButtonItem: UIBarButtonItem!
     @IBOutlet var doneBarButtonItem: UIBarButtonItem!
     @IBOutlet var deleteBarButtonItem: UIBarButtonItem!
+    @IBOutlet var nameTextView: UITextView!
     @IBOutlet var adjustableImageView: AdjustableImageView!
     
     override func viewDidLoad() {
@@ -26,6 +27,7 @@ class AdventureViewController: UIViewController, AdjustableImageViewDelegate, UI
         // Update the view.
         navigationItem.title = adventure.name
         
+        nameTextView.text = adventure.name
         adjustableImageView.setImage(adventure.image.image, fraction: adventure.image.fraction, origin: adventure.image.origin)
     }
 
@@ -58,10 +60,13 @@ class AdventureViewController: UIViewController, AdjustableImageViewDelegate, UI
         navigationItem.leftBarButtonItem = deleteBarButtonItem
         navigationItem.leftItemsSupplementBackButton = false
         
+        nameTextView.editable = true
+        nameTextView.becomeFirstResponder()
+
         adjustableImageView.editing = true
     }
     
-    @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
+    func finishEditing() {
         if let index = navigationItem.rightBarButtonItems?.indexOf(doneBarButtonItem) {
             navigationItem.rightBarButtonItems?.removeAtIndex(index)
             navigationItem.rightBarButtonItems?.insert(editBarButtonItem, atIndex: index)
@@ -70,10 +75,19 @@ class AdventureViewController: UIViewController, AdjustableImageViewDelegate, UI
         navigationItem.leftItemsSupplementBackButton = oldLeftItemsSupplementBackButton
         oldLeftItemsSupplementBackButton = nil
         
+        nameTextView.editable = false
+        nameTextView.resignFirstResponder()
+        
         adjustableImageView.editing = false
         
         adventure.lastModified = NSDate()
         try! managedObjectContext.save()
+        
+        navigationItem.title = adventure.name
+    }
+    
+    @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
+        finishEditing()
     }
 
     @IBAction func deleteButtonTapped(sender: UIBarButtonItem) {
@@ -89,6 +103,30 @@ class AdventureViewController: UIViewController, AdjustableImageViewDelegate, UI
         controller.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         
         presentViewController(controller, animated: true, completion: nil)
+    }
+    
+    // MARK: UITextViewDelegate
+    
+    func textViewDidChange(textView: UITextView) {
+        adventure.name = textView.text
+        do {
+            try adventure.validateForUpdate()
+            doneBarButtonItem.enabled = true
+        } catch {
+            doneBarButtonItem.enabled = false
+        }
+    }
+
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            if let _ = try? adventure.validateForUpdate() {
+                finishEditing()
+            }
+
+            return false
+        }
+        
+        return true
     }
     
     // MARK: AdjustableImageViewDelegate

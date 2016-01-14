@@ -1163,6 +1163,15 @@
                                     <outlet property="delegate" destination="YAX-F3-Z4O" id="EjU-uM-MW8"/>
                                 </connections>
                             </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="Adventure" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hn6-Ey-XFD">
+                                <rect key="frame" x="264" y="64" width="316" height="49"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="YAX-F3-Z4O" id="gtX-nf-eyx"/>
+                                </connections>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1182,6 +1191,7 @@
                         <outlet property="deleteBarButtonItem" destination="7Pp-fs-iZj" id="J3h-CK-q6X"/>
                         <outlet property="doneBarButtonItem" destination="EGL-R1-cBN" id="6Lj-GQ-Zmt"/>
                         <outlet property="editBarButtonItem" destination="ytS-J8-iZ2" id="tHD-HY-SL9"/>
+                        <outlet property="nameTextView" destination="hn6-Ey-XFD" id="bcx-KB-NGG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Okk-qd-xvq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1574,7 +1584,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="256" height="320"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Adventure" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="R1s-F9-ZG8">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="Adventure" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="R1s-F9-ZG8">
                                             <rect key="frame" x="8" y="264" width="240" height="48"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
