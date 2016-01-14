@@ -5,6 +5,18 @@
         <attribute name="text" attributeType="String" syncable="YES"/>
         <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="actions" inverseEntity="Monster" syncable="YES"/>
     </entity>
+    <entity name="Adventure" representedClassName=".Adventure" syncable="YES">
+        <attribute name="lastModified" attributeType="Date" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="image" maxCount="1" deletionRule="Cascade" destinationEntity="AdventureImage" inverseName="adventure" inverseEntity="AdventureImage" syncable="YES"/>
+    </entity>
+    <entity name="AdventureImage" representedClassName=".AdventureImage" syncable="YES">
+        <attribute name="rawFraction" attributeType="Float" defaultValueString="1" syncable="YES"/>
+        <attribute name="rawImagePathComponent" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rawOriginX" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="rawOriginY" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="adventure" maxCount="1" deletionRule="Nullify" destinationEntity="Adventure" inverseName="image" inverseEntity="Adventure" syncable="YES"/>
+    </entity>
     <entity name="AlignmentOption" representedClassName=".AlignmentOption" syncable="YES">
         <attribute name="rawAlignment" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawWeight" optional="YES" attributeType="Float" syncable="YES"/>
@@ -280,6 +292,7 @@
         <element name="Language" positionX="-27" positionY="378" width="128" height="90"/>
         <element name="LegendaryAction" positionX="261" positionY="558" width="128" height="90"/>
         <element name="Monster" positionX="79" positionY="216" width="128" height="855"/>
+        <element name="MonsterEnvironment" positionX="-36" positionY="369" width="128" height="75"/>
         <element name="MonsterSavingThrow" positionX="-54" positionY="351" width="128" height="90"/>
         <element name="MonsterSkill" positionX="-45" positionY="360" width="128" height="105"/>
         <element name="Player" positionX="-36" positionY="369" width="128" height="225"/>
@@ -292,6 +305,7 @@
         <element name="SpellClass" positionX="-45" positionY="360" width="128" height="75"/>
         <element name="Tag" positionX="-92" positionY="432" width="128" height="75"/>
         <element name="Trait" positionX="261" positionY="261" width="128" height="90"/>
-        <element name="MonsterEnvironment" positionX="-36" positionY="369" width="128" height="75"/>
+        <element name="Adventure" positionX="-54" positionY="351" width="128" height="90"/>
+        <element name="AdventureImage" positionX="-45" positionY="360" width="128" height="120"/>
     </elements>
 </model>

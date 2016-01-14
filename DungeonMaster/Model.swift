@@ -35,6 +35,8 @@ enum Model: String {
     case RegionalEffect
     case Spell
     case SpellClass
+    case Adventure
+    case AdventureImage
     case Player
     case PlayerSavingThrow
     case PlayerSkill
