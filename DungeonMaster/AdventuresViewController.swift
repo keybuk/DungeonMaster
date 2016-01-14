@@ -59,6 +59,9 @@ class AdventuresViewController: UICollectionViewController, NSFetchedResultsCont
         doneButtonItem.enabled = false
         
         let _ = Adventure(inManagedObjectContext: managedObjectContext)
+        
+        // We can reasonably assume that the cell is going to be going in at the top, so scroll there.
+        collectionView?.scrollToItemAtIndexPath(NSIndexPath(forItem: 0, inSection: 0), atScrollPosition: .Top, animated: true)
     }
     
     func finishAdding(cancel cancel: Bool) {
