@@ -1167,12 +1167,32 @@
                             <constraint firstItem="EMR-zE-jsa" firstAttribute="top" secondItem="yUU-UT-RG9" secondAttribute="bottom" id="U7C-KM-dCd"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Adventure" id="qxG-eE-Kya"/>
+                    <navigationItem key="navigationItem" title="Adventure" id="qxG-eE-Kya">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="ytS-J8-iZ2">
+                            <connections>
+                                <action selector="editButtonTapped:" destination="YAX-F3-Z4O" id="qMo-41-rU5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="adjustableImageView" destination="EMR-zE-jsa" id="tEc-k4-t61"/>
+                        <outlet property="deleteBarButtonItem" destination="7Pp-fs-iZj" id="J3h-CK-q6X"/>
+                        <outlet property="doneBarButtonItem" destination="EGL-R1-cBN" id="6Lj-GQ-Zmt"/>
+                        <outlet property="editBarButtonItem" destination="ytS-J8-iZ2" id="tHD-HY-SL9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Okk-qd-xvq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem style="done" systemItem="done" id="EGL-R1-cBN">
+                    <connections>
+                        <action selector="doneButtonTapped:" destination="YAX-F3-Z4O" id="ygD-aG-dso"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem title="Delete" id="7Pp-fs-iZj">
+                    <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <action selector="deleteButtonTapped:" destination="YAX-F3-Z4O" id="eUl-zE-uBa"/>
+                    </connections>
+                </barButtonItem>
             </objects>
             <point key="canvasLocation" x="-2942" y="-491"/>
         </scene>

@@ -12,8 +12,11 @@ class AdventureViewController: UIViewController {
     
     var adventure: Adventure!
 
+    @IBOutlet var editBarButtonItem: UIBarButtonItem!
+    @IBOutlet var doneBarButtonItem: UIBarButtonItem!
+    @IBOutlet var deleteBarButtonItem: UIBarButtonItem!
     @IBOutlet var adjustableImageView: AdjustableImageView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,5 +44,45 @@ class AdventureViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    // MARK: Actions
+    
+    var oldLeftItemsSupplementBackButton: Bool!
+    
+    @IBAction func editButtonTapped(sender: UIBarButtonItem) {
+        if let index = navigationItem.rightBarButtonItems?.indexOf(editBarButtonItem) {
+            navigationItem.rightBarButtonItems?.removeAtIndex(index)
+            navigationItem.rightBarButtonItems?.insert(doneBarButtonItem, atIndex: index)
+        }
+        oldLeftItemsSupplementBackButton = navigationItem.leftItemsSupplementBackButton
+        navigationItem.leftBarButtonItem = deleteBarButtonItem
+        navigationItem.leftItemsSupplementBackButton = false
+    }
+    
+    @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
+        if let index = navigationItem.rightBarButtonItems?.indexOf(doneBarButtonItem) {
+            navigationItem.rightBarButtonItems?.removeAtIndex(index)
+            navigationItem.rightBarButtonItems?.insert(editBarButtonItem, atIndex: index)
+        }
+        navigationItem.leftBarButtonItem = nil
+        navigationItem.leftItemsSupplementBackButton = oldLeftItemsSupplementBackButton
+        oldLeftItemsSupplementBackButton = nil
+        
+        try! managedObjectContext.save()
+    }
 
+    @IBAction func deleteButtonTapped(sender: UIBarButtonItem) {
+        let controller = UIAlertController(title: "Delete “\(adventure.name)”", message: "Are you sure? This will delete all information associated with the adventure, and cannot be undone.", preferredStyle: .Alert)
+
+        controller.addAction(UIAlertAction(title: "Delete", style: .Destructive, handler: { action in
+            managedObjectContext.deleteObject(self.adventure)
+            try! managedObjectContext.save()
+            
+            self.navigationController?.popViewControllerAnimated(true)
+        }))
+
+        controller.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        
+        presentViewController(controller, animated: true, completion: nil)
+    }
 }
