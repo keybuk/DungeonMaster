@@ -6,6 +6,7 @@
 //  Copyright © 2015 Scott James Remnant. All rights reserved.
 //
 
+import CoreData
 import UIKit
 
 @UIApplicationMain
@@ -17,6 +18,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         importIfNeeded()
 
+        // If the top view controller is the Adventures view, but there is a saved adventure, push it onto the stack. The most common use case is always going to be starting from the same adventure you were previously on.
+        if let navigationController = window?.rootViewController as? UINavigationController,
+            adventuresViewController = navigationController.topViewController as? AdventuresViewController,
+            adventureName = NSUserDefaults.standardUserDefaults().objectForKey("Adventure") as? String {
+                let fetchRequest = NSFetchRequest(entity: Model.Adventure)
+                fetchRequest.predicate = NSPredicate(format: "name == %@", adventureName)
+                
+                let adventures = try! managedObjectContext.executeFetchRequest(fetchRequest) as! [Adventure]
+                if adventures.count > 0 {
+                    let adventureViewController = adventuresViewController.storyboard?.instantiateViewControllerWithIdentifier("AdventureViewController") as! AdventureViewController
+                    adventureViewController.adventure = adventures[0]
+                    
+                    navigationController.pushViewController(adventureViewController, animated: false)
+                }
+        }
+        
         // Set up the split view controller, and place the display button in the top-left for certain devices.
         if let splitViewController = self.window!.rootViewController as? UISplitViewController {
             let navigationController = splitViewController.viewControllers.last as! UINavigationController

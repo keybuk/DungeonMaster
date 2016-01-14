@@ -88,6 +88,7 @@
 		D2C8F0041C3AE705003AD18F /* AdjustableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8F0031C3AE705003AD18F /* AdjustableImageView.swift */; };
 		D2C8F0071C3DAD6E003AD18F /* Adventure.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8F0061C3DAD6E003AD18F /* Adventure.swift */; };
 		D2C8F0091C3DB18E003AD18F /* AdventureImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8F0081C3DB18E003AD18F /* AdventureImage.swift */; };
+		D2C8F00D1C473126003AD18F /* AdventureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8F00C1C473126003AD18F /* AdventureViewController.swift */; };
 		D2F9D12F1C1A71D8005F2D9A /* Encounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F9D12E1C1A71D8005F2D9A /* Encounter.swift */; };
 /* End PBXBuildFile section */
 
@@ -196,6 +197,7 @@
 		D2C8F0031C3AE705003AD18F /* AdjustableImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjustableImageView.swift; sourceTree = "<group>"; };
 		D2C8F0061C3DAD6E003AD18F /* Adventure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Adventure.swift; sourceTree = "<group>"; };
 		D2C8F0081C3DB18E003AD18F /* AdventureImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdventureImage.swift; sourceTree = "<group>"; };
+		D2C8F00C1C473126003AD18F /* AdventureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdventureViewController.swift; sourceTree = "<group>"; };
 		D2F9D12E1C1A71D8005F2D9A /* Encounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encounter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -337,6 +339,7 @@
 			isa = PBXGroup;
 			children = (
 				D2C1B7531C39C466002B324D /* AdventuresViewController.swift */,
+				D2C8F00C1C473126003AD18F /* AdventureViewController.swift */,
 				D2BDE60B1C17500A0008B2F2 /* EncountersViewController.swift */,
 				D2BDE60D1C1750170008B2F2 /* EncounterViewController.swift */,
 				D2622AA61C2CB4C7000D6100 /* EncounterPlayersViewController.swift */,
@@ -561,6 +564,7 @@
 				D298E8FF1C2A515C007461A9 /* PlayerAlignmentViewController.swift in Sources */,
 				D298E8F51C29F112007461A9 /* PlayerSkill.swift in Sources */,
 				D2116A4A1C10ECBC001EDBBA /* Reaction.swift in Sources */,
+				D2C8F00D1C473126003AD18F /* AdventureViewController.swift in Sources */,
 				D2A9AF0A1BFFEAA5009902ED /* AppDelegate.swift in Sources */,
 				D249CFA81C276B4400CDE673 /* DamageResistance.swift in Sources */,
 				D243F6431C189A7500324572 /* TabletopView.swift in Sources */,

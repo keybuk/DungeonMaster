@@ -9,13 +9,18 @@
         <attribute name="lastModified" attributeType="Date" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="image" maxCount="1" deletionRule="Cascade" destinationEntity="AdventureImage" inverseName="adventure" inverseEntity="AdventureImage" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="name"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="AdventureImage" representedClassName=".AdventureImage" syncable="YES">
         <attribute name="rawFraction" attributeType="Float" defaultValueString="1" syncable="YES"/>
         <attribute name="rawImagePathComponent" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rawOriginX" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="rawOriginY" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
-        <relationship name="adventure" maxCount="1" deletionRule="Nullify" destinationEntity="Adventure" inverseName="image" inverseEntity="Adventure" syncable="YES"/>
+        <relationship name="adventure" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Adventure" inverseName="image" inverseEntity="Adventure" syncable="YES"/>
     </entity>
     <entity name="AlignmentOption" representedClassName=".AlignmentOption" syncable="YES">
         <attribute name="rawAlignment" attributeType="Integer 16" syncable="YES"/>

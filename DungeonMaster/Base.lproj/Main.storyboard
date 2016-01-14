@@ -1150,6 +1150,44 @@
             </objects>
             <point key="canvasLocation" x="-4289" y="950"/>
         </scene>
+        <!--Adventure-->
+        <scene sceneID="3TV-8c-eHS">
+            <objects>
+                <viewController storyboardIdentifier="AdventureViewController" title="Adventure" id="YAX-F3-Z4O" customClass="AdventureViewController" customModule="DungeonMaster" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yUU-UT-RG9"/>
+                        <viewControllerLayoutGuide type="bottom" id="osP-a5-iN7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="d4M-Ug-KUN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EMR-zE-jsa" customClass="AdjustableImageView" customModule="DungeonMaster" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="256" height="256"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="256" id="Fnr-Qm-Oae"/>
+                                    <constraint firstAttribute="width" constant="256" id="vjM-gT-RTs"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="placeholderImage" value="D&amp;D Ampersand"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="EMR-zE-jsa" firstAttribute="leading" secondItem="d4M-Ug-KUN" secondAttribute="leading" id="Axr-10-w54"/>
+                            <constraint firstItem="EMR-zE-jsa" firstAttribute="top" secondItem="yUU-UT-RG9" secondAttribute="bottom" id="U7C-KM-dCd"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="adjustableImageView" destination="EMR-zE-jsa" id="tEc-k4-t61"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Okk-qd-xvq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2942" y="-491"/>
+        </scene>
         <!--Table View Controller-->
         <scene sceneID="c3b-9X-27b">
             <objects>
@@ -1611,7 +1649,7 @@
         <!--Adventures-->
         <scene sceneID="tNf-Y2-RX2">
             <objects>
-                <collectionViewController title="Adventures" id="JGb-ej-eIG" customClass="AdventuresViewController" customModule="DungeonMaster" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="AdventuresViewController" title="Adventures" id="JGb-ej-eIG" customClass="AdventuresViewController" customModule="DungeonMaster" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Utx-E7-aYs">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1667,6 +1705,7 @@
                                 <connections>
                                     <outlet property="adjustableImageView" destination="bZ5-9F-tSw" id="vw0-UX-1w7"/>
                                     <outlet property="textView" destination="R1s-F9-ZG8" id="g9p-H3-OnI"/>
+                                    <segue destination="YAX-F3-Z4O" kind="show" identifier="AdventureSegue" id="18g-bc-Ou6"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -1676,6 +1715,7 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="Xtf-re-7fJ">
+                        <barButtonItem key="backBarButtonItem" title="Adventures" id="mC5-NN-YzP"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="WzP-SL-LHd">
                             <connections>
                                 <action selector="addButtonTapped:" destination="JGb-ej-eIG" id="jKi-ZB-aCs"/>
