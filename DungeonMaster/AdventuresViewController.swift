@@ -229,11 +229,6 @@ class AdventuresViewController: UICollectionViewController, NSFetchedResultsCont
             changeBlocks.append {
                 self.collectionView?.insertItemsAtIndexPaths([ newIndexPath! ])
             }
-        case .Update:
-            if let cell = collectionView?.cellForItemAtIndexPath(indexPath!) as? AdventureCell where !cell.editing {
-                let adventure = controller.objectAtIndexPath(indexPath!) as! Adventure
-                cell.adventure = adventure
-            }
         case .Delete:
             changeBlocks.append {
                 self.collectionView?.deleteItemsAtIndexPaths([ indexPath! ])
@@ -241,6 +236,12 @@ class AdventuresViewController: UICollectionViewController, NSFetchedResultsCont
         case .Move:
             changeBlocks.append {
                 self.collectionView?.moveItemAtIndexPath(indexPath!, toIndexPath: newIndexPath!)
+            }
+            fallthrough // .Move assumes a .Update; we can still use the old indexPath as the change won't take effect until the end of the updates.
+        case .Update:
+            if let cell = collectionView?.cellForItemAtIndexPath(indexPath!) as? AdventureCell where !cell.editing {
+                let adventure = controller.objectAtIndexPath(indexPath!) as! Adventure
+                cell.adventure = adventure
             }
         }
     }
