@@ -49,6 +49,7 @@
 		D2511FFA1C14BC3700A09F0B /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2511FF91C14BC3700A09F0B /* Tag.swift */; };
 		D25120001C14C7ED00A09F0B /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2511FFF1C14C7ED00A09F0B /* BooksViewController.swift */; };
 		D25120021C14FC0A00A09F0B /* ExtendedNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25120011C14FC0A00A09F0B /* ExtendedNavigationBarView.swift */; };
+		D2597F6A1C4844D90091AD05 /* CompendiumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2597F691C4844D90091AD05 /* CompendiumViewController.swift */; };
 		D2622AA11C2BCDDD000D6100 /* MonsterSavingThrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2622AA01C2BCDDD000D6100 /* MonsterSavingThrow.swift */; };
 		D2622AA31C2BCDEC000D6100 /* MonsterSkill.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2622AA21C2BCDEC000D6100 /* MonsterSkill.swift */; };
 		D2622AA51C2CA2C8000D6100 /* CombatantRoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2622AA41C2CA2C8000D6100 /* CombatantRoleViewController.swift */; };
@@ -152,6 +153,7 @@
 		D2511FF91C14BC3700A09F0B /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		D2511FFF1C14C7ED00A09F0B /* BooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
 		D25120011C14FC0A00A09F0B /* ExtendedNavigationBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtendedNavigationBarView.swift; sourceTree = "<group>"; };
+		D2597F691C4844D90091AD05 /* CompendiumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompendiumViewController.swift; sourceTree = "<group>"; };
 		D2622AA01C2BCDDD000D6100 /* MonsterSavingThrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonsterSavingThrow.swift; sourceTree = "<group>"; };
 		D2622AA21C2BCDEC000D6100 /* MonsterSkill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonsterSkill.swift; sourceTree = "<group>"; };
 		D2622AA41C2CA2C8000D6100 /* CombatantRoleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombatantRoleViewController.swift; sourceTree = "<group>"; };
@@ -271,6 +273,23 @@
 			name = "Data Model";
 			sourceTree = "<group>";
 		};
+		D2597F6B1C4844FE0091AD05 /* Compendium */ = {
+			isa = PBXGroup;
+			children = (
+				D2597F691C4844D90091AD05 /* CompendiumViewController.swift */,
+			);
+			name = Compendium;
+			sourceTree = "<group>";
+		};
+		D2597F6D1C4845140091AD05 /* Adventure */ = {
+			isa = PBXGroup;
+			children = (
+				D2C1B7531C39C466002B324D /* AdventuresViewController.swift */,
+				D2C8F00C1C473126003AD18F /* AdventureViewController.swift */,
+			);
+			name = Adventure;
+			sourceTree = "<group>";
+		};
 		D2A9AEFD1BFFEAA5009902ED = {
 			isa = PBXGroup;
 			children = (
@@ -338,8 +357,7 @@
 		D2BDE60F1C1754F00008B2F2 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D2C1B7531C39C466002B324D /* AdventuresViewController.swift */,
-				D2C8F00C1C473126003AD18F /* AdventureViewController.swift */,
+				D2597F6D1C4845140091AD05 /* Adventure */,
 				D2BDE60B1C17500A0008B2F2 /* EncountersViewController.swift */,
 				D2BDE60D1C1750170008B2F2 /* EncounterViewController.swift */,
 				D2622AA61C2CB4C7000D6100 /* EncounterPlayersViewController.swift */,
@@ -349,6 +367,7 @@
 				D249CF881C22602800CDE673 /* ConditionRulesViewController.swift */,
 				D26FBA3A1C1E3FE400D44503 /* DamageViewController.swift */,
 				D2C6063D1C17D32900F61DBD /* TabletopViewController.swift */,
+				D2597F6B1C4844FE0091AD05 /* Compendium */,
 				D2511FF71C12B1AD00A09F0B /* MonstersViewController.swift */,
 				D2511FFF1C14C7ED00A09F0B /* BooksViewController.swift */,
 				D2A9AF101BFFEAA5009902ED /* DetailViewController.swift */,
@@ -524,6 +543,7 @@
 				D2BDE60C1C17500A0008B2F2 /* EncountersViewController.swift in Sources */,
 				D2116A461C10EBEB001EDBBA /* Action.swift in Sources */,
 				D25120021C14FC0A00A09F0B /* ExtendedNavigationBarView.swift in Sources */,
+				D2597F6A1C4844D90091AD05 /* CompendiumViewController.swift in Sources */,
 				D23435F21C0D608B00108D5F /* Source.swift in Sources */,
 				D23435FB1C0FEFA000108D5F /* Dice.swift in Sources */,
 				D21BACF11C339476007E2934 /* SpellDetailViewController.swift in Sources */,

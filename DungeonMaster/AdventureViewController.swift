@@ -6,6 +6,7 @@
 //  Copyright © 2016 Scott James Remnant. All rights reserved.
 //
 
+import CoreData
 import UIKit
 
 class AdventureViewController: UIViewController, UITextViewDelegate, AdjustableImageViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -37,15 +38,17 @@ class AdventureViewController: UIViewController, UITextViewDelegate, AdjustableI
     }
     
 
-    /*
     // MARK: Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "CompendiumSegue" {
+            let viewController = segue.destinationViewController as! CompendiumViewController
+            
+            // FIXME the set of Books used by the Compendium should match those used by the Adventure. Since that will be adventure.books can remove the CoreData import after.
+            let fetchRequest = NSFetchRequest(entity: Model.Book)
+            viewController.books = try! managedObjectContext.executeFetchRequest(fetchRequest) as! [Book]
+        }
     }
-    */
     
     // MARK: Actions
     
@@ -103,6 +106,9 @@ class AdventureViewController: UIViewController, UITextViewDelegate, AdjustableI
         controller.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         
         presentViewController(controller, animated: true, completion: nil)
+    }
+    
+    @IBAction func unwindFromCompendium(segue: UIStoryboardSegue) {
     }
     
     // MARK: UITextViewDelegate
