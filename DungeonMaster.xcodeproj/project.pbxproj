@@ -84,6 +84,7 @@
 		D2BDE60C1C17500A0008B2F2 /* EncountersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDE60B1C17500A0008B2F2 /* EncountersViewController.swift */; };
 		D2BDE60E1C1750170008B2F2 /* EncounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDE60D1C1750170008B2F2 /* EncounterViewController.swift */; };
 		D2C6063E1C17D32900F61DBD /* TabletopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C6063D1C17D32900F61DBD /* TabletopViewController.swift */; };
+		D2C8F0041C3AE705003AD18F /* AdjustableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8F0031C3AE705003AD18F /* AdjustableImageView.swift */; };
 		D2F9D12F1C1A71D8005F2D9A /* Encounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F9D12E1C1A71D8005F2D9A /* Encounter.swift */; };
 /* End PBXBuildFile section */
 
@@ -188,6 +189,7 @@
 		D2BDE60B1C17500A0008B2F2 /* EncountersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncountersViewController.swift; sourceTree = "<group>"; };
 		D2BDE60D1C1750170008B2F2 /* EncounterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncounterViewController.swift; sourceTree = "<group>"; };
 		D2C6063D1C17D32900F61DBD /* TabletopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabletopViewController.swift; sourceTree = "<group>"; };
+		D2C8F0031C3AE705003AD18F /* AdjustableImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjustableImageView.swift; sourceTree = "<group>"; };
 		D2F9D12E1C1A71D8005F2D9A /* Encounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encounter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -358,6 +360,7 @@
 				D25120011C14FC0A00A09F0B /* ExtendedNavigationBarView.swift */,
 				D243F6421C189A7500324572 /* TabletopView.swift */,
 				D20049221C1A127500A645E9 /* TabletopStatsView.swift */,
+				D2C8F0031C3AE705003AD18F /* AdjustableImageView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				D2F9D12F1C1A71D8005F2D9A /* Encounter.swift in Sources */,
 				D2C6063E1C17D32900F61DBD /* TabletopViewController.swift in Sources */,
 				D25120001C14C7ED00A09F0B /* BooksViewController.swift in Sources */,
+				D2C8F0041C3AE705003AD18F /* AdjustableImageView.swift in Sources */,
 				D209FEF91C30578F0024B0A3 /* MarkupParser.swift in Sources */,
 				D2116A4F1C10F377001EDBBA /* Lair.swift in Sources */,
 				D249CFAC1C27A6E700CDE673 /* DamageResistanceOption.swift in Sources */,
