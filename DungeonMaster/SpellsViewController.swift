@@ -55,13 +55,6 @@ class SpellsViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.flashScrollIndicators()
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-
-        // Shift the table back up again.
-        tableView.contentOffset.y -= searchController.searchBar.bounds.size.height
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
