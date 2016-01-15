@@ -17,9 +17,6 @@ class MonstersViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet var sortControl: UISegmentedControl!
     @IBOutlet var tableView: UITableView!
     
-    @IBOutlet var topConstraintOutsideSearch: NSLayoutConstraint!
-    @IBOutlet var topConstraintInsideSearch: NSLayoutConstraint!
-    
     var searchController: UISearchController!
 
     enum MonstersSort: Int {
@@ -29,6 +26,9 @@ class MonstersViewController: UIViewController, UITableViewDataSource, UITableVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        extendedNavigationBarView.navigationBar = navigationController?.navigationBar
+        extendedNavigationBarView.scrollView = tableView
         
         splitViewController?.delegate = self
 
@@ -43,9 +43,6 @@ class MonstersViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 
-        // Remove the navigation bar's shadow.
-        extendedNavigationBarView.removeShadowFromNavigationBar(navigationController?.navigationBar)
-
         // Deselect the row when we reappear in collapsed mode, or when not using a split view controller.
         if splitViewController == nil || splitViewController!.collapsed {
             if let indexPath = tableView.indexPathForSelectedRow {
@@ -59,17 +56,10 @@ class MonstersViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         tableView.flashScrollIndicators()
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        // Restore the default navigation bar shadow for the next view.
-        extendedNavigationBarView.restoreShadowToNavigationBar(navigationController?.navigationBar)
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -277,8 +267,6 @@ class MonstersViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func willPresentSearchController(searchController: UISearchController) {
         // Hide the part of the navigation bar with the sort buttons.
-        view.removeConstraint(topConstraintOutsideSearch)
-        view.addConstraint(topConstraintInsideSearch)
         extendedNavigationBarView.hidden = true
     }
 
@@ -289,8 +277,6 @@ class MonstersViewController: UIViewController, UITableViewDataSource, UITableVi
 
     func willDismissSearchController(searchController: UISearchController) {
         // Unhide the part of the navigation bar with the sort button.
-        view.removeConstraint(topConstraintInsideSearch)
-        view.addConstraint(topConstraintOutsideSearch)
         extendedNavigationBarView.hidden = false
     }
     

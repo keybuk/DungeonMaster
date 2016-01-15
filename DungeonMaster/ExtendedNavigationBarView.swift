@@ -13,18 +13,36 @@ import UIKit
 /// Taken from Apple sample code, should be used immediately below a Navigation Bar to create the appearance of an extended navigation bar.
 @IBDesignable
 class ExtendedNavigationBarView: UIView {
+
+    /// Navigation bar that this extension should be attached to.
+    var navigationBar: UINavigationBar?
+    
+    /// Scroll view which should have its insets adjusted.
+    var scrollView: UIScrollView?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor(red: 247.0/255.0, green: 247.0/255.0, blue: 247.0/255.0, alpha: 1.0)
+        backgroundColor = UIColor(white: 247.0/255.0, alpha: 1.0)
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        backgroundColor = UIColor(red: 247.0/255.0, green: 247.0/255.0, blue: 247.0/255.0, alpha: 1.0)
+        backgroundColor = UIColor(white: 247.0/255.0, alpha: 1.0)
     }
 
     override func willMoveToWindow(newWindow: UIWindow?) {
+        super.willMoveToWindow(newWindow)
+        
+        configureLayer()
+        
+        if let _ = newWindow {
+            removeShadowFromNavigationBar()
+        } else {
+            restoreShadowToNavigationBar()
+        }
+    }
+    
+    func configureLayer() {
         // Use the layer shadow to draw a one pixel hairline under this view.
         layer.shadowOffset = CGSize(width: 0.0, height: 1.0/UIScreen.mainScreen().scale)
         layer.shadowRadius = 0.0
@@ -36,8 +54,10 @@ class ExtendedNavigationBarView: UIView {
         layer.shadowOpacity = 0.25
     }
     
-    /// Removes the built-in background and shadow from a navigation bar, so that its appearance matches this view and appears to flow into it.
-    func removeShadowFromNavigationBar(navigationBar: UINavigationBar?) {
+    func removeShadowFromNavigationBar() {
+        guard let navigationBar = navigationBar else { return }
+
+        // Create a transparent image and assign it to the navigation bar's shadow image.
         let rect = CGRectMake(0.0, 0.0, 1.0, 1.0)
         UIGraphicsBeginImageContext(rect.size)
         let context = UIGraphicsGetCurrentContext()
@@ -46,20 +66,66 @@ class ExtendedNavigationBarView: UIView {
         CGContextSetFillColorWithColor(context, color.CGColor)
         CGContextFillRect(context, rect)
         
-        navigationBar?.shadowImage = UIGraphicsGetImageFromCurrentImageContext()
+        navigationBar.shadowImage = UIGraphicsGetImageFromCurrentImageContext()
         
+        // Re-fill it with the background color and assign it to the navigation bar's background image.
         CGContextSetFillColorWithColor(context, backgroundColor!.CGColor)
         CGContextFillRect(context, rect)
         
-        navigationBar?.setBackgroundImage(UIGraphicsGetImageFromCurrentImageContext(), forBarMetrics: .Default)
+        navigationBar.setBackgroundImage(UIGraphicsGetImageFromCurrentImageContext(), forBarMetrics: .Default)
         
         UIGraphicsEndImageContext()
     }
     
-    /// Restores the built-in background and shadow to a navigation bar.
-    func restoreShadowToNavigationBar(navigationBar: UINavigationBar?) {
-        navigationBar?.shadowImage = nil
-        navigationBar?.setBackgroundImage(nil, forBarMetrics: .Default)
+    func restoreShadowToNavigationBar() {
+        guard let navigationBar = navigationBar else { return }
+
+        navigationBar.shadowImage = nil
+        navigationBar.setBackgroundImage(nil, forBarMetrics: .Default)
+    }
+
+    var contentInsetAdjusted = false
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        // Adjust the insets of the related scroll view to include the height of the extension.
+        guard let scrollView = scrollView else { return }
+        let oldContentOffset = scrollView.contentOffset
+        if hidden {
+            if contentInsetAdjusted {
+                scrollView.contentInset.top -= bounds.size.height
+                if oldContentOffset == scrollView.contentOffset {
+                    scrollView.contentOffset.y += bounds.size.height
+                }
+                contentInsetAdjusted = false
+            }
+        } else {
+            if !contentInsetAdjusted {
+                scrollView.contentInset.top += bounds.size.height
+                if oldContentOffset == scrollView.contentOffset {
+                    scrollView.contentOffset.y -= bounds.size.height
+                }
+                contentInsetAdjusted = true
+            }
+        }
+    }
+    
+    override var hidden: Bool {
+        get {
+            return super.hidden
+        }
+        set(newHidden) {
+            let oldHidden = super.hidden
+            super.hidden = newHidden
+
+            setNeedsLayout()
+            if newHidden && !oldHidden {
+                restoreShadowToNavigationBar()
+            } else if !newHidden && oldHidden {
+                removeShadowFromNavigationBar()
+            }
+        }
     }
     
 }
