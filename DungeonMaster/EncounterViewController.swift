@@ -91,8 +91,8 @@ class EncounterViewController: UITableViewController {
                 combatantViewController.navigationItem.leftItemsSupplementBackButton = true
             }
         } else if segue.identifier == "AddMonsterSegue" {
-            let monstersViewController = segue.destinationViewController as! MonstersViewController
-            monstersViewController.addMode = true
+            //let monstersViewController = segue.destinationViewController as! MonstersViewController
+            //monstersViewController.addMode = true
         } else if segue.identifier == "PlayersPopoverSegue" {
             let encounterPlayersViewController = (segue.destinationViewController as! UINavigationController).topViewController as! EncounterPlayersViewController
             encounterPlayersViewController.encounter = encounter
@@ -100,13 +100,13 @@ class EncounterViewController: UITableViewController {
     }
     
     @IBAction func unwindFromMonster(segue: UIStoryboardSegue) {
-        let controller = segue.sourceViewController as! DetailViewController
+        /*let controller = segue.sourceViewController as! DetailViewController
         let monster = controller.monster
         
         let combatant = Combatant(encounter: encounter, monster: monster, inManagedObjectContext: managedObjectContext)
         combatant.role = .Foe
 
-        saveContext()
+        saveContext()*/
     }
     
     @IBAction func unwindFromPlayers(segue: UIStoryboardSegue) {

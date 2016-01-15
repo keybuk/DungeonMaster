@@ -76,7 +76,7 @@
 		D298E9031C2A5597007461A9 /* PlayerRaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298E9021C2A5597007461A9 /* PlayerRaceViewController.swift */; };
 		D2A9AF0A1BFFEAA5009902ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A9AF091BFFEAA5009902ED /* AppDelegate.swift */; };
 		D2A9AF0D1BFFEAA5009902ED /* DungeonMaster.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2A9AF0B1BFFEAA5009902ED /* DungeonMaster.xcdatamodeld */; };
-		D2A9AF111BFFEAA5009902ED /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A9AF101BFFEAA5009902ED /* DetailViewController.swift */; };
+		D2A9AF111BFFEAA5009902ED /* MonsterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A9AF101BFFEAA5009902ED /* MonsterViewController.swift */; };
 		D2A9AF141BFFEAA5009902ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2A9AF121BFFEAA5009902ED /* Main.storyboard */; };
 		D2A9AF161BFFEAA5009902ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2A9AF151BFFEAA5009902ED /* Assets.xcassets */; };
 		D2A9AF191BFFEAA5009902ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2A9AF171BFFEAA5009902ED /* LaunchScreen.storyboard */; };
@@ -181,7 +181,7 @@
 		D2A9AF061BFFEAA5009902ED /* DungeonMaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DungeonMaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2A9AF091BFFEAA5009902ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2A9AF0C1BFFEAA5009902ED /* DungeonMaster.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DungeonMaster.xcdatamodel; sourceTree = "<group>"; };
-		D2A9AF101BFFEAA5009902ED /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		D2A9AF101BFFEAA5009902ED /* MonsterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterViewController.swift; sourceTree = "<group>"; };
 		D2A9AF131BFFEAA5009902ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D2A9AF151BFFEAA5009902ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2A9AF181BFFEAA5009902ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -277,6 +277,8 @@
 			isa = PBXGroup;
 			children = (
 				D2597F691C4844D90091AD05 /* CompendiumViewController.swift */,
+				D2511FF71C12B1AD00A09F0B /* MonstersViewController.swift */,
+				D2A9AF101BFFEAA5009902ED /* MonsterViewController.swift */,
 			);
 			name = Compendium;
 			sourceTree = "<group>";
@@ -368,9 +370,7 @@
 				D26FBA3A1C1E3FE400D44503 /* DamageViewController.swift */,
 				D2C6063D1C17D32900F61DBD /* TabletopViewController.swift */,
 				D2597F6B1C4844FE0091AD05 /* Compendium */,
-				D2511FF71C12B1AD00A09F0B /* MonstersViewController.swift */,
 				D2511FFF1C14C7ED00A09F0B /* BooksViewController.swift */,
-				D2A9AF101BFFEAA5009902ED /* DetailViewController.swift */,
 				D21BACEE1C339464007E2934 /* SpellsViewController.swift */,
 				D21BACF01C339476007E2934 /* SpellDetailViewController.swift */,
 				D298E8EE1C29D6E1007461A9 /* PlayersViewController.swift */,
@@ -601,7 +601,7 @@
 				D249CF8B1C23311A00CDE673 /* Rules.swift in Sources */,
 				D26FBA341C1D3BAF00D44503 /* CombatantViewController.swift in Sources */,
 				D298E8FD1C2A5151007461A9 /* PlayerBackgroundViewController.swift in Sources */,
-				D2A9AF111BFFEAA5009902ED /* DetailViewController.swift in Sources */,
+				D2A9AF111BFFEAA5009902ED /* MonsterViewController.swift in Sources */,
 				D298E8F71C2A27B8007461A9 /* PlayerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

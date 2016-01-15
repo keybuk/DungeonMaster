@@ -1,5 +1,5 @@
 //
-//  DetailViewController.swift
+//  MonsterViewController.swift
 //  DungeonMaster
 //
 //  Created by Scott James Remnant on 11/20/15.
@@ -9,7 +9,7 @@
 import CoreData
 import UIKit
 
-class DetailViewController: UIViewController {
+class MonsterViewController: UIViewController {
 
     @IBOutlet var textView: UITextView!
     @IBOutlet var addButton: UIBarButtonItem!
@@ -17,13 +17,15 @@ class DetailViewController: UIViewController {
 
     var monster: Monster! {
         didSet {
-            guard textView != nil else { return }
             configureView()
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        textView.textContainerInset.left = 10.0
+        textView.textContainerInset.right = 10.0
 
         // Disable scrolling, otherwise we end up at the bottom.
         textView.scrollEnabled = false
@@ -49,6 +51,14 @@ class DetailViewController: UIViewController {
     }
 
     func configureView() {
+        guard let textView = textView else { return }
+        guard let monster = monster else { return }
+        
+        let markupParser = MarkupParser()
+        markupParser.paragraphSpacingBefore = markupParser.paragraphSpacing
+        markupParser.tableWidth = textView.bounds.size.width - textView.textContainerInset.left - textView.textContainerInset.right
+        markupParser.linkColor = textView.tintColor
+        
         let nameFont = UIFontDescriptor.preferredFontDescriptorWithTextStyle(UIFontTextStyleTitle1)
 
         let subheadlineFont = UIFontDescriptor.preferredFontDescriptorWithTextStyle(UIFontTextStyleSubheadline)
@@ -91,7 +101,7 @@ class DetailViewController: UIViewController {
         
         let abilityScoresParaStyle = NSParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
         
-        let cellWidth = textView.frame.size.width / 6
+        let cellWidth = markupParser.tableWidth! / 6
 
         abilityScoresParaStyle.tabStops = [
             NSTextTab(textAlignment: .Center, location: 0.5 * cellWidth, options: [String:AnyObject]()),
@@ -547,11 +557,6 @@ class DetailViewController: UIViewController {
         text.appendAttributedString(NSAttributedString(string: "Challenge ", attributes: statsLabelStyle))
         text.appendAttributedString(NSAttributedString(string: "\(challengeString) (\(xpString) XP)\n", attributes: statsValueStyle))
         
-        let markupParser = MarkupParser()
-        markupParser.paragraphSpacingBefore = markupParser.paragraphSpacing
-        markupParser.tableWidth = textView.frame.size.width
-        markupParser.linkColor = textView.tintColor
-
         for case let trait as Trait in monster.traits {
             markupParser.parse("***\(trait.name).*** \(trait.text)")
             text.appendAttributedString(markupParser.text)

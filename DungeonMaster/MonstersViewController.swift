@@ -9,8 +9,10 @@
 import CoreData
 import UIKit
 
-class MonstersViewController: UIViewController {
+class MonstersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UISearchControllerDelegate, UISearchResultsUpdating, UISplitViewControllerDelegate {
     
+    var books: [Book]!
+
     @IBOutlet var extendedNavigationBarView: ExtendedNavigationBarView!
     @IBOutlet var sortControl: UISegmentedControl!
     @IBOutlet var tableView: UITableView!
@@ -18,10 +20,7 @@ class MonstersViewController: UIViewController {
     @IBOutlet var topConstraintOutsideSearch: NSLayoutConstraint!
     @IBOutlet var topConstraintInsideSearch: NSLayoutConstraint!
     
-    var addMode = false
-
-    var searchController: UISearchController?
-    var hiddenBooks: Set<Book>?
+    var searchController: UISearchController!
 
     enum MonstersSort: Int {
         case ByName
@@ -30,13 +29,15 @@ class MonstersViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        splitViewController?.delegate = self
 
         // Search Controller; can't create these in IB yet.
         searchController = UISearchController(searchResultsController: nil)
-        searchController!.delegate = self
-        searchController!.searchResultsUpdater = self
-        searchController!.obscuresBackgroundDuringPresentation = false
-        tableView.tableHeaderView = searchController!.searchBar
+        searchController.delegate = self
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        tableView.tableHeaderView = searchController.searchBar
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -45,15 +46,15 @@ class MonstersViewController: UIViewController {
         // Remove the navigation bar's shadow.
         extendedNavigationBarView.removeShadowFromNavigationBar(navigationController?.navigationBar)
 
-        // Deselect the row when we reappear in collapsed mode.
-        if splitViewController!.collapsed {
+        // Deselect the row when we reappear in collapsed mode, or when not using a split view controller.
+        if splitViewController == nil || splitViewController!.collapsed {
             if let indexPath = tableView.indexPathForSelectedRow {
                 tableView.deselectRowAtIndexPath(indexPath, animated: true)
             }
         }
 
         // Shift the table down to hide the search bar.
-        tableView.contentOffset.y += searchController!.searchBar.frame.size.height
+        tableView.contentOffset.y += searchController.searchBar.bounds.size.height
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -80,41 +81,18 @@ class MonstersViewController: UIViewController {
         if segue.identifier == "MonsterDetailSegue" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let monster = fetchedResultsController.objectAtIndexPath(indexPath) as! Monster
-                let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
-                controller.monster = monster
-                controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
-                controller.navigationItem.leftItemsSupplementBackButton = true
-                if let index = controller.navigationItem.rightBarButtonItems?.indexOf(controller.addButton) {
-                    if !addMode {
-                        controller.navigationItem.rightBarButtonItems?.removeAtIndex(index)
-                    }
-                }
-                if let index = controller.navigationItem.rightBarButtonItems?.indexOf(controller.doneButton) {
-                    controller.navigationItem.rightBarButtonItems?.removeAtIndex(index)
-                }
+                let viewController = (segue.destinationViewController as! UINavigationController).topViewController as! MonsterViewController
+                viewController.monster = monster
+                viewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
+                viewController.navigationItem.leftItemsSupplementBackButton = true
             }
-        } else if segue.identifier == "BooksPopoverSegue" {
-            let booksViewController = (segue.destinationViewController as! UINavigationController).topViewController as! BooksViewController
-            booksViewController.hiddenBooks = hiddenBooks
         }
     }
     
-    @IBAction func unwindFromBooks(segue: UIStoryboardSegue) {
-        let booksViewController = segue.sourceViewController as! BooksViewController
-        if booksViewController.hiddenBooks != hiddenBooks {
-            hiddenBooks = booksViewController.hiddenBooks
-            updateFetchedResults()
-            
-            let defaults = NSUserDefaults.standardUserDefaults()
-            if let hiddenBooks = hiddenBooks {
-                let bookNames = hiddenBooks.map { book -> String in
-                    return book.name
-                }
-                defaults.setObject(bookNames, forKey: "HiddenBooks")
-            } else {
-                defaults.removeObjectForKey("HiddenBooks")
-            }
-        }
+    // MARK: Actions
+    
+    @IBAction func sortControlValueChanged(sortControl: UISegmentedControl) {
+        updateFetchedResults()
     }
 
     // MARK: Fetched results controller
@@ -124,32 +102,14 @@ class MonstersViewController: UIViewController {
             return fetchedResultsController
         }
         
-        // Load previously saved hidden books. Handled here rather than in viewDidLoad because this happens first, and reloading data straight after would be ugly.
-        let defaults = NSUserDefaults.standardUserDefaults()
-        if let hiddenBookNames = defaults.objectForKey("HiddenBooks") as? [String] {
-            let fetchRequest = NSFetchRequest(entity: Model.Book)
-            fetchRequest.predicate = NSPredicate(format: "name in %@", hiddenBookNames)
-            
-            let books = try! managedObjectContext.executeFetchRequest(fetchRequest) as! [Book]
-            hiddenBooks = Set<Book>(books)
-        }
-        
-        // Create and execute the fetch request.
-        updateFetchRequestController()
-
-        return _fetchedResultsController!
-    }
-    var _fetchedResultsController: NSFetchedResultsController?
-    
-    func updateFetchRequestController(search search: String? = nil) {
         let fetchRequest = NSFetchRequest(entity: Model.Monster)
         fetchRequest.fetchBatchSize = 20
-
-        // Sorting by name is enough for section handling by initial to work.
+        
         let sectionNameKeyPath: String
         let sort = MonstersSort(rawValue: sortControl.selectedSegmentIndex)!
         switch sort {
         case .ByName:
+            // Sorting by name is enough for section handling by initial to work.
             let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
             fetchRequest.sortDescriptors = [sortDescriptor]
             
@@ -162,52 +122,34 @@ class MonstersViewController: UIViewController {
             sectionNameKeyPath = "challenge"
         }
         
-        // Set the filter based on both the hidden books, and the search pattern.
-        var booksPredicate: NSPredicate?
-        var searchPredicate: NSPredicate?
-        
-        if let hiddenBooks = hiddenBooks {
-            booksPredicate = NSPredicate(format: "SUBQUERY(sources, $s, $s.book IN %@).@count < sources.@count", hiddenBooks)
-        }
-        
-        if let search = search {
+        // Set the filter based on both the set of books, and the search pattern.
+        let booksPredicate = NSPredicate(format: "ANY sources.book IN %@", books)
+
+        if let search = searchController.searchBar.text where searchController.active {
             let typeList = MonsterType.cases.filter({ $0.stringValue.lowercaseString.containsString(search.lowercaseString) }).map({ $0.rawValue })
-    
-            searchPredicate = NSPredicate(format: "rawType IN %@ OR name CONTAINS[cd] %@ OR ANY tags.name CONTAINS[cd] %@", typeList as NSArray, search, search)
-        }
-        
-        if let booksPredicate = booksPredicate, searchPredicate = searchPredicate {
+            
+            let searchPredicate = NSPredicate(format: "rawType IN %@ OR name CONTAINS[cd] %@ OR ANY tags.name CONTAINS[cd] %@", typeList as NSArray, search, search)
             fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [booksPredicate, searchPredicate])
-        } else if let booksPredicate = booksPredicate {
+        } else {
             fetchRequest.predicate = booksPredicate
-        } else if let searchPredicate = searchPredicate {
-            fetchRequest.predicate = searchPredicate
         }
-        
-        // Edit the section name key path and cache name if appropriate.
-        // nil for section name key path means "no sections".
+
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: sectionNameKeyPath, cacheName: nil)
         fetchedResultsController.delegate = self
         _fetchedResultsController = fetchedResultsController
         
         try! _fetchedResultsController!.performFetch()
+
+        return _fetchedResultsController!
     }
+    var _fetchedResultsController: NSFetchedResultsController?
     
-    func updateFetchedResults(search search: String? = nil) {
-        updateFetchRequestController(search: search)
+    func updateFetchedResults() {
+        _fetchedResultsController = nil
         tableView.reloadData()
     }
     
-    // MARK: Actions
-
-    @IBAction func sortControlValueChanged(sortControl: UISegmentedControl) {
-        updateFetchedResults()
-    }
-
-}
-
-// MARK: UITableViewDataSource
-extension MonstersViewController: UITableViewDataSource {
+    // MARK: - UITableViewDataSource
     
     // MARK: Sections
 
@@ -221,7 +163,7 @@ extension MonstersViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        guard !searchController!.active else { return nil }
+        guard !searchController.active else { return nil }
         let sectionInfo = fetchedResultsController.sections![section]
         
         let sort = MonstersSort(rawValue: sortControl.selectedSegmentIndex)!
@@ -256,7 +198,7 @@ extension MonstersViewController: UITableViewDataSource {
     }
     
     func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
-        guard !searchController!.active else { return nil }
+        guard !searchController.active else { return nil }
         return fetchedResultsController.sectionIndexTitles
     }
     
@@ -269,15 +211,9 @@ extension MonstersViewController: UITableViewDataSource {
         return cell
     }
 
-}
+    // MARK: - UITableViewDelegate
 
-// MARK: UITableViewDelegate
-extension MonstersViewController: UITableViewDelegate {
-
-}
-
-// MARK: NSFetchedResultsControllerDelegate
-extension MonstersViewController: NSFetchedResultsControllerDelegate {
+    // MARK: NSFetchedResultsControllerDelegate
 
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
         tableView.beginUpdates()
@@ -305,8 +241,12 @@ extension MonstersViewController: NSFetchedResultsControllerDelegate {
             let monster = fetchedResultsController.objectAtIndexPath(indexPath!) as! Monster
             cell.monster = monster
         case .Move:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+            // .Move also implies .Update, we have to look at the newIndexPath for the monster.
+            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! MonsterCell
+            let monster = fetchedResultsController.objectAtIndexPath(newIndexPath!) as! Monster
+            cell.monster = monster
+
+            tableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!)
         }
     }
     
@@ -333,10 +273,7 @@ extension MonstersViewController: NSFetchedResultsControllerDelegate {
         }
     }
     
-}
-
-// MARK: UISearchControllerDelegate
-extension MonstersViewController: UISearchControllerDelegate {
+    // MARK: UISearchControllerDelegate
     
     func willPresentSearchController(searchController: UISearchController) {
         // Hide the part of the navigation bar with the sort buttons.
@@ -362,25 +299,34 @@ extension MonstersViewController: UISearchControllerDelegate {
         updateFetchedResults()
     }
     
-}
-
-// MARK: UISearchResultsUpdating
-extension MonstersViewController: UISearchResultsUpdating {
+    // MARK: UISearchResultsUpdating
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
-        let text = searchController.searchBar.text!
-        updateFetchedResults(search: text)
+        updateFetchedResults()
+    }
+    
+    // MARK: UISplitViewControllerDelegate
+    
+    func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController:UIViewController, ontoPrimaryViewController primaryViewController:UIViewController) -> Bool {
+        if let secondaryViewController = secondaryViewController as? UINavigationController,
+            monsterViewController = secondaryViewController.topViewController as? MonsterViewController where monsterViewController.monster == nil {
+                // If we're not yet showing a monster stat block in the secondary view controller, do nothing, and then return 'true' to indicate the automatic behavior should be skipped—thus discarding the empty stat block view.
+                return true
+        }
+        
+        // Otherwise let the automatic behavior win.
+        return false
     }
     
 }
 
-// MARK: - 
+// MARK: -
 
 class MonsterCell: UITableViewCell {
     
-    var monster: Monster? {
+    var monster: Monster! {
         didSet {
-            textLabel?.text = monster!.name
+            textLabel?.text = monster.name
         }
     }
 

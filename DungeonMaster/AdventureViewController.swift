@@ -108,9 +108,6 @@ class AdventureViewController: UIViewController, UITextViewDelegate, AdjustableI
         presentViewController(controller, animated: true, completion: nil)
     }
     
-    @IBAction func unwindFromCompendium(segue: UIStoryboardSegue) {
-    }
-    
     // MARK: UITextViewDelegate
     
     func textViewDidChange(textView: UITextView) {

@@ -33,15 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     navigationController.pushViewController(adventureViewController, animated: false)
                 }
         }
-        
-        // Set up the split view controller, and place the display button in the top-left for certain devices.
-        if let splitViewController = self.window!.rootViewController as? UISplitViewController {
-            let navigationController = splitViewController.viewControllers.last as! UINavigationController
-            splitViewController.delegate = self
-            
-            navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
-        }
-        
+
         return true
     }
 
@@ -69,23 +61,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         saveContext()
     }
 
-}
-
-// MARK: UISplitViewControllerDelegate
-extension AppDelegate: UISplitViewControllerDelegate {
- 
-    // 6S+ start primary only
-    // uncollapse for detail when we tap a monster
-    // Add and Back should collapse back to just primary (especially when zoomed)
-    
-    func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController:UIViewController, ontoPrimaryViewController primaryViewController:UIViewController) -> Bool {
-        guard let secondaryAsNavController = secondaryViewController as? UINavigationController else { return false }
-        guard let topAsDetailController = secondaryAsNavController.topViewController as? DetailViewController else { return false }
-        if topAsDetailController.monster == nil {
-            // Return true to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
-            return true
-        }
-        return false
-    }
-    
 }

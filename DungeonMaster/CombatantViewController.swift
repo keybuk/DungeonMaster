@@ -68,11 +68,11 @@ class CombatantViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "MonsterDetailSegue" {
-            let detailViewController = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
+            /*let detailViewController = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
             if let index = detailViewController.navigationItem.rightBarButtonItems?.indexOf(detailViewController.addButton) {
                 detailViewController.navigationItem.rightBarButtonItems?.removeAtIndex(index)
             }
-            detailViewController.monster = combatant.monster
+            detailViewController.monster = combatant.monster*/
         } else if segue.identifier == "RoleSegue" {
             let combatantRoleViewController = segue.destinationViewController as! CombatantRoleViewController
             combatantRoleViewController.role = combatant.role

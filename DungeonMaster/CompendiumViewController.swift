@@ -17,20 +17,34 @@ class CompendiumViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Install navigation buttons into view controllers' navigation items, and also copy over the list of books we should use.
+        for viewController in viewControllers! {
+            let closeButtonItem = UIBarButtonItem(title: "Close", style: .Plain, target: self, action: "closeButtonTapped:")
+            
+            if let splitViewController = viewController as? UISplitViewController, masterViewController = (splitViewController.viewControllers.first as? UINavigationController)?.topViewController, detailViewController = (splitViewController.viewControllers.last as? UINavigationController)?.topViewController {
+                masterViewController.navigationItem.leftBarButtonItem = closeButtonItem
+                
+                detailViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
+                detailViewController.navigationItem.leftItemsSupplementBackButton = true
+                
+                if let monstersViewController = masterViewController as? MonstersViewController {
+                    monstersViewController.books = books
+                }
+            } else if let topViewController = (viewController as? UINavigationController)?.topViewController {
+                topViewController.navigationItem.leftBarButtonItem = closeButtonItem
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+    // MARK: Actions
     
-
-    // MARK: Navigation
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let viewController = segue.destinationViewController
-        viewController.navigationItem.leftBarButtonItems?.insert(closeButtonItem, atIndex: 0)
+    @IBAction func closeButtonTapped(sender: UIBarButtonItem) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
 
 }
