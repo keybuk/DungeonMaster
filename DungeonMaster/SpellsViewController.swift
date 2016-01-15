@@ -30,6 +30,8 @@ class SpellsViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.tableHeaderView = searchController.searchBar
     }
 
+    var contentOffsetIncludesSearchBar = false
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -40,8 +42,11 @@ class SpellsViewController: UIViewController, UITableViewDataSource, UITableView
             }
         }
         
-        // Shift the table down to hide the search bar.
-        tableView.contentOffset.y += searchController.searchBar.bounds.size.height
+        // Offset the table view by the height of the search bar to hide it under the navigation bar by default.
+        if !contentOffsetIncludesSearchBar {
+            tableView.contentOffset.y += searchController.searchBar.bounds.size.height
+            contentOffsetIncludesSearchBar = true
+        }
     }
 
     override func viewDidAppear(animated: Bool) {
