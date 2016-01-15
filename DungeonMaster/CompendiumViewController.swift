@@ -29,6 +29,8 @@ class CompendiumViewController: UITabBarController {
                 
                 if let monstersViewController = masterViewController as? MonstersViewController {
                     monstersViewController.books = books
+                } else if let spellsViewController = masterViewController as? SpellsViewController {
+                    spellsViewController.books = books
                 }
             } else if let topViewController = (viewController as? UINavigationController)?.topViewController {
                 topViewController.navigationItem.leftBarButtonItem = closeButtonItem

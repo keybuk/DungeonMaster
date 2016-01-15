@@ -9,22 +9,73 @@
 import CoreData
 import UIKit
 
-class SpellsViewController: UITableViewController {
+class SpellsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UISearchControllerDelegate, UISearchResultsUpdating, UISplitViewControllerDelegate {
+
+    var books: [Book]!
+
+    @IBOutlet var tableView: UITableView!
+
+    var searchController: UISearchController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        splitViewController?.delegate = self
+        
+        // Search Controller; can't create these in IB yet.
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.delegate = self
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        tableView.tableHeaderView = searchController.searchBar
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Deselect the row when we reappear in collapsed mode, or when not using a split view controller.
+        if splitViewController == nil || splitViewController!.collapsed {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            }
+        }
+        
+        // Shift the table down to hide the search bar.
+        tableView.contentOffset.y += searchController.searchBar.bounds.size.height
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        tableView.flashScrollIndicators()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        // Shift the table back up again.
+        tableView.contentOffset.y -= searchController.searchBar.bounds.size.height
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(animated: Bool) {
-        clearsSelectionOnViewWillAppear = splitViewController!.collapsed
-        super.viewWillAppear(animated)
+    // MARK: Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "SpellDetailSegue" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let spell = fetchedResultsController.objectAtIndexPath(indexPath) as! Spell
+                let viewController = (segue.destinationViewController as! UINavigationController).topViewController as! SpellViewController
+                viewController.spell = spell
+                viewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
+                viewController.navigationItem.leftItemsSupplementBackButton = true
+            }
+        }
     }
-
+    
     // MARK: Fetched results controller
     
     var fetchedResultsController: NSFetchedResultsController {
@@ -35,9 +86,22 @@ class SpellsViewController: UITableViewController {
         let fetchRequest = NSFetchRequest(entity: Model.Spell)
         fetchRequest.fetchBatchSize = 20
 
+        // Sorting by name is enough for section handling by initial to work.
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [ sortDescriptor ]
         
+        // Set the filter based on both the set of books, and the search pattern.
+        let booksPredicate = NSPredicate(format: "ANY sources.book IN %@", books)
+        
+        if let search = searchController.searchBar.text where searchController.active {
+            let schoolList = MagicSchool.cases.filter({ $0.stringValue.lowercaseString.containsString(search.lowercaseString) }).map({ $0.rawValue })
+            
+            let searchPredicate = NSPredicate(format: "rawSchool IN %@ OR name CONTAINS[cd] %@", schoolList as NSArray, search)
+            fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [booksPredicate, searchPredicate])
+        } else {
+            fetchRequest.predicate = booksPredicate
+        }
+
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: "nameInitial", cacheName: nil)
         fetchedResultsController.delegate = self
         _fetchedResultsController = fetchedResultsController
@@ -47,63 +111,47 @@ class SpellsViewController: UITableViewController {
         return _fetchedResultsController!
     }
     var _fetchedResultsController: NSFetchedResultsController?
-    
-    // MARK: Navigation
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "SpellDetailSegue" {
-            if let indexPath = tableView.indexPathForSelectedRow {
-                let spell = fetchedResultsController.objectAtIndexPath(indexPath) as! Spell
-                let spellDetailViewController = (segue.destinationViewController as! UINavigationController).topViewController as! SpellDetailViewController
-                spellDetailViewController.spell = spell
-                spellDetailViewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
-                spellDetailViewController.navigationItem.leftItemsSupplementBackButton = true
-            }
-        }
+ 
+    func updateFetchedResults() {
+        _fetchedResultsController = nil
+        tableView.reloadData()
     }
 
-}
+    // MARK: - UITableViewDataSource
 
-// MARK: UITableViewDataSource
-extension SpellsViewController {
-    
     // MARK: Sections
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return fetchedResultsController.sections?.count ?? 0
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionInfo = fetchedResultsController.sections![section]
         return sectionInfo.numberOfObjects
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard !searchController.active else { return nil }
         return fetchedResultsController.sections![section].name
     }
 
-    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
+    func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
+        guard !searchController.active else { return nil }
         return fetchedResultsController.sectionIndexTitles
     }
     
     // MARK: Rows
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("SpellCell", forIndexPath: indexPath)
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("SpellCell", forIndexPath: indexPath) as! SpellCell
         let spell = fetchedResultsController.objectAtIndexPath(indexPath) as! Spell
-        cell.textLabel?.text = spell.name
+        cell.spell = spell
         return cell
     }
     
-}
+    // MARK: - UITableViewDelegate
 
-// MARK: UITableViewDelegate
-extension SpellsViewController {
-    
-}
-
-// MARK: NSFetchedResultsControllerDelegate
-extension SpellsViewController: NSFetchedResultsControllerDelegate {
+    // MARK: NSFetchedResultsControllerDelegate
     
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
         tableView.beginUpdates()
@@ -127,15 +175,65 @@ extension SpellsViewController: NSFetchedResultsControllerDelegate {
         case .Delete:
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
         case .Update:
-            tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! SpellCell
+            let spell = fetchedResultsController.objectAtIndexPath(indexPath!) as! Spell
+            cell.spell = spell
         case .Move:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+            // .Move also implies .Update, we have to look at the newIndexPath for the spell.
+            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! SpellCell
+            let spell = fetchedResultsController.objectAtIndexPath(newIndexPath!) as! Spell
+            cell.spell = spell
+            
+            tableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!)
         }
     }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         tableView.endUpdates()
     }
+
+    // MARK: UISearchControllerDelegate
     
+    func didPresentSearchController(searchController: UISearchController) {
+        // Remove the thumb index when displaying the search controller. This works because the delegate method checks whether the search controller is active before displaying.
+        tableView.reloadSectionIndexTitles()
+    }
+    
+    func didDismissSearchController(searchController: UISearchController) {
+        // Reset the table back to no search predicate, and reload the data.
+        updateFetchedResults()
+    }
+    
+    // MARK: UISearchResultsUpdating
+    
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        updateFetchedResults()
+    }
+
+    // MARK: UISplitViewControllerDelegate
+    
+    func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController:UIViewController, ontoPrimaryViewController primaryViewController:UIViewController) -> Bool {
+        if let secondaryViewController = secondaryViewController as? UINavigationController,
+            spellViewController = secondaryViewController.topViewController as? SpellViewController where spellViewController.spell == nil {
+                // If we're not yet showing a spell detail in the secondary view controller, do nothing, and then return 'true' to indicate the automatic behavior should be skipped—thus discarding the empty detail view.
+                return true
+        }
+        
+        // Otherwise let the automatic behavior win.
+        return false
+    }
+
 }
+
+// MARK: -
+
+class SpellCell: UITableViewCell {
+
+    var spell: Spell! {
+        didSet {
+            textLabel?.text = spell.name
+        }
+    }
+
+}
+

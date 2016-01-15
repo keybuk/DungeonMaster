@@ -21,7 +21,7 @@
 		D2116A571C10F791001EDBBA /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2116A561C10F791001EDBBA /* Data.plist */; };
 		D21BACED1C3365E8007E2934 /* Spell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BACEC1C3365E8007E2934 /* Spell.swift */; };
 		D21BACEF1C339464007E2934 /* SpellsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BACEE1C339464007E2934 /* SpellsViewController.swift */; };
-		D21BACF11C339476007E2934 /* SpellDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BACF01C339476007E2934 /* SpellDetailViewController.swift */; };
+		D21BACF11C339476007E2934 /* SpellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BACF01C339476007E2934 /* SpellViewController.swift */; };
 		D21BACF31C38B8FF007E2934 /* SpellClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BACF21C38B8FF007E2934 /* SpellClass.swift */; };
 		D21BACF51C38E7B8007E2934 /* MonsterEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BACF41C38E7B8007E2934 /* MonsterEnvironment.swift */; };
 		D23435EC1C0D5A3D00108D5F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23435EB1C0D5A3D00108D5F /* Model.swift */; };
@@ -125,7 +125,7 @@
 		D2116A561C10F791001EDBBA /* Data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Data.plist; path = ../Data.plist; sourceTree = "<group>"; };
 		D21BACEC1C3365E8007E2934 /* Spell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spell.swift; sourceTree = "<group>"; };
 		D21BACEE1C339464007E2934 /* SpellsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpellsViewController.swift; sourceTree = "<group>"; };
-		D21BACF01C339476007E2934 /* SpellDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpellDetailViewController.swift; sourceTree = "<group>"; };
+		D21BACF01C339476007E2934 /* SpellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpellViewController.swift; sourceTree = "<group>"; };
 		D21BACF21C38B8FF007E2934 /* SpellClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpellClass.swift; sourceTree = "<group>"; };
 		D21BACF41C38E7B8007E2934 /* MonsterEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonsterEnvironment.swift; sourceTree = "<group>"; };
 		D23435EB1C0D5A3D00108D5F /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -279,6 +279,8 @@
 				D2597F691C4844D90091AD05 /* CompendiumViewController.swift */,
 				D2511FF71C12B1AD00A09F0B /* MonstersViewController.swift */,
 				D2A9AF101BFFEAA5009902ED /* MonsterViewController.swift */,
+				D21BACEE1C339464007E2934 /* SpellsViewController.swift */,
+				D21BACF01C339476007E2934 /* SpellViewController.swift */,
 			);
 			name = Compendium;
 			sourceTree = "<group>";
@@ -371,8 +373,6 @@
 				D2C6063D1C17D32900F61DBD /* TabletopViewController.swift */,
 				D2597F6B1C4844FE0091AD05 /* Compendium */,
 				D2511FFF1C14C7ED00A09F0B /* BooksViewController.swift */,
-				D21BACEE1C339464007E2934 /* SpellsViewController.swift */,
-				D21BACF01C339476007E2934 /* SpellDetailViewController.swift */,
 				D298E8EE1C29D6E1007461A9 /* PlayersViewController.swift */,
 				D298E8F61C2A27B8007461A9 /* PlayerViewController.swift */,
 				D298E9021C2A5597007461A9 /* PlayerRaceViewController.swift */,
@@ -546,7 +546,7 @@
 				D2597F6A1C4844D90091AD05 /* CompendiumViewController.swift in Sources */,
 				D23435F21C0D608B00108D5F /* Source.swift in Sources */,
 				D23435FB1C0FEFA000108D5F /* Dice.swift in Sources */,
-				D21BACF11C339476007E2934 /* SpellDetailViewController.swift in Sources */,
+				D21BACF11C339476007E2934 /* SpellViewController.swift in Sources */,
 				D26FBA411C1FA17400D44503 /* ConditionViewController.swift in Sources */,
 				D20049231C1A127500A645E9 /* TabletopStatsView.swift in Sources */,
 				D2622AA31C2BCDEC000D6100 /* MonsterSkill.swift in Sources */,

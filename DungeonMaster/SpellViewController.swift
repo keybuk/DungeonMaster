@@ -1,5 +1,5 @@
 //
-//  SpellDetailViewController.swift
+//  SpellViewController.swift
 //  DungeonMaster
 //
 //  Created by Scott James Remnant on 12/29/15.
@@ -9,13 +9,12 @@
 import CoreData
 import UIKit
 
-class SpellDetailViewController: UIViewController {
+class SpellViewController: UIViewController {
 
     @IBOutlet var textView: UITextView!
     
     var spell: Spell! {
         didSet {
-            guard textView != nil else { return }
             configureView()
         }
     }
@@ -23,6 +22,9 @@ class SpellDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        textView.textContainerInset.left = 10.0
+        textView.textContainerInset.right = 10.0
+
         // Disable scrolling, otherwise we end up at the bottom.
         textView.scrollEnabled = false
         configureView()
@@ -47,8 +49,11 @@ class SpellDetailViewController: UIViewController {
     }
 
     func configureView() {
+        guard let textView = textView else { return }
+        guard let spell = spell else { return }
+
         let markupParser = MarkupParser()
-        markupParser.tableWidth = textView.frame.size.width
+        markupParser.tableWidth = textView.bounds.size.width - textView.textContainerInset.left - textView.textContainerInset.right
         markupParser.paragraphSpacingBefore = markupParser.paragraphSpacing
         markupParser.linkColor = textView.tintColor
         
@@ -294,9 +299,9 @@ class SpellDetailViewController: UIViewController {
             
             let spells = try! managedObjectContext.executeFetchRequest(fetchRequest) as! [Spell]
             if spells.count > 0 {
-                let spellDetailViewController = storyboard?.instantiateViewControllerWithIdentifier("SpellDetailViewController") as! SpellDetailViewController
-                spellDetailViewController.spell = spells.first
-                navigationController?.pushViewController(spellDetailViewController, animated: true)
+                let viewController = storyboard?.instantiateViewControllerWithIdentifier("SpellViewController") as! SpellViewController
+                viewController.spell = spells.first
+                navigationController?.pushViewController(viewController, animated: true)
             }
         }
     }

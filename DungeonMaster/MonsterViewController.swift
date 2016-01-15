@@ -12,8 +12,6 @@ import UIKit
 class MonsterViewController: UIViewController {
 
     @IBOutlet var textView: UITextView!
-    @IBOutlet var addButton: UIBarButtonItem!
-    @IBOutlet var doneButton: UIBarButtonItem!
 
     var monster: Monster! {
         didSet {
@@ -59,6 +57,7 @@ class MonsterViewController: UIViewController {
         markupParser.tableWidth = textView.bounds.size.width - textView.textContainerInset.left - textView.textContainerInset.right
         markupParser.linkColor = textView.tintColor
         
+
         let nameFont = UIFontDescriptor.preferredFontDescriptorWithTextStyle(UIFontTextStyleTitle1)
 
         let subheadlineFont = UIFontDescriptor.preferredFontDescriptorWithTextStyle(UIFontTextStyleSubheadline)
@@ -679,9 +678,9 @@ class MonsterViewController: UIViewController {
             
             let spells = try! managedObjectContext.executeFetchRequest(fetchRequest) as! [Spell]
             if spells.count > 0 {
-                let spellDetailViewController = storyboard?.instantiateViewControllerWithIdentifier("SpellDetailViewController") as! SpellDetailViewController
-                spellDetailViewController.spell = spells.first
-                navigationController?.pushViewController(spellDetailViewController, animated: true)
+                let viewController = storyboard?.instantiateViewControllerWithIdentifier("SpellViewController") as! SpellViewController
+                viewController.spell = spells.first
+                navigationController?.pushViewController(viewController, animated: true)
             }
         }
     }
