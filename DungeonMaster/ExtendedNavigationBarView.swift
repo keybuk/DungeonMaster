@@ -57,6 +57,8 @@ class ExtendedNavigationBarView: UIView {
     func removeShadowFromNavigationBar() {
         guard let navigationBar = navigationBar else { return }
 
+        navigationBar.translucent = false
+
         // Create a transparent image and assign it to the navigation bar's shadow image.
         let rect = CGRectMake(0.0, 0.0, 1.0, 1.0)
         UIGraphicsBeginImageContext(rect.size)
@@ -80,6 +82,7 @@ class ExtendedNavigationBarView: UIView {
     func restoreShadowToNavigationBar() {
         guard let navigationBar = navigationBar else { return }
 
+        navigationBar.translucent = true
         navigationBar.shadowImage = nil
         navigationBar.setBackgroundImage(nil, forBarMetrics: .Default)
     }
