@@ -82153,8 +82153,7 @@ When you cast this spell, you can designate any creatures you choose, and the sp
 				<integer>6</integer>
 				<key>text</key>
 				<string>You can cast this spell only at night. Choose up to three corpses of Medium or Small humanoids within range. Each corpse becomes a ghoul under your control. (The DM has game statistics for these creatures.)
-As a bonus action on each of your turns, you can mentally command any creature you animated with
-this spell if the creature is within 120 feet of you (if you control multiple creatures, you can command any or all of them at the same time, issuing the same command to each one). You decide what action the creature will take and where it will move during its next turn, or you can issue a general command, such as to guard a particular chamber or corridor. If you issue no commands, the creature only defends itself against hostile creatures. Once given an order, the creature continues to follow it until its task is complete.
+As a bonus action on each of your turns, you can mentally command any creature you animated with this spell if the creature is within 120 feet of you (if you control multiple creatures, you can command any or all of them at the same time, issuing the same command to each one). You decide what action the creature will take and where it will move during its next turn, or you can issue a general command, such as to guard a particular chamber or corridor. If you issue no commands, the creature only defends itself against hostile creatures. Once given an order, the creature continues to follow it until its task is complete.
 The creature is under your control for 24 hours, after which it stops obeying any command you have given it. To maintain control of the creature for another 24 hours, you must cast this spell on the creature before the current 24-hour period ends. This use of the spell reasserts your control over up to three creatures you have animated with this spell, rather than animating new ones.
 ***At Higher Levels.*** When you cast this spell using a 7th-level spell slot, you can animate or reassert control over four ghouls. When you cast this spell using an 8th-level spell slot, you can animate or reassert control over five ghouls or two ghasts or wights. When you cast this spell using a 9th-level spell slot, you can animate or reassert control over six ghouls, three ghasts or wights, or two mummies.</string>
 			</dict>
@@ -85120,8 +85119,7 @@ This spell merely reveals that a trap is present. You don't learn the location o
 				<integer>6</integer>
 				<key>text</key>
 				<string>You send negative energy coursing through a creature that you can see within range, causing it searing pain. The target must make a Constitution saving throw. It takes 7d8 + 30 necrotic damage on a failed save, or half as much damage on a successful one.
-A humanoid killed by this spell rises at the start of your next turn as a zombie that is permanently under your command, following your verbal orders to the best of
-its ability.</string>
+A humanoid killed by this spell rises at the start of your next turn as a zombie that is permanently under your command, following your verbal orders to the best of its ability.</string>
 			</dict>
 			<key>name</key>
 			<string>Finger of Death</string>
@@ -86235,8 +86233,7 @@ The spell also effectively extends the time limit on raising the target from the
 				<true/>
 				<key>text</key>
 				<string>You transform up to ten centipedes, three spiders, five wasps, or one scorpion within range into giant versions of their natural forms for the duration. A centipede becomes a giant centipede, a spider becomes a giant spider, a wasp becomes a giant wasp, and a scorpion becomes a giant scorpion.
-Each creature obeys your verbal commands, and
-in combat, they act on your turn each round. The DM has the statistics for these creatures and resolves their actions and movement.
+Each creature obeys your verbal commands, and in combat, they act on your turn each round. The DM has the statistics for these creatures and resolves their actions and movement.
 A creature remains in its giant size for the duration, until it drops to 0 hit points, or until you use an action to dismiss the effect on it.
 The DM might allow you to choose different targets. For example, if you transform a bee, its giant version might have the same statistics as a giant wasp.</string>
 			</dict>
@@ -86765,8 +86762,7 @@ When you cast this spell, you can specify individuals that are unaffected by any
 • Place a constant [gust of wind] in one corridor or room.
 • Place a [suggestion] in one location. You select an area of up to 5 feet square, and any creature that enters or passes through the area receives the suggestion mentally.
 The whole warded area radiates magic. A [dispel magic] cast on a specific effect, if successful, removes only that effect.
-You can create a permanently guarded and warded structure by casting this spell there every day
-for one year.</string>
+You can create a permanently guarded and warded structure by casting this spell there every day for one year.</string>
 			</dict>
 			<key>name</key>
 			<string>Guards and Wards</string>
@@ -90877,8 +90873,7 @@ Similarly, this spell doesn't directly affect plant growth. The moved earth carr
 				<string>You place an illusion on a creature or an object you touch so that divination spells reveal false information about it. The target can be a willing creature or an object that isn't being carried or worn by another creature.
 When you cast the spell, choose one or both of the following effects. The effect lasts for the duration. If you cast this spell on the same creature or object every day for 30 days, placing the same effect on it each time, the illusion lasts until it is dispelled.
 ***False Aura.*** You change the way the target appears to spells and magical effects, such as [detect magic], that detect magical auras. You can make a nonmagical object appear magical, a magical object appear nonmagical, or change the object's magical aura so that it appears to belong to a specific school of magic that you choose. When you use this effect on an object, you can make the false magic apparent to any creature that handles the item.
-***Mask.*** You change the way the target appears to spells and magical effects that detect creature types, such as a paladin's Divine Sense or the trigger of a [symbol] spell. You choose a creature type and other spells and magical effects treat the target as if it were a creature of that
-type or of that alignment.</string>
+***Mask.*** You change the way the target appears to spells and magical effects that detect creature types, such as a paladin's Divine Sense or the trigger of a [symbol] spell. You choose a creature type and other spells and magical effects treat the target as if it were a creature of that type or of that alignment.</string>
 			</dict>
 			<key>name</key>
 			<string>Nystul's Magic Aura</string>
@@ -90925,8 +90920,7 @@ type or of that alignment.</string>
 				<integer>4</integer>
 				<key>text</key>
 				<string>A frigid globe of cold energy streaks from your fingertips to a point of your choice within range, where it explodes in a 60-foot-radius sphere. Each creature within the area must make a Constitution saving throw. On a failed save, a creature takes 10d6 cold damage. On a successful save, it takes half as much damage.
-If the globe strikes a body of water or a liquid that is principally water (not including water-based creatures), it freezes the liquid to a depth of 6 inches over an area 30 feet square. This ice lasts for 1 minute. Creatures that were swimming on the surface of frozen water are trapped in the ice. A trapped creature can use an action to make a Strength check against your spell save DC
-to break free.
+If the globe strikes a body of water or a liquid that is principally water (not including water-based creatures), it freezes the liquid to a depth of 6 inches over an area 30 feet square. This ice lasts for 1 minute. Creatures that were swimming on the surface of frozen water are trapped in the ice. A trapped creature can use an action to make a Strength check against your spell save DC to break free.
 You can refrain from firing the globe after completing the spell, if you wish. A small globe about the size of a sling stone, cool to the touch, appears in your hand. At any time, you or a creature you give the globe to can throw the globe (to a range of 40 feet) or hurl it with a sling (to the sling's normal range). It shatters on impact, with the same effect as the normal casting of the spell. You can also set the globe down without shattering it. After 1 minute, if the globe hasn't already shattered, it explodes.
 ***At Higher Levels.*** When you cast this spell using a spell slot of 7th level or higher, the damage increases by 1d6 for each slot level above 6th.</string>
 			</dict>
@@ -96249,8 +96243,7 @@ A creature caught in the wall can move by swimming. Because of the force of the 
 				<key>text</key>
 				<string>This spell creates an invisible, mindless, shapeless force that performs simple tasks at your command until the spell ends. The servant springs into existence in an unoccupied space on the ground within range. It has AC 10, 1 hit point, and a Strength of 2, and it can't attack. If it drops to 0 hit points, the spell ends.
 Once on each of your turns as a bonus action, you can mentally command the servant to move up to 15 feet and interact with an object. The servant can perform simple tasks that a human servant could do, such as fetching things, cleaning, mending, folding clothes, lighting fires, serving food, and pouring wine. Once you give the command, the servant performs the task to the best of its ability until it completes the task, then waits for your next command.
-If you command the servant to perform a task that would move it more than 60 feet away from you,
-the spell ends.</string>
+If you command the servant to perform a task that would move it more than 60 feet away from you, the spell ends.</string>
 			</dict>
 			<key>name</key>
 			<string>Unseen Servant</string>
@@ -98844,8 +98837,7 @@ If you cast this spell multiple times, you can have no more than two of its non-
 				<true/>
 				<key>text</key>
 				<string>You have resistance to acid, cold, fire, lightning, and thunder damage for the spell's duration.
-When you take damage of one of those types, you can use your reaction to gain immunity to that type
-of damage, including against the triggering damage.
+When you take damage of one of those types, you can use your reaction to gain immunity to that type of damage, including against the triggering damage.
 If you do so, the resistances end, and you have the immunity until the end of your next turn, at which time the spell ends.</string>
 			</dict>
 			<key>name</key>
@@ -99167,8 +99159,7 @@ Creatures within 30 feet of the sphere have disadvantage on Wisdom (Perception) 
 				<key>rawSchool</key>
 				<integer>4</integer>
 				<key>text</key>
-				<string>You create a burst of thunderous sound, which can be heard 100 feet away. Each creature other than
-you within 5 feet of you must make a Constitution saving throw. On a failed save, the creature takes 1d6 thunder damage.
+				<string>You create a burst of thunderous sound, which can be heard 100 feet away. Each creature other than you within 5 feet of you must make a Constitution saving throw. On a failed save, the creature takes 1d6 thunder damage.
 The spell's damage increases by 1d6 when you reach 5th level (2d6), 11th level (3d6), and 17th level (4d6).</string>
 			</dict>
 			<key>name</key>
@@ -99831,7 +99822,7 @@ This spell's damage increases by 1d6 when you reach 5th level (2d6), 11th level 
 		</dict>
 	</array>
 	<key>version</key>
-	<integer>1451827119</integer>
+	<integer>1452931220</integer>
 </dict>
 </plist>
 
