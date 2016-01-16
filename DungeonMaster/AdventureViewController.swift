@@ -20,6 +20,14 @@ class AdventureViewController: UIViewController, UITextViewDelegate, AdjustableI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Interface Builder won't let us put one of these in...
+        if let index = navigationItem.rightBarButtonItems?.indexOf(editBarButtonItem) {
+            let fixedSpace = UIBarButtonItem(barButtonSystemItem: .FixedSpace, target: nil, action: nil)
+            fixedSpace.width = 40.0
+
+            navigationItem.rightBarButtonItems?.insert(fixedSpace, atIndex: index + 1)
+        }
 
         // Save the adventure so we come back to it next time.
         NSUserDefaults.standardUserDefaults().setObject(adventure.name, forKey: "Adventure")
@@ -40,9 +48,18 @@ class AdventureViewController: UIViewController, UITextViewDelegate, AdjustableI
     // MARK: Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "CompendiumSegue" {
+        if segue.identifier == "CompendiumMonstersSegue" {
             let viewController = segue.destinationViewController as! CompendiumViewController
             viewController.books = adventure.books.allObjects as! [Book]
+            viewController.showMonsters()
+        } else if segue.identifier == "CompendiumSpellsSegue" {
+            let viewController = segue.destinationViewController as! CompendiumViewController
+            viewController.books = adventure.books.allObjects as! [Book]
+            viewController.showSpells()
+        } else if segue.identifier == "CompendiumMagicItemsSegue" {
+            let viewController = segue.destinationViewController as! CompendiumViewController
+            viewController.books = adventure.books.allObjects as! [Book]
+            viewController.showMagicItems()
         }
     }
     

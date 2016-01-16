@@ -16,7 +16,7 @@ class CompendiumViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Install navigation buttons into view controllers' navigation items, and also copy over the list of books we should use.
         for viewController in viewControllers! {
             let closeButtonItem = UIBarButtonItem(title: "Close", style: .Plain, target: self, action: "closeButtonTapped:")
@@ -41,6 +41,20 @@ class CompendiumViewController: UITabBarController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: Tab selection
+    
+    func showMonsters() {
+        selectedIndex = 0
+    }
+    
+    func showSpells() {
+        selectedIndex = 1
+    }
+    
+    func showMagicItems() {
+        selectedIndex = 2
     }
 
     // MARK: Actions

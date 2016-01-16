@@ -176,9 +176,19 @@
                                     <action selector="editButtonTapped:" destination="YAX-F3-Z4O" id="qMo-41-rU5"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="BookToolbar" id="C2E-2U-0ez">
+                            <barButtonItem image="MagicItemsToolbar" id="68k-fL-nUV">
                                 <connections>
-                                    <segue destination="OBK-xP-lif" kind="presentation" identifier="CompendiumSegue" modalPresentationStyle="pageSheet" id="b6x-Wl-mOs"/>
+                                    <segue destination="OBK-xP-lif" kind="presentation" identifier="CompendiumMagicItemsSegue" modalPresentationStyle="pageSheet" id="wsJ-BA-QeV"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="SpellsToolbar" id="zHC-Cg-ITx">
+                                <connections>
+                                    <segue destination="OBK-xP-lif" kind="presentation" identifier="CompendiumSpellsSegue" modalPresentationStyle="pageSheet" id="dW1-jO-yjw"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="MonstersToolbar" id="G99-K9-gTT">
+                                <connections>
+                                    <segue destination="OBK-xP-lif" kind="presentation" identifier="CompendiumMonstersSegue" modalPresentationStyle="pageSheet" id="VeV-ag-Sfy"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -216,8 +226,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BookToolbar" width="16" height="22"/>
         <image name="D&amp;D Ampersand" width="1000" height="1000"/>
+        <image name="MagicItemsToolbar" width="22" height="20"/>
+        <image name="MonstersToolbar" width="22" height="22"/>
+        <image name="SpellsToolbar" width="22" height="22"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="dW1-jO-yjw"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>
