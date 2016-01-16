@@ -47,8 +47,18 @@ func importIfNeeded() {
     }
     
     // Delete all books. The delete will cascade and remove all information sourced from the books.
+    var adventures = [String:[Adventure]]()
     let bookFetchRequest = NSFetchRequest(entity: Model.Book)
     for book in try! managedObjectContext.executeFetchRequest(bookFetchRequest) as! [Book] {
+        // Save the set of adventures that this book refers to, so we can reconnect them again later.
+        for case let adventure as Adventure in book.adventures {
+            if let referingAdventures = adventures[book.name] {
+                adventures[book.name] = referingAdventures + [ adventure ]
+            } else {
+                adventures[book.name] = [ adventure ]
+            }
+        }
+        
         managedObjectContext.deleteObject(book)
     }
     
@@ -72,6 +82,13 @@ func importIfNeeded() {
         let name = bookData["name"] as! String
         let book = Book(name: name, inManagedObjectContext: managedObjectContext)
         book.type = BookType(rawValue: bookData["type"]!.integerValue)!
+        
+        // Reconnect the book back to its previous adventures.
+        if let referingAdventures = adventures[name] {
+            book.adventures = NSSet(array: referingAdventures)
+            adventures[name] = nil
+        }
+        
         books.append(book)
     }
     
@@ -400,6 +417,11 @@ func importIfNeeded() {
         
         let info = spellData["info"] as! [String: AnyObject]
         spell.setValuesForKeysWithDictionary(info)
+    }
+    
+    // Check that all the adventures got reconnected to their books.
+    for (bookName, referingAdventures) in adventures {
+        print("Book referred to by \(referingAdventures.count) adventures is missing: \(bookName)")
     }
     
     // Check that all the combatants got a monster.

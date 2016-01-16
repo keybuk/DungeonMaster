@@ -8,6 +8,7 @@
     <entity name="Adventure" representedClassName=".Adventure" syncable="YES">
         <attribute name="lastModified" attributeType="Date" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="adventures" inverseEntity="Book" syncable="YES"/>
         <relationship name="image" maxCount="1" deletionRule="Cascade" destinationEntity="AdventureImage" inverseName="adventure" inverseEntity="AdventureImage" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
@@ -39,6 +40,7 @@
     <entity name="Book" representedClassName=".Book" syncable="YES">
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="rawType" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="adventures" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Adventure" inverseName="books" inverseEntity="Adventure" syncable="YES"/>
         <relationship name="sources" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Source" inverseName="book" inverseEntity="Source" syncable="YES"/>
     </entity>
     <entity name="Combatant" representedClassName=".Combatant" syncable="YES">
@@ -279,9 +281,11 @@
     </entity>
     <elements>
         <element name="Action" positionX="261" positionY="360" width="128" height="90"/>
+        <element name="Adventure" positionX="-54" positionY="351" width="128" height="105"/>
+        <element name="AdventureImage" positionX="-45" positionY="360" width="128" height="120"/>
         <element name="AlignmentOption" positionX="-54" positionY="351" width="128" height="90"/>
         <element name="Armor" positionX="-45" positionY="360" width="128" height="150"/>
-        <element name="Book" positionX="-261" positionY="198" width="128" height="90"/>
+        <element name="Book" positionX="-261" positionY="198" width="128" height="105"/>
         <element name="Combatant" positionX="-54" positionY="351" width="128" height="240"/>
         <element name="CombatantCondition" positionX="-36" positionY="369" width="128" height="75"/>
         <element name="CombatantDamage" positionX="-45" positionY="360" width="128" height="90"/>
@@ -310,7 +314,5 @@
         <element name="SpellClass" positionX="-45" positionY="360" width="128" height="75"/>
         <element name="Tag" positionX="-92" positionY="432" width="128" height="75"/>
         <element name="Trait" positionX="261" positionY="261" width="128" height="90"/>
-        <element name="Adventure" positionX="-54" positionY="351" width="128" height="90"/>
-        <element name="AdventureImage" positionX="-45" positionY="360" width="128" height="120"/>
     </elements>
 </model>

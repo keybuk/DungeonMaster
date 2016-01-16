@@ -22,6 +22,11 @@ final class Adventure: NSManagedObject {
     
     /// Image associated with the adventure.
     @NSManaged var image: AdventureImage
+    
+    /// Books that the adventure uses for source material.
+    ///
+    /// Each member is a `Book`. New adventures automatically gain all books that exist at creation time.
+    @NSManaged var books: NSSet
 
     convenience init(inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Adventure, inManagedObjectContext: context)
@@ -29,6 +34,9 @@ final class Adventure: NSManagedObject {
         
         lastModified = NSDate()
         image = AdventureImage(adventure: self, inManagedObjectContext: context)
+        
+        let fetchRequest = NSFetchRequest(entity: Model.Book)
+        books = NSSet(array: try! context.executeFetchRequest(fetchRequest) as! [Book])
     }
 
     // MARK: Validation

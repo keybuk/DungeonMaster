@@ -30,6 +30,11 @@ final class Book: NSManagedObject {
     ///
     /// Each member is a `Source` with the page of the specific reference and link to the referencing entity.
     @NSManaged var sources: NSSet
+    
+    /// Adventures that use this book as source material.
+    ///
+    /// Each member is an `Adventure`.
+    @NSManaged var adventures: NSSet
 
     convenience init(name: String, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Book, inManagedObjectContext: context)
