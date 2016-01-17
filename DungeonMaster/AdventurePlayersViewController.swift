@@ -1,5 +1,5 @@
 //
-//  PlayersViewController.swift
+//  AdventurePlayersViewController.swift
 //  DungeonMaster
 //
 //  Created by Scott James Remnant on 12/22/15.
@@ -9,26 +9,33 @@
 import CoreData
 import UIKit
 
-class PlayersViewController: UITableViewController {
-
+class AdventurePlayersViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+    
+    var adventure: Adventure!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 60.0
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(animated: Bool) {
-        clearsSelectionOnViewWillAppear = splitViewController!.collapsed
-        super.viewWillAppear(animated)
+    override func setEditing(editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        
+        if let tableView = tableView {
+            let addSection = fetchedResultsController.sections?.count ?? 0
+            if editing {
+                tableView.insertSections(NSIndexSet(index: addSection), withRowAnimation: .Automatic)
+            } else {
+                tableView.deleteSections(NSIndexSet(index: addSection), withRowAnimation: .Automatic)
+            }
+        }
     }
     
     // MARK: Fetched results controller
@@ -39,6 +46,7 @@ class PlayersViewController: UITableViewController {
         }
         
         let fetchRequest = NSFetchRequest(entity: Model.Player)
+        fetchRequest.predicate = NSPredicate(format: "%@ IN adventures", adventure)
         
         let nameSortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [nameSortDescriptor]
@@ -53,51 +61,33 @@ class PlayersViewController: UITableViewController {
     }
     var _fetchedResultsController: NSFetchedResultsController?
 
-    // MARK: Navigation
-
-    var selectNextInsert = false
-    var newIndexPathToSelect: NSIndexPath?
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "ShowPlayerSegue" {
-            if let indexPath = tableView.indexPathForSelectedRow {
-                let player = fetchedResultsController.objectAtIndexPath(indexPath) as! Player
-                let playerViewController = (segue.destinationViewController as! UINavigationController).topViewController as! PlayerViewController
-                playerViewController.player = player
-                playerViewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
-                playerViewController.navigationItem.leftItemsSupplementBackButton = true
-            }
-        } else if segue.identifier == "AddPlayerSegue" {
-            let playerViewController = (segue.destinationViewController as! UINavigationController).topViewController as! PlayerViewController
-
-            selectNextInsert = true
-            playerViewController.player = Player(inManagedObjectContext: managedObjectContext)
-            playerViewController.setEditing(true, animated: true)
-            playerViewController.playerNameBecomesFirstResponder = true
-            playerViewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
-            playerViewController.navigationItem.leftItemsSupplementBackButton = true
-        }
-    }
-
-}
-
-// MARK: UITableViewDataSource
-extension PlayersViewController {
+    // MARK: UITableViewDataSource
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return fetchedResultsController.sections?.count ?? 0
+        return (fetchedResultsController.sections?.count ?? 0) + (editing ? 1 : 0)
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sectionInfo = fetchedResultsController.sections![section]
-        return sectionInfo.numberOfObjects
+        let addSection = fetchedResultsController.sections?.count ?? 0
+        if section < addSection {
+            let sectionInfo = fetchedResultsController.sections![section]
+            return sectionInfo.numberOfObjects
+        } else {
+            return 1
+        }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("PlayerCell", forIndexPath: indexPath) as! PlayerCell
-        let player = fetchedResultsController.objectAtIndexPath(indexPath) as! Player
-        
-        cell.player = player
-        return cell
+        let addSection = fetchedResultsController.sections?.count ?? 0
+        if indexPath.section < addSection {
+            let cell = tableView.dequeueReusableCellWithIdentifier("AdventurePlayerCell", forIndexPath: indexPath) as! AdventurePlayerCell
+            let player = fetchedResultsController.objectAtIndexPath(indexPath) as! Player
+            cell.player = player
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("AdventureAddPlayerCell", forIndexPath: indexPath)
+            return cell
+        }
     }
 
     // MARK: Edit support
@@ -108,20 +98,36 @@ extension PlayersViewController {
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
+            // FIXME this is wrong
             let player = fetchedResultsController.objectAtIndexPath(indexPath) as! Player
             managedObjectContext.deleteObject(player)
             saveContext()
+        } else if editingStyle == .Insert {
+            // FIXME
         }
     }
-}
 
-// MARK: UITableViewDelegate
-extension PlayersViewController {
+    // MARK: UITableViewDelegate
     
-}
+    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        let addSection = fetchedResultsController.sections?.count ?? 0
+        if indexPath.section < addSection && editing {
+            return nil
+        } else {
+            return indexPath
+        }
+    }
+    
+    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        let addSection = fetchedResultsController.sections?.count ?? 0
+        if indexPath.section < addSection {
+            return .Delete
+        } else {
+            return .Insert
+        }
+    }
 
-// MARK: NSFetchedResultsControllerDelegate
-extension PlayersViewController: NSFetchedResultsControllerDelegate {
+    // MARK: NSFetchedResultsControllerDelegate
     
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
         tableView.beginUpdates()
@@ -142,60 +148,46 @@ extension PlayersViewController: NSFetchedResultsControllerDelegate {
         switch type {
         case .Insert:
             tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
-            if selectNextInsert {
-                newIndexPathToSelect = newIndexPath
-                selectNextInsert = false
-            }
         case .Delete:
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
         case .Update:
-            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! PlayerCell
+            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! AdventurePlayerCell
             let player = fetchedResultsController.objectAtIndexPath(indexPath!) as! Player
             cell.player = player
         case .Move:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+            // .Move implies .Update; update the cell at the old index with the result at the new index, and then move it.
+            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! AdventurePlayerCell
+            let player = fetchedResultsController.objectAtIndexPath(newIndexPath!) as! Player
+            cell.player = player
+            
+            tableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!)
         }
     }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         tableView.endUpdates()
-        if let indexPath = newIndexPathToSelect {
-            tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: .None)
-            newIndexPathToSelect = nil
-        }
     }
     
 }
 
 // MARK: -
 
-class PlayerCell: UITableViewCell {
+class AdventurePlayerCell: UITableViewCell {
     
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var raceLabel: UILabel!
     @IBOutlet var classLabel: UILabel!
     @IBOutlet var backgroundLabel: UILabel!
     @IBOutlet var xpLabel: UILabel!
+
+    @IBOutlet var leadingConstraint: NSLayoutConstraint!
     
     var player: Player! {
         didSet {
             nameLabel.text = player.name
-            if let _ = player.primitiveValueForKey("rawRace") {
-                raceLabel.text = player.race.stringValue
-            } else {
-                raceLabel.text = nil
-            }
-            if let _ = player.primitiveValueForKey("rawCharacterClass") {
-                classLabel.text = "\(player.characterClass.stringValue) \(player.level)"
-            } else {
-                classLabel.text = nil
-            }
-            if let _ = player.primitiveValueForKey("rawBackground") {
-                backgroundLabel.text = player.background.stringValue
-            } else {
-                backgroundLabel.text = nil
-            }
+            raceLabel.text = player.race.stringValue
+            classLabel.text = "\(player.characterClass.stringValue) \(player.level)"
+            backgroundLabel.text = player.background.stringValue
             
             let xpFormatter = NSNumberFormatter()
             xpFormatter.numberStyle = .DecimalStyle
@@ -205,4 +197,26 @@ class PlayerCell: UITableViewCell {
         }
     }
     
+    override func setEditing(editing: Bool, animated: Bool) {
+        if let leadingConstraint = leadingConstraint {
+            leadingConstraint.constant = editing ? 0.0 : 7.0
+        }
+        
+        super.setEditing(editing, animated: animated)
+
+        selectionStyle = editing ? .None : .Default
+    }
+    
+}
+
+class AdventureAddPlayerCell: UITableViewCell {
+
+    @IBOutlet var label: UILabel!
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    
+        label.textColor = tintColor
+    }
+
 }

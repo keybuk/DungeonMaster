@@ -665,114 +665,6 @@
             </objects>
             <point key="canvasLocation" x="2599" y="-3594"/>
         </scene>
-        <!--Players-->
-        <scene sceneID="KnM-Pi-gDU">
-            <objects>
-                <tableViewController title="Players" id="849-6f-tXx" customClass="PlayersViewController" customModule="DungeonMaster" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" id="oCx-OQ-B1D">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PlayerCell" rowHeight="60" id="9W2-T2-Kqu" customClass="PlayerCell" customModule="DungeonMaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="60"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9W2-T2-Kqu" id="468-Cr-Zve">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="59.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TMc-TQ-rBa">
-                                            <rect key="frame" x="15" y="8" width="544" height="44"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="firstBaseline" translatesAutoresizingMaskIntoConstraints="NO" id="gss-pT-6lC">
-                                                    <rect key="frame" x="0.0" y="0.0" width="544" height="27"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Hafstein" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZp-Bh-1EJ">
-                                                            <rect key="frame" x="0.0" y="8" width="64" height="20"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                            <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
-                                                                <rect key="frame" x="0.0" y="8" width="64" height="20"/>
-                                                            </variation>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="10,913 XP" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iiM-Kr-CSz">
-                                                            <rect key="frame" x="64" y="8" width="481" height="20"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                            <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
-                                                                <rect key="frame" x="64" y="8" width="281" height="20"/>
-                                                            </variation>
-                                                        </label>
-                                                    </subviews>
-                                                    <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
-                                                        <rect key="frame" x="0.0" y="0.0" width="344" height="27"/>
-                                                    </variation>
-                                                </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" alignment="firstBaseline" translatesAutoresizingMaskIntoConstraints="NO" id="su0-W8-9eu">
-                                                    <rect key="frame" x="0.0" y="27" width="544" height="17"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hill Dwarf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7oz-A2-dPY">
-                                                            <rect key="frame" x="0.0" y="0.0" width="182" height="17"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cleric 5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wNo-fZ-0yB">
-                                                            <rect key="frame" x="182" y="0.0" width="181" height="17"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Folk Hero" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JPT-bf-ZnO">
-                                                            <rect key="frame" x="363" y="0.0" width="182" height="17"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
-                                                        <rect key="frame" x="0.0" y="27" width="344" height="17"/>
-                                                    </variation>
-                                                </stackView>
-                                            </subviews>
-                                        </stackView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="TMc-TQ-rBa" secondAttribute="trailing" id="7pe-YF-KHU"/>
-                                        <constraint firstItem="TMc-TQ-rBa" firstAttribute="top" secondItem="468-Cr-Zve" secondAttribute="topMargin" id="QF3-0t-W0s"/>
-                                        <constraint firstItem="TMc-TQ-rBa" firstAttribute="leading" secondItem="468-Cr-Zve" secondAttribute="leadingMargin" constant="7" id="RG5-e2-SE1"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="TMc-TQ-rBa" secondAttribute="bottom" id="zn3-0m-XXV"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="backgroundLabel" destination="JPT-bf-ZnO" id="2no-BJ-9Zc"/>
-                                    <outlet property="classLabel" destination="wNo-fZ-0yB" id="nDv-Ot-jeF"/>
-                                    <outlet property="nameLabel" destination="fZp-Bh-1EJ" id="3pm-NZ-Z9m"/>
-                                    <outlet property="raceLabel" destination="7oz-A2-dPY" id="Dut-qY-xD4"/>
-                                    <outlet property="xpLabel" destination="iiM-Kr-CSz" id="E9B-uz-cyl"/>
-                                    <segue destination="2OT-aG-mah" kind="showDetail" identifier="ShowPlayerSegue" id="F6r-oe-rWe"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="849-6f-tXx" id="Pnk-97-nqN"/>
-                            <outlet property="delegate" destination="849-6f-tXx" id="0ie-3i-Wyv"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Players" id="00P-E6-6t3">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Sxv-bU-ISg">
-                            <connections>
-                                <segue destination="2OT-aG-mah" kind="show" identifier="AddPlayerSegue" id="cru-gZ-1jZ"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="k0P-ps-rhs" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1699" y="-2991"/>
-        </scene>
         <!--Background-->
         <scene sceneID="iW1-JI-sZ4">
             <objects>
@@ -903,8 +795,5 @@
             <point key="canvasLocation" x="3795" y="-2380"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="F6r-oe-rWe"/>
-    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

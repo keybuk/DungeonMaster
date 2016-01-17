@@ -18,6 +18,8 @@ class AdventureViewController: UIViewController, UITextViewDelegate, AdjustableI
     @IBOutlet var nameTextView: UITextView!
     @IBOutlet var adjustableImageView: AdjustableImageView!
     
+    @IBOutlet var playersView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,9 +48,14 @@ class AdventureViewController: UIViewController, UITextViewDelegate, AdjustableI
     
 
     // MARK: Navigation
+    
+    var playersViewController: AdventurePlayersViewController!
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "CompendiumMonstersSegue" {
+        if segue.identifier == "PlayersEmbedSegue" {
+            playersViewController = segue.destinationViewController as! AdventurePlayersViewController
+            playersViewController.adventure = adventure
+        } else if segue.identifier == "CompendiumMonstersSegue" {
             let viewController = segue.destinationViewController as! CompendiumViewController
             viewController.books = adventure.books.allObjects as! [Book]
             viewController.showMonsters()
@@ -77,9 +84,10 @@ class AdventureViewController: UIViewController, UITextViewDelegate, AdjustableI
         navigationItem.leftItemsSupplementBackButton = false
         
         nameTextView.editable = true
-        nameTextView.becomeFirstResponder()
 
         adjustableImageView.editing = true
+        
+        playersViewController.setEditing(true, animated: true)
     }
     
     func finishEditing() {
@@ -95,6 +103,8 @@ class AdventureViewController: UIViewController, UITextViewDelegate, AdjustableI
         nameTextView.resignFirstResponder()
         
         adjustableImageView.editing = false
+        
+        playersViewController.setEditing(false, animated: false)
         
         adventure.lastModified = NSDate()
         try! managedObjectContext.save()

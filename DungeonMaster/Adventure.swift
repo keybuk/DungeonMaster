@@ -27,6 +27,11 @@ final class Adventure: NSManagedObject {
     ///
     /// Each member is a `Book`. New adventures automatically gain all books that exist at creation time.
     @NSManaged var books: NSSet
+    
+    /// Players participating in the adventure.
+    ///
+    /// Each member is a `Player`. New adventures automatically gain all players that exist at creation time.
+    @NSManaged var players: NSSet
 
     convenience init(inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Adventure, inManagedObjectContext: context)
@@ -35,8 +40,8 @@ final class Adventure: NSManagedObject {
         lastModified = NSDate()
         image = AdventureImage(adventure: self, inManagedObjectContext: context)
         
-        let fetchRequest = NSFetchRequest(entity: Model.Book)
-        books = NSSet(array: try! context.executeFetchRequest(fetchRequest) as! [Book])
+        books = NSSet(array: try! context.executeFetchRequest(NSFetchRequest(entity: Model.Book)) as! [Book])
+        players = NSSet(array: try! context.executeFetchRequest(NSFetchRequest(entity: Model.Player)) as! [Player])
     }
 
     // MARK: Validation
