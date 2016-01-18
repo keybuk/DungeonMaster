@@ -101,7 +101,7 @@ class AdventurePlayersViewController: UITableViewController, NSFetchedResultsCon
             // FIXME this is wrong
             let player = fetchedResultsController.objectAtIndexPath(indexPath) as! Player
             managedObjectContext.deleteObject(player)
-            saveContext()
+            try! managedObjectContext.save()
         } else if editingStyle == .Insert {
             // FIXME
         }

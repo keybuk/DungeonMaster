@@ -106,7 +106,7 @@ class EncounterViewController: UITableViewController {
         let combatant = Combatant(encounter: encounter, monster: monster, inManagedObjectContext: managedObjectContext)
         combatant.role = .Foe
 
-        saveContext()*/
+        try! managedObjectContext.save()*/
     }
     
     @IBAction func unwindFromPlayers(segue: UIStoryboardSegue) {
@@ -132,7 +132,7 @@ class EncounterViewController: UITableViewController {
             }
         }
         
-        saveContext()
+        try! managedObjectContext.save()
     }
 
 }
@@ -222,7 +222,7 @@ extension EncounterViewController {
         if editingStyle == .Delete {
             let combatant = fetchedResultsController.objectAtIndexPath(indexPath) as! Combatant
             managedObjectContext.deleteObject(combatant)
-            saveContext()
+            try! managedObjectContext.save()
         }
     }
     

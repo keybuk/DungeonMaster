@@ -111,10 +111,3 @@ func childManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrenc
     context.mergePolicy = NSMergePolicy(mergeType: mergeType)
     return context
 }
-
-func saveContext () {
-    if managedObjectContext.hasChanges {
-        try! managedObjectContext.save()
-    }
-}
-

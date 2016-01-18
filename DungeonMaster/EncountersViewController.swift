@@ -60,7 +60,7 @@ class EncountersViewController: UITableViewController {
             let encounter = Encounter(inManagedObjectContext: managedObjectContext)
             let encounterViewController = segue.destinationViewController as! EncounterViewController
             encounterViewController.encounter = encounter
-            saveContext()
+            try! managedObjectContext.save()
         }
     }
 
@@ -96,7 +96,7 @@ extension EncountersViewController {
         if editingStyle == .Delete {
             let encounter = fetchedResultsController.objectAtIndexPath(indexPath) as! Encounter
             managedObjectContext.deleteObject(encounter)
-            saveContext()
+            try! managedObjectContext.save()
         }
     }
     

@@ -83,14 +83,14 @@ class CombatantViewController: UITableViewController {
         let combatantRoleViewController = segue.sourceViewController as! CombatantRoleViewController
         
         combatant.role = combatantRoleViewController.role!
-        saveContext()
+        try! managedObjectContext.save()
     }
     
     @IBAction func unwindFromCondition(segue: UIStoryboardSegue) {
         let conditionViewController = segue.sourceViewController as! ConditionViewController
         
         let _ = CombatantCondition(target: combatant, type: conditionViewController.type!, inManagedObjectContext: managedObjectContext)
-        saveContext()
+        try! managedObjectContext.save()
     }
 
     @IBAction func unwindFromDamage(segue: UIStoryboardSegue) {
@@ -99,7 +99,7 @@ class CombatantViewController: UITableViewController {
         let damage = CombatantDamage(target: combatant, points: damageViewController.points!, type: damageViewController.type!, inManagedObjectContext: managedObjectContext)
         
         combatant.damagePoints += damage.points
-        saveContext()
+        try! managedObjectContext.save()
     }
     
     @IBAction func unwindFromDetail(segue: UIStoryboardSegue) {
@@ -111,7 +111,7 @@ class CombatantViewController: UITableViewController {
         if let hitPoints = Int(sender.text!) {
             ignoreNextUpdate = true
             combatant.hitPoints = hitPoints
-            saveContext()
+            try! managedObjectContext.save()
             sender.textColor = nil
         } else {
             sender.textColor = UIColor.redColor()
@@ -122,7 +122,7 @@ class CombatantViewController: UITableViewController {
         if let initiative = Int(sender.text!) {
             ignoreNextUpdate = true
             combatant.initiative = initiative
-            saveContext()
+            try! managedObjectContext.save()
             sender.textColor = nil
         } else {
             sender.textColor = UIColor.redColor()
@@ -295,7 +295,7 @@ extension CombatantViewController {
             if indexPath.row > 0 {
                 let condition = combatant.conditions.objectAtIndex(indexPath.row - 1) as! CombatantCondition
                 managedObjectContext.deleteObject(condition)
-                saveContext()
+                try! managedObjectContext.save()
             }
         case 2 where combatant.role != .Player:
             if indexPath.row > 0 {
@@ -304,7 +304,7 @@ extension CombatantViewController {
                 managedObjectContext.deleteObject(damage)
                 
                 combatant.damagePoints -= points
-                saveContext()
+                try! managedObjectContext.save()
             }
         default:
             break
@@ -367,7 +367,7 @@ extension CombatantViewController: UITextViewDelegate {
     func textViewDidChange(textView: UITextView) {
         ignoreNextUpdate = true
         combatant.notes = textView.text
-        saveContext()
+        try! managedObjectContext.save()
     }
 
 }

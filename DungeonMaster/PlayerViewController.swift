@@ -55,7 +55,7 @@ class PlayerViewController: UITableViewController {
         
         if tableView.editing && !pushToSubview {
             if validatePlayer() {
-                saveContext()
+                try! managedObjectContext.save()
             } else {
                 undoChanges()
             }
@@ -129,7 +129,7 @@ class PlayerViewController: UITableViewController {
             navigationItem.leftBarButtonItem = oldLeftBarButtonItem
             navigationItem.leftItemsSupplementBackButton = oldLeftItemsSupplementBackButton!
             
-            saveContext()
+            try! managedObjectContext.save()
         }
     }
 

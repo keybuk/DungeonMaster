@@ -73,7 +73,7 @@ class AdventureGamesViewController: UITableViewController, NSFetchedResultsContr
         if editingStyle == .Delete {
             let game = fetchedResultsController.objectAtIndexPath(indexPath) as! Game
             managedObjectContext.deleteObject(game)
-            saveContext()
+            try! managedObjectContext.save()
         }
     }
 
