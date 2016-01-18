@@ -110,6 +110,11 @@ final class Player: NSManagedObject {
     /// Each member is an `Adventure`.
     @NSManaged var adventures: NSSet
     
+    /// Games that the character has played.
+    ///
+    /// Each member is a `PlayedGame` linking to the appropriate `Game`, along with details of XP, items, etc. earned during that game.
+    @NSManaged var playedGames: NSSet
+    
     /// Encounters that the character is involved in.
     ///
     /// Each member is a `Combatant` linking the character to its encounter, and describing the current state of the character such as conditions, etc.

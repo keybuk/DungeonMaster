@@ -50,11 +50,15 @@ class AdventureViewController: UIViewController, UITextViewDelegate, AdjustableI
     // MARK: Navigation
     
     var playersViewController: AdventurePlayersViewController!
+    var gamesViewController: AdventureGamesViewController!
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "PlayersEmbedSegue" {
             playersViewController = segue.destinationViewController as! AdventurePlayersViewController
             playersViewController.adventure = adventure
+        } else if segue.identifier == "GamesEmbedSegue" {
+            gamesViewController = segue.destinationViewController as! AdventureGamesViewController
+            gamesViewController.adventure = adventure
         } else if segue.identifier == "CompendiumMonstersSegue" {
             let viewController = segue.destinationViewController as! CompendiumViewController
             viewController.books = adventure.books.allObjects as! [Book]
@@ -88,6 +92,7 @@ class AdventureViewController: UIViewController, UITextViewDelegate, AdjustableI
         adjustableImageView.editing = true
         
         playersViewController.setEditing(true, animated: true)
+        gamesViewController.setEditing(true, animated: true)
     }
     
     func finishEditing() {
@@ -104,7 +109,8 @@ class AdventureViewController: UIViewController, UITextViewDelegate, AdjustableI
         
         adjustableImageView.editing = false
         
-        playersViewController.setEditing(false, animated: false)
+        playersViewController.setEditing(false, animated: true)
+        gamesViewController.setEditing(false, animated: true)
         
         adventure.lastModified = NSDate()
         try! managedObjectContext.save()

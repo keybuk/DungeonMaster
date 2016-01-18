@@ -37,6 +37,8 @@ enum Model: String {
     case SpellClass
     case Adventure
     case AdventureImage
+    case Game
+    case PlayedGame
     case Player
     case PlayerSavingThrow
     case PlayerSkill

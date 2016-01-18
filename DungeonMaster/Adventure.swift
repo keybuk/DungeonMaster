@@ -32,6 +32,11 @@ final class Adventure: NSManagedObject {
     ///
     /// Each member is a `Player`. New adventures automatically gain all players that exist at creation time.
     @NSManaged var players: NSSet
+    
+    /// The set of games played so far in this adventure.
+    ///
+    /// Each member is a `Game`.
+    @NSManaged var games: NSSet
 
     convenience init(inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Adventure, inManagedObjectContext: context)
