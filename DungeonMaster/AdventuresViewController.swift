@@ -307,11 +307,7 @@ class AdventureCell: UICollectionViewCell, UITextViewDelegate, AdjustableImageVi
     
     var adventure: Adventure! {
         didSet {
-            if let _ = adventure.primitiveValueForKey("name") {
-                textView.text = adventure.name
-            } else {
-                textView.text = ""
-            }
+            textView.text = adventure.name
             
             adjustableImageView.setImage(adventure.image.image, fraction: adventure.image.fraction, origin: adventure.image.origin)
         }

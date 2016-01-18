@@ -42,6 +42,8 @@ final class Adventure: NSManagedObject {
         let entity = NSEntityDescription.entity(Model.Adventure, inManagedObjectContext: context)
         self.init(entity: entity, insertIntoManagedObjectContext: context)
         
+        name = ""
+        
         lastModified = NSDate()
         image = AdventureImage(adventure: self, inManagedObjectContext: context)
         
