@@ -177,7 +177,7 @@ class SpellsViewController: UIViewController, UITableViewDataSource, UITableView
             let spell = fetchedResultsController.objectAtIndexPath(indexPath!) as! Spell
             cell.spell = spell
         case .Move:
-            // .Move also implies .Update, we have to look at the newIndexPath for the spell.
+            // .Move implies .Update; update the cell at the old index with the result at the new index, and then move it.
             let cell = tableView.cellForRowAtIndexPath(indexPath!) as! SpellCell
             let spell = fetchedResultsController.objectAtIndexPath(newIndexPath!) as! Spell
             cell.spell = spell

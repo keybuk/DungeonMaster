@@ -236,7 +236,7 @@ class MonstersViewController: UIViewController, UITableViewDataSource, UITableVi
             let monster = fetchedResultsController.objectAtIndexPath(indexPath!) as! Monster
             cell.monster = monster
         case .Move:
-            // .Move also implies .Update, we have to look at the newIndexPath for the monster.
+            // .Move implies .Update; update the cell at the old index with the result at the new index, and then move it.
             let cell = tableView.cellForRowAtIndexPath(indexPath!) as! MonsterCell
             let monster = fetchedResultsController.objectAtIndexPath(newIndexPath!) as! Monster
             cell.monster = monster
