@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D20049231C1A127500A645E9 /* TabletopStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20049221C1A127500A645E9 /* TabletopStatsView.swift */; };
+		D20577CC1C4D536900A1D10E /* RomanNumeralFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20577CB1C4D536900A1D10E /* RomanNumeralFormatterTests.swift */; };
 		D209FEF91C30578F0024B0A3 /* MarkupParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D209FEF81C30578F0024B0A3 /* MarkupParser.swift */; };
 		D209FEFB1C3057B20024B0A3 /* MarkupParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D209FEFA1C3057B20024B0A3 /* MarkupParserTest.swift */; };
 		D2116A461C10EBEB001EDBBA /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2116A451C10EBEB001EDBBA /* Action.swift */; };
@@ -83,6 +84,7 @@
 		D2A9AF191BFFEAA5009902ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2A9AF171BFFEAA5009902ED /* LaunchScreen.storyboard */; };
 		D2A9AF241BFFEAA5009902ED /* DungeonMasterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A9AF231BFFEAA5009902ED /* DungeonMasterTests.swift */; };
 		D2A9AF2F1BFFEAA5009902ED /* DungeonMasterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A9AF2E1BFFEAA5009902ED /* DungeonMasterUITests.swift */; };
+		D2B92C1C1C4B6E990057BA47 /* RomanNumeralFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B92C1B1C4B6E990057BA47 /* RomanNumeralFormatter.swift */; };
 		D2BDE60C1C17500A0008B2F2 /* EncountersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDE60B1C17500A0008B2F2 /* EncountersViewController.swift */; };
 		D2BDE60E1C1750170008B2F2 /* EncounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDE60D1C1750170008B2F2 /* EncounterViewController.swift */; };
 		D2C1B7541C39C466002B324D /* AdventuresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C1B7531C39C466002B324D /* AdventuresViewController.swift */; };
@@ -113,6 +115,7 @@
 
 /* Begin PBXFileReference section */
 		D20049221C1A127500A645E9 /* TabletopStatsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabletopStatsView.swift; sourceTree = "<group>"; };
+		D20577CB1C4D536900A1D10E /* RomanNumeralFormatterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RomanNumeralFormatterTests.swift; sourceTree = "<group>"; };
 		D209FEF81C30578F0024B0A3 /* MarkupParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkupParser.swift; sourceTree = "<group>"; };
 		D209FEFA1C3057B20024B0A3 /* MarkupParserTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkupParserTest.swift; sourceTree = "<group>"; };
 		D2116A451C10EBEB001EDBBA /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
@@ -197,6 +200,7 @@
 		D2A9AF2A1BFFEAA5009902ED /* DungeonMasterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DungeonMasterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2A9AF2E1BFFEAA5009902ED /* DungeonMasterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DungeonMasterUITests.swift; sourceTree = "<group>"; };
 		D2A9AF301BFFEAA5009902ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2B92C1B1C4B6E990057BA47 /* RomanNumeralFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RomanNumeralFormatter.swift; sourceTree = "<group>"; };
 		D2BDE60B1C17500A0008B2F2 /* EncountersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncountersViewController.swift; sourceTree = "<group>"; };
 		D2BDE60D1C1750170008B2F2 /* EncounterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncounterViewController.swift; sourceTree = "<group>"; };
 		D2C1B7531C39C466002B324D /* AdventuresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdventuresViewController.swift; sourceTree = "<group>"; };
@@ -330,6 +334,7 @@
 				D23435FA1C0FEFA000108D5F /* Dice.swift */,
 				D249CF841C21DF3500CDE673 /* PointGenerator.swift */,
 				D209FEF81C30578F0024B0A3 /* MarkupParser.swift */,
+				D2B92C1B1C4B6E990057BA47 /* RomanNumeralFormatter.swift */,
 				D249CF8A1C23311A00CDE673 /* Rules.swift */,
 				D26FBA311C1D39B900D44503 /* Sounds.swift */,
 				D2A9AF121BFFEAA5009902ED /* Main.storyboard */,
@@ -354,6 +359,7 @@
 				D23435FC1C0FF84F00108D5F /* DiceTest.swift */,
 				D249CF821C21DDF300CDE673 /* PointGeneratorTest.swift */,
 				D209FEFA1C3057B20024B0A3 /* MarkupParserTest.swift */,
+				D20577CB1C4D536900A1D10E /* RomanNumeralFormatterTests.swift */,
 				D2A9AF251BFFEAA5009902ED /* Info.plist */,
 			);
 			path = DungeonMasterTests;
@@ -543,6 +549,7 @@
 				D298E9011C2A555E007461A9 /* PlayerSavingThrowViewController.swift in Sources */,
 				D2BDE60E1C1750170008B2F2 /* EncounterViewController.swift in Sources */,
 				D298E8FB1C2A5146007461A9 /* PlayerCharacterClassViewController.swift in Sources */,
+				D2B92C1C1C4B6E990057BA47 /* RomanNumeralFormatter.swift in Sources */,
 				D23435F41C0D617C00108D5F /* Monster.swift in Sources */,
 				D2116A511C10F4CE001EDBBA /* LairAction.swift in Sources */,
 				D249CFA61C276B3E00CDE673 /* DamageImmunity.swift in Sources */,
@@ -623,6 +630,7 @@
 				D23435FD1C0FF84F00108D5F /* DiceTest.swift in Sources */,
 				D2A9AF241BFFEAA5009902ED /* DungeonMasterTests.swift in Sources */,
 				D249CF831C21DDF300CDE673 /* PointGeneratorTest.swift in Sources */,
+				D20577CC1C4D536900A1D10E /* RomanNumeralFormatterTests.swift in Sources */,
 				D209FEFB1C3057B20024B0A3 /* MarkupParserTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
