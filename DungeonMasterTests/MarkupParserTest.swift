@@ -1670,12 +1670,12 @@ class MarkupParserTest: XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a test\n")
         
         var range = NSRange()
-        var link = markupParser.text.attribute(markupParser.linkAttributeName, atIndex: 0, effectiveRange: &range) as? String
+        var link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 0, effectiveRange: &range) as? String
         XCTAssertEqual(link, "This is")
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 7)
         
-        link = markupParser.text.attribute(markupParser.linkAttributeName, atIndex: 7, effectiveRange: &range) as? String
+        link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 7, effectiveRange: &range) as? String
         XCTAssertNil(link)
         XCTAssertEqual(range.location, 7)
         XCTAssertEqual(range.length, 8)
@@ -1690,17 +1690,17 @@ class MarkupParserTest: XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a test string containing a link\n")
         
         var range = NSRange()
-        var link = markupParser.text.attribute(markupParser.linkAttributeName, atIndex: 0, effectiveRange: &range) as? String
+        var link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 0, effectiveRange: &range) as? String
         XCTAssertNil(link)
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 10)
         
-        link = markupParser.text.attribute(markupParser.linkAttributeName, atIndex: 10, effectiveRange: &range) as? String
+        link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 10, effectiveRange: &range) as? String
         XCTAssertEqual(link, "test string")
         XCTAssertEqual(range.location, 10)
         XCTAssertEqual(range.length, 11)
         
-        link = markupParser.text.attribute(markupParser.linkAttributeName, atIndex: 21, effectiveRange: &range) as? String
+        link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 21, effectiveRange: &range) as? String
         XCTAssertNil(link)
         XCTAssertEqual(range.location, 21)
         XCTAssertEqual(range.length, 19)
@@ -1715,17 +1715,17 @@ class MarkupParserTest: XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a test\n")
         
         var range = NSRange()
-        var link = markupParser.text.attribute(markupParser.linkAttributeName, atIndex: 0, effectiveRange: &range) as? String
+        var link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 0, effectiveRange: &range) as? String
         XCTAssertNil(link)
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 8)
 
-        link = markupParser.text.attribute(markupParser.linkAttributeName, atIndex: 8, effectiveRange: &range) as? String
+        link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 8, effectiveRange: &range) as? String
         XCTAssertEqual(link, "a test")
         XCTAssertEqual(range.location, 8)
         XCTAssertEqual(range.length, 6)
         
-        link = markupParser.text.attribute(markupParser.linkAttributeName, atIndex: 14, effectiveRange: &range) as? String
+        link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 14, effectiveRange: &range) as? String
         XCTAssertNil(link)
         XCTAssertEqual(range.location, 14)
         XCTAssertEqual(range.length, 1)
@@ -1740,13 +1740,13 @@ class MarkupParserTest: XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a test\n")
         
         var range = NSRange()
-        var link = markupParser.text.attribute(markupParser.linkAttributeName, atIndex: 0, effectiveRange: &range) as? String
-        link = markupParser.text.attribute(markupParser.linkAttributeName, atIndex: 8, effectiveRange: &range) as? String
+        var link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 0, effectiveRange: &range) as? String
+        link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 8, effectiveRange: &range) as? String
         XCTAssertEqual(link, "This is a test")
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 14)
         
-        link = markupParser.text.attribute(markupParser.linkAttributeName, atIndex: 14, effectiveRange: &range) as? String
+        link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 14, effectiveRange: &range) as? String
         XCTAssertNil(link)
         XCTAssertEqual(range.location, 14)
         XCTAssertEqual(range.length, 1)
@@ -1761,17 +1761,17 @@ class MarkupParserTest: XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a thing containing a link\n")
         
         var range = NSRange()
-        var link = markupParser.text.attribute(markupParser.linkAttributeName, atIndex: 0, effectiveRange: &range) as? String
+        var link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 0, effectiveRange: &range) as? String
         XCTAssertNil(link)
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 10)
         
-        link = markupParser.text.attribute(markupParser.linkAttributeName, atIndex: 10, effectiveRange: &range) as? String
+        link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 10, effectiveRange: &range) as? String
         XCTAssertEqual(link, "test string")
         XCTAssertEqual(range.location, 10)
         XCTAssertEqual(range.length, 5)
         
-        link = markupParser.text.attribute(markupParser.linkAttributeName, atIndex: 15, effectiveRange: &range) as? String
+        link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 15, effectiveRange: &range) as? String
         XCTAssertNil(link)
         XCTAssertEqual(range.location, 15)
         XCTAssertEqual(range.length, 19)
@@ -1787,12 +1787,12 @@ class MarkupParserTest: XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a test string containing a link\n")
         
         var range = NSRange()
-        var link = markupParser.text.attribute(markupParser.linkAttributeName, atIndex: 0, effectiveRange: &range) as? String
+        var link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 0, effectiveRange: &range) as? String
         XCTAssertNil(link)
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 10)
         
-        link = markupParser.text.attribute(markupParser.linkAttributeName, atIndex: 10, effectiveRange: &range) as? String
+        link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 10, effectiveRange: &range) as? String
         XCTAssertEqual(link, "test string")
         XCTAssertEqual(range.location, 10)
         XCTAssertEqual(range.length, 11)
@@ -1800,7 +1800,7 @@ class MarkupParserTest: XCTestCase {
         let color = markupParser.text.attribute(NSForegroundColorAttributeName, atIndex: 10, effectiveRange: &range) as? UIColor
         XCTAssertNotNil(color)
         
-        link = markupParser.text.attribute(markupParser.linkAttributeName, atIndex: 21, effectiveRange: &range) as? String
+        link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 21, effectiveRange: &range) as? String
         XCTAssertNil(link)
         XCTAssertEqual(range.location, 21)
         XCTAssertEqual(range.length, 19)
@@ -1849,18 +1849,18 @@ class MarkupParserTest: XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a test’ string containing a link\n")
         
         var range = NSRange()
-        var link = markupParser.text.attribute(markupParser.linkAttributeName, atIndex: 0, effectiveRange: &range) as? String
+        var link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 0, effectiveRange: &range) as? String
         XCTAssertNil(link)
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 10)
         
         // But the link name should be an ordinary apostrophe.
-        link = markupParser.text.attribute(markupParser.linkAttributeName, atIndex: 10, effectiveRange: &range) as? String
+        link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 10, effectiveRange: &range) as? String
         XCTAssertEqual(link, "test' string")
         XCTAssertEqual(range.location, 10)
         XCTAssertEqual(range.length, 12)
         
-        link = markupParser.text.attribute(markupParser.linkAttributeName, atIndex: 22, effectiveRange: &range) as? String
+        link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 22, effectiveRange: &range) as? String
         XCTAssertNil(link)
         XCTAssertEqual(range.location, 22)
         XCTAssertEqual(range.length, 19)
@@ -2266,17 +2266,17 @@ class MarkupParserTest: XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a test string(test containing a link\n")
         
         var range = NSRange()
-        var link = markupParser.text.attribute(markupParser.linkAttributeName, atIndex: 0, effectiveRange: &range) as? String
+        var link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 0, effectiveRange: &range) as? String
         XCTAssertNil(link)
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 10)
         
-        link = markupParser.text.attribute(markupParser.linkAttributeName, atIndex: 10, effectiveRange: &range) as? String
+        link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 10, effectiveRange: &range) as? String
         XCTAssertEqual(link, "test string")
         XCTAssertEqual(range.location, 10)
         XCTAssertEqual(range.length, 11)
         
-        link = markupParser.text.attribute(markupParser.linkAttributeName, atIndex: 21, effectiveRange: &range) as? String
+        link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 21, effectiveRange: &range) as? String
         XCTAssertNil(link)
         XCTAssertEqual(range.location, 21)
         XCTAssertEqual(range.length, 24)
@@ -2291,17 +2291,17 @@ class MarkupParserTest: XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a test stringtest) containing a link\n")
         
         var range = NSRange()
-        var link = markupParser.text.attribute(markupParser.linkAttributeName, atIndex: 0, effectiveRange: &range) as? String
+        var link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 0, effectiveRange: &range) as? String
         XCTAssertNil(link)
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 10)
         
-        link = markupParser.text.attribute(markupParser.linkAttributeName, atIndex: 10, effectiveRange: &range) as? String
+        link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 10, effectiveRange: &range) as? String
         XCTAssertEqual(link, "test string")
         XCTAssertEqual(range.location, 10)
         XCTAssertEqual(range.length, 11)
         
-        link = markupParser.text.attribute(markupParser.linkAttributeName, atIndex: 21, effectiveRange: &range) as? String
+        link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 21, effectiveRange: &range) as? String
         XCTAssertNil(link)
         XCTAssertEqual(range.location, 21)
         XCTAssertEqual(range.length, 24)
