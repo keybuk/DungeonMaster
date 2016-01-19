@@ -123,6 +123,9 @@ final class Player: NSManagedObject {
     convenience init(inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Player, inManagedObjectContext: context)
         self.init(entity: entity, insertIntoManagedObjectContext: context)
+        
+        name = ""
+        playerName = ""
     }
     
     /// Returns whether the player is proficient in a given saving throw.

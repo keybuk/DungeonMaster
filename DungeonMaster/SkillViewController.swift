@@ -1,5 +1,5 @@
 //
-//  PlayerSkillViewController.swift
+//  SkillViewController.swift
 //  DungeonMaster
 //
 //  Created by Scott James Remnant on 12/22/15.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-class PlayerSkillViewController: UITableViewController {
+class SkillViewController: UITableViewController {
     
-    var player: Player!
-    var selectedSkill: Skill?
+    var existingSkills = [Skill]()
+    var selectedSkills = [Skill]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,10 +22,7 @@ class PlayerSkillViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-}
-
-// MARK: UITableViewDataSource
-extension PlayerSkillViewController {
+    // MARK: UITableViewDataSource
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return Ability.cases.count
@@ -46,9 +43,12 @@ extension PlayerSkillViewController {
 
         cell.textLabel?.text = skill.stringValue
         
-        if player.isProficient(skill: skill) {
+        if existingSkills.contains(skill) {
             cell.accessoryType = .Checkmark
             cell.textLabel?.enabled = false
+        } else if selectedSkills.contains(skill) {
+            cell.accessoryType = .Checkmark
+            cell.textLabel?.enabled = true
         } else {
             cell.accessoryType = .None
             cell.textLabel?.enabled = true
@@ -57,19 +57,35 @@ extension PlayerSkillViewController {
         return cell
     }
     
-}
-
-// MARK: UITableViewDelegate
-extension PlayerSkillViewController {
+    // MARK: UITableViewDelegate
     
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        // Will select, rather than did, so we update before the exit segue.
         let skill = Skill(rawAbilityValue: indexPath.section, rawSkillValue: indexPath.row)!
-        if player.isProficient(skill: skill) {
+        if existingSkills.contains(skill) {
             return nil
         } else {
-            selectedSkill = Skill(rawAbilityValue: indexPath.section, rawSkillValue: indexPath.row)!
             return indexPath
         }
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let skill = Skill(rawAbilityValue: indexPath.section, rawSkillValue: indexPath.row)!
+        if existingSkills.contains(skill) {
+            return
+        } else if let index = selectedSkills.indexOf(skill) {
+            selectedSkills.removeAtIndex(index)
+            if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+                cell.accessoryType = .None
+            }
+        } else {
+            selectedSkills.append(skill)
+            if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+                cell.accessoryType = .Checkmark
+            }
+        }
+
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
 }

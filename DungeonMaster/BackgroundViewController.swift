@@ -1,5 +1,5 @@
 //
-//  PlayerBackgroundViewController.swift
+//  BackgroundViewController.swift
 //  DungeonMaster
 //
 //  Created by Scott James Remnant on 12/22/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PlayerBackgroundViewController: UITableViewController {
+class BackgroundViewController: UITableViewController {
     
     var selectedBackground: Background?
 
@@ -21,10 +21,7 @@ class PlayerBackgroundViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-}
-
-// MARK: UITableViewDataSource
-extension PlayerBackgroundViewController {
+    // MARK: UITableViewDataSource
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -50,14 +47,27 @@ extension PlayerBackgroundViewController {
         return cell
     }
     
-}
-
-// MARK: UITableViewDelegate
-extension PlayerBackgroundViewController {
+    // MARK: UITableViewDelegate
     
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        // Will select, rather than did, so we update before the exit segue.
         selectedBackground = Background(rawValue: indexPath.row)!
         return indexPath
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+            cell.accessoryType = .Checkmark
+        }
+        
+        if let selectedBackground = selectedBackground {
+            let oldIndexPath = NSIndexPath(forRow: selectedBackground.rawValue, inSection: 0)
+            if let cell = tableView.cellForRowAtIndexPath(oldIndexPath) {
+                cell.accessoryType = .None
+            }
+        }
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+
 }

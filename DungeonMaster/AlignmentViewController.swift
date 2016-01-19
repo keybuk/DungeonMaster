@@ -1,5 +1,5 @@
 //
-//  PlayerAlignmentViewController.swift
+//  AlignmentViewController.swift
 //  DungeonMaster
 //
 //  Created by Scott James Remnant on 12/22/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PlayerAlignmentViewController: UITableViewController {
+class AlignmentViewController: UITableViewController {
     
     var selectedAlignment: Alignment?
 
@@ -21,10 +21,7 @@ class PlayerAlignmentViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-}
-
-// MARK: UITableViewDataSource
-extension PlayerAlignmentViewController {
+    // MARK: UITableViewDataSource
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -49,15 +46,28 @@ extension PlayerAlignmentViewController {
 
         return cell
     }
-    
-}
 
-// MARK: UITableViewDelegate
-extension PlayerAlignmentViewController {
-    
+    // MARK: UITableViewDelegate
+
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        // Will select, rather than did, so we update before the exit segue.
         selectedAlignment = Alignment(rawValue: indexPath.row + 1)!
         return indexPath
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+            cell.accessoryType = .Checkmark
+        }
+        
+        if let selectedAlignment = selectedAlignment {
+            let oldIndexPath = NSIndexPath(forRow: selectedAlignment.rawValue - 1, inSection: 0)
+            if let cell = tableView.cellForRowAtIndexPath(oldIndexPath) {
+                cell.accessoryType = .None
+            }
+        }
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
 }

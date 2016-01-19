@@ -1,5 +1,5 @@
 //
-//  PlayerRaceViewController.swift
+//  RaceViewController.swift
 //  DungeonMaster
 //
 //  Created by Scott James Remnant on 12/22/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PlayerRaceViewController: UITableViewController {
+class RaceViewController: UITableViewController {
     
     var selectedRace: Race?
 
@@ -21,10 +21,7 @@ class PlayerRaceViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-}
-
-// MARK: UITableViewDataSource
-extension PlayerRaceViewController {
+    // MARK: UITableViewDataSource
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return Set(Race.cases.map({ $0.rawRaceValue })).count
@@ -59,19 +56,32 @@ extension PlayerRaceViewController {
         return cell
     }
     
-}
-
-// MARK: UITableViewDelegate
-extension PlayerRaceViewController {
+    // MARK: UITableViewDelegate
     
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        if Race.cases.filter({ $0.rawRaceValue == indexPath.section }).count > 0 {
+        // Will select, rather than did, so we update before the exit segue.
+        if Race.cases.filter({ $0.rawRaceValue == indexPath.section }).count > 1 {
             selectedRace = Race(rawRaceValue: indexPath.section, rawSubraceValue: indexPath.row)!
         } else {
             selectedRace = Race(rawRaceValue: indexPath.section, rawSubraceValue: nil)!
         }
-
+        
         return indexPath
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+            cell.accessoryType = .Checkmark
+        }
+        
+        if let race = selectedRace {
+            let oldIndexPath = NSIndexPath(forRow: race.rawSubraceValue ?? 0, inSection: race.rawRaceValue)
+            if let cell = tableView.cellForRowAtIndexPath(oldIndexPath) {
+                cell.accessoryType = .None
+            }
+        }
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 
 }

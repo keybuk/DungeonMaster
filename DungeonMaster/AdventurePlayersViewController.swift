@@ -38,6 +38,37 @@ class AdventurePlayersViewController: UITableViewController, NSFetchedResultsCon
         }
     }
     
+    // MARK: Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "PlayerSegue" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let player = fetchedResultsController.objectAtIndexPath(indexPath) as! Player
+                
+                let viewController = segue.destinationViewController as! PlayerViewController
+                viewController.player = player
+            }
+            
+        } else if segue.identifier == "AddPlayerSegue" {
+            let player = Player(inManagedObjectContext: managedObjectContext)
+            
+            let viewController = (segue.destinationViewController as! UINavigationController).topViewController as! PlayerViewController
+            viewController.player = player
+            
+            viewController.completionBlock = { cancelled, player in
+                if let player = player where !cancelled {
+                    let players = self.adventure.mutableSetValueForKey("players")
+                    players.addObject(player)
+                }
+
+                self.dismissViewControllerAnimated(true, completion: nil)
+                if let indexPath = self.tableView.indexPathForSelectedRow {
+                    self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+                }
+            }
+        }
+    }
+    
     // MARK: Fetched results controller
     
     var fetchedResultsController: NSFetchedResultsController {
