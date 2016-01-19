@@ -28,6 +28,9 @@ import UIKit
 
     @IBOutlet weak var delegate: AdjustableImageViewDelegate?
     
+    /// Alternate view that gesture recognizers should be installed to.
+    @IBOutlet weak var gestureView: UIView?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -86,12 +89,12 @@ import UIKit
             guard editing != oldValue else { return }
             if editing {
                 addGestureRecognizer(tapGestureRecognizer)
-                window?.addGestureRecognizer(pinchGestureRecognizer)
-                window?.addGestureRecognizer(panGestureRecognizer)
+                (gestureView ?? self).addGestureRecognizer(pinchGestureRecognizer)
+                (gestureView ?? self).addGestureRecognizer(panGestureRecognizer)
             } else {
                 removeGestureRecognizer(tapGestureRecognizer)
-                window?.removeGestureRecognizer(pinchGestureRecognizer)
-                window?.removeGestureRecognizer(panGestureRecognizer)
+                (gestureView ?? self).removeGestureRecognizer(pinchGestureRecognizer)
+                (gestureView ?? self).removeGestureRecognizer(panGestureRecognizer)
             }
             
             updateLayer()
@@ -99,19 +102,6 @@ import UIKit
         }
     }
     
-    override func willMoveToWindow(newWindow: UIWindow?) {
-        super.willMoveToWindow(newWindow)
-        
-        // When the image view is being edited, it has gesture recognizers installed on the window. These need to be moved to the new window.
-        if editing {
-            window?.removeGestureRecognizer(pinchGestureRecognizer)
-            window?.removeGestureRecognizer(panGestureRecognizer)
-            
-            newWindow?.addGestureRecognizer(pinchGestureRecognizer)
-            newWindow?.addGestureRecognizer(panGestureRecognizer)
-        }
-    }
-
     /// View overlaying the image to provide basic instructions during editing.
     var instructionView: UIView?
     

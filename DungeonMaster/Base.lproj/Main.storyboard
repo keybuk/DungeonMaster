@@ -38,7 +38,7 @@
         <scene sceneID="tNf-Y2-RX2">
             <objects>
                 <collectionViewController storyboardIdentifier="AdventuresViewController" title="Adventures" id="JGb-ej-eIG" customClass="AdventuresViewController" customModule="DungeonMaster" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Utx-E7-aYs">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Utx-E7-aYs" userLabel="Collection View">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -76,6 +76,7 @@
                                             </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <outlet property="delegate" destination="S3V-ZX-wTg" id="Wet-UQ-o6n"/>
+                                                <outlet property="gestureView" destination="Utx-E7-aYs" id="h59-Qh-Tor"/>
                                             </connections>
                                         </view>
                                     </subviews>
@@ -138,7 +139,7 @@
                         <viewControllerLayoutGuide type="top" id="yUU-UT-RG9"/>
                         <viewControllerLayoutGuide type="bottom" id="osP-a5-iN7"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="d4M-Ug-KUN">
+                    <view key="view" contentMode="scaleToFill" id="d4M-Ug-KUN" userLabel="View">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -154,6 +155,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="delegate" destination="YAX-F3-Z4O" id="EjU-uM-MW8"/>
+                                    <outlet property="gestureView" destination="d4M-Ug-KUN" id="gUK-1o-SF4"/>
                                 </connections>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Adventure" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hn6-Ey-XFD">
