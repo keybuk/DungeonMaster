@@ -104,12 +104,12 @@ class AdventureGamesViewController: UITableViewController, NSFetchedResultsContr
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
         case .Update:
             let cell = tableView.cellForRowAtIndexPath(indexPath!) as! AdventureGameCell
-            let game = fetchedResultsController.objectAtIndexPath(indexPath!) as! Game
+            let game = anObject as! Game
             cell.game = game
         case .Move:
-            // .Move implies .Update; update the cell at the old index with the result at the new index, and then move it.
+            // .Move implies .Update; update the cell at the old index, and then move it.
             let cell = tableView.cellForRowAtIndexPath(indexPath!) as! AdventureGameCell
-            let game = fetchedResultsController.objectAtIndexPath(newIndexPath!) as! Game
+            let game = anObject as! Game
             cell.game = game
             
             tableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!)

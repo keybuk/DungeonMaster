@@ -237,13 +237,13 @@ class AdventuresViewController: UICollectionViewController, NSFetchedResultsCont
             }
         case .Update:
             if let cell = collectionView?.cellForItemAtIndexPath(indexPath!) as? AdventureCell where !cell.editing {
-                let adventure = controller.objectAtIndexPath(indexPath!) as! Adventure
+                let adventure = anObject as! Adventure
                 cell.adventure = adventure
             }
         case .Move:
-            // .Move implies .Update; update the cell at the old index with the result at the new index, and then move it.
+            // .Move implies .Update; update the cell at the old index, and then move it.
             if let cell = collectionView?.cellForItemAtIndexPath(indexPath!) as? AdventureCell where !cell.editing {
-                let adventure = controller.objectAtIndexPath(newIndexPath!) as! Adventure
+                let adventure = anObject as! Adventure
                 cell.adventure = adventure
             }
 
