@@ -21,7 +21,7 @@ class AdventureGamesViewController: UITableViewController, NSFetchedResultsContr
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: Fetched results controller
     
     var fetchedResultsController: NSFetchedResultsController {
@@ -124,15 +124,25 @@ class AdventureGamesViewController: UITableViewController, NSFetchedResultsContr
     // MARK: Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "GameSegue" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let game = fetchedResultsController.objectAtIndexPath(indexPath) as! Game
+                let viewController = segue.destinationViewController as! GameViewController
+                viewController.game = game
+            }
+        }
     }
     
     // MARK: Actions
     
     @IBAction func addButtonTapped(sender: UIButton) {
-        let _ = Game(adventure: adventure, inManagedObjectContext: managedObjectContext)
+        let game = Game(adventure: adventure, inManagedObjectContext: managedObjectContext)
         try! managedObjectContext.save()
+
+        let viewController = storyboard?.instantiateViewControllerWithIdentifier("GameViewController") as! GameViewController
+        viewController.game = game
+        navigationController?.pushViewController(viewController, animated: true)
+        
     }
 
 }

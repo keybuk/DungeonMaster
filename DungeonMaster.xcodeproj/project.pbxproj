@@ -91,6 +91,8 @@
 		D2BDE60C1C17500A0008B2F2 /* EncountersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDE60B1C17500A0008B2F2 /* EncountersViewController.swift */; };
 		D2BDE60E1C1750170008B2F2 /* EncounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDE60D1C1750170008B2F2 /* EncounterViewController.swift */; };
 		D2C1B7541C39C466002B324D /* AdventuresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C1B7531C39C466002B324D /* AdventuresViewController.swift */; };
+		D2C3B7AC1C517846009D4062 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C3B7AB1C517846009D4062 /* GameViewController.swift */; };
+		D2C3B7AE1C517ADD009D4062 /* GamePlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C3B7AD1C517ADD009D4062 /* GamePlayersViewController.swift */; };
 		D2C6063E1C17D32900F61DBD /* TabletopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C6063D1C17D32900F61DBD /* TabletopViewController.swift */; };
 		D2C8F0041C3AE705003AD18F /* AdjustableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8F0031C3AE705003AD18F /* AdjustableImageView.swift */; };
 		D2C8F0071C3DAD6E003AD18F /* Adventure.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8F0061C3DAD6E003AD18F /* Adventure.swift */; };
@@ -209,6 +211,8 @@
 		D2BDE60B1C17500A0008B2F2 /* EncountersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncountersViewController.swift; sourceTree = "<group>"; };
 		D2BDE60D1C1750170008B2F2 /* EncounterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncounterViewController.swift; sourceTree = "<group>"; };
 		D2C1B7531C39C466002B324D /* AdventuresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdventuresViewController.swift; sourceTree = "<group>"; };
+		D2C3B7AB1C517846009D4062 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		D2C3B7AD1C517ADD009D4062 /* GamePlayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamePlayersViewController.swift; sourceTree = "<group>"; };
 		D2C6063D1C17D32900F61DBD /* TabletopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabletopViewController.swift; sourceTree = "<group>"; };
 		D2C8F0031C3AE705003AD18F /* AdjustableImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjustableImageView.swift; sourceTree = "<group>"; };
 		D2C8F0061C3DAD6E003AD18F /* Adventure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Adventure.swift; sourceTree = "<group>"; };
@@ -315,6 +319,8 @@
 				D298E9001C2A555E007461A9 /* SavingThrowViewController.swift */,
 				D298E8F81C2A4CF1007461A9 /* SkillViewController.swift */,
 				D2B92C191C4B6B090057BA47 /* AdventureGamesViewController.swift */,
+				D2C3B7AB1C517846009D4062 /* GameViewController.swift */,
+				D2C3B7AD1C517ADD009D4062 /* GamePlayersViewController.swift */,
 			);
 			name = Adventure;
 			sourceTree = "<group>";
@@ -557,6 +563,7 @@
 				D2BDE60E1C1750170008B2F2 /* EncounterViewController.swift in Sources */,
 				D298E8FB1C2A5146007461A9 /* CharacterClassViewController.swift in Sources */,
 				D2B92C1C1C4B6E990057BA47 /* RomanNumeralFormatter.swift in Sources */,
+				D2C3B7AC1C517846009D4062 /* GameViewController.swift in Sources */,
 				D23435F41C0D617C00108D5F /* Monster.swift in Sources */,
 				D2116A511C10F4CE001EDBBA /* LairAction.swift in Sources */,
 				D249CFA61C276B3E00CDE673 /* DamageImmunity.swift in Sources */,
@@ -582,6 +589,7 @@
 				D2F9D12F1C1A71D8005F2D9A /* Encounter.swift in Sources */,
 				D2C6063E1C17D32900F61DBD /* TabletopViewController.swift in Sources */,
 				D25120001C14C7ED00A09F0B /* BooksViewController.swift in Sources */,
+				D2C3B7AE1C517ADD009D4062 /* GamePlayersViewController.swift in Sources */,
 				D2C8F0041C3AE705003AD18F /* AdjustableImageView.swift in Sources */,
 				D209FEF91C30578F0024B0A3 /* MarkupParser.swift in Sources */,
 				D2116A4F1C10F377001EDBBA /* Lair.swift in Sources */,
