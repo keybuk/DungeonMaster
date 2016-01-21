@@ -123,7 +123,7 @@ class AdventureViewController: UIViewController, UITextViewDelegate, AdjustableI
     }
 
     @IBAction func deleteButtonTapped(sender: UIBarButtonItem) {
-        let controller = UIAlertController(title: "Delete “\(adventure.name)”", message: "Are you sure? This will delete all information associated with the adventure, and cannot be undone.", preferredStyle: .Alert)
+        let controller = UIAlertController(title: "Delete “\(adventure.name)”?", message: "This will delete all information associated with the adventure, including player records, and cannot be undone.", preferredStyle: .Alert)
 
         controller.addAction(UIAlertAction(title: "Delete", style: .Destructive, handler: { action in
             managedObjectContext.deleteObject(self.adventure)
@@ -131,9 +131,10 @@ class AdventureViewController: UIViewController, UITextViewDelegate, AdjustableI
             
             self.navigationController?.popViewControllerAnimated(true)
         }))
-
-        controller.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         
+        // .Default, not .Cancel, because the other action is destructive and we want the Cancel button to be the "default" and right-most button.
+        controller.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: nil))
+
         presentViewController(controller, animated: true, completion: nil)
     }
     
