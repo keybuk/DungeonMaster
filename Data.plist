@@ -524,9 +524,9 @@
 					<string>Spellcasting</string>
 					<key>text</key>
 					<string>Azbara is a 6th-level spellcaster that uses Intelligence as his spellcasting ability (spell save DC 13, +5 to hit with spell attacks). Azbara has the following spells prepared from the wizard spell list:
-Cantrips (at will): mage hand, prestidigitation, ray of frost, shocking grasp
-1st level (4 slots): fog cloud, magic missile, shield, thunderwave 2nd level (3 slots): invisibility, misty step, scorching ray
-3rd level (3 slots): counterspell, dispel magic, fireball</string>
+} Cantrips (at will): [mage hand], [prestidigitation], [ray of frost], [shocking grasp]
+} 1st level (4 slots): [fog cloud], [magic missile], [shield], [thunderwave 2nd level] (3 slots): [invisibility], [misty step], [scorching ray]
+} 3rd level (3 slots): [counterspell], [dispel magic], [fireball]</string>
 				</dict>
 			</array>
 		</dict>
@@ -683,16 +683,16 @@ Cantrips (at will): mage hand, prestidigitation, ray of frost, shocking grasp
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>Blagothkus can innately cast the following spells (spell save DC 15), requiring no material components:
-3/day each: fog cloud, levitate</string>
+} 3/day each: [fog cloud], [levitate]</string>
 				</dict>
 				<dict>
 					<key>name</key>
 					<string>Spellcasting</string>
 					<key>text</key>
 					<string>Blagothkus is a 5th-level spellcaster that uses Intelligence as his spellcasting ability (spell save DC 15, +7 to hit with spell attacks). Blagothkus has the following spells prepared from the wizard spell list:
-Cantrips (at will): light, mage hand, prestidigitation
-1st level (4 slots): detect magic, identify, magic missile, shield 2nd level (3 slots): gust of wind, misty step, shatter
-3rd level (2 slots): fly, lightning bolt</string>
+} Cantrips (at will): [light], [mage hand], [prestidigitation]
+} 1st level (4 slots): [detect magic], [identify], [magic missile], [shield 2nd level] (3 slots): [gust of wind], [misty step], [shatter]
+} 3rd level (2 slots): [fly], [lightning bolt]</string>
 				</dict>
 			</array>
 		</dict>
@@ -1179,8 +1179,8 @@ Cantrips (at will): light, mage hand, prestidigitation
 					<string>Spellcasting</string>
 					<key>text</key>
 					<string>Dralmorrer is a 7th-level spellcaster that uses Intelligence as his spellcasting ability (spell save DC 13, +5 to hit with spell attacks). Dralmorrer has the following spells prepared from the wizard spell list:
-Cantrips (at will): fire bolt, prestidigitation, shocking grasp
-1st level (4 slots): longstrider, magic missile, shield, thunderwave 2nd level (2 slots): magic weapon, misty step</string>
+} Cantrips (at will): [fire bolt], [prestidigitation], [shocking grasp]
+} 1st level (4 slots): [longstrider], [magic missile], [shield], [thunderwave 2nd level] (2 slots): [magic weapon], [misty step]</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -1336,10 +1336,10 @@ Cantrips (at will): fire bolt, prestidigitation, shocking grasp
 					<string>Spellcasting</string>
 					<key>text</key>
 					<string>Frulam is a 5th-level spellcaster that uses Wisdom as her spellcasting ability (spell save DC 14, +6 to hit with spell attacks). Frulam has the following spells prepared from the cleric spell list:
-Cantrips (at will): light, sacred flame, thaumaturgy
-1st level (4 slots): command, cure wounds, healing word, sanctuary
-2nd level (3 slots): calm emotions, hold person, spiritual weapon
-3rd level (2 slots): mass healing word, spirit guardians</string>
+} Cantrips (at will): [light], [sacred flame], [thaumaturgy]
+} 1st level (4 slots): [command], [cure wounds], [healing word], [sanctuary]
+} 2nd level (3 slots): [calm emotions], [hold person], [spiritual weapon]
+} 3rd level (2 slots): [mass healing word], [spirit guardians]</string>
 				</dict>
 			</array>
 		</dict>
@@ -1646,8 +1646,8 @@ Cantrips (at will): light, sacred flame, thaumaturgy
 					<string>Spellcasting</string>
 					<key>text</key>
 					<string>Jamna is a 4th-level spellcaster that uses Intelligence as her spellcasting ability (spell save DC 12, +4 to hit with spell attacks). Jamna has the following spells prepared from the wizard spell list:
-Cantrips (at will): mage hand, minor illusion, prestidigitation, ray of frost
-1st level (3 slots): charm person, color spray, disguise self, longstrider</string>
+} Cantrips (at will): [mage hand], [minor illusion], [prestidigitation], [ray of frost]
+} 1st level (3 slots): [charm person], [color spray], [disguise self], [longstrider]</string>
 				</dict>
 			</array>
 		</dict>
@@ -1990,10 +1990,10 @@ Cantrips (at will): mage hand, minor illusion, prestidigitation, ray of frost
 					<string>Spellcasting</string>
 					<key>text</key>
 					<string>Pharblex is a 6th-level spellcaster that uses Wisdom as his spellcasting ability (spell save DC 13, +5 to hit with spell attacks). Pharblex has the following spells prepared from the druid spell list:
-Cantrips (at will): druidcraft, guidance, poison cloud
-1st level (4 slots): cure wounds, entangle, healing word, thunderwave
-2nd level (3 slots): barkskin, beast sense, spike growth
-3rd level (3 slots): plant growth, water walk</string>
+} Cantrips (at will): [druidcraft], [guidance], [poison cloud]
+} 1st level (4 slots): [cure wounds], [entangle], [healing word], [thunderwave]
+} 2nd level (3 slots): [barkskin], [beast sense], [spike growth]
+} 3rd level (3 slots): [plant growth], [water walk]</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -2181,13 +2181,13 @@ Cantrips (at will): druidcraft, guidance, poison cloud
 					<string>Spellcasting</string>
 					<key>text</key>
 					<string>Rath is an 11th-level spellcaster who uses Intelligence as his spellcasting ability (spell save DC 15, +7 to hit with spell attacks). Rath has the following spells prepared from the wizard spell list:
-Cantrips (at will): fire bolt, minor illusion, prestidigitation, shocking grasp
-1st level (4 slots): chromatic orb, color spray, mage armor, magic missile
-2nd level (3 slots): detect thoughts, mirror image, phantasmal force
-3rd level (3 slots): counterspell, fireball, major image
-4th level (3 slots): confusion, greater invisibility
-5th level (2 slots): mislead, seeming
-6th level (1 slot): globe of invulnerability</string>
+} Cantrips (at will): [fire bolt], [minor illusion], [prestidigitation], [shocking grasp]
+} 1st level (4 slots): [chromatic orb], [color spray], [mage armor], [magic missile]
+} 2nd level (3 slots): [detect thoughts], [mirror image], [phantasmal force]
+} 3rd level (3 slots): [counterspell], [fireball], [major image]
+} 4th level (3 slots): [confusion], [greater invisibility]
+} 5th level (2 slots): [mislead], [seeming]
+} 6th level (1 slot): [globe of invulnerability]</string>
 				</dict>
 			</array>
 		</dict>
@@ -2567,12 +2567,12 @@ Cantrips (at will): fire bolt, minor illusion, prestidigitation, shocking grasp
 					<string>Spellcasting</string>
 					<key>text</key>
 					<string>Talis is a 9th-level spellcaster that uses Wisdom as her spellcasting ability (spell save DC 14, +6 to hit with spell attacks). Talis has the following spells prepared from the cleric spell list:
-Cantrips (at will): guidance, resistance, thaumaturgy
-1st level (4 slots): command, cure wounds, healing word, inflict wounds
-2nd level (3 slots): blindness/deafness, lesser restoration, spiritual weapon (spear)
-3rd level (3 slots): dispel magic, mass healing word, sending
-4th level (3 slots): death ward, freedom of movement
-5th level (1 slot): insect plague</string>
+} Cantrips (at will): [guidance], [resistance], [thaumaturgy]
+} 1st level (4 slots): [command], [cure wounds], [healing word], [inflict wounds]
+} 2nd level (3 slots): [blindness/deafness], [lesser restoration], [spiritual weapon] (spear)
+} 3rd level (3 slots): [dispel magic], [mass healing word], [sending]
+} 4th level (3 slots): [death ward], [freedom of movement]
+} 5th level (1 slot): [insect plague]</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -2874,9 +2874,9 @@ Cantrips (at will): guidance, resistance, thaumaturgy
 					<string>Spellcasting</string>
 					<key>text</key>
 					<string>The mage is a 4th-level spellcaster that uses Intelligence as its spellcasting ability (spell save DC 13, +5 to hit with spell attacks). The mage knows the following spells from the wizard's spell list:
-Cantrips (at will): light, mage hand, shocking grasp
-1st level (4 slots): charm person, magic missile
-2nd level (3 slots): hold person, misty step</string>
+} Cantrips (at will): [light], [mage hand], [shocking grasp]
+} 1st level (4 slots): [charm person], [magic missile]
+} 2nd level (3 slots): [hold person], [misty step]</string>
 				</dict>
 			</array>
 		</dict>
@@ -3271,17 +3271,17 @@ Cantrips (at will): light, mage hand, shocking grasp
 					<string>Innate Spellcasting</string>
 					<key>text</key>
 					<string>Nezznar can innately cast the following spells, requiring no material components:
-At will: dancing lights
-1/day each: darkness, faerie fire (save DC 12)</string>
+} At will: [dancing lights]
+} 1/day each: [darkness], [faerie fire] (save DC 12)</string>
 				</dict>
 				<dict>
 					<key>name</key>
 					<string>Spellcasting</string>
 					<key>text</key>
 					<string>Nezznar is a 4th-level spellcaster that uses Intelligence as his spellcasting ability (spell save DC 13; +5 to hit with spell attacks). Nezznar has the following spells prepared from the wizard's spell list:
-Cantrips (at will): mage hand, ray of frost, shocking grasp
-1st Level (4 slots): mage armor, magic missile, shield
-2nd Level (3 slots): invisibility, suggestion</string>
+} Cantrips (at will): [mage hand], [ray of frost], [shocking grasp]
+} 1st Level (4 slots): [mage armor], [magic missile], [shield]
+} 2nd Level (3 slots): [invisibility], [suggestion]</string>
 				</dict>
 			</array>
 		</dict>
@@ -99822,7 +99822,7 @@ This spell's damage increases by 1d6 when you reach 5th level (2d6), 11th level 
 		</dict>
 	</array>
 	<key>version</key>
-	<integer>1452931220</integer>
+	<integer>1453567829</integer>
 </dict>
 </plist>
 
