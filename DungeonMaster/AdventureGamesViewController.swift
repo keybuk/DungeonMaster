@@ -137,12 +137,12 @@ class AdventureGamesViewController: UITableViewController, NSFetchedResultsContr
     
     @IBAction func addButtonTapped(sender: UIButton) {
         let game = Game(adventure: adventure, inManagedObjectContext: managedObjectContext)
+        adventure.lastModified = NSDate()
         try! managedObjectContext.save()
 
         let viewController = storyboard?.instantiateViewControllerWithIdentifier("GameViewController") as! GameViewController
         viewController.game = game
         navigationController?.pushViewController(viewController, animated: true)
-        
     }
 
 }
