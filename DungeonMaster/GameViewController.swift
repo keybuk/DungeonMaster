@@ -15,6 +15,14 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Put the edit button in, with space between it and the compendium buttons.
+        let fixedSpace = UIBarButtonItem(barButtonSystemItem: .FixedSpace, target: nil, action: nil)
+        fixedSpace.width = 40.0
+            
+        navigationItem.rightBarButtonItems?.insert(fixedSpace, atIndex: 0)
+        navigationItem.rightBarButtonItems?.insert(editButtonItem(), atIndex: 0)
+
+        // Set the view title.
         let numberFormatter = RomanNumeralFormatter()
         let number = numberFormatter.stringFromNumber(game.number)!
         navigationItem.title = "\(game.adventure.name) \(number)"
@@ -24,6 +32,14 @@ class GameViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func setEditing(editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        
+        playersViewController.setEditing(editing, animated: animated)
+    }
+    
+    // MARK: Navigation
     
     var playersViewController: GamePlayersViewController!
     
