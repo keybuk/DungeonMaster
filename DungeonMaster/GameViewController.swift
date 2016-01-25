@@ -36,6 +36,8 @@ class GameViewController: UIViewController {
     override func setEditing(editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         
+        navigationItem.hidesBackButton = editing
+        
         playersViewController.setEditing(editing, animated: animated)
     }
     
