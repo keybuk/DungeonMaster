@@ -32,6 +32,7 @@
 		D23435F61C0D634100108D5F /* Importer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23435F51C0D634100108D5F /* Importer.swift */; };
 		D23435FB1C0FEFA000108D5F /* Dice.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23435FA1C0FEFA000108D5F /* Dice.swift */; };
 		D23435FD1C0FF84F00108D5F /* DiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23435FC1C0FF84F00108D5F /* DiceTest.swift */; };
+		D234B5C21C56F34000C81417 /* GameDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D234B5C11C56F34000C81417 /* GameDateViewController.swift */; };
 		D243F6431C189A7500324572 /* TabletopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D243F6421C189A7500324572 /* TabletopView.swift */; };
 		D249CF831C21DDF300CDE673 /* PointGeneratorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D249CF821C21DDF300CDE673 /* PointGeneratorTest.swift */; };
 		D249CF851C21DF3500CDE673 /* PointGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D249CF841C21DF3500CDE673 /* PointGenerator.swift */; };
@@ -144,6 +145,7 @@
 		D23435F51C0D634100108D5F /* Importer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Importer.swift; sourceTree = "<group>"; };
 		D23435FA1C0FEFA000108D5F /* Dice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dice.swift; sourceTree = "<group>"; };
 		D23435FC1C0FF84F00108D5F /* DiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiceTest.swift; sourceTree = "<group>"; };
+		D234B5C11C56F34000C81417 /* GameDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDateViewController.swift; sourceTree = "<group>"; };
 		D243F6421C189A7500324572 /* TabletopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabletopView.swift; sourceTree = "<group>"; };
 		D249CF821C21DDF300CDE673 /* PointGeneratorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointGeneratorTest.swift; sourceTree = "<group>"; };
 		D249CF841C21DF3500CDE673 /* PointGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointGenerator.swift; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 				D2B92C191C4B6B090057BA47 /* AdventureGamesViewController.swift */,
 				D2C3B7AB1C517846009D4062 /* GameViewController.swift */,
 				D2C3B7AD1C517ADD009D4062 /* GamePlayersViewController.swift */,
+				D234B5C11C56F34000C81417 /* GameDateViewController.swift */,
 			);
 			name = Adventure;
 			sourceTree = "<group>";
@@ -621,6 +624,7 @@
 				D2116A4A1C10ECBC001EDBBA /* Reaction.swift in Sources */,
 				D2C8F00D1C473126003AD18F /* AdventureViewController.swift in Sources */,
 				D2A9AF0A1BFFEAA5009902ED /* AppDelegate.swift in Sources */,
+				D234B5C21C56F34000C81417 /* GameDateViewController.swift in Sources */,
 				D249CFA81C276B4400CDE673 /* DamageResistance.swift in Sources */,
 				D243F6431C189A7500324572 /* TabletopView.swift in Sources */,
 				D249CF9C1C24BBEA00CDE673 /* Armor.swift in Sources */,

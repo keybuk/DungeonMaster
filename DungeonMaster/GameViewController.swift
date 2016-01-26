@@ -12,6 +12,8 @@ class GameViewController: UIViewController {
     
     var game: Game!
 
+    @IBOutlet var dateLabel: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,6 +28,11 @@ class GameViewController: UIViewController {
         let numberFormatter = RomanNumeralFormatter()
         let number = numberFormatter.stringFromNumber(game.number)!
         navigationItem.title = "\(game.adventure.name) \(number)"
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = .LongStyle
+        dateFormatter.timeStyle = .NoStyle
+        dateLabel.text = dateFormatter.stringFromDate(game.date)
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,6 +44,9 @@ class GameViewController: UIViewController {
         super.setEditing(editing, animated: animated)
         
         navigationItem.hidesBackButton = editing
+        
+        dateLabel.textColor = editing ? dateLabel.tintColor : UIColor.blackColor()
+        dateLabel.userInteractionEnabled = editing
         
         playersViewController.setEditing(editing, animated: animated)
     }
@@ -61,7 +71,14 @@ class GameViewController: UIViewController {
             let viewController = segue.destinationViewController as! CompendiumViewController
             viewController.books = game.adventure.books.allObjects as! [Book]
             viewController.showMagicItems()
+        } else if segue.identifier == "DatePopoverSegue" {
+            let viewController = segue.destinationViewController as! GameDateViewController
+            viewController.game = game
+
+            if let presentation = viewController.popoverPresentationController, sourceView = presentation.sourceView {
+                presentation.sourceRect = sourceView.bounds
+            }
         }
     }
-
+    
 }

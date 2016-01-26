@@ -262,17 +262,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YDC-oM-SUp">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="600"/>
+                                <rect key="frame" x="0.0" y="80" width="200" height="520"/>
                                 <connections>
                                     <segue destination="cFA-zt-kX3" kind="embed" identifier="PlayersEmbedSegue" id="hMj-t0-kQd"/>
                                 </connections>
                             </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25 January, 2016" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZRu-uC-7mN">
+                                <rect key="frame" x="20" y="52" width="560" height="20"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="mcu-VL-kD5" appends="YES" id="jsL-tY-2ps"/>
+                                </connections>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="YDC-oM-SUp" firstAttribute="width" secondItem="g8W-Df-me7" secondAttribute="width" multiplier="0.333" id="PNO-BI-0CM"/>
+                            <constraint firstItem="YDC-oM-SUp" firstAttribute="top" secondItem="ZRu-uC-7mN" secondAttribute="bottom" constant="8" id="Xjc-tr-Xza"/>
+                            <constraint firstItem="ZRu-uC-7mN" firstAttribute="trailing" secondItem="g8W-Df-me7" secondAttribute="trailingMargin" id="an6-1I-Iug"/>
+                            <constraint firstItem="ZRu-uC-7mN" firstAttribute="top" secondItem="f9k-lY-GEa" secondAttribute="bottom" constant="8" id="clx-tK-RkA"/>
+                            <constraint firstItem="ZRu-uC-7mN" firstAttribute="leading" secondItem="g8W-Df-me7" secondAttribute="leadingMargin" id="d1h-q2-sAo"/>
                             <constraint firstItem="YDC-oM-SUp" firstAttribute="leading" secondItem="g8W-Df-me7" secondAttribute="leading" id="quB-GQ-ZZR"/>
-                            <constraint firstItem="YDC-oM-SUp" firstAttribute="top" secondItem="g8W-Df-me7" secondAttribute="topMargin" id="tS1-Dh-BPK"/>
                             <constraint firstItem="YDC-oM-SUp" firstAttribute="bottom" secondItem="g8W-Df-me7" secondAttribute="bottomMargin" id="yli-cL-1mx"/>
                         </constraints>
                     </view>
@@ -299,10 +312,61 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="600"/>
+                    <connections>
+                        <outlet property="dateLabel" destination="ZRu-uC-7mN" id="z0R-im-vPG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Ii-fG-DvA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="mcu-VL-kD5">
+                    <connections>
+                        <segue destination="Jzc-lG-8iF" kind="popoverPresentation" identifier="DatePopoverSegue" popoverAnchorView="ZRu-uC-7mN" id="5p4-JJ-XbF">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1887" y="-491"/>
+            <point key="canvasLocation" x="-1861" y="-491"/>
+        </scene>
+        <!--Game Date Popover-->
+        <scene sceneID="8ZH-5p-TFP">
+            <objects>
+                <viewController id="Jzc-lG-8iF" userLabel="Game Date Popover" customClass="GameDateViewController" customModule="DungeonMaster" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zFI-1P-p4O"/>
+                        <viewControllerLayoutGuide type="bottom" id="oPX-Fl-3cE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mg2-xc-ln5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="xdO-vc-pCG">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
+                                <date key="date" timeIntervalSinceReferenceDate="475459685.09066498">
+                                    <!--2016-01-26 00:08:05 +0000-->
+                                </date>
+                                <connections>
+                                    <action selector="datePickerValueChanged:" destination="Jzc-lG-8iF" eventType="valueChanged" id="960-V4-SYH"/>
+                                </connections>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xdO-vc-pCG" firstAttribute="top" secondItem="mg2-xc-ln5" secondAttribute="top" id="0LQ-Yj-WsM"/>
+                            <constraint firstItem="xdO-vc-pCG" firstAttribute="bottom" secondItem="oPX-Fl-3cE" secondAttribute="top" id="2HW-w2-3NV"/>
+                            <constraint firstItem="xdO-vc-pCG" firstAttribute="leading" secondItem="mg2-xc-ln5" secondAttribute="leading" id="f1i-yW-3kd"/>
+                            <constraint firstItem="xdO-vc-pCG" firstAttribute="trailing" secondItem="mg2-xc-ln5" secondAttribute="trailing" id="s6J-EB-HeP"/>
+                        </constraints>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="320" height="216"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="216"/>
+                    <connections>
+                        <outlet property="datePicker" destination="xdO-vc-pCG" id="si4-5I-VoZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nyw-my-hnL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1575" y="156"/>
         </scene>
         <!--Adventure Players-->
         <scene sceneID="REf-gh-9Ww">
@@ -319,7 +383,7 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Players" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lgb-7T-o2z">
                                     <rect key="frame" x="8" y="8" width="384" height="28"/>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -1206,7 +1270,7 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Players" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JFi-hn-4Jo">
                                     <rect key="frame" x="8" y="8" width="384" height="28"/>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -1232,13 +1296,13 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Hafstein" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vnh-1Y-gVM">
                                                     <rect key="frame" x="0.0" y="0.0" width="361" height="28"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eDO-hJ-ka1">
                                                     <rect key="frame" x="361" y="0.0" width="16" height="28"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -1374,7 +1438,7 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Games" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eYl-lw-LI2">
                                     <rect key="frame" x="8" y="8" width="354" height="28"/>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WeY-rt-NJO">
@@ -1412,13 +1476,13 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="The Rats of Lake Town IV" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4y-Lv-CB3">
                                                     <rect key="frame" x="0.0" y="0.0" width="257.5" height="28"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14 January 2016" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RhW-F1-KAT">
                                                     <rect key="frame" x="257.5" y="0.0" width="119.5" height="28"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
