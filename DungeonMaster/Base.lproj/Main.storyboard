@@ -203,11 +203,6 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Adventure" id="qxG-eE-Kya">
                         <rightBarButtonItems>
-                            <barButtonItem title="Edit" id="ytS-J8-iZ2">
-                                <connections>
-                                    <action selector="editButtonTapped:" destination="YAX-F3-Z4O" id="qMo-41-rU5"/>
-                                </connections>
-                            </barButtonItem>
                             <barButtonItem image="MagicItemsToolbar" id="68k-fL-nUV">
                                 <connections>
                                     <segue destination="OBK-xP-lif" kind="presentation" identifier="CompendiumMagicItemsSegue" modalPresentationStyle="pageSheet" id="wsJ-BA-QeV"/>
@@ -227,19 +222,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="adjustableImageView" destination="EMR-zE-jsa" id="tEc-k4-t61"/>
-                        <outlet property="deleteBarButtonItem" destination="7Pp-fs-iZj" id="J3h-CK-q6X"/>
-                        <outlet property="doneBarButtonItem" destination="EGL-R1-cBN" id="6Lj-GQ-Zmt"/>
-                        <outlet property="editBarButtonItem" destination="ytS-J8-iZ2" id="tHD-HY-SL9"/>
+                        <outlet property="deleteButtonItem" destination="7Pp-fs-iZj" id="q2f-qT-Fqt"/>
                         <outlet property="nameTextView" destination="hn6-Ey-XFD" id="bcx-KB-NGG"/>
                         <outlet property="playersView" destination="MTF-hT-y2E" id="4hJ-Fa-vjP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Okk-qd-xvq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <barButtonItem style="done" systemItem="done" id="EGL-R1-cBN">
-                    <connections>
-                        <action selector="doneButtonTapped:" destination="YAX-F3-Z4O" id="ygD-aG-dso"/>
-                    </connections>
-                </barButtonItem>
                 <barButtonItem title="Delete" id="7Pp-fs-iZj">
                     <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>

@@ -12,9 +12,7 @@ class AdventureViewController: UIViewController, UITextViewDelegate, AdjustableI
     
     var adventure: Adventure!
 
-    @IBOutlet var editBarButtonItem: UIBarButtonItem!
-    @IBOutlet var doneBarButtonItem: UIBarButtonItem!
-    @IBOutlet var deleteBarButtonItem: UIBarButtonItem!
+    @IBOutlet var deleteButtonItem: UIBarButtonItem!
     @IBOutlet var nameTextView: UITextView!
     @IBOutlet var adjustableImageView: AdjustableImageView!
     
@@ -23,22 +21,18 @@ class AdventureViewController: UIViewController, UITextViewDelegate, AdjustableI
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Interface Builder won't let us put one of these in...
-        if let index = navigationItem.rightBarButtonItems?.indexOf(editBarButtonItem) {
-            let fixedSpace = UIBarButtonItem(barButtonSystemItem: .FixedSpace, target: nil, action: nil)
-            fixedSpace.width = 40.0
+        // Put the edit button in, with space between it and the compendium buttons.
+        let fixedSpace = UIBarButtonItem(barButtonSystemItem: .FixedSpace, target: nil, action: nil)
+        fixedSpace.width = 40.0
 
-            navigationItem.rightBarButtonItems?.insert(fixedSpace, atIndex: index + 1)
-        }
-
+        navigationItem.rightBarButtonItems?.insert(fixedSpace, atIndex: 0)
+        navigationItem.rightBarButtonItems?.insert(editButtonItem(), atIndex: 0)
+        
         // Save the adventure so we come back to it next time.
         NSUserDefaults.standardUserDefaults().setObject(adventure.name, forKey: "Adventure")
         
         // Update the view.
-        navigationItem.title = adventure.name
-        
-        nameTextView.text = adventure.name
-        adjustableImageView.setImage(adventure.image.image, fraction: adventure.image.fraction, origin: adventure.image.origin)
+        configureView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,6 +40,37 @@ class AdventureViewController: UIViewController, UITextViewDelegate, AdjustableI
         // Dispose of any resources that can be recreated.
     }
     
+    func configureView() {
+        navigationItem.title = adventure.name
+        
+        nameTextView.text = adventure.name
+        
+        adjustableImageView.setImage(adventure.image.image, fraction: adventure.image.fraction, origin: adventure.image.origin)
+    }
+
+    override func setEditing(editing: Bool, animated: Bool) {
+        let oldEditing = self.editing
+        super.setEditing(editing, animated: animated)
+        
+        navigationItem.hidesBackButton = editing
+        navigationItem.leftBarButtonItem = editing ? deleteButtonItem : nil
+
+        nameTextView.editable = editing
+        
+        adjustableImageView.editing = editing
+        
+        playersViewController.setEditing(editing, animated: animated)
+        gamesViewController.setEditing(editing, animated: animated)
+
+        if oldEditing && !editing {
+            nameTextView.resignFirstResponder()
+            
+            adventure.lastModified = NSDate()
+            try! managedObjectContext.save()
+            
+            configureView()
+        }
+    }
 
     // MARK: Navigation
     
@@ -76,52 +101,6 @@ class AdventureViewController: UIViewController, UITextViewDelegate, AdjustableI
     
     // MARK: Actions
     
-    var oldLeftItemsSupplementBackButton: Bool!
-    
-    @IBAction func editButtonTapped(sender: UIBarButtonItem) {
-        if let index = navigationItem.rightBarButtonItems?.indexOf(editBarButtonItem) {
-            navigationItem.rightBarButtonItems?.removeAtIndex(index)
-            navigationItem.rightBarButtonItems?.insert(doneBarButtonItem, atIndex: index)
-        }
-        oldLeftItemsSupplementBackButton = navigationItem.leftItemsSupplementBackButton
-        navigationItem.leftBarButtonItem = deleteBarButtonItem
-        navigationItem.leftItemsSupplementBackButton = false
-        
-        nameTextView.editable = true
-
-        adjustableImageView.editing = true
-        
-        playersViewController.setEditing(true, animated: true)
-        gamesViewController.setEditing(true, animated: true)
-    }
-    
-    func finishEditing() {
-        if let index = navigationItem.rightBarButtonItems?.indexOf(doneBarButtonItem) {
-            navigationItem.rightBarButtonItems?.removeAtIndex(index)
-            navigationItem.rightBarButtonItems?.insert(editBarButtonItem, atIndex: index)
-        }
-        navigationItem.leftBarButtonItem = nil
-        navigationItem.leftItemsSupplementBackButton = oldLeftItemsSupplementBackButton
-        oldLeftItemsSupplementBackButton = nil
-        
-        nameTextView.editable = false
-        nameTextView.resignFirstResponder()
-        
-        adjustableImageView.editing = false
-        
-        playersViewController.setEditing(false, animated: true)
-        gamesViewController.setEditing(false, animated: true)
-        
-        adventure.lastModified = NSDate()
-        try! managedObjectContext.save()
-        
-        navigationItem.title = adventure.name
-    }
-    
-    @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
-        finishEditing()
-    }
-
     @IBAction func deleteButtonTapped(sender: UIBarButtonItem) {
         let controller = UIAlertController(title: "Delete “\(adventure.name)”?", message: "This will delete all information associated with the adventure, including player records, and cannot be undone.", preferredStyle: .Alert)
 
@@ -144,16 +123,16 @@ class AdventureViewController: UIViewController, UITextViewDelegate, AdjustableI
         adventure.name = textView.text
         do {
             try adventure.validateForUpdate()
-            doneBarButtonItem.enabled = true
+            navigationItem.rightBarButtonItems?[0].enabled = true
         } catch {
-            doneBarButtonItem.enabled = false
+            navigationItem.rightBarButtonItems?[0].enabled = false
         }
     }
 
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
             if let _ = try? adventure.validateForUpdate() {
-                finishEditing()
+                setEditing(false, animated: true)
             }
 
             return false
