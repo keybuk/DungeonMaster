@@ -33,6 +33,7 @@
 		D23435FB1C0FEFA000108D5F /* Dice.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23435FA1C0FEFA000108D5F /* Dice.swift */; };
 		D23435FD1C0FF84F00108D5F /* DiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23435FC1C0FF84F00108D5F /* DiceTest.swift */; };
 		D234B5C21C56F34000C81417 /* GameDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D234B5C11C56F34000C81417 /* GameDateViewController.swift */; };
+		D234B5C41C5712BA00C81417 /* ManagedObjectObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D234B5C31C5712BA00C81417 /* ManagedObjectObserver.swift */; };
 		D243F6431C189A7500324572 /* TabletopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D243F6421C189A7500324572 /* TabletopView.swift */; };
 		D249CF831C21DDF300CDE673 /* PointGeneratorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D249CF821C21DDF300CDE673 /* PointGeneratorTest.swift */; };
 		D249CF851C21DF3500CDE673 /* PointGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D249CF841C21DF3500CDE673 /* PointGenerator.swift */; };
@@ -146,6 +147,7 @@
 		D23435FA1C0FEFA000108D5F /* Dice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dice.swift; sourceTree = "<group>"; };
 		D23435FC1C0FF84F00108D5F /* DiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiceTest.swift; sourceTree = "<group>"; };
 		D234B5C11C56F34000C81417 /* GameDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDateViewController.swift; sourceTree = "<group>"; };
+		D234B5C31C5712BA00C81417 /* ManagedObjectObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectObserver.swift; sourceTree = "<group>"; };
 		D243F6421C189A7500324572 /* TabletopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabletopView.swift; sourceTree = "<group>"; };
 		D249CF821C21DDF300CDE673 /* PointGeneratorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointGeneratorTest.swift; sourceTree = "<group>"; };
 		D249CF841C21DF3500CDE673 /* PointGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointGenerator.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				D26FBA381C1E366300D44503 /* CombatantDamage.swift */,
 				D26FBA3E1C1EA4E700D44503 /* CombatantCondition.swift */,
 				D23435F51C0D634100108D5F /* Importer.swift */,
+				D234B5C31C5712BA00C81417 /* ManagedObjectObserver.swift */,
 			);
 			name = "Data Model";
 			sourceTree = "<group>";
@@ -612,6 +615,7 @@
 				D21BACED1C3365E8007E2934 /* Spell.swift in Sources */,
 				D249CF891C22602800CDE673 /* ConditionRulesViewController.swift in Sources */,
 				D2A9AF0D1BFFEAA5009902ED /* DungeonMaster.xcdatamodeld in Sources */,
+				D234B5C41C5712BA00C81417 /* ManagedObjectObserver.swift in Sources */,
 				D26FBA3B1C1E3FE400D44503 /* DamageViewController.swift in Sources */,
 				D21BACEF1C339464007E2934 /* SpellsViewController.swift in Sources */,
 				D2511FFA1C14BC3700A09F0B /* Tag.swift in Sources */,

@@ -8,11 +8,13 @@
 
 import UIKit
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, ManagedObjectObserverDelegate {
     
     var game: Game!
 
     @IBOutlet var dateLabel: UILabel!
+    
+    var observer: NSObjectProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +26,17 @@ class GameViewController: UIViewController {
         navigationItem.rightBarButtonItems?.insert(fixedSpace, atIndex: 0)
         navigationItem.rightBarButtonItems?.insert(editButtonItem(), atIndex: 0)
 
+        configureView()
+    
+        observer = ManagedObjectObserver(object: game, delegate: self)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func configureView() {
         // Set the view title.
         let numberFormatter = RomanNumeralFormatter()
         let number = numberFormatter.stringFromNumber(game.number)!
@@ -33,11 +46,6 @@ class GameViewController: UIViewController {
         dateFormatter.dateStyle = .LongStyle
         dateFormatter.timeStyle = .NoStyle
         dateLabel.text = dateFormatter.stringFromDate(game.date)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func setEditing(editing: Bool, animated: Bool) {
@@ -79,6 +87,12 @@ class GameViewController: UIViewController {
                 presentation.sourceRect = sourceView.bounds
             }
         }
+    }
+    
+    // MARK: ManagedObjectObserverDelegate
+    
+    func managedObject(object: Game, changedForType type: ManagedObjectChangeType) {
+        configureView()
     }
     
 }
