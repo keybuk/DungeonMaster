@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AdventureViewController: UIViewController, UITextViewDelegate, AdjustableImageViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class AdventureViewController: UIViewController, ManagedObjectObserverDelegate, UITextViewDelegate, AdjustableImageViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var adventure: Adventure!
 
@@ -17,6 +17,8 @@ class AdventureViewController: UIViewController, UITextViewDelegate, AdjustableI
     @IBOutlet var adjustableImageView: AdjustableImageView!
     
     @IBOutlet var playersView: UIView!
+    
+    var observer: NSObjectProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +33,9 @@ class AdventureViewController: UIViewController, UITextViewDelegate, AdjustableI
         // Save the adventure so we come back to it next time.
         NSUserDefaults.standardUserDefaults().setObject(adventure.name, forKey: "Adventure")
         
-        // Update the view.
         configureView()
+        
+        observer = ManagedObjectObserver(object: adventure, delegate: self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,8 +70,6 @@ class AdventureViewController: UIViewController, UITextViewDelegate, AdjustableI
             
             adventure.lastModified = NSDate()
             try! managedObjectContext.save()
-            
-            configureView()
         }
     }
 
@@ -115,6 +116,14 @@ class AdventureViewController: UIViewController, UITextViewDelegate, AdjustableI
         controller.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: nil))
 
         presentViewController(controller, animated: true, completion: nil)
+    }
+    
+    // MARK: ManagedObjectObserverDelegate
+    
+    func managedObject(object: Adventure, changedForType type: ManagedObjectChangeType) {
+        guard !editing else { return }
+        
+        configureView()
     }
     
     // MARK: UITextViewDelegate
