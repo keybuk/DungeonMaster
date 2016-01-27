@@ -95,6 +95,15 @@ class AdventureGamesViewController: UITableViewController, NSFetchedResultsContr
         if editingStyle == .Delete {
             let game = fetchedResultsController.objectAtIndexPath(indexPath) as! Game
             managedObjectContext.deleteObject(game)
+            
+            // Renumber the games above the deleted one to account for it having gone away
+            for row in 0..<indexPath.row {
+                let updateIndexPath = NSIndexPath(forRow: row, inSection: indexPath.section)
+                let updateGame = fetchedResultsController.objectAtIndexPath(updateIndexPath) as! Game
+                
+                updateGame.number -= 1
+            }
+            
             try! managedObjectContext.save()
         }
     }
