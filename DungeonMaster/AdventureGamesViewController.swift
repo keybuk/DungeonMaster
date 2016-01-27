@@ -76,6 +76,37 @@ class AdventureGamesViewController: UITableViewController, NSFetchedResultsContr
             try! managedObjectContext.save()
         }
     }
+    
+    // MARK: Move support
+    
+    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    var userMovedTableRow: NSIndexPath?
+    
+    override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+        let sourceGame = fetchedResultsController.objectAtIndexPath(sourceIndexPath) as! Game
+        let destinationGame = fetchedResultsController.objectAtIndexPath(destinationIndexPath) as! Game
+
+        sourceGame.number = destinationGame.number
+
+        // We have to move everything from the destination, up to but not including, the source. We can't use ..< because that won't go in either direction.
+        var row = destinationIndexPath.row
+        let step = destinationIndexPath.row > sourceIndexPath.row ? -1 : 1
+        while row != sourceIndexPath.row {
+            let indexPath = NSIndexPath(forRow: row, inSection: sourceIndexPath.section)
+            let game = fetchedResultsController.objectAtIndexPath(indexPath) as! Game
+
+            // The table is sorted in reverse order, with the highest number first, so we actually move the game number in the opposite direction to the step through the rows.
+            game.number -= step
+
+            row += step
+        }
+        
+        userMovedTableRow = sourceIndexPath
+        try! managedObjectContext.save()
+    }
 
     // MARK: UITableViewDelegate
     
@@ -107,12 +138,17 @@ class AdventureGamesViewController: UITableViewController, NSFetchedResultsContr
             let game = anObject as! Game
             cell.game = game
         case .Move:
-            // .Move implies .Update; update the cell at the old index, and then move it.
-            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! AdventureGameCell
-            let game = anObject as! Game
-            cell.game = game
+            if let userMovedTableRow = userMovedTableRow where userMovedTableRow == indexPath! {
+                // Ignore row moved by the user, since the table already reflects the model.
+                self.userMovedTableRow = nil
+            } else {
+                // .Move implies .Update; update the cell at the old index, and then move it.
+                let cell = tableView.cellForRowAtIndexPath(indexPath!) as! AdventureGameCell
+                let game = anObject as! Game
+                cell.game = game
             
-            tableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!)
+                tableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!)
+            }
         }
     }
     

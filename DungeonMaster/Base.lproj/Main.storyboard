@@ -143,40 +143,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EMR-zE-jsa" customClass="AdjustableImageView" customModule="DungeonMaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="256" height="256"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RT2-3y-G0U" userLabel="Gesture View">
+                                <rect key="frame" x="0.0" y="64" width="600" height="256"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EMR-zE-jsa" customClass="AdjustableImageView" customModule="DungeonMaster" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="256" height="256"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="256" id="Fnr-Qm-Oae"/>
+                                            <constraint firstAttribute="width" constant="256" id="vjM-gT-RTs"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="placeholderImage" value="D&amp;D Ampersand"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="YAX-F3-Z4O" id="EjU-uM-MW8"/>
+                                            <outlet property="gestureView" destination="RT2-3y-G0U" id="vhu-WH-waG"/>
+                                        </connections>
+                                    </view>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Adventure" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hn6-Ey-XFD">
+                                        <rect key="frame" x="264" y="8" width="328" height="49"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="49" id="TNS-VS-rOd"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="YAX-F3-Z4O" id="gtX-nf-eyx"/>
+                                        </connections>
+                                    </textView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="256" id="Fnr-Qm-Oae"/>
-                                    <constraint firstAttribute="width" constant="256" id="vjM-gT-RTs"/>
+                                    <constraint firstItem="EMR-zE-jsa" firstAttribute="leading" secondItem="RT2-3y-G0U" secondAttribute="leading" id="AaE-2F-5b7"/>
+                                    <constraint firstItem="hn6-Ey-XFD" firstAttribute="trailing" secondItem="RT2-3y-G0U" secondAttribute="trailing" constant="-8" id="IMB-8g-x1m"/>
+                                    <constraint firstItem="EMR-zE-jsa" firstAttribute="bottom" secondItem="RT2-3y-G0U" secondAttribute="bottom" id="bPn-sm-dtB"/>
+                                    <constraint firstItem="hn6-Ey-XFD" firstAttribute="top" secondItem="RT2-3y-G0U" secondAttribute="top" constant="8" id="bVD-Pq-9Da"/>
+                                    <constraint firstItem="hn6-Ey-XFD" firstAttribute="leading" secondItem="EMR-zE-jsa" secondAttribute="trailing" constant="8" id="svz-is-wmF"/>
+                                    <constraint firstItem="EMR-zE-jsa" firstAttribute="top" secondItem="RT2-3y-G0U" secondAttribute="top" id="u8R-ZI-St2"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="placeholderImage" value="D&amp;D Ampersand"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <outlet property="delegate" destination="YAX-F3-Z4O" id="EjU-uM-MW8"/>
-                                    <outlet property="gestureView" destination="d4M-Ug-KUN" id="gUK-1o-SF4"/>
-                                </connections>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Adventure" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hn6-Ey-XFD">
-                                <rect key="frame" x="264" y="64" width="316" height="49"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="49" id="TNS-VS-rOd"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
-                                <connections>
-                                    <outlet property="delegate" destination="YAX-F3-Z4O" id="gtX-nf-eyx"/>
-                                </connections>
-                            </textView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MTF-hT-y2E">
                                 <rect key="frame" x="0.0" y="328" width="200" height="272"/>
                                 <connections>
                                     <segue destination="jeF-23-47K" kind="embed" identifier="PlayersEmbedSegue" id="Nyh-c0-32Y"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SZ7-iZ-xfY">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SZ7-iZ-xfY" userLabel="Games View">
                                 <rect key="frame" x="208" y="328" width="200" height="272"/>
                                 <connections>
                                     <segue destination="qkI-fy-Xsy" kind="embed" identifier="GamesEmbedSegue" id="GFB-B5-OGa"/>
@@ -185,19 +199,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="osP-a5-iN7" firstAttribute="top" secondItem="SZ7-iZ-xfY" secondAttribute="bottom" id="6Ep-XG-haQ"/>
-                            <constraint firstItem="EMR-zE-jsa" firstAttribute="leading" secondItem="d4M-Ug-KUN" secondAttribute="leading" id="Axr-10-w54"/>
+                            <constraint firstItem="SZ7-iZ-xfY" firstAttribute="bottom" secondItem="osP-a5-iN7" secondAttribute="top" id="6Ep-XG-haQ"/>
                             <constraint firstItem="MTF-hT-y2E" firstAttribute="leading" secondItem="d4M-Ug-KUN" secondAttribute="leading" id="FL9-GC-NQR"/>
-                            <constraint firstItem="hn6-Ey-XFD" firstAttribute="leading" secondItem="EMR-zE-jsa" secondAttribute="trailing" constant="8" id="GaK-MP-eX5"/>
-                            <constraint firstItem="MTF-hT-y2E" firstAttribute="top" secondItem="EMR-zE-jsa" secondAttribute="bottom" constant="8" id="IN6-eh-HUJ"/>
-                            <constraint firstItem="SZ7-iZ-xfY" firstAttribute="top" secondItem="EMR-zE-jsa" secondAttribute="bottom" constant="8" id="Nhc-S9-2n4"/>
-                            <constraint firstItem="EMR-zE-jsa" firstAttribute="top" secondItem="yUU-UT-RG9" secondAttribute="bottom" id="U7C-KM-dCd"/>
-                            <constraint firstItem="hn6-Ey-XFD" firstAttribute="trailing" secondItem="d4M-Ug-KUN" secondAttribute="trailingMargin" id="VWh-EV-n9b"/>
+                            <constraint firstItem="RT2-3y-G0U" firstAttribute="leading" secondItem="d4M-Ug-KUN" secondAttribute="leading" id="Hdv-0Y-86Y"/>
+                            <constraint firstItem="SZ7-iZ-xfY" firstAttribute="top" secondItem="RT2-3y-G0U" secondAttribute="bottom" constant="8" id="Loh-nT-gwo"/>
+                            <constraint firstItem="RT2-3y-G0U" firstAttribute="top" secondItem="yUU-UT-RG9" secondAttribute="bottom" id="Uve-mo-3wn"/>
                             <constraint firstItem="SZ7-iZ-xfY" firstAttribute="leading" secondItem="MTF-hT-y2E" secondAttribute="trailing" constant="8" id="Xm5-Jj-3Vh"/>
                             <constraint firstItem="MTF-hT-y2E" firstAttribute="width" secondItem="d4M-Ug-KUN" secondAttribute="width" multiplier="0.333" id="deM-0Z-4bs"/>
                             <constraint firstItem="SZ7-iZ-xfY" firstAttribute="width" secondItem="d4M-Ug-KUN" secondAttribute="width" multiplier="0.333" id="gg8-OA-qe3"/>
-                            <constraint firstItem="osP-a5-iN7" firstAttribute="top" secondItem="MTF-hT-y2E" secondAttribute="bottom" id="vo4-JI-0lo"/>
-                            <constraint firstItem="hn6-Ey-XFD" firstAttribute="top" secondItem="yUU-UT-RG9" secondAttribute="bottom" id="yGo-gJ-Tfb"/>
+                            <constraint firstItem="MTF-hT-y2E" firstAttribute="top" secondItem="RT2-3y-G0U" secondAttribute="bottom" constant="8" id="tAt-9b-PAI"/>
+                            <constraint firstItem="RT2-3y-G0U" firstAttribute="trailing" secondItem="d4M-Ug-KUN" secondAttribute="trailing" id="upt-vH-1HT"/>
+                            <constraint firstItem="MTF-hT-y2E" firstAttribute="bottom" secondItem="osP-a5-iN7" secondAttribute="top" id="vo4-JI-0lo"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
