@@ -26,7 +26,7 @@ enum ManagedObjectChangeType {
 /// Objects can confirm to `ManagedObjectObserverDelegate` in order to observe changes to `NSManagedObject`s.
 ///
 /// Implementation of a single method `managedObject(object: changedForType type:)` is necessary to receive the change events.
-protocol ManagedObjectObserverDelegate {
+protocol ManagedObjectObserverDelegate: class {
     typealias Entity
     
     func managedObject(object: Entity, changedForType type: ManagedObjectChangeType)
@@ -39,7 +39,7 @@ protocol ManagedObjectObserverDelegate {
 class ManagedObjectObserver<Entity, DelegateType where Entity: NSManagedObject, DelegateType: ManagedObjectObserverDelegate, DelegateType.Entity == Entity>: NSObject {
     
     let object: Entity
-    var delegate: DelegateType?
+    weak var delegate: DelegateType?
 
     init(object: Entity, delegate: DelegateType) {
         self.object = object
