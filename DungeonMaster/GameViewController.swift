@@ -29,6 +29,10 @@ class GameViewController: UIViewController, ManagedObjectObserverDelegate {
         configureView()
     
         observer = ManagedObjectObserver(object: game, delegate: self)
+
+        if game.inserted {
+            setEditing(true, animated: false)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,6 +53,7 @@ class GameViewController: UIViewController, ManagedObjectObserverDelegate {
     }
     
     override func setEditing(editing: Bool, animated: Bool) {
+        let oldEditing = self.editing
         super.setEditing(editing, animated: animated)
         
         navigationItem.hidesBackButton = editing
@@ -57,6 +62,11 @@ class GameViewController: UIViewController, ManagedObjectObserverDelegate {
         dateLabel.userInteractionEnabled = editing
         
         playersViewController.setEditing(editing, animated: animated)
+        
+        if oldEditing && !editing {
+            game.adventure.lastModified = NSDate()
+            try! managedObjectContext.save()
+        }
     }
     
     // MARK: Navigation

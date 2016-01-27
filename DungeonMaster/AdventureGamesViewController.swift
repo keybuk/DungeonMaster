@@ -22,6 +22,28 @@ class AdventureGamesViewController: UITableViewController, NSFetchedResultsContr
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "GameSegue" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let game = fetchedResultsController.objectAtIndexPath(indexPath) as! Game
+                let viewController = segue.destinationViewController as! GameViewController
+                viewController.game = game
+            }
+        }
+    }
+    
+    // MARK: Actions
+    
+    @IBAction func addButtonTapped(sender: UIButton) {
+        let game = Game(adventure: adventure, inManagedObjectContext: managedObjectContext)
+        
+        let viewController = storyboard?.instantiateViewControllerWithIdentifier("GameViewController") as! GameViewController
+        viewController.game = game
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+
     // MARK: Fetched results controller
     
     var fetchedResultsController: NSFetchedResultsController {
@@ -154,31 +176,6 @@ class AdventureGamesViewController: UITableViewController, NSFetchedResultsContr
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         tableView.endUpdates()
-    }
-
-
-    // MARK: Navigation
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "GameSegue" {
-            if let indexPath = tableView.indexPathForSelectedRow {
-                let game = fetchedResultsController.objectAtIndexPath(indexPath) as! Game
-                let viewController = segue.destinationViewController as! GameViewController
-                viewController.game = game
-            }
-        }
-    }
-    
-    // MARK: Actions
-    
-    @IBAction func addButtonTapped(sender: UIButton) {
-        let game = Game(adventure: adventure, inManagedObjectContext: managedObjectContext)
-        adventure.lastModified = NSDate()
-        try! managedObjectContext.save()
-
-        let viewController = storyboard?.instantiateViewControllerWithIdentifier("GameViewController") as! GameViewController
-        viewController.game = game
-        navigationController?.pushViewController(viewController, animated: true)
     }
 
 }

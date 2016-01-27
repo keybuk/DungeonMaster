@@ -26,14 +26,19 @@ class GamePlayersViewController: UITableViewController, NSFetchedResultsControll
         // Clear the cache of missing players.
         invalidateMissingPlayers()
         
+        let oldEditing = self.editing, tableViewLoaded = self.tableViewLoaded
         super.setEditing(editing, animated: animated)
         
-        let addSection = fetchedResultsController.sections?.count ?? 0
-        if editing {
-            tableView.insertSections(NSIndexSet(index: addSection), withRowAnimation: .Automatic)
-        } else {
-            tableView.deleteSections(NSIndexSet(index: addSection), withRowAnimation: .Automatic)
-            
+        if editing != oldEditing && tableViewLoaded {
+            let addSection = fetchedResultsController.sections?.count ?? 0
+            if editing {
+                tableView.insertSections(NSIndexSet(index: addSection), withRowAnimation: .Automatic)
+            } else {
+                tableView.deleteSections(NSIndexSet(index: addSection), withRowAnimation: .Automatic)
+            }
+        }
+        
+        if oldEditing && !editing {
             // Players added directly to the Game should also be added to the parent adventure, so that they're added to the next adventure.
             // We don't do the inverse, because "removing a player from the adventure" just means they won't take part anymore. We leave their old game records.
             let adventurePlayers = game.adventure.mutableSetValueForKey("players")
@@ -118,7 +123,10 @@ class GamePlayersViewController: UITableViewController, NSFetchedResultsControll
     
     // MARK: UITableViewDataSource
     
+    var tableViewLoaded = false
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        tableViewLoaded = true
         return (fetchedResultsController.sections?.count ?? 0) + (editing ? 1 : 0)
     }
     
