@@ -209,12 +209,14 @@ class AdventureGameCell: UITableViewCell {
             dateFormatter.timeStyle = .NoStyle
             
             dateLabel.text = dateFormatter.stringFromDate(game.date)
+            
+            leadingConstraint.constant = editing ? 0.0 : (separatorInset.left - layoutMargins.left)
         }
     }
     
     override func setEditing(editing: Bool, animated: Bool) {
         if let leadingConstraint = leadingConstraint {
-            leadingConstraint.constant = editing ? 0.0 : 7.0
+            leadingConstraint.constant = editing ? 0.0 : (separatorInset.left - layoutMargins.left)
         }
         
         super.setEditing(editing, animated: animated)

@@ -231,7 +231,7 @@ class GameEncounterCell: UITableViewCell {
     var encounter: Encounter! {
         didSet {
             label.text = encounter.title
-            leadingConstraint.constant = separatorInset.left - layoutMargins.left
+            leadingConstraint.constant = editing ? 0.0 : (separatorInset.left - layoutMargins.left)
         }
     }
     

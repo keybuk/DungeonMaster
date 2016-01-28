@@ -784,17 +784,18 @@ class PlayerSavingThrowCell: UITableViewCell {
 
     @IBOutlet var leadingConstraint: NSLayoutConstraint!
     
-    override func setEditing(editing: Bool, animated: Bool) {
-        leadingConstraint.constant = editing ? 0.0 : 7.0
-        super.setEditing(editing, animated: animated)
-    }
-    
     var playerSavingThrow: PlayerSavingThrow! {
         didSet {
             label.text = playerSavingThrow.savingThrow.stringValue
+            leadingConstraint.constant = editing ? 0.0 : (separatorInset.left - layoutMargins.left)
         }
     }
 
+    override func setEditing(editing: Bool, animated: Bool) {
+        leadingConstraint.constant = editing ? 0.0 : (separatorInset.left - layoutMargins.left)
+        super.setEditing(editing, animated: animated)
+    }
+    
 }
 
 class AddPlayerSavingThrowCell: UITableViewCell {
@@ -814,17 +815,18 @@ class PlayerSkillCell: UITableViewCell {
 
     @IBOutlet var leadingConstraint: NSLayoutConstraint!
     
-    override func setEditing(editing: Bool, animated: Bool) {
-        leadingConstraint.constant = editing ? 0.0 : 7.0
-        super.setEditing(editing, animated: animated)
-    }
-
     var playerSkill: PlayerSkill! {
         didSet {
             label.text = playerSkill.skill.longStringValue
+            leadingConstraint.constant = editing ? 0.0 : (separatorInset.left - layoutMargins.left)
         }
     }
 
+    override func setEditing(editing: Bool, animated: Bool) {
+        leadingConstraint.constant = editing ? 0.0 : (separatorInset.left - layoutMargins.left)
+        super.setEditing(editing, animated: animated)
+    }
+    
 }
 
 class AddPlayerSkillCell: UITableViewCell {
