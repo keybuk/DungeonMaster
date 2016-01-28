@@ -235,7 +235,7 @@ class GamePlayersViewController: UITableViewController, NSFetchedResultsControll
             let playedGame = anObject as! PlayedGame
             if let oldIndex = oldMissingPlayers?.indexOf(playedGame.player) {
                 let oldIndexPath = NSIndexPath(forRow: oldIndex, inSection: 1)
-                tableView.deleteRowsAtIndexPaths([ oldIndexPath ], withRowAnimation: .Bottom)
+                tableView.deleteRowsAtIndexPaths([ oldIndexPath ], withRowAnimation: .Top)
             }
             
             tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Bottom)
@@ -244,7 +244,7 @@ class GamePlayersViewController: UITableViewController, NSFetchedResultsControll
             let cell = tableView.cellForRowAtIndexPath(indexPath!) as! GamePlayerCell
             if let newIndex = missingPlayers.indexOf(cell.player) {
                 let newIndexPath = NSIndexPath(forRow: newIndex, inSection: 1)
-                tableView.insertRowsAtIndexPaths([ newIndexPath ], withRowAnimation: .Bottom)
+                tableView.insertRowsAtIndexPaths([ newIndexPath ], withRowAnimation: .Top)
             }
             
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Bottom)
