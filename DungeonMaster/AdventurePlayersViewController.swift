@@ -15,9 +15,6 @@ class AdventurePlayersViewController: UITableViewController, NSFetchedResultsCon
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 60.0
     }
     
     override func didReceiveMemoryWarning() {
