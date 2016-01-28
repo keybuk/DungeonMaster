@@ -191,9 +191,15 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SZ7-iZ-xfY" userLabel="Games View">
-                                <rect key="frame" x="208" y="328" width="200" height="272"/>
+                                <rect key="frame" x="208" y="328" width="184" height="272"/>
                                 <connections>
                                     <segue destination="qkI-fy-Xsy" kind="embed" identifier="GamesEmbedSegue" id="GFB-B5-OGa"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="leX-Vq-Xxs" userLabel="Encounters View">
+                                <rect key="frame" x="400" y="328" width="200" height="272"/>
+                                <connections>
+                                    <segue destination="ExZ-W5-ugX" kind="embed" identifier="EncountersEmbedSegue" id="iJa-yu-dBb"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -203,11 +209,15 @@
                             <constraint firstItem="MTF-hT-y2E" firstAttribute="leading" secondItem="d4M-Ug-KUN" secondAttribute="leading" id="FL9-GC-NQR"/>
                             <constraint firstItem="RT2-3y-G0U" firstAttribute="leading" secondItem="d4M-Ug-KUN" secondAttribute="leading" id="Hdv-0Y-86Y"/>
                             <constraint firstItem="SZ7-iZ-xfY" firstAttribute="top" secondItem="RT2-3y-G0U" secondAttribute="bottom" constant="8" id="Loh-nT-gwo"/>
+                            <constraint firstItem="leX-Vq-Xxs" firstAttribute="trailing" secondItem="d4M-Ug-KUN" secondAttribute="trailing" id="MFE-yZ-ZUW"/>
                             <constraint firstItem="RT2-3y-G0U" firstAttribute="top" secondItem="yUU-UT-RG9" secondAttribute="bottom" id="Uve-mo-3wn"/>
                             <constraint firstItem="SZ7-iZ-xfY" firstAttribute="leading" secondItem="MTF-hT-y2E" secondAttribute="trailing" constant="8" id="Xm5-Jj-3Vh"/>
                             <constraint firstItem="MTF-hT-y2E" firstAttribute="width" secondItem="d4M-Ug-KUN" secondAttribute="width" multiplier="0.333" id="deM-0Z-4bs"/>
-                            <constraint firstItem="SZ7-iZ-xfY" firstAttribute="width" secondItem="d4M-Ug-KUN" secondAttribute="width" multiplier="0.333" id="gg8-OA-qe3"/>
+                            <constraint firstItem="leX-Vq-Xxs" firstAttribute="leading" secondItem="SZ7-iZ-xfY" secondAttribute="trailing" constant="8" id="r3l-xk-Rwz"/>
+                            <constraint firstItem="leX-Vq-Xxs" firstAttribute="bottom" secondItem="osP-a5-iN7" secondAttribute="top" id="sLh-Jk-DmH"/>
+                            <constraint firstItem="leX-Vq-Xxs" firstAttribute="top" secondItem="RT2-3y-G0U" secondAttribute="bottom" constant="8" id="t6l-aP-3tj"/>
                             <constraint firstItem="MTF-hT-y2E" firstAttribute="top" secondItem="RT2-3y-G0U" secondAttribute="bottom" constant="8" id="tAt-9b-PAI"/>
+                            <constraint firstItem="leX-Vq-Xxs" firstAttribute="width" secondItem="d4M-Ug-KUN" secondAttribute="width" multiplier="0.333" id="tCM-kI-F3z"/>
                             <constraint firstItem="RT2-3y-G0U" firstAttribute="trailing" secondItem="d4M-Ug-KUN" secondAttribute="trailing" id="upt-vH-1HT"/>
                             <constraint firstItem="MTF-hT-y2E" firstAttribute="bottom" secondItem="osP-a5-iN7" secondAttribute="top" id="vo4-JI-0lo"/>
                         </constraints>
@@ -249,6 +259,85 @@
             </objects>
             <point key="canvasLocation" x="-2942" y="-491"/>
         </scene>
+        <!--Adventure Encounters-->
+        <scene sceneID="76n-hs-AJc">
+            <objects>
+                <tableViewController id="ExZ-W5-ugX" userLabel="Adventure Encounters" customClass="AdventureEncountersViewController" customModule="DungeonMaster" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="BV4-WB-M4W">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="eT1-7I-9ym">
+                            <rect key="frame" x="0.0" y="0.0" width="400" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Encounters" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8UA-fk-UDf">
+                                    <rect key="frame" x="8" y="8" width="354" height="28"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lNS-B2-d0M">
+                                    <rect key="frame" x="370" y="11" width="22" height="22"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="22" id="M9u-XU-kSt"/>
+                                        <constraint firstAttribute="width" constant="22" id="S7n-ol-VF6"/>
+                                    </constraints>
+                                    <connections>
+                                        <action selector="addButtonTapped:" destination="ExZ-W5-ugX" eventType="touchUpInside" id="20P-3V-aEG"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="8UA-fk-UDf" secondAttribute="bottom" constant="8" id="2Xo-zZ-XqZ"/>
+                                <constraint firstItem="lNS-B2-d0M" firstAttribute="leading" secondItem="8UA-fk-UDf" secondAttribute="trailing" constant="8" id="4nE-2a-x6c"/>
+                                <constraint firstItem="lNS-B2-d0M" firstAttribute="centerY" secondItem="eT1-7I-9ym" secondAttribute="centerY" id="PVp-Qk-IdQ"/>
+                                <constraint firstItem="8UA-fk-UDf" firstAttribute="leading" secondItem="eT1-7I-9ym" secondAttribute="leading" constant="8" id="idb-wE-xOb"/>
+                                <constraint firstItem="lNS-B2-d0M" firstAttribute="trailing" secondItem="eT1-7I-9ym" secondAttribute="trailingMargin" id="jmR-dW-vNX"/>
+                                <constraint firstItem="8UA-fk-UDf" firstAttribute="top" secondItem="eT1-7I-9ym" secondAttribute="top" constant="8" id="oyb-eh-sDF"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AdventureEncounterCell" id="mKW-iR-VT0" customClass="AdventureEncounterCell" customModule="DungeonMaster" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="400" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mKW-iR-VT0" id="mXi-Ih-uX4">
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tiamat and 4 Dragons" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2GH-Gz-UHX">
+                                            <rect key="frame" x="15" y="8" width="377" height="27.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="2GH-Gz-UHX" firstAttribute="top" secondItem="mXi-Ih-uX4" secondAttribute="topMargin" id="1sj-O4-4tb"/>
+                                        <constraint firstItem="2GH-Gz-UHX" firstAttribute="bottom" secondItem="mXi-Ih-uX4" secondAttribute="bottomMargin" id="SD0-Zl-9lX"/>
+                                        <constraint firstItem="2GH-Gz-UHX" firstAttribute="leading" secondItem="mXi-Ih-uX4" secondAttribute="leadingMargin" constant="7" id="iJ8-Dg-n9u"/>
+                                        <constraint firstItem="2GH-Gz-UHX" firstAttribute="trailing" secondItem="mXi-Ih-uX4" secondAttribute="trailingMargin" id="tEo-ag-p6M"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="label" destination="2GH-Gz-UHX" id="LDd-AF-2mz"/>
+                                    <outlet property="leadingConstraint" destination="iJ8-Dg-n9u" id="5oW-0u-ULa"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ExZ-W5-ugX" id="Sp3-cu-qyk"/>
+                            <outlet property="delegate" destination="ExZ-W5-ugX" id="R7h-SF-Oer"/>
+                        </connections>
+                    </tableView>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="400" height="400"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cgV-r7-IES" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2254" y="-929"/>
+        </scene>
         <!--Game-->
         <scene sceneID="Y0Y-be-sCR">
             <objects>
@@ -262,13 +351,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YDC-oM-SUp">
-                                <rect key="frame" x="0.0" y="80" width="200" height="520"/>
+                                <rect key="frame" x="0.0" y="79" width="200" height="520.5"/>
                                 <connections>
                                     <segue destination="cFA-zt-kX3" kind="embed" identifier="PlayersEmbedSegue" id="hMj-t0-kQd"/>
                                 </connections>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25 January, 2016" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZRu-uC-7mN">
-                                <rect key="frame" x="20" y="52" width="560" height="20"/>
+                                <rect key="frame" x="20" y="52" width="560" height="19.5"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -277,14 +366,24 @@
                                     <outletCollection property="gestureRecognizers" destination="mcu-VL-kD5" appends="YES" id="jsL-tY-2ps"/>
                                 </connections>
                             </label>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zAR-co-68k" userLabel="Game Encounters">
+                                <rect key="frame" x="400" y="80" width="200" height="520"/>
+                                <connections>
+                                    <segue destination="N2j-I4-5dL" kind="embed" identifier="EncountersEmbedSegue" id="arP-9h-DMv"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="zAR-co-68k" secondAttribute="trailing" id="IDF-wN-3kZ"/>
+                            <constraint firstItem="zAR-co-68k" firstAttribute="width" secondItem="g8W-Df-me7" secondAttribute="width" multiplier="0.333" id="JZY-Pp-QZQ"/>
+                            <constraint firstItem="zAR-co-68k" firstAttribute="top" secondItem="ZRu-uC-7mN" secondAttribute="bottom" constant="8" id="MYk-s1-MAX"/>
                             <constraint firstItem="YDC-oM-SUp" firstAttribute="width" secondItem="g8W-Df-me7" secondAttribute="width" multiplier="0.333" id="PNO-BI-0CM"/>
                             <constraint firstItem="YDC-oM-SUp" firstAttribute="top" secondItem="ZRu-uC-7mN" secondAttribute="bottom" constant="8" id="Xjc-tr-Xza"/>
                             <constraint firstItem="ZRu-uC-7mN" firstAttribute="trailing" secondItem="g8W-Df-me7" secondAttribute="trailingMargin" id="an6-1I-Iug"/>
                             <constraint firstItem="ZRu-uC-7mN" firstAttribute="top" secondItem="f9k-lY-GEa" secondAttribute="bottom" constant="8" id="clx-tK-RkA"/>
                             <constraint firstItem="ZRu-uC-7mN" firstAttribute="leading" secondItem="g8W-Df-me7" secondAttribute="leadingMargin" id="d1h-q2-sAo"/>
+                            <constraint firstItem="Yi5-gK-clb" firstAttribute="top" secondItem="zAR-co-68k" secondAttribute="bottom" id="omP-xH-rjb"/>
                             <constraint firstItem="YDC-oM-SUp" firstAttribute="leading" secondItem="g8W-Df-me7" secondAttribute="leading" id="quB-GQ-ZZR"/>
                             <constraint firstItem="YDC-oM-SUp" firstAttribute="bottom" secondItem="g8W-Df-me7" secondAttribute="bottomMargin" id="yli-cL-1mx"/>
                         </constraints>
@@ -325,7 +424,86 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1861" y="-491"/>
+            <point key="canvasLocation" x="-1865" y="-315"/>
+        </scene>
+        <!--Game Encounters-->
+        <scene sceneID="Ehb-hs-6DF">
+            <objects>
+                <tableViewController id="N2j-I4-5dL" userLabel="Game Encounters" customClass="GameEncountersViewController" customModule="DungeonMaster" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="mAJ-wC-76H">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="9y4-Wh-pBq">
+                            <rect key="frame" x="0.0" y="0.0" width="400" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Encounters" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rb8-by-ckD">
+                                    <rect key="frame" x="8" y="8" width="354" height="28"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E8m-Us-Z0u">
+                                    <rect key="frame" x="370" y="11" width="22" height="22"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="22" id="Gbt-ZI-uR9"/>
+                                        <constraint firstAttribute="width" constant="22" id="y6K-se-d1S"/>
+                                    </constraints>
+                                    <connections>
+                                        <action selector="addButtonTapped:" destination="N2j-I4-5dL" eventType="touchUpInside" id="NDv-bT-Gyu"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="E8m-Us-Z0u" firstAttribute="centerY" secondItem="9y4-Wh-pBq" secondAttribute="centerY" id="0sF-xf-fd5"/>
+                                <constraint firstItem="rb8-by-ckD" firstAttribute="top" secondItem="9y4-Wh-pBq" secondAttribute="top" constant="8" id="8uW-9V-yJ4"/>
+                                <constraint firstItem="E8m-Us-Z0u" firstAttribute="trailing" secondItem="9y4-Wh-pBq" secondAttribute="trailingMargin" id="SFp-mF-siB"/>
+                                <constraint firstItem="rb8-by-ckD" firstAttribute="leading" secondItem="9y4-Wh-pBq" secondAttribute="leading" constant="8" id="baf-uX-otk"/>
+                                <constraint firstItem="E8m-Us-Z0u" firstAttribute="leading" secondItem="rb8-by-ckD" secondAttribute="trailing" constant="8" id="oK2-Cd-pgf"/>
+                                <constraint firstAttribute="bottom" secondItem="rb8-by-ckD" secondAttribute="bottom" constant="8" id="sp3-Rh-5xA"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GameEncounterCell" id="KFM-8M-FDe" customClass="GameEncounterCell" customModule="DungeonMaster" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="400" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KFM-8M-FDe" id="kUm-Qh-m1B">
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tiamat and 4 Dragons" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3dO-G5-76k">
+                                            <rect key="frame" x="15" y="8" width="377" height="27.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="3dO-G5-76k" firstAttribute="leading" secondItem="kUm-Qh-m1B" secondAttribute="leadingMargin" constant="7" id="2iZ-95-UDO"/>
+                                        <constraint firstItem="3dO-G5-76k" firstAttribute="bottom" secondItem="kUm-Qh-m1B" secondAttribute="bottomMargin" id="SBL-ea-mXA"/>
+                                        <constraint firstItem="3dO-G5-76k" firstAttribute="top" secondItem="kUm-Qh-m1B" secondAttribute="topMargin" id="Vtf-38-0KI"/>
+                                        <constraint firstItem="3dO-G5-76k" firstAttribute="trailing" secondItem="kUm-Qh-m1B" secondAttribute="trailingMargin" id="x1y-p1-PMm"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="label" destination="3dO-G5-76k" id="dKy-y0-cUH"/>
+                                    <outlet property="leadingConstraint" destination="2iZ-95-UDO" id="1Mj-YF-nUz"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="N2j-I4-5dL" id="Epp-wU-ers"/>
+                            <outlet property="delegate" destination="N2j-I4-5dL" id="Ufw-on-oyf"/>
+                        </connections>
+                    </tableView>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="400" height="400"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="btx-5B-BOD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1216" y="-315"/>
         </scene>
         <!--Game Date Popover-->
         <scene sceneID="8ZH-5p-TFP">
@@ -366,7 +544,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nyw-my-hnL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1575" y="156"/>
+            <point key="canvasLocation" x="-2087" y="314"/>
         </scene>
         <!--Adventure Players-->
         <scene sceneID="REf-gh-9Ww">
@@ -549,7 +727,7 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PlayerNameCell" id="Wob-3X-fMt" customClass="PlayerNameCell" customModule="DungeonMaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="49.5" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="93.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wob-3X-fMt" id="MKN-Xz-DXF">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -577,7 +755,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PlayerPlayerNameCell" id="zmo-bM-1Gj" customClass="PlayerPlayerNameCell" customModule="DungeonMaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="93.5" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="137.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zmo-bM-1Gj" id="oSY-GA-fWx">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -605,7 +783,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PlayerRaceCell" id="Pgs-cQ-Ny2" customClass="PlayerRaceCell" customModule="DungeonMaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="137.5" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="181.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Pgs-cQ-Ny2" id="vyQ-U9-VLH">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
@@ -633,7 +811,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PlayerCharacterClassCell" id="thX-Fr-mHh" customClass="PlayerCharacterClassCell" customModule="DungeonMaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="181.5" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="225.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="thX-Fr-mHh" id="wmB-fl-QDL">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
@@ -661,7 +839,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PlayerBackgroundCell" id="HK4-VA-oyk" customClass="PlayerBackgroundCell" customModule="DungeonMaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="225.5" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="269.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HK4-VA-oyk" id="QuN-jG-OcO">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
@@ -689,7 +867,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PlayerAlignmentCell" id="Rks-Jw-d6k" customClass="PlayerAlignmentCell" customModule="DungeonMaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="269.5" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="313.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rks-Jw-d6k" id="LMK-aO-QOS">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
@@ -717,7 +895,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PlayerXPCell" id="GR4-Qg-BQY" customClass="PlayerXPCell" customModule="DungeonMaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="313.5" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="357.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GR4-Qg-BQY" id="VzW-qA-kM0">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -775,7 +953,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="EditPlayerXPCell" id="grs-cI-bmw" customClass="PlayerXPCell" customModule="DungeonMaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="357.5" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="401.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="grs-cI-bmw" id="Fc9-0Q-FId">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -817,7 +995,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PlayerPassivePerceptionCell" id="zrp-zt-3MW" customClass="PlayerPassivePerceptionCell" customModule="DungeonMaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="401.5" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="445.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zrp-zt-3MW" id="RNI-ZI-gjy">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -853,7 +1031,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="EditPlayerPassivePerceptionCell" id="6sc-15-AMa" customClass="PlayerPassivePerceptionCell" customModule="DungeonMaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="445.5" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="489.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6sc-15-AMa" id="uoK-SH-rtW">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -895,7 +1073,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PlayerSavingThrowCell" id="Zoy-bq-beE" customClass="PlayerSavingThrowCell" customModule="DungeonMaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="489.5" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="533.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zoy-bq-beE" id="2jX-ca-oNs">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -921,7 +1099,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AddPlayerSavingThrowCell" id="jwp-g2-MtY" customClass="AddPlayerSavingThrowCell" customModule="DungeonMaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="533.5" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="577.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jwp-g2-MtY" id="yua-sW-g5v">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
@@ -949,7 +1127,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PlayerSkillCell" id="F5w-yg-TwF" customClass="PlayerSkillCell" customModule="DungeonMaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="577.5" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="621.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F5w-yg-TwF" id="gFY-zN-4TV">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -975,7 +1153,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AddPlayerSkillCell" id="CFB-X1-LLV" customClass="AddPlayerSkillCell" customModule="DungeonMaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="621.5" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="665.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CFB-X1-LLV" id="4gf-lg-hFW">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
@@ -1034,7 +1212,7 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RaceCell" textLabel="y4o-QM-7co" style="IBUITableViewCellStyleDefault" id="rs1-gq-naB">
-                                <rect key="frame" x="0.0" y="49.5" width="400" height="44"/>
+                                <rect key="frame" x="0.0" y="93.5" width="400" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rs1-gq-naB" id="wVX-OA-exd">
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="43.5"/>
@@ -1078,7 +1256,7 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CharacterClassCell" textLabel="I8c-FS-Upq" style="IBUITableViewCellStyleDefault" id="wq5-v9-HB0">
-                                <rect key="frame" x="0.0" y="49.5" width="400" height="44"/>
+                                <rect key="frame" x="0.0" y="93.5" width="400" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wq5-v9-HB0" id="EZG-XI-fH1">
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="43.5"/>
@@ -1122,7 +1300,7 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BackgroundCell" textLabel="0Xs-ja-fjf" style="IBUITableViewCellStyleDefault" id="I1d-LO-ugo">
-                                <rect key="frame" x="0.0" y="49.5" width="400" height="44"/>
+                                <rect key="frame" x="0.0" y="93.5" width="400" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I1d-LO-ugo" id="in0-fJ-KdJ">
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="43.5"/>
@@ -1166,7 +1344,7 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlignmentCell" textLabel="cUk-Re-9ZZ" style="IBUITableViewCellStyleDefault" id="WZJ-CU-CrQ">
-                                <rect key="frame" x="0.0" y="49.5" width="400" height="44"/>
+                                <rect key="frame" x="0.0" y="93.5" width="400" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WZJ-CU-CrQ" id="ThM-fM-vze">
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="43.5"/>
@@ -1210,7 +1388,7 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SavingThrowCell" textLabel="whz-Bi-bEV" style="IBUITableViewCellStyleDefault" id="8DG-Hd-2vo">
-                                <rect key="frame" x="0.0" y="49.5" width="400" height="44"/>
+                                <rect key="frame" x="0.0" y="93.5" width="400" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8DG-Hd-2vo" id="Wpg-7T-CcY">
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="43.5"/>
@@ -1253,7 +1431,7 @@
                 <viewControllerPlaceholder storyboardName="Compendium" referencedIdentifier="CompendiumViewController" id="A9j-L0-dmc" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s9j-ZY-zGl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1861" y="-30"/>
+            <point key="canvasLocation" x="-1865" y="146"/>
         </scene>
         <!--Game Players-->
         <scene sceneID="koG-pe-lu1">
@@ -1358,7 +1536,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2T5-ft-GJF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2015" y="248"/>
+            <point key="canvasLocation" x="-1655" y="406"/>
         </scene>
         <!--Skill-->
         <scene sceneID="UHL-99-qFl">
@@ -1370,7 +1548,7 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SkillCell" textLabel="Rh2-7N-7cx" style="IBUITableViewCellStyleDefault" id="k6d-2Q-bIc">
-                                <rect key="frame" x="0.0" y="49.5" width="400" height="44"/>
+                                <rect key="frame" x="0.0" y="93.5" width="400" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k6d-2Q-bIc" id="XHL-91-EuR">
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="43.5"/>
@@ -1524,8 +1702,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="VeV-ag-Sfy"/>
-        <segue reference="n3G-X6-AbP"/>
-        <segue reference="qtQ-Ta-7Nb"/>
+        <segue reference="iny-vj-ImG"/>
+        <segue reference="N3k-Mq-bzQ"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

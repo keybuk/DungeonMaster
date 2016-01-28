@@ -62,7 +62,8 @@ class GameViewController: UIViewController, ManagedObjectObserverDelegate {
         dateLabel.userInteractionEnabled = editing
         
         playersViewController.setEditing(editing, animated: animated)
-        
+        encountersViewController.setEditing(editing, animated: animated)
+
         if oldEditing && !editing {
             game.adventure.lastModified = NSDate()
             try! managedObjectContext.save()
@@ -72,11 +73,15 @@ class GameViewController: UIViewController, ManagedObjectObserverDelegate {
     // MARK: Navigation
     
     var playersViewController: GamePlayersViewController!
+    var encountersViewController: GameEncountersViewController!
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "PlayersEmbedSegue" {
             playersViewController = segue.destinationViewController as! GamePlayersViewController
             playersViewController.game = game
+        } else if segue.identifier == "EncountersEmbedSegue" {
+            encountersViewController = segue.destinationViewController as! GameEncountersViewController
+            encountersViewController.game = game
         } else if segue.identifier == "CompendiumMonstersSegue" {
             let viewController = segue.destinationViewController as! CompendiumViewController
             viewController.books = game.adventure.books.allObjects as! [Book]

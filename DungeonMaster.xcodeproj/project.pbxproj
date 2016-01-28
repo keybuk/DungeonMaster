@@ -34,6 +34,8 @@
 		D23435FD1C0FF84F00108D5F /* DiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23435FC1C0FF84F00108D5F /* DiceTest.swift */; };
 		D234B5C21C56F34000C81417 /* GameDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D234B5C11C56F34000C81417 /* GameDateViewController.swift */; };
 		D234B5C41C5712BA00C81417 /* ManagedObjectObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D234B5C31C5712BA00C81417 /* ManagedObjectObserver.swift */; };
+		D234B5C61C59A07C00C81417 /* GameEncountersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D234B5C51C59A07C00C81417 /* GameEncountersViewController.swift */; };
+		D234B5C81C59A08800C81417 /* AdventureEncountersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D234B5C71C59A08800C81417 /* AdventureEncountersViewController.swift */; };
 		D243F6431C189A7500324572 /* TabletopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D243F6421C189A7500324572 /* TabletopView.swift */; };
 		D249CF831C21DDF300CDE673 /* PointGeneratorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D249CF821C21DDF300CDE673 /* PointGeneratorTest.swift */; };
 		D249CF851C21DF3500CDE673 /* PointGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D249CF841C21DF3500CDE673 /* PointGenerator.swift */; };
@@ -148,6 +150,8 @@
 		D23435FC1C0FF84F00108D5F /* DiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiceTest.swift; sourceTree = "<group>"; };
 		D234B5C11C56F34000C81417 /* GameDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDateViewController.swift; sourceTree = "<group>"; };
 		D234B5C31C5712BA00C81417 /* ManagedObjectObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectObserver.swift; sourceTree = "<group>"; };
+		D234B5C51C59A07C00C81417 /* GameEncountersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameEncountersViewController.swift; sourceTree = "<group>"; };
+		D234B5C71C59A08800C81417 /* AdventureEncountersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdventureEncountersViewController.swift; sourceTree = "<group>"; };
 		D243F6421C189A7500324572 /* TabletopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabletopView.swift; sourceTree = "<group>"; };
 		D249CF821C21DDF300CDE673 /* PointGeneratorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointGeneratorTest.swift; sourceTree = "<group>"; };
 		D249CF841C21DF3500CDE673 /* PointGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointGenerator.swift; sourceTree = "<group>"; };
@@ -325,8 +329,10 @@
 				D298E8F81C2A4CF1007461A9 /* SkillViewController.swift */,
 				D2B92C191C4B6B090057BA47 /* AdventureGamesViewController.swift */,
 				D2C3B7AB1C517846009D4062 /* GameViewController.swift */,
-				D2C3B7AD1C517ADD009D4062 /* GamePlayersViewController.swift */,
 				D234B5C11C56F34000C81417 /* GameDateViewController.swift */,
+				D2C3B7AD1C517ADD009D4062 /* GamePlayersViewController.swift */,
+				D234B5C51C59A07C00C81417 /* GameEncountersViewController.swift */,
+				D234B5C71C59A08800C81417 /* AdventureEncountersViewController.swift */,
 			);
 			name = Adventure;
 			sourceTree = "<group>";
@@ -586,7 +592,9 @@
 				D21BACF11C339476007E2934 /* SpellViewController.swift in Sources */,
 				D26FBA411C1FA17400D44503 /* ConditionViewController.swift in Sources */,
 				D20049231C1A127500A645E9 /* TabletopStatsView.swift in Sources */,
+				D234B5C81C59A08800C81417 /* AdventureEncountersViewController.swift in Sources */,
 				D2B92C181C4B65FF0057BA47 /* Game.swift in Sources */,
+				D234B5C61C59A07C00C81417 /* GameEncountersViewController.swift in Sources */,
 				D2622AA31C2BCDEC000D6100 /* MonsterSkill.swift in Sources */,
 				D26FBA3D1C1E52CA00D44503 /* Enums.swift in Sources */,
 				D2622AA71C2CB4C7000D6100 /* EncounterPlayersViewController.swift in Sources */,

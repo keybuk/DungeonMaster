@@ -64,6 +64,7 @@ class AdventureViewController: UIViewController, ManagedObjectObserverDelegate, 
         
         playersViewController.setEditing(editing, animated: animated)
         gamesViewController.setEditing(editing, animated: animated)
+        encountersViewController.setEditing(editing, animated: animated)
 
         if oldEditing && !editing {
             nameTextView.resignFirstResponder()
@@ -77,6 +78,7 @@ class AdventureViewController: UIViewController, ManagedObjectObserverDelegate, 
     
     var playersViewController: AdventurePlayersViewController!
     var gamesViewController: AdventureGamesViewController!
+    var encountersViewController: AdventureEncountersViewController!
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "PlayersEmbedSegue" {
@@ -85,6 +87,9 @@ class AdventureViewController: UIViewController, ManagedObjectObserverDelegate, 
         } else if segue.identifier == "GamesEmbedSegue" {
             gamesViewController = segue.destinationViewController as! AdventureGamesViewController
             gamesViewController.adventure = adventure
+        } else if segue.identifier == "EncountersEmbedSegue" {
+            encountersViewController = segue.destinationViewController as! AdventureEncountersViewController
+            encountersViewController.adventure = adventure
         } else if segue.identifier == "CompendiumMonstersSegue" {
             let viewController = segue.destinationViewController as! CompendiumViewController
             viewController.books = adventure.books.allObjects as! [Book]
