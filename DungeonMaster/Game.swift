@@ -34,6 +34,11 @@ final class Game: NSManagedObject {
     /// Each member is a `PlayedGame` linking to the appropriate `Game`, along with details of XP, items, etc. earned during that game.
     @NSManaged var playedGames: NSSet
     
+    /// Encounters run as part of this game.
+    ///
+    /// Each member is an `Encounter`. Encounters may exist across multiple games until they have been completed.
+    @NSManaged var encounters: NSSet
+    
     convenience init(adventure: Adventure, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Game, inManagedObjectContext: context)
         self.init(entity: entity, insertIntoManagedObjectContext: context)

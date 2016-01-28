@@ -9,13 +9,28 @@
 import CoreData
 import Foundation
 
+/// Encounter represents a combat encounter with one or more players participating, generally against one or more monsters.
+///
+/// Encounters are created as part of Adventures, and played as part of Games. Each participating member of the Encounter is tracked as a Combatant.
 final class Encounter: NSManagedObject {
     
-    @NSManaged var lastUsed: NSDate
+    /// The Adventure that this Encounter is a part of.
+    @NSManaged var adventure: Adventure
+    
+    /// The set of Games that this Encounter has been played in.
+    ///
+    /// Each member is a `Game`. An Encounter can exist in multiple Games where it's particularly long, with each Game picking up from where the previous game left off.
+    @NSManaged var games: NSSet
+    
+    /// Timestamp when the Encounter object was last modified.
+    @NSManaged var lastModified: NSDate
+    
+    /// Optionally provided name of the encounter.
+    ///
+    /// Generally for UI use the `title` property instead.
     @NSManaged var name: String?
     
-    @NSManaged var combatants: NSSet
-
+    /// Title for the encounter.
     var title: String {
         if let name = name {
             return name
@@ -43,14 +58,19 @@ final class Encounter: NSManagedObject {
         
         return "Encounter"
     }
-
-    // MARK: Internal properties
     
-    convenience init(inManagedObjectContext context: NSManagedObjectContext) {
+    /// The set of players and monsters participating in the encounter.
+    ///
+    /// Each member is a `Combatant` linking the player or monster, and tracking Encounter-specific stats.
+    @NSManaged var combatants: NSSet
+    
+    convenience init(adventure: Adventure, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Encounter, inManagedObjectContext: context)
         self.init(entity: entity, insertIntoManagedObjectContext: context)
         
-        lastUsed = NSDate()
+        self.adventure = adventure
+    
+        lastModified = NSDate()
     }
 
     /// Returns the total XP for all monsters in the encounter.

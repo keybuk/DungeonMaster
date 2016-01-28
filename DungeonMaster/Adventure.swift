@@ -33,6 +33,11 @@ final class Adventure: NSManagedObject {
     /// Each member is a `Player`. New adventures automatically gain all players that exist at creation time.
     @NSManaged var players: NSSet
     
+    /// Encounters that may take place in the adventure.
+    ///
+    /// Each member is an `Encounter`. Encounters may be created in the Adventure before being added to Games for the purposes of planning, once attached to one or more Games, it should usually be omitted from the adventure but will be present in this set.
+    @NSManaged var encounters: NSSet
+    
     /// The set of games played so far in this adventure.
     ///
     /// Each member is a `Game`.

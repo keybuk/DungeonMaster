@@ -57,10 +57,10 @@ class EncountersViewController: UITableViewController {
                 encounterViewController.encounter = encounter
             }
         } else if segue.identifier == "CreateEncounterSegue" {
-            let encounter = Encounter(inManagedObjectContext: managedObjectContext)
-            let encounterViewController = segue.destinationViewController as! EncounterViewController
-            encounterViewController.encounter = encounter
-            try! managedObjectContext.save()
+            //let encounter = Encounter(inManagedObjectContext: managedObjectContext)
+            //let encounterViewController = segue.destinationViewController as! EncounterViewController
+            //encounterViewController.encounter = encounter
+            //try! managedObjectContext.save()
         }
     }
 
