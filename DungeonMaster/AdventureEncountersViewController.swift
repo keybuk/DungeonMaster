@@ -22,12 +22,26 @@ class AdventureEncountersViewController: UITableViewController, NSFetchedResults
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "EncounterSegue" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let encounter = fetchedResultsController.objectAtIndexPath(indexPath) as! Encounter
+                let viewController = segue.destinationViewController as! EncounterViewController
+                viewController.encounter = encounter
+            }
+        }
+    }
+    
     // MARK: Actions
 
     @IBAction func addButtonTapped(sender: UIButton) {
         let encounter = Encounter(adventure: adventure, inManagedObjectContext: managedObjectContext)
         
-        // FIXME doesn't get saved
+        let viewController = storyboard?.instantiateViewControllerWithIdentifier("EncounterViewController") as! EncounterViewController
+        viewController.encounter = encounter
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     // MARK: Fetched results controller
@@ -39,8 +53,6 @@ class AdventureEncountersViewController: UITableViewController, NSFetchedResults
         
         let fetchRequest = NSFetchRequest(entity: Model.Encounter)
         fetchRequest.predicate = NSPredicate(format: "adventure == %@ AND games.@count == 0", adventure)
-        
-        // FIXME and not in any game
         
         let lastModifiedSortDescriptor = NSSortDescriptor(key: "lastModified", ascending: false)
         fetchRequest.sortDescriptors = [lastModifiedSortDescriptor]

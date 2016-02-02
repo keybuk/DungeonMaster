@@ -44,6 +44,18 @@ class GameEncountersViewController: UITableViewController, NSFetchedResultsContr
             try! managedObjectContext.save()
         }
     }
+    
+    // MARK: Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "EncounterSegue" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let encounter = fetchedResultsController.objectAtIndexPath(indexPath) as! Encounter
+                let viewController = segue.destinationViewController as! EncounterViewController
+                viewController.encounter = encounter
+            }
+        }
+    }
 
     // MARK: Actions
     
@@ -52,7 +64,9 @@ class GameEncountersViewController: UITableViewController, NSFetchedResultsContr
         let games = encounter.mutableSetValueForKey("games")
         games.addObject(game)
         
-        // FIXME doesn't get saved
+        let viewController = storyboard?.instantiateViewControllerWithIdentifier("EncounterViewController") as! EncounterViewController
+        viewController.encounter = encounter
+        navigationController?.pushViewController(viewController, animated: true)
     }
 
     // MARK: Fetched results controller

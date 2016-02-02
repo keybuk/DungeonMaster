@@ -116,7 +116,7 @@ extension TabletopViewController: TabletopViewDelegate {
     
     func tabletopView(tabletopView: TabletopView, didSelectItem index: Int) {
         let combatant = fetchedResultsController.fetchedObjects![index] as! Combatant
-        if let encounterViewController = (splitViewController?.viewControllers[0] as! UINavigationController).topViewController as? EncounterViewController {
+        if let encounterViewController = (splitViewController?.viewControllers[0] as! UINavigationController).topViewController as? xEncounterViewController {
             for (sectionIndex, section) in encounterViewController.fetchedResultsController.sections!.enumerate() {
                 let combatants = section.objects as! [Combatant]?
                 if let rowIndex = combatants?.indexOf(combatant) {
