@@ -518,7 +518,21 @@
                     <view key="view" contentMode="scaleToFill" id="SFg-wI-D5f">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A6S-Ux-fVS">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="600"/>
+                                <connections>
+                                    <segue destination="hpB-Hv-PEX" kind="embed" identifier="CombatantsEmbedSegue" id="KmL-aX-F9O"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6O8-q3-17K" firstAttribute="top" secondItem="A6S-Ux-fVS" secondAttribute="bottom" id="Dvj-aB-1ht"/>
+                            <constraint firstItem="A6S-Ux-fVS" firstAttribute="width" secondItem="SFg-wI-D5f" secondAttribute="width" multiplier="0.5" id="Suh-bd-VjO"/>
+                            <constraint firstItem="A6S-Ux-fVS" firstAttribute="top" secondItem="SFg-wI-D5f" secondAttribute="top" id="pkK-su-ws6"/>
+                            <constraint firstItem="A6S-Ux-fVS" firstAttribute="leading" secondItem="SFg-wI-D5f" secondAttribute="leading" id="x0W-Pp-V47"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Encounter" id="IxB-GC-DcY">
@@ -541,7 +555,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="600"/>
                 </viewController>
@@ -1740,7 +1754,80 @@
                 <viewControllerPlaceholder storyboardName="Compendium" referencedIdentifier="CompendiumViewController" id="7gs-a3-6vi" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vab-pL-cmD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-411" y="193"/>
+            <point key="canvasLocation" x="-387" y="146"/>
+        </scene>
+        <!--Encounter Combatants-->
+        <scene sceneID="t1z-ok-pmM">
+            <objects>
+                <tableViewController id="hpB-Hv-PEX" userLabel="Encounter Combatants" customClass="EncounterCombatantsViewController" customModule="DungeonMaster" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="iE9-RL-apd">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EncounterCombatantCell" id="U3h-so-x9O" customClass="EncounterCombatantCell" customModule="DungeonMaster" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="400" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U3h-so-x9O" id="oYe-9W-mqM">
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adult Black Dragon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ixp-3t-lj6">
+                                            <rect key="frame" x="8" y="8" width="384" height="27.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Ixp-3t-lj6" firstAttribute="top" secondItem="oYe-9W-mqM" secondAttribute="topMargin" id="B3t-pu-fCB"/>
+                                        <constraint firstItem="Ixp-3t-lj6" firstAttribute="trailing" secondItem="oYe-9W-mqM" secondAttribute="trailingMargin" id="CiS-tp-nLu"/>
+                                        <constraint firstItem="Ixp-3t-lj6" firstAttribute="leading" secondItem="oYe-9W-mqM" secondAttribute="leadingMargin" id="Rhm-Fb-lg7"/>
+                                        <constraint firstItem="Ixp-3t-lj6" firstAttribute="bottom" secondItem="oYe-9W-mqM" secondAttribute="bottomMargin" id="Xmj-KR-SD1"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="leadingConstraint" destination="Rhm-Fb-lg7" id="ox8-zZ-cbY"/>
+                                    <outlet property="nameLabel" destination="Ixp-3t-lj6" id="hmA-Zb-ieT"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EncounterAddCombatantCell" id="a2K-Xd-OB3" customClass="EncounterAddCombatantCell" customModule="DungeonMaster" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="400" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a2K-Xd-OB3" id="0kT-YF-7s7">
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="add monsters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jp-sl-s5X">
+                                            <rect key="frame" x="8" y="8" width="384" height="27.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="5jp-sl-s5X" firstAttribute="trailing" secondItem="0kT-YF-7s7" secondAttribute="trailingMargin" id="Hyu-sU-kSR"/>
+                                        <constraint firstItem="5jp-sl-s5X" firstAttribute="bottom" secondItem="0kT-YF-7s7" secondAttribute="bottomMargin" id="JBg-2T-dke"/>
+                                        <constraint firstItem="5jp-sl-s5X" firstAttribute="leading" secondItem="0kT-YF-7s7" secondAttribute="leadingMargin" id="cJQ-9I-Dxc"/>
+                                        <constraint firstItem="5jp-sl-s5X" firstAttribute="top" secondItem="0kT-YF-7s7" secondAttribute="topMargin" id="cvf-ak-RHm"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="label" destination="5jp-sl-s5X" id="yVU-zH-g4a"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="hpB-Hv-PEX" id="vCd-e8-gqE"/>
+                            <outlet property="delegate" destination="hpB-Hv-PEX" id="g1q-uC-L28"/>
+                        </connections>
+                    </tableView>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="400" height="400"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w56-M5-L47" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-723" y="406"/>
         </scene>
     </scenes>
     <resources>

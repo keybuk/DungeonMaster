@@ -37,6 +37,7 @@
 		D234B5C61C59A07C00C81417 /* GameEncountersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D234B5C51C59A07C00C81417 /* GameEncountersViewController.swift */; };
 		D234B5C81C59A08800C81417 /* AdventureEncountersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D234B5C71C59A08800C81417 /* AdventureEncountersViewController.swift */; };
 		D234B5EA1C6169E300C81417 /* EncounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D234B5E91C6169E300C81417 /* EncounterViewController.swift */; };
+		D234B5EC1C616FC300C81417 /* EncounterCombatantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D234B5EB1C616FC300C81417 /* EncounterCombatantsViewController.swift */; };
 		D243F6431C189A7500324572 /* TabletopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D243F6421C189A7500324572 /* TabletopView.swift */; };
 		D249CF831C21DDF300CDE673 /* PointGeneratorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D249CF821C21DDF300CDE673 /* PointGeneratorTest.swift */; };
 		D249CF851C21DF3500CDE673 /* PointGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D249CF841C21DF3500CDE673 /* PointGenerator.swift */; };
@@ -153,6 +154,7 @@
 		D234B5C51C59A07C00C81417 /* GameEncountersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameEncountersViewController.swift; sourceTree = "<group>"; };
 		D234B5C71C59A08800C81417 /* AdventureEncountersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdventureEncountersViewController.swift; sourceTree = "<group>"; };
 		D234B5E91C6169E300C81417 /* EncounterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncounterViewController.swift; sourceTree = "<group>"; };
+		D234B5EB1C616FC300C81417 /* EncounterCombatantsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncounterCombatantsViewController.swift; sourceTree = "<group>"; };
 		D243F6421C189A7500324572 /* TabletopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabletopView.swift; sourceTree = "<group>"; };
 		D249CF821C21DDF300CDE673 /* PointGeneratorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointGeneratorTest.swift; sourceTree = "<group>"; };
 		D249CF841C21DF3500CDE673 /* PointGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointGenerator.swift; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 				D234B5C51C59A07C00C81417 /* GameEncountersViewController.swift */,
 				D234B5C71C59A08800C81417 /* AdventureEncountersViewController.swift */,
 				D234B5E91C6169E300C81417 /* EncounterViewController.swift */,
+				D234B5EB1C616FC300C81417 /* EncounterCombatantsViewController.swift */,
 			);
 			name = Adventure;
 			sourceTree = "<group>";
@@ -583,6 +586,7 @@
 				D21BACF51C38E7B8007E2934 /* MonsterEnvironment.swift in Sources */,
 				D26FBA221C1BEA0F00D44503 /* Combatant.swift in Sources */,
 				D249CF851C21DF3500CDE673 /* PointGenerator.swift in Sources */,
+				D234B5EC1C616FC300C81417 /* EncounterCombatantsViewController.swift in Sources */,
 				D2116A461C10EBEB001EDBBA /* Action.swift in Sources */,
 				D25120021C14FC0A00A09F0B /* ExtendedNavigationBarView.swift in Sources */,
 				D2597F6A1C4844D90091AD05 /* CompendiumViewController.swift in Sources */,

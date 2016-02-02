@@ -48,6 +48,8 @@ class EncounterViewController: UIViewController, ManagedObjectObserverDelegate {
         
         navigationItem.hidesBackButton = editing
         
+        combatantsViewController.setEditing(editing, animated: animated)
+        
         if oldEditing && !editing {
             encounter.adventure.lastModified = NSDate()
             try! managedObjectContext.save()
@@ -56,8 +58,13 @@ class EncounterViewController: UIViewController, ManagedObjectObserverDelegate {
     
     // MARK: Navigation
     
+    var combatantsViewController: EncounterCombatantsViewController!
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "CompendiumMonstersSegue" {
+        if segue.identifier == "CombatantsEmbedSegue" {
+            combatantsViewController = segue.destinationViewController as! EncounterCombatantsViewController
+            combatantsViewController.encounter = encounter
+        } else if segue.identifier == "CompendiumMonstersSegue" {
             let viewController = segue.destinationViewController as! CompendiumViewController
             viewController.books = encounter.adventure.books.allObjects as! [Book]
             viewController.showMonsters()
