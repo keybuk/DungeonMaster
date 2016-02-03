@@ -12,6 +12,9 @@ import UIKit
 class MonstersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UISearchControllerDelegate, UISearchResultsUpdating, UISplitViewControllerDelegate {
     
     var books: [Book]!
+    
+    // This feels like a hack, it's just used to be able to use the entire split view as a way to add monsters from the compendium.
+    var detailBarButtonItems: [UIBarButtonItem]?
 
     @IBOutlet var extendedNavigationBarView: ExtendedNavigationBarView!
     @IBOutlet var sortControl: UISegmentedControl!
@@ -80,6 +83,9 @@ class MonstersViewController: UIViewController, UITableViewDataSource, UITableVi
                 viewController.monster = monster
                 viewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
                 viewController.navigationItem.leftItemsSupplementBackButton = true
+                if let rightBarButtonItems = detailBarButtonItems {
+                    viewController.navigationItem.rightBarButtonItems = rightBarButtonItems
+                }
             }
         }
     }

@@ -41,6 +41,30 @@ class EncounterCombatantsViewController: UITableViewController, NSFetchedResults
             try! managedObjectContext.save()
         }
     }
+    
+    // MARK: Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "AddCombatantSegue" {
+            // This is pretty hacky, we're stealing one view and embedding in another just to work around restrictions. The fact this gets complicated, requiring intermediate classes, should show that I shouldn't do things this way and should come up with a better way. I just don't know what that is yet.
+            let viewController = segue.destinationViewController as! EncounterAddCombatantViewController
+            viewController.encounter = encounter
+            
+            viewController.completionBlock = { cancelled, monster, quantity in
+                if let monster = monster where !cancelled {
+                    for _ in 1...quantity {
+                        let _ = Combatant(encounter: self.encounter, monster: monster, inManagedObjectContext: managedObjectContext)
+                    }
+                }
+                
+                self.dismissViewControllerAnimated(true, completion: nil)
+                if let indexPath = self.tableView.indexPathForSelectedRow {
+                    self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+                }
+            }
+
+        }
+    }
 
     // MARK: Fetched results controller
     

@@ -30,7 +30,7 @@
         <!--Monsters Split View-->
         <scene sceneID="W9w-6D-c8O">
             <objects>
-                <splitViewController title="Monsters" id="PoI-1a-9zG" userLabel="Monsters Split View" sceneMemberID="viewController">
+                <splitViewController storyboardIdentifier="CompendiumMonstersSplitViewController" title="Monsters" id="PoI-1a-9zG" userLabel="Monsters Split View" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Monsters" image="MonstersTabbar" selectedImage="MonstersTabbarSelected" id="Ibc-JL-h7P"/>
                     <connections>
                         <segue destination="zlh-L3-uy5" kind="relationship" relationship="masterViewController" id="qEo-WA-lsR"/>
@@ -261,7 +261,7 @@
                                                     <rect key="frame" x="15" y="0.0" width="570" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>

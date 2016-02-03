@@ -782,7 +782,7 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PlayerNameCell" id="Wob-3X-fMt" customClass="PlayerNameCell" customModule="DungeonMaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="49.5" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="93.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wob-3X-fMt" id="MKN-Xz-DXF">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -810,7 +810,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PlayerPlayerNameCell" id="zmo-bM-1Gj" customClass="PlayerPlayerNameCell" customModule="DungeonMaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="93.5" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="137.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zmo-bM-1Gj" id="oSY-GA-fWx">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -838,7 +838,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PlayerRaceCell" id="Pgs-cQ-Ny2" customClass="PlayerRaceCell" customModule="DungeonMaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="137.5" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="181.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Pgs-cQ-Ny2" id="vyQ-U9-VLH">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
@@ -866,7 +866,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PlayerCharacterClassCell" id="thX-Fr-mHh" customClass="PlayerCharacterClassCell" customModule="DungeonMaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="181.5" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="225.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="thX-Fr-mHh" id="wmB-fl-QDL">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
@@ -894,7 +894,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PlayerBackgroundCell" id="HK4-VA-oyk" customClass="PlayerBackgroundCell" customModule="DungeonMaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="225.5" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="269.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HK4-VA-oyk" id="QuN-jG-OcO">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
@@ -922,7 +922,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PlayerAlignmentCell" id="Rks-Jw-d6k" customClass="PlayerAlignmentCell" customModule="DungeonMaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="269.5" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="313.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rks-Jw-d6k" id="LMK-aO-QOS">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
@@ -950,7 +950,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PlayerXPCell" id="GR4-Qg-BQY" customClass="PlayerXPCell" customModule="DungeonMaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="313.5" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="357.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GR4-Qg-BQY" id="VzW-qA-kM0">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -1008,7 +1008,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="EditPlayerXPCell" id="grs-cI-bmw" customClass="PlayerXPCell" customModule="DungeonMaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="357.5" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="401.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="grs-cI-bmw" id="Fc9-0Q-FId">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -1050,7 +1050,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PlayerPassivePerceptionCell" id="zrp-zt-3MW" customClass="PlayerPassivePerceptionCell" customModule="DungeonMaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="401.5" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="445.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zrp-zt-3MW" id="RNI-ZI-gjy">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -1086,7 +1086,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="EditPlayerPassivePerceptionCell" id="6sc-15-AMa" customClass="PlayerPassivePerceptionCell" customModule="DungeonMaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="445.5" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="489.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6sc-15-AMa" id="uoK-SH-rtW">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -1128,7 +1128,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PlayerSavingThrowCell" id="Zoy-bq-beE" customClass="PlayerSavingThrowCell" customModule="DungeonMaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="489.5" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="533.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zoy-bq-beE" id="2jX-ca-oNs">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -1154,7 +1154,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AddPlayerSavingThrowCell" id="jwp-g2-MtY" customClass="AddPlayerSavingThrowCell" customModule="DungeonMaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="533.5" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="577.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jwp-g2-MtY" id="yua-sW-g5v">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
@@ -1182,7 +1182,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PlayerSkillCell" id="F5w-yg-TwF" customClass="PlayerSkillCell" customModule="DungeonMaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="577.5" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="621.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F5w-yg-TwF" id="gFY-zN-4TV">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -1208,7 +1208,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AddPlayerSkillCell" id="CFB-X1-LLV" customClass="AddPlayerSkillCell" customModule="DungeonMaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="621.5" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="665.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CFB-X1-LLV" id="4gf-lg-hFW">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
@@ -1267,7 +1267,7 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RaceCell" textLabel="y4o-QM-7co" style="IBUITableViewCellStyleDefault" id="rs1-gq-naB">
-                                <rect key="frame" x="0.0" y="49.5" width="400" height="44"/>
+                                <rect key="frame" x="0.0" y="93.5" width="400" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rs1-gq-naB" id="wVX-OA-exd">
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="43.5"/>
@@ -1311,7 +1311,7 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CharacterClassCell" textLabel="I8c-FS-Upq" style="IBUITableViewCellStyleDefault" id="wq5-v9-HB0">
-                                <rect key="frame" x="0.0" y="49.5" width="400" height="44"/>
+                                <rect key="frame" x="0.0" y="93.5" width="400" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wq5-v9-HB0" id="EZG-XI-fH1">
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="43.5"/>
@@ -1355,7 +1355,7 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BackgroundCell" textLabel="0Xs-ja-fjf" style="IBUITableViewCellStyleDefault" id="I1d-LO-ugo">
-                                <rect key="frame" x="0.0" y="49.5" width="400" height="44"/>
+                                <rect key="frame" x="0.0" y="93.5" width="400" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I1d-LO-ugo" id="in0-fJ-KdJ">
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="43.5"/>
@@ -1399,7 +1399,7 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlignmentCell" textLabel="cUk-Re-9ZZ" style="IBUITableViewCellStyleDefault" id="WZJ-CU-CrQ">
-                                <rect key="frame" x="0.0" y="49.5" width="400" height="44"/>
+                                <rect key="frame" x="0.0" y="93.5" width="400" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WZJ-CU-CrQ" id="ThM-fM-vze">
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="43.5"/>
@@ -1443,7 +1443,7 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SavingThrowCell" textLabel="whz-Bi-bEV" style="IBUITableViewCellStyleDefault" id="8DG-Hd-2vo">
-                                <rect key="frame" x="0.0" y="49.5" width="400" height="44"/>
+                                <rect key="frame" x="0.0" y="93.5" width="400" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8DG-Hd-2vo" id="Wpg-7T-CcY">
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="43.5"/>
@@ -1603,7 +1603,7 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SkillCell" textLabel="Rh2-7N-7cx" style="IBUITableViewCellStyleDefault" id="k6d-2Q-bIc">
-                                <rect key="frame" x="0.0" y="49.5" width="400" height="44"/>
+                                <rect key="frame" x="0.0" y="93.5" width="400" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k6d-2Q-bIc" id="XHL-91-EuR">
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="43.5"/>
@@ -1756,11 +1756,51 @@
             </objects>
             <point key="canvasLocation" x="-387" y="146"/>
         </scene>
+        <!--CompendiumMonstersSplitViewController-->
+        <scene sceneID="ezZ-8h-or6">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DVQ-k0-45g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Compendium" referencedIdentifier="CompendiumMonstersSplitViewController" id="zqb-N8-LQw" sceneMemberID="viewController"/>
+            </objects>
+            <point key="canvasLocation" x="-72.5" y="1518"/>
+        </scene>
+        <!--Encounter Add Combatant Container-->
+        <scene sceneID="XvA-Ub-F2q">
+            <objects>
+                <viewController id="WQx-k4-hHB" userLabel="Encounter Add Combatant Container" customClass="EncounterAddCombatantViewController" customModule="DungeonMaster" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kkB-Vq-agw"/>
+                        <viewControllerLayoutGuide type="bottom" id="45A-Ph-05l"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zPp-6j-Nno">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0bo-8z-gje">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <segue destination="zqb-N8-LQw" kind="embed" identifier="CompendiumMonstersEmbedSegue" id="uRX-Vs-Dil"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="45A-Ph-05l" firstAttribute="top" secondItem="0bo-8z-gje" secondAttribute="bottom" id="2GY-zX-Mqy"/>
+                            <constraint firstItem="0bo-8z-gje" firstAttribute="leading" secondItem="zPp-6j-Nno" secondAttribute="leading" id="8Fn-Yb-Ou1"/>
+                            <constraint firstItem="0bo-8z-gje" firstAttribute="top" secondItem="kkB-Vq-agw" secondAttribute="bottom" id="WgA-SB-e24"/>
+                            <constraint firstAttribute="trailing" secondItem="0bo-8z-gje" secondAttribute="trailing" id="qtJ-vY-16L"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cWa-ca-RQ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-73" y="1083"/>
+        </scene>
         <!--Encounter Combatants-->
         <scene sceneID="t1z-ok-pmM">
             <objects>
                 <tableViewController id="hpB-Hv-PEX" userLabel="Encounter Combatants" customClass="EncounterCombatantsViewController" customModule="DungeonMaster" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="iE9-RL-apd">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="iE9-RL-apd">
                         <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1814,6 +1854,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="label" destination="5jp-sl-s5X" id="yVU-zH-g4a"/>
+                                    <segue destination="WQx-k4-hHB" kind="presentation" identifier="AddCombatantSegue" modalPresentationStyle="pageSheet" id="3fa-KM-Ubs"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1837,7 +1878,7 @@
         <image name="SpellsToolbar" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qtQ-Ta-7Nb"/>
+        <segue reference="amK-up-2k0"/>
         <segue reference="VeV-ag-Sfy"/>
         <segue reference="iny-vj-ImG"/>
         <segue reference="Hng-EK-ErL"/>

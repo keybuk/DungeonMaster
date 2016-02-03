@@ -38,6 +38,7 @@
 		D234B5C81C59A08800C81417 /* AdventureEncountersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D234B5C71C59A08800C81417 /* AdventureEncountersViewController.swift */; };
 		D234B5EA1C6169E300C81417 /* EncounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D234B5E91C6169E300C81417 /* EncounterViewController.swift */; };
 		D234B5EC1C616FC300C81417 /* EncounterCombatantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D234B5EB1C616FC300C81417 /* EncounterCombatantsViewController.swift */; };
+		D234B5EE1C6295D800C81417 /* EncounterAddCombatantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D234B5ED1C6295D800C81417 /* EncounterAddCombatantViewController.swift */; };
 		D243F6431C189A7500324572 /* TabletopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D243F6421C189A7500324572 /* TabletopView.swift */; };
 		D249CF831C21DDF300CDE673 /* PointGeneratorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D249CF821C21DDF300CDE673 /* PointGeneratorTest.swift */; };
 		D249CF851C21DF3500CDE673 /* PointGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D249CF841C21DF3500CDE673 /* PointGenerator.swift */; };
@@ -155,6 +156,7 @@
 		D234B5C71C59A08800C81417 /* AdventureEncountersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdventureEncountersViewController.swift; sourceTree = "<group>"; };
 		D234B5E91C6169E300C81417 /* EncounterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncounterViewController.swift; sourceTree = "<group>"; };
 		D234B5EB1C616FC300C81417 /* EncounterCombatantsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncounterCombatantsViewController.swift; sourceTree = "<group>"; };
+		D234B5ED1C6295D800C81417 /* EncounterAddCombatantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncounterAddCombatantViewController.swift; sourceTree = "<group>"; };
 		D243F6421C189A7500324572 /* TabletopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabletopView.swift; sourceTree = "<group>"; };
 		D249CF821C21DDF300CDE673 /* PointGeneratorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointGeneratorTest.swift; sourceTree = "<group>"; };
 		D249CF841C21DF3500CDE673 /* PointGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointGenerator.swift; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 				D234B5C71C59A08800C81417 /* AdventureEncountersViewController.swift */,
 				D234B5E91C6169E300C81417 /* EncounterViewController.swift */,
 				D234B5EB1C616FC300C81417 /* EncounterCombatantsViewController.swift */,
+				D234B5ED1C6295D800C81417 /* EncounterAddCombatantViewController.swift */,
 			);
 			name = Adventure;
 			sourceTree = "<group>";
@@ -627,6 +630,7 @@
 				D249CF891C22602800CDE673 /* ConditionRulesViewController.swift in Sources */,
 				D2A9AF0D1BFFEAA5009902ED /* DungeonMaster.xcdatamodeld in Sources */,
 				D234B5C41C5712BA00C81417 /* ManagedObjectObserver.swift in Sources */,
+				D234B5EE1C6295D800C81417 /* EncounterAddCombatantViewController.swift in Sources */,
 				D26FBA3B1C1E3FE400D44503 /* DamageViewController.swift in Sources */,
 				D21BACEF1C339464007E2934 /* SpellsViewController.swift in Sources */,
 				D2511FFA1C14BC3700A09F0B /* Tag.swift in Sources */,
