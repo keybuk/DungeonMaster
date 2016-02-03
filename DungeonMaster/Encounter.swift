@@ -82,20 +82,31 @@ final class Encounter: NSManagedObject {
     ///
     /// This is based on the challenge for the set of players in the encounter, when encountering the set of monsters in the encounter, and is calculated according to the rules of the Dungeon Master's Guide.
     ///
+    /// - parameter forGame: specific game in the Adventure, used when the encounter has no player combatants yet (default nil).
+    /// - parameter allyAdjusted: whether to adjust the XP of monster foes by the XP of monster allies (default true).
+    ///
     /// - returns: the difficulty of the encounter.
-    func calculateDifficulty(forGame game: Game? = nil) -> EncounterDifficulty? {
+    func calculateDifficulty(forGame game: Game? = nil, allyAdjusted: Bool = true) -> EncounterDifficulty? {
         var players: [Player] = []
         var monsterLevels: [NSDecimalNumber] = []
+        var allyXP = 0, allyCount = 0
         for case let combatant as Combatant in combatants {
             if let player = combatant.player {
                 players.append(player)
             } else if let monster = combatant.monster {
-                // The book doesn't really say anything about calculating encounter XP involving player-controlled or friendly monsters.
-                // Likewise it seems sensible to ignore monsters with 0 XP.
-                guard combatant.role == .Foe else { continue }
+                // Ignore monsters with 0 XP.
                 guard monster.XP > 0 else { continue }
 
-                monsterLevels.append(monster.challenge)
+                switch combatant.role {
+                case .Foe:
+                    monsterLevels.append(monster.challenge)
+                case .Friend, .Player:
+                    // The DMG doesnt say how to adjust encounter difficulty to account for NPCs that are friendly to the characters, the simplest solution is to add up their XP and subtract that from the monster XP (ie. 500 XP of allies needs 500 XP of monsters added to the adventure to be equivalent to one without any allies).
+                    if allyAdjusted {
+                        allyXP += monster.XP
+                        allyCount += 1
+                    }
+                }
             }
         }
         
@@ -123,14 +134,14 @@ final class Encounter: NSManagedObject {
         let monsterXPs = monsterLevels.filter({ $0.floatValue >= meanLevel - 5.0 }).map({ sharedRules.challengeXP[$0]! })
 
         var index = sharedRules.monsterXPMultiplier.indexOf({ $0.0 <= monsterXPs.count })!
-        if players.count < 3 {
+        if (players.count + allyCount) < 3 {
             index -= 1
-        } else if players.count > 5 {
+        } else if (players.count + allyCount) > 5 {
             index += 1
         }
 
         let multiplier = sharedRules.monsterXPMultiplier[index].1
-        let modifiedXP = Int(Float(monsterXPs.reduce(0, combine: +)) * multiplier)
+        let modifiedXP = Int(Float(monsterXPs.reduce(-allyXP, combine: +)) * multiplier)
         
         // Calculate thresholds for players.
         var easyThreshold = 0, mediumThreshold = 0, hardThreshold = 0, deadlyThreshold = 0
