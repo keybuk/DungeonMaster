@@ -83,19 +83,12 @@ final class Encounter: NSManagedObject {
     /// This is based on the challenge for the set of players in the encounter, when encountering the set of monsters in the encounter, and is calculated according to the rules of the Dungeon Master's Guide.
     ///
     /// - returns: the difficulty of the encounter.
-    func calculateDifficulty() -> EncounterDifficulty? {
-        var easyThreshold = 0, mediumThreshold = 0, hardThreshold = 0, deadlyThreshold = 0, playerCount = 0
-        var monsterLevels = [NSDecimalNumber]()
+    func calculateDifficulty(forGame game: Game? = nil) -> EncounterDifficulty? {
+        var players: [Player] = []
+        var monsterLevels: [NSDecimalNumber] = []
         for case let combatant as Combatant in combatants {
             if let player = combatant.player {
-                let thresholds = sharedRules.levelXPThreshold[player.level]!
-
-                easyThreshold += thresholds[0]
-                mediumThreshold += thresholds[1]
-                hardThreshold += thresholds[2]
-                deadlyThreshold += thresholds[3]
-                
-                playerCount += 1
+                players.append(player)
             } else if let monster = combatant.monster {
                 // The book doesn't really say anything about calculating encounter XP involving player-controlled or friendly monsters.
                 // Likewise it seems sensible to ignore monsters with 0 XP.
@@ -106,24 +99,49 @@ final class Encounter: NSManagedObject {
             }
         }
         
-        // Encounters without monsters and players don't have a difficulty.
-        if monsterLevels.count == 0 || playerCount == 0 {
+        // Encounters without monsters don't have a difficulty.
+        if monsterLevels.count == 0 {
             return nil
         }
         
+        // If the encounter doesn't yet have player combatants, use the players in the game, or the players in the encounter.
+        if players.count == 0 {
+            if let game = game {
+                players = game.playedGames.map({ ($0 as! PlayedGame).player })
+            } else {
+                players = adventure.players.allObjects as! [Player]
+            }
+        }
+        
+        // Unlikely, but an encounter without any players can't have a difficulty either.
+        if players.count == 0 {
+            return nil
+        }
+
         // Ignore monters with a level "significantly lower" than the average; I'm choosing to mean less than 5.
         let meanLevel = monsterLevels.map({ Float($0) }).reduce(0.0, combine: +) / Float(monsterLevels.count)
         let monsterXPs = monsterLevels.filter({ $0.floatValue >= meanLevel - 5.0 }).map({ sharedRules.challengeXP[$0]! })
 
         var index = sharedRules.monsterXPMultiplier.indexOf({ $0.0 <= monsterXPs.count })!
-        if playerCount < 3 {
+        if players.count < 3 {
             index -= 1
-        } else if playerCount > 5 {
+        } else if players.count > 5 {
             index += 1
         }
 
         let multiplier = sharedRules.monsterXPMultiplier[index].1
         let modifiedXP = Int(Float(monsterXPs.reduce(0, combine: +)) * multiplier)
+        
+        // Calculate thresholds for players.
+        var easyThreshold = 0, mediumThreshold = 0, hardThreshold = 0, deadlyThreshold = 0
+        for player in players {
+            let thresholds = sharedRules.levelXPThreshold[player.level]!
+            
+            easyThreshold += thresholds[0]
+            mediumThreshold += thresholds[1]
+            hardThreshold += thresholds[2]
+            deadlyThreshold += thresholds[3]
+        }
         
         if deadlyThreshold < modifiedXP {
             return .Deadly

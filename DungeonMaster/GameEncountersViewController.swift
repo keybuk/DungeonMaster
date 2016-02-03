@@ -53,6 +53,7 @@ class GameEncountersViewController: UITableViewController, NSFetchedResultsContr
                 let encounter = fetchedResultsController.objectAtIndexPath(indexPath) as! Encounter
                 let viewController = segue.destinationViewController as! EncounterViewController
                 viewController.encounter = encounter
+                viewController.game = game
             }
         }
     }

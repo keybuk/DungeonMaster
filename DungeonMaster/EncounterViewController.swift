@@ -11,8 +11,11 @@ import UIKit
 class EncounterViewController: UIViewController, ManagedObjectObserverDelegate {
     
     var encounter: Encounter!
+    var game: Game?
 
     var observer: NSObjectProtocol?
+    
+    var difficultyLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +26,18 @@ class EncounterViewController: UIViewController, ManagedObjectObserverDelegate {
         
         navigationItem.rightBarButtonItems?.insert(fixedSpace, atIndex: 0)
         navigationItem.rightBarButtonItems?.insert(editButtonItem(), atIndex: 0)
+        
+        // Another thing IB won't let us do: put labels in toolbars, even though this is perfectly valid UIKit.
+        difficultyLabel = UILabel()
+        difficultyLabel.text = "No Challenge"
+        difficultyLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+        difficultyLabel.sizeToFit()
+
+        let flexibleSpace1 = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+        let flexibleSpace2 = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+        let labelButtonItem = UIBarButtonItem(customView: difficultyLabel)
+
+        toolbarItems = [flexibleSpace1, labelButtonItem, flexibleSpace2]
 
         configureView()
         
@@ -40,6 +55,42 @@ class EncounterViewController: UIViewController, ManagedObjectObserverDelegate {
     
     func configureView() {
         navigationItem.title = encounter.title
+        
+        if let difficulty = encounter.calculateDifficulty(forGame: game) {
+            let difficultyText: String
+            switch difficulty {
+            case .Deadly:
+                difficultyText = "Deadly"
+            case .Hard:
+                difficultyText = "Hard"
+            case .Medium:
+                difficultyText = "Medium"
+            case .Easy:
+                difficultyText = "Easy"
+            case .None:
+                difficultyText = "None"
+            }
+            
+            let xp = encounter.totalXP()
+            let xpFormatter = NSNumberFormatter()
+            xpFormatter.numberStyle = .DecimalStyle
+            
+            difficultyLabel.text = "\(difficultyText)—\(xpFormatter.stringFromNumber(xp)!) XP"
+            difficultyLabel.sizeToFit()
+        } else {
+            difficultyLabel.text = "Incomplete encounter"
+            difficultyLabel.sizeToFit()
+        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setToolbarHidden(false, animated: animated)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setToolbarHidden(true, animated: animated)
     }
     
     override func setEditing(editing: Bool, animated: Bool) {

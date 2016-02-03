@@ -528,9 +528,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="6O8-q3-17K" firstAttribute="top" secondItem="A6S-Ux-fVS" secondAttribute="bottom" id="Dvj-aB-1ht"/>
                             <constraint firstItem="A6S-Ux-fVS" firstAttribute="width" secondItem="SFg-wI-D5f" secondAttribute="width" multiplier="0.5" id="Suh-bd-VjO"/>
                             <constraint firstItem="A6S-Ux-fVS" firstAttribute="top" secondItem="SFg-wI-D5f" secondAttribute="top" id="pkK-su-ws6"/>
+                            <constraint firstItem="A6S-Ux-fVS" firstAttribute="bottom" secondItem="SFg-wI-D5f" secondAttribute="bottom" id="uoc-gI-WMv"/>
                             <constraint firstItem="A6S-Ux-fVS" firstAttribute="leading" secondItem="SFg-wI-D5f" secondAttribute="leading" id="x0W-Pp-V47"/>
                         </constraints>
                     </view>
@@ -555,7 +555,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="600"/>
                 </viewController>
