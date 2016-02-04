@@ -216,6 +216,7 @@ class EncounterCombatantsViewController: UITableViewController, NSFetchedResults
 class EncounterCombatantCell: UITableViewCell {
     
     @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var healthProgress: UIProgressView!
 
     @IBOutlet var leadingConstraint: NSLayoutConstraint!
     
@@ -225,6 +226,14 @@ class EncounterCombatantCell: UITableViewCell {
                 nameLabel.text = monster.name
             } else if let player = combatant.player {
                 nameLabel.text = player.name
+            }
+            
+            switch combatant.role {
+            case .Foe:
+                healthProgress.hidden = false
+                healthProgress.progress = combatant.health
+            case .Friend, .Player:
+                healthProgress.hidden = true
             }
             
             leadingConstraint.constant = editing ? 0.0 : (separatorInset.left - layoutMargins.left)

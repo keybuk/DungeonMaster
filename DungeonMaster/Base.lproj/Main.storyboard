@@ -1834,16 +1834,16 @@
         <scene sceneID="t1z-ok-pmM">
             <objects>
                 <tableViewController id="hpB-Hv-PEX" userLabel="Encounter Combatants" customClass="EncounterCombatantsViewController" customModule="DungeonMaster" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="iE9-RL-apd">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="54" sectionHeaderHeight="28" sectionFooterHeight="28" id="iE9-RL-apd">
                         <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EncounterCombatantCell" id="U3h-so-x9O" customClass="EncounterCombatantCell" customModule="DungeonMaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="400" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="400" height="54"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U3h-so-x9O" id="oYe-9W-mqM">
-                                    <rect key="frame" x="0.0" y="0.0" width="400" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="53.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adult Black Dragon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ixp-3t-lj6">
@@ -1852,29 +1852,41 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3lB-3G-4u1">
+                                            <rect key="frame" x="8" y="41" width="384" height="2"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="2" id="kSl-se-biD"/>
+                                            </constraints>
+                                            <color key="progressTintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="trackTintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </progressView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="Ixp-3t-lj6" firstAttribute="bottom" secondItem="oYe-9W-mqM" secondAttribute="bottomMargin" constant="-10" id="5nH-1R-XZO"/>
                                         <constraint firstItem="Ixp-3t-lj6" firstAttribute="top" secondItem="oYe-9W-mqM" secondAttribute="topMargin" id="B3t-pu-fCB"/>
                                         <constraint firstItem="Ixp-3t-lj6" firstAttribute="trailing" secondItem="oYe-9W-mqM" secondAttribute="trailingMargin" id="CiS-tp-nLu"/>
+                                        <constraint firstItem="3lB-3G-4u1" firstAttribute="leading" secondItem="Ixp-3t-lj6" secondAttribute="leading" id="D1g-vC-GtT"/>
+                                        <constraint firstItem="3lB-3G-4u1" firstAttribute="top" secondItem="Ixp-3t-lj6" secondAttribute="bottom" constant="5.5" id="LtF-Le-XuS"/>
                                         <constraint firstItem="Ixp-3t-lj6" firstAttribute="leading" secondItem="oYe-9W-mqM" secondAttribute="leadingMargin" id="Rhm-Fb-lg7"/>
-                                        <constraint firstItem="Ixp-3t-lj6" firstAttribute="bottom" secondItem="oYe-9W-mqM" secondAttribute="bottomMargin" id="Xmj-KR-SD1"/>
+                                        <constraint firstItem="3lB-3G-4u1" firstAttribute="trailing" secondItem="Ixp-3t-lj6" secondAttribute="trailing" id="TC3-yF-iAL"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="healthProgress" destination="3lB-3G-4u1" id="vjR-zJ-stQ"/>
                                     <outlet property="leadingConstraint" destination="Rhm-Fb-lg7" id="ox8-zZ-cbY"/>
                                     <outlet property="nameLabel" destination="Ixp-3t-lj6" id="hmA-Zb-ieT"/>
                                     <segue destination="TMr-3Q-QHp" kind="custom" identifier="CombatantSegue" customClass="EncounterShowRightSegue" customModule="DungeonMaster" customModuleProvider="target" id="SUe-uL-jT5"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EncounterAddCombatantCell" id="a2K-Xd-OB3" customClass="EncounterAddCombatantCell" customModule="DungeonMaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="400" height="44"/>
+                                <rect key="frame" x="0.0" y="82" width="400" height="54"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a2K-Xd-OB3" id="0kT-YF-7s7">
-                                    <rect key="frame" x="0.0" y="0.0" width="400" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="53.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="add monsters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jp-sl-s5X">
-                                            <rect key="frame" x="8" y="8" width="384" height="27.5"/>
+                                            <rect key="frame" x="8" y="8" width="384" height="37.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
