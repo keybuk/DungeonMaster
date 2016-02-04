@@ -43,6 +43,7 @@
     </entity>
     <entity name="Combatant" representedClassName=".Combatant" syncable="YES">
         <attribute name="dateCreated" attributeType="Date" syncable="YES"/>
+        <attribute name="isCurrentTurn" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rawDamagePoints" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="rawHitPoints" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -301,7 +302,7 @@
         <element name="AlignmentOption" positionX="-54" positionY="351" width="128" height="90"/>
         <element name="Armor" positionX="-45" positionY="360" width="128" height="150"/>
         <element name="Book" positionX="-261" positionY="198" width="128" height="105"/>
-        <element name="Combatant" positionX="-54" positionY="351" width="128" height="255"/>
+        <element name="Combatant" positionX="-54" positionY="351" width="128" height="270"/>
         <element name="CombatantCondition" positionX="-36" positionY="369" width="128" height="75"/>
         <element name="CombatantDamage" positionX="-45" positionY="360" width="128" height="90"/>
         <element name="ConditionImmunity" positionX="0" positionY="405" width="128" height="75"/>

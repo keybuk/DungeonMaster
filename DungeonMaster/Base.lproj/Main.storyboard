@@ -549,6 +549,11 @@
                         </constraints>
                     </view>
                     <toolbarItems>
+                        <barButtonItem title="Next" id="hK6-cj-K9C">
+                            <connections>
+                                <action selector="nextButtonTapped:" destination="H0W-3b-65B" id="L5s-cb-nJT"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem title="Initiative" id="bCN-q9-RoU">
                             <connections>
                                 <segue destination="t7U-F2-ysV" kind="presentation" identifier="InitiativeSegue" modalPresentationStyle="formSheet" id="JuC-e0-k5N"/>
@@ -588,6 +593,7 @@
                         <outlet property="initiativeButtonItem" destination="bCN-q9-RoU" id="NIo-VA-xEi"/>
                         <outlet property="leftContainerView" destination="A6S-Ux-fVS" id="ww5-qA-Aps"/>
                         <outlet property="middleContainerView" destination="Dua-Qz-pV7" id="7Q1-co-ILb"/>
+                        <outlet property="nextButtonItem" destination="hK6-cj-K9C" id="dzF-1X-bI1"/>
                         <outlet property="rightContainerView" destination="ppw-5c-9W9" id="kT2-sv-1t6"/>
                         <outlet property="tabletopButtonItem" destination="EtE-60-SyJ" id="L97-9G-GzX"/>
                     </connections>
@@ -1853,14 +1859,21 @@
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="53.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XA0-5z-E9F">
+                                            <rect key="frame" x="0.0" y="0.0" width="4" height="54"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="4" id="guo-D9-86S"/>
+                                            </constraints>
+                                        </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adult Black Dragon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ixp-3t-lj6">
-                                            <rect key="frame" x="8" y="8" width="384" height="27.5"/>
+                                            <rect key="frame" x="15" y="8" width="377" height="27.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3lB-3G-4u1">
-                                            <rect key="frame" x="8" y="41" width="384" height="2"/>
+                                            <rect key="frame" x="15" y="41" width="377" height="2"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="2" id="kSl-se-biD"/>
                                             </constraints>
@@ -1869,19 +1882,23 @@
                                         </progressView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="XA0-5z-E9F" firstAttribute="leading" secondItem="oYe-9W-mqM" secondAttribute="leading" id="4Zy-PS-Uoo"/>
                                         <constraint firstItem="Ixp-3t-lj6" firstAttribute="bottom" secondItem="oYe-9W-mqM" secondAttribute="bottomMargin" constant="-10" id="5nH-1R-XZO"/>
                                         <constraint firstItem="Ixp-3t-lj6" firstAttribute="top" secondItem="oYe-9W-mqM" secondAttribute="topMargin" id="B3t-pu-fCB"/>
                                         <constraint firstItem="Ixp-3t-lj6" firstAttribute="trailing" secondItem="oYe-9W-mqM" secondAttribute="trailingMargin" id="CiS-tp-nLu"/>
                                         <constraint firstItem="3lB-3G-4u1" firstAttribute="leading" secondItem="Ixp-3t-lj6" secondAttribute="leading" id="D1g-vC-GtT"/>
                                         <constraint firstItem="3lB-3G-4u1" firstAttribute="top" secondItem="Ixp-3t-lj6" secondAttribute="bottom" constant="5.5" id="LtF-Le-XuS"/>
-                                        <constraint firstItem="Ixp-3t-lj6" firstAttribute="leading" secondItem="oYe-9W-mqM" secondAttribute="leadingMargin" id="Rhm-Fb-lg7"/>
+                                        <constraint firstItem="Ixp-3t-lj6" firstAttribute="leading" secondItem="oYe-9W-mqM" secondAttribute="leadingMargin" constant="7" id="Rhm-Fb-lg7"/>
                                         <constraint firstItem="3lB-3G-4u1" firstAttribute="trailing" secondItem="Ixp-3t-lj6" secondAttribute="trailing" id="TC3-yF-iAL"/>
+                                        <constraint firstAttribute="bottom" secondItem="XA0-5z-E9F" secondAttribute="bottom" id="X6x-dK-IxN"/>
+                                        <constraint firstItem="XA0-5z-E9F" firstAttribute="top" secondItem="oYe-9W-mqM" secondAttribute="top" id="jk1-6c-SWW"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="healthProgress" destination="3lB-3G-4u1" id="vjR-zJ-stQ"/>
                                     <outlet property="leadingConstraint" destination="Rhm-Fb-lg7" id="ox8-zZ-cbY"/>
                                     <outlet property="nameLabel" destination="Ixp-3t-lj6" id="hmA-Zb-ieT"/>
+                                    <outlet property="turnIndicator" destination="XA0-5z-E9F" id="PNu-yC-9ya"/>
                                     <segue destination="TMr-3Q-QHp" kind="custom" identifier="CombatantSegue" customClass="EncounterShowRightSegue" customModule="DungeonMaster" customModuleProvider="target" id="SUe-uL-jT5"/>
                                 </connections>
                             </tableViewCell>

@@ -18,10 +18,12 @@ class EncounterViewController: UIViewController, ManagedObjectObserverDelegate {
     @IBOutlet var rightContainerView: UIView!
     
     @IBOutlet var initiativeButtonItem: UIBarButtonItem!
+    @IBOutlet var nextButtonItem: UIBarButtonItem!
     @IBOutlet var tabletopButtonItem: UIBarButtonItem!
     
     var observer: NSObjectProtocol?
     
+    var roundLabel: UILabel!
     var difficultyLabel: UILabel!
 
     override func viewDidLoad() {
@@ -35,6 +37,13 @@ class EncounterViewController: UIViewController, ManagedObjectObserverDelegate {
         navigationItem.rightBarButtonItems?.insert(editButtonItem(), atIndex: 0)
         
         // Another thing IB won't let us do: put labels in toolbars, even though this is perfectly valid UIKit. So we build the toolbar up the hard way.
+        roundLabel = UILabel()
+        roundLabel.text = "Round 1"
+        roundLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+        roundLabel.sizeToFit()
+
+        let roundButtonItem = UIBarButtonItem(customView: roundLabel)
+        
         difficultyLabel = UILabel()
         difficultyLabel.text = "No Challenge"
         difficultyLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
@@ -44,6 +53,8 @@ class EncounterViewController: UIViewController, ManagedObjectObserverDelegate {
         
         toolbarItems = []
         if let _ = game {
+            toolbarItems?.append(roundButtonItem)
+            toolbarItems?.append(nextButtonItem)
             toolbarItems?.append(initiativeButtonItem)
         }
         
@@ -70,6 +81,13 @@ class EncounterViewController: UIViewController, ManagedObjectObserverDelegate {
     
     func configureView() {
         navigationItem.title = encounter.title
+        
+        roundLabel.hidden = false
+        roundLabel.text = "Round \(encounter.round)"
+        roundLabel.sizeToFit()
+        
+        nextButtonItem.enabled = encounter.round > 0
+        initiativeButtonItem.enabled = encounter.combatants.count > 0
         
         if let difficulty = encounter.calculateDifficulty(forGame: game) {
             let difficultyText: String
@@ -152,10 +170,34 @@ class EncounterViewController: UIViewController, ManagedObjectObserverDelegate {
         }
     }
     
-    @IBAction func unwindFromInitiative(sender: UIStoryboardSegue) {
-        
-    }
+    // MARK: Actions
+    
+    @IBAction func nextButtonTapped(sender: UIBarButtonItem) {
+        let initiativeSortDescriptor = NSSortDescriptor(key: "rawInitiative", ascending: false)
+        let initiativeOrderSortDescriptor = NSSortDescriptor(key: "rawInitiativeOrder", ascending: true)
+        let monsterDexSortDescriptor = NSSortDescriptor(key: "monster.rawDexterityScore", ascending: false)
+        let dateCreatedSortDescriptor = NSSortDescriptor(key: "dateCreated", ascending: true)
+        let combatants = encounter.combatants.sortedArrayUsingDescriptors([initiativeSortDescriptor, initiativeOrderSortDescriptor, monsterDexSortDescriptor, dateCreatedSortDescriptor]) as! [Combatant]
 
+        if let index = combatants.indexOf({ $0.isCurrentTurn }) {
+            combatants[index].isCurrentTurn = false
+            if (index + 1) < combatants.count {
+                combatants[index + 1].isCurrentTurn = true
+            } else {
+                combatants[0].isCurrentTurn = true
+                encounter.round += 1
+            }
+        } else {
+            // FIXME Kludge! should not be necessary at all
+            combatants[0].isCurrentTurn = true
+            encounter.round = 1
+        }
+        
+        encounter.lastModified = NSDate()
+        try! managedObjectContext.save()
+    }
+    
+    
     // MARK: ManagedObjectObserverDelegate
     
     func managedObject(object: Encounter, changedForType type: ManagedObjectChangeType) {

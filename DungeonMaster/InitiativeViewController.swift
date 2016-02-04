@@ -22,7 +22,6 @@ class InitiativeViewController: UITableViewController, NSFetchedResultsControlle
         // Add the players from the game.
         if encounter.round == 0 {
             addPlayersFromGame()
-            encounter.round = 1
         }
         
         // Roll initiative for any monster without it.
@@ -95,7 +94,15 @@ class InitiativeViewController: UITableViewController, NSFetchedResultsControlle
     // MARK: Actions
     
     @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
+        if encounter.round == 0 {
+            let combatant = fetchedResultsController.objectAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! Combatant
+            combatant.isCurrentTurn = true
+            encounter.round = 1
+        }
+        
+        encounter.lastModified = NSDate()
         try! managedObjectContext.save()
+
         dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -113,7 +120,8 @@ class InitiativeViewController: UITableViewController, NSFetchedResultsControlle
         let initiativeSortDescriptor = NSSortDescriptor(key: "rawInitiative", ascending: false)
         let initiativeOrderSortDescriptor = NSSortDescriptor(key: "rawInitiativeOrder", ascending: true)
         let monsterDexSortDescriptor = NSSortDescriptor(key: "monster.rawDexterityScore", ascending: false)
-        fetchRequest.sortDescriptors = [initiativeSortDescriptor, initiativeOrderSortDescriptor, monsterDexSortDescriptor]
+        let dateCreatedSortDescriptor = NSSortDescriptor(key: "dateCreated", ascending: true)
+        fetchRequest.sortDescriptors = [initiativeSortDescriptor, initiativeOrderSortDescriptor, monsterDexSortDescriptor, dateCreatedSortDescriptor]
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self

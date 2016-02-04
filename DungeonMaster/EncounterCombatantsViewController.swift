@@ -93,7 +93,8 @@ class EncounterCombatantsViewController: UITableViewController, NSFetchedResults
         let initiativeSortDescriptor = NSSortDescriptor(key: "rawInitiative", ascending: false)
         let initiativeOrderSortDescriptor = NSSortDescriptor(key: "rawInitiativeOrder", ascending: true)
         let monsterDexSortDescriptor = NSSortDescriptor(key: "monster.rawDexterityScore", ascending: false)
-        fetchRequest.sortDescriptors = [initiativeSortDescriptor, initiativeOrderSortDescriptor, monsterDexSortDescriptor]
+        let dateCreatedSortDescriptor = NSSortDescriptor(key: "dateCreated", ascending: true)
+        fetchRequest.sortDescriptors = [initiativeSortDescriptor, initiativeOrderSortDescriptor, monsterDexSortDescriptor, dateCreatedSortDescriptor]
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
@@ -216,6 +217,7 @@ class EncounterCombatantsViewController: UITableViewController, NSFetchedResults
 
 class EncounterCombatantCell: UITableViewCell {
     
+    @IBOutlet var turnIndicator: UIView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var healthProgress: UIProgressView!
 
@@ -223,6 +225,8 @@ class EncounterCombatantCell: UITableViewCell {
     
     var combatant: Combatant! {
         didSet {
+            turnIndicator.hidden = !combatant.isCurrentTurn
+
             if let monster = combatant.monster {
                 nameLabel.text = monster.name
             } else if let player = combatant.player {

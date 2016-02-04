@@ -62,6 +62,9 @@ final class Combatant: NSManagedObject {
         }
     }
     @NSManaged private var rawInitiativeOrder: NSNumber?
+    
+    /// True when this combatant is up next in the turn order.
+    @NSManaged var isCurrentTurn: Bool
 
     /// Hit points for the combatant
     ///
