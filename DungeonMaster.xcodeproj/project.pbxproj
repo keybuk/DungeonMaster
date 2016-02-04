@@ -345,6 +345,7 @@
 				D26FBA401C1FA17400D44503 /* ConditionViewController.swift */,
 				D249CF881C22602800CDE673 /* ConditionRulesViewController.swift */,
 				D26FBA3A1C1E3FE400D44503 /* DamageViewController.swift */,
+				D2C6063D1C17D32900F61DBD /* TabletopViewController.swift */,
 			);
 			name = Adventure;
 			sourceTree = "<group>";
@@ -425,7 +426,6 @@
 				D2597F6B1C4844FE0091AD05 /* Compendium */,
 				D2BDE60D1C1750170008B2F2 /* xEncounterViewController.swift */,
 				D2622AA61C2CB4C7000D6100 /* EncounterPlayersViewController.swift */,
-				D2C6063D1C17D32900F61DBD /* TabletopViewController.swift */,
 				D2511FFF1C14C7ED00A09F0B /* BooksViewController.swift */,
 			);
 			name = "View Controllers";

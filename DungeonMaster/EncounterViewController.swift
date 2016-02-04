@@ -41,7 +41,7 @@ class EncounterViewController: UIViewController, ManagedObjectObserverDelegate {
         let flexibleSpace2 = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
         let labelButtonItem = UIBarButtonItem(customView: difficultyLabel)
 
-        toolbarItems = [flexibleSpace1, labelButtonItem, flexibleSpace2]
+        toolbarItems = [flexibleSpace1, labelButtonItem, flexibleSpace2] + toolbarItems!
 
         configureView()
         
@@ -119,6 +119,9 @@ class EncounterViewController: UIViewController, ManagedObjectObserverDelegate {
         if segue.identifier == "CombatantsEmbedSegue" {
             combatantsViewController = segue.destinationViewController as! EncounterCombatantsViewController
             combatantsViewController.encounter = encounter
+        } else if segue.identifier == "TabletopSegue" {
+            let viewController = segue.destinationViewController as! TabletopViewController
+            viewController.encounter = encounter
         } else if segue.identifier == "CompendiumMonstersSegue" {
             let viewController = segue.destinationViewController as! CompendiumViewController
             viewController.books = encounter.adventure.books.allObjects as! [Book]

@@ -14,9 +14,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <connections>
-                        <segue destination="v0S-aJ-iGT" kind="relationship" relationship="rootViewController" id="c6n-pV-1jc"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CuW-fu-sn0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -319,40 +316,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TbM-SI-O9c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1609" y="611"/>
-        </scene>
-        <!--Data Source-->
-        <scene sceneID="LEt-Rf-k4V">
-            <objects>
-                <viewController title="Table Top" id="v0S-aJ-iGT" customClass="TabletopViewController" customModule="DungeonMaster" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="u2A-o2-7su"/>
-                        <viewControllerLayoutGuide type="bottom" id="gFu-ie-KFc"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="yw8-p6-c9J" customClass="TabletopView" customModule="DungeonMaster" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <connections>
-                            <outlet property="dataSource" destination="v0S-aJ-iGT" id="Yyy-J4-wac"/>
-                            <outlet property="delegate" destination="v0S-aJ-iGT" id="U77-2w-oO3"/>
-                        </connections>
-                    </view>
-                    <navigationItem key="navigationItem" id="SXv-lg-MWA">
-                        <nil key="title"/>
-                        <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Encounter" textAlignment="center" minimumFontSize="17" id="Jn8-gJ-6vp">
-                            <rect key="frame" x="200" y="7" width="200" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                            <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <action selector="textFieldPrimaryAction:" destination="v0S-aJ-iGT" eventType="primaryActionTriggered" id="uGO-DX-HBs"/>
-                            </connections>
-                        </textField>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bwi-hl-Zsf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="837" y="1347"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

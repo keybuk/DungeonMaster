@@ -9,7 +9,7 @@
 import CoreData
 import UIKit
 
-class TabletopViewController: UIViewController {
+class TabletopViewController: UIViewController, TabletopViewDataSource, TabletopViewDelegate, NSFetchedResultsControllerDelegate {
 
     var tabletopView: TabletopView!
     
@@ -28,9 +28,6 @@ class TabletopViewController: UIViewController {
         super.viewWillAppear(animated)
         
         navigationItem.title = encounter.title
-        if let textField = navigationItem.titleView as? UITextField {
-            textField.text = navigationItem.title
-        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,16 +61,7 @@ class TabletopViewController: UIViewController {
     }
     var _fetchedResultsController: NSFetchedResultsController?
 
-    // MARK: Actions
-    
-    @IBAction func textFieldPrimaryAction(sender: UITextField) {
-        encounter.name = sender.text
-        sender.resignFirstResponder()
-    }
-}
-
-// MARK: TabletopViewDataSource
-extension TabletopViewController: TabletopViewDataSource {
+    // MARK: TabletopViewDataSource
     
     func numberOfItemsInTabletopView(tabletopView: TabletopView) -> Int {
         return fetchedResultsController.fetchedObjects!.count
@@ -104,10 +92,7 @@ extension TabletopViewController: TabletopViewDataSource {
         return combatant.health
     }
 
-}
-
-// MARK: TabletopViewDelegate
-extension TabletopViewController: TabletopViewDelegate {
+    // MARK: TabletopViewDelegate
     
     func tabletopView(tabletopView: TabletopView, moveItem index: Int, to location: TabletopLocation) {
         let combatant = fetchedResultsController.fetchedObjects![index] as! Combatant
@@ -115,22 +100,9 @@ extension TabletopViewController: TabletopViewDelegate {
     }
     
     func tabletopView(tabletopView: TabletopView, didSelectItem index: Int) {
-        let combatant = fetchedResultsController.fetchedObjects![index] as! Combatant
-        if let encounterViewController = (splitViewController?.viewControllers[0] as! UINavigationController).topViewController as? xEncounterViewController {
-            for (sectionIndex, section) in encounterViewController.fetchedResultsController.sections!.enumerate() {
-                let combatants = section.objects as! [Combatant]?
-                if let rowIndex = combatants?.indexOf(combatant) {
-                    encounterViewController.tableView.selectRowAtIndexPath(NSIndexPath(forRow: rowIndex, inSection: sectionIndex), animated: true, scrollPosition: .Middle)
-                    encounterViewController.performSegueWithIdentifier("CombatantSegue", sender: self)
-                }
-            }
-        }
     }
 
-}
-
-// MARK: NSFetchedResultsControllerDelegate
-extension TabletopViewController: NSFetchedResultsControllerDelegate {
+    // MARK: NSFetchedResultsControllerDelegate
     
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
         tabletopView.beginUpdates()

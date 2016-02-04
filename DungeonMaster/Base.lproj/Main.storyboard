@@ -548,8 +548,15 @@
                             <constraint firstItem="ppw-5c-9W9" firstAttribute="trailing" secondItem="SFg-wI-D5f" secondAttribute="trailing" id="zJx-LC-JlJ"/>
                         </constraints>
                     </view>
-                    <toolbarItems/>
+                    <toolbarItems>
+                        <barButtonItem title="Table Top" id="EtE-60-SyJ">
+                            <connections>
+                                <segue destination="lvu-HZ-xj3" kind="show" identifier="TabletopSegue" id="MwR-wL-0CK"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Encounter" id="IxB-GC-DcY">
+                        <barButtonItem key="backBarButtonItem" title="Encounter" id="pU5-1w-wC6"/>
                         <rightBarButtonItems>
                             <barButtonItem image="MagicItemsToolbar" id="yRo-3v-Whs">
                                 <connections>
@@ -1773,7 +1780,7 @@
                 <viewControllerPlaceholder storyboardName="Compendium" referencedIdentifier="CompendiumViewController" id="7gs-a3-6vi" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vab-pL-cmD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-387" y="146"/>
+            <point key="canvasLocation" x="-411" y="146"/>
         </scene>
         <!--MonsterViewController-->
         <scene sceneID="04o-89-sc9">
@@ -1904,7 +1911,7 @@
         <!--Combatant-->
         <scene sceneID="M7u-rn-3Sc">
             <objects>
-                <tableViewController title="Combatant" id="TMr-3Q-QHp" customClass="CombatantViewController" customModule="DungeonMaster" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Combatant" id="TMr-3Q-QHp" userLabel="Combatant" customClass="CombatantViewController" customModule="DungeonMaster" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="EDw-jO-KRu">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2186,10 +2193,10 @@
             </objects>
             <point key="canvasLocation" x="-374" y="1087"/>
         </scene>
-        <!--Role-->
+        <!--Combatant Role-->
         <scene sceneID="oFx-i3-zhW">
             <objects>
-                <tableViewController title="Role" id="DZp-kc-cnq" customClass="CombatantRoleViewController" customModule="DungeonMaster" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="DZp-kc-cnq" userLabel="Combatant Role" customClass="CombatantRoleViewController" customModule="DungeonMaster" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="fEY-6u-CmA">
                         <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2273,10 +2280,10 @@
             </objects>
             <point key="canvasLocation" x="-815" y="1845"/>
         </scene>
-        <!--Condition-->
+        <!--Combatant Condition-->
         <scene sceneID="hTU-Eq-EAP">
             <objects>
-                <tableViewController title="Condition" id="ftC-yc-L1S" customClass="ConditionViewController" customModule="DungeonMaster" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="ftC-yc-L1S" userLabel="Combatant Condition" customClass="ConditionViewController" customModule="DungeonMaster" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="z8Q-iK-TnW">
                         <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2333,10 +2340,10 @@
             </objects>
             <point key="canvasLocation" x="-374" y="1845"/>
         </scene>
-        <!--Damage-->
+        <!--Combatant Damage-->
         <scene sceneID="Ud0-Nq-ERD">
             <objects>
-                <tableViewController id="4yA-cH-Bcq" customClass="DamageViewController" customModule="DungeonMaster" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="4yA-cH-Bcq" userLabel="Combatant Damage" customClass="DamageViewController" customModule="DungeonMaster" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="lH6-nl-fae">
                         <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2424,10 +2431,10 @@
             </objects>
             <point key="canvasLocation" x="63" y="1845"/>
         </scene>
-        <!--Condition Rules-->
+        <!--Conditions Rules Popover-->
         <scene sceneID="f3e-L6-iv3">
             <objects>
-                <viewController storyboardIdentifier="ConditionRulesViewController" title="Condition Rules" id="AwM-U0-hN0" customClass="ConditionRulesViewController" customModule="DungeonMaster" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConditionRulesViewController" id="AwM-U0-hN0" userLabel="Conditions Rules Popover" customClass="ConditionRulesViewController" customModule="DungeonMaster" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EeR-hg-0FO"/>
                         <viewControllerLayoutGuide type="bottom" id="hoe-Is-p0A"/>
@@ -2462,6 +2469,30 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RX7-nu-aVL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="113" y="1279"/>
+        </scene>
+        <!--Table Top-->
+        <scene sceneID="Nla-nA-bJN">
+            <objects>
+                <viewController id="lvu-HZ-xj3" userLabel="Table Top" customClass="TabletopViewController" customModule="DungeonMaster" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jab-qP-Eon"/>
+                        <viewControllerLayoutGuide type="bottom" id="vZj-8G-qdz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bjr-fV-Dpp" customClass="TabletopView" customModule="DungeonMaster" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="lvu-HZ-xj3" id="7Fu-nd-b61"/>
+                            <outlet property="delegate" destination="lvu-HZ-xj3" id="TYk-8a-nuf"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" title="Encounter" id="kdM-xm-MQl"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kk6-ck-eF6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="340" y="463"/>
         </scene>
     </scenes>
     <resources>
