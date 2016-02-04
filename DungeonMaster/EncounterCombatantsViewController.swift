@@ -90,9 +90,10 @@ class EncounterCombatantsViewController: UITableViewController, NSFetchedResults
         let fetchRequest = NSFetchRequest(entity: Model.Combatant)
         fetchRequest.predicate = NSPredicate(format: "encounter == %@", encounter)
         
-        // FIXME might want to be able to reorder initiative ? also deal with ties (dex?)
         let initiativeSortDescriptor = NSSortDescriptor(key: "rawInitiative", ascending: false)
-        fetchRequest.sortDescriptors = [initiativeSortDescriptor]
+        let initiativeOrderSortDescriptor = NSSortDescriptor(key: "rawInitiativeOrder", ascending: true)
+        let monsterDexSortDescriptor = NSSortDescriptor(key: "monster.rawDexterityScore", ascending: false)
+        fetchRequest.sortDescriptors = [initiativeSortDescriptor, initiativeOrderSortDescriptor, monsterDexSortDescriptor]
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self

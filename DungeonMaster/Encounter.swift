@@ -167,4 +167,17 @@ final class Encounter: NSManagedObject {
         }
     }
     
+    /// Current round number.
+    ///
+    /// Rounds are intended to last six seconds, the first round will have the value 1 so a round of 0 indicates an encounter still being created.
+    var round: Int {
+        get {
+            return rawRound.integerValue
+        }
+        set(newRound) {
+            rawRound = NSNumber(integer: newRound)
+        }
+    }
+    @NSManaged private var rawRound: NSNumber
+    
 }

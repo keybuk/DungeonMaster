@@ -47,6 +47,7 @@
         <attribute name="rawDamagePoints" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="rawHitPoints" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="rawInitiative" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="rawInitiativeOrder" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rawLocationX" optional="YES" attributeType="Float" syncable="YES"/>
         <attribute name="rawLocationY" optional="YES" attributeType="Float" syncable="YES"/>
         <attribute name="rawRole" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -92,6 +93,7 @@
     <entity name="Encounter" representedClassName=".Encounter" syncable="YES">
         <attribute name="lastModified" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rawRound" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="adventure" maxCount="1" deletionRule="Nullify" destinationEntity="Adventure" inverseName="encounters" inverseEntity="Adventure" syncable="YES"/>
         <relationship name="combatants" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Combatant" inverseName="encounter" inverseEntity="Combatant" syncable="YES"/>
         <relationship name="games" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Game" inverseName="encounters" inverseEntity="Game" syncable="YES"/>
@@ -299,7 +301,7 @@
         <element name="AlignmentOption" positionX="-54" positionY="351" width="128" height="90"/>
         <element name="Armor" positionX="-45" positionY="360" width="128" height="150"/>
         <element name="Book" positionX="-261" positionY="198" width="128" height="105"/>
-        <element name="Combatant" positionX="-54" positionY="351" width="128" height="240"/>
+        <element name="Combatant" positionX="-54" positionY="351" width="128" height="255"/>
         <element name="CombatantCondition" positionX="-36" positionY="369" width="128" height="75"/>
         <element name="CombatantDamage" positionX="-45" positionY="360" width="128" height="90"/>
         <element name="ConditionImmunity" positionX="0" positionY="405" width="128" height="75"/>
@@ -307,7 +309,7 @@
         <element name="DamageResistance" positionX="-45" positionY="360" width="128" height="105"/>
         <element name="DamageResistanceOption" positionX="-36" positionY="369" width="128" height="75"/>
         <element name="DamageVulnerability" positionX="-18" positionY="387" width="128" height="90"/>
-        <element name="Encounter" positionX="-54" positionY="351" width="128" height="120"/>
+        <element name="Encounter" positionX="-54" positionY="351" width="128" height="135"/>
         <element name="Game" positionX="-54" positionY="351" width="128" height="120"/>
         <element name="Lair" positionX="385" positionY="666" width="128" height="210"/>
         <element name="LairAction" positionX="567" positionY="630" width="128" height="75"/>

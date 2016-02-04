@@ -104,6 +104,7 @@
 		D2C8F0071C3DAD6E003AD18F /* Adventure.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8F0061C3DAD6E003AD18F /* Adventure.swift */; };
 		D2C8F0091C3DB18E003AD18F /* AdventureImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8F0081C3DB18E003AD18F /* AdventureImage.swift */; };
 		D2C8F00D1C473126003AD18F /* AdventureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8F00C1C473126003AD18F /* AdventureViewController.swift */; };
+		D2D8FA3B1C63D4AF00D5F38F /* InitiativeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D8FA3A1C63D4AF00D5F38F /* InitiativeViewController.swift */; };
 		D2F9D12F1C1A71D8005F2D9A /* Encounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F9D12E1C1A71D8005F2D9A /* Encounter.swift */; };
 /* End PBXBuildFile section */
 
@@ -230,6 +231,7 @@
 		D2C8F0061C3DAD6E003AD18F /* Adventure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Adventure.swift; sourceTree = "<group>"; };
 		D2C8F0081C3DB18E003AD18F /* AdventureImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdventureImage.swift; sourceTree = "<group>"; };
 		D2C8F00C1C473126003AD18F /* AdventureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdventureViewController.swift; sourceTree = "<group>"; };
+		D2D8FA3A1C63D4AF00D5F38F /* InitiativeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitiativeViewController.swift; sourceTree = "<group>"; };
 		D2F9D12E1C1A71D8005F2D9A /* Encounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encounter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -345,6 +347,7 @@
 				D26FBA401C1FA17400D44503 /* ConditionViewController.swift */,
 				D249CF881C22602800CDE673 /* ConditionRulesViewController.swift */,
 				D26FBA3A1C1E3FE400D44503 /* DamageViewController.swift */,
+				D2D8FA3A1C63D4AF00D5F38F /* InitiativeViewController.swift */,
 				D2C6063D1C17D32900F61DBD /* TabletopViewController.swift */,
 			);
 			name = Adventure;
@@ -619,6 +622,7 @@
 				D2B92C1E1C4D515C0057BA47 /* PlayedGame.swift in Sources */,
 				D2622AA11C2BCDDD000D6100 /* MonsterSavingThrow.swift in Sources */,
 				D298E9031C2A5597007461A9 /* RaceViewController.swift in Sources */,
+				D2D8FA3B1C63D4AF00D5F38F /* InitiativeViewController.swift in Sources */,
 				D2116A4C1C10ECC9001EDBBA /* LegendaryAction.swift in Sources */,
 				D249CFA41C27664A00CDE673 /* ConditionImmunity.swift in Sources */,
 				D2B92C1A1C4B6B090057BA47 /* AdventureGamesViewController.swift in Sources */,

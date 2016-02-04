@@ -46,10 +46,22 @@ final class Combatant: NSManagedObject {
             return rawInitiative?.integerValue
         }
         set(newInitiative) {
-            rawInitiative = newInitiative != nil ? NSNumber(integer: newInitiative!) : nil
+            rawInitiative = newInitiative.map({ NSNumber(integer: $0) })
+            initiativeOrder = newInitiative.map({ _ in 0 })
         }
     }
     @NSManaged private var rawInitiative: NSNumber?
+    
+    /// Ordering of combatant within all those of the same initiative.
+    var initiativeOrder: Int? {
+        get {
+            return rawInitiativeOrder?.integerValue
+        }
+        set(newInitiativeOrder) {
+            rawInitiativeOrder = newInitiativeOrder.map({ NSNumber(integer: $0) })
+        }
+    }
+    @NSManaged private var rawInitiativeOrder: NSNumber?
 
     /// Hit points for the combatant
     ///

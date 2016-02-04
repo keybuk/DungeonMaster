@@ -16,7 +16,10 @@ class EncounterViewController: UIViewController, ManagedObjectObserverDelegate {
     @IBOutlet var leftContainerView: UIView!
     @IBOutlet var middleContainerView: UIView!
     @IBOutlet var rightContainerView: UIView!
-
+    
+    @IBOutlet var initiativeButtonItem: UIBarButtonItem!
+    @IBOutlet var tabletopButtonItem: UIBarButtonItem!
+    
     var observer: NSObjectProtocol?
     
     var difficultyLabel: UILabel!
@@ -31,18 +34,26 @@ class EncounterViewController: UIViewController, ManagedObjectObserverDelegate {
         navigationItem.rightBarButtonItems?.insert(fixedSpace, atIndex: 0)
         navigationItem.rightBarButtonItems?.insert(editButtonItem(), atIndex: 0)
         
-        // Another thing IB won't let us do: put labels in toolbars, even though this is perfectly valid UIKit.
+        // Another thing IB won't let us do: put labels in toolbars, even though this is perfectly valid UIKit. So we build the toolbar up the hard way.
         difficultyLabel = UILabel()
         difficultyLabel.text = "No Challenge"
         difficultyLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
         difficultyLabel.sizeToFit()
 
-        let flexibleSpace1 = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
-        let flexibleSpace2 = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
         let labelButtonItem = UIBarButtonItem(customView: difficultyLabel)
+        
+        toolbarItems = []
+        if let _ = game {
+            toolbarItems?.append(initiativeButtonItem)
+        }
+        
+        toolbarItems?.append(UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil))
+        toolbarItems?.append(labelButtonItem)
+        toolbarItems?.append(UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil))
+        
+        toolbarItems?.append(tabletopButtonItem)
 
-        toolbarItems = [flexibleSpace1, labelButtonItem, flexibleSpace2] + toolbarItems!
-
+        // Set up the rest of the view.
         configureView()
         
         observer = ManagedObjectObserver(object: encounter, delegate: self)
@@ -119,6 +130,10 @@ class EncounterViewController: UIViewController, ManagedObjectObserverDelegate {
         if segue.identifier == "CombatantsEmbedSegue" {
             combatantsViewController = segue.destinationViewController as! EncounterCombatantsViewController
             combatantsViewController.encounter = encounter
+        } else if segue.identifier == "InitiativeSegue" {
+            let viewController = (segue.destinationViewController as! UINavigationController).topViewController as! InitiativeViewController
+            viewController.encounter = encounter
+            viewController.game = game!
         } else if segue.identifier == "TabletopSegue" {
             let viewController = segue.destinationViewController as! TabletopViewController
             viewController.encounter = encounter
@@ -135,6 +150,10 @@ class EncounterViewController: UIViewController, ManagedObjectObserverDelegate {
             viewController.books = encounter.adventure.books.allObjects as! [Book]
             viewController.showMagicItems()
         }
+    }
+    
+    @IBAction func unwindFromInitiative(sender: UIStoryboardSegue) {
+        
     }
 
     // MARK: ManagedObjectObserverDelegate
