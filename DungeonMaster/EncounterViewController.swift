@@ -135,6 +135,11 @@ class EncounterViewController: UIViewController, ManagedObjectObserverDelegate {
         combatantsViewController.setEditing(editing, animated: animated)
         
         if oldEditing && !editing {
+            // Adding monsters in the game should immediate show the Initiative view.
+            if encounter.round > 0 && encounter.combatants.filteredSetUsingPredicate(NSPredicate(format: "rawInitiative == nil")).count > 0 {
+                performSegueWithIdentifier("InitiativeSegue", sender: self)
+            }
+            
             encounter.adventure.lastModified = NSDate()
             try! managedObjectContext.save()
         }

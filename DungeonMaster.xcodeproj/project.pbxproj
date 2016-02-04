@@ -62,7 +62,6 @@
 		D2622AA11C2BCDDD000D6100 /* MonsterSavingThrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2622AA01C2BCDDD000D6100 /* MonsterSavingThrow.swift */; };
 		D2622AA31C2BCDEC000D6100 /* MonsterSkill.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2622AA21C2BCDEC000D6100 /* MonsterSkill.swift */; };
 		D2622AA51C2CA2C8000D6100 /* CombatantRoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2622AA41C2CA2C8000D6100 /* CombatantRoleViewController.swift */; };
-		D2622AA71C2CB4C7000D6100 /* EncounterPlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2622AA61C2CB4C7000D6100 /* EncounterPlayersViewController.swift */; };
 		D26FBA221C1BEA0F00D44503 /* Combatant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FBA211C1BEA0F00D44503 /* Combatant.swift */; };
 		D26FBA321C1D39B900D44503 /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FBA311C1D39B900D44503 /* Sounds.swift */; };
 		D26FBA341C1D3BAF00D44503 /* CombatantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FBA331C1D3BAF00D44503 /* CombatantViewController.swift */; };
@@ -95,7 +94,6 @@
 		D2B92C1A1C4B6B090057BA47 /* AdventureGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B92C191C4B6B090057BA47 /* AdventureGamesViewController.swift */; };
 		D2B92C1C1C4B6E990057BA47 /* RomanNumeralFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B92C1B1C4B6E990057BA47 /* RomanNumeralFormatter.swift */; };
 		D2B92C1E1C4D515C0057BA47 /* PlayedGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B92C1D1C4D515C0057BA47 /* PlayedGame.swift */; };
-		D2BDE60E1C1750170008B2F2 /* xEncounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDE60D1C1750170008B2F2 /* xEncounterViewController.swift */; };
 		D2C1B7541C39C466002B324D /* AdventuresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C1B7531C39C466002B324D /* AdventuresViewController.swift */; };
 		D2C3B7AC1C517846009D4062 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C3B7AB1C517846009D4062 /* GameViewController.swift */; };
 		D2C3B7AE1C517ADD009D4062 /* GamePlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C3B7AD1C517ADD009D4062 /* GamePlayersViewController.swift */; };
@@ -178,12 +176,10 @@
 		D25120011C14FC0A00A09F0B /* ExtendedNavigationBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtendedNavigationBarView.swift; sourceTree = "<group>"; };
 		D2597F691C4844D90091AD05 /* CompendiumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompendiumViewController.swift; sourceTree = "<group>"; };
 		D2597F6F1C49B9C60091AD05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Compendium.storyboard; sourceTree = "<group>"; };
-		D2597F731C49BBFA0091AD05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/OldEncounter.storyboard; sourceTree = "<group>"; };
 		D2597F741C49BC3F0091AD05 /* OldBooks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OldBooks.storyboard; sourceTree = "<group>"; };
 		D2622AA01C2BCDDD000D6100 /* MonsterSavingThrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonsterSavingThrow.swift; sourceTree = "<group>"; };
 		D2622AA21C2BCDEC000D6100 /* MonsterSkill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonsterSkill.swift; sourceTree = "<group>"; };
 		D2622AA41C2CA2C8000D6100 /* CombatantRoleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombatantRoleViewController.swift; sourceTree = "<group>"; };
-		D2622AA61C2CB4C7000D6100 /* EncounterPlayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncounterPlayersViewController.swift; sourceTree = "<group>"; };
 		D26FBA211C1BEA0F00D44503 /* Combatant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Combatant.swift; sourceTree = "<group>"; };
 		D26FBA311C1D39B900D44503 /* Sounds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
 		D26FBA331C1D3BAF00D44503 /* CombatantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombatantViewController.swift; sourceTree = "<group>"; };
@@ -222,7 +218,6 @@
 		D2B92C191C4B6B090057BA47 /* AdventureGamesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdventureGamesViewController.swift; sourceTree = "<group>"; };
 		D2B92C1B1C4B6E990057BA47 /* RomanNumeralFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RomanNumeralFormatter.swift; sourceTree = "<group>"; };
 		D2B92C1D1C4D515C0057BA47 /* PlayedGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayedGame.swift; sourceTree = "<group>"; };
-		D2BDE60D1C1750170008B2F2 /* xEncounterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = xEncounterViewController.swift; sourceTree = "<group>"; };
 		D2C1B7531C39C466002B324D /* AdventuresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdventuresViewController.swift; sourceTree = "<group>"; };
 		D2C3B7AB1C517846009D4062 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		D2C3B7AD1C517ADD009D4062 /* GamePlayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamePlayersViewController.swift; sourceTree = "<group>"; };
@@ -389,7 +384,6 @@
 				D2A9AF121BFFEAA5009902ED /* Main.storyboard */,
 				D2597F6E1C49B9C60091AD05 /* Compendium.storyboard */,
 				D2597F741C49BC3F0091AD05 /* OldBooks.storyboard */,
-				D2597F721C49BBFA0091AD05 /* OldEncounter.storyboard */,
 				D2A9AF151BFFEAA5009902ED /* Assets.xcassets */,
 				D26FBA361C1DE2CE00D44503 /* Sounds */,
 				D2A9AF171BFFEAA5009902ED /* LaunchScreen.storyboard */,
@@ -427,8 +421,6 @@
 			children = (
 				D2597F6D1C4845140091AD05 /* Adventure */,
 				D2597F6B1C4844FE0091AD05 /* Compendium */,
-				D2BDE60D1C1750170008B2F2 /* xEncounterViewController.swift */,
-				D2622AA61C2CB4C7000D6100 /* EncounterPlayersViewController.swift */,
 				D2511FFF1C14C7ED00A09F0B /* BooksViewController.swift */,
 			);
 			name = "View Controllers";
@@ -581,7 +573,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D298E9011C2A555E007461A9 /* SavingThrowViewController.swift in Sources */,
-				D2BDE60E1C1750170008B2F2 /* xEncounterViewController.swift in Sources */,
 				D298E8FB1C2A5146007461A9 /* CharacterClassViewController.swift in Sources */,
 				D2B92C1C1C4B6E990057BA47 /* RomanNumeralFormatter.swift in Sources */,
 				D2C3B7AC1C517846009D4062 /* GameViewController.swift in Sources */,
@@ -606,7 +597,6 @@
 				D234B5C61C59A07C00C81417 /* GameEncountersViewController.swift in Sources */,
 				D2622AA31C2BCDEC000D6100 /* MonsterSkill.swift in Sources */,
 				D26FBA3D1C1E52CA00D44503 /* Enums.swift in Sources */,
-				D2622AA71C2CB4C7000D6100 /* EncounterPlayersViewController.swift in Sources */,
 				D23435F61C0D634100108D5F /* Importer.swift in Sources */,
 				D21BACF31C38B8FF007E2934 /* SpellClass.swift in Sources */,
 				D2F9D12F1C1A71D8005F2D9A /* Encounter.swift in Sources */,
@@ -711,14 +701,6 @@
 				D2597F6F1C49B9C60091AD05 /* Base */,
 			);
 			name = Compendium.storyboard;
-			sourceTree = "<group>";
-		};
-		D2597F721C49BBFA0091AD05 /* OldEncounter.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D2597F731C49BBFA0091AD05 /* Base */,
-			);
-			name = OldEncounter.storyboard;
 			sourceTree = "<group>";
 		};
 		D2A9AF121BFFEAA5009902ED /* Main.storyboard */ = {
