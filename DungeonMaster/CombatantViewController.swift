@@ -9,7 +9,7 @@
 import CoreData
 import UIKit
 
-class CombatantViewController: UITableViewController {
+class CombatantViewController: UITableViewController, UITextViewDelegate {
 
     /// The encounter combatant being shown and manipulated.
     var combatant: Combatant!
@@ -67,13 +67,7 @@ class CombatantViewController: UITableViewController {
     // MARK: Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "MonsterDetailSegue" {
-            /*let detailViewController = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
-            if let index = detailViewController.navigationItem.rightBarButtonItems?.indexOf(detailViewController.addButton) {
-                detailViewController.navigationItem.rightBarButtonItems?.removeAtIndex(index)
-            }
-            detailViewController.monster = combatant.monster*/
-        } else if segue.identifier == "RoleSegue" {
+        if segue.identifier == "RoleSegue" {
             let combatantRoleViewController = segue.destinationViewController as! CombatantRoleViewController
             combatantRoleViewController.role = combatant.role
         }
@@ -102,9 +96,6 @@ class CombatantViewController: UITableViewController {
         try! managedObjectContext.save()
     }
     
-    @IBAction func unwindFromDetail(segue: UIStoryboardSegue) {
-    }
-
     // MARK: Actions
     
     @IBAction func hitPointsEditingChanged(sender: UITextField) {
@@ -129,10 +120,7 @@ class CombatantViewController: UITableViewController {
         }
     }
     
-}
-
-// MARK: UITableViewDataSource
-extension CombatantViewController {
+    // MARK: UITableViewDataSource
     
     // MARK: Sections
     
@@ -311,10 +299,7 @@ extension CombatantViewController {
         }
     }
 
-}
-
-// MARK: UITableViewDelegate
-extension CombatantViewController {
+    // MARK: UITableViewDelegate
     
     override func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
         switch indexPath.section {
@@ -359,10 +344,8 @@ extension CombatantViewController {
         }
     }
 
-}
 
-// MARK: UITextViewDelegate
-extension CombatantViewController: UITextViewDelegate {
+    // MARK: UITextViewDelegate
     
     func textViewDidChange(textView: UITextView) {
         ignoreNextUpdate = true

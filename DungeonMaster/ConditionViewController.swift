@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConditionViewController: UITableViewController {
+class ConditionViewController: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
     @IBOutlet var addButton: UIBarButtonItem!
 
@@ -23,10 +23,7 @@ class ConditionViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-}
-
-// MARK: UIPickerViewDataSource
-extension ConditionViewController: UIPickerViewDataSource {
+    // MARK: UIPickerViewDataSource
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
@@ -36,10 +33,7 @@ extension ConditionViewController: UIPickerViewDataSource {
         return Condition.cases.count + 1
     }
 
-}
-
-// MARK: UIPickerViewDelegate
-extension ConditionViewController: UIPickerViewDelegate {
+    // MARK: UIPickerViewDelegate
 
     func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         switch row {

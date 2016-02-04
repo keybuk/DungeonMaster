@@ -161,7 +161,7 @@
         <!--Monster-->
         <scene sceneID="yUG-lL-AsK">
             <objects>
-                <viewController title="Monster" id="JEX-9P-axG" customClass="MonsterViewController" customModule="DungeonMaster" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MonsterViewController" title="Monster" id="JEX-9P-axG" customClass="MonsterViewController" customModule="DungeonMaster" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SYR-Wa-9uf"/>
                         <viewControllerLayoutGuide type="bottom" id="GAO-Cl-Wes"/>

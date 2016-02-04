@@ -45,7 +45,20 @@ class EncounterCombatantsViewController: UITableViewController, NSFetchedResults
     // MARK: Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "AddCombatantSegue" {
+        if segue.identifier == "CombatantSegue" {
+            performSegueWithIdentifier("CombatantMonsterSegue", sender: sender)
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let combatant = fetchedResultsController.objectAtIndexPath(indexPath) as! Combatant
+                let viewController = segue.destinationViewController as! CombatantViewController
+                viewController.combatant = combatant
+            }
+        } else if segue.identifier == "CombatantMonsterSegue" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let combatant = fetchedResultsController.objectAtIndexPath(indexPath) as! Combatant
+                let viewController = segue.destinationViewController as! MonsterViewController
+                viewController.monster = combatant.monster
+            }
+        } else if segue.identifier == "AddCombatantSegue" {
             // This is pretty hacky, we're stealing one view and embedding in another just to work around restrictions. The fact this gets complicated, requiring intermediate classes, should show that I shouldn't do things this way and should come up with a better way. I just don't know what that is yet.
             let viewController = segue.destinationViewController as! EncounterAddCombatantViewController
             viewController.encounter = encounter

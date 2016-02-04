@@ -21,9 +21,7 @@ class CombatantRoleViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-}
-
-extension CombatantRoleViewController {
+    // MARK: UITableViewDataSource
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
@@ -31,10 +29,7 @@ extension CombatantRoleViewController {
         return cell
     }
     
-}
-
-// MARK: UITableViewDelegate
-extension CombatantRoleViewController {
+    // MARK: UITableViewDelegate
     
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
         role = CombatRole(rawValue: indexPath.row)

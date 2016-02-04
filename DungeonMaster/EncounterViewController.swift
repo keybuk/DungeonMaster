@@ -13,6 +13,10 @@ class EncounterViewController: UIViewController, ManagedObjectObserverDelegate {
     var encounter: Encounter!
     var game: Game?
 
+    @IBOutlet var leftContainerView: UIView!
+    @IBOutlet var middleContainerView: UIView!
+    @IBOutlet var rightContainerView: UIView!
+
     var observer: NSObjectProtocol?
     
     var difficultyLabel: UILabel!
@@ -135,5 +139,77 @@ class EncounterViewController: UIViewController, ManagedObjectObserverDelegate {
     func managedObject(object: Encounter, changedForType type: ManagedObjectChangeType) {
         configureView()
     }
+    
+    // Container views
+    
+    var middleViewController: UIViewController? {
+        willSet {
+            if let middleViewController = middleViewController {
+                middleViewController.willMoveToParentViewController(nil)
+                middleViewController.view.removeFromSuperview()
+                middleViewController.removeFromParentViewController()
+            }
+        }
+        didSet {
+            if let middleViewController = middleViewController {
+                addChildViewController(middleViewController)
+                middleContainerView.addSubview(middleViewController.view)
+                middleViewController.view.frame = middleContainerView.bounds
 
+                // FIXME this does the right thing for now, but it feels kinda hacky.
+                if let scrollView = (middleViewController.view as? UIScrollView ?? middleViewController.view.subviews.first as? UIScrollView) {
+                    let oldTopInset = scrollView.contentInset.top
+                    scrollView.contentInset = UIEdgeInsets(top: topLayoutGuide.length, left: 0.0, bottom: bottomLayoutGuide.length, right: 0.0)
+                    scrollView.scrollIndicatorInsets = scrollView.contentInset
+                    scrollView.contentOffset.y -= (scrollView.contentInset.top - oldTopInset)
+                }
+                
+                middleViewController.didMoveToParentViewController(self)
+            }
+        }
+    }
+    
+    var rightViewController: UIViewController? {
+        willSet {
+            if let rightViewController = rightViewController {
+                rightViewController.willMoveToParentViewController(nil)
+                rightViewController.view.removeFromSuperview()
+                rightViewController.removeFromParentViewController()
+            }
+        }
+        didSet {
+            if let rightViewController = rightViewController {
+                addChildViewController(rightViewController)
+                rightContainerView.addSubview(rightViewController.view)
+                rightViewController.view.frame = rightContainerView.bounds
+                
+                // FIXME this does the right thing for now, but it feels kinda hacky.
+                if let scrollView = rightViewController.view as? UIScrollView {
+                    scrollView.contentInset = UIEdgeInsets(top: topLayoutGuide.length, left: 0.0, bottom: bottomLayoutGuide.length, right: 0.0)
+                    scrollView.scrollIndicatorInsets = scrollView.contentInset
+                }
+                
+                rightViewController.didMoveToParentViewController(self)
+            }
+        }
+    }
+
+}
+
+class EncounterShowMiddleSegue: UIStoryboardSegue {
+    
+    override func perform() {
+        let encounterViewController = sourceViewController.parentViewController as! EncounterViewController
+        encounterViewController.middleViewController = destinationViewController
+    }
+
+}
+
+class EncounterShowRightSegue: UIStoryboardSegue {
+    
+    override func perform() {
+        let encounterViewController = sourceViewController.parentViewController as! EncounterViewController
+        encounterViewController.rightViewController = destinationViewController
+    }
+    
 }

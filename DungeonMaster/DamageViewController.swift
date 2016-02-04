@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DamageViewController: UITableViewController {
+class DamageViewController: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     @IBOutlet var addButton: UIBarButtonItem!
     
@@ -43,10 +43,7 @@ class DamageViewController: UITableViewController {
         addButton.enabled = (points != nil && type != nil)
     }
 
-}
-
-// MARK: UIPickerViewDataSource
-extension DamageViewController: UIPickerViewDataSource {
+    // MARK: UIPickerViewDataSource
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
@@ -56,10 +53,7 @@ extension DamageViewController: UIPickerViewDataSource {
         return DamageType.cases.count + 1
     }
     
-}
-
-// MARK: UIPickerViewDelegate
-extension DamageViewController: UIPickerViewDelegate {
+    // MARK: UIPickerViewDelegate
     
     func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         switch row {
