@@ -15,6 +15,9 @@ class EncounterCombatantsViewController: UITableViewController, NSFetchedResults
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Leave the selected combatant always selected as we go in/out of the property views or table top.
+        clearsSelectionOnViewWillAppear = false
     }
 
     override func didReceiveMemoryWarning() {

@@ -100,6 +100,16 @@ class TabletopViewController: UIViewController, TabletopViewDataSource, Tabletop
     }
     
     func tabletopView(tabletopView: TabletopView, didSelectItem index: Int) {
+        let combatant = fetchedResultsController.fetchedObjects![index] as! Combatant
+
+        // This is kind of a hack, but it does what I want for now.
+        navigationController?.popViewControllerAnimated(true)
+        if let encounterViewController = navigationController?.topViewController as? EncounterViewController {
+            let combatantsViewController = encounterViewController.combatantsViewController
+            let indexPath = combatantsViewController.fetchedResultsController.indexPathForObject(combatant)
+            combatantsViewController.tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: .Middle)
+            combatantsViewController.performSegueWithIdentifier("CombatantSegue", sender: self)
+        }
     }
 
     // MARK: NSFetchedResultsControllerDelegate
