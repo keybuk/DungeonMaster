@@ -103,6 +103,7 @@
 		D2C8F0091C3DB18E003AD18F /* AdventureImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8F0081C3DB18E003AD18F /* AdventureImage.swift */; };
 		D2C8F00D1C473126003AD18F /* AdventureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8F00C1C473126003AD18F /* AdventureViewController.swift */; };
 		D2D8FA3B1C63D4AF00D5F38F /* InitiativeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D8FA3A1C63D4AF00D5F38F /* InitiativeViewController.swift */; };
+		D2E0FDDF1C67DB7600498436 /* DungeonKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2E0FDDE1C67DB7600498436 /* DungeonKit.framework */; };
 		D2F9D12F1C1A71D8005F2D9A /* Encounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F9D12E1C1A71D8005F2D9A /* Encounter.swift */; };
 /* End PBXBuildFile section */
 
@@ -227,6 +228,7 @@
 		D2C8F0081C3DB18E003AD18F /* AdventureImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdventureImage.swift; sourceTree = "<group>"; };
 		D2C8F00C1C473126003AD18F /* AdventureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdventureViewController.swift; sourceTree = "<group>"; };
 		D2D8FA3A1C63D4AF00D5F38F /* InitiativeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitiativeViewController.swift; sourceTree = "<group>"; };
+		D2E0FDDE1C67DB7600498436 /* DungeonKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DungeonKit.framework; path = "build/Debug-iphoneos/DungeonKit.framework"; sourceTree = "<group>"; };
 		D2F9D12E1C1A71D8005F2D9A /* Encounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encounter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -235,6 +237,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2E0FDDF1C67DB7600498436 /* DungeonKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +357,7 @@
 				D2A9AF081BFFEAA5009902ED /* DungeonMaster */,
 				D2A9AF221BFFEAA5009902ED /* DungeonMasterTests */,
 				D2A9AF2D1BFFEAA5009902ED /* DungeonMasterUITests */,
+				D2E0FDE01C67DB7900498436 /* Dependencies */,
 				D2A9AF071BFFEAA5009902ED /* Products */,
 			);
 			sourceTree = "<group>";
@@ -435,6 +439,14 @@
 				D2C8F0031C3AE705003AD18F /* AdjustableImageView.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		D2E0FDE01C67DB7900498436 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				D2E0FDDE1C67DB7600498436 /* DungeonKit.framework */,
+			);
+			name = Dependencies;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -809,6 +821,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = DungeonMaster/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.DungeonMaster;
@@ -821,6 +837,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = DungeonMaster/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.DungeonMaster;
