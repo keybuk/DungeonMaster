@@ -105,6 +105,7 @@
 		D2D8F4461C7578EC00C54BB7 /* DungeonKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2D8F4451C7578EC00C54BB7 /* DungeonKit.framework */; };
 		D2D8F4471C7578EC00C54BB7 /* DungeonKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D2D8F4451C7578EC00C54BB7 /* DungeonKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D2D8FA3B1C63D4AF00D5F38F /* InitiativeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D8FA3A1C63D4AF00D5F38F /* InitiativeViewController.swift */; };
+		D2F5CA1D1C68276D00691DDD /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F5CA1C1C68276D00691DDD /* NetworkController.swift */; };
 		D2F9D12F1C1A71D8005F2D9A /* Encounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F9D12E1C1A71D8005F2D9A /* Encounter.swift */; };
 /* End PBXBuildFile section */
 
@@ -244,6 +245,7 @@
 		D2C8F00C1C473126003AD18F /* AdventureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdventureViewController.swift; sourceTree = "<group>"; };
 		D2D8F4451C7578EC00C54BB7 /* DungeonKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = DungeonKit.framework; path = "/Users/scott/Library/Developer/Xcode/DerivedData/DungeonMaster-aryikklnhzulpzexkhjnqpakqtos/Build/Products/Debug-iphoneos/DungeonKit.framework"; sourceTree = "<absolute>"; };
 		D2D8FA3A1C63D4AF00D5F38F /* InitiativeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitiativeViewController.swift; sourceTree = "<group>"; };
+		D2F5CA1C1C68276D00691DDD /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		D2F9D12E1C1A71D8005F2D9A /* Encounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encounter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -394,6 +396,7 @@
 				D2BDE60F1C1754F00008B2F2 /* View Controllers */,
 				D2BDE6101C1755040008B2F2 /* Views */,
 				D2A9AF091BFFEAA5009902ED /* AppDelegate.swift */,
+				D2F5CA1C1C68276D00691DDD /* NetworkController.swift */,
 				D23435FA1C0FEFA000108D5F /* Dice.swift */,
 				D249CF841C21DF3500CDE673 /* PointGenerator.swift */,
 				D209FEF81C30578F0024B0A3 /* MarkupParser.swift */,
@@ -661,6 +664,7 @@
 				D23435EE1C0D5F9E00108D5F /* Book.swift in Sources */,
 				D26FBA391C1E366300D44503 /* CombatantDamage.swift in Sources */,
 				D298E8FF1C2A515C007461A9 /* AlignmentViewController.swift in Sources */,
+				D2F5CA1D1C68276D00691DDD /* NetworkController.swift in Sources */,
 				D298E8F51C29F112007461A9 /* PlayerSkill.swift in Sources */,
 				D2116A4A1C10ECBC001EDBBA /* Reaction.swift in Sources */,
 				D2C8F00D1C473126003AD18F /* AdventureViewController.swift in Sources */,

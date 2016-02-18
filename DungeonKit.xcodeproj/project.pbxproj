@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D2BC6F171C73FDAA00E0AF15 /* PixelLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BC6F161C73FDAA00E0AF15 /* PixelLineView.swift */; };
+		D2D8F4701C7648FC00C54BB7 /* NetworkPeer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D8F46F1C7648FC00C54BB7 /* NetworkPeer.swift */; };
 		D2E0FDBA1C67D84E00498436 /* DungeonKit.h in Headers */ = {isa = PBXBuildFile; fileRef = D2E0FDB91C67D84E00498436 /* DungeonKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D2E0FDC11C67D84E00498436 /* DungeonKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2E0FDB61C67D84E00498436 /* DungeonKit.framework */; };
 		D2E0FDC61C67D84E00498436 /* DungeonKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E0FDC51C67D84E00498436 /* DungeonKitTests.swift */; };
+		D2E0FDF01C67EA2600498436 /* NetworkConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E0FDEF1C67EA2600498436 /* NetworkConnection.swift */; };
+		D2E0FDF21C67EE3F00498436 /* NetworkMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E0FDF11C67EE3F00498436 /* NetworkMessage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,12 +27,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D2BC6F161C73FDAA00E0AF15 /* PixelLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PixelLineView.swift; sourceTree = "<group>"; };
+		D2D8F46F1C7648FC00C54BB7 /* NetworkPeer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkPeer.swift; sourceTree = "<group>"; };
 		D2E0FDB61C67D84E00498436 /* DungeonKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DungeonKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2E0FDB91C67D84E00498436 /* DungeonKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DungeonKit.h; sourceTree = "<group>"; };
 		D2E0FDBB1C67D84E00498436 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2E0FDC01C67D84E00498436 /* DungeonKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DungeonKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2E0FDC51C67D84E00498436 /* DungeonKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DungeonKitTests.swift; sourceTree = "<group>"; };
 		D2E0FDC71C67D84E00498436 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2E0FDEF1C67EA2600498436 /* NetworkConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConnection.swift; sourceTree = "<group>"; };
+		D2E0FDF11C67EE3F00498436 /* NetworkMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkMessage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +58,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D2D8F46D1C763A7C00C54BB7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D2BC6F161C73FDAA00E0AF15 /* PixelLineView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		D2D8F46E1C76433100C54BB7 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				D2D8F46F1C7648FC00C54BB7 /* NetworkPeer.swift */,
+				D2E0FDEF1C67EA2600498436 /* NetworkConnection.swift */,
+				D2E0FDF11C67EE3F00498436 /* NetworkMessage.swift */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
 		D2E0FDAC1C67D84E00498436 = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +97,8 @@
 		D2E0FDB81C67D84E00498436 /* DungeonKit */ = {
 			isa = PBXGroup;
 			children = (
+				D2D8F46E1C76433100C54BB7 /* Network */,
+				D2D8F46D1C763A7C00C54BB7 /* Views */,
 				D2E0FDB91C67D84E00498436 /* DungeonKit.h */,
 				D2E0FDBB1C67D84E00498436 /* Info.plist */,
 			);
@@ -194,6 +222,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2E0FDF01C67EA2600498436 /* NetworkConnection.swift in Sources */,
+				D2D8F4701C7648FC00C54BB7 /* NetworkPeer.swift in Sources */,
+				D2BC6F171C73FDAA00E0AF15 /* PixelLineView.swift in Sources */,
+				D2E0FDF21C67EE3F00498436 /* NetworkMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
