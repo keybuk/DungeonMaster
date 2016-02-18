@@ -42,16 +42,20 @@ final class Encounter: NSManagedObject {
             if let monster = sortedCombatants[0].monster {
                 let count = sortedCombatants.filter { return $0.monster == monster }.count
 
+                let plural: String
                 if count > 1 {
-                    if count < sortedCombatants.count {
-                        return "\(count) \(monster.name)s and \(sortedCombatants.count - count) others"
-                    } else {
-                        return "\(count) \(monster.name)s"
-                    }
-                } else if sortedCombatants.count > 1 {
-                    return "\(monster.name) and \(sortedCombatants.count - 1) others"
+                    plural = "\(count) " + (monster.name.hasSuffix("s") ? "\(monster.name)es" : "\(monster.name)s")
                 } else {
-                    return "\(monster.name)"
+                    plural = monster.name
+                }
+                
+                let otherCount = sortedCombatants.count - count
+                if otherCount > 1 {
+                    return "\(plural) and \(otherCount) others"
+                } else if otherCount == 1 {
+                    return "\(plural) and \(otherCount) other"
+                } else {
+                    return plural
                 }
             }
         }
