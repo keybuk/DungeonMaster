@@ -9,7 +9,7 @@
 import CoreData
 import UIKit
 
-class BooksViewController: UITableViewController {
+class BooksViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 
     var hiddenBooks: Set<Book>?
 
@@ -60,10 +60,7 @@ class BooksViewController: UITableViewController {
         }
     }
 
-}
-
-// MARK: UITableViewDataSource
-extension BooksViewController {
+    // MARK: UITableViewDataSource
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return fetchedResultsController.sections?.count ?? 0
@@ -87,11 +84,8 @@ extension BooksViewController {
         return cell
     }
 
-}
+    // MARK: UITableViewDelegate
 
-// MARK: UITableViewDelegate
-extension BooksViewController {
-    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let book = fetchedResultsController.objectAtIndexPath(indexPath) as! Book
 
@@ -112,10 +106,7 @@ extension BooksViewController {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 
-}
-
-// MARK: NSFetchedResultsControllerDelegate
-extension BooksViewController: NSFetchedResultsControllerDelegate {
+    // MARK: NSFetchedResultsControllerDelegate
     
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
         tableView.beginUpdates()
