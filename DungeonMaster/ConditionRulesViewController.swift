@@ -14,7 +14,6 @@ class ConditionRulesViewController: UIViewController {
     
     var condition: Condition! {
         didSet {
-            guard let _ = textView else { return }
             configureView()
         }
     }
@@ -46,8 +45,11 @@ class ConditionRulesViewController: UIViewController {
     }
     
     func configureView() {
+        guard let textView = textView else { return }
+        guard let condition = condition else { return }
+
         let markupParser = MarkupParser()
-        markupParser.tableWidth = textView.frame.size.width
+        markupParser.tableWidth = textView.bounds.size.width
         markupParser.linkColor = textView.tintColor
         
         markupParser.parse("# \(condition.stringValue)")
