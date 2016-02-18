@@ -224,8 +224,8 @@ class InitiativeViewController: UITableViewController, NSFetchedResultsControlle
         }
     }
     
-    var userMovedTableRow: NSIndexPath?
-
+    var changeIsUserDriven = false
+    
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
         let combatant = fetchedResultsController.objectAtIndexPath(fromIndexPath) as! Combatant
         let displacedCombatant = fetchedResultsController.objectAtIndexPath(toIndexPath) as! Combatant
@@ -248,7 +248,7 @@ class InitiativeViewController: UITableViewController, NSFetchedResultsControlle
             adjustCombatant.initiativeOrder = adjustCombatant.initiativeOrder! + 2
         }
         
-        userMovedTableRow = fromIndexPath
+        changeIsUserDriven = true
     }
     
     // MARK: UITableViewDelegate
@@ -307,6 +307,8 @@ class InitiativeViewController: UITableViewController, NSFetchedResultsControlle
     }
     
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        guard !changeIsUserDriven else { return }
+    
         switch type {
         case .Insert:
             let combatant = anObject as! Combatant
@@ -334,28 +336,25 @@ class InitiativeViewController: UITableViewController, NSFetchedResultsControlle
             let combatant = anObject as! Combatant
             cell.combatant = combatant
         case .Move:
-            if let userMovedTableRow = userMovedTableRow where userMovedTableRow == indexPath! {
-                // Ignore row moved by the user, since the table already reflects the model.
-                self.userMovedTableRow = nil
-            } else {
-                // .Move implies .Update; update the cell at the old index, and then move it.
-                let cell = tableView.cellForRowAtIndexPath(indexPath!) as! InitiativeCombatantCell
-                let combatant = anObject as! Combatant
-                cell.combatant = combatant
-                
-                tableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!)
-            }
+            // .Move implies .Update; update the cell at the old index, and then move it.
+            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! InitiativeCombatantCell
+            let combatant = anObject as! Combatant
+            cell.combatant = combatant
+            
+            tableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!)
         }
     }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         tableView.endUpdates()
         
+        changeIsUserDriven = false
+        
         if let indexPath = selectIndexPath, cell = tableView.cellForRowAtIndexPath(indexPath) as? InitiativeCombatantCell {
             cell.initiativeTextField.becomeFirstResponder()
             selectIndexPath = nil
         }
-        
+
         validateEncounter()
     }
 
