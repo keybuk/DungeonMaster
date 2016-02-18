@@ -67,6 +67,7 @@ class GameEncountersViewController: UITableViewController, NSFetchedResultsContr
         
         let viewController = storyboard?.instantiateViewControllerWithIdentifier("EncounterViewController") as! EncounterViewController
         viewController.encounter = encounter
+        viewController.game = game
         navigationController?.pushViewController(viewController, animated: true)
     }
 
