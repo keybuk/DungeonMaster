@@ -167,11 +167,11 @@ class MonsterViewController: UIViewController {
             let weightSortDescriptor = NSSortDescriptor(key: "rawWeight", ascending: false)
             let alignmentSortDescriptor = NSSortDescriptor(key: "rawAlignment", ascending: true)
             
-            let alignmentString = monster.alignmentOptions.sortedArrayUsingDescriptors([ weightSortDescriptor, alignmentSortDescriptor ]).map {
+            let alignmentString = monster.alignmentOptions.sortedArrayUsingDescriptors([ weightSortDescriptor, alignmentSortDescriptor ]).map({
                 let alignmentOption = $0 as! AlignmentOption
                 let formattedWeight = NSString(format: "%.0f", alignmentOption.weight! * 100.0)
                 return "\(alignmentOption.alignment.stringValue.lowercaseString) (\(formattedWeight)%)"
-            }.joinWithSeparator(" or ")
+            }).joinWithSeparator(" or ")
             
             text.appendAttributedString(NSAttributedString(string: ", \(alignmentString)\n", attributes: sizeTypeAlignmentStyle))
 
