@@ -102,8 +102,9 @@
 		D2C8F0071C3DAD6E003AD18F /* Adventure.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8F0061C3DAD6E003AD18F /* Adventure.swift */; };
 		D2C8F0091C3DB18E003AD18F /* AdventureImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8F0081C3DB18E003AD18F /* AdventureImage.swift */; };
 		D2C8F00D1C473126003AD18F /* AdventureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8F00C1C473126003AD18F /* AdventureViewController.swift */; };
+		D2D8F4461C7578EC00C54BB7 /* DungeonKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2D8F4451C7578EC00C54BB7 /* DungeonKit.framework */; };
+		D2D8F4471C7578EC00C54BB7 /* DungeonKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D2D8F4451C7578EC00C54BB7 /* DungeonKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D2D8FA3B1C63D4AF00D5F38F /* InitiativeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D8FA3A1C63D4AF00D5F38F /* InitiativeViewController.swift */; };
-		D2E0FDDF1C67DB7600498436 /* DungeonKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2E0FDDE1C67DB7600498436 /* DungeonKit.framework */; };
 		D2F9D12F1C1A71D8005F2D9A /* Encounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F9D12E1C1A71D8005F2D9A /* Encounter.swift */; };
 /* End PBXBuildFile section */
 
@@ -123,6 +124,20 @@
 			remoteInfo = DungeonMaster;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D2D8F4481C7578EC00C54BB7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D2D8F4471C7578EC00C54BB7 /* DungeonKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D20049221C1A127500A645E9 /* TabletopStatsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabletopStatsView.swift; sourceTree = "<group>"; };
@@ -227,8 +242,8 @@
 		D2C8F0061C3DAD6E003AD18F /* Adventure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Adventure.swift; sourceTree = "<group>"; };
 		D2C8F0081C3DB18E003AD18F /* AdventureImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdventureImage.swift; sourceTree = "<group>"; };
 		D2C8F00C1C473126003AD18F /* AdventureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdventureViewController.swift; sourceTree = "<group>"; };
+		D2D8F4451C7578EC00C54BB7 /* DungeonKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = DungeonKit.framework; path = "/Users/scott/Library/Developer/Xcode/DerivedData/DungeonMaster-aryikklnhzulpzexkhjnqpakqtos/Build/Products/Debug-iphoneos/DungeonKit.framework"; sourceTree = "<absolute>"; };
 		D2D8FA3A1C63D4AF00D5F38F /* InitiativeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitiativeViewController.swift; sourceTree = "<group>"; };
-		D2E0FDDE1C67DB7600498436 /* DungeonKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DungeonKit.framework; path = "build/Debug-iphoneos/DungeonKit.framework"; sourceTree = "<group>"; };
 		D2F9D12E1C1A71D8005F2D9A /* Encounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encounter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -237,7 +252,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2E0FDDF1C67DB7600498436 /* DungeonKit.framework in Frameworks */,
+				D2D8F4461C7578EC00C54BB7 /* DungeonKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,7 +459,7 @@
 		D2E0FDE01C67DB7900498436 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				D2E0FDDE1C67DB7600498436 /* DungeonKit.framework */,
+				D2D8F4451C7578EC00C54BB7 /* DungeonKit.framework */,
 			);
 			name = Dependencies;
 			sourceTree = "<group>";
@@ -459,6 +474,7 @@
 				D2A9AF021BFFEAA5009902ED /* Sources */,
 				D2A9AF031BFFEAA5009902ED /* Frameworks */,
 				D2A9AF041BFFEAA5009902ED /* Resources */,
+				D2D8F4481C7578EC00C54BB7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -821,10 +837,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
 				INFOPLIST_FILE = DungeonMaster/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.DungeonMaster;
@@ -837,10 +849,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
 				INFOPLIST_FILE = DungeonMaster/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.DungeonMaster;
