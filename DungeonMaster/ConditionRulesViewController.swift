@@ -14,7 +14,7 @@ class ConditionRulesViewController: UIViewController {
     
     var condition: Condition! {
         didSet {
-            guard textView != nil else { return }
+            guard let _ = textView else { return }
             configureView()
         }
     }

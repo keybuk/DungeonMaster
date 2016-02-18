@@ -358,8 +358,8 @@ class MarkupParser {
                 mutableText.string.enumerateSubstringsInRange(index..<delimiterIndexRange.startIndex, options: .ByWords) { (substring, substringRange, enclosingRange, inout stop: Bool) in
                     let range = NSRange(location: self.mutableText.string.startIndex.distanceTo(substringRange.startIndex), length: substringRange.startIndex.distanceTo(substringRange.endIndex))
                     let subtext = self.mutableText.attributedSubstringFromRange(range)
-
-                    let newFragment = fragment != nil ? NSMutableAttributedString(attributedString: fragment!) : NSMutableAttributedString()
+                    
+                    let newFragment = NSMutableAttributedString(attributedString: fragment ?? NSAttributedString())
                     if let savedTrailing = savedTrailing {
                         newFragment.appendAttributedString(savedTrailing)
                     }

@@ -79,7 +79,7 @@ class TabletopViewController: UIViewController, TabletopViewDataSource, Tabletop
     
     func tabletopView(tabletopView: TabletopView, nameForItem index: Int) -> String {
         let combatant = fetchedResultsController.fetchedObjects![index] as! Combatant
-        return combatant.monster != nil ? combatant.monster!.name : combatant.player!.name
+        return (combatant.monster?.name ?? combatant.player?.name)!
     }
     
     func tabletopView(tabletopView: TabletopView, isItemPlayerControlled index: Int) -> Bool {

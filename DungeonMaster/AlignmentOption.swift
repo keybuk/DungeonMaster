@@ -34,7 +34,7 @@ final class AlignmentOption: NSManagedObject {
             return rawWeight?.floatValue
         }
         set(newWeight) {
-            rawWeight = newWeight != nil ? NSNumber(float: newWeight!) : nil
+            rawWeight = newWeight.map({ NSNumber(float: $0) })
         }
     }
     @NSManaged private var rawWeight: NSNumber?

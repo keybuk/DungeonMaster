@@ -25,7 +25,7 @@ final class Player: NSManagedObject {
         }
         set(newRace) {
             rawRace = NSNumber(integer: newRace.rawRaceValue)
-            rawSubrace = newRace.rawSubraceValue != nil ? NSNumber(integer: newRace.rawSubraceValue!) : nil
+            rawSubrace = newRace.rawSubraceValue.map({ NSNumber(integer: $0) })
         }
     }
     @NSManaged private var rawRace: NSNumber

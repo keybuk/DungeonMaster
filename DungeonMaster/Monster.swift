@@ -38,10 +38,10 @@ final class Monster: NSManagedObject {
     /// The size of the individual monsters in the swarm can be found in the usual `size` property.
     var swarmSize: Size? {
         get {
-            return rawSwarmSize != nil ? Size(rawValue: rawSwarmSize!.integerValue)! : nil
+            return rawSwarmSize.map({ Size(rawValue: $0.integerValue)! })
         }
         set(newSwarmSize) {
-            rawSwarmSize = newSwarmSize != nil ? NSNumber(integer: newSwarmSize!.rawValue) : nil
+            rawSwarmSize = newSwarmSize.map({ NSNumber(integer: $0.rawValue) })
         }
     }
     @NSManaged private var rawSwarmSize: NSNumber?
@@ -81,10 +81,10 @@ final class Monster: NSManagedObject {
     /// When this value is nil, check `alignmentOptions` for the possible alignments that this monster may have. If the monster has neither alignment or alignment options, then it has no alignment ("unaligned" in the Monster Manual).
     var alignment: Alignment? {
         get {
-            return rawAlignment != nil ? Alignment(rawValue: rawAlignment!.integerValue)! : nil
+            return rawAlignment.map({ Alignment(rawValue: $0.integerValue)! })
         }
         set(newAlignment) {
-            rawAlignment = newAlignment != nil ? NSNumber(integer: newAlignment!.rawValue) : nil
+            rawAlignment = newAlignment.map({ NSNumber(integer: $0.rawValue) })
         }
     }
     @NSManaged private var rawAlignment: NSNumber?
@@ -107,7 +107,7 @@ final class Monster: NSManagedObject {
             return rawHitPoints?.integerValue
         }
         set(newHitPoints) {
-            rawHitPoints = newHitPoints != nil ? NSNumber(integer: newHitPoints!) : nil
+            rawHitPoints = newHitPoints.map({ NSNumber(integer: $0) })
         }
     }
     @NSManaged private var rawHitPoints: NSNumber?
@@ -142,7 +142,7 @@ final class Monster: NSManagedObject {
             return rawBurrowSpeed?.integerValue
         }
         set(newBurrowSpeed) {
-            rawBurrowSpeed = newBurrowSpeed != nil ? NSNumber(integer: newBurrowSpeed!) : nil
+            rawBurrowSpeed = newBurrowSpeed.map({ NSNumber(integer: $0) })
         }
     }
     @NSManaged private var rawBurrowSpeed: NSNumber?
@@ -153,7 +153,7 @@ final class Monster: NSManagedObject {
             return rawClimbSpeed?.integerValue
         }
         set(newClimbSpeed) {
-            rawClimbSpeed = newClimbSpeed != nil ? NSNumber(integer: newClimbSpeed!) : nil
+            rawClimbSpeed = newClimbSpeed.map({ NSNumber(integer: $0) })
         }
     }
     @NSManaged private var rawClimbSpeed: NSNumber?
@@ -164,7 +164,7 @@ final class Monster: NSManagedObject {
             return rawFlySpeed?.integerValue
         }
         set(newFlySpeed) {
-            rawFlySpeed = newFlySpeed != nil ? NSNumber(integer: newFlySpeed!) : nil
+            rawFlySpeed = newFlySpeed.map({ NSNumber(integer: $0) })
         }
     }
     @NSManaged private var rawFlySpeed: NSNumber?
@@ -180,7 +180,7 @@ final class Monster: NSManagedObject {
             return rawSwimSpeed?.integerValue
         }
         set(newSwimSpeed) {
-            rawSwimSpeed = newSwimSpeed != nil ? NSNumber(integer: newSwimSpeed!) : nil
+            rawSwimSpeed = newSwimSpeed.map({ NSNumber(integer: $0) })
         }
     }
     @NSManaged private var rawSwimSpeed: NSNumber?
@@ -300,7 +300,7 @@ final class Monster: NSManagedObject {
             return rawBlindsight?.integerValue
         }
         set(newBlindsight) {
-            rawBlindsight = newBlindsight != nil ? NSNumber(integer: newBlindsight!) : nil
+            rawBlindsight = newBlindsight.map({ NSNumber(integer: $0) })
         }
     }
     @NSManaged private var rawBlindsight: NSNumber?
@@ -313,7 +313,7 @@ final class Monster: NSManagedObject {
             return rawDarkvision?.integerValue
         }
         set(newDarkvision) {
-            rawDarkvision = newDarkvision != nil ? NSNumber(integer: newDarkvision!) : nil
+            rawDarkvision = newDarkvision.map({ NSNumber(integer: $0) })
         }
     }
     @NSManaged private var rawDarkvision: NSNumber?
@@ -324,7 +324,7 @@ final class Monster: NSManagedObject {
             return rawTremorsense?.integerValue
         }
         set(newTremorsense) {
-            rawTremorsense = newTremorsense != nil ? NSNumber(integer: newTremorsense!) : nil
+            rawTremorsense = newTremorsense.map({ NSNumber(integer: $0) })
         }
     }
     @NSManaged private var rawTremorsense: NSNumber?
@@ -335,7 +335,7 @@ final class Monster: NSManagedObject {
             return rawTruesight?.integerValue
         }
         set(newTruesight) {
-            rawTruesight = newTruesight != nil ? NSNumber(integer: newTruesight!) : nil
+            rawTruesight = newTruesight.map({ NSNumber(integer: $0) })
         }
     }
     @NSManaged private var rawTruesight: NSNumber?
@@ -351,10 +351,10 @@ final class Monster: NSManagedObject {
     /// Languages that monsters created from this stat block can speak.
     var languagesSpokenOption: LanguageOption? {
         get {
-            return rawLanguagesSpokenOption != nil ? LanguageOption(rawValue: rawLanguagesSpokenOption!.integerValue)! : nil
+            return rawLanguagesSpokenOption.map({ LanguageOption(rawValue: $0.integerValue)! })
         }
         set(newLanguagesSpokenOption) {
-            rawLanguagesSpokenOption = newLanguagesSpokenOption != nil ? NSNumber(integer: newLanguagesSpokenOption!.rawValue) : nil
+            rawLanguagesSpokenOption = newLanguagesSpokenOption.map({ NSNumber(integer: $0.rawValue) })
         }
     }
     @NSManaged private var rawLanguagesSpokenOption: NSNumber?
@@ -370,10 +370,10 @@ final class Monster: NSManagedObject {
     /// Languages that monsters created from this stat block can understand.
     var languagesUnderstoodOption: LanguageOption? {
         get {
-            return rawLanguagesUnderstoodOption != nil ? LanguageOption(rawValue: rawLanguagesUnderstoodOption!.integerValue)! : nil
+            return rawLanguagesUnderstoodOption.map({ LanguageOption(rawValue: $0.integerValue)! })
         }
         set(newLanguagesUnderstoodOption) {
-            rawLanguagesUnderstoodOption = newLanguagesUnderstoodOption != nil ? NSNumber(integer: newLanguagesUnderstoodOption!.rawValue) : nil
+            rawLanguagesUnderstoodOption = newLanguagesUnderstoodOption.map({ NSNumber(integer: $0.rawValue) })
         }
     }
     @NSManaged private var rawLanguagesUnderstoodOption: NSNumber?
@@ -384,7 +384,7 @@ final class Monster: NSManagedObject {
             return rawTelepathy?.integerValue
         }
         set(newTelepathy) {
-            rawTelepathy = newTelepathy != nil ? NSNumber(integer: newTelepathy!) : nil
+            rawTelepathy = newTelepathy.map({ NSNumber(integer: $0) })
         }
     }
     @NSManaged private var rawTelepathy: NSNumber?

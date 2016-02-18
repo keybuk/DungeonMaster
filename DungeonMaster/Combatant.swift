@@ -125,11 +125,15 @@ final class Combatant: NSManagedObject {
     /// Location of the combatant on the table top.
     var location: TabletopLocation? {
         get {
-            return rawLocationX != nil && rawLocationY != nil ? TabletopLocation(x: CGFloat(rawLocationX!.floatValue), y: CGFloat(rawLocationY!.floatValue)) : nil
+            if let x = rawLocationX, y = rawLocationY {
+                return TabletopLocation(x: CGFloat(x.floatValue), y: CGFloat(y.floatValue))
+            } else {
+                return nil
+            }
         }
         set(newLocation) {
-            rawLocationX = newLocation != nil ? NSNumber(float: Float(newLocation!.x)) : nil
-            rawLocationY = newLocation != nil ? NSNumber(float: Float(newLocation!.y)) : nil
+            rawLocationX = newLocation.map({ NSNumber(float: Float($0.x)) })
+            rawLocationX = newLocation.map({ NSNumber(float: Float($0.y)) })
         }
     }
     @NSManaged private var rawLocationX: NSNumber?

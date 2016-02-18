@@ -79,7 +79,7 @@ final class Spell: NSManagedObject {
             return rawCastingTime?.integerValue
         }
         set(newCastingTime) {
-            rawCastingTime = newCastingTime != nil ? NSNumber(integer: newCastingTime!) : nil
+            rawCastingTime = newCastingTime.map({ NSNumber(integer: $0) })
         }
     }
     @NSManaged private var rawCastingTime: NSNumber?
@@ -105,7 +105,7 @@ final class Spell: NSManagedObject {
             return rawRangeDistance?.integerValue
         }
         set(newRangeDistance) {
-            rawRangeDistance = newRangeDistance != nil ? NSNumber(integer: newRangeDistance!) : nil
+            rawRangeDistance = newRangeDistance.map({ NSNumber(integer: $0) })
         }
         
     }
@@ -116,10 +116,10 @@ final class Spell: NSManagedObject {
     /// This is present when `range` is `.CenteredOnSelf` and describes the shape of the effect.
     var rangeShape: SpellRangeShape? {
         get {
-            return rawRangeShape != nil ? SpellRangeShape(rawValue: rawRangeShape!.integerValue)! : nil
+            return rawRangeShape.map({ SpellRangeShape(rawValue: $0.integerValue)! })
         }
         set(newRangeShape) {
-            rawRangeShape = newRangeShape != nil ? NSNumber(integer: newRangeShape!.rawValue) : nil
+            rawRangeShape = newRangeShape.map({ NSNumber(integer: $0.rawValue) })
         }
     }
     @NSManaged private var rawRangeShape: NSNumber?
@@ -157,7 +157,7 @@ final class Spell: NSManagedObject {
             return rawDurationTime?.integerValue
         }
         set(newDurationTime) {
-            rawDurationTime = newDurationTime != nil ? NSNumber(integer: newDurationTime!) : nil
+            rawDurationTime = newDurationTime.map({ NSNumber(integer: $0) })
         }
     }
     @NSManaged private var rawDurationTime: NSNumber?

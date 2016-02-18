@@ -45,7 +45,7 @@ final class Armor: NSManagedObject {
             return rawMagicModifier?.integerValue
         }
         set(newMagicModifier) {
-            rawMagicModifier = newMagicModifier != nil ? NSNumber(integer: newMagicModifier!) : nil
+            rawMagicModifier = newMagicModifier.map({ NSNumber(integer: $0) })
         }
     }
     @NSManaged private var rawMagicModifier: NSNumber?
@@ -56,10 +56,10 @@ final class Armor: NSManagedObject {
     /// Monster condition during which this armor is automatically equipped.
     var condition: Condition? {
         get {
-            return rawCondition != nil ? Condition(rawValue: rawCondition!.integerValue) : nil
+            return rawCondition.map({ Condition(rawValue: $0.integerValue)! })
         }
         set(newCondition) {
-            rawCondition = newCondition != nil ? NSNumber(integer: newCondition!.rawValue) : nil
+            rawCondition = newCondition.map({ NSNumber(integer: $0.rawValue) })
         }
     }
     @NSManaged private var rawCondition: NSNumber?

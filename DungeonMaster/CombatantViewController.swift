@@ -167,7 +167,7 @@ class CombatantViewController: UITableViewController, UITextViewDelegate {
             switch indexPath.row {
             case 0:
                 let cell = tableView.dequeueReusableCellWithIdentifier("CombatantNameCell", forIndexPath: indexPath) as! CombatantNameCell
-                cell.nameLabel.text = combatant.monster != nil ? combatant.monster!.name : combatant.player!.name
+                cell.nameLabel.text = combatant.monster?.name ?? combatant.player?.name
                 return cell
             case 1:
                 let cell = tableView.dequeueReusableCellWithIdentifier("RoleCell", forIndexPath: indexPath)
