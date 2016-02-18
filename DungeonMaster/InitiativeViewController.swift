@@ -15,13 +15,17 @@ class InitiativeViewController: UITableViewController, NSFetchedResultsControlle
     var game: Game!
 
     @IBOutlet var doneButtonItem: UIBarButtonItem!
+    
+    var beginGameOnDone = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Add the players from the game.
+        // When this is the first initiative roll, we use it to indicate that the game is to be begun.
         if encounter.round == 0 {
             addPlayersFromGame()
+            encounter.round = 1
+            beginGameOnDone = true
         }
         
         // Roll initiative for any monster without it.
@@ -94,10 +98,9 @@ class InitiativeViewController: UITableViewController, NSFetchedResultsControlle
     // MARK: Actions
     
     @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
-        if encounter.round == 0 {
+        if beginGameOnDone {
             let combatant = fetchedResultsController.objectAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! Combatant
             combatant.isCurrentTurn = true
-            encounter.round = 1
         }
         
         encounter.lastModified = NSDate()
