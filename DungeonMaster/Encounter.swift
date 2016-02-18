@@ -37,10 +37,10 @@ final class Encounter: NSManagedObject {
         }
         
         let sortDescriptor = NSSortDescriptor(key: "monster.challenge", ascending: false)
-        let sortedCombatants = (combatants.sortedArrayUsingDescriptors([sortDescriptor]) as! [Combatant])
+        let sortedCombatants = (combatants.sortedArrayUsingDescriptors([sortDescriptor]) as! [Combatant]).filter({ $0.role == .Foe })
         if sortedCombatants.count > 0 {
             if let monster = sortedCombatants[0].monster {
-                let count = sortedCombatants.filter { return $0.monster == monster }.count
+                let count = sortedCombatants.filter({ return $0.monster == monster }).count
 
                 let plural: String
                 if count > 1 {
