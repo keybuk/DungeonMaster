@@ -184,20 +184,26 @@ class EncounterViewController: UIViewController, ManagedObjectObserverDelegate {
         let dateCreatedSortDescriptor = NSSortDescriptor(key: "dateCreated", ascending: true)
         let combatants = encounter.combatants.sortedArrayUsingDescriptors([initiativeSortDescriptor, initiativeOrderSortDescriptor, monsterDexSortDescriptor, dateCreatedSortDescriptor]) as! [Combatant]
 
-        if let index = combatants.indexOf({ $0.isCurrentTurn }) {
+        // First clear the turn of the current combatants.
+        var index = combatants.indexOf({ $0.isCurrentTurn })!
+        while index < combatants.count && combatants[index].isCurrentTurn {
             combatants[index].isCurrentTurn = false
-            if (index + 1) < combatants.count {
-                combatants[index + 1].isCurrentTurn = true
-            } else {
-                combatants[0].isCurrentTurn = true
-                encounter.round += 1
-            }
-        } else {
-            // FIXME Kludge! should not be necessary at all
-            combatants[0].isCurrentTurn = true
-            encounter.round = 1
+            index += 1
         }
         
+        // If they were last in the list, begin at the top and increment the round counter.
+        if index == combatants.count {
+            encounter.round += 1
+            index = 0
+        }
+        
+        // Now set the current turn for the following set of combatants, who all share the same role, monster/player, etc.
+        let nextCombatant = combatants[index]
+        while index < combatants.count && combatants[index].initiative == nextCombatant.initiative && combatants[index].role == nextCombatant.role && combatants[index].monster == nextCombatant.monster && combatants[index].player == nextCombatant.player {
+            combatants[index].isCurrentTurn = true
+            index += 1
+        }
+            
         encounter.lastModified = NSDate()
         try! managedObjectContext.save()
     }
