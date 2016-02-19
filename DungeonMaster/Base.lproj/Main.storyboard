@@ -1745,7 +1745,7 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fn1-J8-3tx">
                                             <rect key="frame" x="15" y="8" width="377" height="28"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="The Rats of Lake Town IV" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4y-Lv-CB3">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="The Rats of Lake Town IV" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4y-Lv-CB3">
                                                     <rect key="frame" x="0.0" y="0.0" width="250" height="28"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -2108,7 +2108,7 @@
                                             <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="148" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDz-gb-Pzc">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="148" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDz-gb-Pzc">
                                             <rect key="frame" x="509" y="0.0" width="50" height="43.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="50" id="IhC-FW-VN1"/>
@@ -2122,6 +2122,7 @@
                                     <constraints>
                                         <constraint firstItem="JDz-gb-Pzc" firstAttribute="leading" secondItem="U5m-aj-qtf" secondAttribute="trailing" constant="8" id="7Dl-Lq-vbw"/>
                                         <constraint firstItem="U5m-aj-qtf" firstAttribute="leading" secondItem="f88-pw-f0f" secondAttribute="leadingMargin" id="HlZ-qX-uyP"/>
+                                        <constraint firstItem="JDz-gb-Pzc" firstAttribute="centerY" secondItem="U5m-aj-qtf" secondAttribute="centerY" id="VCr-8Y-LjL"/>
                                         <constraint firstItem="U5m-aj-qtf" firstAttribute="top" secondItem="f88-pw-f0f" secondAttribute="topMargin" constant="-8" id="ZGA-QT-lIY"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="JDz-gb-Pzc" secondAttribute="trailing" id="fXF-eX-bQJ"/>
                                     </constraints>
@@ -2394,8 +2395,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="400" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Points" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z14-aS-RKa">
-                                                    <rect key="frame" x="8" y="8" width="584" height="30"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Points" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z14-aS-RKa">
+                                                    <rect key="frame" x="8" y="8" width="384" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="Sy4-Ti-qEQ"/>
                                                     </constraints>
