@@ -223,6 +223,8 @@ class EncounterCombatantCell: UITableViewCell {
     @IBOutlet var turnIndicator: UIView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var healthProgress: UIProgressView!
+    @IBOutlet var statLabel: UILabel!
+    @IBOutlet var statCaptionLabel: UILabel!
 
     @IBOutlet var leadingConstraint: NSLayoutConstraint!
     
@@ -230,18 +232,29 @@ class EncounterCombatantCell: UITableViewCell {
         didSet {
             turnIndicator.hidden = !combatant.isCurrentTurn
 
+            var passivePerception: Int? = nil
             if let monster = combatant.monster {
                 nameLabel.text = monster.name
+                passivePerception = monster.passivePerception
             } else if let player = combatant.player {
                 nameLabel.text = player.name
+                passivePerception = player.passivePerception
             }
             
             switch combatant.role {
-            case .Foe:
+            case .Foe, .Friend:
+                // Foe and Friend both show AC and health, since they are DM-controlled.
                 healthProgress.hidden = false
                 healthProgress.progress = combatant.health
-            case .Friend, .Player:
+
+                statCaptionLabel.text = "AC"
+                statLabel.text = "\(combatant.armorClass!)"
+            case .Player:
+                // Player-controlled characters do not show health or AC, they show PP instead.
                 healthProgress.hidden = true
+                
+                statCaptionLabel.text = "PP"
+                statLabel.text = "\(passivePerception!)"
             }
         }
     }
@@ -255,6 +268,7 @@ class EncounterCombatantCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        statCaptionLabel.transform = CGAffineTransformMakeRotation(-CGFloat(π / 2.0))
         leadingConstraint.constant = editing ? 0.0 : (separatorInset.left - layoutMargins.left)
     }
 
