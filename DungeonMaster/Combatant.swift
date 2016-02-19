@@ -133,7 +133,7 @@ final class Combatant: NSManagedObject {
         }
         set(newLocation) {
             rawLocationX = newLocation.map({ NSNumber(float: Float($0.x)) })
-            rawLocationX = newLocation.map({ NSNumber(float: Float($0.y)) })
+            rawLocationY = newLocation.map({ NSNumber(float: Float($0.y)) })
         }
     }
     @NSManaged private var rawLocationX: NSNumber?
