@@ -274,26 +274,35 @@ class GamePlayerCell: UITableViewCell {
     
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var passivePerceptionLabel: UILabel!
+    @IBOutlet var raceLabel: UILabel!
+    @IBOutlet var classLabel: UILabel!
+    @IBOutlet var backgroundLabel: UILabel!
     
+    @IBOutlet var ppCaptionLabel: UILabel!
+
     @IBOutlet var leadingConstraint: NSLayoutConstraint!
 
     var player: Player! {
         didSet {
             nameLabel.text = player.name
             passivePerceptionLabel.text = "\(player.passivePerception)"
-    
-            leadingConstraint.constant = editing ? 0.0 : (separatorInset.left - layoutMargins.left)
+            raceLabel.text = player.race.stringValue
+            classLabel.text = "\(player.characterClass.stringValue) \(player.level)"
+            backgroundLabel.text = player.background.stringValue
         }
     }
  
     override func setEditing(editing: Bool, animated: Bool) {
-        if let leadingConstraint = leadingConstraint {
-            leadingConstraint.constant = editing ? 0.0 : (separatorInset.left - layoutMargins.left)
-        }
-        
         super.setEditing(editing, animated: animated)
         
         selectionStyle = editing ? .None : .Default
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        ppCaptionLabel.transform = CGAffineTransformMakeRotation(-CGFloat(π / 2.0))
+        leadingConstraint.constant = editing ? 0.0 : (separatorInset.left - layoutMargins.left)
     }
 
 }
