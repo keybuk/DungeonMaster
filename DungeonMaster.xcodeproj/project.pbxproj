@@ -341,29 +341,8 @@
 				D2C1B7531C39C466002B324D /* AdventuresViewController.swift */,
 				D2C8F00C1C473126003AD18F /* AdventureViewController.swift */,
 				D298E8EE1C29D6E1007461A9 /* AdventurePlayersViewController.swift */,
-				D298E8F61C2A27B8007461A9 /* PlayerViewController.swift */,
-				D298E9021C2A5597007461A9 /* RaceViewController.swift */,
-				D298E8FA1C2A5146007461A9 /* CharacterClassViewController.swift */,
-				D298E8FC1C2A5151007461A9 /* BackgroundViewController.swift */,
-				D298E8FE1C2A515C007461A9 /* AlignmentViewController.swift */,
-				D298E9001C2A555E007461A9 /* SavingThrowViewController.swift */,
-				D298E8F81C2A4CF1007461A9 /* SkillViewController.swift */,
 				D2B92C191C4B6B090057BA47 /* AdventureGamesViewController.swift */,
-				D2C3B7AB1C517846009D4062 /* GameViewController.swift */,
-				D234B5C11C56F34000C81417 /* GameDateViewController.swift */,
-				D2C3B7AD1C517ADD009D4062 /* GamePlayersViewController.swift */,
-				D234B5C51C59A07C00C81417 /* GameEncountersViewController.swift */,
 				D234B5C71C59A08800C81417 /* AdventureEncountersViewController.swift */,
-				D234B5E91C6169E300C81417 /* EncounterViewController.swift */,
-				D234B5EB1C616FC300C81417 /* EncounterCombatantsViewController.swift */,
-				D234B5ED1C6295D800C81417 /* EncounterAddCombatantViewController.swift */,
-				D26FBA331C1D3BAF00D44503 /* CombatantViewController.swift */,
-				D2622AA41C2CA2C8000D6100 /* CombatantRoleViewController.swift */,
-				D26FBA401C1FA17400D44503 /* ConditionViewController.swift */,
-				D249CF881C22602800CDE673 /* ConditionRulesViewController.swift */,
-				D26FBA3A1C1E3FE400D44503 /* DamageViewController.swift */,
-				D2D8FA3A1C63D4AF00D5F38F /* InitiativeViewController.swift */,
-				D2C6063D1C17D32900F61DBD /* TabletopViewController.swift */,
 			);
 			name = Adventure;
 			sourceTree = "<group>";
@@ -442,6 +421,10 @@
 			isa = PBXGroup;
 			children = (
 				D2597F6D1C4845140091AD05 /* Adventure */,
+				D2D8F4721C77A15900C54BB7 /* Game */,
+				D2D8F4711C77A14C00C54BB7 /* Player */,
+				D2D8F4731C77A16500C54BB7 /* Encounter */,
+				D2D8F4741C77A17100C54BB7 /* Combatant */,
 				D2597F6B1C4844FE0091AD05 /* Compendium */,
 				D2511FFF1C14C7ED00A09F0B /* BooksViewController.swift */,
 			);
@@ -457,6 +440,55 @@
 				D2C8F0031C3AE705003AD18F /* AdjustableImageView.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		D2D8F4711C77A14C00C54BB7 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				D298E8F61C2A27B8007461A9 /* PlayerViewController.swift */,
+				D298E9021C2A5597007461A9 /* RaceViewController.swift */,
+				D298E8FA1C2A5146007461A9 /* CharacterClassViewController.swift */,
+				D298E8FC1C2A5151007461A9 /* BackgroundViewController.swift */,
+				D298E8FE1C2A515C007461A9 /* AlignmentViewController.swift */,
+				D298E9001C2A555E007461A9 /* SavingThrowViewController.swift */,
+				D298E8F81C2A4CF1007461A9 /* SkillViewController.swift */,
+			);
+			name = Player;
+			sourceTree = "<group>";
+		};
+		D2D8F4721C77A15900C54BB7 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				D2C3B7AB1C517846009D4062 /* GameViewController.swift */,
+				D234B5C11C56F34000C81417 /* GameDateViewController.swift */,
+				D2C3B7AD1C517ADD009D4062 /* GamePlayersViewController.swift */,
+				D234B5C51C59A07C00C81417 /* GameEncountersViewController.swift */,
+			);
+			name = Game;
+			sourceTree = "<group>";
+		};
+		D2D8F4731C77A16500C54BB7 /* Encounter */ = {
+			isa = PBXGroup;
+			children = (
+				D234B5E91C6169E300C81417 /* EncounterViewController.swift */,
+				D234B5EB1C616FC300C81417 /* EncounterCombatantsViewController.swift */,
+				D234B5ED1C6295D800C81417 /* EncounterAddCombatantViewController.swift */,
+				D2D8FA3A1C63D4AF00D5F38F /* InitiativeViewController.swift */,
+				D2C6063D1C17D32900F61DBD /* TabletopViewController.swift */,
+			);
+			name = Encounter;
+			sourceTree = "<group>";
+		};
+		D2D8F4741C77A17100C54BB7 /* Combatant */ = {
+			isa = PBXGroup;
+			children = (
+				D26FBA331C1D3BAF00D44503 /* CombatantViewController.swift */,
+				D2622AA41C2CA2C8000D6100 /* CombatantRoleViewController.swift */,
+				D26FBA401C1FA17400D44503 /* ConditionViewController.swift */,
+				D249CF881C22602800CDE673 /* ConditionRulesViewController.swift */,
+				D26FBA3A1C1E3FE400D44503 /* DamageViewController.swift */,
+			);
+			name = Combatant;
 			sourceTree = "<group>";
 		};
 		D2E0FDE01C67DB7900498436 /* Dependencies */ = {
