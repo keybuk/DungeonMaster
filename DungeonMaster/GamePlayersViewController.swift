@@ -53,7 +53,15 @@ class GamePlayersViewController: UITableViewController, NSFetchedResultsControll
     // MARK: Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "AddPlayerSegue" {
+        if segue.identifier == "PlayerSegue" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let playedGame = fetchedResultsController.objectAtIndexPath(indexPath) as! PlayedGame
+                
+                let viewController = segue.destinationViewController as! PlayerViewController
+                viewController.player = playedGame.player
+            }
+            
+        } else if segue.identifier == "AddPlayerSegue" {
             let player = Player(inManagedObjectContext: managedObjectContext)
             
             let viewController = (segue.destinationViewController as! UINavigationController).topViewController as! PlayerViewController
