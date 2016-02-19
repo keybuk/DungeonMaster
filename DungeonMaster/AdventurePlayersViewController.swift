@@ -285,21 +285,21 @@ class AdventurePlayerCell: UITableViewCell {
             
             let xpString = xpFormatter.stringFromNumber(player.XP)!
             xpLabel.text = "\(xpString) XP"
-            
-            leadingConstraint.constant = editing ? 0.0 : (separatorInset.left - layoutMargins.left)
         }
     }
     
     override func setEditing(editing: Bool, animated: Bool) {
-        if let leadingConstraint = leadingConstraint {
-            leadingConstraint.constant = editing ? 0.0 : (separatorInset.left - layoutMargins.left)
-        }
-        
         super.setEditing(editing, animated: animated)
 
         selectionStyle = editing ? .None : .Default
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        leadingConstraint.constant = editing ? 0.0 : (separatorInset.left - layoutMargins.left)
+    }
+
 }
 
 class AdventureAddPlayerCell: UITableViewCell {

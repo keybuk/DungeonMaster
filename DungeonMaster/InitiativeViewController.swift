@@ -365,8 +365,6 @@ class InitiativeCombatantCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var initiativeTextField: UITextField!
     
-    @IBOutlet var leadingConstraint: NSLayoutConstraint!
-    
     var combatant: Combatant! {
         didSet {
             player = combatant.player

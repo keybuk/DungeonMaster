@@ -153,16 +153,13 @@ class AdventureEncounterCell: UITableViewCell {
     var encounter: Encounter! {
         didSet {
             label.text = encounter.title
-            leadingConstraint.constant = editing ? 0.0 : (separatorInset.left - layoutMargins.left)
         }
     }
     
-    override func setEditing(editing: Bool, animated: Bool) {
-        if let leadingConstraint = leadingConstraint {
-            leadingConstraint.constant = editing ? 0.0 : (separatorInset.left - layoutMargins.left)
-        }
+    override func layoutSubviews() {
+        super.layoutSubviews()
         
-        super.setEditing(editing, animated: animated)
+        leadingConstraint.constant = editing ? 0.0 : (separatorInset.left - layoutMargins.left)
     }
     
 }
