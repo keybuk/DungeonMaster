@@ -68,6 +68,24 @@ final class Encounter: NSManagedObject {
     /// Each member is a `Combatant` linking the player or monster, and tracking Encounter-specific stats.
     @NSManaged var combatants: NSSet
     
+    /// Current round number.
+    ///
+    /// Rounds are intended to last six seconds, the first round will have the value 1 so a round of 0 indicates an encounter still being created.
+    var round: Int {
+        get {
+            return rawRound.integerValue
+        }
+        set(newRound) {
+            rawRound = NSNumber(integer: newRound)
+        }
+    }
+    @NSManaged private var rawRound: NSNumber
+    
+    /// XP awarded from this Encounter.
+    ///
+    /// Each member is an `XPAward` linking the encounter to the player that received the award.
+    @NSManaged var xpAwards: NSSet
+    
     convenience init(adventure: Adventure, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Encounter, inManagedObjectContext: context)
         self.init(entity: entity, insertIntoManagedObjectContext: context)
@@ -171,17 +189,5 @@ final class Encounter: NSManagedObject {
         }
     }
     
-    /// Current round number.
-    ///
-    /// Rounds are intended to last six seconds, the first round will have the value 1 so a round of 0 indicates an encounter still being created.
-    var round: Int {
-        get {
-            return rawRound.integerValue
-        }
-        set(newRound) {
-            rawRound = NSNumber(integer: newRound)
-        }
-    }
-    @NSManaged private var rawRound: NSNumber
     
 }

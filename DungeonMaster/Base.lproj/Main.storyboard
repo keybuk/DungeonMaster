@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -352,7 +353,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25 January, 2016" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZRu-uC-7mN">
-                                <rect key="frame" x="20" y="52.5" width="560" height="19.5"/>
+                                <rect key="frame" x="20" y="52" width="560" height="19.5"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -750,7 +751,7 @@
                                     <outlet property="nameLabel" destination="9oJ-YA-QGK" id="qPg-gP-7wN"/>
                                     <outlet property="raceLabel" destination="zk5-ss-Et0" id="q3l-Sa-A7M"/>
                                     <outlet property="xpLabel" destination="raY-Vj-Qd0" id="wsT-Os-AxO"/>
-                                    <segue destination="vUQ-mr-sVl" kind="show" identifier="PlayerSegue" id="qtQ-Ta-7Nb"/>
+                                    <segue destination="c27-m1-ut5" kind="show" identifier="PlayerSegue" id="OIh-9D-Z9G"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AdventureAddPlayerCell" rowHeight="60" id="F6k-KT-Nlv" customClass="AdventureAddPlayerCell" customModule="DungeonMaster" customModuleProvider="target">
@@ -795,10 +796,10 @@
             </objects>
             <point key="canvasLocation" x="-3228" y="248"/>
         </scene>
-        <!--Adventure Add Player Navigation-->
+        <!--Add Player Navigation-->
         <scene sceneID="gVC-yP-MR6">
             <objects>
-                <navigationController id="NQk-9I-y8r" userLabel="Adventure Add Player Navigation" sceneMemberID="viewController">
+                <navigationController id="NQk-9I-y8r" userLabel="Add Player Navigation" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fAU-De-LFj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -809,7 +810,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wqk-o0-LNX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3253" y="1073"/>
+            <point key="canvasLocation" x="-3505" y="1185"/>
         </scene>
         <!--Player-->
         <scene sceneID="7rU-z6-3rJ">
@@ -1281,6 +1282,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Player" id="BtZ-HC-oUc"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="900"/>
                     <connections>
@@ -1294,7 +1296,7 @@
                     </connections>
                 </barButtonItem>
             </objects>
-            <point key="canvasLocation" x="-2591" y="2003"/>
+            <point key="canvasLocation" x="-2653" y="2353"/>
         </scene>
         <!--Race-->
         <scene sceneID="SxG-51-jmE">
@@ -1629,7 +1631,7 @@
                                     <outlet property="passivePerceptionLabel" destination="eDO-hJ-ka1" id="vib-FJ-osF"/>
                                     <outlet property="ppCaptionLabel" destination="zql-mY-cGz" id="rLS-bA-WOB"/>
                                     <outlet property="raceLabel" destination="YSt-hf-NKu" id="TAs-Da-AcS"/>
-                                    <segue destination="vUQ-mr-sVl" kind="show" identifier="PlayerSegue" id="Ld2-aV-eFI"/>
+                                    <segue destination="c27-m1-ut5" kind="show" identifier="PlayerSegue" id="5UJ-Ra-DzJ"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GameAddPlayerCell" id="yxp-Cz-NZP" customClass="GameAddPlayerCell" customModule="DungeonMaster" customModuleProvider="target">
@@ -1655,7 +1657,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="label" destination="1ti-lY-rY0" id="EsM-ud-JfZ"/>
-                                    <segue destination="W7h-Fg-obb" kind="presentation" identifier="AddPlayerSegue" modalPresentationStyle="pageSheet" id="KoH-5S-3HR"/>
+                                    <segue destination="NQk-9I-y8r" kind="presentation" identifier="AddPlayerSegue" modalPresentationStyle="pageSheet" id="R8s-3s-MFr"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1670,6 +1672,94 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2T5-ft-GJF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2147" y="395"/>
+        </scene>
+        <!--Player Log-->
+        <scene sceneID="NQx-cK-bwZ">
+            <objects>
+                <tableViewController id="ljk-8E-wRz" userLabel="Player Log" customClass="PlayedGamesViewController" customModule="DungeonMaster" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="fme-Qa-3fy">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="XPAwardCell" id="TRq-lW-B9u" customClass="XPAwardCell" customModule="DungeonMaster" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="400" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TRq-lW-B9u" id="ays-N2-SEw">
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999,999 XP" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Pb-mW-zDN" userLabel="XP">
+                                            <rect key="frame" x="15" y="8" width="95" height="19.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="95" id="0dN-nD-Fb0"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="for something" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFM-GO-Mqb" userLabel="Reason">
+                                            <rect key="frame" x="118" y="8" width="274" height="27.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="bFM-GO-Mqb" firstAttribute="bottom" secondItem="ays-N2-SEw" secondAttribute="bottomMargin" id="ABP-El-I8Z"/>
+                                        <constraint firstItem="bFM-GO-Mqb" firstAttribute="top" secondItem="ays-N2-SEw" secondAttribute="topMargin" id="B1r-qW-wcM"/>
+                                        <constraint firstItem="bFM-GO-Mqb" firstAttribute="trailing" secondItem="ays-N2-SEw" secondAttribute="trailingMargin" id="MSM-wZ-g6L"/>
+                                        <constraint firstItem="4Pb-mW-zDN" firstAttribute="baseline" secondItem="bFM-GO-Mqb" secondAttribute="firstBaseline" id="Q67-zC-HS2"/>
+                                        <constraint firstItem="4Pb-mW-zDN" firstAttribute="leading" secondItem="ays-N2-SEw" secondAttribute="leadingMargin" constant="7" id="Y8V-yg-D1b"/>
+                                        <constraint firstItem="bFM-GO-Mqb" firstAttribute="leading" secondItem="4Pb-mW-zDN" secondAttribute="trailing" constant="8" id="yVf-HG-fKJ"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="leadingConstraint" destination="Y8V-yg-D1b" id="Pa4-Ln-3if"/>
+                                    <outlet property="reasonLabel" destination="bFM-GO-Mqb" id="UYd-YI-7zW"/>
+                                    <outlet property="xpLabel" destination="4Pb-mW-zDN" id="0cW-Vd-o7l"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddLogEntryCell" id="Fts-H4-dum" customClass="AddLogEntryCell" customModule="DungeonMaster" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="400" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fts-H4-dum" id="42F-EP-qNZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="add entry" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uo7-aB-ePH">
+                                            <rect key="frame" x="8" y="8" width="384" height="27.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="27.5" id="Lys-Id-9Zy"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="uo7-aB-ePH" firstAttribute="leading" secondItem="42F-EP-qNZ" secondAttribute="leadingMargin" id="1XP-MR-iG1"/>
+                                        <constraint firstItem="uo7-aB-ePH" firstAttribute="top" secondItem="42F-EP-qNZ" secondAttribute="topMargin" id="XDG-0f-Qny"/>
+                                        <constraint firstItem="uo7-aB-ePH" firstAttribute="trailing" secondItem="42F-EP-qNZ" secondAttribute="trailingMargin" id="yXk-z9-QHV"/>
+                                        <constraint firstItem="uo7-aB-ePH" firstAttribute="bottom" secondItem="42F-EP-qNZ" secondAttribute="bottomMargin" id="zIU-5e-27s"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="label" destination="uo7-aB-ePH" id="5g2-cp-6Im"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ljk-8E-wRz" id="vJX-rU-LNK"/>
+                            <outlet property="delegate" destination="ljk-8E-wRz" id="nBy-qK-rYl"/>
+                        </connections>
+                    </tableView>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="400" height="400"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fld-Cu-clU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1839" y="2010"/>
         </scene>
         <!--Skill-->
         <scene sceneID="UHL-99-qFl">
@@ -1718,21 +1808,51 @@
             </objects>
             <point key="canvasLocation" x="-1535" y="2925"/>
         </scene>
-        <!--Game Add Player Navigation-->
-        <scene sceneID="9Yf-ng-VaB">
+        <!--Player Root-->
+        <scene sceneID="rX2-me-xwn">
             <objects>
-                <navigationController id="W7h-Fg-obb" userLabel="Game Add Player Navigation" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ac1-Xm-l7S">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="vUQ-mr-sVl" kind="relationship" relationship="rootViewController" id="N3k-Mq-bzQ"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mu2-20-WZx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="c27-m1-ut5" userLabel="Player Root" customClass="PlayerRootViewController" customModule="DungeonMaster" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8S8-p5-o1h"/>
+                        <viewControllerLayoutGuide type="bottom" id="bF3-fy-vGC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qqS-T6-Alk">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="STr-X9-x1j" userLabel="Player Container">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="600"/>
+                                <connections>
+                                    <segue destination="vUQ-mr-sVl" kind="embed" identifier="PlayerEmbedSegue" id="yku-uR-BnZ"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yOR-W5-mpG" userLabel="Log Container">
+                                <rect key="frame" x="300" y="0.0" width="300" height="600"/>
+                                <connections>
+                                    <segue destination="ljk-8E-wRz" kind="embed" identifier="PlayedGamesEmbedSegue" id="VKk-Ud-jgT"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bF3-fy-vGC" firstAttribute="top" secondItem="yOR-W5-mpG" secondAttribute="bottom" id="0bo-yo-WbT"/>
+                            <constraint firstAttribute="trailing" secondItem="yOR-W5-mpG" secondAttribute="trailing" id="3WI-4N-4uv"/>
+                            <constraint firstItem="STr-X9-x1j" firstAttribute="width" secondItem="qqS-T6-Alk" secondAttribute="width" multiplier="0.5" id="GVp-CW-c2B"/>
+                            <constraint firstItem="STr-X9-x1j" firstAttribute="leading" secondItem="qqS-T6-Alk" secondAttribute="leading" id="Rq5-qs-5rG"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="STr-X9-x1j" secondAttribute="bottom" id="WsF-MI-4sc"/>
+                            <constraint firstAttribute="topMargin" secondItem="STr-X9-x1j" secondAttribute="top" id="dD4-6I-Lcm"/>
+                            <constraint firstItem="yOR-W5-mpG" firstAttribute="width" secondItem="qqS-T6-Alk" secondAttribute="width" multiplier="0.5" id="pOa-B3-8JO"/>
+                            <constraint firstItem="yOR-W5-mpG" firstAttribute="top" secondItem="qqS-T6-Alk" secondAttribute="topMargin" id="uWQ-f2-mE7"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Player" id="j25-M4-EqI"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="600"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rlk-86-bld" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1954" y="1073"/>
+            <point key="canvasLocation" x="-2374" y="1243"/>
         </scene>
         <!--Adventure Games-->
         <scene sceneID="eSk-kR-UV0">
@@ -1923,7 +2043,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" horizontalCompressionResistancePriority="755" text="20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="820-ws-M50">
                                                     <rect key="frame" x="358" y="0.0" width="20" height="29"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -2584,7 +2704,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Adult Black Dragon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qGk-iz-ngo">
                                             <rect key="frame" x="8" y="8" width="279" height="27.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="255" horizontalCompressionResistancePriority="755" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="1d20 + Dex" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZS0-8K-wZ0">
@@ -2625,7 +2745,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hafstein" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NR6-v4-iBP">
                                             <rect key="frame" x="8" y="8" width="384" height="27.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -2717,7 +2837,9 @@
         <segue reference="iny-vj-ImG"/>
         <segue reference="Hng-EK-ErL"/>
         <segue reference="h4s-1q-V2K"/>
-        <segue reference="N3k-Mq-bzQ"/>
+        <segue reference="R8s-3s-MFr"/>
+        <segue reference="5UJ-Ra-DzJ"/>
+        <segue reference="yku-uR-BnZ"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

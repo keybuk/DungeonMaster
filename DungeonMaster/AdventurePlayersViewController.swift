@@ -44,7 +44,7 @@ class AdventurePlayersViewController: UITableViewController, NSFetchedResultsCon
             if let indexPath = tableView.indexPathForSelectedRow {
                 let player = fetchedResultsController.objectAtIndexPath(indexPath) as! Player
                 
-                let viewController = segue.destinationViewController as! PlayerViewController
+                let viewController = segue.destinationViewController as! PlayerRootViewController
                 viewController.player = player
             }
             

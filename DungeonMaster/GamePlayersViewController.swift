@@ -57,8 +57,8 @@ class GamePlayersViewController: UITableViewController, NSFetchedResultsControll
             if let indexPath = tableView.indexPathForSelectedRow {
                 let playedGame = fetchedResultsController.objectAtIndexPath(indexPath) as! PlayedGame
                 
-                let viewController = segue.destinationViewController as! PlayerViewController
-                viewController.player = playedGame.player
+                let viewController = segue.destinationViewController as! PlayerRootViewController
+                viewController.playedGame = playedGame
             }
             
         } else if segue.identifier == "AddPlayerSegue" {

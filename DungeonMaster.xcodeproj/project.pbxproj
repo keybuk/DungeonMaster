@@ -104,6 +104,12 @@
 		D2C8F00D1C473126003AD18F /* AdventureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8F00C1C473126003AD18F /* AdventureViewController.swift */; };
 		D2D8F4461C7578EC00C54BB7 /* DungeonKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2D8F4451C7578EC00C54BB7 /* DungeonKit.framework */; };
 		D2D8F4471C7578EC00C54BB7 /* DungeonKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D2D8F4451C7578EC00C54BB7 /* DungeonKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D2D8F4761C7B813500C54BB7 /* XPAward.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D8F4751C7B813500C54BB7 /* XPAward.swift */; };
+		D2D8F4781C7BD9FE00C54BB7 /* PlayedGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D8F4771C7BD9FE00C54BB7 /* PlayedGamesViewController.swift */; };
+		D2D8F47A1C7BDADB00C54BB7 /* PlayerRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D8F4791C7BDADB00C54BB7 /* PlayerRootViewController.swift */; };
+		D2D8F47C1C7CF27900C54BB7 /* FontExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D8F47B1C7CF27900C54BB7 /* FontExtensions.swift */; };
+		D2D8F47E1C7CFF8000C54BB7 /* LogEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D8F47D1C7CFF8000C54BB7 /* LogEntry.swift */; };
+		D2D8F4801C7D086700C54BB7 /* GameHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2D8F47F1C7D086700C54BB7 /* GameHeaderView.xib */; };
 		D2D8FA3B1C63D4AF00D5F38F /* InitiativeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D8FA3A1C63D4AF00D5F38F /* InitiativeViewController.swift */; };
 		D2F5CA1D1C68276D00691DDD /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F5CA1C1C68276D00691DDD /* NetworkController.swift */; };
 		D2F9D12F1C1A71D8005F2D9A /* Encounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F9D12E1C1A71D8005F2D9A /* Encounter.swift */; };
@@ -244,6 +250,12 @@
 		D2C8F0081C3DB18E003AD18F /* AdventureImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdventureImage.swift; sourceTree = "<group>"; };
 		D2C8F00C1C473126003AD18F /* AdventureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdventureViewController.swift; sourceTree = "<group>"; };
 		D2D8F4451C7578EC00C54BB7 /* DungeonKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = DungeonKit.framework; path = "/Users/scott/Library/Developer/Xcode/DerivedData/DungeonMaster-aryikklnhzulpzexkhjnqpakqtos/Build/Products/Debug-iphoneos/DungeonKit.framework"; sourceTree = "<absolute>"; };
+		D2D8F4751C7B813500C54BB7 /* XPAward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XPAward.swift; sourceTree = "<group>"; };
+		D2D8F4771C7BD9FE00C54BB7 /* PlayedGamesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayedGamesViewController.swift; sourceTree = "<group>"; };
+		D2D8F4791C7BDADB00C54BB7 /* PlayerRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerRootViewController.swift; sourceTree = "<group>"; };
+		D2D8F47B1C7CF27900C54BB7 /* FontExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontExtensions.swift; sourceTree = "<group>"; };
+		D2D8F47D1C7CFF8000C54BB7 /* LogEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEntry.swift; sourceTree = "<group>"; };
+		D2D8F47F1C7D086700C54BB7 /* GameHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameHeaderView.xib; sourceTree = "<group>"; };
 		D2D8FA3A1C63D4AF00D5F38F /* InitiativeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitiativeViewController.swift; sourceTree = "<group>"; };
 		D2F5CA1C1C68276D00691DDD /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		D2F9D12E1C1A71D8005F2D9A /* Encounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encounter.swift; sourceTree = "<group>"; };
@@ -310,6 +322,8 @@
 				D2C8F0081C3DB18E003AD18F /* AdventureImage.swift */,
 				D2B92C171C4B65FF0057BA47 /* Game.swift */,
 				D2B92C1D1C4D515C0057BA47 /* PlayedGame.swift */,
+				D2D8F47D1C7CFF8000C54BB7 /* LogEntry.swift */,
+				D2D8F4751C7B813500C54BB7 /* XPAward.swift */,
 				D298E8F01C29E08F007461A9 /* Player.swift */,
 				D298E8F21C29F0B5007461A9 /* PlayerSavingThrow.swift */,
 				D298E8F41C29F112007461A9 /* PlayerSkill.swift */,
@@ -380,9 +394,11 @@
 				D249CF841C21DF3500CDE673 /* PointGenerator.swift */,
 				D209FEF81C30578F0024B0A3 /* MarkupParser.swift */,
 				D2B92C1B1C4B6E990057BA47 /* RomanNumeralFormatter.swift */,
+				D2D8F47B1C7CF27900C54BB7 /* FontExtensions.swift */,
 				D249CF8A1C23311A00CDE673 /* Rules.swift */,
 				D26FBA311C1D39B900D44503 /* Sounds.swift */,
 				D2A9AF121BFFEAA5009902ED /* Main.storyboard */,
+				D2D8F47F1C7D086700C54BB7 /* GameHeaderView.xib */,
 				D2597F6E1C49B9C60091AD05 /* Compendium.storyboard */,
 				D2597F741C49BC3F0091AD05 /* OldBooks.storyboard */,
 				D2A9AF151BFFEAA5009902ED /* Assets.xcassets */,
@@ -445,6 +461,7 @@
 		D2D8F4711C77A14C00C54BB7 /* Player */ = {
 			isa = PBXGroup;
 			children = (
+				D2D8F4791C7BDADB00C54BB7 /* PlayerRootViewController.swift */,
 				D298E8F61C2A27B8007461A9 /* PlayerViewController.swift */,
 				D298E9021C2A5597007461A9 /* RaceViewController.swift */,
 				D298E8FA1C2A5146007461A9 /* CharacterClassViewController.swift */,
@@ -452,6 +469,7 @@
 				D298E8FE1C2A515C007461A9 /* AlignmentViewController.swift */,
 				D298E9001C2A555E007461A9 /* SavingThrowViewController.swift */,
 				D298E8F81C2A4CF1007461A9 /* SkillViewController.swift */,
+				D2D8F4771C7BD9FE00C54BB7 /* PlayedGamesViewController.swift */,
 			);
 			name = Player;
 			sourceTree = "<group>";
@@ -605,6 +623,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D26FBA371C1DE2CE00D44503 /* Sounds in Resources */,
+				D2D8F4801C7D086700C54BB7 /* GameHeaderView.xib in Resources */,
 				D2A9AF191BFFEAA5009902ED /* LaunchScreen.storyboard in Resources */,
 				D249CF871C224ED900CDE673 /* Rules.plist in Resources */,
 				D2597F701C49B9C60091AD05 /* Compendium.storyboard in Resources */,
@@ -660,12 +679,14 @@
 				D234B5C61C59A07C00C81417 /* GameEncountersViewController.swift in Sources */,
 				D2622AA31C2BCDEC000D6100 /* MonsterSkill.swift in Sources */,
 				D26FBA3D1C1E52CA00D44503 /* Enums.swift in Sources */,
+				D2D8F47A1C7BDADB00C54BB7 /* PlayerRootViewController.swift in Sources */,
 				D23435F61C0D634100108D5F /* Importer.swift in Sources */,
 				D21BACF31C38B8FF007E2934 /* SpellClass.swift in Sources */,
 				D2F9D12F1C1A71D8005F2D9A /* Encounter.swift in Sources */,
 				D2C6063E1C17D32900F61DBD /* TabletopViewController.swift in Sources */,
 				D25120001C14C7ED00A09F0B /* BooksViewController.swift in Sources */,
 				D2C3B7AE1C517ADD009D4062 /* GamePlayersViewController.swift in Sources */,
+				D2D8F47C1C7CF27900C54BB7 /* FontExtensions.swift in Sources */,
 				D2C8F0041C3AE705003AD18F /* AdjustableImageView.swift in Sources */,
 				D209FEF91C30578F0024B0A3 /* MarkupParser.swift in Sources */,
 				D2116A4F1C10F377001EDBBA /* Lair.swift in Sources */,
@@ -680,6 +701,7 @@
 				D249CFA41C27664A00CDE673 /* ConditionImmunity.swift in Sources */,
 				D2B92C1A1C4B6B090057BA47 /* AdventureGamesViewController.swift in Sources */,
 				D298E8F31C29F0B5007461A9 /* PlayerSavingThrow.swift in Sources */,
+				D2D8F47E1C7CFF8000C54BB7 /* LogEntry.swift in Sources */,
 				D23435EC1C0D5A3D00108D5F /* Model.swift in Sources */,
 				D2C8F0071C3DAD6E003AD18F /* Adventure.swift in Sources */,
 				D26FBA3F1C1EA4E700D44503 /* CombatantCondition.swift in Sources */,
@@ -715,11 +737,13 @@
 				D2C1B7541C39C466002B324D /* AdventuresViewController.swift in Sources */,
 				D2C8F0091C3DB18E003AD18F /* AdventureImage.swift in Sources */,
 				D2116A531C10F4E9001EDBBA /* LairTrait.swift in Sources */,
+				D2D8F4781C7BD9FE00C54BB7 /* PlayedGamesViewController.swift in Sources */,
 				D249CF8B1C23311A00CDE673 /* Rules.swift in Sources */,
 				D26FBA341C1D3BAF00D44503 /* CombatantViewController.swift in Sources */,
 				D298E8FD1C2A5151007461A9 /* BackgroundViewController.swift in Sources */,
 				D2A9AF111BFFEAA5009902ED /* MonsterViewController.swift in Sources */,
 				D298E8F71C2A27B8007461A9 /* PlayerViewController.swift in Sources */,
+				D2D8F4761C7B813500C54BB7 /* XPAward.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

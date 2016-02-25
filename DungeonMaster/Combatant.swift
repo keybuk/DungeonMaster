@@ -152,6 +152,11 @@ final class Combatant: NSManagedObject {
     /// Text notes relevant to this combatant.
     @NSManaged var notes: String?
     
+    /// XP awards given for defeating this combatant.
+    ///
+    /// Each member is an `XPAward` linking to the player that received the award.
+    @NSManaged var xpAwards: NSSet
+    
     convenience init(encounter: Encounter, monster: Monster, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Combatant, inManagedObjectContext: context)
         self.init(entity: entity, insertIntoManagedObjectContext: context)

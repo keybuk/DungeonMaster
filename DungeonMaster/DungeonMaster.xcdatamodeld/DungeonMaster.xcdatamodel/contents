@@ -57,6 +57,7 @@
         <relationship name="encounter" maxCount="1" deletionRule="Nullify" destinationEntity="Encounter" inverseName="combatants" inverseEntity="Encounter" syncable="YES"/>
         <relationship name="monster" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="combatants" inverseEntity="Monster" syncable="YES"/>
         <relationship name="player" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="combatants" inverseEntity="Player" syncable="YES"/>
+        <relationship name="xpAwards" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="XPAward" inverseName="combatants" inverseEntity="XPAward" syncable="YES"/>
     </entity>
     <entity name="CombatantCondition" representedClassName=".CombatantCondition" syncable="YES">
         <attribute name="rawType" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -98,6 +99,7 @@
         <relationship name="adventure" maxCount="1" deletionRule="Nullify" destinationEntity="Adventure" inverseName="encounters" inverseEntity="Adventure" syncable="YES"/>
         <relationship name="combatants" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Combatant" inverseName="encounter" inverseEntity="Combatant" syncable="YES"/>
         <relationship name="games" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Game" inverseName="encounters" inverseEntity="Game" syncable="YES"/>
+        <relationship name="xpAwards" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="XPAward" inverseName="encounter" inverseEntity="XPAward" syncable="YES"/>
     </entity>
     <entity name="Game" representedClassName=".Game" syncable="YES">
         <attribute name="date" attributeType="Date" syncable="YES"/>
@@ -136,6 +138,10 @@
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="text" attributeType="String" syncable="YES"/>
         <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="legendaryActions" inverseEntity="Monster" syncable="YES"/>
+    </entity>
+    <entity name="LogEntry" representedClassName=".LogEntry" isAbstract="YES" syncable="YES">
+        <attribute name="rawIndex" attributeType="Integer 16" syncable="YES"/>
+        <relationship name="playedGame" maxCount="1" deletionRule="Nullify" destinationEntity="PlayedGame" inverseName="logEntries" inverseEntity="PlayedGame" syncable="YES"/>
     </entity>
     <entity name="Monster" representedClassName=".Monster" syncable="YES">
         <attribute name="canHover" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
@@ -215,6 +221,7 @@
     </entity>
     <entity name="PlayedGame" representedClassName=".PlayedGame" syncable="YES">
         <relationship name="game" maxCount="1" deletionRule="Nullify" destinationEntity="Game" inverseName="playedGames" inverseEntity="Game" syncable="YES"/>
+        <relationship name="logEntries" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="LogEntry" inverseName="playedGame" inverseEntity="LogEntry" syncable="YES"/>
         <relationship name="player" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="playedGames" inverseEntity="Player" syncable="YES"/>
     </entity>
     <entity name="Player" representedClassName=".Player" syncable="YES">
@@ -295,6 +302,12 @@
         <attribute name="text" attributeType="String" syncable="YES"/>
         <relationship name="monster" maxCount="1" deletionRule="Nullify" destinationEntity="Monster" inverseName="traits" inverseEntity="Monster" syncable="YES"/>
     </entity>
+    <entity name="XPAward" representedClassName=".XPAward" parentEntity="LogEntry" syncable="YES">
+        <attribute name="rawXP" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="reason" attributeType="String" syncable="YES"/>
+        <relationship name="combatants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Combatant" inverseName="xpAwards" inverseEntity="Combatant" syncable="YES"/>
+        <relationship name="encounter" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Encounter" inverseName="xpAwards" inverseEntity="Encounter" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Action" positionX="261" positionY="360" width="128" height="90"/>
         <element name="Adventure" positionX="-54" positionY="351" width="128" height="150"/>
@@ -302,7 +315,7 @@
         <element name="AlignmentOption" positionX="-54" positionY="351" width="128" height="90"/>
         <element name="Armor" positionX="-45" positionY="360" width="128" height="150"/>
         <element name="Book" positionX="-261" positionY="198" width="128" height="105"/>
-        <element name="Combatant" positionX="-54" positionY="351" width="128" height="270"/>
+        <element name="Combatant" positionX="-54" positionY="351" width="128" height="285"/>
         <element name="CombatantCondition" positionX="-36" positionY="369" width="128" height="75"/>
         <element name="CombatantDamage" positionX="-45" positionY="360" width="128" height="90"/>
         <element name="ConditionImmunity" positionX="0" positionY="405" width="128" height="75"/>
@@ -310,7 +323,7 @@
         <element name="DamageResistance" positionX="-45" positionY="360" width="128" height="105"/>
         <element name="DamageResistanceOption" positionX="-36" positionY="369" width="128" height="75"/>
         <element name="DamageVulnerability" positionX="-18" positionY="387" width="128" height="90"/>
-        <element name="Encounter" positionX="-54" positionY="351" width="128" height="135"/>
+        <element name="Encounter" positionX="-54" positionY="351" width="128" height="150"/>
         <element name="Game" positionX="-54" positionY="351" width="128" height="120"/>
         <element name="Lair" positionX="385" positionY="666" width="128" height="210"/>
         <element name="LairAction" positionX="567" positionY="630" width="128" height="75"/>
@@ -321,7 +334,7 @@
         <element name="MonsterEnvironment" positionX="-36" positionY="369" width="128" height="75"/>
         <element name="MonsterSavingThrow" positionX="-54" positionY="351" width="128" height="90"/>
         <element name="MonsterSkill" positionX="-45" positionY="360" width="128" height="105"/>
-        <element name="PlayedGame" positionX="-45" positionY="360" width="128" height="75"/>
+        <element name="PlayedGame" positionX="-45" positionY="360" width="128" height="90"/>
         <element name="Player" positionX="-36" positionY="369" width="128" height="255"/>
         <element name="PlayerSavingThrow" positionX="-54" positionY="351" width="128" height="75"/>
         <element name="PlayerSkill" positionX="-45" positionY="360" width="128" height="90"/>
@@ -332,5 +345,7 @@
         <element name="SpellClass" positionX="-45" positionY="360" width="128" height="75"/>
         <element name="Tag" positionX="-92" positionY="432" width="128" height="75"/>
         <element name="Trait" positionX="261" positionY="261" width="128" height="90"/>
+        <element name="XPAward" positionX="-54" positionY="351" width="128" height="105"/>
+        <element name="LogEntry" positionX="-45" positionY="360" width="128" height="75"/>
     </elements>
 </model>
