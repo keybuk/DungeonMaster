@@ -199,14 +199,16 @@ class EncounterCombatantsViewController: UITableViewController, NSFetchedResults
         case .Delete:
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Bottom)
         case .Update:
-            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! EncounterCombatantCell
-            let combatant = anObject as! Combatant
-            cell.combatant = combatant
+            if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? EncounterCombatantCell {
+                let combatant = anObject as! Combatant
+                cell.combatant = combatant
+            }
         case .Move:
             // .Move implies .Update; update the cell at the old index, and then move it.
-            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! EncounterCombatantCell
-            let combatant = anObject as! Combatant
-            cell.combatant = combatant
+            if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? EncounterCombatantCell {
+                let combatant = anObject as! Combatant
+                cell.combatant = combatant
+            }
             
             tableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!)
         }

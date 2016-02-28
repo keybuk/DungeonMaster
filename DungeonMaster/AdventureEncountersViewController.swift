@@ -123,14 +123,16 @@ class AdventureEncountersViewController: UITableViewController, NSFetchedResults
         case .Delete:
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Bottom)
         case .Update:
-            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! AdventureEncounterCell
-            let encounter = anObject as! Encounter
-            cell.encounter = encounter
+            if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? AdventureEncounterCell {
+                let encounter = anObject as! Encounter
+                cell.encounter = encounter
+            }
         case .Move:
             // .Move implies .Update; update the cell at the old index, and then move it.
-            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! AdventureEncounterCell
-            let encounter = anObject as! Encounter
-            cell.encounter = encounter
+            if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? AdventureEncounterCell {
+                let encounter = anObject as! Encounter
+                cell.encounter = encounter
+            }
             
             tableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!)
         }

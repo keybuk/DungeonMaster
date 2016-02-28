@@ -238,14 +238,16 @@ class MonstersViewController: UIViewController, UITableViewDataSource, UITableVi
         case .Delete:
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
         case .Update:
-            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! MonsterCell
-            let monster = anObject as! Monster
-            cell.monster = monster
+            if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? MonsterCell {
+                let monster = anObject as! Monster
+                cell.monster = monster
+            }
         case .Move:
             // .Move implies .Update; update the cell at the old index with the result at the new index, and then move it.
-            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! MonsterCell
-            let monster = anObject as! Monster
-            cell.monster = monster
+            if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? MonsterCell {
+                let monster = anObject as! Monster
+                cell.monster = monster
+            }
 
             tableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!)
         }

@@ -242,14 +242,16 @@ class AdventurePlayersViewController: UITableViewController, NSFetchedResultsCon
 
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Bottom)
         case .Update:
-            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! AdventurePlayerCell
-            let player = anObject as! Player
-            cell.player = player
+            if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? AdventurePlayerCell {
+                let player = anObject as! Player
+                cell.player = player
+            }
         case .Move:
             // .Move implies .Update; update the cell at the old index, and then move it.
-            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! AdventurePlayerCell
-            let player = anObject as! Player
-            cell.player = player
+            if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? AdventurePlayerCell {
+                let player = anObject as! Player
+                cell.player = player
+            }
             
             tableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!)
         }

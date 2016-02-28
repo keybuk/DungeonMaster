@@ -42,6 +42,8 @@ class LogEntryNoteViewController: UITableViewController, UITextViewDelegate {
             logEntry.note = textView.text
         }
         
+        try! managedObjectContext.save()
+
         dismissViewControllerAnimated(true, completion: nil)
     }
     

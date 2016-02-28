@@ -165,18 +165,21 @@ class AdventureGamesViewController: UITableViewController, NSFetchedResultsContr
         case .Delete:
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
         case .Update:
-            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! AdventureGameCell
-            let game = anObject as! Game
-            cell.game = game
+            if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? AdventureGameCell {
+                let game = anObject as! Game
+                cell.game = game
+            }
         case .Move:
+            // FIXME this is wrong, we have to ignore all table changes... but haven't figured out how to deal with the inherent "Update" of the games list.
             if let userMovedTableRow = userMovedTableRow where userMovedTableRow == indexPath! {
                 // Ignore row moved by the user, since the table already reflects the model.
                 self.userMovedTableRow = nil
             } else {
                 // .Move implies .Update; update the cell at the old index, and then move it.
-                let cell = tableView.cellForRowAtIndexPath(indexPath!) as! AdventureGameCell
-                let game = anObject as! Game
-                cell.game = game
+                if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? AdventureGameCell {
+                    let game = anObject as! Game
+                    cell.game = game
+                }
             
                 tableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!)
             }

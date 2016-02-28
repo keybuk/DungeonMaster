@@ -69,6 +69,8 @@ class LogEntryXPAwardViewController: UITableViewController, UITextFieldDelegate,
             playedGame.player.XP += xp
         }
         
+        try! managedObjectContext.save()
+
         dismissViewControllerAnimated(true, completion: nil)
     }
     

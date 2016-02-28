@@ -173,14 +173,16 @@ class SpellsViewController: UIViewController, UITableViewDataSource, UITableView
         case .Delete:
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
         case .Update:
-            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! SpellCell
-            let spell = anObject as! Spell
-            cell.spell = spell
+            if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? SpellCell {
+                let spell = anObject as! Spell
+                cell.spell = spell
+            }
         case .Move:
             // .Move implies .Update; update the cell at the old index with the result at the new index, and then move it.
-            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! SpellCell
-            let spell = anObject as! Spell
-            cell.spell = spell
+            if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? SpellCell {
+                let spell = anObject as! Spell
+                cell.spell = spell
+            }
             
             tableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!)
         }
