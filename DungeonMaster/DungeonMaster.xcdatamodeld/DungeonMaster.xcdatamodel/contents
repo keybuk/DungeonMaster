@@ -143,6 +143,9 @@
         <attribute name="rawIndex" attributeType="Integer 16" syncable="YES"/>
         <relationship name="playedGame" maxCount="1" deletionRule="Nullify" destinationEntity="PlayedGame" inverseName="logEntries" inverseEntity="PlayedGame" syncable="YES"/>
     </entity>
+    <entity name="LogEntryNote" representedClassName=".LogEntryNote" parentEntity="LogEntry" syncable="YES">
+        <attribute name="note" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Monster" representedClassName=".Monster" syncable="YES">
         <attribute name="canHover" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="canSpeakAllLanguages" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
@@ -330,6 +333,7 @@
         <element name="LairTrait" positionX="567" positionY="717" width="128" height="75"/>
         <element name="Language" positionX="-27" positionY="378" width="128" height="90"/>
         <element name="LegendaryAction" positionX="261" positionY="558" width="128" height="90"/>
+        <element name="LogEntry" positionX="-45" positionY="360" width="128" height="75"/>
         <element name="Monster" positionX="79" positionY="216" width="128" height="855"/>
         <element name="MonsterEnvironment" positionX="-36" positionY="369" width="128" height="75"/>
         <element name="MonsterSavingThrow" positionX="-54" positionY="351" width="128" height="90"/>
@@ -346,6 +350,6 @@
         <element name="Tag" positionX="-92" positionY="432" width="128" height="75"/>
         <element name="Trait" positionX="261" positionY="261" width="128" height="90"/>
         <element name="XPAward" positionX="-54" positionY="351" width="128" height="105"/>
-        <element name="LogEntry" positionX="-45" positionY="360" width="128" height="75"/>
+        <element name="LogEntryNote" positionX="-54" positionY="351" width="128" height="60"/>
     </elements>
 </model>

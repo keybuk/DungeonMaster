@@ -199,6 +199,10 @@ class PlayedGamesViewController: UITableViewController, NSFetchedResultsControll
                 let cell = tableView.dequeueReusableCellWithIdentifier("XPAwardCell", forIndexPath: indexPath) as! XPAwardCell
                 cell.xpAward = xpAward
                 return cell
+            case let logEntryNote as LogEntryNote:
+                let cell = tableView.dequeueReusableCellWithIdentifier("LogEntryNoteCell", forIndexPath: indexPath) as! LogEntryNoteCell
+                cell.logEntryNote = logEntryNote
+                return cell
             default:
                 fatalError("Unexpected LogEntry subclass")
             }
@@ -384,6 +388,10 @@ class PlayedGamesViewController: UITableViewController, NSFetchedResultsControll
                 if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? XPAwardCell {
                     cell.xpAward = xpAward
                 }
+            case let logEntryNote as LogEntryNote:
+                if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? LogEntryNoteCell {
+                    cell.logEntryNote = logEntryNote
+                }
             default:
                 fatalError("Unexpected LogEntry subclass")
             }
@@ -393,6 +401,10 @@ class PlayedGamesViewController: UITableViewController, NSFetchedResultsControll
             case let xpAward as XPAward:
                 if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? XPAwardCell {
                     cell.xpAward = xpAward
+                }
+            case let logEntryNote as LogEntryNote:
+                if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? LogEntryNoteCell {
+                    cell.logEntryNote = logEntryNote
                 }
             default:
                 fatalError("Unexpected LogEntry subclass")
@@ -466,6 +478,26 @@ class XPAwardCell: UITableViewCell {
         super.awakeFromNib()
         
         xpLabel.font = xpLabel.font.monospacedDigitFont
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        leadingConstraint.constant = editing ? 0.0 : (separatorInset.left - layoutMargins.left)
+    }
+
+}
+
+class LogEntryNoteCell: UITableViewCell {
+    
+    @IBOutlet var noteLabel: UILabel!
+    
+    @IBOutlet var leadingConstraint: NSLayoutConstraint!
+    
+    var logEntryNote: LogEntryNote! {
+        didSet {
+            noteLabel.text = logEntryNote.note
+        }
     }
     
     override func layoutSubviews() {

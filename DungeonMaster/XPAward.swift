@@ -36,4 +36,8 @@ final class XPAward: LogEntry {
     /// Each member is a `Combatant` linking to the specific monster.
     @NSManaged var combatants: NSSet
 
+    convenience init(playedGame: PlayedGame, inManagedObjectContext context: NSManagedObjectContext) {
+        self.init(model: Model.XPAward, playedGame: playedGame, inManagedObjectContext: context)
+    }
+    
 }

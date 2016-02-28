@@ -82,6 +82,7 @@
 		D298E8FF1C2A515C007461A9 /* AlignmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298E8FE1C2A515C007461A9 /* AlignmentViewController.swift */; };
 		D298E9011C2A555E007461A9 /* SavingThrowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298E9001C2A555E007461A9 /* SavingThrowViewController.swift */; };
 		D298E9031C2A5597007461A9 /* RaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298E9021C2A5597007461A9 /* RaceViewController.swift */; };
+		D2A025461C828F63003753F5 /* LogEntryNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A025451C828F63003753F5 /* LogEntryNote.swift */; };
 		D2A9AF0A1BFFEAA5009902ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A9AF091BFFEAA5009902ED /* AppDelegate.swift */; };
 		D2A9AF0D1BFFEAA5009902ED /* DungeonMaster.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2A9AF0B1BFFEAA5009902ED /* DungeonMaster.xcdatamodeld */; };
 		D2A9AF111BFFEAA5009902ED /* MonsterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A9AF101BFFEAA5009902ED /* MonsterViewController.swift */; };
@@ -223,6 +224,7 @@
 		D298E8FE1C2A515C007461A9 /* AlignmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlignmentViewController.swift; sourceTree = "<group>"; };
 		D298E9001C2A555E007461A9 /* SavingThrowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavingThrowViewController.swift; sourceTree = "<group>"; };
 		D298E9021C2A5597007461A9 /* RaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RaceViewController.swift; sourceTree = "<group>"; };
+		D2A025451C828F63003753F5 /* LogEntryNote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEntryNote.swift; sourceTree = "<group>"; };
 		D2A9AF061BFFEAA5009902ED /* DungeonMaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DungeonMaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2A9AF091BFFEAA5009902ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2A9AF0C1BFFEAA5009902ED /* DungeonMaster.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DungeonMaster.xcdatamodel; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 				D2B92C1D1C4D515C0057BA47 /* PlayedGame.swift */,
 				D2D8F47D1C7CFF8000C54BB7 /* LogEntry.swift */,
 				D2D8F4751C7B813500C54BB7 /* XPAward.swift */,
+				D2A025451C828F63003753F5 /* LogEntryNote.swift */,
 				D298E8F01C29E08F007461A9 /* Player.swift */,
 				D298E8F21C29F0B5007461A9 /* PlayerSavingThrow.swift */,
 				D298E8F41C29F112007461A9 /* PlayerSkill.swift */,
@@ -656,6 +659,7 @@
 			files = (
 				D298E9011C2A555E007461A9 /* SavingThrowViewController.swift in Sources */,
 				D298E8FB1C2A5146007461A9 /* CharacterClassViewController.swift in Sources */,
+				D2A025461C828F63003753F5 /* LogEntryNote.swift in Sources */,
 				D2B92C1C1C4B6E990057BA47 /* RomanNumeralFormatter.swift in Sources */,
 				D2C3B7AC1C517846009D4062 /* GameViewController.swift in Sources */,
 				D23435F41C0D617C00108D5F /* Monster.swift in Sources */,

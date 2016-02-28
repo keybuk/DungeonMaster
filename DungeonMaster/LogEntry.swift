@@ -26,8 +26,8 @@ class LogEntry: NSManagedObject {
     }
     @NSManaged private var rawIndex: NSNumber
     
-    convenience init(playedGame: PlayedGame, inManagedObjectContext context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entity(Model.XPAward, inManagedObjectContext: context)
+    convenience init(model: Model, playedGame: PlayedGame, inManagedObjectContext context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entity(model, inManagedObjectContext: context)
         self.init(entity: entity, insertIntoManagedObjectContext: context)
         
         self.playedGame = playedGame
