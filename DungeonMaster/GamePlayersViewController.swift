@@ -77,6 +77,11 @@ class GamePlayersViewController: UITableViewController, NSFetchedResultsControll
                     self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
                 }
             }
+            
+        } else if segue.identifier == "AddLogEntrySegue" {
+            let viewController = segue.destinationViewController as! AddLogEntryViewController
+            viewController.game = game
+
         }
     }
 

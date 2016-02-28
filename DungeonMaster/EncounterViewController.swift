@@ -17,8 +17,9 @@ class EncounterViewController: UIViewController, ManagedObjectObserverDelegate {
     @IBOutlet var middleContainerView: UIView!
     @IBOutlet var rightContainerView: UIView!
     
-    @IBOutlet var initiativeButtonItem: UIBarButtonItem!
     @IBOutlet var nextButtonItem: UIBarButtonItem!
+    @IBOutlet var initiativeButtonItem: UIBarButtonItem!
+    @IBOutlet var awardXPButtonItem: UIBarButtonItem!
     @IBOutlet var tabletopButtonItem: UIBarButtonItem!
     
     var observer: NSObjectProtocol?
@@ -56,6 +57,7 @@ class EncounterViewController: UIViewController, ManagedObjectObserverDelegate {
             toolbarItems?.append(roundButtonItem)
             toolbarItems?.append(nextButtonItem)
             toolbarItems?.append(initiativeButtonItem)
+            toolbarItems?.append(awardXPButtonItem)
         }
         
         toolbarItems?.append(UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil))
@@ -88,6 +90,7 @@ class EncounterViewController: UIViewController, ManagedObjectObserverDelegate {
         
         nextButtonItem.enabled = encounter.round > 0
         initiativeButtonItem.enabled = encounter.combatants.count > 0
+        awardXPButtonItem.enabled = encounter.round > 0
         
         if let difficulty = encounter.calculateDifficulty(forGame: game) {
             let difficultyText: String
@@ -157,6 +160,10 @@ class EncounterViewController: UIViewController, ManagedObjectObserverDelegate {
             let viewController = (segue.destinationViewController as! UINavigationController).topViewController as! InitiativeViewController
             viewController.encounter = encounter
             viewController.game = game!
+        } else if segue.identifier == "AwardXPSegue" {
+            let viewController = segue.destinationViewController as! AddLogEntryViewController
+            viewController.encounter = encounter
+            viewController.game = game
         } else if segue.identifier == "TabletopSegue" {
             let viewController = segue.destinationViewController as! TabletopViewController
             viewController.encounter = encounter

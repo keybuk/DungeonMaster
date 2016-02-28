@@ -560,6 +560,11 @@
                                 <segue destination="t7U-F2-ysV" kind="presentation" identifier="InitiativeSegue" modalPresentationStyle="formSheet" id="JuC-e0-k5N"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem title="Award XP" id="HrV-ec-Qhn">
+                            <connections>
+                                <segue destination="e7c-Tc-xAj" kind="presentation" identifier="AwardXPSegue" modalPresentationStyle="formSheet" id="dsQ-e0-IUw"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem title="Table Top" id="EtE-60-SyJ">
                             <connections>
                                 <segue destination="lvu-HZ-xj3" kind="show" identifier="TabletopSegue" id="MwR-wL-0CK"/>
@@ -591,6 +596,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="600"/>
                     <connections>
+                        <outlet property="awardXPButtonItem" destination="HrV-ec-Qhn" id="8uz-Vo-Q0X"/>
                         <outlet property="initiativeButtonItem" destination="bCN-q9-RoU" id="NIo-VA-xEi"/>
                         <outlet property="leftContainerView" destination="A6S-Ux-fVS" id="ww5-qA-Aps"/>
                         <outlet property="middleContainerView" destination="Dua-Qz-pV7" id="7Q1-co-ILb"/>
@@ -643,6 +649,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nyw-my-hnL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1511" y="303"/>
+        </scene>
+        <!--AddLogEntry-->
+        <scene sceneID="6i6-Yj-mdK">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddLogEntry" id="cNf-Rz-aNI" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ajv-1s-Gg9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2095.5" y="745"/>
         </scene>
         <!--Adventure Players-->
         <scene sceneID="REf-gh-9Ww">
@@ -810,7 +824,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wqk-o0-LNX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3505" y="1185"/>
+            <point key="canvasLocation" x="-3097" y="1179"/>
         </scene>
         <!--Player-->
         <scene sceneID="7rU-z6-3rJ">
@@ -1296,7 +1310,7 @@
                     </connections>
                 </barButtonItem>
             </objects>
-            <point key="canvasLocation" x="-2653" y="2353"/>
+            <point key="canvasLocation" x="-3073" y="2201"/>
         </scene>
         <!--Race-->
         <scene sceneID="SxG-51-jmE">
@@ -1340,7 +1354,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WNd-MK-ZxQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="sj1-oN-vJr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-3639" y="2925"/>
+            <point key="canvasLocation" x="-4127" y="3181"/>
         </scene>
         <!--Character Class-->
         <scene sceneID="qtV-0R-kCg">
@@ -1384,7 +1398,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NSU-yO-2Q9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="pkJ-Dq-5yl" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-3216" y="2925"/>
+            <point key="canvasLocation" x="-3704" y="3181"/>
         </scene>
         <!--Background-->
         <scene sceneID="oZS-kS-GLl">
@@ -1428,7 +1442,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yKD-J0-tn7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="bm3-is-IHt" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-2794" y="2925"/>
+            <point key="canvasLocation" x="-3282" y="3181"/>
         </scene>
         <!--Alignment-->
         <scene sceneID="V6a-Fw-GSE">
@@ -1472,7 +1486,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vtt-nf-dtY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="7yu-aW-ZXS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-2374" y="2925"/>
+            <point key="canvasLocation" x="-2862" y="3181"/>
         </scene>
         <!--Saving Throw-->
         <scene sceneID="UVC-BM-1l3">
@@ -1519,7 +1533,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bNj-kL-2Pj" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="rKB-ni-vVh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-1954" y="2925"/>
+            <point key="canvasLocation" x="-2442" y="3181"/>
         </scene>
         <!--CompendiumViewController-->
         <scene sceneID="ykU-27-9I7">
@@ -1542,18 +1556,31 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Players" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JFi-hn-4Jo">
-                                    <rect key="frame" x="8" y="8" width="384" height="28"/>
+                                    <rect key="frame" x="8" y="8" width="330" height="28"/>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TGc-Fe-xGE">
+                                    <rect key="frame" x="346" y="8" width="46" height="28"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="46" id="DUh-1K-wMi"/>
+                                    </constraints>
+                                    <state key="normal" title="XP"/>
+                                    <connections>
+                                        <segue destination="cNf-Rz-aNI" kind="presentation" identifier="AddLogEntrySegue" modalPresentationStyle="formSheet" id="T36-lo-TFU"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="JFi-hn-4Jo" firstAttribute="top" secondItem="nEx-qY-NdH" secondAttribute="top" constant="8" id="GA2-Mj-9nH"/>
-                                <constraint firstItem="JFi-hn-4Jo" firstAttribute="leading" secondItem="nEx-qY-NdH" secondAttribute="leading" constant="8" id="RS4-8h-Cua"/>
-                                <constraint firstAttribute="trailing" secondItem="JFi-hn-4Jo" secondAttribute="trailing" constant="8" id="Wcf-xk-cFQ"/>
-                                <constraint firstAttribute="bottom" secondItem="JFi-hn-4Jo" secondAttribute="bottom" constant="8" id="qnQ-py-Rx7"/>
+                                <constraint firstItem="JFi-hn-4Jo" firstAttribute="top" secondItem="nEx-qY-NdH" secondAttribute="topMargin" id="GA2-Mj-9nH"/>
+                                <constraint firstItem="TGc-Fe-xGE" firstAttribute="trailing" secondItem="nEx-qY-NdH" secondAttribute="trailingMargin" id="NOr-aT-veO"/>
+                                <constraint firstItem="TGc-Fe-xGE" firstAttribute="leading" secondItem="JFi-hn-4Jo" secondAttribute="trailing" constant="8" id="P1R-cD-A1K"/>
+                                <constraint firstItem="TGc-Fe-xGE" firstAttribute="top" secondItem="nEx-qY-NdH" secondAttribute="topMargin" id="R0f-vk-6zp"/>
+                                <constraint firstItem="JFi-hn-4Jo" firstAttribute="leading" secondItem="nEx-qY-NdH" secondAttribute="leadingMargin" id="RS4-8h-Cua"/>
+                                <constraint firstItem="TGc-Fe-xGE" firstAttribute="bottom" secondItem="nEx-qY-NdH" secondAttribute="bottomMargin" id="cTe-GY-AxN"/>
+                                <constraint firstItem="JFi-hn-4Jo" firstAttribute="bottom" secondItem="nEx-qY-NdH" secondAttribute="bottomMargin" id="qnQ-py-Rx7"/>
                             </constraints>
                         </view>
                         <prototypes>
@@ -1772,6 +1799,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="label" destination="uo7-aB-ePH" id="5g2-cp-6Im"/>
+                                    <segue destination="EP1-Ss-GZI" kind="presentation" identifier="AddLogEntrySegue" modalPresentationStyle="formSheet" id="80H-dm-UVY"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1785,7 +1813,15 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fld-Cu-clU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1839" y="2010"/>
+            <point key="canvasLocation" x="-2283" y="1951"/>
+        </scene>
+        <!--AddLogEntry-->
+        <scene sceneID="AMv-g8-h8s">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddLogEntry" id="EP1-Ss-GZI" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UEK-WI-l1m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1900.5" y="1951"/>
         </scene>
         <!--Skill-->
         <scene sceneID="UHL-99-qFl">
@@ -1832,7 +1868,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KLt-cu-LX8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="MlK-E6-SkH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-1535" y="2925"/>
+            <point key="canvasLocation" x="-2023" y="3181"/>
         </scene>
         <!--Player Root-->
         <scene sceneID="rX2-me-xwn">
@@ -1878,7 +1914,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rlk-86-bld" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2374" y="1243"/>
+            <point key="canvasLocation" x="-2306" y="1179"/>
         </scene>
         <!--Adventure Games-->
         <scene sceneID="eSk-kR-UV0">
@@ -1978,7 +2014,7 @@
                 <viewControllerPlaceholder storyboardName="Compendium" referencedIdentifier="CompendiumViewController" id="7gs-a3-6vi" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vab-pL-cmD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-411" y="146"/>
+            <point key="canvasLocation" x="-437" y="140"/>
         </scene>
         <!--MonsterViewController-->
         <scene sceneID="04o-89-sc9">
@@ -1986,7 +2022,7 @@
                 <viewControllerPlaceholder storyboardName="Compendium" referencedIdentifier="MonsterViewController" id="IHD-fx-uTu" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T4O-6E-mYF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-722.5" y="719"/>
+            <point key="canvasLocation" x="-698.5" y="715"/>
         </scene>
         <!--CompendiumMonstersSplitViewController-->
         <scene sceneID="ezZ-8h-or6">
@@ -1994,7 +2030,7 @@
                 <viewControllerPlaceholder storyboardName="Compendium" referencedIdentifier="CompendiumMonstersSplitViewController" id="zqb-N8-LQw" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DVQ-k0-45g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1072.5" y="1567"/>
+            <point key="canvasLocation" x="-1048.5" y="1563"/>
         </scene>
         <!--Encounter Add Combatant Container-->
         <scene sceneID="XvA-Ub-F2q">
@@ -2026,7 +2062,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cWa-ca-RQ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1073" y="1087"/>
+            <point key="canvasLocation" x="-1049" y="1083"/>
         </scene>
         <!--Encounter Combatants-->
         <scene sceneID="t1z-ok-pmM">
@@ -2146,7 +2182,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w56-M5-L47" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-723" y="406"/>
+            <point key="canvasLocation" x="-699" y="402"/>
         </scene>
         <!--Combatant-->
         <scene sceneID="M7u-rn-3Sc">
@@ -2432,7 +2468,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HDR-Ac-lTX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-374" y="1087"/>
+            <point key="canvasLocation" x="-350" y="1083"/>
         </scene>
         <!--Combatant Role-->
         <scene sceneID="oFx-i3-zhW">
@@ -2519,7 +2555,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vw5-sd-OBe" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="6Wk-tV-JtN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-815" y="1845"/>
+            <point key="canvasLocation" x="-791" y="1841"/>
         </scene>
         <!--Combatant Condition-->
         <scene sceneID="hTU-Eq-EAP">
@@ -2579,7 +2615,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aif-u2-DM9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="hda-Pb-46T" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-374" y="1845"/>
+            <point key="canvasLocation" x="-350" y="1841"/>
         </scene>
         <!--Combatant Damage-->
         <scene sceneID="Ud0-Nq-ERD">
@@ -2670,7 +2706,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9fR-L7-EY9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="gtf-uk-UI2" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="63" y="1845"/>
+            <point key="canvasLocation" x="87" y="1841"/>
         </scene>
         <!--Conditions Rules Popover-->
         <scene sceneID="f3e-L6-iv3">
@@ -2709,7 +2745,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RX7-nu-aVL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="113" y="1279"/>
+            <point key="canvasLocation" x="137" y="1275"/>
         </scene>
         <!--Initiative-->
         <scene sceneID="7kp-tG-Rdh">
@@ -2849,7 +2885,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kk6-ck-eF6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="340" y="463"/>
+            <point key="canvasLocation" x="364" y="459"/>
+        </scene>
+        <!--AddLogEntry-->
+        <scene sceneID="gkr-pf-UuB">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddLogEntry" id="e7c-Tc-xAj" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rdi-ma-pmJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-267.5" y="188"/>
         </scene>
     </scenes>
     <resources>
@@ -2859,12 +2903,12 @@
         <image name="SpellsToolbar" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="E8c-Rw-8ww"/>
+        <segue reference="Hng-EK-ErL"/>
         <segue reference="VeV-ag-Sfy"/>
         <segue reference="iny-vj-ImG"/>
-        <segue reference="Hng-EK-ErL"/>
-        <segue reference="h4s-1q-V2K"/>
-        <segue reference="R8s-3s-MFr"/>
         <segue reference="5UJ-Ra-DzJ"/>
+        <segue reference="R8s-3s-MFr"/>
         <segue reference="yku-uR-BnZ"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="calibratedRGB"/>

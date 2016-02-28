@@ -80,6 +80,19 @@ class PlayedGamesViewController: UITableViewController, NSFetchedResultsControll
         }
     }
     
+    // MARK: Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "AddLogEntrySegue" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let viewController = segue.destinationViewController as! AddLogEntryViewController
+                viewController.playedGame = playedGame(forSectionInTable: indexPath.section)
+                
+                tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            }
+        }
+    }
+    
     // MARK: Fetched results controller
     
     /// Fetched results are the set of `LogEntry` for the player, grouped by the ObjectID of the `PlayedGame` relationship.
@@ -256,6 +269,7 @@ class PlayedGamesViewController: UITableViewController, NSFetchedResultsControll
                 }
             }
         } else if editingStyle == .Insert {
+            tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: .None)
             performSegueWithIdentifier("AddLogEntrySegue", sender: self)
         }
     }
