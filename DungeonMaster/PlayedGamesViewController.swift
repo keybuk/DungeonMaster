@@ -44,17 +44,16 @@ class PlayedGamesViewController: UITableViewController, NSFetchedResultsControll
         super.setEditing(editing, animated: animated)
         
         if editing != oldEditing {
-            // Build the set of sections and index paths to insert or remove from the table, as well as the sections map.
+            // Invalidate the sections map so it will get rebuilt.
+            sectionsInResults = nil
+
+            // Insert a section where one doesn't exist in the results, otherwise insert a row.
             let sections = NSMutableIndexSet()
             var indexPaths: [NSIndexPath] = []
 
-            let existingPlayedGames = fetchedResultsController.sections!.indices.map({ playedGame(forSectionInResults: $0) })
-            sectionsInResults.removeAll()
-
             for (section, playedGame) in playedGames.enumerate() {
-                if let existingSection = existingPlayedGames.indexOf(playedGame) {
-                    sectionsInResults[section] = existingSection
-                    
+                if let _ = sectionsInResults[section] {
+                    // Row insertions seem to get processed after section insertions, so use section rather than sectionsInResults[section] here.
                     let row = playedGame.logEntries.count
                     indexPaths.append(NSIndexPath(forRow: row, inSection: section))
                 } else {
@@ -74,8 +73,8 @@ class PlayedGamesViewController: UITableViewController, NSFetchedResultsControll
         }
         
         if oldEditing && !editing {
-            sectionsInResults.removeAll()
             playedGames = nil
+            sectionsInResults = nil
 
             try! managedObjectContext.save()
         }
@@ -124,7 +123,30 @@ class PlayedGamesViewController: UITableViewController, NSFetchedResultsControll
     }
     private var _playedGames: [PlayedGame]?
     
-    var sectionsInResults: [Int: Int] = [:]
+    /// Map of table sections to the underlying fetched results sections.
+    var sectionsInResults: [Int: Int]! {
+        get {
+            if let sectionsInResults = _sectionsInResults {
+                return sectionsInResults
+            }
+            
+            // Rebuild the sections map.
+            let existingPlayedGames = fetchedResultsController.sections!.indices.map({ playedGame(forSectionInResults: $0) })
+            
+            _sectionsInResults = [:]
+            for (section, playedGame) in playedGames.enumerate() {
+                if let existingSection = existingPlayedGames.indexOf(playedGame) {
+                    _sectionsInResults![section] = existingSection
+                }
+            }
+            
+            return _sectionsInResults
+        }
+        set(newSectionsInResults) {
+            _sectionsInResults = newSectionsInResults
+        }
+    }
+    private var _sectionsInResults: [Int: Int]?
 
     /// Returns the `PlayedGame` object for the given `section` in the results.
     func playedGame(forSectionInResults section: Int) -> PlayedGame {
@@ -163,9 +185,7 @@ class PlayedGamesViewController: UITableViewController, NSFetchedResultsControll
     /// Returns `indexPath` translated from the results, to the table view.
     func indexPath(forIndexPathInResults indexPath: NSIndexPath) -> NSIndexPath {
         if editing {
-            let playedGame = self.playedGame(forSectionInResults: indexPath.section)
-            let section = playedGames.indexOf(playedGame)!
-            
+            let section = sectionsInResults[sectionsInResults.indexOf({ $0.1 == indexPath.section })!].0
             return NSIndexPath(forRow: indexPath.row, inSection: section)
         } else {
             return indexPath
@@ -181,7 +201,7 @@ class PlayedGamesViewController: UITableViewController, NSFetchedResultsControll
             return fetchedResultsController.sections?.count ?? 0
         }
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if editing {
             let playedGame = playedGames[section]
@@ -349,22 +369,18 @@ class PlayedGamesViewController: UITableViewController, NSFetchedResultsControll
     }
     
     func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
-        guard !changeIsUserDriven else { return }
+        // Changes to the set of sections requires rebuilding the sectionsInResults map, so invalidate it here.
+        sectionsInResults = nil
         
-        // Unlike every other case, `sectionIndex` refers to an index in the results and needs to be translated to an index in the table.
-        let section: Int
-        if editing {
-            let playedGame = self.playedGame(forSectionInResults: sectionIndex)
-            section = playedGames.indexOf(playedGame)!
-        } else {
-            section = sectionIndex
-        }
+        // Skip the rest of this method if the change was used driven (table already matches the result of the change), or if in editing mode (all sections already exist).
+        guard !changeIsUserDriven else { return }
+        guard !editing else { return }
         
         switch type {
         case .Insert:
-            tableView.insertSections(NSIndexSet(index: section), withRowAnimation: .Automatic)
+            tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
         case .Delete:
-            tableView.deleteSections(NSIndexSet(index: section), withRowAnimation: .Automatic)
+            tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
         default:
             return
         }
@@ -415,18 +431,6 @@ class PlayedGamesViewController: UITableViewController, NSFetchedResultsControll
     }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        if editing {
-            // Rebuild the sections map.
-            let existingPlayedGames = fetchedResultsController.sections!.indices.map({ playedGame(forSectionInResults: $0) })
-            sectionsInResults.removeAll()
-            
-            for (section, playedGame) in playedGames.enumerate() {
-                if let existingSection = existingPlayedGames.indexOf(playedGame) {
-                    sectionsInResults[section] = existingSection
-                }
-            }
-        }
-
         tableView.endUpdates()
         
         changeIsUserDriven = false
