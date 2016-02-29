@@ -296,6 +296,8 @@ class InitiativeViewController: UITableViewController, NSFetchedResultsControlle
     }
     
     func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+        guard !changeIsUserDriven else { return }
+
         switch type {
         case .Insert:
             tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
