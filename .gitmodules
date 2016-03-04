@@ -1,0 +1,6 @@
+[submodule "Monsters"]
+	path = Monsters
+	url = git@github.com:keybuk/Monsters.git
+[submodule "Spells"]
+	path = Spells
+	url = git@github.com:keybuk/Spells.git
