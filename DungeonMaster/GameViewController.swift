@@ -52,6 +52,16 @@ class GameViewController: UIViewController, ManagedObjectObserverDelegate {
         dateLabel.text = dateFormatter.stringFromDate(game.date)
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setToolbarHidden(false, animated: animated)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setToolbarHidden(true, animated: animated)
+    }
+
     override func setEditing(editing: Bool, animated: Bool) {
         let oldEditing = self.editing
         super.setEditing(editing, animated: animated)
@@ -103,6 +113,37 @@ class GameViewController: UIViewController, ManagedObjectObserverDelegate {
             }
         }
     }
+    
+    // MARK: Actions
+    
+    @IBAction func shareButtonTapped(sender: UIBarButtonItem) {
+        let fileManager = NSFileManager.defaultManager()
+        if let cachesUrl = try? fileManager.URLForDirectory(.CachesDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true) {
+            let numberFormatter = RomanNumeralFormatter()
+            let number = numberFormatter.stringFromNumber(game.number)!
+            
+            let filename = "\(game.adventure.name) \(number).txt"
+            let url = cachesUrl.URLByAppendingPathComponent(filename)
+            
+            let description = game.descriptionForExport()
+            do {
+                try description.writeToURL(url, atomically: false, encoding: NSUTF8StringEncoding)
+                
+                let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+                activityViewController.completionWithItemsHandler = { activityType, completed, returnedItems, error in
+                    try! fileManager.removeItemAtURL(url)
+                }
+                
+                if let presentation = activityViewController.popoverPresentationController {
+                    presentation.barButtonItem = sender
+                }
+                
+                presentViewController(activityViewController, animated: true, completion: nil)
+            } catch {
+            }
+        }
+    }
+    
     
     // MARK: ManagedObjectObserverDelegate
     

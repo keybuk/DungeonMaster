@@ -53,4 +53,17 @@ final class Game: NSManagedObject {
         }
     }
 
+    /// Returns InDesign Tagged Text description of the played game.
+    func descriptionForExport() -> String {
+        var string = "<ASCII-MAC>\n"
+        string += "<Version:11.2>\n"
+
+        let nameSortDescriptor = NSSortDescriptor(key: "player.name", ascending: true)
+        for case let playedGame as PlayedGame in playedGames.sortedArrayUsingDescriptors([nameSortDescriptor]) {
+            string += playedGame.descriptionForExport()
+        }
+        
+        return string
+    }
+    
 }
