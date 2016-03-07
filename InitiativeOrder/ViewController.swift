@@ -136,10 +136,7 @@ class ViewController: UIViewController, NetworkPeerDelegate, NetworkConnectionDe
     }
     
     func connectionDidClose(connection: NetworkConnection) {
-        // When the connection closes, clear out the view.
-        combatants = []
-        tableView.reloadData()
-        configureView()
+        navigationItem.title = "Lost Connection"
     }
     
     // MARK: UITableViewDataSource
