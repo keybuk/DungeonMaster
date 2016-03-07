@@ -35,7 +35,7 @@ public enum NetworkMessage {
             guard bytes.count >= 4 else { return nil }
 
             let toIndex = Int(bytes[1])
-            let initiative: Int? = bytes[2] == 0xff ? nil : Int(bytes[2])
+            let initiative: Int? = bytes[2] == 0x80 ? nil : Int(Int8(bitPattern: bytes[2]))
             let isCurrentTurn = bytes[3] != 0 ? true : false
             guard let name = String(bytes: bytes.suffixFrom(4), encoding: NSUTF8StringEncoding) else { return nil }
 
@@ -50,7 +50,7 @@ public enum NetworkMessage {
             guard bytes.count >= 3 else { return nil }
             
             let index = Int(bytes[1])
-            let initiative: Int? = bytes[2] == 0xff ? nil : Int(bytes[2])
+            let initiative: Int? = bytes[2] == 0x80 ? nil : Int(Int8(bitPattern: bytes[2]))
             let isCurrentTurn = bytes[3] != 0 ? true : false
             guard let name = String(bytes: bytes.suffixFrom(4), encoding: NSUTF8StringEncoding) else { return nil }
             
@@ -69,7 +69,7 @@ public enum NetworkMessage {
             // Initiative
             guard bytes.count >= 2 else { return nil }
             
-            let initiative = Int(bytes[1])
+            let initiative = Int(Int8(bitPattern: bytes[1]))
             guard let name = String(bytes: bytes.suffixFrom(2), encoding: NSUTF8StringEncoding) else { return nil }
             
             self = .Initiative(name: name, initiative: initiative)
@@ -88,7 +88,7 @@ public enum NetworkMessage {
         case let .InsertCombatant(toIndex, name, initiative, isCurrentTurn):
             bytes.append(0x01)
             bytes.append(UInt8(toIndex))
-            bytes.append(initiative.map({ UInt8($0) }) ?? 0xff)
+            bytes.append(initiative.map({ UInt8(bitPattern: Int8($0)) }) ?? 0x80)
             bytes.append(isCurrentTurn ? 1 : 0)
             bytes.appendContentsOf(name.utf8)
         case let .DeleteCombatant(fromIndex):
@@ -97,7 +97,7 @@ public enum NetworkMessage {
         case let .UpdateCombatant(index, name, initiative, isCurrentTurn):
             bytes.append(0x03)
             bytes.append(UInt8(index))
-            bytes.append(initiative.map({ UInt8($0) }) ?? 0xff)
+            bytes.append(initiative.map({ UInt8(bitPattern: Int8($0)) }) ?? 0x80)
             bytes.append(isCurrentTurn ? 1 : 0)
             bytes.appendContentsOf(name.utf8)
         case let .MoveCombatant(fromIndex, toIndex):
@@ -109,7 +109,7 @@ public enum NetworkMessage {
             bytes.append(UInt8(round))
         case let .Initiative(name, initiative):
             bytes.append(0x06)
-            bytes.append(UInt8(initiative))
+            bytes.append(UInt8(bitPattern: Int8(initiative)))
             bytes.appendContentsOf(name.utf8)
         }
         

@@ -384,7 +384,9 @@ class InitiativeCombatantCell: UITableViewCell, UITextFieldDelegate {
     
     @IBAction func textFieldEditingChanged(sender: UITextField) {
         if let text = sender.text where text != "" {
-            combatant.initiative = Int(text)!
+            if text != "-" {
+                combatant.initiative = Int(text)!
+            }
         } else {
             combatant.initiative = nil
         }
@@ -393,6 +395,12 @@ class InitiativeCombatantCell: UITableViewCell, UITextFieldDelegate {
     // MARK: UITextFieldDelegate
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        // A hyphen is valid at the start of an empty string, or where replacing the start of the string.
+        if string.hasPrefix("-") {
+            return range.location == 0
+        }
+        
+        // Otherwise only digits are valid.1
         let validSet = NSCharacterSet.decimalDigitCharacterSet()
         for character in string.unicodeScalars {
             if !validSet.longCharacterIsMember(character.value) {
