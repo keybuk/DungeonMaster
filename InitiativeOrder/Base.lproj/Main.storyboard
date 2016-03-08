@@ -140,7 +140,13 @@
                             <constraint firstItem="Nex-lF-70X" firstAttribute="leading" secondItem="2xq-q7-8lu" secondAttribute="trailing" id="v6S-xc-lA9"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="7br-2z-bNq"/>
+                    <navigationItem key="navigationItem" id="7br-2z-bNq">
+                        <barButtonItem key="rightBarButtonItem" title="End Turn" id="3j7-m7-KKc">
+                            <connections>
+                                <action selector="endTurnButtonTapped:" destination="jSB-Ja-BYe" id="2Qq-g7-owg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="nextLabel" destination="zKW-Nq-mjB" id="wfS-Gv-TxE"/>
                         <outlet property="roundLabel" destination="JTa-WK-YsK" id="oHd-tq-NUp"/>

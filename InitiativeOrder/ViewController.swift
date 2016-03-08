@@ -83,6 +83,14 @@ class ViewController: UIViewController, NetworkPeerDelegate, NetworkConnectionDe
         networkPeer?.start()
     }
     
+    // MARK: Actions
+    
+    @IBAction func endTurnButtonTapped(sender: UIBarButtonItem) {
+        if let combatant = combatants.filter({ $0.isCurrentTurn }).first {
+            networkPeer?.broadcastMessage(.EndTurn(name: combatant.name))
+        }
+    }
+    
     // MARK: NetworkPeerDelegate
     
     func networkPeer(peer: NetworkPeer, didEstablishConnection connection: NetworkConnection) {

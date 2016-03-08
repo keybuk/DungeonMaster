@@ -147,20 +147,33 @@ class NetworkController: NSObject, NetworkPeerDelegate, NetworkConnectionDelegat
     }
     
     // MARK: NetworkConnectionDelegate
+
+    func combatants(withName name: String) -> [Combatant] {
+        var combatantsWithName: [Combatant] = []
+        if let combatants = combatantResultsController?.fetchedObjects as? [Combatant] {
+            for combatant in combatants {
+                if let monster = combatant.monster {
+                    guard monster.name == name else { continue }
+                } else if let player = combatant.player {
+                    guard player.name == name else { continue }
+                }
+
+                combatantsWithName.append(combatant)
+            }
+        }
+        return combatantsWithName
+    }
+    
     
     func connection(connection: NetworkConnection, didReceiveMessage message: NetworkMessage) {
         switch message {
         case let .Initiative(name, initiative):
-            if let combatants = combatantResultsController?.fetchedObjects as? [Combatant] {
-                for combatant in combatants {
-                    if let monster = combatant.monster {
-                        guard monster.name == name else { continue }
-                    } else if let player = combatant.player {
-                        guard player.name == name else { continue }
-                    }
-                    
-                    combatant.initiative = initiative
-                }
+            for combatant in combatants(withName: name) {
+                combatant.initiative = initiative
+            }
+        case let .EndTurn(name):
+            if let combatant = combatants(withName: name).first where combatant.role == .Player && combatant.isCurrentTurn {
+                encounter?.nextTurn()
             }
         default:
             break

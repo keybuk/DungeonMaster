@@ -19,6 +19,7 @@ public enum NetworkMessage {
     case Round(round: Int)
     
     case Initiative(name: String, initiative: Int)
+    case EndTurn(name: String)
     
     init?(bytes: [UInt8]) {
         guard bytes.count > 0 else { return nil }
@@ -32,7 +33,7 @@ public enum NetworkMessage {
             self = .BeginEncounter(title: title)
         case 0x01:
             // InsertCombatant
-            guard bytes.count >= 4 else { return nil }
+            guard bytes.count >= 5 else { return nil }
 
             let toIndex = Int(bytes[1])
             let initiative: Int? = bytes[2] == 0x80 ? nil : Int(Int8(bitPattern: bytes[2]))
@@ -48,7 +49,7 @@ public enum NetworkMessage {
             self = .DeleteCombatant(fromIndex: Int(bytes[1]))
         case 0x03:
             // UpdateCombatant
-            guard bytes.count >= 3 else { return nil }
+            guard bytes.count >= 5 else { return nil }
             
             let index = Int(bytes[1])
             let initiative: Int? = bytes[2] == 0x80 ? nil : Int(Int8(bitPattern: bytes[2]))
@@ -75,6 +76,13 @@ public enum NetworkMessage {
             guard let name = String(bytes: bytes.suffixFrom(2), encoding: NSUTF8StringEncoding) else { return nil }
             
             self = .Initiative(name: name, initiative: initiative)
+        case 0x07:
+            // EndTurn
+            guard bytes.count >= 1 else { return nil }
+            
+            guard let name = String(bytes: bytes.suffixFrom(1), encoding: NSUTF8StringEncoding) else { return nil }
+
+            self = .EndTurn(name: name)
         default:
             return nil
         }
@@ -114,6 +122,9 @@ public enum NetworkMessage {
         case let .Initiative(name, initiative):
             bytes.append(0x06)
             bytes.append(UInt8(bitPattern: Int8(initiative)))
+            bytes.appendContentsOf(name.utf8)
+        case let .EndTurn(name):
+            bytes.append(0x07)
             bytes.appendContentsOf(name.utf8)
         }
         
