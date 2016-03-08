@@ -98,6 +98,13 @@ final class Combatant: NSManagedObject {
     var health: Float {
         return Float(max(hitPoints - damagePoints, 0)) / Float(hitPoints)
     }
+    
+    /// Returns whether the combatant is still alive.
+    ///
+    /// Always returns true for player-controlled combatants.
+    var isAlive: Bool {
+        return role == .Player || damagePoints < hitPoints
+    }
 
     /// Armor class of the combatant.
     ///

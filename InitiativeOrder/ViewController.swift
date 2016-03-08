@@ -13,6 +13,7 @@ struct Combatant {
     var name: String
     var initiative: Int?
     var isCurrentTurn: Bool
+    var isAlive: Bool
 }
 
 class ViewController: UIViewController, NetworkPeerDelegate, NetworkConnectionDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
@@ -46,21 +47,21 @@ class ViewController: UIViewController, NetworkPeerDelegate, NetworkConnectionDe
     func configureView() {
         if networkPeer?.connections.count > 0 {
             // When there is a connection, display whose turn it is, and who would be up next.
-            if let combatant = combatants.first {
-                nextLabel.text = combatant.name
+            var lastTurnIndex: Array.Index? = nil
+            for (index, combatant) in combatants.enumerate() {
+                if combatant.isCurrentTurn {
+                    if lastTurnIndex == nil {
+                        turnLabel.text = combatant.name
+                    }
+                    lastTurnIndex = index
+                }
             }
             
-            var updated = false
-            for combatant in combatants {
-                if combatant.isCurrentTurn {
-                    if !updated {
-                        turnLabel.text = combatant.name
-                        updated = true
-                    }
-                } else if updated {
-                    nextLabel.text = combatant.name
-                    break
-                }
+            let nextTurnIndex = lastTurnIndex.map({ $0 + 1 }) ?? 0
+            if let nextCombatant = (combatants.suffixFrom(nextTurnIndex) + combatants.prefixUpTo(nextTurnIndex)).filter({ $0.isAlive }).first {
+                nextLabel.text = nextCombatant.name
+            } else {
+                nextLabel.text = ""
             }
 
         } else {
@@ -99,8 +100,8 @@ class ViewController: UIViewController, NetworkPeerDelegate, NetworkConnectionDe
             combatants = []
             tableView.reloadData()
             navigationItem.title = title
-        case let .InsertCombatant(toIndex, name, initiative, isCurrentTurn):
-            combatants.insert(Combatant(name: name, initiative: initiative, isCurrentTurn: isCurrentTurn), atIndex: toIndex)
+        case let .InsertCombatant(toIndex, name, initiative, isCurrentTurn, isAlive):
+            combatants.insert(Combatant(name: name, initiative: initiative, isCurrentTurn: isCurrentTurn, isAlive: isAlive), atIndex: toIndex)
             
             let indexPath = NSIndexPath(forRow: toIndex, inSection: 0)
             tableView.insertRowsAtIndexPaths([ indexPath ], withRowAnimation: .Automatic)
@@ -116,8 +117,8 @@ class ViewController: UIViewController, NetworkPeerDelegate, NetworkConnectionDe
             let fromIndexPath = NSIndexPath(forRow: fromIndex, inSection: 0)
             let toIndexPath = NSIndexPath(forRow: toIndex, inSection: 0)
             tableView.moveRowAtIndexPath(fromIndexPath, toIndexPath: toIndexPath)
-        case let .UpdateCombatant(index, name, initiative, isCurrentTurn):
-            let combatant = Combatant(name: name, initiative: initiative, isCurrentTurn: isCurrentTurn)
+        case let .UpdateCombatant(index, name, initiative, isCurrentTurn, isAlive):
+            let combatant = Combatant(name: name, initiative: initiative, isCurrentTurn: isCurrentTurn, isAlive: isAlive)
 
             combatants.removeAtIndex(index)
             combatants.insert(combatant, atIndex: index)

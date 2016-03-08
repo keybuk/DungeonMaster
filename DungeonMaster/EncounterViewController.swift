@@ -185,35 +185,7 @@ class EncounterViewController: UIViewController, ManagedObjectObserverDelegate {
     // MARK: Actions
     
     @IBAction func nextButtonTapped(sender: UIBarButtonItem) {
-        let initiativeSortDescriptor = NSSortDescriptor(key: "rawInitiative", ascending: false)
-        let initiativeOrderSortDescriptor = NSSortDescriptor(key: "rawInitiativeOrder", ascending: true)
-        let monsterDexSortDescriptor = NSSortDescriptor(key: "monster.rawDexterityScore", ascending: false)
-        let dateCreatedSortDescriptor = NSSortDescriptor(key: "dateCreated", ascending: true)
-        let combatants = encounter.combatants.sortedArrayUsingDescriptors([initiativeSortDescriptor, initiativeOrderSortDescriptor, monsterDexSortDescriptor, dateCreatedSortDescriptor]) as! [Combatant]
-
-        // First clear the turn of the current combatants.
-        var index: Int = 0
-        if let firstCurrentTurnIndex = combatants.indexOf({ $0.isCurrentTurn }) {
-            index = firstCurrentTurnIndex
-            while index < combatants.count && combatants[index].isCurrentTurn {
-                combatants[index].isCurrentTurn = false
-                index += 1
-            }
-        
-            // If they were last in the list, begin at the top and increment the round counter.
-            if index == combatants.count {
-                encounter.round += 1
-                index = 0
-            }
-        }
-            
-        // Now set the current turn for the following set of combatants, who all share the same role, monster/player, etc.
-        let nextCombatant = combatants[index]
-        while index < combatants.count && combatants[index].initiative == nextCombatant.initiative && combatants[index].role == nextCombatant.role && combatants[index].monster == nextCombatant.monster && combatants[index].player == nextCombatant.player {
-            combatants[index].isCurrentTurn = true
-            index += 1
-        }
-            
+        encounter.nextTurn()
         encounter.lastModified = NSDate()
         try! managedObjectContext.save()
     }

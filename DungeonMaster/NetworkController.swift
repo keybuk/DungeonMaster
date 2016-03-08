@@ -126,9 +126,9 @@ class NetworkController: NSObject, NetworkPeerDelegate, NetworkConnectionDelegat
         var index = 0
         for case let combatant as Combatant in combatants {
             if let monster = combatant.monster {
-                connection.sendMessage(.InsertCombatant(toIndex: index, name: monster.name, initiative: combatant.initiative, isCurrentTurn: combatant.isCurrentTurn))
+                connection.sendMessage(.InsertCombatant(toIndex: index, name: monster.name, initiative: combatant.initiative, isCurrentTurn: combatant.isCurrentTurn, isAlive: combatant.isAlive))
             } else if let player = combatant.player {
-                connection.sendMessage(.InsertCombatant(toIndex: index, name: player.name, initiative: combatant.initiative, isCurrentTurn: combatant.isCurrentTurn))
+                connection.sendMessage(.InsertCombatant(toIndex: index, name: player.name, initiative: combatant.initiative, isCurrentTurn: combatant.isCurrentTurn, isAlive: combatant.isAlive))
             }
             
             index += 1
@@ -192,27 +192,27 @@ class NetworkController: NSObject, NetworkPeerDelegate, NetworkConnectionDelegat
         case .Insert:
             let combatant = anObject as! Combatant
             if let monster = combatant.monster {
-                networkPeer.broadcastMessage(.InsertCombatant(toIndex: newIndexPath!.row, name: monster.name, initiative: combatant.initiative, isCurrentTurn: combatant.isCurrentTurn))
+                networkPeer.broadcastMessage(.InsertCombatant(toIndex: newIndexPath!.row, name: monster.name, initiative: combatant.initiative, isCurrentTurn: combatant.isCurrentTurn, isAlive: combatant.isAlive))
             } else if let player = combatant.player {
-                networkPeer.broadcastMessage(.InsertCombatant(toIndex: newIndexPath!.row, name: player.name, initiative: combatant.initiative, isCurrentTurn: combatant.isCurrentTurn))
+                networkPeer.broadcastMessage(.InsertCombatant(toIndex: newIndexPath!.row, name: player.name, initiative: combatant.initiative, isCurrentTurn: combatant.isCurrentTurn, isAlive: combatant.isAlive))
             }
         case .Delete:
             networkPeer.broadcastMessage(.DeleteCombatant(fromIndex: indexPath!.row))
         case .Update:
             let combatant = anObject as! Combatant
             if let monster = combatant.monster {
-                networkPeer.broadcastMessage(.UpdateCombatant(index: indexPath!.row, name: monster.name, initiative: combatant.initiative, isCurrentTurn: combatant.isCurrentTurn))
+                networkPeer.broadcastMessage(.UpdateCombatant(index: indexPath!.row, name: monster.name, initiative: combatant.initiative, isCurrentTurn: combatant.isCurrentTurn, isAlive: combatant.isAlive))
             } else if let player = combatant.player {
-                networkPeer.broadcastMessage(.UpdateCombatant(index: indexPath!.row, name: player.name, initiative: combatant.initiative, isCurrentTurn: combatant.isCurrentTurn))
+                networkPeer.broadcastMessage(.UpdateCombatant(index: indexPath!.row, name: player.name, initiative: combatant.initiative, isCurrentTurn: combatant.isCurrentTurn, isAlive: combatant.isAlive))
             }
         case .Move:
             networkPeer.broadcastMessage(.MoveCombatant(fromIndex: indexPath!.row, toIndex: newIndexPath!.row))
 
             let combatant = anObject as! Combatant
             if let monster = combatant.monster {
-                networkPeer.broadcastMessage(.UpdateCombatant(index: newIndexPath!.row, name: monster.name, initiative: combatant.initiative, isCurrentTurn: combatant.isCurrentTurn))
+                networkPeer.broadcastMessage(.UpdateCombatant(index: newIndexPath!.row, name: monster.name, initiative: combatant.initiative, isCurrentTurn: combatant.isCurrentTurn, isAlive: combatant.isAlive))
             } else if let player = combatant.player {
-                networkPeer.broadcastMessage(.UpdateCombatant(index: newIndexPath!.row, name: player.name, initiative: combatant.initiative, isCurrentTurn: combatant.isCurrentTurn))
+                networkPeer.broadcastMessage(.UpdateCombatant(index: newIndexPath!.row, name: player.name, initiative: combatant.initiative, isCurrentTurn: combatant.isCurrentTurn, isAlive: combatant.isAlive))
             }
         }
     }

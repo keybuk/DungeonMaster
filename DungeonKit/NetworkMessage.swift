@@ -12,9 +12,9 @@ import Foundation
 public enum NetworkMessage {
 
     case BeginEncounter(title: String)
-    case InsertCombatant(toIndex: Int, name: String, initiative: Int?, isCurrentTurn: Bool)
+    case InsertCombatant(toIndex: Int, name: String, initiative: Int?, isCurrentTurn: Bool, isAlive: Bool)
     case DeleteCombatant(fromIndex: Int)
-    case UpdateCombatant(index: Int, name: String, initiative: Int?, isCurrentTurn: Bool)
+    case UpdateCombatant(index: Int, name: String, initiative: Int?, isCurrentTurn: Bool, isAlive: Bool)
     case MoveCombatant(fromIndex: Int, toIndex: Int)
     case Round(round: Int)
     
@@ -37,9 +37,10 @@ public enum NetworkMessage {
             let toIndex = Int(bytes[1])
             let initiative: Int? = bytes[2] == 0x80 ? nil : Int(Int8(bitPattern: bytes[2]))
             let isCurrentTurn = bytes[3] != 0 ? true : false
-            guard let name = String(bytes: bytes.suffixFrom(4), encoding: NSUTF8StringEncoding) else { return nil }
+            let isAlive = bytes[4] != 0 ? true : false
+            guard let name = String(bytes: bytes.suffixFrom(5), encoding: NSUTF8StringEncoding) else { return nil }
 
-            self = .InsertCombatant(toIndex: toIndex, name: name, initiative: initiative, isCurrentTurn: isCurrentTurn)
+            self = .InsertCombatant(toIndex: toIndex, name: name, initiative: initiative, isCurrentTurn: isCurrentTurn, isAlive: isAlive)
         case 0x02:
             // DeleteCombatant
             guard bytes.count == 2 else { return nil }
@@ -52,9 +53,10 @@ public enum NetworkMessage {
             let index = Int(bytes[1])
             let initiative: Int? = bytes[2] == 0x80 ? nil : Int(Int8(bitPattern: bytes[2]))
             let isCurrentTurn = bytes[3] != 0 ? true : false
-            guard let name = String(bytes: bytes.suffixFrom(4), encoding: NSUTF8StringEncoding) else { return nil }
+            let isAlive = bytes[4] != 0 ? true : false
+            guard let name = String(bytes: bytes.suffixFrom(5), encoding: NSUTF8StringEncoding) else { return nil }
             
-            self = .UpdateCombatant(index: index, name: name, initiative: initiative, isCurrentTurn: isCurrentTurn)
+            self = .UpdateCombatant(index: index, name: name, initiative: initiative, isCurrentTurn: isCurrentTurn, isAlive: isAlive)
         case 0x04:
             // MoveCombatant
             guard bytes.count == 3 else { return nil }
@@ -85,20 +87,22 @@ public enum NetworkMessage {
         case let .BeginEncounter(title):
             bytes.append(0x00)
             bytes.appendContentsOf(title.utf8)
-        case let .InsertCombatant(toIndex, name, initiative, isCurrentTurn):
+        case let .InsertCombatant(toIndex, name, initiative, isCurrentTurn, isAlive):
             bytes.append(0x01)
             bytes.append(UInt8(toIndex))
             bytes.append(initiative.map({ UInt8(bitPattern: Int8($0)) }) ?? 0x80)
             bytes.append(isCurrentTurn ? 1 : 0)
+            bytes.append(isAlive ? 1 : 0)
             bytes.appendContentsOf(name.utf8)
         case let .DeleteCombatant(fromIndex):
             bytes.append(0x02)
             bytes.append(UInt8(fromIndex))
-        case let .UpdateCombatant(index, name, initiative, isCurrentTurn):
+        case let .UpdateCombatant(index, name, initiative, isCurrentTurn, isAlive):
             bytes.append(0x03)
             bytes.append(UInt8(index))
             bytes.append(initiative.map({ UInt8(bitPattern: Int8($0)) }) ?? 0x80)
             bytes.append(isCurrentTurn ? 1 : 0)
+            bytes.append(isAlive ? 1 : 0)
             bytes.appendContentsOf(name.utf8)
         case let .MoveCombatant(fromIndex, toIndex):
             bytes.append(0x04)

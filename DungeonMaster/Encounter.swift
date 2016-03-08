@@ -189,5 +189,40 @@ final class Encounter: NSManagedObject {
         }
     }
     
+    /// Select the next combatants in the turn order.
+    ///
+    /// Updates the `currentTurn` of combatants in the encounter, and may update `round`.
+    func nextTurn() {
+        let initiativeSortDescriptor = NSSortDescriptor(key: "rawInitiative", ascending: false)
+        let initiativeOrderSortDescriptor = NSSortDescriptor(key: "rawInitiativeOrder", ascending: true)
+        let monsterDexSortDescriptor = NSSortDescriptor(key: "monster.rawDexterityScore", ascending: false)
+        let dateCreatedSortDescriptor = NSSortDescriptor(key: "dateCreated", ascending: true)
+        let combatants = self.combatants.sortedArrayUsingDescriptors([initiativeSortDescriptor, initiativeOrderSortDescriptor, monsterDexSortDescriptor, dateCreatedSortDescriptor]) as! [Combatant]
+        
+        // First clear the turn of the current combatants, remembering the first and last combatant whose turn it was.
+        let turnIndex = combatants.indexOf({ $0.isCurrentTurn })
+        var lastTurnIndex = turnIndex
+        for (index, combatant) in combatants.enumerate() {
+            if combatant.isCurrentTurn {
+                combatant.isCurrentTurn = false
+                lastTurnIndex = index
+            }
+        }
+
+        // Rotate the list so that the combatant who just took a turn is right at the end, this gives us an order to consider them in. Filter out non-player characters that are dead (we don't track player deaths).
+        let nextTurnIndex = lastTurnIndex.map({ $0 + 1 }) ?? 0
+        let nextCombatants = (combatants.suffixFrom(nextTurnIndex) + combatants.prefixUpTo(nextTurnIndex)).filter({ $0.isAlive })
+        for nextCombatant in nextCombatants {
+            // Only consider combatants with the same initiative, role, underlying monster/player, etc.
+            guard nextCombatant.initiative == nextCombatants.first?.initiative &&  nextCombatant.role == nextCombatants.first?.role && nextCombatant.monster == nextCombatants.first?.monster && nextCombatant.player == nextCombatants.first?.player else { break }
+
+            nextCombatant.isCurrentTurn = true
+        }
+
+        // Check whether we began a new round.
+        if let newTurnIndex = combatants.indexOf({ $0.isCurrentTurn }) where newTurnIndex <= turnIndex {
+            round += 1
+        }
+    }
     
 }
