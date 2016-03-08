@@ -218,11 +218,27 @@ class CombatantCell: UITableViewCell {
     
     var combatant: Combatant! {
         didSet {
-            nameLabel.text = combatant.name
-            initiativeLabel.text = combatant.initiative.map({ "\($0)" }) ?? "—"
-
-            leadingConstraint.constant = separatorInset.left - layoutMargins.left
+            var attributes: [String: AnyObject] = [:]
+            if !combatant.isAlive {
+                attributes[NSStrikethroughStyleAttributeName] = NSUnderlineStyle.StyleSingle.rawValue
+                attributes[NSForegroundColorAttributeName] = UIColor.lightGrayColor()
+            }
+            if combatant.isCurrentTurn {
+                attributes[NSForegroundColorAttributeName] = UIColor.whiteColor()
+                backgroundColor = tintColor
+            } else {
+                backgroundColor = UIColor.whiteColor()
+            }
+            
+            nameLabel.attributedText = NSAttributedString(string: combatant.name, attributes: attributes)
+            initiativeLabel.attributedText = NSAttributedString(string: combatant.initiative.map({ "\($0)" }) ?? "—", attributes: attributes)
         }
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        leadingConstraint.constant = editing ? 0.0 : (separatorInset.left - layoutMargins.left)
     }
 
 }
