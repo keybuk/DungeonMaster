@@ -15,13 +15,10 @@ class GameEncountersViewController: UITableViewController, NSFetchedResultsContr
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     override func setEditing(editing: Bool, animated: Bool) {
         // Clear the cache of unused encounters.
         unusedEncounters = nil

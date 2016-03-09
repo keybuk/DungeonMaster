@@ -20,11 +20,6 @@ class EncounterCombatantsViewController: UITableViewController, NSFetchedResults
         clearsSelectionOnViewWillAppear = false
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     override func setEditing(editing: Bool, animated: Bool) {
         let oldEditing = self.editing, tableViewLoaded = self.tableViewLoaded
         super.setEditing(editing, animated: animated)

@@ -53,11 +53,6 @@ class PlayerViewController: UITableViewController, ManagedObjectObserverDelegate
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     /// Validate whether the player can be saved in its current state.
     ///
     /// Updates the "Done" button item to be enabled or disabled appropriately.

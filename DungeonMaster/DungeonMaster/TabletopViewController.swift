@@ -22,6 +22,8 @@ class TabletopViewController: UIViewController, TabletopViewDataSource, Tabletop
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -30,11 +32,6 @@ class TabletopViewController: UIViewController, TabletopViewDataSource, Tabletop
         navigationItem.title = encounter.title
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     // MARK: Fetched results controller
     
     lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] in

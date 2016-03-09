@@ -76,11 +76,6 @@ class EncounterViewController: UIViewController, ManagedObjectObserverDelegate {
         }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func configureView() {
         navigationItem.title = encounter.title
         

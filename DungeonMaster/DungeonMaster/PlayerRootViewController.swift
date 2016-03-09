@@ -31,11 +31,6 @@ class PlayerRootViewController: UIViewController, ManagedObjectObserverDelegate 
         configureView()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func configureView() {
         navigationItem.title = player.name
         if editing {

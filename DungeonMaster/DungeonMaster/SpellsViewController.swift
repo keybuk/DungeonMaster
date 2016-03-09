@@ -55,11 +55,6 @@ class SpellsViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.flashScrollIndicators()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     // MARK: Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

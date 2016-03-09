@@ -38,11 +38,6 @@ class AdventureViewController: UIViewController, ManagedObjectObserverDelegate, 
         observer = ManagedObjectObserver(object: adventure, delegate: self)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func configureView() {
         navigationItem.title = adventure.name
         

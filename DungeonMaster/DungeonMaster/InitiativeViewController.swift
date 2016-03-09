@@ -37,11 +37,6 @@ class InitiativeViewController: UITableViewController, NSFetchedResultsControlle
         setEditing(true, animated: false)
         validateEncounter()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func validateEncounter() {
         for case let combatant as Combatant in encounter.combatants {

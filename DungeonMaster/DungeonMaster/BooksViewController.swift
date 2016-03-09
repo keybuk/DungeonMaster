@@ -15,11 +15,8 @@ class BooksViewController: UITableViewController, NSFetchedResultsControllerDele
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        // Do any additional setup after loading the view.
     }
 
     // MARK: Fetched results controller

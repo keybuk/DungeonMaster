@@ -39,11 +39,6 @@ class ConditionRulesViewController: UIViewController {
         configureView()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func configureView() {
         guard let textView = textView else { return }
         guard let condition = condition else { return }
