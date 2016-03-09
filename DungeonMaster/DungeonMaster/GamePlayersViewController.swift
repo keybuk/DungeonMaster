@@ -87,26 +87,20 @@ class GamePlayersViewController: UITableViewController, NSFetchedResultsControll
 
     // MARK: Fetched results controller
     
-    var fetchedResultsController: NSFetchedResultsController {
-        if let fetchedResultsController = _fetchedResultsController {
-            return fetchedResultsController
-        }
-        
+    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] in
         let fetchRequest = NSFetchRequest(entity: Model.PlayedGame)
-        fetchRequest.predicate = NSPredicate(format: "game == %@", game)
+        fetchRequest.predicate = NSPredicate(format: "game == %@", self.game)
         
         let nameSortDescriptor = NSSortDescriptor(key: "player.name", ascending: true)
         fetchRequest.sortDescriptors = [nameSortDescriptor]
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
-        _fetchedResultsController = fetchedResultsController
         
-        try! _fetchedResultsController!.performFetch()
+        try! fetchedResultsController.performFetch()
         
-        return _fetchedResultsController!
-    }
-    var _fetchedResultsController: NSFetchedResultsController?
+        return fetchedResultsController
+    }()
     
     /// The set of Players that are not participating in this game.
     ///

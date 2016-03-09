@@ -46,26 +46,20 @@ class AdventureEncountersViewController: UITableViewController, NSFetchedResults
     
     // MARK: Fetched results controller
     
-    var fetchedResultsController: NSFetchedResultsController {
-        if let fetchedResultsController = _fetchedResultsController {
-            return fetchedResultsController
-        }
-        
+    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] in
         let fetchRequest = NSFetchRequest(entity: Model.Encounter)
-        fetchRequest.predicate = NSPredicate(format: "adventure == %@ AND games.@count == 0", adventure)
+        fetchRequest.predicate = NSPredicate(format: "adventure == %@ AND games.@count == 0", self.adventure)
         
         let lastModifiedSortDescriptor = NSSortDescriptor(key: "lastModified", ascending: false)
         fetchRequest.sortDescriptors = [lastModifiedSortDescriptor]
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
-        _fetchedResultsController = fetchedResultsController
         
-        try! _fetchedResultsController!.performFetch()
+        try! fetchedResultsController.performFetch()
         
-        return _fetchedResultsController!
-    }
-    var _fetchedResultsController: NSFetchedResultsController?
+        return fetchedResultsController
+    }()
 
     // MARK: UITableViewDataSource
     

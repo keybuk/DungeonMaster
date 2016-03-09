@@ -20,7 +20,7 @@ class NetworkController: NSObject, NetworkPeerDelegate, NetworkConnectionDelegat
     /// Controller that monitors the set of encounters.
     ///
     /// This yields a set of Encounter objects that have been started (the round is greater than 0), and are members of games on today's date, reverse sorted by when they were last modified.
-    lazy var encounterResultsController: NSFetchedResultsController = {
+    lazy var encounterResultsController: NSFetchedResultsController = { [unowned self] in
         let calendar = NSCalendar.currentCalendar()
         let today = calendar.startOfDayForDate(NSDate())
         let tomorrow = calendar.dateByAddingUnit(.Day, value: 1, toDate: today, options: [])!

@@ -73,26 +73,20 @@ class GameEncountersViewController: UITableViewController, NSFetchedResultsContr
 
     // MARK: Fetched results controller
     
-    var fetchedResultsController: NSFetchedResultsController {
-        if let fetchedResultsController = _fetchedResultsController {
-            return fetchedResultsController
-        }
-        
+    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] in
         let fetchRequest = NSFetchRequest(entity: Model.Encounter)
-        fetchRequest.predicate = NSPredicate(format: "ANY games == %@", game)
+        fetchRequest.predicate = NSPredicate(format: "ANY games == %@", self.game)
         
         let lastModifiedSortDescriptor = NSSortDescriptor(key: "lastModified", ascending: false)
         fetchRequest.sortDescriptors = [lastModifiedSortDescriptor]
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
-        _fetchedResultsController = fetchedResultsController
         
-        try! _fetchedResultsController!.performFetch()
+        try! fetchedResultsController.performFetch()
         
-        return _fetchedResultsController!
-    }
-    var _fetchedResultsController: NSFetchedResultsController?
+        return fetchedResultsController
+    }()
     
     /// The set of Encounters attached to the Adventure that have not yet been attached to a game.
     var unusedEncounters: [Encounter] {

@@ -112,13 +112,9 @@ class InitiativeViewController: UITableViewController, NSFetchedResultsControlle
     
     // MARK: Fetched results controller
     
-    var fetchedResultsController: NSFetchedResultsController {
-        if let fetchedResultsController = _fetchedResultsController {
-            return fetchedResultsController
-        }
-        
+    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] in
         let fetchRequest = NSFetchRequest(entity: Model.Combatant)
-        fetchRequest.predicate = NSPredicate(format: "encounter == %@", encounter)
+        fetchRequest.predicate = NSPredicate(format: "encounter == %@", self.encounter)
         
         let initiativeSortDescriptor = NSSortDescriptor(key: "rawInitiative", ascending: false)
         let initiativeOrderSortDescriptor = NSSortDescriptor(key: "rawInitiativeOrder", ascending: true)
@@ -128,13 +124,11 @@ class InitiativeViewController: UITableViewController, NSFetchedResultsControlle
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
-        _fetchedResultsController = fetchedResultsController
         
-        try! _fetchedResultsController!.performFetch()
+        try! fetchedResultsController.performFetch()
         
-        return _fetchedResultsController!
-    }
-    var _fetchedResultsController: NSFetchedResultsController?
+        return fetchedResultsController
+    }()
     
     /// The set of Players that are not participating in this encounter.
     ///

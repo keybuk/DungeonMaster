@@ -24,11 +24,7 @@ class BooksViewController: UITableViewController, NSFetchedResultsControllerDele
 
     // MARK: Fetched results controller
     
-    var fetchedResultsController: NSFetchedResultsController {
-        if let fetchedResultsController = _fetchedResultsController {
-            return fetchedResultsController
-        }
-        
+    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] in
         let fetchRequest = NSFetchRequest(entity: Model.Book)
         
         let typeSortDescriptor = NSSortDescriptor(key: "rawType", ascending: true)
@@ -39,13 +35,11 @@ class BooksViewController: UITableViewController, NSFetchedResultsControllerDele
         // nil for section name key path means "no sections".
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: "rawType", cacheName: nil)
         fetchedResultsController.delegate = self
-        _fetchedResultsController = fetchedResultsController
         
-        try! _fetchedResultsController!.performFetch()
+        try! fetchedResultsController.performFetch()
         
-        return _fetchedResultsController!
-    }
-    var _fetchedResultsController: NSFetchedResultsController?
+        return fetchedResultsController
+    }()
 
     // MARK: Cell layout
 

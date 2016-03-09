@@ -37,15 +37,11 @@ class TabletopViewController: UIViewController, TabletopViewDataSource, Tabletop
     
     // MARK: Fetched results controller
     
-    var fetchedResultsController: NSFetchedResultsController {
-        if let fetchedResultsController = _fetchedResultsController {
-            return fetchedResultsController
-        }
-        
+    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] in
         // We use a predicate on the Combatant table, matching against the encounter, rather than just using "encounter.combatants" so that we can be a delegate and get change notifications.
         let fetchRequest = NSFetchRequest(entity: Model.Combatant)
         
-        let predicate = NSPredicate(format: "encounter == %@", encounter)
+        let predicate = NSPredicate(format: "encounter == %@", self.encounter)
         fetchRequest.predicate = predicate
         
         let sortDescriptor = NSSortDescriptor(key: "dateCreated", ascending: true)
@@ -53,13 +49,11 @@ class TabletopViewController: UIViewController, TabletopViewDataSource, Tabletop
 
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
-        _fetchedResultsController = fetchedResultsController
         
-        try! _fetchedResultsController!.performFetch()
+        try! fetchedResultsController.performFetch()
 
-        return _fetchedResultsController!
-    }
-    var _fetchedResultsController: NSFetchedResultsController?
+        return fetchedResultsController
+    }()
 
     // MARK: TabletopViewDataSource
     

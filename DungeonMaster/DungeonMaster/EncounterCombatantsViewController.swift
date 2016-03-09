@@ -85,13 +85,9 @@ class EncounterCombatantsViewController: UITableViewController, NSFetchedResults
 
     // MARK: Fetched results controller
     
-    var fetchedResultsController: NSFetchedResultsController {
-        if let fetchedResultsController = _fetchedResultsController {
-            return fetchedResultsController
-        }
-        
+    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] in
         let fetchRequest = NSFetchRequest(entity: Model.Combatant)
-        fetchRequest.predicate = NSPredicate(format: "encounter == %@", encounter)
+        fetchRequest.predicate = NSPredicate(format: "encounter == %@", self.encounter)
         
         let initiativeSortDescriptor = NSSortDescriptor(key: "rawInitiative", ascending: false)
         let initiativeOrderSortDescriptor = NSSortDescriptor(key: "rawInitiativeOrder", ascending: true)
@@ -101,13 +97,11 @@ class EncounterCombatantsViewController: UITableViewController, NSFetchedResults
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
-        _fetchedResultsController = fetchedResultsController
+    
+        try! fetchedResultsController.performFetch()
         
-        try! _fetchedResultsController!.performFetch()
-        
-        return _fetchedResultsController!
-    }
-    var _fetchedResultsController: NSFetchedResultsController?
+        return fetchedResultsController
+    }()
 
     // MARK: UITableViewDataSource
 
