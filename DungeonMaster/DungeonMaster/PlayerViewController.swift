@@ -9,7 +9,7 @@
 import CoreData
 import UIKit
 
-class PlayerViewController: UITableViewController {
+class PlayerViewController: UITableViewController, ManagedObjectObserverDelegate {
     
     /// Player to be edited.
     var player: Player!
@@ -19,21 +19,12 @@ class PlayerViewController: UITableViewController {
 
     @IBOutlet var cancelButtonItem: UIBarButtonItem!
 
-    var notificationObserver: NSObjectProtocol?
+    var observer: NSObjectProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.rightBarButtonItem = editButtonItem()
-
-        // Monitor changes in the object to enable/disable the "Done" button based on its validity.
-        notificationObserver = NSNotificationCenter.defaultCenter().addObserverForName(NSManagedObjectContextObjectsDidChangeNotification, object: managedObjectContext, queue: nil) { notification in
-            if let updatedObjects = notification.userInfo?[NSUpdatedObjectsKey] as? NSSet {
-                if updatedObjects.containsObject(self.player) {
-                    self.validatePlayer()
-                }
-            }
-        }
         
         // When called with a new player, immediately enter editing mode.
         if player.inserted {
@@ -44,6 +35,8 @@ class PlayerViewController: UITableViewController {
         if let _ = presentingViewController {
             navigationItem.leftBarButtonItem = cancelButtonItem
         }
+    
+        observer = ManagedObjectObserver(object: player, delegate: self)
     }
     
     var nameBecomesFirstResponder = true
@@ -63,12 +56,6 @@ class PlayerViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    deinit {
-        if let notificationObserver = notificationObserver {
-            NSNotificationCenter.defaultCenter().removeObserver(notificationObserver)
-        }
     }
     
     /// Validate whether the player can be saved in its current state.
@@ -304,6 +291,12 @@ class PlayerViewController: UITableViewController {
         }
 
         completionBlock?(cancelled: true, player: nil)
+    }
+    
+    // MARK: ManagedObjectObserverDelegate
+    
+    func managedObject(object: Player, changedForType type: ManagedObjectChangeType) {
+        validatePlayer()
     }
     
     // MARK: UITableViewDataSource

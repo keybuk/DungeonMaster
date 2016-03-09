@@ -9,12 +9,12 @@
 import CoreData
 import UIKit
 
-class CombatantViewController: UITableViewController, UITextViewDelegate {
+class CombatantViewController: UITableViewController, ManagedObjectObserverDelegate, UITextViewDelegate {
 
     /// The encounter combatant being shown and manipulated.
     var combatant: Combatant!
     
-    var notificationObserver: NSObjectProtocol?
+    var observer: NSObjectProtocol?
     
     var ignoreNextUpdate = false
 
@@ -23,13 +23,7 @@ class CombatantViewController: UITableViewController, UITextViewDelegate {
         
         navigationItem.rightBarButtonItem = self.editButtonItem()
 
-        notificationObserver = NSNotificationCenter.defaultCenter().addObserverForName(NSManagedObjectContextObjectsDidChangeNotification, object: managedObjectContext, queue: nil) { notification in
-            if let updatedObjects = notification.userInfo?[NSUpdatedObjectsKey] as? NSSet {
-                if updatedObjects.containsObject(self.combatant) {
-                    self.combatantUpdated()
-                }
-            }
-        }
+        observer = ManagedObjectObserver(object: combatant, delegate: self)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -47,21 +41,6 @@ class CombatantViewController: UITableViewController, UITextViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-
-    deinit {
-        if let notificationObserver = notificationObserver {
-            NSNotificationCenter.defaultCenter().removeObserver(notificationObserver)
-        }
-    }
-    
-    // MARK: Data handling.
-    
-    func combatantUpdated() {
-        if !ignoreNextUpdate {
-            tableView.reloadData()
-        }
-        ignoreNextUpdate = false
     }
 
     // MARK: Navigation
@@ -120,6 +99,15 @@ class CombatantViewController: UITableViewController, UITextViewDelegate {
         }
     }
     
+    // MARK: ManagedObjectObserverDelegate
+    
+    func managedObject(object: Combatant, changedForType type: ManagedObjectChangeType) {
+        if !ignoreNextUpdate {
+            tableView.reloadData()
+        }
+        ignoreNextUpdate = false
+    }
+
     // MARK: UITableViewDataSource
     
     // MARK: Sections
