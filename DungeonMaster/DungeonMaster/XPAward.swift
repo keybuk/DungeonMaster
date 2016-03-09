@@ -23,6 +23,17 @@ final class XPAward: LogEntry {
     }
     @NSManaged private var rawXP: NSNumber
     
+    /// String-formatted version of `xp`.
+    ///
+    /// Formatted as "12,345 XP".
+    var xpString: String {
+        let xpFormatter = NSNumberFormatter()
+        xpFormatter.numberStyle = .DecimalStyle
+        
+        let xpString = xpFormatter.stringFromNumber(xp)!
+        return "\(xpString) XP"
+    }
+
     /// Reason that the XP was awarded.
     @NSManaged var reason: String
     

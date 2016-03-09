@@ -482,12 +482,7 @@ class XPAwardCell: UITableViewCell {
     
     var xpAward: XPAward! {
         didSet {
-            let xpFormatter = NSNumberFormatter()
-            xpFormatter.numberStyle = .DecimalStyle
-            
-            let xpString = xpFormatter.stringFromNumber(xpAward.xp)!
-            xpLabel.text = "\(xpString) XP"
-            
+            xpLabel.text = xpAward.xpString
             reasonLabel.text = xpAward.reason
         }
     }
