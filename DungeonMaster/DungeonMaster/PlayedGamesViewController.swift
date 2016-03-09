@@ -457,6 +457,8 @@ class PlayedGamesViewController: UITableViewController, NSFetchedResultsControll
     
 }
 
+// MARK: -
+
 class GameHeaderView: UITableViewHeaderFooterView {
     
     @IBOutlet var numberLabel: UILabel!

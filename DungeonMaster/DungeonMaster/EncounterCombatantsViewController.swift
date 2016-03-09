@@ -207,6 +207,8 @@ class EncounterCombatantsViewController: UITableViewController, NSFetchedResults
 
 }
 
+// MARK: -
+
 class EncounterCombatantCell: UITableViewCell {
     
     @IBOutlet var turnIndicator: UIView!

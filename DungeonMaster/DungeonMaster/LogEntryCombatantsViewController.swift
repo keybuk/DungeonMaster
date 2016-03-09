@@ -155,6 +155,8 @@ class LogEntryCombatantsViewController: UITableViewController, NSFetchedResultsC
 
 }
 
+// MARK: -
+
 class LogEntryCombatantCell: UITableViewCell {
     
     @IBOutlet var nameLabel: UILabel!

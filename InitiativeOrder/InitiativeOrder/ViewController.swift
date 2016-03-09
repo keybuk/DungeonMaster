@@ -217,6 +217,8 @@ class ViewController: UIViewController, NetworkPeerDelegate, NetworkConnectionDe
 
 }
 
+// MARK: -
+
 class CombatantCell: UITableViewCell {
     
     @IBOutlet var nameLabel: UILabel!

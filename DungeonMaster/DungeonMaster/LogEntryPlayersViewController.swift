@@ -168,6 +168,8 @@ class LogEntryPlayersViewController: UITableViewController, NSFetchedResultsCont
 
 }
 
+// MARK: -
+
 class LogEntryPlayerCell: UITableViewCell {
     
     @IBOutlet var nameLabel: UILabel!

@@ -314,6 +314,8 @@ class InitiativeViewController: UITableViewController, NSFetchedResultsControlle
 
 }
 
+// MARK: -
+
 class InitiativeCombatantCell: UITableViewCell, UITextFieldDelegate {
     
     @IBOutlet var nameLabel: UILabel!
