@@ -2,12 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "absolute:/Users/scott/Developer/DungeonMaster/DungeonMaster.xcodeproj">
+      location = "group:DungeonMaster/DungeonMaster.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:InitiativeOrder.xcodeproj">
+      location = "group:InitiativeOrder/InitiativeOrder.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:DungeonKit.xcodeproj">
+      location = "group:DungeonKit/DungeonKit.xcodeproj">
    </FileRef>
 </Workspace>
