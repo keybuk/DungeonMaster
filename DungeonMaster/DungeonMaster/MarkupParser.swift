@@ -234,7 +234,7 @@ class MarkupParser {
             }
             
             // Figure out the alignment, and revert to .Left if .Center wouldn't apply to any one row.
-            var alignment = tableRows == 0 ? .Center : alignmentForColumn(column.string)
+            var alignment = tableRows == 0 ? .Center : self.alignment(forColumn: column.string)
             if index < tableAlignments.count {
                 alignment = alignment == tableAlignments[index] ? alignment : .Left
                 tableAlignments[index] = alignment
@@ -255,7 +255,7 @@ class MarkupParser {
         lastBlock = .Table(tableIndex, tableRows + 1, tableWidths, tableAlignments)
     }
     
-    private func alignmentForColumn(column: String) -> NSTextAlignment {
+    private func alignment(forColumn column: String) -> NSTextAlignment {
         for character in column.characters {
             switch character {
             case "0"..."9", "+", "-", "–", "—":
