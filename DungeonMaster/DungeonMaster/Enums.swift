@@ -493,7 +493,7 @@ enum Race: Equatable, Hashable {
     }
     
     /// Returns the string equivalent of the given primary race raw value.
-    static func stringValue(rawRaceValue rawRaceValue: Int) -> String {
+    static func stringValue(forRawRaceValue rawRaceValue: Int) -> String {
         return sharedRules.race[rawRaceValue]
     }
 }

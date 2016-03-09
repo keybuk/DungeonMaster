@@ -29,7 +29,7 @@ class RaceViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return Race.stringValue(rawRaceValue: section)
+        return Race.stringValue(forRawRaceValue: section)
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
