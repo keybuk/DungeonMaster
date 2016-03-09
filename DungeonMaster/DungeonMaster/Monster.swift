@@ -460,7 +460,7 @@ final class Monster: NSManagedObject {
     }
     
     /// Returns the modifier for the given ability.
-    func modifierFor(ability ability: Ability) -> Int {
+    func modifier(forAbility ability: Ability) -> Int {
         let score: Int
         switch ability {
         case .Strength:
@@ -481,35 +481,35 @@ final class Monster: NSManagedObject {
     }
 
     /// Returns the modifier for the given saving throw.
-    func modifierFor(savingThrow savingThrow: Ability) -> Int {
+    func modifier(forSavingThrow savingThrow: Ability) -> Int {
         for case let monsterSavingThrow as MonsterSavingThrow in savingThrows {
             if monsterSavingThrow.savingThrow == savingThrow {
                 return monsterSavingThrow.modifier
             }
         }
         
-        return modifierFor(ability: savingThrow)
+        return modifier(forAbility: savingThrow)
     }
     
     /// Returns the modifier for the given skill.
-    func modifierFor(skill skill: Skill) -> Int {
+    func modifier(forSkill skill: Skill) -> Int {
         for case let monsterSkill as MonsterSkill in skills {
             if monsterSkill.skill == skill {
                 return monsterSkill.modifier
             }
         }
         
-        return modifierFor(ability: skill.ability)
+        return modifier(forAbility: skill.ability)
     }
 
     /// Dice to roll to generate initiative for the monster.
     var initiativeDice: DiceCombo {
-        return try! DiceCombo(sides: 20, modifier: modifierFor(ability: .Dexterity))
+        return try! DiceCombo(sides: 20, modifier: modifier(forAbility: .Dexterity))
     }
     
     /// Passive perception score.
     var passivePerception: Int {
-        return 10 + modifierFor(skill: .Wisdom(.Perception))
+        return 10 + modifier(forSkill: .Wisdom(.Perception))
     }
     
 }

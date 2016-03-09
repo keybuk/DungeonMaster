@@ -252,12 +252,12 @@ class MonsterViewController: UIViewController {
         }
         text.appendAttributedString(NSAttributedString(string: "\n", attributes: statsValueStyle))
 
-        let str = String(format: "%d (%+d)", monster.strengthScore, monster.modifierFor(ability: .Strength))
-        let dex = String(format: "%d (%+d)", monster.dexterityScore, monster.modifierFor(ability: .Dexterity))
-        let con = String(format: "%d (%+d)", monster.constitutionScore, monster.modifierFor(ability: .Constitution))
-        let int = String(format: "%d (%+d)", monster.intelligenceScore, monster.modifierFor(ability: .Intelligence))
-        let wis = String(format: "%d (%+d)", monster.wisdomScore, monster.modifierFor(ability: .Wisdom))
-        let cha = String(format: "%d (%+d)", monster.charismaScore, monster.modifierFor(ability: .Charisma))
+        let str = String(format: "%d (%+d)", monster.strengthScore, monster.modifier(forAbility: .Strength))
+        let dex = String(format: "%d (%+d)", monster.dexterityScore, monster.modifier(forAbility: .Dexterity))
+        let con = String(format: "%d (%+d)", monster.constitutionScore, monster.modifier(forAbility: .Constitution))
+        let int = String(format: "%d (%+d)", monster.intelligenceScore, monster.modifier(forAbility: .Intelligence))
+        let wis = String(format: "%d (%+d)", monster.wisdomScore, monster.modifier(forAbility: .Wisdom))
+        let cha = String(format: "%d (%+d)", monster.charismaScore, monster.modifier(forAbility: .Charisma))
         
         text.appendAttributedString(NSAttributedString(string: "\tSTR\tDEX\tCON\tINT\tWIS\tCHA\n", attributes: abilityScoresLabelStyle))
         text.appendAttributedString(NSAttributedString(string: "\t\(str)\t\(dex)\t\(con)\t\(int)\t\(wis)\t\(cha)\n", attributes: abilityScoresValueStyle))
