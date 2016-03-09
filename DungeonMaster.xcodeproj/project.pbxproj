@@ -265,7 +265,7 @@
 		D2C8F0061C3DAD6E003AD18F /* Adventure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Adventure.swift; sourceTree = "<group>"; };
 		D2C8F0081C3DB18E003AD18F /* AdventureImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdventureImage.swift; sourceTree = "<group>"; };
 		D2C8F00C1C473126003AD18F /* AdventureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdventureViewController.swift; sourceTree = "<group>"; };
-		D2D8F4451C7578EC00C54BB7 /* DungeonKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = DungeonKit.framework; path = "/Users/scott/Library/Developer/Xcode/DerivedData/DungeonMaster-aryikklnhzulpzexkhjnqpakqtos/Build/Products/Debug-iphoneos/DungeonKit.framework"; sourceTree = "<absolute>"; };
+		D2D8F4451C7578EC00C54BB7 /* DungeonKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DungeonKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2D8F4751C7B813500C54BB7 /* XPAward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XPAward.swift; sourceTree = "<group>"; };
 		D2D8F4771C7BD9FE00C54BB7 /* PlayedGamesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayedGamesViewController.swift; sourceTree = "<group>"; };
 		D2D8F4791C7BDADB00C54BB7 /* PlayerRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerRootViewController.swift; sourceTree = "<group>"; };

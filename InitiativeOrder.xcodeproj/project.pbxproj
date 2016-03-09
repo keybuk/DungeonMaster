@@ -50,7 +50,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D28061881C75782800041CC4 /* DungeonKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = DungeonKit.framework; path = "/Users/scott/Library/Developer/Xcode/DerivedData/DungeonMaster-aryikklnhzulpzexkhjnqpakqtos/Build/Products/Debug-iphoneos/DungeonKit.framework"; sourceTree = "<absolute>"; };
+		D28061881C75782800041CC4 /* DungeonKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DungeonKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2E0FD7B1C67D60C00498436 /* InitiativeOrder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InitiativeOrder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2E0FD7E1C67D60C00498436 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2E0FD801C67D60C00498436 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
