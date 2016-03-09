@@ -286,7 +286,7 @@ final class Encounter: NSManagedObject {
         }
     }
     
-    /// Adds missing players from associated games to the encounter.
+    /// Adds missing players from `game` to the encounter.
     func addPlayers(fromGame game: Game) {
         for case let playedGame as PlayedGame in game.playedGames {
             let _ = Combatant(encounter: self, player: playedGame.player, inManagedObjectContext: managedObjectContext!)

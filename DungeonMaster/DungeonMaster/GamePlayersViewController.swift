@@ -41,8 +41,7 @@ class GamePlayersViewController: UITableViewController, NSFetchedResultsControll
         if oldEditing && !editing {
             // Players added directly to the Game should also be added to the parent adventure, so that they're added to the next adventure.
             // We don't do the inverse, because "removing a player from the adventure" just means they won't take part anymore. We leave their old game records.
-            let adventurePlayers = game.adventure.mutableSetValueForKey("players")
-            adventurePlayers.addObjectsFromArray(game.playedGames.map({ ($0 as! PlayedGame).player }))
+            game.adventure.addPlayers(fromGame: game)
             
             game.adventure.lastModified = NSDate()
             try! managedObjectContext.save()

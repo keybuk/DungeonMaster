@@ -66,4 +66,10 @@ final class Adventure: NSManagedObject {
         }
     }
 
+    /// Adds missing players from `game` to the adventure.
+    func addPlayers(fromGame game: Game) {
+        let adventurePlayers = mutableSetValueForKey("players")
+        adventurePlayers.addObjectsFromArray(game.playedGames.map({ ($0 as! PlayedGame).player }))
+    }
+    
 }
