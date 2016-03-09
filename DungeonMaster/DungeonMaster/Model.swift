@@ -52,7 +52,7 @@ enum Model: String {
 
     static let name = "DungeonMaster"
     
-    static var URL: NSURL {
+    static var url: NSURL {
         get {
             return NSBundle.mainBundle().URLForResource(Model.name, withExtension: "momd")!
         }
@@ -67,7 +67,7 @@ enum Model: String {
     
     static var managedObjectModel: NSManagedObjectModel {
         get {
-            return NSManagedObjectModel(contentsOfURL: Model.URL)!
+            return NSManagedObjectModel(contentsOfURL: Model.url)!
         }
     }
 
