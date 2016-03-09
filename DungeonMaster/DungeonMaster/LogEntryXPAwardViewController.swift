@@ -66,7 +66,7 @@ class LogEntryXPAwardViewController: UITableViewController, UITextFieldDelegate,
             xpAward.xp = xp
             xpAward.reason = reasonTextView.text
             
-            playedGame.player.XP += xp
+            playedGame.player.xp += xp
         }
         
         try! managedObjectContext.save()

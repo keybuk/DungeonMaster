@@ -679,15 +679,10 @@ class PlayerXPCell: UITableViewCell, UITextFieldDelegate {
     
     var player: Player! {
         didSet {
-            let xpFormatter = NSNumberFormatter()
-            xpFormatter.numberStyle = .DecimalStyle
-            
-            let xpString = xpFormatter.stringFromNumber(player.XP)!
-            xpLabel?.text = xpString
-
+            xpLabel?.text = player.xpString
             levelLabel?.text = "\(player.level)"
-            
-            textField?.text = "\(player.XP)"
+
+            textField?.text = "\(player.xp)"
         }
     }
     
@@ -707,20 +702,20 @@ class PlayerXPCell: UITableViewCell, UITextFieldDelegate {
     
     @IBAction func textFieldEditingChanged(sender: UITextField) {
         if let text = sender.text where text != "" {
-            player.XP = Int(text)!
+            player.xp = Int(text)!
         } else {
-            player.XP = 0
+            player.xp = 0
         }
     }
     
     @IBAction func textFieldEditingDidEnd(sender: UITextField) {
-        sender.text = "\(player.XP)"
+        sender.text = "\(player.xp)"
     }
     
     // MARK: UITextFieldDelegate
 
     func textFieldShouldClear(textField: UITextField) -> Bool {
-        return player.inserted && player.XP == 0
+        return player.inserted && player.xp == 0
     }
 
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {

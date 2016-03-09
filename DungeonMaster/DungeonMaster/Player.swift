@@ -65,7 +65,7 @@ final class Player: NSManagedObject {
     @NSManaged private var rawAlignment: NSNumber
     
     /// Experience points earned by the character.
-    var XP: Int {
+    var xp: Int {
         get {
             return rawXP.integerValue
         }
@@ -75,11 +75,22 @@ final class Player: NSManagedObject {
     }
     @NSManaged private var rawXP: NSNumber
     
+    /// String-formatted version of `xp`.
+    ///
+    /// Formatted as "12,345 XP".
+    var xpString: String {
+        let xpFormatter = NSNumberFormatter()
+        xpFormatter.numberStyle = .DecimalStyle
+        
+        let xpString = xpFormatter.stringFromNumber(xp)!
+        return "\(xpString) XP"
+    }
+    
     /// Level of the character.
     ///
     /// Based on the character's current XP.
     var level: Int {
-        return sharedRules.levelXP.filter({ $0.1 <= XP }).map({ $0.0 }).maxElement()!
+        return sharedRules.levelXP.filter({ $0.1 <= xp }).map({ $0.0 }).maxElement()!
     }
     
     /// Passive perception score for the character.

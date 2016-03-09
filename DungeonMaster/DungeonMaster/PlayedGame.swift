@@ -39,7 +39,7 @@ final class PlayedGame: NSManagedObject {
         let gameIndex = playedGames.indexOf(self)!
         
         // XP is calculated excluding the XP from this game, and any future game.
-        var xp = player.XP
+        var xp = player.xp
         for playedGame in playedGames.suffixFrom(gameIndex) {
             for case let xpAward as XPAward in playedGame.logEntries {
                 xp -= xpAward.xp

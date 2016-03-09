@@ -287,12 +287,7 @@ class AdventurePlayerCell: UITableViewCell {
             raceLabel.text = player.race.stringValue
             classLabel.text = "\(player.characterClass.stringValue) \(player.level)"
             backgroundLabel.text = player.background.stringValue
-            
-            let xpFormatter = NSNumberFormatter()
-            xpFormatter.numberStyle = .DecimalStyle
-            
-            let xpString = xpFormatter.stringFromNumber(player.XP)!
-            xpLabel.text = "\(xpString) XP"
+            xpLabel.text = player.xpString
         }
     }
     
