@@ -215,7 +215,7 @@ class PlayerViewController: UITableViewController, ManagedObjectObserverDelegate
     @IBAction func unwindFromSavingThrow(segue: UIStoryboardSegue) {
         let viewController = segue.sourceViewController as! SavingThrowViewController
         
-        var newSavingThrows = [PlayerSavingThrow]()
+        var newSavingThrows: [PlayerSavingThrow] = []
         for selectedSavingThrow in viewController.selectedSavingThrows {
             let savingThrow = PlayerSavingThrow(player: player, savingThrow: selectedSavingThrow, inManagedObjectContext: managedObjectContext)
             newSavingThrows.append(savingThrow)
@@ -230,7 +230,7 @@ class PlayerViewController: UITableViewController, ManagedObjectObserverDelegate
     @IBAction func unwindFromSkill(segue: UIStoryboardSegue) {
         let viewController = segue.sourceViewController as! SkillViewController
         
-        var newSkills = [PlayerSkill]()
+        var newSkills: [PlayerSkill] = []
         for selectedSkill in viewController.selectedSkills {
             let skill = PlayerSkill(player: player, skill: selectedSkill, inManagedObjectContext: managedObjectContext)
             newSkills.append(skill)

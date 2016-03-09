@@ -232,7 +232,7 @@ final class Encounter: NSManagedObject {
         }
         
         // Now go back and roll initiative where we need to, making sure we use the same new roll for all monsters of the same type too.
-        var initiativeDice = [Monster: DiceCombo]()
+        var initiativeDice: [Monster: DiceCombo] = [:]
         for case let combatant as Combatant in combatants {
             guard combatant.role != .Player else { continue }
             guard let monster = combatant.monster else { continue }

@@ -91,7 +91,7 @@ public class NetworkConnection: NSObject, NSStreamDelegate {
     func readIncomingMessages() {
         // Drain the input buffer.
         while inputStream.hasBytesAvailable {
-            var buffer = [UInt8](count: 1024, repeatedValue: 0)
+            var buffer: [UInt8] = Array(count: 1024, repeatedValue: 0)
             let bytesRead = inputStream.read(&buffer, maxLength: buffer.count)
 
             inputBuffer.appendContentsOf(buffer.prefixUpTo(bytesRead))
@@ -104,7 +104,7 @@ public class NetworkConnection: NSObject, NSStreamDelegate {
             
             // Complete message in the buffer.
             inputBuffer.removeFirst(sizeof(Int))
-            let bytes = [UInt8](inputBuffer.prefixUpTo(length))
+            let bytes: [UInt8] = Array(inputBuffer.prefixUpTo(length))
             guard let message = NetworkMessage(bytes: bytes) else {
                 print("NET: Received unparseable message, closing connection.")
                 close()

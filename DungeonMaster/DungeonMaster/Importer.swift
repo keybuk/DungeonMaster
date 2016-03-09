@@ -34,7 +34,7 @@ func importIfNeeded() {
     }
     
     // Combatants can reference monsters, which may be about to be deleted. Collect the names of these monsters so we can find them again later.
-    var combatants = [String:[Combatant]]()
+    var combatants: [String:[Combatant]] = [:]
     let combatantFetchRequest = NSFetchRequest(entity: Model.Combatant)
     for combatant in try! managedObjectContext.executeFetchRequest(combatantFetchRequest) as! [Combatant] {
         guard let count = combatant.monster?.sources.count where count > 0 else { continue }
@@ -47,7 +47,7 @@ func importIfNeeded() {
     }
     
     // Delete all books. The delete will cascade and remove all information sourced from the books.
-    var adventures = [String:[Adventure]]()
+    var adventures: [String:[Adventure]] = [:]
     let bookFetchRequest = NSFetchRequest(entity: Model.Book)
     for book in try! managedObjectContext.executeFetchRequest(bookFetchRequest) as! [Book] {
         // Save the set of adventures that this book refers to, so we can reconnect them again later.
@@ -63,20 +63,20 @@ func importIfNeeded() {
     }
     
     // Collect the set of tags and languages so we can re-use them on the next import.
-    var tags = [String:Tag]()
+    var tags: [String:Tag] = [:]
     let tagFetchRequest = NSFetchRequest(entity: Model.Tag)
     for tag in try! managedObjectContext.executeFetchRequest(tagFetchRequest) as! [Tag] {
         tags[tag.name] = tag
     }
     
-    var languages = [String:Language]()
+    var languages: [String:Language] = [:]
     let languageFetchRequest = NSFetchRequest(entity: Model.Language)
     for language in try! managedObjectContext.executeFetchRequest(languageFetchRequest) as! [Language] {
         languages[language.name] = language
     }
     
     // Import books.
-    var books = [Book]()
+    var books: [Book] = []
     let bookDatas = data["books"] as! [NSDictionary]
     for bookData in bookDatas {
         let name = bookData["name"] as! String
@@ -128,7 +128,7 @@ func importIfNeeded() {
             let _ = MonsterEnvironment(monster: monster, environment: environment, inManagedObjectContext: managedObjectContext)
         }
         
-        var monsterTags = [Tag]()
+        var monsterTags: [Tag] = []
         let tagNames = monsterData["tags"] as! [String]
         for tagName in tagNames {
             if let tag = tags[tagName] {
@@ -203,7 +203,7 @@ func importIfNeeded() {
             conditionImmunity.setValuesForKeysWithDictionary(conditionImmunityData)
         }
 
-        var monsterLanguages = [Language]()
+        var monsterLanguages: [Language] = []
         let languageSpokenNames = monsterData["languagesSpoken"] as! [String]
         for languageName in languageSpokenNames {
             if let language = languages[languageName] {

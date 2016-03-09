@@ -401,7 +401,7 @@ class MonsterViewController: UIViewController {
         }
         text.appendAttributedString(NSAttributedString(string: "passive Perception \(monster.passivePerception)\n", attributes: statsValueStyle))
 
-        var languageStrings = [String]()
+        var languageStrings: [String] = []
         text.appendAttributedString(NSAttributedString(string: "Languages ", attributes: statsLabelStyle))
         
         if monster.canSpeakAllLanguages {

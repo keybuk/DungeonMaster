@@ -90,7 +90,7 @@ struct Rules {
 
     /// Dictionary mapping level to XP threshold for obtaining that level.
     var levelXP: [Int: Int] {
-        var result = [Int: Int]()
+        var result: [Int: Int] = [:]
         for (level, xp) in data["levelXP"]! as! [String: NSNumber] {
             result[Int(level)!] = xp.integerValue
         }
@@ -99,7 +99,7 @@ struct Rules {
     
     /// Dictionary mapping level for encounter difficulty thresholds.
     var levelXPThreshold: [Int: [Int]] {
-        var result = [Int: [Int]]()
+        var result: [Int: [Int]] = [:]
         for (level, thresholds) in data["levelXPThreshold"]! as! [String: [NSNumber]] {
             
             result[Int(level)!] = thresholds.map({ $0.integerValue })
@@ -169,7 +169,7 @@ struct Rules {
     
     /// Dictionary mapping challenge rating to XP earned for defeating a monster of that rating.
     var challengeXP: [NSDecimalNumber: Int] {
-        var result = [NSDecimalNumber: Int]()
+        var result: [NSDecimalNumber: Int] = [:]
         for (challenge, xp) in data["challengeXP"]! as! [String: NSNumber] {
             result[NSDecimalNumber(string: challenge)] = xp.integerValue
         }
@@ -178,7 +178,7 @@ struct Rules {
     
     /// Dictionary mapping challenge rating to monster's proficiency bonus in a given ability or skill.
     var challengeProficiencyBonus: [NSDecimalNumber: Int] {
-        var result = [NSDecimalNumber: Int]()
+        var result: [NSDecimalNumber: Int] = [:]
         for (challenge, proficiencyBonus) in data["challengeProficiencyBonus"]! as! [String: NSNumber] {
             result[NSDecimalNumber(string: challenge)] = proficiencyBonus.integerValue
         }
@@ -187,7 +187,7 @@ struct Rules {
 
     /// Reverse-sorted array of tuples mapping number of monsters to XP multiplier for at least that many.
     var monsterXPMultiplier: [(Int, Float)] {
-        var result = [(Int, Float)]()
+        var result: [(Int, Float)] = []
         for (number, multiplier) in data["monsterXPMultiplier"]! as! [String: NSNumber] {
             result.append((Int(number)!, multiplier.floatValue))
         }

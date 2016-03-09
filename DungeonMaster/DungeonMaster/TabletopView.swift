@@ -77,13 +77,13 @@ typealias TabletopLocation = CGPoint
     var boxWidth: CGFloat = 0.0
     
     /// Center locations of each item on the table top in the range -1.0...1.0.
-    var locations = [TabletopLocation]()
+    var locations: [TabletopLocation] = []
     
     /// For each item, whether or not it is played controlled.
-    var playerControlled = [Bool]()
+    var playerControlled: [Bool] = []
     
     /// Associated stats view of each item on the table top.
-    var statsViews = [TabletopStatsView]()
+    var statsViews: [TabletopStatsView] = []
 
     /// Index of item currently involved in user touch.
     var touchingIndex: Int?

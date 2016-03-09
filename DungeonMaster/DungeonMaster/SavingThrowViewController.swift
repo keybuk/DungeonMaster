@@ -10,8 +10,8 @@ import UIKit
 
 class SavingThrowViewController: UITableViewController {
 
-    var existingSavingThrows = [Ability]()
-    var selectedSavingThrows = [Ability]()
+    var existingSavingThrows: [Ability] = []
+    var selectedSavingThrows: [Ability] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()

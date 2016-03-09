@@ -203,7 +203,7 @@ class SpellViewController: UIViewController {
         
         text.appendAttributedString(NSAttributedString(string: "Components: ", attributes: statsLabelAttributes))
         
-        var componentsStrings = [String]()
+        var componentsStrings: [String] = []
         if spell.hasVerbalComponent {
             componentsStrings.append("V")
         }

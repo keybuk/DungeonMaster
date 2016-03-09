@@ -24,8 +24,8 @@ struct PointGenerator: GeneratorType {
     
     typealias Element = CGPoint
 
-    private var boxes = [Box]()
-    private var points = [CGPoint]()
+    private var boxes: [Box] = []
+    private var points:[CGPoint] = []
     private var pointIndex = 0
 
     init(range: ClosedInterval<CGFloat>) {
@@ -40,7 +40,7 @@ struct PointGenerator: GeneratorType {
     }
     
     private func pointsForBox(box: Box, rotate: Int = 0) -> [CGPoint] {
-        var points = [CGPoint]()
+        var points: [CGPoint] = []
         points.append(CGPoint(x: box.width.start, y: box.center.y))
         points.append(CGPoint(x: box.center.x, y: box.height.start))
         points.append(CGPoint(x: box.width.end, y: box.center.y))
@@ -56,7 +56,7 @@ struct PointGenerator: GeneratorType {
     }
     
     private func boxesForBox(box: Box, rotate: Int = 0) -> [Box] {
-        var boxes = [Box]()
+        var boxes: [Box] = []
         boxes.append(Box(width: box.width.start...box.center.x, height: box.height.start...box.center.y))
         boxes.append(Box(width: box.center.x...box.width.end, height: box.height.start...box.center.y))
         boxes.append(Box(width: box.center.x...box.width.end, height: box.center.y...box.height.end))
@@ -71,14 +71,14 @@ struct PointGenerator: GeneratorType {
     
     private mutating func splitBoxes() {
         // Split the current set of boxes, rotating each resulting set, and collate back into a single set.
-        var allBoxes = [[Box]]()
+        var allBoxes: [[Box]] = []
         for (index, box) in boxes.enumerate() {
             allBoxes.append(boxesForBox(box, rotate: index % 4))
         }
         
         boxes.removeAll()
         while allBoxes[0].count > 0 {
-            var newBoxes = [[Box]]()
+            var newBoxes: [[Box]] = []
             for var thisBoxes in allBoxes {
                 boxes.append(thisBoxes.removeFirst())
                 newBoxes.append(thisBoxes)
@@ -87,14 +87,14 @@ struct PointGenerator: GeneratorType {
         }
         
         // Iterate the resulting new set of boxes, creating points, rotating each resulting set, and collating back into a single set of points.
-        var allPoints = [[CGPoint]]()
+        var allPoints: [[CGPoint]] = []
         for (index, box) in boxes.enumerate() {
             allPoints.append(pointsForBox(box, rotate: (index / 4 + index) % 4))
         }
     
         points.removeAll()
         while allPoints[0].count > 0 {
-            var newPoints = [[CGPoint]]()
+            var newPoints: [[CGPoint]] = []
             for var thisPoints in allPoints {
                 points.append(thisPoints.removeFirst())
                 newPoints.append(thisPoints)

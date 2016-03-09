@@ -194,8 +194,8 @@ class MarkupParser {
         let font: UIFont
         var tableIndex = mutableText.length
         var tableRows = 0
-        var tableWidths = [CGFloat]()
-        var tableAlignments = [NSTextAlignment]()
+        var tableWidths: [CGFloat] = []
+        var tableAlignments: [NSTextAlignment] = []
         
         if case .Table(let index, let rows, let widths, let alignments) = lastBlock {
             tableIndex = index
@@ -220,7 +220,7 @@ class MarkupParser {
         }
 
         // Split the line into columns, and calculate the render widths and alignment.
-        var columns = [NSAttributedString]()
+        var columns: [NSAttributedString] = []
         for (index, column) in line.componentsSeparatedByString("|").enumerate() {
             let column = parseText(column.stringByTrimmingCharactersInSet(whitespace), attributes: attributes, features: .All, appendNewline: false)
             
@@ -294,7 +294,7 @@ class MarkupParser {
 
         // Lay out the tab stops at the appropriate places for the columns.
         var location = tableSpacing
-        var tabStops = [NSTextTab]()
+        var tabStops: [NSTextTab] = []
         for (index, (alignment, width)) in zip(tableAlignments, tableWidths).enumerate() {
             var width = width, columnLocation = location
             if alignment == .Center {
@@ -340,9 +340,9 @@ class MarkupParser {
         
         var column: Int?
         var fragment: NSAttributedString?
-        var fragments = [NSAttributedString]()
+        var fragments: [NSAttributedString] = []
         var fragmentWidth: CGFloat?
-        var fragmentWidths = [CGFloat]()
+        var fragmentWidths: [CGFloat] = []
         var savedTrailing: NSAttributedString?
 
         // What's going on here:
@@ -408,7 +408,7 @@ class MarkupParser {
                     let following = NSMutableAttributedString(attributedString: delimiter)
                     let attributes = following.attributesAtIndex(0, effectiveRange: nil)
                     
-                    let prefix = [String](count: columnIndex + 1, repeatedValue: "\t").joinWithSeparator("")
+                    let prefix: String = Array(count: columnIndex + 1, repeatedValue: "\t").joinWithSeparator("")
                     for fragment in fragments {
                         following.appendAttributedString(NSAttributedString(string: prefix, attributes: attributes))
                         following.appendAttributedString(fragment)

@@ -84,7 +84,7 @@ public class NetworkPeer: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDel
     
     /// Estabished connections with other peers.
     public var connections: [NetworkConnection] {
-        return [NetworkConnection](peers.values)
+        return Array(peers.values)
     }
     
     func establishConnection(inputStream inputStream: NSInputStream, outputStream: NSOutputStream, service: NSNetService?) {
@@ -93,7 +93,7 @@ public class NetworkPeer: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDel
         outputStream.open()
 
         // Perform an exchange of peer identifiers and types, first send ours.
-        var handshakeBytes = [UInt8](count: 17, repeatedValue: 0)
+        var handshakeBytes: [UInt8] = Array(count: 17, repeatedValue: 0)
         uuid.getUUIDBytes(&handshakeBytes)
         
         switch type {

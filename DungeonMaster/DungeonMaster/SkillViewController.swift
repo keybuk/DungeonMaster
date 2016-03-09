@@ -10,8 +10,8 @@ import UIKit
 
 class SkillViewController: UITableViewController {
     
-    var existingSkills = [Skill]()
-    var selectedSkills = [Skill]()
+    var existingSkills: [Skill] = []
+    var selectedSkills: [Skill] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()

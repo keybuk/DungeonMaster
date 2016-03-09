@@ -78,7 +78,7 @@ struct Dice: Equatable, CustomStringConvertible {
     
     init(multiplier: Int, sides: Int, sign: JoiningSign = .None) throws {
         guard multiplier > 0 else { throw DieError.InvalidMultiplier }
-        var dice = [Die]()
+        var dice: [Die] = []
         var value = 0
         for _ in 0..<multiplier {
             let die = try Die(sides: sides)
@@ -142,7 +142,7 @@ struct DiceCombo: Equatable, CustomStringConvertible {
     let averageValue: Int
     
     var description: String {
-        var parts = [String]()
+        var parts: [String] = []
         for dice in self.dice {
             switch dice.sign {
             case .None:
@@ -174,7 +174,7 @@ struct DiceCombo: Equatable, CustomStringConvertible {
     }
     
     init(description: String) throws {
-        var dice = [Dice]()
+        var dice: [Dice] = []
         var value = 0
         var averageValue = 0
         
