@@ -16,6 +16,8 @@
 		D2C4A04C1C8FD4A000D5BA64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2C4A04A1C8FD4A000D5BA64 /* LaunchScreen.storyboard */; };
 		D2C4A0571C8FD4A000D5BA64 /* SpellBookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C4A0561C8FD4A000D5BA64 /* SpellBookTests.swift */; };
 		D2C4A0621C8FD4A000D5BA64 /* SpellBookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C4A0611C8FD4A000D5BA64 /* SpellBookUITests.swift */; };
+		D2C4A0701C8FD4DC00D5BA64 /* DungeonKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C4A06F1C8FD4DC00D5BA64 /* DungeonKit.framework */; };
+		D2C4A0711C8FD4DC00D5BA64 /* DungeonKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D2C4A06F1C8FD4DC00D5BA64 /* DungeonKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +37,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		D2C4A0721C8FD4DC00D5BA64 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D2C4A0711C8FD4DC00D5BA64 /* DungeonKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		D2C4A0391C8FD49F00D5BA64 /* SpellBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpellBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2C4A03C1C8FD49F00D5BA64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +67,7 @@
 		D2C4A05D1C8FD4A000D5BA64 /* SpellBookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpellBookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2C4A0611C8FD4A000D5BA64 /* SpellBookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellBookUITests.swift; sourceTree = "<group>"; };
 		D2C4A0631C8FD4A000D5BA64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2C4A06F1C8FD4DC00D5BA64 /* DungeonKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DungeonKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2C4A0701C8FD4DC00D5BA64 /* DungeonKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +102,7 @@
 				D2C4A03B1C8FD49F00D5BA64 /* SpellBook */,
 				D2C4A0551C8FD4A000D5BA64 /* SpellBookTests */,
 				D2C4A0601C8FD4A000D5BA64 /* SpellBookUITests */,
+				D2C4A0731C8FD4E500D5BA64 /* Dependencies */,
 				D2C4A03A1C8FD49F00D5BA64 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -131,6 +150,14 @@
 			path = SpellBookUITests;
 			sourceTree = "<group>";
 		};
+		D2C4A0731C8FD4E500D5BA64 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				D2C4A06F1C8FD4DC00D5BA64 /* DungeonKit.framework */,
+			);
+			name = Dependencies;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -141,6 +168,7 @@
 				D2C4A0351C8FD49F00D5BA64 /* Sources */,
 				D2C4A0361C8FD49F00D5BA64 /* Frameworks */,
 				D2C4A0371C8FD49F00D5BA64 /* Resources */,
+				D2C4A0721C8FD4DC00D5BA64 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
