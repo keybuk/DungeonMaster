@@ -8,6 +8,9 @@
       location = "group:InitiativeOrder/InitiativeOrder.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:SpellBook/SpellBook.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:DungeonKit/DungeonKit.xcodeproj">
    </FileRef>
 </Workspace>
