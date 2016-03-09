@@ -198,6 +198,9 @@ class InitiativeViewController: UITableViewController, NSFetchedResultsControlle
             let player = missingPlayers[indexPath.row]
             let _ = Combatant(encounter: encounter, player: player, inManagedObjectContext: managedObjectContext)
         }
+        
+        encounter.lastModified = NSDate()
+        try! managedObjectContext.save()
     }
     
     // MARK: Move support
@@ -237,6 +240,9 @@ class InitiativeViewController: UITableViewController, NSFetchedResultsControlle
         }
         
         changeIsUserDriven = true
+        
+        encounter.lastModified = NSDate()
+        try! managedObjectContext.save()
     }
     
     // MARK: UITableViewDelegate

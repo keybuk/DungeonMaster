@@ -37,12 +37,6 @@ class GameEncountersViewController: UITableViewController, NSFetchedResultsContr
                 tableView.deleteSections(NSIndexSet(index: addSection), withRowAnimation: .Automatic)
             }
         }
-        
-        if oldEditing && !editing {
-            game.adventure.lastModified = NSDate()
-            
-            try! managedObjectContext.save()
-        }
     }
     
     // MARK: Navigation
@@ -64,6 +58,9 @@ class GameEncountersViewController: UITableViewController, NSFetchedResultsContr
         let encounter = Encounter(adventure: game.adventure, inManagedObjectContext: managedObjectContext)
         let games = encounter.mutableSetValueForKey("games")
         games.addObject(game)
+        
+        game.adventure.lastModified = NSDate()
+        try! managedObjectContext.save()
         
         let viewController = storyboard?.instantiateViewControllerWithIdentifier("EncounterViewController") as! EncounterViewController
         viewController.encounter = encounter
@@ -159,6 +156,9 @@ class GameEncountersViewController: UITableViewController, NSFetchedResultsContr
             let encounter = unusedEncounters[indexPath.row]
             encounters.addObject(encounter)
         }
+        
+        game.adventure.lastModified = NSDate()
+        try! managedObjectContext.save()
     }
     
     // MARK: UITableViewDelegate

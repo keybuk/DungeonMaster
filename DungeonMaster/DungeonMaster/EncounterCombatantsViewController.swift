@@ -37,12 +37,6 @@ class EncounterCombatantsViewController: UITableViewController, NSFetchedResults
                 tableView.deleteSections(NSIndexSet(index: addSection), withRowAnimation: .Automatic)
             }
         }
-        
-        if oldEditing && !editing {
-            encounter.adventure.lastModified = NSDate()
-            
-            try! managedObjectContext.save()
-        }
     }
     
     // MARK: Navigation
@@ -72,6 +66,9 @@ class EncounterCombatantsViewController: UITableViewController, NSFetchedResults
                         let combatant = Combatant(encounter: self.encounter, monster: monster, inManagedObjectContext: managedObjectContext)
                         combatant.role = .Foe
                     }
+                    
+                    self.encounter.lastModified = NSDate()
+                    try! managedObjectContext.save()
                 }
                 
                 self.dismissViewControllerAnimated(true, completion: nil)
@@ -140,6 +137,9 @@ class EncounterCombatantsViewController: UITableViewController, NSFetchedResults
             let combatant = fetchedResultsController.objectAtIndexPath(indexPath) as! Combatant
             managedObjectContext.deleteObject(combatant)
         }
+        
+        encounter.lastModified = NSDate()
+        try! managedObjectContext.save()
     }
     
     // MARK: UITableViewDelegate

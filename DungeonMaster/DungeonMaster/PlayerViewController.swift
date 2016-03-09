@@ -135,7 +135,8 @@ class PlayerViewController: UITableViewController, ManagedObjectObserverDelegate
         if editing {
             // Make sure the "Done" button is disabled if the player can't be immediately saved.
             validatePlayer()
-        } else {
+        }
+        if oldEditing && !editing {
             try! managedObjectContext.save()
             completionBlock?(cancelled: false, player: player)
         }

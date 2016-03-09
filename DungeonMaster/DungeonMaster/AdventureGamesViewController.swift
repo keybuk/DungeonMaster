@@ -38,6 +38,8 @@ class AdventureGamesViewController: UITableViewController, NSFetchedResultsContr
     
     @IBAction func addButtonTapped(sender: UIButton) {
         let game = Game(adventure: adventure, inManagedObjectContext: managedObjectContext)
+        adventure.lastModified = NSDate()
+        try! managedObjectContext.save()
         
         let viewController = storyboard?.instantiateViewControllerWithIdentifier("GameViewController") as! GameViewController
         viewController.game = game
@@ -98,6 +100,7 @@ class AdventureGamesViewController: UITableViewController, NSFetchedResultsContr
                 updateGame.number -= 1
             }
             
+            adventure.lastModified = NSDate()
             try! managedObjectContext.save()
         }
     }
@@ -130,6 +133,8 @@ class AdventureGamesViewController: UITableViewController, NSFetchedResultsContr
         }
         
         userMovedTableRow = sourceIndexPath
+        
+        adventure.lastModified = NSDate()
         try! managedObjectContext.save()
     }
 

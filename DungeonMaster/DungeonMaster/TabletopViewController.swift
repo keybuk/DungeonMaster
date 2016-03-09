@@ -91,6 +91,9 @@ class TabletopViewController: UIViewController, TabletopViewDataSource, Tabletop
     func tabletopView(tabletopView: TabletopView, moveItem index: Int, to location: TabletopLocation) {
         let combatant = fetchedResultsController.fetchedObjects![index] as! Combatant
         combatant.location = location
+        
+        encounter.lastModified = NSDate()
+        try! managedObjectContext.save()
     }
     
     func tabletopView(tabletopView: TabletopView, didSelectItem index: Int) {

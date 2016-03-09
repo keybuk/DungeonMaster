@@ -75,8 +75,6 @@ class PlayedGamesViewController: UITableViewController, NSFetchedResultsControll
         if oldEditing && !editing {
             playedGames = nil
             sectionsInResults = nil
-
-            try! managedObjectContext.save()
         }
     }
     
@@ -270,6 +268,9 @@ class PlayedGamesViewController: UITableViewController, NSFetchedResultsControll
                     remainingEntry.index -= 1
                 }
             }
+            
+            try! managedObjectContext.save()
+
         } else if editingStyle == .Insert {
             tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: .None)
             performSegueWithIdentifier("AddLogEntrySegue", sender: self)
@@ -348,6 +349,8 @@ class PlayedGamesViewController: UITableViewController, NSFetchedResultsControll
         }
 
         changeIsUserDriven = true
+
+        try! managedObjectContext.save()
     }
 
     // MARK: UITableViewDelegate

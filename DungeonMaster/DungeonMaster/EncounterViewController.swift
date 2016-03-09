@@ -142,9 +142,6 @@ class EncounterViewController: UIViewController, ManagedObjectObserverDelegate {
             if encounter.round > 0 && encounter.combatants.filteredSetUsingPredicate(NSPredicate(format: "rawInitiative == nil")).count > 0 {
                 performSegueWithIdentifier("InitiativeSegue", sender: self)
             }
-            
-            encounter.adventure.lastModified = NSDate()
-            try! managedObjectContext.save()
         }
     }
     

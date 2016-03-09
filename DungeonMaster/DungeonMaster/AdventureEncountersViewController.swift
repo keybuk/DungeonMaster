@@ -38,7 +38,9 @@ class AdventureEncountersViewController: UITableViewController, NSFetchedResults
 
     @IBAction func addButtonTapped(sender: UIButton) {
         let encounter = Encounter(adventure: adventure, inManagedObjectContext: managedObjectContext)
-        
+        adventure.lastModified = NSDate()
+        try! managedObjectContext.save()
+
         let viewController = storyboard?.instantiateViewControllerWithIdentifier("EncounterViewController") as! EncounterViewController
         viewController.encounter = encounter
         navigationController?.pushViewController(viewController, animated: true)
@@ -89,6 +91,8 @@ class AdventureEncountersViewController: UITableViewController, NSFetchedResults
         if editingStyle == .Delete {
             let encounter = fetchedResultsController.objectAtIndexPath(indexPath) as! Encounter
             managedObjectContext.deleteObject(encounter)
+
+            adventure.lastModified = NSDate()
             try! managedObjectContext.save()
         }
     }

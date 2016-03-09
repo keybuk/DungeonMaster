@@ -26,14 +26,16 @@ class AdventurePlayersViewController: UITableViewController, NSFetchedResultsCon
         // Clear the cache of missing players.
         missingPlayers = nil
 
+        let oldEditing = self.editing
         super.setEditing(editing, animated: animated)
 
-        let addSection = fetchedResultsController.sections?.count ?? 0
-        if editing {
-            tableView.insertSections(NSIndexSet(index: addSection), withRowAnimation: .Automatic)
-        } else {
-            tableView.deleteSections(NSIndexSet(index: addSection), withRowAnimation: .Automatic)
-            try! managedObjectContext.save()
+        if editing != oldEditing {
+            let addSection = fetchedResultsController.sections?.count ?? 0
+            if editing {
+                tableView.insertSections(NSIndexSet(index: addSection), withRowAnimation: .Automatic)
+            } else {
+                tableView.deleteSections(NSIndexSet(index: addSection), withRowAnimation: .Automatic)
+            }
         }
     }
     
@@ -58,6 +60,9 @@ class AdventurePlayersViewController: UITableViewController, NSFetchedResultsCon
                 if let player = player where !cancelled {
                     let players = self.adventure.mutableSetValueForKey("players")
                     players.addObject(player)
+                    
+                    self.adventure.lastModified = NSDate()
+                    try! managedObjectContext.save()
                 }
 
                 self.dismissViewControllerAnimated(true, completion: nil)
@@ -160,11 +165,17 @@ class AdventurePlayersViewController: UITableViewController, NSFetchedResultsCon
         if editingStyle == .Delete {
             let player = fetchedResultsController.objectAtIndexPath(indexPath) as! Player
             players.removeObject(player)
+            
+            adventure.lastModified = NSDate()
+            try! managedObjectContext.save()
 
         } else if editingStyle == .Insert {
             if indexPath.row < missingPlayers.count {
                 let player = missingPlayers[indexPath.row]
                 players.addObject(player)
+                
+                adventure.lastModified = NSDate()
+                try! managedObjectContext.save()
             } else {
                 performSegueWithIdentifier("AddPlayerSegue", sender: self)
             }

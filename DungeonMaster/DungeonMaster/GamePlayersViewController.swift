@@ -45,7 +45,6 @@ class GamePlayersViewController: UITableViewController, NSFetchedResultsControll
             adventurePlayers.addObjectsFromArray(game.playedGames.map({ ($0 as! PlayedGame).player }))
             
             game.adventure.lastModified = NSDate()
-            
             try! managedObjectContext.save()
         }
     }
@@ -70,6 +69,9 @@ class GamePlayersViewController: UITableViewController, NSFetchedResultsControll
             viewController.completionBlock = { cancelled, player in
                 if let player = player where !cancelled {
                     let _ = PlayedGame(game: self.game, player: player, inManagedObjectContext: managedObjectContext)
+
+                    self.game.adventure.lastModified = NSDate()
+                    try! managedObjectContext.save()
                 }
                 
                 self.dismissViewControllerAnimated(true, completion: nil)
@@ -180,10 +182,16 @@ class GamePlayersViewController: UITableViewController, NSFetchedResultsControll
             let playedGame = fetchedResultsController.objectAtIndexPath(indexPath) as! PlayedGame
             managedObjectContext.deleteObject(playedGame)
             
+            game.adventure.lastModified = NSDate()
+            try! managedObjectContext.save()
+            
         } else if editingStyle == .Insert {
             if indexPath.row < missingPlayers.count {
                 let player = missingPlayers[indexPath.row]
                 let _ = PlayedGame(game: game, player: player, inManagedObjectContext: managedObjectContext)
+                
+                game.adventure.lastModified = NSDate()
+                try! managedObjectContext.save()
             } else {
                 performSegueWithIdentifier("AddPlayerSegue", sender: self)
             }
