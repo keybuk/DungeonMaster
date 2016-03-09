@@ -76,45 +76,46 @@ class SpellsViewController: UIViewController, UITableViewDataSource, UITableView
     
     // MARK: Fetched results controller
     
-    var fetchedResultsController: NSFetchedResultsController {
-        if let fetchedResultsController = _fetchedResultsController {
-            return fetchedResultsController
-        }
-        
-        let fetchRequest = NSFetchRequest(entity: Model.Spell)
-        fetchRequest.fetchBatchSize = 20
-
-        // Sorting by name is enough for section handling by initial to work.
-        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
-        fetchRequest.sortDescriptors = [ sortDescriptor ]
-        
-        // Set the filter based on both the set of books, and the search pattern.
-        let booksPredicate = NSPredicate(format: "ANY sources.book IN %@", books)
-        
-        if let search = searchController.searchBar.text where searchController.active {
-            let schoolList = MagicSchool.cases.filter({ $0.stringValue.lowercaseString.containsString(search.lowercaseString) }).map({ $0.rawValue })
+    var fetchedResultsController: NSFetchedResultsController! {
+        get {
+            if let fetchedResultsController = _fetchedResultsController {
+                return fetchedResultsController
+            }
             
-            let searchPredicate = NSPredicate(format: "rawSchool IN %@ OR name CONTAINS[cd] %@", schoolList as NSArray, search)
-            fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [booksPredicate, searchPredicate])
-        } else {
-            fetchRequest.predicate = booksPredicate
+            let fetchRequest = NSFetchRequest(entity: Model.Spell)
+            fetchRequest.fetchBatchSize = 20
+
+            // Sorting by name is enough for section handling by initial to work.
+            let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+            fetchRequest.sortDescriptors = [ sortDescriptor ]
+            
+            // Set the filter based on both the set of books, and the search pattern.
+            let booksPredicate = NSPredicate(format: "ANY sources.book IN %@", books)
+            
+            if let search = searchController.searchBar.text where searchController.active {
+                let schoolList = MagicSchool.cases.filter({ $0.stringValue.lowercaseString.containsString(search.lowercaseString) }).map({ $0.rawValue })
+                
+                let searchPredicate = NSPredicate(format: "rawSchool IN %@ OR name CONTAINS[cd] %@", schoolList as NSArray, search)
+                fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [booksPredicate, searchPredicate])
+            } else {
+                fetchRequest.predicate = booksPredicate
+            }
+
+            let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: "nameInitial", cacheName: nil)
+            fetchedResultsController.delegate = self
+            _fetchedResultsController = fetchedResultsController
+            
+            try! _fetchedResultsController!.performFetch()
+            
+            return _fetchedResultsController!
         }
-
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: "nameInitial", cacheName: nil)
-        fetchedResultsController.delegate = self
-        _fetchedResultsController = fetchedResultsController
         
-        try! _fetchedResultsController!.performFetch()
-        
-        return _fetchedResultsController!
+        set(newFetchedResultsController) {
+            _fetchedResultsController = newFetchedResultsController
+        }
     }
-    var _fetchedResultsController: NSFetchedResultsController?
+    private var _fetchedResultsController: NSFetchedResultsController?
  
-    func updateFetchedResults() {
-        _fetchedResultsController = nil
-        tableView.reloadData()
-    }
-
     // MARK: - UITableViewDataSource
 
     // MARK: Sections
@@ -201,13 +202,15 @@ class SpellsViewController: UIViewController, UITableViewDataSource, UITableView
     
     func didDismissSearchController(searchController: UISearchController) {
         // Reset the table back to no search predicate, and reload the data.
-        updateFetchedResults()
+        fetchedResultsController = nil
+        tableView.reloadData()
     }
     
     // MARK: UISearchResultsUpdating
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
-        updateFetchedResults()
+        fetchedResultsController = nil
+        tableView.reloadData()
     }
 
     // MARK: UISplitViewControllerDelegate

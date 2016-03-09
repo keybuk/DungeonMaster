@@ -24,8 +24,8 @@ class GameEncountersViewController: UITableViewController, NSFetchedResultsContr
     
     override func setEditing(editing: Bool, animated: Bool) {
         // Clear the cache of unused encounters.
-        invalidateUnusedEncounters()
-
+        unusedEncounters = nil
+        
         let oldEditing = self.editing, tableViewLoaded = self.tableViewLoaded
         super.setEditing(editing, animated: animated)
         
@@ -89,28 +89,31 @@ class GameEncountersViewController: UITableViewController, NSFetchedResultsContr
     }()
     
     /// The set of Encounters attached to the Adventure that have not yet been attached to a game.
-    var unusedEncounters: [Encounter] {
-        if let unusedEncounters = _unusedEncounters {
-            return unusedEncounters
+    ///
+    /// Since this is generated using the set of games attached to these adventures, it should be reset whenever the standard results controller changes.
+    var unusedEncounters: [Encounter]! {
+        get {
+            if let unusedEncounters = _unusedEncounters {
+                return unusedEncounters
+            }
+            
+            let fetchRequest = NSFetchRequest(entity: Model.Encounter)
+            fetchRequest.predicate = NSPredicate(format: "adventure == %@ AND games.@count == 0", game.adventure)
+            // TODO also encounters from the previous game that haven't had XP allocated
+        
+            let lastModifiedSortDescriptor = NSSortDescriptor(key: "lastModified", ascending: false)
+            fetchRequest.sortDescriptors = [lastModifiedSortDescriptor]
+            
+            _unusedEncounters = try! managedObjectContext.executeFetchRequest(fetchRequest) as! [Encounter]
+            return _unusedEncounters!
         }
         
-        let fetchRequest = NSFetchRequest(entity: Model.Encounter)
-        fetchRequest.predicate = NSPredicate(format: "adventure == %@ AND games.@count == 0", game.adventure)
-        // TODO also encounters from the previous game that haven't had XP allocated
-    
-        let lastModifiedSortDescriptor = NSSortDescriptor(key: "lastModified", ascending: false)
-        fetchRequest.sortDescriptors = [lastModifiedSortDescriptor]
-        
-        _unusedEncounters = try! managedObjectContext.executeFetchRequest(fetchRequest) as! [Encounter]
-        return _unusedEncounters!
+        set(newUnusedEncounters) {
+            _unusedEncounters = newUnusedEncounters
+        }
     }
-    var _unusedEncounters: [Encounter]?
+    private var _unusedEncounters: [Encounter]?
     
-    /// Invalidate the set of unused encounters.
-    func invalidateUnusedEncounters() {
-        _unusedEncounters = nil
-    }
-
     // MARK: UITableViewDataSource
     
     var tableViewLoaded = false
@@ -176,7 +179,7 @@ class GameEncountersViewController: UITableViewController, NSFetchedResultsContr
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
         // Clear or reset the cache of unused encounters, keeping the old cache around for insertion checking.
         oldUnusedEncounters = editing ? unusedEncounters : nil
-        invalidateUnusedEncounters()
+        unusedEncounters = nil
 
         tableView.beginUpdates()
     }

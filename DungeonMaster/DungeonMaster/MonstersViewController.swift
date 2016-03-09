@@ -93,62 +93,64 @@ class MonstersViewController: UIViewController, UITableViewDataSource, UITableVi
     // MARK: Actions
     
     @IBAction func sortControlValueChanged(sortControl: UISegmentedControl) {
-        updateFetchedResults()
+        fetchedResultsController = nil
+        tableView.reloadData()
     }
 
     // MARK: Fetched results controller
     
-    var fetchedResultsController: NSFetchedResultsController {
-        if let fetchedResultsController = _fetchedResultsController {
-            return fetchedResultsController
+    var fetchedResultsController: NSFetchedResultsController! {
+        get {
+            if let fetchedResultsController = _fetchedResultsController {
+                return fetchedResultsController
+            }
+            
+            let fetchRequest = NSFetchRequest(entity: Model.Monster)
+            fetchRequest.fetchBatchSize = 20
+            
+            let sectionNameKeyPath: String
+            let sort = MonstersSort(rawValue: sortControl.selectedSegmentIndex)!
+            switch sort {
+            case .ByName:
+                // Sorting by name is enough for section handling by initial to work.
+                let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+                fetchRequest.sortDescriptors = [sortDescriptor]
+                
+                sectionNameKeyPath = "nameInitial"
+            case .ByCrXp:
+                let primarySortDescriptor = NSSortDescriptor(key: "challenge", ascending: true)
+                let secondarySortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+                fetchRequest.sortDescriptors = [primarySortDescriptor, secondarySortDescriptor]
+                
+                sectionNameKeyPath = "challenge"
+            }
+            
+            // Set the filter based on both the set of books, and the search pattern.
+            let booksPredicate = NSPredicate(format: "ANY sources.book IN %@", books)
+
+            if let search = searchController.searchBar.text where searchController.active {
+                let typeList = MonsterType.cases.filter({ $0.stringValue.lowercaseString.containsString(search.lowercaseString) }).map({ $0.rawValue })
+                
+                let searchPredicate = NSPredicate(format: "rawType IN %@ OR name CONTAINS[cd] %@ OR ANY tags.name CONTAINS[cd] %@", typeList as NSArray, search, search)
+                fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [booksPredicate, searchPredicate])
+            } else {
+                fetchRequest.predicate = booksPredicate
+            }
+
+            let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: sectionNameKeyPath, cacheName: nil)
+            fetchedResultsController.delegate = self
+            _fetchedResultsController = fetchedResultsController
+            
+            try! _fetchedResultsController!.performFetch()
+
+            return _fetchedResultsController!
         }
         
-        let fetchRequest = NSFetchRequest(entity: Model.Monster)
-        fetchRequest.fetchBatchSize = 20
-        
-        let sectionNameKeyPath: String
-        let sort = MonstersSort(rawValue: sortControl.selectedSegmentIndex)!
-        switch sort {
-        case .ByName:
-            // Sorting by name is enough for section handling by initial to work.
-            let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
-            fetchRequest.sortDescriptors = [sortDescriptor]
-            
-            sectionNameKeyPath = "nameInitial"
-        case .ByCrXp:
-            let primarySortDescriptor = NSSortDescriptor(key: "challenge", ascending: true)
-            let secondarySortDescriptor = NSSortDescriptor(key: "name", ascending: true)
-            fetchRequest.sortDescriptors = [primarySortDescriptor, secondarySortDescriptor]
-            
-            sectionNameKeyPath = "challenge"
+        set(newFetchedResultsController) {
+            _fetchedResultsController = newFetchedResultsController
         }
-        
-        // Set the filter based on both the set of books, and the search pattern.
-        let booksPredicate = NSPredicate(format: "ANY sources.book IN %@", books)
-
-        if let search = searchController.searchBar.text where searchController.active {
-            let typeList = MonsterType.cases.filter({ $0.stringValue.lowercaseString.containsString(search.lowercaseString) }).map({ $0.rawValue })
-            
-            let searchPredicate = NSPredicate(format: "rawType IN %@ OR name CONTAINS[cd] %@ OR ANY tags.name CONTAINS[cd] %@", typeList as NSArray, search, search)
-            fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [booksPredicate, searchPredicate])
-        } else {
-            fetchRequest.predicate = booksPredicate
-        }
-
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: sectionNameKeyPath, cacheName: nil)
-        fetchedResultsController.delegate = self
-        _fetchedResultsController = fetchedResultsController
-        
-        try! _fetchedResultsController!.performFetch()
-
-        return _fetchedResultsController!
     }
-    var _fetchedResultsController: NSFetchedResultsController?
-    
-    func updateFetchedResults() {
-        _fetchedResultsController = nil
-        tableView.reloadData()
-    }
+    private var _fetchedResultsController: NSFetchedResultsController?
     
     // MARK: - UITableViewDataSource
     
@@ -295,13 +297,15 @@ class MonstersViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func didDismissSearchController(searchController: UISearchController) {
         // Reset the table back to no search predicate, and reload the data.
-        updateFetchedResults()
+        _fetchedResultsController = nil
+        tableView.reloadData()
     }
     
     // MARK: UISearchResultsUpdating
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
-        updateFetchedResults()
+        _fetchedResultsController = nil
+        tableView.reloadData()
     }
     
     // MARK: UISplitViewControllerDelegate

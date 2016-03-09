@@ -130,6 +130,7 @@ class PlayedGamesViewController: UITableViewController, NSFetchedResultsControll
             
             return _playedGames
         }
+        
         set(newPlayedGames) {
             _playedGames = newPlayedGames
         }
@@ -155,6 +156,7 @@ class PlayedGamesViewController: UITableViewController, NSFetchedResultsControll
             
             return _sectionsInResults
         }
+        
         set(newSectionsInResults) {
             _sectionsInResults = newSectionsInResults
         }

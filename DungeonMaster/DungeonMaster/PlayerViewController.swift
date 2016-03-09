@@ -156,26 +156,38 @@ class PlayerViewController: UITableViewController {
 
     // MARK: Caching for relationships
 
-    var sortedSavingThrows: [PlayerSavingThrow] {
-        if _sortedSavingThrows == nil {
-            let sortDescriptor = NSSortDescriptor(key: "rawSavingThrow", ascending: true)
-            _sortedSavingThrows = player.savingThrows.sortedArrayUsingDescriptors([ sortDescriptor ]).map({ $0 as! PlayerSavingThrow })
+    var sortedSavingThrows: [PlayerSavingThrow]! {
+        get {
+            if _sortedSavingThrows == nil {
+                let sortDescriptor = NSSortDescriptor(key: "rawSavingThrow", ascending: true)
+                _sortedSavingThrows = player.savingThrows.sortedArrayUsingDescriptors([ sortDescriptor ]).map({ $0 as! PlayerSavingThrow })
+            }
+            
+            return _sortedSavingThrows!
         }
         
-        return _sortedSavingThrows!
+        set(newSortedSavingThrows) {
+            _sortedSavingThrows = newSortedSavingThrows
+        }
     }
-    var _sortedSavingThrows: [PlayerSavingThrow]?
+    private var _sortedSavingThrows: [PlayerSavingThrow]?
     
-    var sortedSkills: [PlayerSkill] {
-        if _sortedSkills == nil {
-            let abilitySortDescriptor = NSSortDescriptor(key: "rawAbility", ascending: true)
-            let skillSortDescriptor = NSSortDescriptor(key: "rawSkill", ascending: true)
-            _sortedSkills = player.skills.sortedArrayUsingDescriptors([ abilitySortDescriptor, skillSortDescriptor ]).map({ $0 as! PlayerSkill })
+    var sortedSkills: [PlayerSkill]! {
+        get {
+            if _sortedSkills == nil {
+                let abilitySortDescriptor = NSSortDescriptor(key: "rawAbility", ascending: true)
+                let skillSortDescriptor = NSSortDescriptor(key: "rawSkill", ascending: true)
+                _sortedSkills = player.skills.sortedArrayUsingDescriptors([ abilitySortDescriptor, skillSortDescriptor ]).map({ $0 as! PlayerSkill })
+            }
+            
+            return _sortedSkills!
         }
         
-        return _sortedSkills!
+        set(newSortedSkills) {
+            _sortedSkills = newSortedSkills
+        }
     }
-    var _sortedSkills: [PlayerSkill]?
+    private var _sortedSkills: [PlayerSkill]?
     
     // MARK: Navigation
     
@@ -261,7 +273,7 @@ class PlayerViewController: UITableViewController {
             newSavingThrows.append(savingThrow)
         }
         
-        _sortedSavingThrows = nil
+        sortedSavingThrows = nil
 
         let indexPaths = newSavingThrows.map({ NSIndexPath(forRow: sortedSavingThrows.indexOf($0)!, inSection: 3) })
         tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Top)
@@ -276,7 +288,7 @@ class PlayerViewController: UITableViewController {
             newSkills.append(skill)
         }
         
-        _sortedSkills = nil
+        sortedSkills = nil
         
         let indexPaths = newSkills.map({ NSIndexPath(forRow: sortedSkills.indexOf($0)!, inSection: 4) })
         tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Top)
@@ -489,7 +501,7 @@ class PlayerViewController: UITableViewController {
                 player.mutableSetValueForKey("savingThrows").removeObject(savingThrow)
                 managedObjectContext.deleteObject(savingThrow)
 
-                _sortedSavingThrows = nil
+                sortedSavingThrows = nil
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
             }
         case 4:
@@ -502,7 +514,7 @@ class PlayerViewController: UITableViewController {
                 player.mutableSetValueForKey("skills").removeObject(skill)
                 managedObjectContext.deleteObject(skill)
                 
-                _sortedSkills = nil
+                sortedSkills = nil
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
             }
         default:
