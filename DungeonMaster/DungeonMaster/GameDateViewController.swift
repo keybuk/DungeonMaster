@@ -25,6 +25,7 @@ class GameDateViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: Actions
 
     @IBAction func datePickerValueChanged(sender: UIDatePicker) {
         game.date = sender.date

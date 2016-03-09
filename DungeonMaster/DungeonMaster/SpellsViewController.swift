@@ -116,7 +116,7 @@ class SpellsViewController: UIViewController, UITableViewDataSource, UITableView
     }
     private var _fetchedResultsController: NSFetchedResultsController?
  
-    // MARK: - UITableViewDataSource
+    // MARK: UITableViewDataSource
 
     // MARK: Sections
     
@@ -148,8 +148,6 @@ class SpellsViewController: UIViewController, UITableViewDataSource, UITableView
         return cell
     }
     
-    // MARK: - UITableViewDelegate
-
     // MARK: NSFetchedResultsControllerDelegate
     
     func controllerWillChangeContent(controller: NSFetchedResultsController) {

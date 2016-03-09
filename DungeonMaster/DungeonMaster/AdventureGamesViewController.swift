@@ -138,8 +138,6 @@ class AdventureGamesViewController: UITableViewController, NSFetchedResultsContr
         try! managedObjectContext.save()
     }
 
-    // MARK: UITableViewDelegate
-    
     // MARK: NSFetchedResultsControllerDelegate
     
     func controllerWillChangeContent(controller: NSFetchedResultsController) {

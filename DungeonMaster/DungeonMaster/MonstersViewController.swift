@@ -152,7 +152,7 @@ class MonstersViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     private var _fetchedResultsController: NSFetchedResultsController?
     
-    // MARK: - UITableViewDataSource
+    // MARK: UITableViewDataSource
     
     // MARK: Sections
 
@@ -213,8 +213,6 @@ class MonstersViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.monster = monster        
         return cell
     }
-
-    // MARK: - UITableViewDelegate
 
     // MARK: NSFetchedResultsControllerDelegate
 

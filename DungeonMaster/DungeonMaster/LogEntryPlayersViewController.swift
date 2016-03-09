@@ -29,19 +29,6 @@ class LogEntryPlayersViewController: UITableViewController, NSFetchedResultsCont
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: Actions
-    
-    @IBAction func nextButtonTapped(sender: UIBarButtonItem) {
-        switch logEntryType {
-        case is XPAward.Type:
-            performSegueWithIdentifier("XPAwardSegue", sender: sender)
-        case is LogEntryNote.Type:
-            performSegueWithIdentifier("NoteSegue", sender: sender)
-        default:
-            fatalError("Unknown Log Entry type")
-        }
-    }
-    
     // MARK: Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -53,6 +40,19 @@ class LogEntryPlayersViewController: UITableViewController, NSFetchedResultsCont
             viewController.playedGames = playedGames
             viewController.encounter = encounter
             viewController.combatants = combatants
+        }
+    }
+    
+    // MARK: Actions
+    
+    @IBAction func nextButtonTapped(sender: UIBarButtonItem) {
+        switch logEntryType {
+        case is XPAward.Type:
+            performSegueWithIdentifier("XPAwardSegue", sender: sender)
+        case is LogEntryNote.Type:
+            performSegueWithIdentifier("NoteSegue", sender: sender)
+        default:
+            fatalError("Unknown Log Entry type")
         }
     }
     

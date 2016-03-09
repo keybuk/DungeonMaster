@@ -108,7 +108,7 @@ class InitiativeViewController: UITableViewController, NSFetchedResultsControlle
     }
     private var _missingPlayers: [Player]?
     
-    // MARK: - Table view data source
+    // MARK: UITableViewDataSource
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return (fetchedResultsController.sections?.count ?? 0) + 1

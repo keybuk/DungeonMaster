@@ -33,12 +33,6 @@ class LogEntryCombatantsViewController: UITableViewController, NSFetchedResultsC
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: Actions
-    
-    @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-    
     // MARK: Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -49,6 +43,12 @@ class LogEntryCombatantsViewController: UITableViewController, NSFetchedResultsC
             viewController.encounter = encounter
             viewController.combatants = combatants
         }
+    }
+    
+    // MARK: Actions
+    
+    @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK: Fetched results controller

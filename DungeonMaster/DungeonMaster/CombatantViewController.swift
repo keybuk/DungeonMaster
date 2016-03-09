@@ -99,15 +99,6 @@ class CombatantViewController: UITableViewController, ManagedObjectObserverDeleg
         }
     }
     
-    // MARK: ManagedObjectObserverDelegate
-    
-    func managedObject(object: Combatant, changedForType type: ManagedObjectChangeType) {
-        if !ignoreNextUpdate {
-            tableView.reloadData()
-        }
-        ignoreNextUpdate = false
-    }
-
     // MARK: UITableViewDataSource
     
     // MARK: Sections
@@ -332,7 +323,15 @@ class CombatantViewController: UITableViewController, ManagedObjectObserverDeleg
         }
     }
 
-
+    // MARK: ManagedObjectObserverDelegate
+    
+    func managedObject(object: Combatant, changedForType type: ManagedObjectChangeType) {
+        if !ignoreNextUpdate {
+            tableView.reloadData()
+        }
+        ignoreNextUpdate = false
+    }
+    
     // MARK: UITextViewDelegate
     
     func textViewDidChange(textView: UITextView) {

@@ -24,12 +24,6 @@ class LogEntryTypeViewController: UICollectionViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: Actions
-
-    @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-
     // MARK: Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -46,6 +40,12 @@ class LogEntryTypeViewController: UICollectionViewController {
         }
     }
 
+    // MARK: Actions
+    
+    @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     // MARK: UICollectionViewDataSource
 
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {

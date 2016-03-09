@@ -142,41 +142,6 @@ class PlayerViewController: UITableViewController, ManagedObjectObserverDelegate
         }
     }
 
-    // MARK: Caching for relationships
-
-    var sortedSavingThrows: [PlayerSavingThrow]! {
-        get {
-            if _sortedSavingThrows == nil {
-                let sortDescriptor = NSSortDescriptor(key: "rawSavingThrow", ascending: true)
-                _sortedSavingThrows = player.savingThrows.sortedArrayUsingDescriptors([ sortDescriptor ]).map({ $0 as! PlayerSavingThrow })
-            }
-            
-            return _sortedSavingThrows!
-        }
-        
-        set(newSortedSavingThrows) {
-            _sortedSavingThrows = newSortedSavingThrows
-        }
-    }
-    private var _sortedSavingThrows: [PlayerSavingThrow]?
-    
-    var sortedSkills: [PlayerSkill]! {
-        get {
-            if _sortedSkills == nil {
-                let abilitySortDescriptor = NSSortDescriptor(key: "rawAbility", ascending: true)
-                let skillSortDescriptor = NSSortDescriptor(key: "rawSkill", ascending: true)
-                _sortedSkills = player.skills.sortedArrayUsingDescriptors([ abilitySortDescriptor, skillSortDescriptor ]).map({ $0 as! PlayerSkill })
-            }
-            
-            return _sortedSkills!
-        }
-        
-        set(newSortedSkills) {
-            _sortedSkills = newSortedSkills
-        }
-    }
-    private var _sortedSkills: [PlayerSkill]?
-    
     // MARK: Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -294,11 +259,40 @@ class PlayerViewController: UITableViewController, ManagedObjectObserverDelegate
         completionBlock?(cancelled: true, player: nil)
     }
     
-    // MARK: ManagedObjectObserverDelegate
+    // MARK: Caching for relationships
     
-    func managedObject(object: Player, changedForType type: ManagedObjectChangeType) {
-        validatePlayer()
+    var sortedSavingThrows: [PlayerSavingThrow]! {
+        get {
+            if _sortedSavingThrows == nil {
+                let sortDescriptor = NSSortDescriptor(key: "rawSavingThrow", ascending: true)
+                _sortedSavingThrows = player.savingThrows.sortedArrayUsingDescriptors([ sortDescriptor ]).map({ $0 as! PlayerSavingThrow })
+            }
+            
+            return _sortedSavingThrows!
+        }
+        
+        set(newSortedSavingThrows) {
+            _sortedSavingThrows = newSortedSavingThrows
+        }
     }
+    private var _sortedSavingThrows: [PlayerSavingThrow]?
+    
+    var sortedSkills: [PlayerSkill]! {
+        get {
+            if _sortedSkills == nil {
+                let abilitySortDescriptor = NSSortDescriptor(key: "rawAbility", ascending: true)
+                let skillSortDescriptor = NSSortDescriptor(key: "rawSkill", ascending: true)
+                _sortedSkills = player.skills.sortedArrayUsingDescriptors([ abilitySortDescriptor, skillSortDescriptor ]).map({ $0 as! PlayerSkill })
+            }
+            
+            return _sortedSkills!
+        }
+        
+        set(newSortedSkills) {
+            _sortedSkills = newSortedSkills
+        }
+    }
+    private var _sortedSkills: [PlayerSkill]?
     
     // MARK: UITableViewDataSource
     
@@ -514,6 +508,12 @@ class PlayerViewController: UITableViewController, ManagedObjectObserverDelegate
         default:
             break
         }
+    }
+
+    // MARK: ManagedObjectObserverDelegate
+    
+    func managedObject(object: Player, changedForType type: ManagedObjectChangeType) {
+        validatePlayer()
     }
 
 }
