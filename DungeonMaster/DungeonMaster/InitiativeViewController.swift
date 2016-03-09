@@ -16,20 +16,22 @@ class InitiativeViewController: UITableViewController, NSFetchedResultsControlle
 
     @IBOutlet var doneButtonItem: UIBarButtonItem!
     
-    var beginGameOnDone = false
+    var nextTurnOnDone = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // When this is the first initiative roll, we use it to indicate that the game is to be begun.
         if encounter.round == 0 {
-            addPlayersFromGame()
+            encounter.addPlayers(fromGame: game)
             encounter.round = 1
-            beginGameOnDone = true
+            nextTurnOnDone = true
         }
         
         // Roll initiative for any monster without it.
-        rollInitiative()
+        if encounter.rollInitiative() {
+            PlaySound(.Initiative)
+        }
         
         // Always in editing mode.
         setEditing(true, animated: false)
@@ -39,49 +41,6 @@ class InitiativeViewController: UITableViewController, NSFetchedResultsControlle
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func addPlayersFromGame() {
-        for case let playedGame as PlayedGame in game.playedGames {
-            let _ = Combatant(encounter: encounter, player: playedGame.player, inManagedObjectContext: managedObjectContext)
-        }
-    }
-    
-    func rollInitiative() {
-        var rolled = false
-
-        // Gather the pre-rolled initiative values for monsters.
-        var prerolledInitiative: [Monster: Int] = [:]
-        for case let combatant as Combatant in encounter.combatants {
-            guard combatant.role != .Player else { continue }
-            guard let monster = combatant.monster else { continue }
-            guard let initiative = combatant.initiative else { continue }
-            
-            prerolledInitiative[monster] = initiative
-        }
-        
-        // Now go back and roll initiative where we need to, making sure we use the same new roll for all monsters of the same type too.
-        var initiativeDice = [Monster: DiceCombo]()
-        for case let combatant as Combatant in encounter.combatants {
-            guard combatant.role != .Player else { continue }
-            guard let monster = combatant.monster else { continue }
-            guard combatant.initiative == nil else { continue }
-            
-            if let initiative = prerolledInitiative[monster] {
-                combatant.initiative = initiative
-            } else if let combo = initiativeDice[monster] {
-                combatant.initiative = combo.value
-            } else {
-                let combo = monster.initiativeDice.reroll()
-                initiativeDice[monster] = combo
-                combatant.initiative = combo.value
-                rolled = true
-            }
-        }
-        
-        if rolled {
-            PlaySound(.Initiative)
-        }
     }
     
     func validateEncounter() {
@@ -98,9 +57,8 @@ class InitiativeViewController: UITableViewController, NSFetchedResultsControlle
     // MARK: Actions
     
     @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
-        if beginGameOnDone {
-            let combatant = fetchedResultsController.objectAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! Combatant
-            combatant.isCurrentTurn = true
+        if nextTurnOnDone {
+            encounter.nextTurn()
         }
         
         encounter.lastModified = NSDate()

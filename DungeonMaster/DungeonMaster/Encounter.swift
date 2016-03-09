@@ -189,6 +189,70 @@ final class Encounter: NSManagedObject {
         }
     }
     
+    /// Returns an NSFetchRequest for the encounter's combatants.
+    ///
+    /// The returned fetch request is sorted correctly for the combat initiative order.
+    ///
+    /// - parameter role: optional combat role to filter on.
+    func fetchRequestForCombatants(withRole role: CombatRole? = nil) -> NSFetchRequest {
+        let fetchRequest = NSFetchRequest(entity: Model.Combatant)
+        
+        let encounterPredicate = NSPredicate(format: "encounter == %@", self)
+        if let role = role {
+            let rolePredicate = NSPredicate(format: "rawRole == %@", NSNumber(integer: role.rawValue))
+            
+            fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [encounterPredicate, rolePredicate])
+        } else {
+            fetchRequest.predicate = encounterPredicate
+        }
+        
+        let initiativeSortDescriptor = NSSortDescriptor(key: "rawInitiative", ascending: false)
+        let initiativeOrderSortDescriptor = NSSortDescriptor(key: "rawInitiativeOrder", ascending: true)
+        let monsterDexSortDescriptor = NSSortDescriptor(key: "monster.rawDexterityScore", ascending: false)
+        let dateCreatedSortDescriptor = NSSortDescriptor(key: "dateCreated", ascending: true)
+        fetchRequest.sortDescriptors = [initiativeSortDescriptor, initiativeOrderSortDescriptor, monsterDexSortDescriptor, dateCreatedSortDescriptor]
+        
+        return fetchRequest
+    }
+    
+    /// Updates the encounter, rolling initiative for monsters that have not yet done so.
+    ///
+    /// - returns: true if initiative was rolled.
+    func rollInitiative() -> Bool {
+        var rolled = false
+        
+        // Gather the pre-rolled initiative values for monsters.
+        var prerolledInitiative: [Monster: Int] = [:]
+        for case let combatant as Combatant in combatants {
+            guard combatant.role != .Player else { continue }
+            guard let monster = combatant.monster else { continue }
+            guard let initiative = combatant.initiative else { continue }
+            
+            prerolledInitiative[monster] = initiative
+        }
+        
+        // Now go back and roll initiative where we need to, making sure we use the same new roll for all monsters of the same type too.
+        var initiativeDice = [Monster: DiceCombo]()
+        for case let combatant as Combatant in combatants {
+            guard combatant.role != .Player else { continue }
+            guard let monster = combatant.monster else { continue }
+            guard combatant.initiative == nil else { continue }
+            
+            if let initiative = prerolledInitiative[monster] {
+                combatant.initiative = initiative
+            } else if let combo = initiativeDice[monster] {
+                combatant.initiative = combo.value
+            } else {
+                let combo = monster.initiativeDice.reroll()
+                initiativeDice[monster] = combo
+                combatant.initiative = combo.value
+                rolled = true
+            }
+        }
+
+        return rolled
+    }
+
     /// Select the next combatants in the turn order.
     ///
     /// Updates the `currentTurn` of combatants in the encounter, and may update `round`.
@@ -222,30 +286,11 @@ final class Encounter: NSManagedObject {
         }
     }
     
-    /// Returns an NSFetchRequest for the encounter's combatants.
-    ///
-    /// The returned fetch request is sorted correctly for the combat initiative order.
-    ///
-    /// - parameter role: optional combat role to filter on.
-    func fetchRequestForCombatants(withRole role: CombatRole? = nil) -> NSFetchRequest {
-        let fetchRequest = NSFetchRequest(entity: Model.Combatant)
-        
-        let encounterPredicate = NSPredicate(format: "encounter == %@", self)
-        if let role = role {
-            let rolePredicate = NSPredicate(format: "rawRole == %@", NSNumber(integer: role.rawValue))
-            
-            fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [encounterPredicate, rolePredicate])
-        } else {
-            fetchRequest.predicate = encounterPredicate
+    /// Adds missing players from associated games to the encounter.
+    func addPlayers(fromGame game: Game) {
+        for case let playedGame as PlayedGame in game.playedGames {
+            let _ = Combatant(encounter: self, player: playedGame.player, inManagedObjectContext: managedObjectContext!)
         }
-        
-        let initiativeSortDescriptor = NSSortDescriptor(key: "rawInitiative", ascending: false)
-        let initiativeOrderSortDescriptor = NSSortDescriptor(key: "rawInitiativeOrder", ascending: true)
-        let monsterDexSortDescriptor = NSSortDescriptor(key: "monster.rawDexterityScore", ascending: false)
-        let dateCreatedSortDescriptor = NSSortDescriptor(key: "dateCreated", ascending: true)
-        fetchRequest.sortDescriptors = [initiativeSortDescriptor, initiativeOrderSortDescriptor, monsterDexSortDescriptor, dateCreatedSortDescriptor]
-
-        return fetchRequest
     }
     
 }
