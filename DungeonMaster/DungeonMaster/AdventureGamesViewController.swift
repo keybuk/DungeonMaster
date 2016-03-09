@@ -202,9 +202,7 @@ class AdventureGameCell: UITableViewCell {
     
     var game: Game! {
         didSet {
-            let numberFormatter = RomanNumeralFormatter()
-            let number = numberFormatter.stringFromNumber(game.number)!
-            numberLabel.text = "\(game.adventure.name) \(number)"
+            numberLabel.text = game.title
         
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateStyle = .LongStyle

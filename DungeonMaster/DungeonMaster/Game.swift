@@ -26,6 +26,15 @@ final class Game: NSManagedObject {
     }
     @NSManaged private var rawNumber: NSNumber
     
+    /// Title of the game, including the `adventure` name.
+    ///
+    /// Formatted as "Adventure IV".
+    var title: String {
+        let numberFormatter = RomanNumeralFormatter()
+        let numberString = numberFormatter.stringFromNumber(number)!
+        return "\(adventure.name) \(numberString)"
+    }
+    
     /// The date of this Game.
     @NSManaged var date: NSDate
     

@@ -42,9 +42,7 @@ class GameViewController: UIViewController, ManagedObjectObserverDelegate {
     
     func configureView() {
         // Set the view title.
-        let numberFormatter = RomanNumeralFormatter()
-        let number = numberFormatter.stringFromNumber(game.number)!
-        navigationItem.title = "\(game.adventure.name) \(number)"
+        navigationItem.title = game.title
         
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = .LongStyle
@@ -119,10 +117,7 @@ class GameViewController: UIViewController, ManagedObjectObserverDelegate {
     @IBAction func shareButtonTapped(sender: UIBarButtonItem) {
         let fileManager = NSFileManager.defaultManager()
         if let cachesUrl = try? fileManager.URLForDirectory(.CachesDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true) {
-            let numberFormatter = RomanNumeralFormatter()
-            let number = numberFormatter.stringFromNumber(game.number)!
-            
-            let filename = "\(game.adventure.name) \(number).txt"
+            let filename = "\(game.title).txt"
             let url = cachesUrl.URLByAppendingPathComponent(filename)
             
             let description = game.descriptionForExport()

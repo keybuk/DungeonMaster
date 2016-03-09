@@ -107,9 +107,7 @@ class NetworkController: NSObject, NetworkPeerDelegate, NetworkConnectionDelegat
         
         for case let game as Game in encounter.games {
             if game.date.compare(today) != .OrderedAscending && game.date.compare(tomorrow) == .OrderedAscending {
-                let numberFormatter = RomanNumeralFormatter()
-                let number = numberFormatter.stringFromNumber(game.number)!
-                title = "\(encounter.adventure.name) \(number)"
+                title = game.title
             }
         }
         
