@@ -27,7 +27,7 @@ class LogEntryXPAwardViewController: UITableViewController, UITextFieldDelegate,
             
             for combatant in combatants {
                 if let monster = combatant.monster {
-                    xp += monster.XP
+                    xp += monster.xp
                 }
             }
             

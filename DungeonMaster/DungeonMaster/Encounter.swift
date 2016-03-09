@@ -97,7 +97,7 @@ final class Encounter: NSManagedObject {
 
     /// Returns the total XP for all monsters in the encounter.
     func totalXP() -> Int {
-        return combatants.filter({ ($0 as! Combatant).role == .Foe }).map({ ($0 as! Combatant).monster!.XP }).reduce(0, combine: +)
+        return combatants.filter({ ($0 as! Combatant).role == .Foe }).map({ ($0 as! Combatant).monster!.xp }).reduce(0, combine: +)
     }
     
     /// Calculate the difficulty of the encounter.
@@ -117,7 +117,7 @@ final class Encounter: NSManagedObject {
                 players.append(player)
             } else if let monster = combatant.monster {
                 // Ignore monsters with 0 XP.
-                guard monster.XP > 0 else { continue }
+                guard monster.xp > 0 else { continue }
 
                 switch combatant.role {
                 case .Foe:
@@ -125,7 +125,7 @@ final class Encounter: NSManagedObject {
                 case .Friend, .Player:
                     // The DMG doesnt say how to adjust encounter difficulty to account for NPCs that are friendly to the characters, the simplest solution is to add up their XP and subtract that from the monster XP (ie. 500 XP of allies needs 500 XP of monsters added to the adventure to be equivalent to one without any allies).
                     if allyAdjusted {
-                        allyXP += monster.XP
+                        allyXP += monster.xp
                         allyCount += 1
                     }
                 }

@@ -398,12 +398,23 @@ final class Monster: NSManagedObject {
     @NSManaged var challenge: NSDecimalNumber
 
     /// XP earned for defeating this monster.
-    var XP: Int {
+    var xp: Int {
         if challenge == 0 && actions.count == 0 && reactions.count == 0 {
             return 0
         }
         
         return sharedRules.challengeXP[challenge]!
+    }
+    
+    /// String-formatted version of `xp`.
+    ///
+    /// Formatted as "12,345 XP".
+    var xpString: String {
+        let xpFormatter = NSNumberFormatter()
+        xpFormatter.numberStyle = .DecimalStyle
+        
+        let xpString = xpFormatter.stringFromNumber(xp)!
+        return "\(xpString) XP"
     }
     
     /// Proficiency bonus for this monster.

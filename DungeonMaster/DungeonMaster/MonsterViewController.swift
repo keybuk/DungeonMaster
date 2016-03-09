@@ -543,13 +543,8 @@ class MonsterViewController: UIViewController {
             challengeString = "\(monster.challenge)"
         }
         
-        let xpFormatter = NSNumberFormatter()
-        xpFormatter.numberStyle = .DecimalStyle
-        
-        let xpString = xpFormatter.stringFromNumber(monster.XP)!
-        
         text.appendAttributedString(NSAttributedString(string: "Challenge ", attributes: statsLabelStyle))
-        text.appendAttributedString(NSAttributedString(string: "\(challengeString) (\(xpString) XP)\n", attributes: statsValueStyle))
+        text.appendAttributedString(NSAttributedString(string: "\(challengeString) (\(monster.xpString))\n", attributes: statsValueStyle))
         
         for case let trait as Trait in monster.traits {
             markupParser.parse("***\(trait.name).*** \(trait.text)")
