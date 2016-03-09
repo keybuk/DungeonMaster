@@ -54,15 +54,8 @@ class LogEntryCombatantsViewController: UITableViewController, NSFetchedResultsC
     // MARK: Fetched results controller
     
     lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] in
-        let fetchRequest = NSFetchRequest(entity: Model.Combatant)
-        fetchRequest.predicate = NSPredicate(format: "encounter == %@ AND rawRole == %@", self.encounter, NSNumber(integer: CombatRole.Foe.rawValue) )
-        
-        let initiativeSortDescriptor = NSSortDescriptor(key: "rawInitiative", ascending: false)
-        let initiativeOrderSortDescriptor = NSSortDescriptor(key: "rawInitiativeOrder", ascending: true)
-        let monsterDexSortDescriptor = NSSortDescriptor(key: "monster.rawDexterityScore", ascending: false)
-        let dateCreatedSortDescriptor = NSSortDescriptor(key: "dateCreated", ascending: true)
-        fetchRequest.sortDescriptors = [initiativeSortDescriptor, initiativeOrderSortDescriptor, monsterDexSortDescriptor, dateCreatedSortDescriptor]
-        
+        let fetchRequest = self.encounter.fetchRequestForCombatants(withRole: .Foe)
+
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
         

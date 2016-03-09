@@ -193,11 +193,8 @@ final class Encounter: NSManagedObject {
     ///
     /// Updates the `currentTurn` of combatants in the encounter, and may update `round`.
     func nextTurn() {
-        let initiativeSortDescriptor = NSSortDescriptor(key: "rawInitiative", ascending: false)
-        let initiativeOrderSortDescriptor = NSSortDescriptor(key: "rawInitiativeOrder", ascending: true)
-        let monsterDexSortDescriptor = NSSortDescriptor(key: "monster.rawDexterityScore", ascending: false)
-        let dateCreatedSortDescriptor = NSSortDescriptor(key: "dateCreated", ascending: true)
-        let combatants = self.combatants.sortedArrayUsingDescriptors([initiativeSortDescriptor, initiativeOrderSortDescriptor, monsterDexSortDescriptor, dateCreatedSortDescriptor]) as! [Combatant]
+        let fetchRequest = fetchRequestForCombatants()
+        let combatants = try! managedObjectContext!.executeFetchRequest(fetchRequest) as! [Combatant]
         
         // First clear the turn of the current combatants, remembering the first and last combatant whose turn it was.
         let turnIndex = combatants.indexOf({ $0.isCurrentTurn })
@@ -223,6 +220,32 @@ final class Encounter: NSManagedObject {
         if let newTurnIndex = combatants.indexOf({ $0.isCurrentTurn }) where newTurnIndex <= turnIndex {
             round += 1
         }
+    }
+    
+    /// Returns an NSFetchRequest for the encounter's combatants.
+    ///
+    /// The returned fetch request is sorted correctly for the combat initiative order.
+    ///
+    /// - parameter role: optional combat role to filter on.
+    func fetchRequestForCombatants(withRole role: CombatRole? = nil) -> NSFetchRequest {
+        let fetchRequest = NSFetchRequest(entity: Model.Combatant)
+        
+        let encounterPredicate = NSPredicate(format: "encounter == %@", self)
+        if let role = role {
+            let rolePredicate = NSPredicate(format: "rawRole == %@", NSNumber(integer: role.rawValue))
+            
+            fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [encounterPredicate, rolePredicate])
+        } else {
+            fetchRequest.predicate = encounterPredicate
+        }
+        
+        let initiativeSortDescriptor = NSSortDescriptor(key: "rawInitiative", ascending: false)
+        let initiativeOrderSortDescriptor = NSSortDescriptor(key: "rawInitiativeOrder", ascending: true)
+        let monsterDexSortDescriptor = NSSortDescriptor(key: "monster.rawDexterityScore", ascending: false)
+        let dateCreatedSortDescriptor = NSSortDescriptor(key: "dateCreated", ascending: true)
+        fetchRequest.sortDescriptors = [initiativeSortDescriptor, initiativeOrderSortDescriptor, monsterDexSortDescriptor, dateCreatedSortDescriptor]
+
+        return fetchRequest
     }
     
 }

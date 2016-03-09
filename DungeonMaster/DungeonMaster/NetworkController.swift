@@ -49,15 +49,7 @@ class NetworkController: NSObject, NetworkPeerDelegate, NetworkConnectionDelegat
             }
             
             guard let encounter = self.encounter else { return nil }
-            
-            let fetchRequest = NSFetchRequest(entity: Model.Combatant)
-            fetchRequest.predicate = NSPredicate(format: "encounter == %@", encounter)
-            
-            let initiativeSortDescriptor = NSSortDescriptor(key: "rawInitiative", ascending: false)
-            let initiativeOrderSortDescriptor = NSSortDescriptor(key: "rawInitiativeOrder", ascending: true)
-            let monsterDexSortDescriptor = NSSortDescriptor(key: "monster.rawDexterityScore", ascending: false)
-            let dateCreatedSortDescriptor = NSSortDescriptor(key: "dateCreated", ascending: true)
-            fetchRequest.sortDescriptors = [initiativeSortDescriptor, initiativeOrderSortDescriptor, monsterDexSortDescriptor, dateCreatedSortDescriptor]
+            let fetchRequest = encounter.fetchRequestForCombatants()
             
             let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
             fetchedResultsController.delegate = self
