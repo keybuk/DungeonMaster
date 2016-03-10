@@ -621,7 +621,7 @@ enum ArmorType: Int {
     }
     
     /// Returns whether stealth checks for monsters wearing this armor should have disadvantage.
-    var stealthDisadvantage: Bool {
+    var hasStealthDisadvantage: Bool {
         return sharedRules.armorStealthDisadvantage[rawValue]
     }
 }
