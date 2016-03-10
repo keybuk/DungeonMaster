@@ -368,8 +368,8 @@
                                     <segue destination="cFA-zt-kX3" kind="embed" identifier="PlayersEmbedSegue" id="hMj-t0-kQd"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zAR-co-68k" userLabel="Game Encounters">
-                                <rect key="frame" x="400" y="80" width="200" height="520"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zAR-co-68k" userLabel="Game Encounters">
+                                <rect key="frame" x="400" y="80" width="200" height="476"/>
                                 <connections>
                                     <segue destination="N2j-I4-5dL" kind="embed" identifier="EncountersEmbedSegue" id="arP-9h-DMv"/>
                                 </connections>
