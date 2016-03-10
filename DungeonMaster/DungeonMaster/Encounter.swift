@@ -95,6 +95,16 @@ final class Encounter: NSManagedObject {
         lastModified = NSDate()
     }
 
+    /// Adds `game` to the encounter.
+    func addGame(game: Game) {
+        mutableSetValueForKey("games").addObject(game)
+    }
+    
+    /// Removes `game` from the encounter.
+    func removeGame(game: Game) {
+        mutableSetValueForKey("games").removeObject(game)
+    }
+
     /// Returns the total XP for all monsters in the encounter.
     func totalXP() -> Int {
         return combatants.filter({ ($0 as! Combatant).role == .Foe }).map({ ($0 as! Combatant).monster!.xp }).reduce(0, combine: +)

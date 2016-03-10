@@ -481,6 +481,7 @@ class PlayerViewController: UITableViewController, ManagedObjectObserverDelegate
             default:
                 let savingThrow = sortedSavingThrows[indexPath.row]
                 
+                // FIXME this is a hack because we're not using a real fetched results controller.
                 player.mutableSetValueForKey("savingThrows").removeObject(savingThrow)
                 managedObjectContext.deleteObject(savingThrow)
 
@@ -494,6 +495,7 @@ class PlayerViewController: UITableViewController, ManagedObjectObserverDelegate
             default:
                 let skill = sortedSkills[indexPath.row]
                 
+                // FIXME this is a hack because we're not using a real fetched results controller.
                 player.mutableSetValueForKey("skills").removeObject(skill)
                 managedObjectContext.deleteObject(skill)
                 

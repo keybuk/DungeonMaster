@@ -55,9 +55,8 @@ class AdventurePlayersViewController: UITableViewController, NSFetchedResultsCon
             
             viewController.completionBlock = { cancelled, player in
                 if let player = player where !cancelled {
-                    let players = self.adventure.mutableSetValueForKey("players")
-                    players.addObject(player)
-                    
+                    self.adventure.addPlayer(player)
+
                     self.adventure.lastModified = NSDate()
                     try! managedObjectContext.save()
                 }
@@ -157,11 +156,9 @@ class AdventurePlayersViewController: UITableViewController, NSFetchedResultsCon
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        let players = adventure.mutableSetValueForKey("players")
-
         if editingStyle == .Delete {
             let player = fetchedResultsController.objectAtIndexPath(indexPath) as! Player
-            players.removeObject(player)
+            adventure.removePlayer(player)
             
             adventure.lastModified = NSDate()
             try! managedObjectContext.save()
@@ -169,7 +166,7 @@ class AdventurePlayersViewController: UITableViewController, NSFetchedResultsCon
         } else if editingStyle == .Insert {
             if indexPath.row < missingPlayers.count {
                 let player = missingPlayers[indexPath.row]
-                players.addObject(player)
+                adventure.addPlayer(player)
                 
                 adventure.lastModified = NSDate()
                 try! managedObjectContext.save()

@@ -65,6 +65,16 @@ final class Adventure: NSManagedObject {
             throw NSError(domain: "Adventure", code: NSManagedObjectValidationError, userInfo: userDict)
         }
     }
+    
+    /// Adds `player` to the adventure.
+    func addPlayer(player: Player) {
+        mutableSetValueForKey("players").addObject(player)
+    }
+    
+    /// Removes `player` from the adventure.
+    func removePlayer(player: Player) {
+        mutableSetValueForKey("players").removeObject(player)
+    }
 
     /// Adds missing players from `game` to the adventure.
     func addPlayers(fromGame game: Game) {

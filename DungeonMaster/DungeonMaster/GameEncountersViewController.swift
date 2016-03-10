@@ -53,8 +53,7 @@ class GameEncountersViewController: UITableViewController, NSFetchedResultsContr
     
     @IBAction func addButtonTapped(sender: UIButton) {
         let encounter = Encounter(adventure: game.adventure, inManagedObjectContext: managedObjectContext)
-        let games = encounter.mutableSetValueForKey("games")
-        games.addObject(game)
+        encounter.addGame(game)
         
         game.adventure.lastModified = NSDate()
         try! managedObjectContext.save()
@@ -145,13 +144,12 @@ class GameEncountersViewController: UITableViewController, NSFetchedResultsContr
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        let encounters = game.mutableSetValueForKey("encounters")
         if editingStyle == .Delete {
             let encounter = fetchedResultsController.objectAtIndexPath(indexPath) as! Encounter
-            encounters.removeObject(encounter)
+            encounter.removeGame(game)
         } else if editingStyle == .Insert {
             let encounter = unusedEncounters[indexPath.row]
-            encounters.addObject(encounter)
+            encounter.addGame(game)
         }
         
         game.adventure.lastModified = NSDate()
