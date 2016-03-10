@@ -67,17 +67,17 @@ public class NetworkPeer: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDel
         stop()
     }
     
-    var running = false
+    var isRunning = false
 
     /// Starts advertising and scanning for connections.
     public func start() {
-        guard !running else { return }
+        guard !isRunning else { return }
         
         print("NET: Starting peer with identifier \(uuid.UUIDString).")
         netService.publishWithOptions(.ListenForConnections)
         netServiceBrowser.searchForServicesOfType(NetworkPeer.serviceType, inDomain: NetworkPeer.serviceDomain)
 
-        running = true
+        isRunning = true
     }
     
     public var peers: [NSUUID: NetworkConnection] = [:]
@@ -157,7 +157,7 @@ public class NetworkPeer: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDel
     ///
     /// To resume, call `start()` again.
     public func stop() {
-        guard running else { return }
+        guard isRunning else { return }
         
         print("NET: Stopping peer.")
         netService.stop()
@@ -167,7 +167,7 @@ public class NetworkPeer: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDel
             connection.close()
         }
 
-        running = false
+        isRunning = false
     }
     
     /// Broadcast a message to all connections.
