@@ -287,7 +287,7 @@ class CombatantViewController: UITableViewController, ManagedObjectObserverDeleg
                 conditionRulesViewController.modalPresentationStyle = .Popover
                 
                 conditionRulesViewController.popoverPresentationController?.sourceView = cell.contentView
-                conditionRulesViewController.popoverPresentationController?.sourceRect = CGRect(x: cell.contentView.frame.size.width, y: 0.0, width: 0.0, height: cell.frame.size.height)
+                conditionRulesViewController.popoverPresentationController?.sourceRect = CGRect(x: cell.contentView.bounds.size.width, y: 0.0, width: 0.0, height: cell.bounds.size.height)
 
                 conditionRulesViewController.condition = condition
                 presentViewController(conditionRulesViewController, animated: true, completion: nil)

@@ -118,7 +118,7 @@ typealias TabletopLocation = CGPoint
             let view = statsViews[index]
             let point = locationToPoint(location)
             
-            view.center = CGPoint(x: point.x, y: point.y - itemRadius - 4.0 - view.frame.size.height / 2.0)
+            view.center = CGPoint(x: point.x, y: point.y - itemRadius - 4.0 - view.bounds.size.height / 2.0)
         }
         
         setNeedsDisplay()
