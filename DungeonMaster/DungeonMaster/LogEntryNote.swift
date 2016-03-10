@@ -21,4 +21,9 @@ final class LogEntryNote: LogEntry {
         self.init(model: Model.LogEntryNote, playedGame: playedGame, inManagedObjectContext: context)
     }
 
+    /// Returns InDesign Tagged Text description of the log entry.
+    override func descriptionForExport() -> String {
+        return note.stringByReplacingOccurrencesOfString("'", withString: "<0x2019>")
+    }
+
 }

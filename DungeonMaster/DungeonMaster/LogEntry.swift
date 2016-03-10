@@ -34,4 +34,9 @@ class LogEntry: NSManagedObject {
         self.index = playedGame.logEntries.count + 1
     }
     
+    /// Returns InDesign Tagged Text description of the log entry.
+    func descriptionForExport() -> String {
+        return ""
+    }
+    
 }

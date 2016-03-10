@@ -51,4 +51,9 @@ final class XPAward: LogEntry {
         self.init(model: Model.XPAward, playedGame: playedGame, inManagedObjectContext: context)
     }
     
+    /// Returns InDesign Tagged Text description of the log entry.
+    override func descriptionForExport() -> String {
+        return "\(xpString)\t" + reason.stringByReplacingOccurrencesOfString("'", withString: "<0x2019>")
+    }
+
 }

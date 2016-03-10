@@ -72,18 +72,8 @@ final class PlayedGame: NSManagedObject {
                 string += "<ParaStyle:XP Card\\:Body>"
             }
             
-            switch logEntry {
-            case let xpAward as XPAward:
-                let xpString = xpFormatter.stringFromNumber(xpAward.xp)!
-                let reason = xpAward.reason.stringByReplacingOccurrencesOfString("'", withString: "<0x2019>")
-                
-                string += "+\(xpString) XP\t\(reason)"
-            case let logEntryNote as LogEntryNote:
-                string += logEntryNote.note.stringByReplacingOccurrencesOfString("'", withString: "<0x2019>")
-            default:
-                break
-            }
-            
+            string += logEntry.descriptionForExport()
+
             lastType = logEntry.dynamicType
         }
         
