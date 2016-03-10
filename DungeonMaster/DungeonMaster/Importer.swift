@@ -105,6 +105,7 @@ func importIfNeeded() {
                 for combatant in referingCombatants {
                     combatant.monster = monster
                 }
+                combatants[name] = nil
             }
         }
         
@@ -425,13 +426,8 @@ func importIfNeeded() {
     }
     
     // Check that all the combatants got a monster.
-    for (monsterName, referingCombatants) in combatants {
-        for combatant in referingCombatants {
-            if combatant.primitiveValueForKey("monster") == nil {
-                print("Monster referred to by combatant is missing: \(monsterName)")
-                break
-            }
-        }
+    for monsterName in combatants.keys {
+        print("Monster referred to by combatant is missing: \(monsterName)")
     }
 
     // Done.
