@@ -27,7 +27,7 @@ enum ManagedObjectChangeType {
 ///
 /// Implementation of a single method `managedObject(object: changedForType type:)` is necessary to receive the change events.
 protocol ManagedObjectObserverDelegate: class {
-    typealias Entity
+    associatedtype Entity
     
     func managedObject(object: Entity, changedForType type: ManagedObjectChangeType)
     
