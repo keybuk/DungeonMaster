@@ -172,7 +172,7 @@ class CombatantViewController: UITableViewController, ManagedObjectObserverDeleg
                 } else {
                     cell.textField.text = "—"
                 }
-                cell.textField.addTarget(self, action: "initiativeEditingChanged:", forControlEvents: .EditingChanged)
+                cell.textField.addTarget(self, action: #selector(initiativeEditingChanged(_:)), forControlEvents: .EditingChanged)
                 return cell
             case 3 where combatant.role != .Player:
                 let cell = tableView.dequeueReusableCellWithIdentifier("DiceRollCell", forIndexPath: indexPath) as! DiceRollCell
@@ -180,7 +180,7 @@ class CombatantViewController: UITableViewController, ManagedObjectObserverDeleg
                 cell.label.text = "Hit Points"
                 cell.textField.text = "\(combatant.hitPoints)"
                 // Should read up on control events and figure out if this is right or not.
-                cell.textField.addTarget(self, action: "hitPointsEditingChanged:", forControlEvents: .EditingChanged)
+                cell.textField.addTarget(self, action: #selector(hitPointsEditingChanged(_:)), forControlEvents: .EditingChanged)
                 return cell
             default:
                 abort()

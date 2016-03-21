@@ -64,13 +64,13 @@ import UIKit
         imageLayer.backgroundColor = UIColor.darkGrayColor().CGColor
         layer.addSublayer(imageLayer)
         
-        tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "handleTapGesture:")
+        tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(_:)))
         tapGestureRecognizer.delegate = self
         
-        pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: "handlePinchGesture:")
+        pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(handlePinchGesture(_:)))
         pinchGestureRecognizer.delegate = self
         
-        panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePanGesture:")
+        panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
         panGestureRecognizer.delegate = self
     }
     

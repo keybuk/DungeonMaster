@@ -19,7 +19,7 @@ class CompendiumViewController: UITabBarController {
         
         // Install navigation buttons into view controllers' navigation items, and also copy over the list of books we should use.
         for viewController in viewControllers! {
-            let closeButtonItem = UIBarButtonItem(title: "Close", style: .Plain, target: self, action: "closeButtonTapped:")
+            let closeButtonItem = UIBarButtonItem(title: "Close", style: .Plain, target: self, action: #selector(closeButtonTapped(_:)))
             
             if let splitViewController = viewController as? UISplitViewController, masterViewController = (splitViewController.viewControllers.first as? UINavigationController)?.topViewController, detailViewController = (splitViewController.viewControllers.last as? UINavigationController)?.topViewController {
                 masterViewController.navigationItem.leftBarButtonItem = closeButtonItem

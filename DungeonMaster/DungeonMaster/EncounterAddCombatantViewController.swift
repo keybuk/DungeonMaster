@@ -34,14 +34,14 @@ class EncounterAddCombatantViewController: UIViewController {
             monstersViewController = (splitViewController.viewControllers.first as! UINavigationController).topViewController as! MonstersViewController
             monstersViewController.books = encounter.adventure.books.allObjects as! [Book]
             
-            let cancelButtonItem = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: "cancelButtonTapped:")
+            let cancelButtonItem = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: #selector(cancelButtonTapped(_:)))
             monstersViewController.navigationItem.leftBarButtonItem = cancelButtonItem
             
-            addButtonItem = UIBarButtonItem(title: "Add 1", style: .Done, target: self, action: "addButtonTapped:")
+            addButtonItem = UIBarButtonItem(title: "Add 1", style: .Done, target: self, action: #selector(addButtonTapped(_:)))
 
             let stepper = UIStepper()
             stepper.minimumValue = 1.0
-            stepper.addTarget(self, action: "stepperValueChanged:", forControlEvents: .ValueChanged)
+            stepper.addTarget(self, action: #selector(stepperValueChanged(_:)), forControlEvents: .ValueChanged)
             stepper.value = 1.0
             let stepperButtonItem = UIBarButtonItem(customView: stepper)
 

@@ -46,7 +46,7 @@ class ManagedObjectObserver<Entity, DelegateType where Entity: NSManagedObject, 
         self.delegate = delegate
 
         super.init()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "managedObjectContextObjectsDidChange:", name: NSManagedObjectContextObjectsDidChangeNotification, object: object.managedObjectContext)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(managedObjectContextObjectsDidChange(_:)), name: NSManagedObjectContextObjectsDidChangeNotification, object: object.managedObjectContext)
     }
     
     deinit {
