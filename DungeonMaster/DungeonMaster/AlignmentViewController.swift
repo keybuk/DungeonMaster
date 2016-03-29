@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AlignmentViewController: UITableViewController {
+class AlignmentViewController : UITableViewController {
     
     var selectedAlignment: Alignment?
 

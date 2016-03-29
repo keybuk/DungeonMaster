@@ -11,7 +11,7 @@ import CoreGraphics
 import Foundation
 
 /// Combatant represents a creature, either a monster or a player character, involved in a combat encounter.
-final class Combatant: NSManagedObject {
+final class Combatant : NSManagedObject {
 
     /// Date that this object was created.
     ///

@@ -10,7 +10,7 @@ import CoreData
 import Foundation
 
 /// MonsterEnvironment represents an environment in which a Monster may be found.
-final class MonsterEnvironment: NSManagedObject {
+final class MonsterEnvironment : NSManagedObject {
     
     /// The monster which can be found in this environment.
     @NSManaged var monster: Monster

@@ -8,14 +8,14 @@
 
 import Foundation
 
-enum DieError: ErrorType {
+enum DieError : ErrorType {
     case InvalidSides
     case InvalidString
     case InvalidMultiplier
 }
 
 /// 🎲 Single die with rolled value.
-struct Die: Equatable {
+struct Die : Equatable {
 
     /// Number of sides to the die.
     let sides: Int
@@ -54,7 +54,7 @@ enum JoiningSign {
 }
 
 /// Multiple dice with rolled values.
-struct Dice: Equatable, CustomStringConvertible {
+struct Dice : Equatable, CustomStringConvertible {
     
     /// Set of individual die rolled, empty for a constant modifier.
     let dice: [Die]
@@ -130,7 +130,7 @@ func ==(lhs: Dice, rhs: Dice) -> Bool {
 /// - 2d6 + 4 + 3d8
 ///
 /// Descriptions are turned into an array of Dice.
-struct DiceCombo: Equatable, CustomStringConvertible {
+struct DiceCombo : Equatable, CustomStringConvertible {
     
     /// Dice objects representing groups of rolled dice, or constant modifiers.
     let dice: [Dice]

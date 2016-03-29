@@ -10,7 +10,7 @@ import CoreData
 import Foundation
 
 /// LogEntry represents an entry in the player's quest log, an abstract concept of an ordered list of items related to a player's game.
-class LogEntry: NSManagedObject {
+class LogEntry : NSManagedObject {
     
     /// The PlayedGame object referencing both the player and the game.
     @NSManaged var playedGame: PlayedGame

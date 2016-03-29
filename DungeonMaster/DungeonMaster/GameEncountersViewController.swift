@@ -9,7 +9,7 @@
 import CoreData
 import UIKit
 
-class GameEncountersViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class GameEncountersViewController : UITableViewController, NSFetchedResultsControllerDelegate {
     
     var game: Game!
 
@@ -232,7 +232,7 @@ class GameEncountersViewController: UITableViewController, NSFetchedResultsContr
 
 // MARK: -
 
-class GameEncounterCell: UITableViewCell {
+class GameEncounterCell : UITableViewCell {
     
     @IBOutlet var label: UILabel!
 

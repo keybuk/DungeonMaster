@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SavingThrowViewController: UITableViewController {
+class SavingThrowViewController : UITableViewController {
 
     var existingSavingThrows: [Ability] = []
     var selectedSavingThrows: [Ability] = []

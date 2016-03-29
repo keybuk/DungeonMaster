@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConditionViewController: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class ConditionViewController : UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
     @IBOutlet var addButton: UIBarButtonItem!
 

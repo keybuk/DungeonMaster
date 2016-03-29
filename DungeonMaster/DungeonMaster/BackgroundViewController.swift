@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BackgroundViewController: UITableViewController {
+class BackgroundViewController : UITableViewController {
     
     var selectedBackground: Background?
 

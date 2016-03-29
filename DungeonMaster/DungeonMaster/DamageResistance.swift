@@ -10,7 +10,7 @@ import CoreData
 import Foundation
 
 /// DamageResistance represents a class of damage and attack that a monster is resistant to.
-final class DamageResistance: NSManagedObject {
+final class DamageResistance : NSManagedObject {
     
     /// Monster that is resistant.
     @NSManaged var monster: Monster

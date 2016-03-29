@@ -9,7 +9,7 @@
 import XCTest
 @testable import DungeonMaster
 
-class RomanNumeralFormatterTests: XCTestCase {
+class RomanNumeralFormatterTests : XCTestCase {
     
     func testUppercaseRepresentations() {
         let representations = [

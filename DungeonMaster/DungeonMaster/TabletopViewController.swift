@@ -9,7 +9,7 @@
 import CoreData
 import UIKit
 
-class TabletopViewController: UIViewController, TabletopViewDataSource, TabletopViewDelegate, NSFetchedResultsControllerDelegate {
+class TabletopViewController : UIViewController, TabletopViewDataSource, TabletopViewDelegate, NSFetchedResultsControllerDelegate {
 
     var tabletopView: TabletopView!
     

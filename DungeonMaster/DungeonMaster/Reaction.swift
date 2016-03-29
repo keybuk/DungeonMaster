@@ -9,7 +9,7 @@
 import CoreData
 import Foundation
 
-final class Reaction: NSManagedObject {
+final class Reaction : NSManagedObject {
     
     @NSManaged var monster: Monster
     @NSManaged var name: String

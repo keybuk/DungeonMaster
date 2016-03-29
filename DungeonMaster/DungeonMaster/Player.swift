@@ -10,7 +10,7 @@ import CoreData
 import Foundation
 
 /// Player represents a player character.
-final class Player: NSManagedObject {
+final class Player : NSManagedObject {
     
     /// Name of the character.
     @NSManaged var name: String

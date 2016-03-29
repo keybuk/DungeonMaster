@@ -12,7 +12,7 @@ import Foundation
 /// LogEntryNote represents any textual note added to a player's log during a game.
 ///
 /// Ideally these will all get their own specific classes, but there's always reason to have some kind of simple text field in a game.
-final class LogEntryNote: LogEntry {
+final class LogEntryNote : LogEntry {
     
     /// Note text.
     @NSManaged var note: String

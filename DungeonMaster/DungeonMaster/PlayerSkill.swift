@@ -10,7 +10,7 @@ import CoreData
 import Foundation
 
 /// PlayerSkill represents a skill that the player is proficient in.
-final class PlayerSkill: NSManagedObject {
+final class PlayerSkill : NSManagedObject {
     
     /// Player character that this proficiency applies to.
     @NSManaged var player: Player

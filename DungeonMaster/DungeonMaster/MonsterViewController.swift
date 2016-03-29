@@ -9,7 +9,7 @@
 import CoreData
 import UIKit
 
-class MonsterViewController: UIViewController {
+class MonsterViewController : UIViewController {
 
     @IBOutlet var textView: UITextView!
 

@@ -9,7 +9,7 @@
 import UIKit
 
 /// MarkupParserFeature represents the markup features that can be parsed by calls to `parseText`.
-struct MarkupParserFeatures: OptionSetType {
+struct MarkupParserFeatures : OptionSetType {
     let rawValue: UInt
     static let None = MarkupParserFeatures(rawValue: 0)
     static let Emphasis = MarkupParserFeatures(rawValue: 1)

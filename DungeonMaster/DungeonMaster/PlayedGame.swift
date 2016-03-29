@@ -10,7 +10,7 @@ import CoreData
 import Foundation
 
 /// PlayedGame represents a player participating in a single game session of a long-running adventure.
-final class PlayedGame: NSManagedObject {
+final class PlayedGame : NSManagedObject {
     
     /// The Game that the player played.
     @NSManaged var game: Game

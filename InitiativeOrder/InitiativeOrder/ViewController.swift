@@ -16,7 +16,7 @@ struct Combatant {
     var isAlive: Bool
 }
 
-class ViewController: UIViewController, NetworkPeerDelegate, NetworkConnectionDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
+class ViewController : UIViewController, NetworkPeerDelegate, NetworkConnectionDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
 
     @IBOutlet var tableView: UITableView!
     @IBOutlet var roundLabel: UILabel!
@@ -219,7 +219,7 @@ class ViewController: UIViewController, NetworkPeerDelegate, NetworkConnectionDe
 
 // MARK: -
 
-class CombatantCell: UITableViewCell {
+class CombatantCell : UITableViewCell {
     
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var initiativeLabel: UILabel!

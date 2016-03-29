@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EncounterAddCombatantViewController: UIViewController {
+class EncounterAddCombatantViewController : UIViewController {
     
     var encounter: Encounter!
     

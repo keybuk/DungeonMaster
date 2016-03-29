@@ -20,7 +20,7 @@ private struct Box {
 }
 
 /// PointGenerator generates a distributed set of point values in a square box of a given range.
-struct PointGenerator: GeneratorType {
+struct PointGenerator : GeneratorType {
     
     typealias Element = CGPoint
 

@@ -9,7 +9,7 @@
 import CoreData
 import UIKit
 
-class MonstersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UISearchControllerDelegate, UISearchResultsUpdating, UISplitViewControllerDelegate {
+class MonstersViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UISearchControllerDelegate, UISearchResultsUpdating, UISplitViewControllerDelegate {
     
     var books: [Book]!
     
@@ -318,7 +318,7 @@ class MonstersViewController: UIViewController, UITableViewDataSource, UITableVi
 
 // MARK: -
 
-class MonsterCell: UITableViewCell {
+class MonsterCell : UITableViewCell {
     
     var monster: Monster! {
         didSet {

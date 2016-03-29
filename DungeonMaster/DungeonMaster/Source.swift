@@ -10,7 +10,7 @@ import CoreData
 import Foundation
 
 /// Source represents an individual reference to source material.
-final class Source: NSManagedObject {
+final class Source : NSManagedObject {
 
     /// The source book for this reference.
     @NSManaged var book: Book

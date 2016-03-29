@@ -8,7 +8,7 @@
 
 import XCTest
 
-class SpellBookUITests: XCTestCase {
+class SpellBookUITests : XCTestCase {
         
     override func setUp() {
         super.setUp()

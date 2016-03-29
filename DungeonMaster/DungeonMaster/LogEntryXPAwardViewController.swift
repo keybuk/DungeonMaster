@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LogEntryXPAwardViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
+class LogEntryXPAwardViewController : UITableViewController, UITextFieldDelegate, UITextViewDelegate {
     
     var playedGames: Set<PlayedGame>!
     

@@ -9,7 +9,7 @@
 import XCTest
 @testable import DungeonMaster
 
-class PointGeneratorTest: XCTestCase {
+class PointGeneratorTest : XCTestCase {
     
     override func setUp() {
         super.setUp()

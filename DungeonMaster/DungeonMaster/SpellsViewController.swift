@@ -9,7 +9,7 @@
 import CoreData
 import UIKit
 
-class SpellsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UISearchControllerDelegate, UISearchResultsUpdating, UISplitViewControllerDelegate {
+class SpellsViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UISearchControllerDelegate, UISearchResultsUpdating, UISplitViewControllerDelegate {
 
     var books: [Book]!
 
@@ -223,7 +223,7 @@ class SpellsViewController: UIViewController, UITableViewDataSource, UITableView
 
 // MARK: -
 
-class SpellCell: UITableViewCell {
+class SpellCell : UITableViewCell {
 
     var spell: Spell! {
         didSet {

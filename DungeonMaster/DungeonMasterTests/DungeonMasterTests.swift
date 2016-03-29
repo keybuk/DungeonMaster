@@ -9,7 +9,7 @@
 import XCTest
 @testable import DungeonMaster
 
-class DungeonMasterTests: XCTestCase {
+class DungeonMasterTests : XCTestCase {
     
     override func setUp() {
         super.setUp()

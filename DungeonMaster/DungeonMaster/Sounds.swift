@@ -9,7 +9,7 @@
 import AudioToolbox
 import Foundation
 
-enum Sound: String {
+enum Sound : String {
     case Dice = "dice"
     case Initiative = "initiative"
 }

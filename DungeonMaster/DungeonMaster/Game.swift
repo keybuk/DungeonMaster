@@ -10,7 +10,7 @@ import CoreData
 import Foundation
 
 /// Game represents a single game session in a long-running adventure.
-final class Game: NSManagedObject {
+final class Game : NSManagedObject {
     
     /// The Adventure that this Game is a part of.
     @NSManaged var adventure: Adventure

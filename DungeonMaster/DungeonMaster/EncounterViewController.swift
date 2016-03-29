@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EncounterViewController: UIViewController, ManagedObjectObserverDelegate {
+class EncounterViewController : UIViewController, ManagedObjectObserverDelegate {
     
     var encounter: Encounter!
     var game: Game?
@@ -245,7 +245,7 @@ class EncounterViewController: UIViewController, ManagedObjectObserverDelegate {
 
 }
 
-class EncounterShowMiddleSegue: UIStoryboardSegue {
+class EncounterShowMiddleSegue : UIStoryboardSegue {
     
     override func perform() {
         let encounterViewController = sourceViewController.parentViewController as! EncounterViewController
@@ -254,7 +254,7 @@ class EncounterShowMiddleSegue: UIStoryboardSegue {
 
 }
 
-class EncounterShowRightSegue: UIStoryboardSegue {
+class EncounterShowRightSegue : UIStoryboardSegue {
     
     override func perform() {
         let encounterViewController = sourceViewController.parentViewController as! EncounterViewController

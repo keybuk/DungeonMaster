@@ -9,7 +9,7 @@
 import CoreData
 import UIKit
 
-class LogEntryPlayersViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class LogEntryPlayersViewController : UITableViewController, NSFetchedResultsControllerDelegate {
     
     var logEntryType: LogEntry.Type!
     var game: Game!
@@ -165,7 +165,7 @@ class LogEntryPlayersViewController: UITableViewController, NSFetchedResultsCont
 
 // MARK: -
 
-class LogEntryPlayerCell: UITableViewCell {
+class LogEntryPlayerCell : UITableViewCell {
     
     @IBOutlet var nameLabel: UILabel!
     

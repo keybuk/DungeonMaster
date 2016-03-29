@@ -9,7 +9,7 @@
 import XCTest
 @testable import InitiativeOrder
 
-class InitiativeOrderTests: XCTestCase {
+class InitiativeOrderTests : XCTestCase {
     
     override func setUp() {
         super.setUp()

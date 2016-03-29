@@ -10,7 +10,7 @@ import CoreData
 import Foundation
 
 /// AlignmentOption represents a single option, in a set, for choosing the alignment of a monster.
-final class AlignmentOption: NSManagedObject {
+final class AlignmentOption : NSManagedObject {
     
     /// Monster for which this alignment is an option.
     @NSManaged var monster: Monster

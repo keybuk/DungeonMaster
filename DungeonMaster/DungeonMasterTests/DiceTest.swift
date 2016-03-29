@@ -9,7 +9,7 @@
 import XCTest
 @testable import DungeonMaster
 
-class DiceTest: XCTestCase {
+class DiceTest : XCTestCase {
 
     func testFourSidedDie() {
         for _ in 0..<100 {

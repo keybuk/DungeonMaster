@@ -9,7 +9,7 @@
 import XCTest
 @testable import SpellBook
 
-class SpellBookTests: XCTestCase {
+class SpellBookTests : XCTestCase {
     
     override func setUp() {
         super.setUp()

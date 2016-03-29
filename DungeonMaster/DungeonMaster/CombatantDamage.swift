@@ -9,7 +9,7 @@
 import CoreData
 import Foundation
 
-final class CombatantDamage: NSManagedObject {
+final class CombatantDamage : NSManagedObject {
     
     @NSManaged var target: Combatant
     

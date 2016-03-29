@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PlayerRootViewController: UIViewController, ManagedObjectObserverDelegate {
+class PlayerRootViewController : UIViewController, ManagedObjectObserverDelegate {
     
     var player: Player!
     

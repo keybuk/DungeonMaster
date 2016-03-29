@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CharacterClassViewController: UITableViewController {
+class CharacterClassViewController : UITableViewController {
     
     var selectedCharacterClass: CharacterClass?
 

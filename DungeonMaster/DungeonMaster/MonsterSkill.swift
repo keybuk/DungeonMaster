@@ -12,7 +12,7 @@ import Foundation
 /// MonsterSkill represents a skill that a monster is proficient in.
 ///
 /// Monster proficiencies don't always match the proficiency bonus for their level, or even the double for expertise rule, so this includes the specific modifier for that proficiency.
-final class MonsterSkill: NSManagedObject {
+final class MonsterSkill : NSManagedObject {
     
     /// Monster that this proficiency applies to.
     @NSManaged var monster: Monster

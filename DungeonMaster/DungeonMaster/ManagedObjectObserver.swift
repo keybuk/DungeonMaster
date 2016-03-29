@@ -36,7 +36,7 @@ protocol ManagedObjectObserverDelegate: class {
 /// ManagedObjectObserver wraps the `NSManagedObjectContextObjectsDidChangeNotification` notification to check for changes to a single object.
 ///
 /// To avoid specifying the generic parameters when storing the observer in the class, store as a property of `NSObjectProtocol?` type.
-class ManagedObjectObserver<Entity, DelegateType where Entity: NSManagedObject, DelegateType: ManagedObjectObserverDelegate, DelegateType.Entity == Entity>: NSObject {
+class ManagedObjectObserver<Entity, DelegateType where Entity : NSManagedObject, DelegateType : ManagedObjectObserverDelegate, DelegateType.Entity == Entity> : NSObject {
     
     let object: Entity
     weak var delegate: DelegateType?

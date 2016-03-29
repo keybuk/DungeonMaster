@@ -12,7 +12,7 @@ import Foundation
 /// Adventure represents a D&D campaign or adventure.
 ///
 /// It's a top-level object in the model under which all user content is grouped.
-final class Adventure: NSManagedObject {
+final class Adventure : NSManagedObject {
     
     /// Timestamp when the Adventure object was last modified.
     @NSManaged var lastModified: NSDate

@@ -9,7 +9,7 @@
 import CoreData
 import UIKit
 
-class InitiativeViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class InitiativeViewController : UITableViewController, NSFetchedResultsControllerDelegate {
     
     var encounter: Encounter!
     var game: Game!
@@ -311,7 +311,7 @@ class InitiativeViewController: UITableViewController, NSFetchedResultsControlle
 
 // MARK: -
 
-class InitiativeCombatantCell: UITableViewCell, UITextFieldDelegate {
+class InitiativeCombatantCell : UITableViewCell, UITextFieldDelegate {
     
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var initiativeTextField: UITextField!
@@ -361,7 +361,7 @@ class InitiativeCombatantCell: UITableViewCell, UITextFieldDelegate {
 
 }
 
-class InitiativeMissingPlayerCell: UITableViewCell {
+class InitiativeMissingPlayerCell : UITableViewCell {
     
     @IBOutlet var nameLabel: UILabel!
 

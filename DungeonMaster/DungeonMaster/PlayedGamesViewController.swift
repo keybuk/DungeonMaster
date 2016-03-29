@@ -14,7 +14,7 @@ import UIKit
 /// In its normal mode the view uses a query on the `LogEntry`s themselves, sorted and grouped by the `PlayedGame` relationship. The purpose being to display something of a "quest log" for the player concerned.
 ///
 /// In edit mode the view becomes more complex, instead showing all of the `PlayedGame`s for the player, combining both queries, and allowing the addition of new log entries, as well as moving log entries around and even between games.
-class PlayedGamesViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class PlayedGamesViewController : UITableViewController, NSFetchedResultsControllerDelegate {
 
     /// Player whose log entries to show.
     var player: Player!
@@ -454,7 +454,7 @@ class PlayedGamesViewController: UITableViewController, NSFetchedResultsControll
 
 // MARK: -
 
-class GameHeaderView: UITableViewHeaderFooterView {
+class GameHeaderView : UITableViewHeaderFooterView {
     
     @IBOutlet var numberLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
@@ -473,7 +473,7 @@ class GameHeaderView: UITableViewHeaderFooterView {
     
 }
 
-class XPAwardCell: UITableViewCell {
+class XPAwardCell : UITableViewCell {
     
     @IBOutlet var xpLabel: UILabel!
     @IBOutlet var reasonLabel: UILabel!
@@ -501,7 +501,7 @@ class XPAwardCell: UITableViewCell {
 
 }
 
-class LogEntryNoteCell: UITableViewCell {
+class LogEntryNoteCell : UITableViewCell {
     
     @IBOutlet var noteLabel: UILabel!
     
@@ -521,7 +521,7 @@ class LogEntryNoteCell: UITableViewCell {
 
 }
 
-class AddLogEntryCell: UITableViewCell {
+class AddLogEntryCell : UITableViewCell {
 
     @IBOutlet var label: UILabel!
     

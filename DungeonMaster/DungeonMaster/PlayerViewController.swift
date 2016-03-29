@@ -9,7 +9,7 @@
 import CoreData
 import UIKit
 
-class PlayerViewController: UITableViewController, ManagedObjectObserverDelegate {
+class PlayerViewController : UITableViewController, ManagedObjectObserverDelegate {
     
     /// Player to be edited.
     var player: Player!
@@ -517,7 +517,7 @@ class PlayerViewController: UITableViewController, ManagedObjectObserverDelegate
 
 // MARK: -
 
-class PlayerNameCell: UITableViewCell, UITextFieldDelegate {
+class PlayerNameCell : UITableViewCell, UITextFieldDelegate {
     
     @IBOutlet var textField: UITextField!
     
@@ -541,7 +541,7 @@ class PlayerNameCell: UITableViewCell, UITextFieldDelegate {
 
 }
 
-class PlayerPlayerNameCell: UITableViewCell, UITextFieldDelegate {
+class PlayerPlayerNameCell : UITableViewCell, UITextFieldDelegate {
     
     @IBOutlet var textField: UITextField!
 
@@ -565,7 +565,7 @@ class PlayerPlayerNameCell: UITableViewCell, UITextFieldDelegate {
     
 }
 
-class PlayerRaceCell: UITableViewCell {
+class PlayerRaceCell : UITableViewCell {
     
     @IBOutlet var label: UILabel!
     
@@ -590,7 +590,7 @@ class PlayerRaceCell: UITableViewCell {
     
 }
 
-class PlayerCharacterClassCell: UITableViewCell {
+class PlayerCharacterClassCell : UITableViewCell {
     
     @IBOutlet var label: UILabel!
 
@@ -615,7 +615,7 @@ class PlayerCharacterClassCell: UITableViewCell {
 
 }
 
-class PlayerBackgroundCell: UITableViewCell {
+class PlayerBackgroundCell : UITableViewCell {
     
     @IBOutlet var label: UILabel!
 
@@ -640,7 +640,7 @@ class PlayerBackgroundCell: UITableViewCell {
 
 }
 
-class PlayerAlignmentCell: UITableViewCell {
+class PlayerAlignmentCell : UITableViewCell {
     
     @IBOutlet var label: UILabel!
 
@@ -665,7 +665,7 @@ class PlayerAlignmentCell: UITableViewCell {
 
 }
 
-class PlayerXPCell: UITableViewCell, UITextFieldDelegate {
+class PlayerXPCell : UITableViewCell, UITextFieldDelegate {
     
     @IBOutlet var xpCaptionLabel: UILabel?
     @IBOutlet var xpLabel: UILabel?
@@ -727,7 +727,7 @@ class PlayerXPCell: UITableViewCell, UITextFieldDelegate {
 
 }
 
-class PlayerPassivePerceptionCell: UITableViewCell, UITextFieldDelegate {
+class PlayerPassivePerceptionCell : UITableViewCell, UITextFieldDelegate {
     
     @IBOutlet var captionLabel: UILabel!
     @IBOutlet var label: UILabel?
@@ -776,7 +776,7 @@ class PlayerPassivePerceptionCell: UITableViewCell, UITextFieldDelegate {
     
 }
 
-class PlayerSavingThrowCell: UITableViewCell {
+class PlayerSavingThrowCell : UITableViewCell {
     
     @IBOutlet var label: UILabel!
 
@@ -796,7 +796,7 @@ class PlayerSavingThrowCell: UITableViewCell {
     
 }
 
-class AddPlayerSavingThrowCell: UITableViewCell {
+class AddPlayerSavingThrowCell : UITableViewCell {
     
     @IBOutlet var label: UILabel!
 
@@ -807,7 +807,7 @@ class AddPlayerSavingThrowCell: UITableViewCell {
 
 }
 
-class PlayerSkillCell: UITableViewCell {
+class PlayerSkillCell : UITableViewCell {
     
     @IBOutlet var label: UILabel!
 
@@ -827,7 +827,7 @@ class PlayerSkillCell: UITableViewCell {
     
 }
 
-class AddPlayerSkillCell: UITableViewCell {
+class AddPlayerSkillCell : UITableViewCell {
     
     @IBOutlet var label: UILabel!
 

@@ -10,7 +10,7 @@ import CoreData
 import Foundation
 
 /// Spell represents a spell that can be cast by monsters or players.
-final class Spell: NSManagedObject {
+final class Spell : NSManagedObject {
 
     /// Name for the spell.
     @NSManaged var name: String

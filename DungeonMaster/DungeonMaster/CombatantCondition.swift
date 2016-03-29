@@ -9,7 +9,7 @@
 import CoreData
 import Foundation
 
-final class CombatantCondition: NSManagedObject {
+final class CombatantCondition : NSManagedObject {
     
     @NSManaged var target: Combatant
     

@@ -12,7 +12,7 @@ import Foundation
 /// Armor represents a set of armor that can be equipped by a monster.
 ///
 /// A monster may have many options for its armor, and which it has equipped may be indicated by the condition or form the monster is in, or DM's choice.
-final class Armor: NSManagedObject {
+final class Armor : NSManagedObject {
     
     /// Monster to which this armor applies.
     @NSManaged var monster: Monster

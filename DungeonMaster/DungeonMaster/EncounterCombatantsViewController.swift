@@ -9,7 +9,7 @@
 import CoreData
 import UIKit
 
-class EncounterCombatantsViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class EncounterCombatantsViewController : UITableViewController, NSFetchedResultsControllerDelegate {
     
     var encounter: Encounter!
 
@@ -204,7 +204,7 @@ class EncounterCombatantsViewController: UITableViewController, NSFetchedResults
 
 // MARK: -
 
-class EncounterCombatantCell: UITableViewCell {
+class EncounterCombatantCell : UITableViewCell {
     
     @IBOutlet var turnIndicator: UIView!
     @IBOutlet var nameLabel: UILabel!
@@ -260,7 +260,7 @@ class EncounterCombatantCell: UITableViewCell {
 
 }
 
-class EncounterAddCombatantCell: UITableViewCell {
+class EncounterAddCombatantCell : UITableViewCell {
     
     @IBOutlet var label: UILabel!
     

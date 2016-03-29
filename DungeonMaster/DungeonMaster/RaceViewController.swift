@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RaceViewController: UITableViewController {
+class RaceViewController : UITableViewController {
     
     var selectedRace: Race?
 

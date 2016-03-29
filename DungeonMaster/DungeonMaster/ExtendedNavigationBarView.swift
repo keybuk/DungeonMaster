@@ -12,7 +12,7 @@ import UIKit
 ///
 /// Taken from Apple sample code, should be used immediately below a Navigation Bar to create the appearance of an extended navigation bar.
 @IBDesignable
-class ExtendedNavigationBarView: UIView {
+class ExtendedNavigationBarView : UIView {
 
     /// Navigation bar that this extension should be attached to.
     var navigationBar: UINavigationBar?

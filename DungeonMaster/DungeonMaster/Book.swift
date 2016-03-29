@@ -10,7 +10,7 @@ import CoreData
 import Foundation
 
 /// Book represents a specific book, supplement, online update, etc. in which references to material can be found.
-final class Book: NSManagedObject {
+final class Book : NSManagedObject {
     
     /// Name of the book.
     @NSManaged var name: String

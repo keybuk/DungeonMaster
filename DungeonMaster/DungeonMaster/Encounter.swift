@@ -12,7 +12,7 @@ import Foundation
 /// Encounter represents a combat encounter with one or more players participating, generally against one or more monsters.
 ///
 /// Encounters are created as part of Adventures, and played as part of Games. Each participating member of the Encounter is tracked as a Combatant.
-final class Encounter: NSManagedObject {
+final class Encounter : NSManagedObject {
     
     /// The Adventure that this Encounter is a part of.
     @NSManaged var adventure: Adventure

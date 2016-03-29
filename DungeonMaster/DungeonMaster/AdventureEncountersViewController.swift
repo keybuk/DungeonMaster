@@ -9,7 +9,7 @@
 import CoreData
 import UIKit
 
-class AdventureEncountersViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class AdventureEncountersViewController : UITableViewController, NSFetchedResultsControllerDelegate {
     
     var adventure: Adventure!
 
@@ -141,7 +141,7 @@ class AdventureEncountersViewController: UITableViewController, NSFetchedResults
 
 // MARK: -
 
-class AdventureEncounterCell: UITableViewCell {
+class AdventureEncounterCell : UITableViewCell {
     
     @IBOutlet var label: UILabel!
     

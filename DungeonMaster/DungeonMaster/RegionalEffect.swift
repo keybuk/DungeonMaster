@@ -9,7 +9,7 @@
 import CoreData
 import Foundation
 
-final class RegionalEffect: NSManagedObject {
+final class RegionalEffect : NSManagedObject {
     
     @NSManaged var lair: Lair
     @NSManaged var text: String

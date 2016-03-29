@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConditionRulesViewController: UIViewController {
+class ConditionRulesViewController : UIViewController {
 
     @IBOutlet var textView: UITextView!
     

@@ -10,7 +10,7 @@ import CoreData
 import Foundation
 
 /// DamageResistanceOption represents the set of possible damage resistances to be chosen for the monster.
-final class DamageResistanceOption: NSManagedObject {
+final class DamageResistanceOption : NSManagedObject {
     
     /// Monster that can choose this restiance.
     @NSManaged var monster: Monster

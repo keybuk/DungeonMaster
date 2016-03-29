@@ -10,7 +10,7 @@ import CoreData
 import Foundation
 
 /// ConditionImmunity represents a condition that a monster is immune to.
-final class ConditionImmunity: NSManagedObject {
+final class ConditionImmunity : NSManagedObject {
     
     /// Monster that is immune.
     @NSManaged var monster: Monster

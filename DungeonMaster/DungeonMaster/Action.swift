@@ -9,7 +9,7 @@
 import CoreData
 import Foundation
 
-final class Action: NSManagedObject {
+final class Action : NSManagedObject {
     
     @NSManaged var monster: Monster
     @NSManaged var name: String

@@ -12,7 +12,7 @@ import Foundation
 /// Langauge represents a language spoken by monsters.
 ///
 /// All monsters that can speak a specific language share the same `Language` object.
-final class Language: NSManagedObject {
+final class Language : NSManagedObject {
     
     /// Name of the language.
     @NSManaged var name: String

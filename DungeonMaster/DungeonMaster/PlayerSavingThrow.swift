@@ -10,7 +10,7 @@ import CoreData
 import Foundation
 
 /// PlayerSavingThrow represents a saving throw that the player is proficient in.
-final class PlayerSavingThrow: NSManagedObject {
+final class PlayerSavingThrow : NSManagedObject {
     
     /// Player character that this proficiency applies to.
     @NSManaged var player: Player

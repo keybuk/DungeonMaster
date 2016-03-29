@@ -9,7 +9,7 @@
 import CoreData
 import Foundation
 
-final class Trait: NSManagedObject {
+final class Trait : NSManagedObject {
     
     @NSManaged var monster: Monster
     @NSManaged var name: String

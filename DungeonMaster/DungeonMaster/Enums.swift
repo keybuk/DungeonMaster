@@ -12,7 +12,7 @@ import Foundation
 ///  - **CoreRulebook**: the three core rulebooks: Player's Handbook, Monster Manual, and Dungeon Master's Guide.
 ///  - **OfficialAdventure**: an official adventure published by Wizards of the Coast, e.g. Princes of the Apocalypse.
 ///  - **OnlineSupplement**: freely published online supplements to core rulebooks and official adventures, including the basic rules.
-enum BookType: Int {
+enum BookType : Int {
     case CoreRulebook
     case OfficialAdventure
     case CampaignSourcebook
@@ -29,7 +29,7 @@ enum BookType: Int {
 }
 
 /// Ability categorises the six basic abilities of D&D monsters and characters.
-enum Ability: Int {
+enum Ability : Int {
     case Strength
     case Dexterity
     case Constitution
@@ -54,20 +54,20 @@ enum Ability: Int {
 /// Skill categorises the different possible skills of D&D monsters and characters.
 ///
 /// Skills are grouped according to `Ability`, there are no skills for the `Constitution` ability.
-enum Skill: Equatable, Hashable {
-    enum StrengthSkill: Int {
+enum Skill : Equatable, Hashable {
+    enum StrengthSkill : Int {
         case Athletics
     }
     case Strength(StrengthSkill)
     
-    enum DexteritySkill: Int {
+    enum DexteritySkill : Int {
         case Acrobatics
         case SleightOfHand
         case Stealth
     }
     case Dexterity(DexteritySkill)
     
-    enum IntelligenceSkill: Int {
+    enum IntelligenceSkill : Int {
         case Arcana
         case History
         case Investigation
@@ -76,7 +76,7 @@ enum Skill: Equatable, Hashable {
     }
     case Intelligence(IntelligenceSkill)
     
-    enum WisdomSkill: Int {
+    enum WisdomSkill : Int {
         case AnimalHandling
         case Insight
         case Medicine
@@ -85,7 +85,7 @@ enum Skill: Equatable, Hashable {
     }
     case Wisdom(WisdomSkill)
     
-    enum CharismaSkill: Int {
+    enum CharismaSkill : Int {
         case Deception
         case Intimidation
         case Performance
@@ -179,7 +179,7 @@ func ==(lhs: Skill, rhs: Skill) -> Bool {
 }
 
 /// Size categorises the different range of monster and character sizes.
-enum Size: Int {
+enum Size : Int {
     case Tiny
     case Small
     case Medium
@@ -207,7 +207,7 @@ enum Size: Int {
 }
 
 /// Alignment categorises the different alignments of monsters and characters.
-enum Alignment: Int {
+enum Alignment : Int {
     case Unaligned
     case LawfulGood
     case LawfulNeutral
@@ -241,7 +241,7 @@ enum Alignment: Int {
 }
 
 /// MonsterType categorises the different types of monsters.
-enum MonsterType: Int {
+enum MonsterType : Int {
     case Aberration
     case Beast
     case Celestial
@@ -267,7 +267,7 @@ enum MonsterType: Int {
 }
 
 /// Environment categorises the different environments in which monsters can be found.
-enum Environment: Int {
+enum Environment : Int {
     case Arctic
     case Coastal
     case Desert
@@ -292,9 +292,9 @@ enum Environment: Int {
 /// Race categorises the basic races of D&D.
 ///
 /// Races can have sub-types which are represented here as nested enums.
-enum Race: Equatable, Hashable {
+enum Race : Equatable, Hashable {
     // Player's Handbook races.
-    enum DwarfSubrace: Int {
+    enum DwarfSubrace : Int {
         case HillDwarf
         case MountainDwarf
         
@@ -303,7 +303,7 @@ enum Race: Equatable, Hashable {
     }
     case Dwarf(DwarfSubrace)
     
-    enum ElfSubrace: Int {
+    enum ElfSubrace : Int {
         case HighElf
         case WoodElf
         case Drow
@@ -313,7 +313,7 @@ enum Race: Equatable, Hashable {
     }
     case Elf(ElfSubrace)
     
-    enum HalflingSubrace: Int {
+    enum HalflingSubrace : Int {
         case Lightfoot
         case Stout
     }
@@ -322,7 +322,7 @@ enum Race: Equatable, Hashable {
     case Human
     case Dragonborn
     
-    enum GnomeSubrace: Int {
+    enum GnomeSubrace : Int {
         case ForestGnome
         case RockGnome
         
@@ -341,7 +341,7 @@ enum Race: Equatable, Hashable {
     // Elemental Evil races.
     case Aarakocra
     
-    enum GenasiSubrace: Int {
+    enum GenasiSubrace : Int {
         case AirGenasi
         case EarthGenasi
         case FireGenasi
@@ -503,7 +503,7 @@ func ==(lhs: Race, rhs: Race) -> Bool {
 }
 
 /// CharacterClass organises the different classes of player characters.
-enum CharacterClass: Int {
+enum CharacterClass : Int {
     case Barbarian
     case Bard
     case Cleric
@@ -527,7 +527,7 @@ enum CharacterClass: Int {
 }
 
 /// Background organises the different possible backgrounds of player characters.
-enum Background: Int {
+enum Background : Int {
     // Player's Handbook backgrounds.
     case Acolyte
     case Charlatan
@@ -566,7 +566,7 @@ enum Background: Int {
 }
 
 /// Armor that can be worn by players and monsters.
-enum ArmorType: Int {
+enum ArmorType : Int {
     case None
     case Natural
 
@@ -633,7 +633,7 @@ enum ArmorType: Int {
 /// - **NonmagicalNotSilvered**: applies to nonmagical attacks not made with silvered weapons.
 /// - **Magical**: applies to magic weapons.
 /// - **MagicalByGood**: applies to magic weapons wielded by good creatures.
-enum AttackType: Int {
+enum AttackType : Int {
     case All
     case Nonmagical
     case NonmagicalNotAdamantine
@@ -643,7 +643,7 @@ enum AttackType: Int {
 }
 
 /// Types of damage that can be dealt by attacks.
-enum DamageType: Int {
+enum DamageType : Int {
     case Acid
     case Bludgeoning
     case Cold
@@ -667,7 +667,7 @@ enum DamageType: Int {
     }
 }
 
-enum Condition: Int {
+enum Condition : Int {
     // TODO: deal with exhaustion, and its six levels
     case Blinded
     case Charmed
@@ -709,7 +709,7 @@ enum Condition: Int {
 /// - **AnyFour**: the monster can understand or speak any four languages.
 /// - **UpToFive**: the monster can understand or speak up to five languages.
 /// - **AnySix**: the monster can understand or speak any six languages.
-enum LanguageOption: Int {
+enum LanguageOption : Int {
     case UsuallyCommon
     case KnewInLife
     case OfItsCreator
@@ -722,7 +722,7 @@ enum LanguageOption: Int {
 }
 
 /// MagicSchool categorises the different schools of magic that spells can be categorized under.
-enum MagicSchool: Int {
+enum MagicSchool : Int {
     case Abjuration
     case Conjuration
     case Divination
@@ -742,7 +742,7 @@ enum MagicSchool: Int {
 }
 
 /// SpellRange represents the base of the range of a spell.
-enum SpellRange: Int {
+enum SpellRange : Int {
     case Distance
     case CenteredOnSelf
     case Touch
@@ -752,7 +752,7 @@ enum SpellRange: Int {
 }
 
 /// SpellRangeShape represents the shape of a spell's effect.
-enum SpellRangeShape: Int {
+enum SpellRangeShape : Int {
     case Radius
     case Sphere
     case Hemisphere
@@ -762,7 +762,7 @@ enum SpellRangeShape: Int {
 }
 
 /// SpellDuration represents the durations of a spell's effect.
-enum SpellDuration: Int {
+enum SpellDuration : Int {
     case Instantaneous
     case Time
     case MaxTime
@@ -791,7 +791,7 @@ enum EncounterDifficulty {
 /// - **Foe**: a monster controlled by the DM, unfriendly to the players.
 /// - **Friend**: a monster controlled by the DM, friendly to the players.
 /// - **Player**: a monster or character controlled by a player.
-enum CombatRole: Int {
+enum CombatRole : Int {
     case Foe
     case Friend
     case Player

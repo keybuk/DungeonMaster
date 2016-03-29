@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GameDateViewController: UIViewController {
+class GameDateViewController : UIViewController {
     
     var game: Game!
 

@@ -13,7 +13,7 @@ import Foundation
 /// NetworkController manages the relationship between the Dungeon Master app, and player etc. apps on the DungeonNet.
 ///
 /// This is designed with a MVC approach in mind, where the core data is the Model, the `NetworkPeer` is the View (ish), and this class is the Controller. Rather than having the apps own views try and influence the network, this watches the core data model directly and uses that to inform the network, as such this class consists of a bunch of fetch requests/results controllers and delegates based on that.
-class NetworkController: NSObject, NetworkPeerDelegate, NetworkConnectionDelegate, NSFetchedResultsControllerDelegate {
+class NetworkController : NSObject, NetworkPeerDelegate, NetworkConnectionDelegate, NSFetchedResultsControllerDelegate {
     
     var networkPeer: NetworkPeer
     

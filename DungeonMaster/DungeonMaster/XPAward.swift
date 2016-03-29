@@ -10,7 +10,7 @@ import CoreData
 import Foundation
 
 /// XPAward represents an award of XP given to a player during a game.
-final class XPAward: LogEntry {
+final class XPAward : LogEntry {
     
     /// Amount of XP that was awarded to the player.
     var xp: Int {

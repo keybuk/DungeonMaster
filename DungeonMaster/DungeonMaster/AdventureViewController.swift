@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AdventureViewController: UIViewController, ManagedObjectObserverDelegate, UITextViewDelegate, AdjustableImageViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class AdventureViewController : UIViewController, ManagedObjectObserverDelegate, UITextViewDelegate, AdjustableImageViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var adventure: Adventure!
 

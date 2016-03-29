@@ -9,7 +9,7 @@
 import XCTest
 @testable import DungeonMaster
 
-class MarkupParserTest: XCTestCase {
+class MarkupParserTest : XCTestCase {
     
     // MARK: - Basic functionality
     

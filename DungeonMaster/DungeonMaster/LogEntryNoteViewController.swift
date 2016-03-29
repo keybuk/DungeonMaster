@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LogEntryNoteViewController: UITableViewController, UITextViewDelegate {
+class LogEntryNoteViewController : UITableViewController, UITextViewDelegate {
 
     var playedGames: Set<PlayedGame>!
 

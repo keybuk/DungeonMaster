@@ -12,7 +12,7 @@ import UIKit
 /// AdventureImage holds an image, usually artwork, associated with an adventure.
 ///
 /// In addition to the image itself, which is stored and managed outside of Core Data and on the filesystem, the object also holds the information about a square portion of the image that is to actually be used.
-final class AdventureImage: NSManagedObject {
+final class AdventureImage : NSManagedObject {
     
     /// Adventure to which this image is associated.
     @NSManaged var adventure: Adventure

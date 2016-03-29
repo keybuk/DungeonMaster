@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DamageViewController: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class DamageViewController : UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     @IBOutlet var addButton: UIBarButtonItem!
     
@@ -76,7 +76,7 @@ class DamageViewController: UITableViewController, UIPickerViewDataSource, UIPic
 
 // MARK: -
 
-class PointsCell: UITableViewCell {
+class PointsCell : UITableViewCell {
     
     @IBOutlet var textField: UITextField!
 

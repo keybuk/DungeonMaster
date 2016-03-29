@@ -10,7 +10,7 @@ import CoreData
 import Foundation
 
 /// Monster represents any DM-controlled creature or target in the D&D world, from evil dragons through to a helpful NPC the players might encounter.
-final class Monster: NSManagedObject {
+final class Monster : NSManagedObject {
     
     /// Name for the monster.
     @NSManaged var name: String

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SkillViewController: UITableViewController {
+class SkillViewController : UITableViewController {
     
     var existingSkills: [Skill] = []
     var selectedSkills: [Skill] = []

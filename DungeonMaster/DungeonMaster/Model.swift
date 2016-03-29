@@ -9,7 +9,7 @@
 import CoreData
 import Foundation
 
-enum Model: String {
+enum Model : String {
     case Book
     case Source
     case Monster

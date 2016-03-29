@@ -8,7 +8,7 @@
 
 import XCTest
 
-class DungeonMasterUITests: XCTestCase {
+class DungeonMasterUITests : XCTestCase {
         
     override func setUp() {
         super.setUp()

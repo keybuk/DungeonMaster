@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddLogEntryViewController: UINavigationController {
+class AddLogEntryViewController : UINavigationController {
     
     var game: Game?
     var encounter: Encounter?

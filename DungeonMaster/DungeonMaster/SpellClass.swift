@@ -10,7 +10,7 @@ import CoreData
 import Foundation
 
 /// SpellClass represents a character class that may cast a specific spell.
-final class SpellClass: NSManagedObject {
+final class SpellClass : NSManagedObject {
     
     /// The spell that can be cast.
     @NSManaged var spell: Spell

@@ -10,7 +10,7 @@ import CoreData
 import Foundation
 
 /// DamageImmunity represents a class of damage and attack that a monster is immune to.
-final class DamageImmunity: NSManagedObject {
+final class DamageImmunity : NSManagedObject {
     
     /// Monster that is immune.
     @NSManaged var monster: Monster

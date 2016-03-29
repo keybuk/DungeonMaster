@@ -9,7 +9,7 @@
 import CoreData
 import UIKit
 
-class SpellViewController: UIViewController {
+class SpellViewController : UIViewController {
 
     @IBOutlet var textView: UITextView!
     

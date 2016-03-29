@@ -11,7 +11,7 @@ import UIKit
 /// TabletopStatsView holds a label and health bar in a fixed size frame, rendered against a partially-transparent background.
 ///
 /// Taps are handled by the view, set the tapHandler block to set an action.
-class TabletopStatsView: UIView {
+class TabletopStatsView : UIView {
     
     /// Label to render name of item in.
     var label: UILabel!

@@ -9,7 +9,7 @@
 import CoreData
 import UIKit
 
-class AdventuresViewController: UICollectionViewController, NSFetchedResultsControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class AdventuresViewController : UICollectionViewController, NSFetchedResultsControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet var addButtonItem: UIBarButtonItem!
     @IBOutlet var doneButtonItem: UIBarButtonItem!
@@ -287,7 +287,7 @@ class AdventuresViewController: UICollectionViewController, NSFetchedResultsCont
 
 // MARK: -
 
-class AdventureCell: UICollectionViewCell, UITextViewDelegate, AdjustableImageViewDelegate {
+class AdventureCell : UICollectionViewCell, UITextViewDelegate, AdjustableImageViewDelegate {
     
     @IBOutlet var adjustableImageView: AdjustableImageView!
     @IBOutlet var textView: UITextView!

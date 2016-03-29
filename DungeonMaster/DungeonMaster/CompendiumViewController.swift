@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CompendiumViewController: UITabBarController {
+class CompendiumViewController : UITabBarController {
     
     var books: [Book]!
 

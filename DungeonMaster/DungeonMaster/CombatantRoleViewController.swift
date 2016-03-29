@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CombatantRoleViewController: UITableViewController {
+class CombatantRoleViewController : UITableViewController {
     
     var role: CombatRole?
 

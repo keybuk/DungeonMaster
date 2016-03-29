@@ -9,7 +9,7 @@
 import CoreData
 import UIKit
 
-class CombatantViewController: UITableViewController, ManagedObjectObserverDelegate, UITextViewDelegate {
+class CombatantViewController : UITableViewController, ManagedObjectObserverDelegate, UITextViewDelegate {
 
     /// The encounter combatant being shown and manipulated.
     var combatant: Combatant!
@@ -339,13 +339,13 @@ class CombatantViewController: UITableViewController, ManagedObjectObserverDeleg
 
 // MARK: -
 
-class CombatantNameCell: UITableViewCell {
+class CombatantNameCell : UITableViewCell {
     
     @IBOutlet var nameLabel: UILabel!
     
 }
 
-class DiceRollCell: UITableViewCell {
+class DiceRollCell : UITableViewCell {
     
     @IBOutlet var label: UILabel!
     @IBOutlet var textField: UITextField!
@@ -372,13 +372,13 @@ class DiceRollCell: UITableViewCell {
     
 }
 
-class NotesCell: UITableViewCell {
+class NotesCell : UITableViewCell {
     
     @IBOutlet var textView: UITextView!
 
 }
 
-class CombatantConditionCell: UITableViewCell {
+class CombatantConditionCell : UITableViewCell {
 
     var condition: CombatantCondition! {
         didSet {
@@ -388,13 +388,13 @@ class CombatantConditionCell: UITableViewCell {
 
 }
 
-class AddDamageCell: UITableViewCell {
+class AddDamageCell : UITableViewCell {
     
     @IBOutlet var hitPointsLabel: UILabel!
 
 }
 
-class CombatantDamageCell: UITableViewCell {
+class CombatantDamageCell : UITableViewCell {
     
     @IBOutlet var pointsLabel: UILabel!
     @IBOutlet var typeLabel: UILabel!

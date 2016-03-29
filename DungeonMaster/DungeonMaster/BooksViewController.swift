@@ -9,7 +9,7 @@
 import CoreData
 import UIKit
 
-class BooksViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class BooksViewController : UITableViewController, NSFetchedResultsControllerDelegate {
 
     var hiddenBooks: Set<Book>?
 

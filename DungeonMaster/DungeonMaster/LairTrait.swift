@@ -9,7 +9,7 @@
 import CoreData
 import Foundation
 
-final class LairTrait: NSManagedObject {
+final class LairTrait : NSManagedObject {
     
     @NSManaged var lair: Lair
     @NSManaged var text: String

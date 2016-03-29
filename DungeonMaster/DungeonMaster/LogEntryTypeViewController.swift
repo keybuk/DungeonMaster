@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LogEntryTypeViewController: UICollectionViewController {
+class LogEntryTypeViewController : UICollectionViewController {
     
     var game: Game?
     var playedGame: PlayedGame?
@@ -98,7 +98,7 @@ class LogEntryTypeViewController: UICollectionViewController {
 
 }
 
-class LogEntryTypeCell: UICollectionViewCell {
+class LogEntryTypeCell : UICollectionViewCell {
 
     @IBOutlet var imageView: UIImageView!
     

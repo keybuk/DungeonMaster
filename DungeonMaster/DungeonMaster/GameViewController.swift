@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GameViewController: UIViewController, ManagedObjectObserverDelegate {
+class GameViewController : UIViewController, ManagedObjectObserverDelegate {
     
     var game: Game!
 
