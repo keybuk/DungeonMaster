@@ -215,9 +215,9 @@ class AdventurePlayersViewController : UITableViewController, NSFetchedResultsCo
     func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
         switch type {
         case .Insert:
-            tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+            tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
         case .Delete:
-            tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+            tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
         default:
             return
         }
@@ -229,7 +229,7 @@ class AdventurePlayersViewController : UITableViewController, NSFetchedResultsCo
             let player = anObject as! Player
             if let oldIndex = oldMissingPlayers?.indexOf(player) {
                 let oldIndexPath = NSIndexPath(forRow: oldIndex, inSection: 1)
-                tableView.deleteRowsAtIndexPaths([ oldIndexPath ], withRowAnimation: .Bottom)
+                tableView.deleteRowsAtIndexPaths([ oldIndexPath ], withRowAnimation: .Top)
             }
 
             tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Bottom)
@@ -237,23 +237,18 @@ class AdventurePlayersViewController : UITableViewController, NSFetchedResultsCo
             let player = anObject as! Player
             if let newIndex = missingPlayers.indexOf(player) {
                 let newIndexPath = NSIndexPath(forRow: newIndex, inSection: 1)
-                tableView.insertRowsAtIndexPaths([ newIndexPath ], withRowAnimation: .Bottom)
+                tableView.insertRowsAtIndexPaths([ newIndexPath ], withRowAnimation: .Top)
             }
 
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Bottom)
+        case .Move:
+            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
+            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
         case .Update:
             if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? AdventurePlayerCell {
                 let player = anObject as! Player
                 cell.player = player
             }
-        case .Move:
-            // .Move implies .Update; update the cell at the old index, and then move it.
-            if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? AdventurePlayerCell {
-                let player = anObject as! Player
-                cell.player = player
-            }
-            
-            tableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!)
         }
     }
     

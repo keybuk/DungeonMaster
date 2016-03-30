@@ -182,9 +182,9 @@ class GameEncountersViewController : UITableViewController, NSFetchedResultsCont
     func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
         switch type {
         case .Insert:
-            tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+            tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
         case .Delete:
-            tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+            tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
         default:
             return
         }
@@ -208,19 +208,14 @@ class GameEncountersViewController : UITableViewController, NSFetchedResultsCont
             }
     
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Bottom)
+        case .Move:
+            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
+            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
         case .Update:
             if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? GameEncounterCell {
                 let encounter = anObject as! Encounter
                 cell.encounter = encounter
             }
-        case .Move:
-            // .Move implies .Update; update the cell at the old index, and then move it.
-            if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? GameEncounterCell {
-                let encounter = anObject as! Encounter
-                cell.encounter = encounter
-            }
-            
-            tableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!)
         }
     }
     

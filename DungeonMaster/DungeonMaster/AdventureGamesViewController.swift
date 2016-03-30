@@ -108,7 +108,7 @@ class AdventureGamesViewController : UITableViewController, NSFetchedResultsCont
         return true
     }
     
-    var userMovedTableRow: NSIndexPath?
+    var changeIsUserDriven = false
     
     override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
         let sourceGame = fetchedResultsController.objectAtIndexPath(sourceIndexPath) as! Game
@@ -129,7 +129,7 @@ class AdventureGamesViewController : UITableViewController, NSFetchedResultsCont
             row += step
         }
         
-        userMovedTableRow = sourceIndexPath
+        changeIsUserDriven = true
         
         adventure.lastModified = NSDate()
         try! managedObjectContext.save()
@@ -138,49 +138,49 @@ class AdventureGamesViewController : UITableViewController, NSFetchedResultsCont
     // MARK: NSFetchedResultsControllerDelegate
     
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        guard !changeIsUserDriven else { return }
+
         tableView.beginUpdates()
     }
     
     func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+        guard !changeIsUserDriven else { return }
+
         switch type {
         case .Insert:
-            tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+            tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
         case .Delete:
-            tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+            tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
         default:
             return
         }
     }
     
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        guard !changeIsUserDriven else { return }
+
         switch type {
         case .Insert:
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
         case .Delete:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
+        case .Move:
+            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
+            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
         case .Update:
             if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? AdventureGameCell {
                 let game = anObject as! Game
                 cell.game = game
             }
-        case .Move:
-            // FIXME this is wrong, we have to ignore all table changes... but haven't figured out how to deal with the inherent "Update" of the games list.
-            if let userMovedTableRow = userMovedTableRow where userMovedTableRow == indexPath! {
-                // Ignore row moved by the user, since the table already reflects the model.
-                self.userMovedTableRow = nil
-            } else {
-                // .Move implies .Update; update the cell at the old index, and then move it.
-                if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? AdventureGameCell {
-                    let game = anObject as! Game
-                    cell.game = game
-                }
-            
-                tableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!)
-            }
         }
     }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        guard !changeIsUserDriven else {
+            changeIsUserDriven = false
+            return
+        }
+
         tableView.endUpdates()
     }
 

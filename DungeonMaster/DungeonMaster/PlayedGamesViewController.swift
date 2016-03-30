@@ -379,6 +379,8 @@ class PlayedGamesViewController : UITableViewController, NSFetchedResultsControl
     // MARK: NSFetchedResultsControllerDelegate
     
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        guard !changeIsUserDriven else { return }
+
         tableView.beginUpdates()
     }
     
@@ -412,6 +414,9 @@ class PlayedGamesViewController : UITableViewController, NSFetchedResultsControl
             tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
         case .Delete:
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
+        case .Move:
+            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
+            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
         case .Update:
             switch anObject {
             case let xpAward as XPAward:
@@ -425,29 +430,16 @@ class PlayedGamesViewController : UITableViewController, NSFetchedResultsControl
             default:
                 fatalError("Unexpected LogEntry subclass")
             }
-        case .Move:
-            // .Move implies .Update; update the cell at the old index, and then move it.
-            switch anObject {
-            case let xpAward as XPAward:
-                if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? XPAwardCell {
-                    cell.xpAward = xpAward
-                }
-            case let logEntryNote as LogEntryNote:
-                if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? LogEntryNoteCell {
-                    cell.logEntryNote = logEntryNote
-                }
-            default:
-                fatalError("Unexpected LogEntry subclass")
-            }
-
-            tableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!)
         }
     }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        guard !changeIsUserDriven else {
+            changeIsUserDriven = false
+            return
+        }
+
         tableView.endUpdates()
-        
-        changeIsUserDriven = false
     }
     
 }

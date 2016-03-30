@@ -124,7 +124,9 @@ class ViewController : UIViewController, NetworkPeerDelegate, NetworkConnectionD
             
             let fromIndexPath = NSIndexPath(forRow: fromIndex, inSection: 0)
             let toIndexPath = NSIndexPath(forRow: toIndex, inSection: 0)
-            tableView.moveRowAtIndexPath(fromIndexPath, toIndexPath: toIndexPath)
+            
+            tableView.deleteRowsAtIndexPaths([ fromIndexPath ], withRowAnimation: .Automatic)
+            tableView.insertRowsAtIndexPaths([ toIndexPath ], withRowAnimation: .Automatic)
         case let .UpdateCombatant(index, name, initiative, isCurrentTurn, isAlive):
             let combatant = Combatant(name: name, initiative: initiative, isCurrentTurn: isCurrentTurn, isAlive: isAlive)
 

@@ -235,6 +235,8 @@ class InitiativeViewController : UITableViewController, NSFetchedResultsControll
     var selectIndexPath: NSIndexPath?
     
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        guard !changeIsUserDriven else { return }
+
         // Clear or reset the cache of missing players, keeping the old cache around for insertion checking.
         oldMissingPlayers = editing ? missingPlayers : nil
         missingPlayers = nil
@@ -247,9 +249,9 @@ class InitiativeViewController : UITableViewController, NSFetchedResultsControll
 
         switch type {
         case .Insert:
-            tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+            tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
         case .Delete:
-            tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+            tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
         default:
             return
         }
@@ -280,24 +282,29 @@ class InitiativeViewController : UITableViewController, NSFetchedResultsControll
             }
             
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Bottom)
-        case .Update:
-            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! InitiativeCombatantCell
-            let combatant = anObject as! Combatant
-            cell.combatant = combatant
         case .Move:
-            // .Move implies .Update; update the cell at the old index, and then move it.
-            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! InitiativeCombatantCell
-            let combatant = anObject as! Combatant
-            cell.combatant = combatant
-            
-            tableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!)
+            // If the move is on the cell that's currently the first responder, it's probably as a result of the user editing; we don't want to pop the keyboard down and up, so just move the cell.
+            if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? InitiativeCombatantCell where cell.initiativeTextField.isFirstResponder() {
+                tableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!)
+            } else {
+                tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
+                tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
+            }
+        case .Update:
+            if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? InitiativeCombatantCell {
+                let combatant = anObject as! Combatant
+                cell.combatant = combatant
+            }
         }
     }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        guard !changeIsUserDriven else {
+            changeIsUserDriven = false
+            return
+        }
+
         tableView.endUpdates()
-        
-        changeIsUserDriven = false
         
         if let indexPath = selectIndexPath, cell = tableView.cellForRowAtIndexPath(indexPath) as? InitiativeCombatantCell {
             cell.initiativeTextField.becomeFirstResponder()
