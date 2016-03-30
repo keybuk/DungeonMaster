@@ -98,12 +98,22 @@ class ViewController : UIViewController, NetworkPeerDelegate, NetworkConnectionD
         navigationItem.title = "Connected"
         
         connection.delegate = self
+        
+        connection.sendMessage(.Hello(version: NetworkMessage.version))
     }
     
     // MARK: NetworkConnectionDelegate
     
     func connection(connection: NetworkConnection, didReceiveMessage message: NetworkMessage) {
         switch message {
+        case let .Hello(version):
+            if version != NetworkMessage.version {
+                let alertController = UIAlertController(title: "Incompatbile Version", message: "The Dungeon Master is using an application version incompatible with this one.", preferredStyle: .Alert)
+                alertController.addAction(UIAlertAction(title: "Disconnect", style: .Default, handler: nil))
+                
+                presentViewController(alertController, animated: true, completion: nil)
+                connection.close()
+            }
         case let .BeginEncounter(title):
             combatants = []
             tableView.reloadData()

@@ -132,7 +132,8 @@ class NetworkController : NSObject, NetworkPeerDelegate, NetworkConnectionDelega
     func networkPeer(peer: NetworkPeer, didEstablishConnection connection: NetworkConnection) {
         connection.delegate = self
         
-        // After establishing a connection, send the current encounter to it.
+        // After establishing a connection, send the version, and the current encounter to it.
+        connection.sendMessage(.Hello(version: NetworkMessage.version))
         sendEncounterTo(connection)
     }
     
@@ -157,6 +158,11 @@ class NetworkController : NSObject, NetworkPeerDelegate, NetworkConnectionDelega
     
     func connection(connection: NetworkConnection, didReceiveMessage message: NetworkMessage) {
         switch message {
+        case let .Hello(version):
+            if version != NetworkMessage.version {
+                print("Dropping connection with bad version")
+                connection.close()
+            }
         case let .Initiative(name, initiative):
             for combatant in combatants(withName: name) {
                 combatant.initiative = initiative
