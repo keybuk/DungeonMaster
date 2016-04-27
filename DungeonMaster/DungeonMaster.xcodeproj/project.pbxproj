@@ -20,6 +20,8 @@
 		D2116A531C10F4E9001EDBBA /* LairTrait.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2116A521C10F4E9001EDBBA /* LairTrait.swift */; };
 		D2116A551C10F4F8001EDBBA /* RegionalEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2116A541C10F4F8001EDBBA /* RegionalEffect.swift */; };
 		D2116A571C10F791001EDBBA /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2116A561C10F791001EDBBA /* Data.plist */; };
+		D2143CFE1C97BC04003924A4 /* FetchedResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2143CFD1C97BC04003924A4 /* FetchedResultsController.swift */; };
+		D2143D001C97BE4D003924A4 /* FetchedResultsControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2143CFF1C97BE4D003924A4 /* FetchedResultsControllerTests.swift */; };
 		D21BACED1C3365E8007E2934 /* Spell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BACEC1C3365E8007E2934 /* Spell.swift */; };
 		D21BACEF1C339464007E2934 /* SpellsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BACEE1C339464007E2934 /* SpellsViewController.swift */; };
 		D21BACF11C339476007E2934 /* SpellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BACF01C339476007E2934 /* SpellViewController.swift */; };
@@ -168,6 +170,8 @@
 		D2116A521C10F4E9001EDBBA /* LairTrait.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LairTrait.swift; sourceTree = "<group>"; };
 		D2116A541C10F4F8001EDBBA /* RegionalEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionalEffect.swift; sourceTree = "<group>"; };
 		D2116A561C10F791001EDBBA /* Data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Data.plist; path = ../Data.plist; sourceTree = "<group>"; };
+		D2143CFD1C97BC04003924A4 /* FetchedResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsController.swift; sourceTree = "<group>"; };
+		D2143CFF1C97BE4D003924A4 /* FetchedResultsControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerTests.swift; sourceTree = "<group>"; };
 		D21BACEC1C3365E8007E2934 /* Spell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spell.swift; sourceTree = "<group>"; };
 		D21BACEE1C339464007E2934 /* SpellsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpellsViewController.swift; sourceTree = "<group>"; };
 		D21BACF01C339476007E2934 /* SpellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpellViewController.swift; sourceTree = "<group>"; };
@@ -350,6 +354,7 @@
 				D26FBA3E1C1EA4E700D44503 /* CombatantCondition.swift */,
 				D23435F51C0D634100108D5F /* Importer.swift */,
 				D234B5C31C5712BA00C81417 /* ManagedObjectObserver.swift */,
+				D2143CFD1C97BC04003924A4 /* FetchedResultsController.swift */,
 			);
 			name = "Data Model";
 			sourceTree = "<group>";
@@ -450,6 +455,7 @@
 				D249CF821C21DDF300CDE673 /* PointGeneratorTest.swift */,
 				D209FEFA1C3057B20024B0A3 /* MarkupParserTest.swift */,
 				D20577CB1C4D536900A1D10E /* RomanNumeralFormatterTests.swift */,
+				D2143CFF1C97BE4D003924A4 /* FetchedResultsControllerTests.swift */,
 				D2A9AF251BFFEAA5009902ED /* Info.plist */,
 			);
 			path = DungeonMasterTests;
@@ -725,6 +731,7 @@
 				D2D8F47C1C7CF27900C54BB7 /* FontExtensions.swift in Sources */,
 				D2C8F0041C3AE705003AD18F /* AdjustableImageView.swift in Sources */,
 				D209FEF91C30578F0024B0A3 /* MarkupParser.swift in Sources */,
+				D2143CFE1C97BC04003924A4 /* FetchedResultsController.swift in Sources */,
 				D2116A4F1C10F377001EDBBA /* Lair.swift in Sources */,
 				D249CFAC1C27A6E700CDE673 /* DamageResistanceOption.swift in Sources */,
 				D2511FF81C12B1AD00A09F0B /* MonstersViewController.swift in Sources */,
@@ -796,6 +803,7 @@
 				D249CF831C21DDF300CDE673 /* PointGeneratorTest.swift in Sources */,
 				D20577CC1C4D536900A1D10E /* RomanNumeralFormatterTests.swift in Sources */,
 				D209FEFB1C3057B20024B0A3 /* MarkupParserTest.swift in Sources */,
+				D2143D001C97BE4D003924A4 /* FetchedResultsControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
