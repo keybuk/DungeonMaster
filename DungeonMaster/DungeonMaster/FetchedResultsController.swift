@@ -309,11 +309,8 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
                     // Object was deleted, or previously did, but no now longer does, match the predicate.
                     objectSections[ObjectIdentifier(object)] = nil
                     
-                    if let _ = deleteIndexes[section] {
-                        deleteIndexes[section]!.addIndex(index)
-                    } else {
-                        deleteIndexes[section] = NSMutableIndexSet(index: index)
-                    }
+                    if deleteIndexes[section] == nil { deleteIndexes[section] = NSMutableIndexSet() }
+                    deleteIndexes[section]!.addIndex(index)
                     
                     // Since we don't care about the indexes remaining stable, we can directly remove objects here.
                     fetchedObjects.removeAtIndex(fetchedObjects.indexOf(object)!)
@@ -340,20 +337,14 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
                     // Object has changed section.
                     objectSections[ObjectIdentifier(object)] = newSection
                     
-                    if let _ = deleteIndexes[section] {
-                        deleteIndexes[section]!.addIndex(index)
-                    } else {
-                        deleteIndexes[section] = NSMutableIndexSet(index: index)
-                    }
+                    if deleteIndexes[section] == nil { deleteIndexes[section] = NSMutableIndexSet() }
+                    deleteIndexes[section]!.addIndex(index)
                     
                     if let newSectionIndex = sectionIndexes[newSection] {
                         sections[newSectionIndex].objects.append(object)
                         
-                        if let _ = insertedObjects[newSection] {
-                            insertedObjects[newSection]!.append(insertRecord)
-                        } else {
-                            insertedObjects[newSection] = [insertRecord]
-                        }
+                        if insertedObjects[newSection] == nil { insertedObjects[newSection] = [] }
+                        insertedObjects[newSection]!.append(insertRecord)
                     } else {
                         makeSection(section: newSection, object: object)
                         
@@ -362,11 +353,8 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
                     }
                 } else if let sortKeys = sortKeys where sortKeys.isSubsetOf(changedValues) {
                     // Object may have moved within the sort order.
-                    if let _ = insertedObjects[section] {
-                        insertedObjects[section]!.append(insertRecord)
-                    } else {
-                        insertedObjects[section] = [insertRecord]
-                    }
+                    if insertedObjects[section] == nil { insertedObjects[section] = [] }
+                    insertedObjects[section]!.append(insertRecord)
                 } else {
                     // Object has changed in some other way.
                     changes.append(.Update(object: object, indexPath: NSIndexPath(forRow: index, inSection: sectionIndex)))
@@ -381,11 +369,8 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
                 if let sectionIndex = sectionIndexes[section] {
                     sections[sectionIndex].objects.append(object)
                     
-                    if let _ = insertedObjects[section] {
-                        insertedObjects[section]!.append(insertRecord)
-                    } else {
-                        insertedObjects[section] = [insertRecord]
-                    }
+                    if insertedObjects[section] == nil { insertedObjects[section] = [] }
+                    insertedObjects[section]!.append(insertRecord)
                 } else {
                     makeSection(section: section, object: object)
                     
