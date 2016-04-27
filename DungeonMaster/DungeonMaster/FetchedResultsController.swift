@@ -116,21 +116,16 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
     
     /// Cache mapping Section to Index.
     private var sectionIndexes: [Section: Int] = [:]
-
-    /// Returns the index of `section`.
-    ///
-    /// This uses a cache to avoid performing expensive `indexOf` operations multiple times.
-    private func indexOfSection(section: Section) -> Int? {
-        if let sectionIndex = sectionIndexes[section] {
-            return sectionIndex
-        } else if let sectionIndex = sections.indexOf({ $0.name == section }) {
-            sectionIndexes[section] = sectionIndex
-            return sectionIndex
-        } else {
-            return nil
+    
+    /// Rebuilds the `sectionIndexes` cache.
+    private func rebuildSectionIndexes() {
+        sectionIndexes = [:]
+        
+        for (index, sectionInfo) in sections.enumerate() {
+            sectionIndexes[sectionInfo.name] = index
         }
     }
-    
+
     /// Returns a new SectionInfo for `section` containing `object`.
     ///
     /// The object is added to both the `sections` list, and the `sectionIndexes` cache.
@@ -145,6 +140,12 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
         return sectionInfo
     }
 
+    /// Sorts the sections list.
+    private func sortSections() {
+        sections = sections.sort({ $0.name < $1.name })
+        rebuildSectionIndexes()
+    }
+    
     /// Cache of sort descriptor keys used for the previous fetch.
     private var sortKeys: Set<String>?
     
@@ -176,7 +177,7 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
             let section = sectionForObject(object)
             objectSections[ObjectIdentifier(object)] = section
             
-            if let sectionIndex = indexOfSection(section) {
+            if let sectionIndex = sectionIndexes[section] {
                 sections[sectionIndex].objects.append(object)
             } else {
                 makeSection(section: section, object: object)
@@ -196,14 +197,6 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
         } else {
             sortKeys = nil
         }
-    }
-    
-    /// Sorts the sections list.
-    ///
-    /// Clears the section indexes cache.
-    private func sortSections() {
-        sections = sections.sort({ $0.name < $1.name })
-        sectionIndexes = [:]
     }
     
     /// Calls `handleChanges` with changes from `oldSections` to the current results set.
@@ -237,7 +230,7 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
             }
 
             // Delete the section if has no index in the new results.
-            if indexOfSection(oldSection) == nil {
+            if sectionIndexes[oldSection] == nil {
                 // Strictly speaking this oldSectionInfo is wrong as it has members.
                 changes.append(.DeleteSection(sectionInfo: oldSectionInfo, index: oldSectionIndex))
             }
@@ -300,8 +293,6 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
         }
         
         var changes: [FetchedResultsChange<Section, Entity>] = []
-        sectionIndexes = [:]
-
         var insertedSections: [Section] = []
         var insertedObjects: [Section: [(object: Entity, sectionIndex: Int?, index: Int?)]] = [:]
         var deleteIndexes: [Section: NSMutableIndexSet] = [:]
@@ -311,7 +302,7 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
             guard object.entity === fetchRequest.entity else { continue }
             
             if let section = objectSections[ObjectIdentifier(object)] {
-                let sectionIndex = indexOfSection(section)!
+                let sectionIndex = sectionIndexes[section]!
                 let index = sections[sectionIndex].objects.indexOf(object)!
 
                 if object.deleted || !(fetchRequest.predicate?.evaluateWithObject(object) ?? true) {
@@ -355,7 +346,7 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
                         deleteIndexes[section] = NSMutableIndexSet(index: index)
                     }
                     
-                    if let newSectionIndex = indexOfSection(newSection) {
+                    if let newSectionIndex = sectionIndexes[newSection] {
                         sections[newSectionIndex].objects.append(object)
                         
                         if let _ = insertedObjects[newSection] {
@@ -387,7 +378,7 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
                 objectSections[ObjectIdentifier(object)] = section
                 
                 let insertRecord = (object: object, sectionIndex: Int?.None, index: Int?.None)
-                if let sectionIndex = indexOfSection(section) {
+                if let sectionIndex = sectionIndexes[section] {
                     sections[sectionIndex].objects.append(object)
                     
                     if let _ = insertedObjects[section] {
@@ -423,29 +414,27 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
             }
         }
         
-        if deleteSectionIndexes.count > 0 {
-            for sectionIndex in deleteSectionIndexes.reverse() {
-                sections.removeAtIndex(sectionIndex)
-            }
-    
-            sectionIndexes = [:]
+        for sectionIndex in deleteSectionIndexes.reverse() {
+            sections.removeAtIndex(sectionIndex)
         }
 
-        // The sections list now contains the final list of sections, if we added any to it, it should be sorted. Section indexes are final after this, so we can build those changes.
+        // The sections list now contains the final list of sections, but the indexes are potentially wrong. If we inserted any sections, we re-sort the list and rebuild the cache; if we deleted any, we just rebuild the cache. Section indexes are final after this, so we can build those changes.
         if insertedSections.count > 0 {
             sortSections()
             
             for newSection in insertedSections {
-                let newSectionIndex = indexOfSection(newSection)!
+                let newSectionIndex = sectionIndexes[newSection]!
                 
                 changes.append(.InsertSection(sectionInfo: sections[newSectionIndex], newIndex: newSectionIndex))
             }
+        } else if deleteSectionIndexes.count > 0 {
+            rebuildSectionIndexes()
         }
 
         // Finally we can iterate the set of inserted and moved objects, re-sort the sections, and then to generate the changes with the correct new indexes for them.
         if insertedObjects.count > 0 {
             for (newSection, insertRecords) in insertedObjects {
-                let newSectionIndex = indexOfSection(newSection)!
+                let newSectionIndex = sectionIndexes[newSection]!
 
                 if let sortDescriptors = fetchRequest.sortDescriptors {
                     sections[newSectionIndex].objects = (sections[newSectionIndex].objects as NSArray).sortedArrayUsingDescriptors(sortDescriptors) as! [Entity]
