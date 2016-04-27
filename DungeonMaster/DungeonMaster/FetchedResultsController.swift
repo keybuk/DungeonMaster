@@ -106,12 +106,14 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
         self.handleChanges = handleChanges
         
         super.init()
-
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(managedObjectContextObjectsDidChange(_:)), name: NSManagedObjectContextObjectsDidChangeNotification, object: self.managedObjectContext)
     }
     
+    private var fetchPerformed = false
+    
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        if fetchPerformed {
+            NSNotificationCenter.defaultCenter().removeObserver(self)
+        }
     }
     
     /// Cache mapping Section to Index.
@@ -165,6 +167,11 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
     /// - parameter notifyChanges: when `true`, the changes to the fetched results set are analyzed and `handleChanges` called. Default is `false`.
     public func performFetch(notifyChanges notifyChanges: Bool = false) throws {
         fetchedObjects = try managedObjectContext.executeFetchRequest(fetchRequest) as! [Entity]
+
+        if !fetchPerformed {
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(managedObjectContextObjectsDidChange(_:)), name: NSManagedObjectContextObjectsDidChangeNotification, object: self.managedObjectContext)
+            fetchPerformed = true
+        }
         
         // Save the old sections if we need to examine it for changes. This is done after performing the fetch since that can cause pending changes to be committed, and the notification observer called, and we don't want to double-notify changes.
         let oldSections = sections
