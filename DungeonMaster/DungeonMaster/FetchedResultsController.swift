@@ -9,15 +9,6 @@
 import CoreData
 import Foundation
 
-// TODO index path API
-
-// TODO other API methods I'm missing?
-// - check API for compatibility, e.g. I think section should have .objects?
-// - don't stick just because, think about each case
-// - likewise maybe get rid of ? where it makes no sense, e.g. pre-performFetch()
-
-// TODO it might be cheaper to just build+update sectionIndexes rather than cache-as-we-go
-
 // TODO static sections
 // - optional array of [Section] passed at constructor time, stored in a variable
 // - variable can be changed/re-evaluated at performFetch() time
@@ -153,6 +144,27 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
     
     /// Cache mapping ObjectIdentifier to Section it can be found within.
     private var objectSections: [ObjectIdentifier: Section] = [:]
+    
+    /// Returns the object at the given index path in the fetch results.
+    ///
+    /// - parameter indexPath: An index path in the fetch results.
+    /// If indexPath does not describe a valid index path in the fetch results, an exception is raised.
+    func object(at indexPath: NSIndexPath) -> Entity {
+        return sections[indexPath.section].objects[indexPath.row]
+    }
+
+    /// Returns the index path of a given object.
+    ///
+    /// - parameter object: An object in the fetch results.
+    /// - returns `nil` if the object is not present in the fetch results.
+    /// - complexity: performs an indexOf() on the objects list for the appropriate section.
+    func indexPath(of object: Entity) -> NSIndexPath? {
+        guard let section = objectSections[ObjectIdentifier(object)] else { return nil }
+        let sectionIndex = sectionIndexes[section]!
+        let index = sections[sectionIndex].objects.indexOf(object)!
+
+        return NSIndexPath(forRow: index, inSection: sectionIndex)
+    }
     
     /// Executes the fetch request.
     ///

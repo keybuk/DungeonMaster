@@ -108,9 +108,9 @@ class FetchedResultsControllerTests : XCTestCase {
         XCTAssertNotNil(controller.sections, "Expected list of sections after performing fetch.")
         XCTAssertEqual(controller.sections.count, sections.count, "Count of sections was incorrect.")
         
-        for (index, sectionInfo) in sections.enumerate() {
+        for (sectionIndex, sectionInfo) in sections.enumerate() {
             let (name, sectionPredicate) = sectionInfo
-            let section = controller.sections[index]
+            let section = controller.sections[sectionIndex]
             
             var sectionObjects = expectedObjects
             if let sectionPredicate = sectionPredicate {
@@ -131,6 +131,12 @@ class FetchedResultsControllerTests : XCTestCase {
                 let fetchedNames = Set(section.objects.map({ $0.valueForKey("name") as! String }))
                 
                 XCTAssertEqual(expectedNames, fetchedNames, "Set of objects in section was incorrect.")
+            }
+            
+            for (index, object) in section.objects.enumerate() {
+                let indexPath = NSIndexPath(forRow: index, inSection: sectionIndex)
+                XCTAssertEqual(controller.indexPath(of: object), indexPath, "Index path of object was incorrect.")
+                XCTAssert(controller.object(at: indexPath) === object, "Object at index path was incorrect.")
             }
         }
     }
@@ -2074,6 +2080,50 @@ class FetchedResultsControllerTests : XCTestCase {
         checkResults(controller, predicate: fetchRequest.predicate, sortDescriptors: fetchRequest.sortDescriptors, sections: [ (0, NSPredicate(format: "sex == 0")), (1, NSPredicate(format: "sex == 1")) ])
     }
     
+    // MARK: - Miscellaneous tests
+    
+    func testIndexPathOfObject() {
+        // Make a fetch request with a predicate and sort descriptors.
+        let fetchRequest = NSFetchRequest(entityName: "Person")
+        fetchRequest.predicate = NSPredicate(format: "age > 30")
+        fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
+        
+        // Create the controller, section the results by sex.
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: nil)
+        try! controller.performFetch()
+        
+        // Expect the index path of the object to be correct.
+        XCTAssertEqual(controller.indexPath(of: sampleObjects["Tague"]!), NSIndexPath(forRow: 1, inSection: 0), "Index path of object was incorrect.")
+    }
+    
+    func testIndexPathOfMissingObject() {
+        // Make a fetch request with a predicate and sort descriptors.
+        let fetchRequest = NSFetchRequest(entityName: "Person")
+        fetchRequest.predicate = NSPredicate(format: "age > 30")
+        fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
+        
+        // Create the controller, section the results by sex.
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: nil)
+        try! controller.performFetch()
+        
+        // Expect the index path of an object not in the results to be nil.
+        XCTAssertNil(controller.indexPath(of: sampleObjects["Shane"]!), "Unexpected index path for object.")
+    }
+    
+    func testObjectAtIndexPath() {
+        // Make a fetch request with a predicate and sort descriptors.
+        let fetchRequest = NSFetchRequest(entityName: "Person")
+        fetchRequest.predicate = NSPredicate(format: "age > 30")
+        fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
+        
+        // Create the controller, section the results by sex.
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: nil)
+        try! controller.performFetch()
+        
+        // Expect the object at an index path to be correct.
+        XCTAssert(controller.object(at: NSIndexPath(forRow: 1, inSection: 0)) === sampleObjects["Tague"]!, "Object at index path was incorrect.")
+    }
+
     // MARK: - Performance tests
     
     func testPerformance() {
