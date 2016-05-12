@@ -9,7 +9,7 @@
 import CoreData
 import UIKit
 
-class GameEncountersViewController : UITableViewController, NSFetchedResultsControllerDelegate {
+class GameEncountersViewController : UITableViewController {
     
     var game: Game!
 
@@ -20,20 +20,20 @@ class GameEncountersViewController : UITableViewController, NSFetchedResultsCont
     }
 
     override func setEditing(editing: Bool, animated: Bool) {
-        // Clear the cache of unused encounters.
-        unusedEncounters = nil
+        assert(editing != self.editing, "setEditing called with same value")
         
-        let oldEditing = self.editing, tableViewLoaded = self.tableViewLoaded
         super.setEditing(editing, animated: animated)
         
-        if editing != oldEditing && tableViewLoaded {
-            let addSection = fetchedResultsController.sections?.count ?? 0
-            if editing {
-                tableView.insertSections(NSIndexSet(index: addSection), withRowAnimation: .Automatic)
-            } else {
-                tableView.deleteSections(NSIndexSet(index: addSection), withRowAnimation: .Automatic)
-            }
+        // Still have a "table view loaded" issue here with notifyChanges
+
+        // TODO this is a dupe
+        if editing {
+            fetchedResultsController.fetchRequest.predicate = NSPredicate(format: "ANY games == %@ OR (adventure == %@ AND games.@count == 0)", self.game, self.game.adventure)
+            // TODO also encounters from the previous game that haven't had XP allocated
+        } else {
+            fetchedResultsController.fetchRequest.predicate = NSPredicate(format: "ANY games == %@", self.game)
         }
+        try! fetchedResultsController.performFetch(notifyChanges: true)
     }
     
     // MARK: Navigation
@@ -41,7 +41,7 @@ class GameEncountersViewController : UITableViewController, NSFetchedResultsCont
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "EncounterSegue" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let encounter = fetchedResultsController.objectAtIndexPath(indexPath) as! Encounter
+                let encounter = fetchedResultsController.object(at: indexPath)
                 let viewController = segue.destinationViewController as! EncounterViewController
                 viewController.encounter = encounter
                 viewController.game = game
@@ -66,71 +66,65 @@ class GameEncountersViewController : UITableViewController, NSFetchedResultsCont
 
     // MARK: Fetched results controller
     
-    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] in
+    lazy var fetchedResultsController: FetchedResultsController<Int, Encounter> = { [unowned self] in
         let fetchRequest = NSFetchRequest(entity: Model.Encounter)
-        fetchRequest.predicate = NSPredicate(format: "ANY games == %@", self.game)
+        
+        if self.editing {
+            fetchRequest.predicate = NSPredicate(format: "ANY games == %@ OR (adventure == %@ AND games.@count == 0)", self.game, self.game.adventure)
+            // TODO also encounters from the previous game that haven't had XP allocated
+        } else {
+            fetchRequest.predicate = NSPredicate(format: "ANY games == %@", self.game)
+        }
         
         let lastModifiedSortDescriptor = NSSortDescriptor(key: "lastModified", ascending: false)
         fetchRequest.sortDescriptors = [lastModifiedSortDescriptor]
-        
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        fetchedResultsController.delegate = self
-        
+
+        let fetchedResultsController = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.games.count > 0 ? 0 : 1 }, sectionKeys: ["games"], handleChanges: self.handleFetchedResultsControllerChanges)
         try! fetchedResultsController.performFetch()
-        
+
         return fetchedResultsController
     }()
     
-    /// The set of Encounters attached to the Adventure that have not yet been attached to a game.
-    ///
-    /// Since this is generated using the set of games attached to these adventures, it should be reset whenever the standard results controller changes.
-    var unusedEncounters: [Encounter]! {
-        get {
-            if let unusedEncounters = _unusedEncounters {
-                return unusedEncounters
+    // TODO this is basically boiler-plate, aside from the .Update case
+    func handleFetchedResultsControllerChanges(changes: [FetchedResultsChange<Int, Encounter>]) {
+        tableView.beginUpdates()
+        for change in changes {
+            switch change {
+            case let .InsertSection(sectionInfo: _, newIndex: newIndex):
+                tableView.insertSections(NSIndexSet(index: newIndex), withRowAnimation: .Automatic)
+            case let .DeleteSection(sectionInfo: _, index: index):
+                tableView.deleteSections(NSIndexSet(index: index), withRowAnimation: .Automatic)
+            case let .Insert(object: _, newIndexPath: newIndexPath):
+                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
+            case let .Delete(object: _, indexPath: indexPath):
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            case let .Move(object: _, indexPath: indexPath, newIndexPath: newIndexPath):
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
+            case let .Update(object: encounter, indexPath: indexPath):
+                if let cell = tableView.cellForRowAtIndexPath(indexPath) as? GameEncounterCell {
+                    cell.encounter = encounter
+                }
             }
-            
-            let fetchRequest = NSFetchRequest(entity: Model.Encounter)
-            fetchRequest.predicate = NSPredicate(format: "adventure == %@ AND games.@count == 0", game.adventure)
-            // TODO also encounters from the previous game that haven't had XP allocated
-        
-            let lastModifiedSortDescriptor = NSSortDescriptor(key: "lastModified", ascending: false)
-            fetchRequest.sortDescriptors = [lastModifiedSortDescriptor]
-            
-            _unusedEncounters = try! managedObjectContext.executeFetchRequest(fetchRequest) as! [Encounter]
-            return _unusedEncounters!
         }
-        
-        set(newUnusedEncounters) {
-            _unusedEncounters = newUnusedEncounters
-        }
+        tableView.endUpdates()
     }
-    private var _unusedEncounters: [Encounter]?
     
     // MARK: UITableViewDataSource
     
-    var tableViewLoaded = false
-    
+    // TODO boiler-plate
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        tableViewLoaded = true
-        return (fetchedResultsController.sections?.count ?? 0) + (editing ? 1 : 0)
+        return fetchedResultsController.sections.count
     }
     
+    // TODO boiler-plate
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let addSection = fetchedResultsController.sections?.count ?? 0
-        if section < addSection {
-            let sectionInfo = fetchedResultsController.sections![section]
-            return sectionInfo.numberOfObjects
-        } else {
-            return unusedEncounters.count
-        }
+        return fetchedResultsController.sections[section].objects.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("GameEncounterCell", forIndexPath: indexPath) as! GameEncounterCell
-
-        let addSection = fetchedResultsController.sections?.count ?? 0
-        let encounter = (indexPath.section < addSection ? fetchedResultsController.objectAtIndexPath(indexPath) : unusedEncounters[indexPath.row]) as! Encounter
+        let encounter = fetchedResultsController.object(at: indexPath)
         
         cell.encounter = encounter
         
@@ -144,11 +138,10 @@ class GameEncountersViewController : UITableViewController, NSFetchedResultsCont
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        let encounter = fetchedResultsController.object(at: indexPath)
         if editingStyle == .Delete {
-            let encounter = fetchedResultsController.objectAtIndexPath(indexPath) as! Encounter
             encounter.removeGame(game)
         } else if editingStyle == .Insert {
-            let encounter = unusedEncounters[indexPath.row]
             encounter.addGame(game)
         }
         
@@ -159,70 +152,16 @@ class GameEncountersViewController : UITableViewController, NSFetchedResultsCont
     // MARK: UITableViewDelegate
     
     override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
-        let addSection = fetchedResultsController.sections?.count ?? 0
-        if indexPath.section < addSection {
+        switch fetchedResultsController.sections[indexPath.section].name {
+        case 0:
             return .Delete
-        } else {
+        case 1:
             return .Insert
-        }
-    }
-    
-    // MARK: NSFetchedResultsControllerDelegate
-    
-    var oldUnusedEncounters: [Encounter]?
-    
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
-        // Clear or reset the cache of unused encounters, keeping the old cache around for insertion checking.
-        oldUnusedEncounters = editing ? unusedEncounters : nil
-        unusedEncounters = nil
-
-        tableView.beginUpdates()
-    }
-    
-    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
-        switch type {
-        case .Insert:
-            tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
-        case .Delete:
-            tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
         default:
-            return
+            fatalError()
         }
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-        switch type {
-        case .Insert:
-            let encounter = anObject as! Encounter
-            if let oldIndex = oldUnusedEncounters?.indexOf(encounter) {
-                let oldIndexPath = NSIndexPath(forRow: oldIndex, inSection: 1)
-                tableView.deleteRowsAtIndexPaths([ oldIndexPath ], withRowAnimation: .Top)
-            }
-
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Bottom)
-        case .Delete:
-            let encounter = anObject as! Encounter
-            if let newIndex = unusedEncounters.indexOf(encounter) {
-                let newIndexPath = NSIndexPath(forRow: newIndex, inSection: 1)
-                tableView.insertRowsAtIndexPaths([ newIndexPath ], withRowAnimation: .Top)
-            }
-    
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Bottom)
-        case .Move:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
-        case .Update:
-            if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? GameEncounterCell {
-                let encounter = anObject as! Encounter
-                cell.encounter = encounter
-            }
-        }
-    }
-    
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        tableView.endUpdates()
-    }
-
 }
 
 // MARK: -
