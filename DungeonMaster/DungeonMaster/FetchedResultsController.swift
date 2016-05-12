@@ -299,105 +299,99 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
         assert(notification.name == NSManagedObjectContextObjectsDidChangeNotification, "Notification method called for wrong notification.")
         assert(notification.object === managedObjectContext, "Notification called for incorrect managed object context.")
         
-        // Collect all of the objects together, rather than processing each key indvidually, since the handling is the same.
-        var objects: Set<Entity> = []
-        if let objectsSet = notification.userInfo?[NSInsertedObjectsKey] as? NSSet {
-            objects.unionInPlace(objectsSet.allObjects as! [Entity])
-        }
-        if let objectsSet = notification.userInfo?[NSDeletedObjectsKey] as? NSSet {
-            objects.unionInPlace(objectsSet.allObjects as! [Entity])
-        }
-        if let objectsSet = notification.userInfo?[NSUpdatedObjectsKey] as? NSSet {
-            objects.unionInPlace(objectsSet.allObjects as! [Entity])
-        }
-        
         var changes: [FetchedResultsChange<Section, Entity>] = []
         var insertedSections: [Section] = []
         var insertedObjects: [Section: [(object: Entity, sectionIndex: Int?, index: Int?)]] = [:]
         var deleteIndexes: [Section: NSMutableIndexSet] = [:]
 
-        // For each object, we fundamentally check two things: is it in the existing results, and if not, does it match the predicate and thus should be inserted?
-        for object in objects {
-            guard object.entity === fetchRequest.entity else { continue }
+        // Process all of the update keys together, rather than indvidually, since the handling is the same and only varies on the object itself.
+        for key in [NSInsertedObjectsKey, NSDeletedObjectsKey, NSUpdatedObjectsKey] {
+            guard let objects = notification.userInfo?[key] as? NSSet else { continue }
             
-            if let section = objectSections[ObjectIdentifier(object)] {
-                let sectionIndex = sectionIndexes[section]!
-                let index = sections[sectionIndex].objects.indexOf(object)!
-
-                if object.deleted || !(fetchRequest.predicate?.evaluateWithObject(object) ?? true) {
-                    // Object was deleted, or previously did, but no now longer does, match the predicate.
-                    objectSections[ObjectIdentifier(object)] = nil
-                    
-                    if deleteIndexes[section] == nil { deleteIndexes[section] = NSMutableIndexSet() }
-                    deleteIndexes[section]!.addIndex(index)
-                    
-                    // Since we don't care about the indexes remaining stable, we can directly remove objects here.
-                    fetchedObjects.removeAtIndex(fetchedObjects.indexOf(object)!)
-                    
-                    changes.append(.Delete(object: object, indexPath: NSIndexPath(forRow: index, inSection: sectionIndex)))
-                    continue
-                }
+            for case let object as NSManagedObject in objects {
+                guard object.entity === fetchRequest.entity else { continue }
+                let object = object as! Entity
                 
-                // Determine the new section for the object, optimizing to avoid this where possible.
-                let changedValues = object.changedValuesForCurrentEvent().keys
-                let newSection: Section
-                if let sectionKeys = sectionKeys {
-                    if sectionKeys.isSubsetOf(changedValues) {
+                // For each object, we fundamentally check two things: is it in the existing results, and if not, does it match the predicate and thus should be inserted?
+                if let section = objectSections[ObjectIdentifier(object)] {
+                    let sectionIndex = sectionIndexes[section]!
+                    let index = sections[sectionIndex].objects.indexOf(object)!
+
+                    if object.deleted || !(fetchRequest.predicate?.evaluateWithObject(object) ?? true) {
+                        // Object was deleted, or previously did, but no now longer does, match the predicate.
+                        objectSections[ObjectIdentifier(object)] = nil
+                        
+                        if deleteIndexes[section] == nil { deleteIndexes[section] = NSMutableIndexSet() }
+                        deleteIndexes[section]!.addIndex(index)
+                        
+                        // Since we don't care about the indexes remaining stable, we can directly remove objects here.
+                        fetchedObjects.removeAtIndex(fetchedObjects.indexOf(object)!)
+                        
+                        changes.append(.Delete(object: object, indexPath: NSIndexPath(forRow: index, inSection: sectionIndex)))
+                        continue
+                    }
+                    
+                    // Determine the new section for the object, optimizing to avoid this where possible.
+                    let changedValues = object.changedValuesForCurrentEvent().keys
+                    let newSection: Section
+                    if let sectionKeys = sectionKeys {
+                        if sectionKeys.isSubsetOf(changedValues) {
+                            newSection = sectionForObject(object)
+                        } else {
+                            newSection = section
+                        }
+                    } else {
                         newSection = sectionForObject(object)
-                    } else {
-                        newSection = section
                     }
-                } else {
-                    newSection = sectionForObject(object)
-                }
-                
-                let insertRecord = (object: object, sectionIndex: Int?.Some(sectionIndex), index: Int?.Some(index))
-                if section != newSection {
-                    // Object has changed section.
-                    objectSections[ObjectIdentifier(object)] = newSection
                     
-                    if deleteIndexes[section] == nil { deleteIndexes[section] = NSMutableIndexSet() }
-                    deleteIndexes[section]!.addIndex(index)
-                    
-                    if let newSectionIndex = sectionIndexes[newSection] {
-                        sections[newSectionIndex].objects.append(object)
+                    let insertRecord = (object: object, sectionIndex: Int?.Some(sectionIndex), index: Int?.Some(index))
+                    if section != newSection {
+                        // Object has changed section.
+                        objectSections[ObjectIdentifier(object)] = newSection
                         
-                        if insertedObjects[newSection] == nil { insertedObjects[newSection] = [] }
-                        insertedObjects[newSection]!.append(insertRecord)
+                        if deleteIndexes[section] == nil { deleteIndexes[section] = NSMutableIndexSet() }
+                        deleteIndexes[section]!.addIndex(index)
+                        
+                        if let newSectionIndex = sectionIndexes[newSection] {
+                            sections[newSectionIndex].objects.append(object)
+                            
+                            if insertedObjects[newSection] == nil { insertedObjects[newSection] = [] }
+                            insertedObjects[newSection]!.append(insertRecord)
+                        } else {
+                            makeSection(section: newSection, object: object)
+                            
+                            insertedSections.append(newSection)
+                            insertedObjects[newSection] = [insertRecord]
+                        }
+                    } else if let sortKeys = sortKeys where sortKeys.isSubsetOf(changedValues) {
+                        // Object may have moved within the sort order.
+                        if insertedObjects[section] == nil { insertedObjects[section] = [] }
+                        insertedObjects[section]!.append(insertRecord)
                     } else {
-                        makeSection(section: newSection, object: object)
-                        
-                        insertedSections.append(newSection)
-                        insertedObjects[newSection] = [insertRecord]
+                        // Object has changed in some other way.
+                        changes.append(.Update(object: object, indexPath: NSIndexPath(forRow: index, inSection: sectionIndex)))
                     }
-                } else if let sortKeys = sortKeys where sortKeys.isSubsetOf(changedValues) {
-                    // Object may have moved within the sort order.
-                    if insertedObjects[section] == nil { insertedObjects[section] = [] }
-                    insertedObjects[section]!.append(insertRecord)
-                } else {
-                    // Object has changed in some other way.
-                    changes.append(.Update(object: object, indexPath: NSIndexPath(forRow: index, inSection: sectionIndex)))
-                }
 
-            } else if fetchRequest.predicate?.evaluateWithObject(object) ?? true {
-                // Object previous did not, but now does, match the predicate. This becomes an insert.
-                let section = sectionForObject(object)
-                objectSections[ObjectIdentifier(object)] = section
-                
-                let insertRecord = (object: object, sectionIndex: Int?.None, index: Int?.None)
-                if let sectionIndex = sectionIndexes[section] {
-                    sections[sectionIndex].objects.append(object)
+                } else if fetchRequest.predicate?.evaluateWithObject(object) ?? true {
+                    // Object previous did not, but now does, match the predicate. This becomes an insert.
+                    let section = sectionForObject(object)
+                    objectSections[ObjectIdentifier(object)] = section
                     
-                    if insertedObjects[section] == nil { insertedObjects[section] = [] }
-                    insertedObjects[section]!.append(insertRecord)
-                } else {
-                    makeSection(section: section, object: object)
+                    let insertRecord = (object: object, sectionIndex: Int?.None, index: Int?.None)
+                    if let sectionIndex = sectionIndexes[section] {
+                        sections[sectionIndex].objects.append(object)
+                        
+                        if insertedObjects[section] == nil { insertedObjects[section] = [] }
+                        insertedObjects[section]!.append(insertRecord)
+                    } else {
+                        makeSection(section: section, object: object)
+                        
+                        insertedSections.append(section)
+                        insertedObjects[section] = [insertRecord]
+                    }
                     
-                    insertedSections.append(section)
-                    insertedObjects[section] = [insertRecord]
+                    fetchedObjects.append(object)
                 }
-                
-                fetchedObjects.append(object)
             }
         }
         
