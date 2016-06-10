@@ -85,7 +85,6 @@ class GameEncountersViewController : UITableViewController {
         return fetchedResultsController
     }()
     
-    // TODO this is basically boiler-plate, aside from the .Update case
     func handleFetchedResultsControllerChanges(changes: [FetchedResultsChange<Int, Encounter>]) {
         tableView.beginUpdates()
         for change in changes {
@@ -109,25 +108,21 @@ class GameEncountersViewController : UITableViewController {
         }
         tableView.endUpdates()
     }
-    
+
     // MARK: UITableViewDataSource
     
-    // TODO boiler-plate
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return fetchedResultsController.sections.count
     }
     
-    // TODO boiler-plate
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchedResultsController.sections[section].objects.count
     }
-    
+
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("GameEncounterCell", forIndexPath: indexPath) as! GameEncounterCell
         let encounter = fetchedResultsController.object(at: indexPath)
-        
         cell.encounter = encounter
-        
         return cell
     }
     
@@ -139,6 +134,7 @@ class GameEncountersViewController : UITableViewController {
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         let encounter = fetchedResultsController.object(at: indexPath)
+
         if editingStyle == .Delete {
             encounter.removeGame(game)
         } else if editingStyle == .Insert {

@@ -9,7 +9,7 @@
 import CoreData
 import UIKit
 
-class AdventureGamesViewController : UITableViewController, NSFetchedResultsControllerDelegate {
+class AdventureGamesViewController : UITableViewController {
 
     var adventure: Adventure!
     
@@ -24,7 +24,7 @@ class AdventureGamesViewController : UITableViewController, NSFetchedResultsCont
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "GameSegue" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let game = fetchedResultsController.objectAtIndexPath(indexPath) as! Game
+                let game = fetchedResultsController.object(at: indexPath)
                 let viewController = segue.destinationViewController as! GameViewController
                 viewController.game = game
             }
@@ -45,35 +45,61 @@ class AdventureGamesViewController : UITableViewController, NSFetchedResultsCont
 
     // MARK: Fetched results controller
     
-    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] in
+    lazy var fetchedResultsController: FetchedResultsController<Int, Game> = { [unowned self] in
         let fetchRequest = NSFetchRequest(entity: Model.Game)
         fetchRequest.predicate = NSPredicate(format: "adventure == %@", self.adventure)
         
         let numberSortDescriptor = NSSortDescriptor(key: "rawNumber", ascending: false)
         fetchRequest.sortDescriptors = [numberSortDescriptor]
         
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        fetchedResultsController.delegate = self
-        
+        let fetchedResultsController = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { _ in 0 }, sectionKeys: nil, handleChanges: self.handleFetchedResultsControllerChanges)        
         try! fetchedResultsController.performFetch()
         
         return fetchedResultsController
     }()
 
+    func handleFetchedResultsControllerChanges(changes: [FetchedResultsChange<Int, Game>]) {
+        guard !changeIsUserDriven else {
+            changeIsUserDriven = false
+            return
+        }
+
+        tableView.beginUpdates()
+        for change in changes {
+            switch change {
+            case let .InsertSection(sectionInfo: _, newIndex: newIndex):
+                tableView.insertSections(NSIndexSet(index: newIndex), withRowAnimation: .Automatic)
+            case let .DeleteSection(sectionInfo: _, index: index):
+                tableView.deleteSections(NSIndexSet(index: index), withRowAnimation: .Automatic)
+            case let .Insert(object: _, newIndexPath: newIndexPath):
+                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
+            case let .Delete(object: _, indexPath: indexPath):
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            case let .Move(object: _, indexPath: indexPath, newIndexPath: newIndexPath):
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
+            case let .Update(object: game, indexPath: indexPath):
+                if let cell = tableView.cellForRowAtIndexPath(indexPath) as? AdventureGameCell {
+                    cell.game = game
+                }
+            }
+        }
+        tableView.endUpdates()
+    }
+
     // MARK: UITableViewDataSource
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return fetchedResultsController.sections?.count ?? 0
+        return fetchedResultsController.sections.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sectionInfo = fetchedResultsController.sections![section]
-        return sectionInfo.numberOfObjects
+        return fetchedResultsController.sections[section].objects.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("AdventureGameCell", forIndexPath: indexPath) as! AdventureGameCell
-        let game = fetchedResultsController.objectAtIndexPath(indexPath) as! Game
+        let game = fetchedResultsController.object(at: indexPath)
         cell.game = game
         return cell
     }
@@ -85,21 +111,22 @@ class AdventureGamesViewController : UITableViewController, NSFetchedResultsCont
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        let game = fetchedResultsController.object(at: indexPath)
+
         if editingStyle == .Delete {
-            let game = fetchedResultsController.objectAtIndexPath(indexPath) as! Game
             managedObjectContext.deleteObject(game)
             
             // Renumber the games above the deleted one to account for it having gone away
             for row in 0..<indexPath.row {
                 let updateIndexPath = NSIndexPath(forRow: row, inSection: indexPath.section)
-                let updateGame = fetchedResultsController.objectAtIndexPath(updateIndexPath) as! Game
+                let updateGame = fetchedResultsController.object(at: updateIndexPath)
                 
                 updateGame.number -= 1
             }
-            
-            adventure.lastModified = NSDate()
-            try! managedObjectContext.save()
         }
+        
+        adventure.lastModified = NSDate()
+        try! managedObjectContext.save()
     }
     
     // MARK: Move support
@@ -111,8 +138,8 @@ class AdventureGamesViewController : UITableViewController, NSFetchedResultsCont
     var changeIsUserDriven = false
     
     override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-        let sourceGame = fetchedResultsController.objectAtIndexPath(sourceIndexPath) as! Game
-        let destinationGame = fetchedResultsController.objectAtIndexPath(destinationIndexPath) as! Game
+        let sourceGame = fetchedResultsController.object(at: sourceIndexPath)
+        let destinationGame = fetchedResultsController.object(at: destinationIndexPath)
 
         sourceGame.number = destinationGame.number
 
@@ -121,7 +148,7 @@ class AdventureGamesViewController : UITableViewController, NSFetchedResultsCont
         let step = destinationIndexPath.row > sourceIndexPath.row ? -1 : 1
         while row != sourceIndexPath.row {
             let indexPath = NSIndexPath(forRow: row, inSection: sourceIndexPath.section)
-            let game = fetchedResultsController.objectAtIndexPath(indexPath) as! Game
+            let game = fetchedResultsController.object(at: indexPath)
 
             // The table is sorted in reverse order, with the highest number first, so we actually move the game number in the opposite direction to the step through the rows.
             game.number -= step
@@ -133,55 +160,6 @@ class AdventureGamesViewController : UITableViewController, NSFetchedResultsCont
         
         adventure.lastModified = NSDate()
         try! managedObjectContext.save()
-    }
-
-    // MARK: NSFetchedResultsControllerDelegate
-    
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
-        guard !changeIsUserDriven else { return }
-
-        tableView.beginUpdates()
-    }
-    
-    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
-        guard !changeIsUserDriven else { return }
-
-        switch type {
-        case .Insert:
-            tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
-        case .Delete:
-            tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
-        default:
-            return
-        }
-    }
-    
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-        guard !changeIsUserDriven else { return }
-
-        switch type {
-        case .Insert:
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
-        case .Delete:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
-        case .Move:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
-        case .Update:
-            if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? AdventureGameCell {
-                let game = anObject as! Game
-                cell.game = game
-            }
-        }
-    }
-    
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        guard !changeIsUserDriven else {
-            changeIsUserDriven = false
-            return
-        }
-
-        tableView.endUpdates()
     }
 
 }

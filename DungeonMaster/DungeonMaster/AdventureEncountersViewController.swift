@@ -9,7 +9,7 @@
 import CoreData
 import UIKit
 
-class AdventureEncountersViewController : UITableViewController, NSFetchedResultsControllerDelegate {
+class AdventureEncountersViewController : UITableViewController {
     
     var adventure: Adventure!
 
@@ -24,7 +24,7 @@ class AdventureEncountersViewController : UITableViewController, NSFetchedResult
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "EncounterSegue" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let encounter = fetchedResultsController.objectAtIndexPath(indexPath) as! Encounter
+                let encounter = fetchedResultsController.object(at: indexPath)
                 let viewController = segue.destinationViewController as! EncounterViewController
                 viewController.encounter = encounter
             }
@@ -45,35 +45,56 @@ class AdventureEncountersViewController : UITableViewController, NSFetchedResult
     
     // MARK: Fetched results controller
     
-    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] in
+    lazy var fetchedResultsController: FetchedResultsController<Int, Encounter> = { [unowned self] in
         let fetchRequest = NSFetchRequest(entity: Model.Encounter)
         fetchRequest.predicate = NSPredicate(format: "adventure == %@ AND games.@count == 0", self.adventure)
         
         let lastModifiedSortDescriptor = NSSortDescriptor(key: "lastModified", ascending: false)
         fetchRequest.sortDescriptors = [lastModifiedSortDescriptor]
         
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        fetchedResultsController.delegate = self
-        
+        let fetchedResultsController = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { _ in return 0 }, sectionKeys: nil, handleChanges: self.handleFetchedResultsControllerChanges)
         try! fetchedResultsController.performFetch()
         
         return fetchedResultsController
     }()
+    
+    func handleFetchedResultsControllerChanges(changes: [FetchedResultsChange<Int, Encounter>]) {
+        tableView.beginUpdates()
+        for change in changes {
+            switch change {
+            case let .InsertSection(sectionInfo: _, newIndex: newIndex):
+                tableView.insertSections(NSIndexSet(index: newIndex), withRowAnimation: .Automatic)
+            case let .DeleteSection(sectionInfo: _, index: index):
+                tableView.deleteSections(NSIndexSet(index: index), withRowAnimation: .Automatic)
+            case let .Insert(object: _, newIndexPath: newIndexPath):
+                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
+            case let .Delete(object: _, indexPath: indexPath):
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            case let .Move(object: _, indexPath: indexPath, newIndexPath: newIndexPath):
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
+            case let .Update(object: encounter, indexPath: indexPath):
+                if let cell = tableView.cellForRowAtIndexPath(indexPath) as? AdventureEncounterCell {
+                    cell.encounter = encounter
+                }
+            }
+        }
+        tableView.endUpdates()
+    }
 
     // MARK: UITableViewDataSource
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return fetchedResultsController.sections?.count ?? 0
+        return fetchedResultsController.sections.count
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sectionInfo = fetchedResultsController.sections![section]
-        return sectionInfo.numberOfObjects
+        return fetchedResultsController.sections[section].objects.count
     }
-    
+
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("AdventureEncounterCell", forIndexPath: indexPath) as! AdventureEncounterCell
-        let encounter = fetchedResultsController.objectAtIndexPath(indexPath) as! Encounter
+        let encounter = fetchedResultsController.object(at: indexPath)
         cell.encounter = encounter
         return cell
     }
@@ -85,53 +106,16 @@ class AdventureEncountersViewController : UITableViewController, NSFetchedResult
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        let encounter = fetchedResultsController.object(at: indexPath)
+
         if editingStyle == .Delete {
-            let encounter = fetchedResultsController.objectAtIndexPath(indexPath) as! Encounter
             managedObjectContext.deleteObject(encounter)
-
-            adventure.lastModified = NSDate()
-            try! managedObjectContext.save()
         }
+        
+        adventure.lastModified = NSDate()
+        try! managedObjectContext.save()
     }
 
-    // MARK: NSFetchedResultsControllerDelegate
-
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
-        tableView.beginUpdates()
-    }
-    
-    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
-        switch type {
-        case .Insert:
-            tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
-        case .Delete:
-            tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
-        default:
-            return
-        }
-    }
-    
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-        switch type {
-        case .Insert:
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
-        case .Delete:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
-        case .Move:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
-        case .Update:
-            if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? AdventureEncounterCell {
-                let encounter = anObject as! Encounter
-                cell.encounter = encounter
-            }
-        }
-    }
-    
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        tableView.endUpdates()
-    }
-    
 }
 
 // MARK: -
