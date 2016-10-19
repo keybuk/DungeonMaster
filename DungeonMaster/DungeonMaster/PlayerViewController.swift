@@ -217,7 +217,7 @@ class PlayerViewController : UITableViewController, ManagedObjectObserverDelegat
         
         var newSavingThrows: [PlayerSavingThrow] = []
         for selectedSavingThrow in viewController.selectedSavingThrows {
-            let savingThrow = PlayerSavingThrow(player: player, savingThrow: selectedSavingThrow, inManagedObjectContext: managedObjectContext)
+            let savingThrow = PlayerSavingThrow(player: player, savingThrow: selectedSavingThrow, insertInto: managedObjectContext)
             newSavingThrows.append(savingThrow)
         }
         
@@ -232,7 +232,7 @@ class PlayerViewController : UITableViewController, ManagedObjectObserverDelegat
         
         var newSkills: [PlayerSkill] = []
         for selectedSkill in viewController.selectedSkills {
-            let skill = PlayerSkill(player: player, skill: selectedSkill, inManagedObjectContext: managedObjectContext)
+            let skill = PlayerSkill(player: player, skill: selectedSkill, insertInto: managedObjectContext)
             newSkills.append(skill)
         }
         

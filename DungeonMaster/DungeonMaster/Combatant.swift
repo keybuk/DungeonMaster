@@ -164,8 +164,8 @@ final class Combatant : NSManagedObject {
     /// Each member is an `XPAward` linking to the player that received the award.
     @NSManaged var xpAwards: NSSet
     
-    convenience init(encounter: Encounter, monster: Monster, inManagedObjectContext context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entity(Model.Combatant, inManagedObjectContext: context)
+    convenience init(encounter: Encounter, monster: Monster, insertInto context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entity(forModel: Model.Combatant, in: context)
         self.init(entity: entity, insertInto: context)
         
         self.encounter = encounter
@@ -175,8 +175,8 @@ final class Combatant : NSManagedObject {
         hitPoints = monster.hitPoints ?? monster.hitDice.averageValue
     }
     
-    convenience init(encounter: Encounter, player: Player, inManagedObjectContext context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entity(Model.Combatant, inManagedObjectContext: context)
+    convenience init(encounter: Encounter, player: Player, insertInto context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entity(forModel: Model.Combatant, in: context)
         self.init(entity: entity, insertInto: context)
         
         self.encounter = encounter

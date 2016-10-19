@@ -37,8 +37,8 @@ final class DamageImmunity : NSManagedObject {
     }
     @NSManaged fileprivate var rawAttackType: NSNumber
     
-    convenience init(monster: Monster, inManagedObjectContext context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entity(Model.DamageImmunity, inManagedObjectContext: context)
+    convenience init(monster: Monster, insertInto context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entity(forModel: Model.DamageImmunity, in: context)
         self.init(entity: entity, insertInto: context)
         
         self.monster = monster

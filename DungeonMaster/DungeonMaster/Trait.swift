@@ -15,8 +15,8 @@ final class Trait : NSManagedObject {
     @NSManaged var name: String
     @NSManaged var text: String
     
-    convenience init(monster: Monster, name: String, text: String, inManagedObjectContext context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entity(Model.Trait, inManagedObjectContext: context)
+    convenience init(monster: Monster, name: String, text: String, insertInto context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entity(forModel: Model.Trait, in: context)
         self.init(entity: entity, insertInto: context)
         
         self.monster = monster

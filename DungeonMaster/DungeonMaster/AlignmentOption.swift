@@ -39,8 +39,8 @@ final class AlignmentOption : NSManagedObject {
     }
     @NSManaged fileprivate var rawWeight: NSNumber?
 
-    convenience init(monster: Monster, inManagedObjectContext context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entity(Model.AlignmentOption, inManagedObjectContext: context)
+    convenience init(monster: Monster, insertInto context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entity(forModel: Model.AlignmentOption, in: context)
         self.init(entity: entity, insertInto: context)
         
         self.monster = monster

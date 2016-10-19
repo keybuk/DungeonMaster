@@ -57,14 +57,14 @@ class CombatantViewController : UITableViewController, ManagedObjectObserverDele
     @IBAction func unwindFromCondition(_ segue: UIStoryboardSegue) {
         let conditionViewController = segue.source as! ConditionViewController
         
-        let _ = CombatantCondition(target: combatant, type: conditionViewController.type!, inManagedObjectContext: managedObjectContext)
+        let _ = CombatantCondition(target: combatant, type: conditionViewController.type!, insertInto: managedObjectContext)
         try! managedObjectContext.save()
     }
 
     @IBAction func unwindFromDamage(_ segue: UIStoryboardSegue) {
         let damageViewController = segue.source as! DamageViewController
         
-        let damage = CombatantDamage(target: combatant, points: damageViewController.points!, type: damageViewController.type!, inManagedObjectContext: managedObjectContext)
+        let damage = CombatantDamage(target: combatant, points: damageViewController.points!, type: damageViewController.type!, insertInto: managedObjectContext)
         
         combatant.damagePoints += damage.points
         try! managedObjectContext.save()

@@ -48,7 +48,7 @@ class AdventurePlayersViewController : UITableViewController, NSFetchedResultsCo
             }
             
         } else if segue.identifier == "AddPlayerSegue" {
-            let player = Player(inManagedObjectContext: managedObjectContext)
+            let player = Player(insertInto: managedObjectContext)
             
             let viewController = (segue.destination as! UINavigationController).topViewController as! PlayerViewController
             viewController.player = player

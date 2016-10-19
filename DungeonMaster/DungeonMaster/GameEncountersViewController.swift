@@ -52,7 +52,7 @@ class GameEncountersViewController : UITableViewController {
     // MARK: Actions
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
-        let encounter = Encounter(adventure: game.adventure, inManagedObjectContext: managedObjectContext)
+        let encounter = Encounter(adventure: game.adventure, insertInto: managedObjectContext)
         encounter.addGame(game)
         
         game.adventure.lastModified = Date()

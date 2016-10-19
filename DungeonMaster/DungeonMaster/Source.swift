@@ -35,8 +35,8 @@ final class Source : NSManagedObject {
     /// Spell contained at this reference point.
     @NSManaged var spell: Spell?
 
-    convenience init(book: Book, page: Int, monster: Monster, inManagedObjectContext context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entity(Model.Source, inManagedObjectContext: context)
+    convenience init(book: Book, page: Int, monster: Monster, insertInto context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entity(forModel: Model.Source, in: context)
         self.init(entity: entity, insertInto: context)
         
         self.book = book
@@ -44,8 +44,8 @@ final class Source : NSManagedObject {
         self.monster = monster
     }
     
-    convenience init(book: Book, page: Int, spell: Spell, inManagedObjectContext context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entity(Model.Source, inManagedObjectContext: context)
+    convenience init(book: Book, page: Int, spell: Spell, insertInto context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entity(forModel: Model.Source, in: context)
         self.init(entity: entity, insertInto: context)
         
         self.book = book

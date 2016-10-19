@@ -23,8 +23,8 @@ final class Language : NSManagedObject {
     /// Set of monsters that can understand, but not speak, this language.
     @NSManaged var monstersUnderstanding: NSSet
     
-    convenience init(name: String, inManagedObjectContext context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entity(Model.Language, inManagedObjectContext: context)
+    convenience init(name: String, insertInto context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entity(forModel: Model.Language, in: context)
         self.init(entity: entity, insertInto: context)
         
         self.name = name

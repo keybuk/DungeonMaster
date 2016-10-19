@@ -41,8 +41,8 @@ final class MonsterSkill : NSManagedObject {
     }
     @NSManaged fileprivate var rawModifier: NSNumber
     
-    convenience init(monster: Monster, skill: Skill, inManagedObjectContext context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entity(Model.MonsterSkill, inManagedObjectContext: context)
+    convenience init(monster: Monster, skill: Skill, insertInto context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entity(forModel: Model.MonsterSkill, in: context)
         self.init(entity: entity, insertInto: context)
         
         self.monster = monster

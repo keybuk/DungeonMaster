@@ -80,7 +80,7 @@ func importIfNeeded() {
     let bookDatas = data["books"] as! [NSDictionary]
     for bookData in bookDatas {
         let name = bookData["name"] as! String
-        let book = Book(name: name, inManagedObjectContext: managedObjectContext)
+        let book = Book(name: name, insertInto: managedObjectContext)
         book.type = BookType(rawValue: (bookData["type"]! as AnyObject).intValue)!
         
         // Reconnect the book back to its previous adventures.
@@ -96,7 +96,7 @@ func importIfNeeded() {
     let monsterDatas = data["monsters"] as! [NSDictionary]
     for monsterData in monsterDatas {
         let name = monsterData["name"] as! String
-        let monster = Monster(name: name, inManagedObjectContext: managedObjectContext)
+        let monster = Monster(name: name, insertInto: managedObjectContext)
         
         // Combatant might refer to a monster by an old name.
         let names = monsterData["names"] as! [String]
@@ -116,7 +116,7 @@ func importIfNeeded() {
 
             let page = (sourceData["page"]! as AnyObject).intValue
             
-            let source = Source(book: book, page: page, monster: monster, inManagedObjectContext: managedObjectContext)
+            let source = Source(book: book, page: page, monster: monster, insertInto: managedObjectContext)
             
             if let section = sourceData["section"] as? String {
                 source.section = section
@@ -126,7 +126,7 @@ func importIfNeeded() {
         let environmentValues = monsterData["environments"] as! [NSNumber]
         for environmentValue in environmentValues {
             let environment = Environment(rawValue: environmentValue.intValue)!
-            let _ = MonsterEnvironment(monster: monster, environment: environment, inManagedObjectContext: managedObjectContext)
+            let _ = MonsterEnvironment(monster: monster, environment: environment, insertInto: managedObjectContext)
         }
         
         var monsterTags: [Tag] = []
@@ -135,7 +135,7 @@ func importIfNeeded() {
             if let tag = tags[tagName] {
                 monsterTags.append(tag)
             } else {
-                let tag = Tag(name: tagName, inManagedObjectContext: managedObjectContext)
+                let tag = Tag(name: tagName, insertInto: managedObjectContext)
                 tags[tagName] = tag
                 monsterTags.append(tag)
             }
@@ -144,7 +144,7 @@ func importIfNeeded() {
 
         let alignmentOptionDatas = monsterData["alignmentOptions"] as! [[NSNumber]]
         for alignmentOptionData in alignmentOptionDatas {
-            let alignmentOption = AlignmentOption(monster: monster, inManagedObjectContext: managedObjectContext)
+            let alignmentOption = AlignmentOption(monster: monster, insertInto: managedObjectContext)
             alignmentOption.alignment = Alignment(rawValue: alignmentOptionData[0].intValue)!
 
             if alignmentOptionData.count > 1 {
@@ -154,14 +154,14 @@ func importIfNeeded() {
         
         let armorDatas = monsterData["armor"] as! [[String: AnyObject]]
         for armorData in armorDatas {
-            let armor = Armor(monster: monster, inManagedObjectContext: managedObjectContext)
+            let armor = Armor(monster: monster, insertInto: managedObjectContext)
             armor.setValuesForKeys(armorData)
         }
         
         let savingThrowData = monsterData["savingThrows"] as! [String: NSNumber]
         for (savingThrowNumber, savingThrowModifier) in savingThrowData {
             let savingThrow = Ability(rawValue: Int(savingThrowNumber)!)!
-            let monsterSavingThrow = MonsterSavingThrow(monster: monster, savingThrow: savingThrow, inManagedObjectContext: managedObjectContext)
+            let monsterSavingThrow = MonsterSavingThrow(monster: monster, savingThrow: savingThrow, insertInto: managedObjectContext)
             monsterSavingThrow.modifier = savingThrowModifier.intValue
         }
         
@@ -169,38 +169,38 @@ func importIfNeeded() {
         for (skillAbilityNumber, skillData) in skillAbilityData {
             for (skillNumber, skillModifier) in skillData {
                 let skill = Skill(rawAbilityValue: Int(skillAbilityNumber)!, rawSkillValue: Int(skillNumber)!)!
-                let monsterSkill = MonsterSkill(monster: monster, skill: skill, inManagedObjectContext: managedObjectContext)
+                let monsterSkill = MonsterSkill(monster: monster, skill: skill, insertInto: managedObjectContext)
                 monsterSkill.modifier = skillModifier.intValue
             }
         }
         
         let damageVulnerabilityDatas = monsterData["damageVulnerabilities"] as! [[String: AnyObject]]
         for damageVulnerabilityDate in damageVulnerabilityDatas {
-            let damageVulnerability = DamageVulnerability(monster: monster, inManagedObjectContext: managedObjectContext)
+            let damageVulnerability = DamageVulnerability(monster: monster, insertInto: managedObjectContext)
             damageVulnerability.setValuesForKeys(damageVulnerabilityDate)
         }
 
         let damageResistanceDatas = monsterData["damageResistances"] as! [[String: AnyObject]]
         for damageResistanceData in damageResistanceDatas {
-            let damageResistance = DamageResistance(monster: monster, inManagedObjectContext: managedObjectContext)
+            let damageResistance = DamageResistance(monster: monster, insertInto: managedObjectContext)
             damageResistance.setValuesForKeys(damageResistanceData)
         }
         
         let damageResistanceOptionDatas = monsterData["damageResistanceOptions"] as! [[String: AnyObject]]
         for damageResistanceOptionData in damageResistanceOptionDatas {
-            let damageResistanceOption = DamageResistanceOption(monster: monster, inManagedObjectContext: managedObjectContext)
+            let damageResistanceOption = DamageResistanceOption(monster: monster, insertInto: managedObjectContext)
             damageResistanceOption.setValuesForKeys(damageResistanceOptionData)
         }
 
         let damageImmunityDates = monsterData["damageImmunities"] as! [[String: AnyObject]]
         for damageImmunityData in damageImmunityDates {
-            let damageImmunity = DamageImmunity(monster: monster, inManagedObjectContext: managedObjectContext)
+            let damageImmunity = DamageImmunity(monster: monster, insertInto: managedObjectContext)
             damageImmunity.setValuesForKeys(damageImmunityData)
         }
 
         let conditionImmunityDatas = monsterData["conditionImmunities"] as! [[String: AnyObject]]
         for conditionImmunityData in conditionImmunityDatas {
-            let conditionImmunity = ConditionImmunity(monster: monster, inManagedObjectContext: managedObjectContext)
+            let conditionImmunity = ConditionImmunity(monster: monster, insertInto: managedObjectContext)
             conditionImmunity.setValuesForKeys(conditionImmunityData)
         }
 
@@ -210,7 +210,7 @@ func importIfNeeded() {
             if let language = languages[languageName] {
                 monsterLanguages.append(language)
             } else {
-                let language = Language(name: languageName, inManagedObjectContext: managedObjectContext)
+                let language = Language(name: languageName, insertInto: managedObjectContext)
                 languages[languageName] = language
                 monsterLanguages.append(language)
             }
@@ -223,7 +223,7 @@ func importIfNeeded() {
             if let language = languages[languageName] {
                 monsterLanguages.append(language)
             } else {
-                let language = Language(name: languageName, inManagedObjectContext: managedObjectContext)
+                let language = Language(name: languageName, insertInto: managedObjectContext)
                 languages[languageName] = language
                 monsterLanguages.append(language)
             }
@@ -237,49 +237,49 @@ func importIfNeeded() {
         for traitData in traitDatas {
             let name = traitData["name"] as! String
             let text = traitData["text"] as! String
-            let _ = Trait(monster: monster, name: name, text: text, inManagedObjectContext: managedObjectContext)
+            let _ = Trait(monster: monster, name: name, text: text, insertInto: managedObjectContext)
         }
         
         let actionDatas = monsterData["actions"] as! [NSDictionary]
         for actionData in actionDatas {
             let name = actionData["name"] as! String
             let text = actionData["text"] as! String
-            let _ = Action(monster: monster, name: name, text: text, inManagedObjectContext: managedObjectContext)
+            let _ = Action(monster: monster, name: name, text: text, insertInto: managedObjectContext)
         }
 
         let reactionDatas = monsterData["reactions"] as! [NSDictionary]
         for reactionData in reactionDatas {
             let name = reactionData["name"] as! String
             let text = reactionData["text"] as! String
-            let _ = Reaction(monster: monster, name: name, text: text, inManagedObjectContext: managedObjectContext)
+            let _ = Reaction(monster: monster, name: name, text: text, insertInto: managedObjectContext)
         }
 
         let legendaryActionDatas = monsterData["legendaryActions"] as! [NSDictionary]
         for legendaryActionData in legendaryActionDatas {
             let name = legendaryActionData["name"] as! String
             let text = legendaryActionData["text"] as! String
-            let _ = LegendaryAction(monster: monster, name: name, text: text, inManagedObjectContext: managedObjectContext)
+            let _ = LegendaryAction(monster: monster, name: name, text: text, insertInto: managedObjectContext)
         }
         
         if let lairData = monsterData["lair"] as? NSDictionary {
-            let lair = Lair(inManagedObjectContext: managedObjectContext)
+            let lair = Lair(insertInto: managedObjectContext)
 
             let info = lairData["info"] as! [String: AnyObject]
             lair.setValuesForKeys(info)
             
             let lairActionTexts = lairData["lairActions"] as! [String]
             for text in lairActionTexts {
-                let _ = LairAction(lair: lair, text: text, inManagedObjectContext: managedObjectContext)
+                let _ = LairAction(lair: lair, text: text, insertInto: managedObjectContext)
             }
 
             let lairTraitsTexts = lairData["lairTraits"] as! [String]
             for text in lairTraitsTexts {
-                let _ = LairTrait(lair: lair, text: text, inManagedObjectContext: managedObjectContext)
+                let _ = LairTrait(lair: lair, text: text, insertInto: managedObjectContext)
             }
 
             let regionalEffectsTexts = lairData["regionalEffects"] as! [String]
             for text in regionalEffectsTexts {
-                let _ = RegionalEffect(lair: lair, text: text, inManagedObjectContext: managedObjectContext)
+                let _ = RegionalEffect(lair: lair, text: text, insertInto: managedObjectContext)
             }
 
             monster.lair = lair
@@ -394,7 +394,7 @@ func importIfNeeded() {
     let spellDatas = data["spells"] as! [NSDictionary]
     for spellData in spellDatas {
         let name = spellData["name"] as! String
-        let spell = Spell(name: name, inManagedObjectContext: managedObjectContext)
+        let spell = Spell(name: name, insertInto: managedObjectContext)
         
         let sourceDatas = spellData["sources"] as! [NSDictionary]
         for sourceData in sourceDatas {
@@ -403,7 +403,7 @@ func importIfNeeded() {
             
             let page = (sourceData["page"]! as AnyObject).intValue
             
-            let source = Source(book: book, page: page, spell: spell, inManagedObjectContext: managedObjectContext)
+            let source = Source(book: book, page: page, spell: spell, insertInto: managedObjectContext)
             
             if let section = sourceData["section"] as? String {
                 source.section = section
@@ -413,7 +413,7 @@ func importIfNeeded() {
         let classValues = spellData["classes"] as! [NSNumber]
         for classValue in classValues {
             let characterClass = CharacterClass(rawValue: classValue.intValue)!
-            let _ = SpellClass(spell: spell, characterClass: characterClass, inManagedObjectContext: managedObjectContext)
+            let _ = SpellClass(spell: spell, characterClass: characterClass, insertInto: managedObjectContext)
         }
         
         let info = spellData["info"] as! [String: AnyObject]

@@ -26,8 +26,8 @@ final class MonsterEnvironment : NSManagedObject {
     }
     @NSManaged fileprivate var rawEnvironment: NSNumber
     
-    convenience init(monster: Monster, environment: Environment, inManagedObjectContext context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entity(Model.MonsterEnvironment, inManagedObjectContext: context)
+    convenience init(monster: Monster, environment: Environment, insertInto context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entity(forModel: Model.MonsterEnvironment, in: context)
         self.init(entity: entity, insertInto: context)
         
         self.monster = monster

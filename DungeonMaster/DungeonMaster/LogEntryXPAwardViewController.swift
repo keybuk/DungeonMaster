@@ -57,7 +57,7 @@ class LogEntryXPAwardViewController : UITableViewController, UITextFieldDelegate
         let xp = Int(xpTextField.text!)!
 
         for playedGame in playedGames {
-            let xpAward = XPAward(playedGame: playedGame, inManagedObjectContext: managedObjectContext)
+            let xpAward = XPAward(playedGame: playedGame, insertInto: managedObjectContext)
             xpAward.xp = xp
             xpAward.reason = reasonTextView.text
             

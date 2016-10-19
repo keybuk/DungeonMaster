@@ -26,8 +26,8 @@ final class PlayerSavingThrow : NSManagedObject {
     }
     @NSManaged fileprivate var rawSavingThrow: NSNumber
     
-    convenience init(player: Player, savingThrow: Ability, inManagedObjectContext context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entity(Model.PlayerSavingThrow, inManagedObjectContext: context)
+    convenience init(player: Player, savingThrow: Ability, insertInto context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entity(forModel: Model.PlayerSavingThrow, in: context)
         self.init(entity: entity, insertInto: context)
         
         self.player = player

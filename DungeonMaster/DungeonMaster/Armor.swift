@@ -68,8 +68,8 @@ final class Armor : NSManagedObject {
     @NSManaged var spellName: String?
     @NSManaged var form: String?
     
-    convenience init(monster: Monster, inManagedObjectContext context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entity(Model.Armor, inManagedObjectContext: context)
+    convenience init(monster: Monster, insertInto context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entity(forModel: Model.Armor, in: context)
         self.init(entity: entity, insertInto: context)
         
         self.monster = monster

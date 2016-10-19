@@ -20,8 +20,8 @@ final class Tag : NSManagedObject {
     /// Set of monsters that this tag applies to.
     @NSManaged var monsters: NSSet
     
-    convenience init(name: String, inManagedObjectContext context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entity(Model.Tag, inManagedObjectContext: context)
+    convenience init(name: String, insertInto context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entity(forModel: Model.Tag, in: context)
         self.init(entity: entity, insertInto: context)
         
         self.name = name

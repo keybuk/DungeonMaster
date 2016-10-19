@@ -39,8 +39,8 @@ final class MonsterSavingThrow : NSManagedObject {
     }
     @NSManaged fileprivate var rawModifier: NSNumber
 
-    convenience init(monster: Monster, savingThrow: Ability, inManagedObjectContext context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entity(Model.MonsterSavingThrow, inManagedObjectContext: context)
+    convenience init(monster: Monster, savingThrow: Ability, insertInto context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entity(forModel: Model.MonsterSavingThrow, in: context)
         self.init(entity: entity, insertInto: context)
         
         self.monster = monster

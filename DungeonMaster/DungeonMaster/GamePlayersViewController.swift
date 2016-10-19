@@ -57,14 +57,14 @@ class GamePlayersViewController : UITableViewController, NSFetchedResultsControl
             }
             
         } else if segue.identifier == "AddPlayerSegue" {
-            let player = Player(inManagedObjectContext: managedObjectContext)
+            let player = Player(insertInto: managedObjectContext)
             
             let viewController = (segue.destination as! UINavigationController).topViewController as! PlayerViewController
             viewController.player = player
             
             viewController.completionBlock = { cancelled, player in
                 if let player = player, !cancelled {
-                    let _ = PlayedGame(game: self.game, player: player, inManagedObjectContext: managedObjectContext)
+                    let _ = PlayedGame(game: self.game, player: player, insertInto: managedObjectContext)
 
                     self.game.adventure.lastModified = Date()
                     try! managedObjectContext.save()
@@ -184,7 +184,7 @@ class GamePlayersViewController : UITableViewController, NSFetchedResultsControl
         } else if editingStyle == .insert {
             if (indexPath as NSIndexPath).row < missingPlayers.count {
                 let player = missingPlayers[(indexPath as NSIndexPath).row]
-                let _ = PlayedGame(game: game, player: player, inManagedObjectContext: managedObjectContext)
+                let _ = PlayedGame(game: game, player: player, insertInto: managedObjectContext)
                 
                 game.adventure.lastModified = Date()
                 try! managedObjectContext.save()

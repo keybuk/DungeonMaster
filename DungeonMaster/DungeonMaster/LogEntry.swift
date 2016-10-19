@@ -26,8 +26,8 @@ class LogEntry : NSManagedObject {
     }
     @NSManaged fileprivate var rawIndex: NSNumber
     
-    convenience init(model: Model, playedGame: PlayedGame, inManagedObjectContext context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entity(model, inManagedObjectContext: context)
+    convenience init(model: Model, playedGame: PlayedGame, insertInto context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entity(forModel: model, in: context)
         self.init(entity: entity, insertInto: context)
         
         self.playedGame = playedGame

@@ -47,8 +47,8 @@ final class XPAward : LogEntry {
     /// Each member is a `Combatant` linking to the specific monster.
     @NSManaged var combatants: NSSet
 
-    convenience init(playedGame: PlayedGame, inManagedObjectContext context: NSManagedObjectContext) {
-        self.init(model: Model.XPAward, playedGame: playedGame, inManagedObjectContext: context)
+    convenience init(playedGame: PlayedGame, insertInto context: NSManagedObjectContext) {
+        self.init(model: Model.XPAward, playedGame: playedGame, insertInto: context)
     }
     
     /// Returns InDesign Tagged Text description of the log entry.

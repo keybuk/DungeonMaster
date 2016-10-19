@@ -40,8 +40,8 @@ final class DamageResistance : NSManagedObject {
     // HACK for the time being to parse Archmage
     @NSManaged var spellName: String?
     
-    convenience init(monster: Monster, inManagedObjectContext context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entity(Model.DamageResistance, inManagedObjectContext: context)
+    convenience init(monster: Monster, insertInto context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entity(forModel: Model.DamageResistance, in: context)
         self.init(entity: entity, insertInto: context)
         
         self.monster = monster

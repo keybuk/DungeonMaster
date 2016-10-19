@@ -34,7 +34,7 @@ class AdventureGamesViewController : UITableViewController {
     // MARK: Actions
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
-        let game = Game(adventure: adventure, inManagedObjectContext: managedObjectContext)
+        let game = Game(adventure: adventure, insertInto: managedObjectContext)
         adventure.lastModified = Date()
         try! managedObjectContext.save()
         

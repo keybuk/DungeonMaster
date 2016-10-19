@@ -106,8 +106,8 @@ final class Encounter : NSManagedObject {
     /// Each member is an `XPAward` linking the encounter to the player that received the award.
     @NSManaged var xpAwards: NSSet
     
-    convenience init(adventure: Adventure, inManagedObjectContext context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entity(Model.Encounter, inManagedObjectContext: context)
+    convenience init(adventure: Adventure, insertInto context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entity(forModel: Model.Encounter, in: context)
         self.init(entity: entity, insertInto: context)
         
         self.adventure = adventure
@@ -319,7 +319,7 @@ final class Encounter : NSManagedObject {
     /// Adds missing players from `game` to the encounter.
     func addPlayers(fromGame game: Game) {
         for case let playedGame as PlayedGame in game.playedGames {
-            let _ = Combatant(encounter: self, player: playedGame.player, inManagedObjectContext: managedObjectContext!)
+            let _ = Combatant(encounter: self, player: playedGame.player, insertInto: managedObjectContext!)
         }
     }
     

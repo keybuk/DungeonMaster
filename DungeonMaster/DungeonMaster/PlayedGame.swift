@@ -23,8 +23,8 @@ final class PlayedGame : NSManagedObject {
     /// Each member is a subclass of `LogEntry`, providing the details of the specific entry.
     @NSManaged var logEntries: NSSet
 
-    convenience init(game: Game, player: Player, inManagedObjectContext context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entity(Model.PlayedGame, inManagedObjectContext: context)
+    convenience init(game: Game, player: Player, insertInto context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entity(forModel: Model.PlayedGame, in: context)
         self.init(entity: entity, insertInto: context)
         
         self.game = game

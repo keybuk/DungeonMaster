@@ -48,8 +48,8 @@ final class Game : NSManagedObject {
     /// Each member is an `Encounter`. Encounters may exist across multiple games until they have been completed.
     @NSManaged var encounters: NSSet
     
-    convenience init(adventure: Adventure, inManagedObjectContext context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entity(Model.Game, inManagedObjectContext: context)
+    convenience init(adventure: Adventure, insertInto context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entity(forModel: Model.Game, in: context)
         self.init(entity: entity, insertInto: context)
         
         self.adventure = adventure
@@ -58,7 +58,7 @@ final class Game : NSManagedObject {
         date = Date()
         
         for case let player as Player in adventure.players {
-            let _ = PlayedGame(game: self, player: player, inManagedObjectContext: context)
+            let _ = PlayedGame(game: self, player: player, insertInto: context)
         }
     }
 

@@ -17,8 +17,8 @@ final class LogEntryNote : LogEntry {
     /// Note text.
     @NSManaged var note: String
     
-    convenience init(playedGame: PlayedGame, inManagedObjectContext context: NSManagedObjectContext) {
-        self.init(model: Model.LogEntryNote, playedGame: playedGame, inManagedObjectContext: context)
+    convenience init(playedGame: PlayedGame, insertInto context: NSManagedObjectContext) {
+        self.init(model: Model.LogEntryNote, playedGame: playedGame, insertInto: context)
     }
 
     /// Returns InDesign Tagged Text description of the log entry.

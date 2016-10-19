@@ -15,8 +15,8 @@ final class Action : NSManagedObject {
     @NSManaged var name: String
     @NSManaged var text: String
     
-    convenience init(monster: Monster, name: String, text: String, inManagedObjectContext context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entity(Model.Action, inManagedObjectContext: context)
+    convenience init(monster: Monster, name: String, text: String, insertInto context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entity(forModel: Model.Action, in: context)
         self.init(entity: entity, insertInto: context)
         
         self.monster = monster

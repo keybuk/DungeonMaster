@@ -87,8 +87,8 @@ final class AdventureImage : NSManagedObject {
     @NSManaged fileprivate var rawOriginX: NSNumber
     @NSManaged fileprivate var rawOriginY: NSNumber
     
-    convenience init(adventure: Adventure, inManagedObjectContext context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entity(Model.AdventureImage, inManagedObjectContext: context)
+    convenience init(adventure: Adventure, insertInto context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entity(forModel: Model.AdventureImage, in: context)
         self.init(entity: entity, insertInto: context)
         
         self.adventure = adventure

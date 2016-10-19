@@ -26,8 +26,8 @@ final class ConditionImmunity : NSManagedObject {
     }
     @NSManaged fileprivate var rawCondition: NSNumber
     
-    convenience init(monster: Monster, inManagedObjectContext context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entity(Model.ConditionImmunity, inManagedObjectContext: context)
+    convenience init(monster: Monster, insertInto context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entity(forModel: Model.ConditionImmunity, in: context)
         self.init(entity: entity, insertInto: context)
         
         self.monster = monster

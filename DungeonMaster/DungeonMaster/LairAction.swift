@@ -14,8 +14,8 @@ final class LairAction : NSManagedObject {
     @NSManaged var lair: Lair
     @NSManaged var text: String
     
-    convenience init(lair: Lair, text: String, inManagedObjectContext context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entity(Model.LairAction, inManagedObjectContext: context)
+    convenience init(lair: Lair, text: String, insertInto context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entity(forModel: Model.LairAction, in: context)
         self.init(entity: entity, insertInto: context)
         
         self.lair = lair

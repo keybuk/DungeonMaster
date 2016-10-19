@@ -58,7 +58,7 @@ class EncounterCombatantsViewController : UITableViewController, NSFetchedResult
             viewController.completionBlock = { cancelled, monster, quantity in
                 if let monster = monster, !cancelled {
                     for _ in 1...quantity {
-                        let combatant = Combatant(encounter: self.encounter, monster: monster, inManagedObjectContext: managedObjectContext)
+                        let combatant = Combatant(encounter: self.encounter, monster: monster, insertInto: managedObjectContext)
                         combatant.role = .foe
                     }
                     

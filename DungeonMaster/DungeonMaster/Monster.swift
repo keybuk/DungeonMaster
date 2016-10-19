@@ -452,8 +452,8 @@ final class Monster : NSManagedObject {
     /// Each member is a `Combatant` linking a monster to its encounter, and describing the current state of that monster such as its individual hit points, damage taken, conditions, etc.
     @NSManaged var combatants: NSSet
 
-    convenience init(name: String, inManagedObjectContext context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entity(Model.Monster, inManagedObjectContext: context)
+    convenience init(name: String, insertInto context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entity(forModel: Model.Monster, in: context)
         self.init(entity: entity, insertInto: context)
         
         self.name = name

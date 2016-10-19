@@ -28,8 +28,8 @@ final class PlayerSkill : NSManagedObject {
     @NSManaged fileprivate var rawAbility: NSNumber
     @NSManaged fileprivate var rawSkill: NSNumber
     
-    convenience init(player: Player, skill: Skill, inManagedObjectContext context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entity(Model.PlayerSkill, inManagedObjectContext: context)
+    convenience init(player: Player, skill: Skill, insertInto context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entity(forModel: Model.PlayerSkill, in: context)
         self.init(entity: entity, insertInto: context)
         
         self.player = player

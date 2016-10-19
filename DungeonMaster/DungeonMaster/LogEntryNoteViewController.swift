@@ -33,7 +33,7 @@ class LogEntryNoteViewController : UITableViewController, UITextViewDelegate {
     
     func createLogEntry() {
         for playedGame in playedGames {
-            let logEntry = LogEntryNote(playedGame: playedGame, inManagedObjectContext: managedObjectContext)
+            let logEntry = LogEntryNote(playedGame: playedGame, insertInto: managedObjectContext)
             logEntry.note = textView.text
         }
         

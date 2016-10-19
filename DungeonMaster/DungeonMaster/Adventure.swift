@@ -43,14 +43,14 @@ final class Adventure : NSManagedObject {
     /// Each member is a `Game`.
     @NSManaged var games: NSSet
 
-    convenience init(inManagedObjectContext context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entity(Model.Adventure, inManagedObjectContext: context)
+    convenience init(insertInto context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entity(forModel: Model.Adventure, in: context)
         self.init(entity: entity, insertInto: context)
         
         name = ""
         
         lastModified = Date()
-        image = AdventureImage(adventure: self, inManagedObjectContext: context)
+        image = AdventureImage(adventure: self, insertInto: context)
         
         books = NSSet(array: try! context.fetch(NSFetchRequest(entity: Model.Book)) )
         players = NSSet(array: try! context.fetch(NSFetchRequest(entity: Model.Player)) )

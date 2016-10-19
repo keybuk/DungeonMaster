@@ -149,7 +149,7 @@ class InitiativeViewController : UITableViewController, NSFetchedResultsControll
             managedObjectContext.delete(combatant)
         } else if editingStyle == .insert {
             let player = missingPlayers[(indexPath as NSIndexPath).row]
-            let _ = Combatant(encounter: encounter, player: player, inManagedObjectContext: managedObjectContext)
+            let _ = Combatant(encounter: encounter, player: player, insertInto: managedObjectContext)
         }
         
         encounter.lastModified = Date()

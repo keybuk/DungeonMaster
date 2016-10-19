@@ -26,8 +26,8 @@ final class SpellClass : NSManagedObject {
     }
     @NSManaged fileprivate var rawCharacterClass: NSNumber
 
-    convenience init(spell: Spell, characterClass: CharacterClass, inManagedObjectContext context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entity(Model.SpellClass, inManagedObjectContext: context)
+    convenience init(spell: Spell, characterClass: CharacterClass, insertInto context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entity(forModel: Model.SpellClass, in: context)
         self.init(entity: entity, insertInto: context)
         
         self.spell = spell

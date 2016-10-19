@@ -73,7 +73,7 @@ class AdventuresViewController : UICollectionViewController, NSFetchedResultsCon
         
         doneButtonItem.isEnabled = false
         
-        let _ = Adventure(inManagedObjectContext: managedObjectContext)
+        let _ = Adventure(insertInto: managedObjectContext)
         
         // We can reasonably assume that the cell is going to be going in at the top, so scroll there.
         if collectionView?.numberOfItems(inSection: 0) > 0 {

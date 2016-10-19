@@ -75,7 +75,7 @@ enum Model : String {
 
 extension NSEntityDescription {
     
-    class func entity(_ model: Model, inManagedObjectContext context: NSManagedObjectContext) -> NSEntityDescription {
+    class func entity(forModel model: Model, in context: NSManagedObjectContext) -> NSEntityDescription {
         return NSEntityDescription.entity(forEntityName: model.rawValue, in: context)!
     }
     

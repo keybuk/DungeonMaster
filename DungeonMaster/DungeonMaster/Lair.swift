@@ -26,8 +26,8 @@ final class Lair : NSManagedObject {
 
     @NSManaged var regionalEffects: NSOrderedSet
 
-    convenience init(inManagedObjectContext context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entity(Model.Lair, inManagedObjectContext: context)
+    convenience init(insertInto context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entity(forModel: Model.Lair, in: context)
         self.init(entity: entity, insertInto: context)
     }
 

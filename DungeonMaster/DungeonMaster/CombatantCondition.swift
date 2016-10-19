@@ -23,8 +23,8 @@ final class CombatantCondition : NSManagedObject {
     }
     @NSManaged fileprivate var rawType: NSNumber
 
-    convenience init(target: Combatant, type: Condition, inManagedObjectContext context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entity(Model.CombatantCondition, inManagedObjectContext: context)
+    convenience init(target: Combatant, type: Condition, insertInto context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entity(forModel: Model.CombatantCondition, in: context)
         self.init(entity: entity, insertInto: context)
         
         self.target = target

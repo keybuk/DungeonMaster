@@ -36,8 +36,8 @@ final class Book : NSManagedObject {
     /// Each member is an `Adventure`.
     @NSManaged var adventures: NSSet
 
-    convenience init(name: String, inManagedObjectContext context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entity(Model.Book, inManagedObjectContext: context)
+    convenience init(name: String, insertInto context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entity(forModel: Model.Book, in: context)
         self.init(entity: entity, insertInto: context)
         
         self.name = name
