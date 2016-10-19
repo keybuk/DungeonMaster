@@ -86,17 +86,17 @@ class MarkupParser {
         return mutableText
     }
 
-    fileprivate let whitespace: CharacterSet
+    private let whitespace: CharacterSet
     
-    fileprivate let bodyFontDescriptor: UIFontDescriptor
-    fileprivate let tableFontDescriptor: UIFontDescriptor
-    fileprivate let tableHeadingFontDescriptor: UIFontDescriptor
-    fileprivate let headingFontDescriptor: UIFontDescriptor
+    private let bodyFontDescriptor: UIFontDescriptor
+    private let tableFontDescriptor: UIFontDescriptor
+    private let tableHeadingFontDescriptor: UIFontDescriptor
+    private let headingFontDescriptor: UIFontDescriptor
 
-    fileprivate let emphasisedTraits: [UIFontDescriptorSymbolicTraits]
+    private let emphasisedTraits: [UIFontDescriptorSymbolicTraits]
     
-    fileprivate var lastBlock: LastBlock
-    fileprivate var mutableText: NSMutableAttributedString
+    private var lastBlock: LastBlock
+    private var mutableText: NSMutableAttributedString
 
     init() {
         whitespace = CharacterSet.whitespaces
@@ -136,17 +136,17 @@ class MarkupParser {
     func parse(_ lines: [String]) {
         for line in lines {
             if line.contains("|") {
-                parseTableLine(line)
+                parse(tableLine: line)
             } else {
                 layoutTableIfNeeded()
                 if line.hasPrefix("•") {
-                    parseBulletLine(line)
+                    parse(bulletLine: line)
                 } else if line.hasPrefix("#") {
-                    parseHeadingLine(line)
+                    parse(headingLine: line)
                 } else if line.hasPrefix("}") {
-                    parseIndentLine(line)
+                    parse(indentLine: line)
                 } else if line != "" {
-                    parseTextLine(line)
+                    parse(textLine :line)
                 } else {
                     lastBlock = .lineBreak
                 }
@@ -173,7 +173,7 @@ class MarkupParser {
         mutableText = NSMutableAttributedString()
     }
     
-    fileprivate func parseTableLine(_ line: String) {
+    private func parse(tableLine line: String) {
         // Tables are rendered as a series of tabbed data.
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineBreakMode = .byClipping
@@ -197,7 +197,7 @@ class MarkupParser {
         var tableWidths: [CGFloat] = []
         var tableAlignments: [NSTextAlignment] = []
         
-        if case .table(let index, let rows, let widths, let alignments) = lastBlock {
+        if case let .table(index, rows, widths, alignments) = lastBlock {
             tableIndex = index
             tableRows = rows
             tableWidths = widths
@@ -211,10 +211,10 @@ class MarkupParser {
         }
         
         // Get sexy with the coloring.
-        var attributes = [
+        var attributes: [String: Any] = [
             NSFontAttributeName: font,
             NSParagraphStyleAttributeName: paragraphStyle,
-        ] as [String : Any]
+        ]
         if tableRows % 2 == 1 {
             attributes[NSBackgroundColorAttributeName] = UIColor(white: 0.0, alpha: 0.05)
         }
@@ -222,7 +222,7 @@ class MarkupParser {
         // Split the line into columns, and calculate the render widths and alignment.
         var columns: [NSAttributedString] = []
         for (index, column) in line.components(separatedBy: "|").enumerated() {
-            let column = parseText(column.trimmingCharacters(in: whitespace), attributes: attributes as [String : AnyObject], features: .All, appendNewline: false)
+            let column = parseText(column.trimmingCharacters(in: whitespace), attributes: attributes, features: .All, appendNewline: false)
             
             // Calculate the column width, and save if it's larger than the previous width.
             var width = ceil(column.size().width)
@@ -255,7 +255,7 @@ class MarkupParser {
         lastBlock = .table(tableIndex, tableRows + 1, tableWidths, tableAlignments)
     }
     
-    fileprivate func alignment(forColumn column: String) -> NSTextAlignment {
+    private func alignment(forColumn column: String) -> NSTextAlignment {
         for character in column.characters {
             switch character {
             case "0"..."9", "+", "-", "–", "—":
@@ -268,8 +268,8 @@ class MarkupParser {
         return .center
     }
 
-    fileprivate func layoutTableIfNeeded() {
-        guard case .table(let tableIndex, _, let tableWidths, let tableAlignments) = lastBlock else { return }
+    private func layoutTableIfNeeded() {
+        guard case let .table(tableIndex, _, tableWidths, tableAlignments) = lastBlock else { return }
         
         // Calculate the combined column widths, and find the widest column.
         var flexibleColumnWidths: CGFloat = 0.0, fixedColumnWidths: CGFloat = 0.0
@@ -334,8 +334,8 @@ class MarkupParser {
         lastBlock = .finishedTable
     }
     
-    fileprivate func collapseTableColumn(_ columnIndex: Int, to width: CGFloat) {
-        guard case .table(let tableIndex, _, _, _) = lastBlock else { return }
+    private func collapseTableColumn(_ columnIndex: Int, to width: CGFloat) {
+        guard case let .table(tableIndex, _, _, _) = lastBlock else { return }
         let delimiterCharacterSet = CharacterSet(charactersIn: "\t\n")
         
         var column: Int?
@@ -356,9 +356,9 @@ class MarkupParser {
             if let column = column, column == columnIndex {
                 // Generate string fragments to fit within width.
                 mutableText.string.enumerateSubstrings(in: index..<delimiterIndexRange.lowerBound, options: .byWords) { (substring, substringRange, enclosingRange, stop: inout Bool) in
-                    let range = NSRange(location: self.mutableText.string.characters.distance(from: self.mutableText.string.startIndex, to: substringRange.lowerBound), length: <#T##String.CharacterView corresponding to your index##String.CharacterView#>.distance(from: substringRange.lowerBound, to: substringRange.upperBound))
+                    let range = NSRange(location: self.mutableText.string.characters.distance(from: self.mutableText.string.startIndex, to: substringRange.lowerBound), length: self.mutableText.string.characters.distance(from: substringRange.lowerBound, to: substringRange.upperBound))
                     let subtext = self.mutableText.attributedSubstring(from: range)
-                    
+
                     let newFragment = NSMutableAttributedString(attributedString: fragment ?? NSAttributedString())
                     if let savedTrailing = savedTrailing {
                         newFragment.append(savedTrailing)
@@ -378,7 +378,7 @@ class MarkupParser {
                         fragmentWidth = newWidth
                     }
 
-                    let trailingRange = NSRange(location: self.mutableText.string.characters.distance(from: self.mutableText.string.startIndex, to: substringRange.upperBound), length: <#T##String.CharacterView corresponding to your index##String.CharacterView#>.distance(from: substringRange.upperBound, to: enclosingRange.upperBound))
+                    let trailingRange = NSRange(location: self.mutableText.string.characters.distance(from: self.mutableText.string.startIndex, to: substringRange.upperBound), length: self.mutableText.string.characters.distance(from: substringRange.upperBound, to: enclosingRange.upperBound))
                     savedTrailing = self.mutableText.attributedSubstring(from: trailingRange)
                 }
 
@@ -389,10 +389,10 @@ class MarkupParser {
                 
                 // Replace the text in the column with the first fragment.
                 let fragment = fragments.removeFirst()
-                let range = NSRange(location: mutableText.string.characters.distance(from: mutableText.string.startIndex, to: index), length: <#T##Collection corresponding to `index`##Collection#>.distance(from: index, to: delimiterIndexRange.lowerBound))
+                let range = NSRange(location: mutableText.string.characters.distance(from: mutableText.string.startIndex, to: index), length: mutableText.string.characters.distance(from: index, to: delimiterIndexRange.lowerBound))
                 mutableText.replaceCharacters(in: range, with: fragment)
                 
-                // Since we've mutated the string, `index.advancedBy(fragment.length)` would do the wrong thing and check against its previous notion of what the length of the string was. Thus recalculate index against the string, using the previously saved `location`.
+                // Since we've mutated the string, `index(_, offsetBy: fragment.length)` would do the wrong thing and check against its previous notion of what the length of the string was. Thus recalculate index against the string, using the previously saved `location`.
                 index = mutableText.string.characters.index(mutableText.string.startIndex, offsetBy: range.location + fragment.length)
             } else {
                 // No mutation has occurred, we can just point at the delimiter directly.
@@ -400,7 +400,7 @@ class MarkupParser {
             }
             
             // Index now points at the delimiter, whether the string was mutated or not. `delimiterIndexRange` might not, but it's length is still valid.
-            let delimiterRange = NSRange(location: mutableText.string.characters.distance(from: mutableText.string.startIndex, to: index), length: <#T##String.CharacterView corresponding to your index##String.CharacterView#>.distance(from: delimiterIndexRange.lowerBound, to: delimiterIndexRange.upperBound))
+            let delimiterRange = NSRange(location: mutableText.string.characters.distance(from: mutableText.string.startIndex, to: index), length: mutableText.string.characters.distance(from: delimiterIndexRange.lowerBound, to: delimiterIndexRange.upperBound))
             let delimiter = mutableText.attributedSubstring(from: delimiterRange)
             if delimiter.string == "\n" {
                 if fragments.count > 0 {
@@ -421,7 +421,7 @@ class MarkupParser {
                     index = mutableText.string.characters.index(mutableText.string.startIndex, offsetBy: delimiterRange.location + following.length)
                 } else {
                     // Point past the delimiter by advancing the index.
-                    index = <#T##Collection corresponding to `index`##Collection#>.index(index, offsetBy: delimiterRange.length)
+                    index = mutableText.string.characters.index(index, offsetBy: delimiterRange.length)
                 }
                 
                 column = nil
@@ -433,12 +433,12 @@ class MarkupParser {
             } else {
                 column = column != nil ? column! + 1 : 0
                 // Point past the delimiter by advancing the index.
-                index = <#T##Collection corresponding to `index`##Collection#>.index(index, offsetBy: delimiterRange.length)
+                index = mutableText.string.characters.index(index, offsetBy: delimiterRange.length)
             }
         }
     }
     
-    fileprivate func parseBulletLine(_ line: String) {
+    private func parse(bulletLine line: String) {
         // Bulleted list are rendered as paragraph blocks with special intents.
         let line = line.substring(from: line.characters.index(line.startIndex, offsetBy: 1))
         
@@ -458,7 +458,7 @@ class MarkupParser {
             NSTextTab(textAlignment: .left, location: paragraphIndent, options: [String: AnyObject]())
         ]
 
-        let attributes = [
+        let attributes: [String: Any] = [
             NSFontAttributeName: UIFont(descriptor: bodyFontDescriptor, size: 0.0),
             NSParagraphStyleAttributeName: paragraphStyle
         ]
@@ -470,7 +470,7 @@ class MarkupParser {
         lastBlock = .bullet
     }
     
-    fileprivate func parseHeadingLine(_ line: String) {
+    private func parse(headingLine line: String) {
         // Improved font.
         let line = line.substring(from: line.characters.index(line.startIndex, offsetBy: 1)).trimmingCharacters(in: whitespace)
 
@@ -482,7 +482,7 @@ class MarkupParser {
             paragraphStyle.paragraphSpacingBefore = paragraphSpacing
         }
 
-        let attributes = [
+        let attributes: [String: Any] = [
             NSFontAttributeName: UIFont(descriptor: headingFontDescriptor, size: 0.0),
             NSParagraphStyleAttributeName: paragraphStyle,
         ]
@@ -492,7 +492,7 @@ class MarkupParser {
         lastBlock = .heading
     }
     
-    fileprivate func parseIndentLine(_ line: String) {
+    private func parse(indentLine line: String) {
         // This differs from a standard paragraph only in style.
         let line = line.substring(from: line.characters.index(line.startIndex, offsetBy: 1)).trimmingCharacters(in: whitespace)
 
@@ -518,7 +518,7 @@ class MarkupParser {
         lastBlock = .indentParagraph
     }
     
-    fileprivate func parseTextLine(_ line: String) {
+    private func parse(textLine line: String) {
         // Indent all except the first paragraphs in a block.
         let paragraphStyle = NSMutableParagraphStyle()
         switch lastBlock {
@@ -552,9 +552,9 @@ class MarkupParser {
     /// - parameter appendNewline: whether a newline should be appended to the returned string.
     ///
     /// - returns: NSAttributedString resulting from parsing `line`.
-    func parseText(_ line: String, attributes: [String: AnyObject], features: MarkupParserFeatures, appendNewline: Bool) -> NSAttributedString {
+    func parseText(_ line: String, attributes: [String: Any], features: MarkupParserFeatures, appendNewline: Bool) -> NSAttributedString {
         let line = line.trimmingCharacters(in: whitespace)
-        var range = line.characters.indices
+        var range = line.startIndex..<line.endIndex
 
         var operatorString = ""
         if features.contains(.Emphasis) {
@@ -586,7 +586,7 @@ class MarkupParser {
                     // Increased numbers of * indicate increased emphasis.
                     var index = operatorRange.lowerBound
                     while index != range.upperBound && line[index] == "*" {
-                        index = <#T##Collection corresponding to `index`##Collection#>.index(index, offsetBy: 1)
+                        index = line.index(index, offsetBy: 1)
                     }
                     
                     // Locate the end of the emphasised range.
@@ -594,16 +594,16 @@ class MarkupParser {
                         // Find the end of the end operator.
                         var endIndex = endOperatorRange.lowerBound
                         while endIndex != range.upperBound && line[endIndex] == "*" {
-                            endIndex = <#T##Collection corresponding to `endIndex`##Collection#>.index(endIndex, offsetBy: 1)
+                            endIndex = line.index(endIndex, offsetBy: 1)
                         }
 
                         // If the start operator is too long, treat it as initial *s followed by the right operator.
-                        var emphasisness = <#T##String.CharacterView corresponding to your index##String.CharacterView#>.distance(from: operatorRange.lowerBound, to: index)
-                        if emphasisness > emphasisedTraits.count || emphasisness > <#T##String.CharacterView corresponding to your index##String.CharacterView#>.distance(from: endOperatorRange.lowerBound, to: endIndex) {
-                            emphasisness = min(emphasisedTraits.count, <#T##String.CharacterView corresponding to your index##String.CharacterView#>.distance(from: endOperatorRange.lowerBound, to: endIndex))
+                        var emphasisness = line.distance(from: operatorRange.lowerBound, to: index)
+                        if emphasisness > emphasisedTraits.count || emphasisness > line.distance(from: endOperatorRange.lowerBound, to: endIndex) {
+                            emphasisness = min(emphasisedTraits.count, line.distance(from: endOperatorRange.lowerBound, to: endIndex))
                             
-                            let overlength = <#T##String.CharacterView corresponding to your index##String.CharacterView#>.distance(from: operatorRange.lowerBound, to: index) - emphasisness
-                            let string = line.substring(with: operatorRange.lowerBound..<<#T##String.CharacterView corresponding to your index##String.CharacterView#>.index(operatorRange.lowerBound, offsetBy: overlength))
+                            let overlength = line.distance(from: operatorRange.lowerBound, to: index) - emphasisness
+                            let string = line.substring(with: operatorRange.lowerBound..<line.index(operatorRange.lowerBound, offsetBy: overlength))
                             text.append(NSAttributedString(string: string, attributes: attributes))
                         }
                         
@@ -622,9 +622,9 @@ class MarkupParser {
                         text.append(parseText(string, attributes: emphasisAttributes, features: features, appendNewline: false))
                         
                         // If the end operator is too long, treat it as the right operator followed by *s.
-                        if <#T##String.CharacterView corresponding to your index##String.CharacterView#>.distance(from: endOperatorRange.lowerBound, to: endIndex) > emphasisness {
-                            let overlength = <#T##String.CharacterView corresponding to your index##String.CharacterView#>.distance(from: endOperatorRange.lowerBound, to: endIndex) - emphasisness
-                            let string = line.substring(with: <#T##String.CharacterView corresponding to your index##String.CharacterView#>.index(endOperatorRange.lowerBound, offsetBy: overlength)..<endIndex)
+                        if line.distance(from: endOperatorRange.lowerBound, to: endIndex) > emphasisness {
+                            let overlength = line.distance(from: endOperatorRange.lowerBound, to: endIndex) - emphasisness
+                            let string = line.substring(with: line.index(endOperatorRange.lowerBound, offsetBy: overlength)..<endIndex)
                             text.append(NSAttributedString(string: string, attributes: attributes))
                         }
 
@@ -652,7 +652,7 @@ class MarkupParser {
                         // The link can optionally be immediately followed by an alternate text to add.
                         if line.substring(from: endOperatorRange.upperBound).hasPrefix("(") {
                             if let endAlternateRange = line.range(of: ")", options: [], range:endOperatorRange.upperBound..<range.upperBound, locale: nil) {
-                                linkText = line.substring(with: <#T##String.CharacterView corresponding to your index##String.CharacterView#>.index(endOperatorRange.upperBound, offsetBy: 1)..<endAlternateRange.lowerBound)
+                                linkText = line.substring(with: line.index(endOperatorRange.upperBound, offsetBy: 1)..<endAlternateRange.lowerBound)
                                 range = endAlternateRange.upperBound..<range.upperBound
                             }
                         }
