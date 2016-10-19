@@ -103,7 +103,9 @@ open class NetworkConnection: NSObject, StreamDelegate {
         
         // Parse messages from the buffer, each is prefixed by the size of the message so we know when we have complete messages.
         while inputBuffer.count > MemoryLayout<Int>.size {
-            let length = UnsafePointer<Int>(inputBuffer).pointee
+            let length = inputBuffer.withUnsafeBufferPointer {
+                $0.baseAddress!.withMemoryRebound(to: Int.self, capacity: 1) { $0.pointee }
+            }
             guard inputBuffer.count >= MemoryLayout<Int>.size + length else { break }
             
             // Complete message in the buffer.
@@ -129,11 +131,12 @@ open class NetworkConnection: NSObject, StreamDelegate {
             var bytes = message.toBytes()
             
             var count = bytes.count
-            let length = withUnsafePointer(to: &count) { p in
-                return UnsafeBufferPointer(start: UnsafePointer<UInt8>(p), count: MemoryLayout.size(ofValue: count))
+            withUnsafePointer(to: &count) {
+                $0.withMemoryRebound(to: UInt8.self, capacity: MemoryLayout<Int>.size) {
+                    bytes.insert(contentsOf: UnsafeBufferPointer(start: $0, count: MemoryLayout<Int>.size), at: 0)
+                }
             }
             
-            bytes.insert(contentsOf: length, at: 0)
             let bytesWritten = outputStream.write(bytes, maxLength: bytes.count)
             guard bytesWritten == bytes.count else {
                 print("NET: Short write while sending message, closing connection.")
