@@ -168,7 +168,7 @@ class NetworkController : NSObject, NetworkPeerDelegate, NetworkConnectionDelega
                 combatant.initiative = initiative
             }
         case let .endTurn(name):
-            if let combatant = combatants(withName: name).first where combatant.role == .player && combatant.isCurrentTurn {
+            if let combatant = combatants(withName: name).first, combatant.role == .player && combatant.isCurrentTurn {
                 encounter?.nextTurn()
             }
         default:
