@@ -26,15 +26,15 @@ class SpellViewController : UIViewController {
         textView.textContainerInset.right = 10.0
 
         // Disable scrolling, otherwise we end up at the bottom.
-        textView.scrollEnabled = false
+        textView.isScrollEnabled = false
         configureView()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         // Enable scrolling, doing this earlier just scrolls to the bottom again.
-        textView.scrollEnabled = true
+        textView.isScrollEnabled = true
     }
     
     override func viewDidLayoutSubviews() {
@@ -53,13 +53,13 @@ class SpellViewController : UIViewController {
         markupParser.linkColor = textView.tintColor
         
     
-        let nameFont = UIFontDescriptor.preferredFontDescriptorWithTextStyle(UIFontTextStyleTitle1)
+        let nameFont = UIFontDescriptor.preferredFontDescriptor(withTextStyle: UIFontTextStyle.title1)
         
-        let subheadlineFont = UIFontDescriptor.preferredFontDescriptorWithTextStyle(UIFontTextStyleSubheadline)
-        let subheadlineItalicFont = subheadlineFont.fontDescriptorWithSymbolicTraits(.TraitItalic)
+        let subheadlineFont = UIFontDescriptor.preferredFontDescriptor(withTextStyle: UIFontTextStyle.subheadline)
+        let subheadlineItalicFont = subheadlineFont.withSymbolicTraits(.traitItalic)
         
-        let bodyFont = UIFontDescriptor.preferredFontDescriptorWithTextStyle(UIFontTextStyleBody)
-        let bodyBoldFont = bodyFont.fontDescriptorWithSymbolicTraits(.TraitBold)
+        let bodyFont = UIFontDescriptor.preferredFontDescriptor(withTextStyle: UIFontTextStyle.body)
+        let bodyBoldFont = bodyFont.withSymbolicTraits(.traitBold)
         
         let nameAttributes = [
             NSFontAttributeName: UIFont(descriptor: nameFont, size: 0.0),
@@ -69,7 +69,7 @@ class SpellViewController : UIViewController {
         levelSchoolParagraphStyle.paragraphSpacing = 12.0
         
         let levelSchoolAttributes = [
-            NSFontAttributeName: UIFont(descriptor: subheadlineItalicFont, size: 0.0),
+            NSFontAttributeName: UIFont(descriptor: subheadlineItalicFont!, size: 0.0),
             NSParagraphStyleAttributeName: levelSchoolParagraphStyle
         ]
         
@@ -77,7 +77,7 @@ class SpellViewController : UIViewController {
         statsParagraphStyle.headIndent = 12.0
         
         let statsLabelAttributes = [
-            NSFontAttributeName: UIFont(descriptor: bodyBoldFont, size: 0.0),
+            NSFontAttributeName: UIFont(descriptor: bodyBoldFont!, size: 0.0),
             NSParagraphStyleAttributeName: statsParagraphStyle,
         ]
         
@@ -89,7 +89,7 @@ class SpellViewController : UIViewController {
         
         let text = NSMutableAttributedString()
         
-        text.appendAttributedString(NSAttributedString(string: "\(spell.name)\n", attributes: nameAttributes))
+        text.append(NSAttributedString(string: "\(spell.name)\n", attributes: nameAttributes))
         
         
         var levelSchoolString: String
@@ -97,23 +97,23 @@ class SpellViewController : UIViewController {
         case 0:
             levelSchoolString = "\(spell.school.stringValue) cantrip"
         case 1:
-            levelSchoolString = "1st-level \(spell.school.stringValue.lowercaseString)"
+            levelSchoolString = "1st-level \(spell.school.stringValue.lowercased())"
         case 2:
-            levelSchoolString = "2nd-level \(spell.school.stringValue.lowercaseString)"
+            levelSchoolString = "2nd-level \(spell.school.stringValue.lowercased())"
         case 3:
-            levelSchoolString = "3rd-level \(spell.school.stringValue.lowercaseString)"
+            levelSchoolString = "3rd-level \(spell.school.stringValue.lowercased())"
         default:
-            levelSchoolString = "\(spell.level)th-level \(spell.school.stringValue.lowercaseString)"
+            levelSchoolString = "\(spell.level)th-level \(spell.school.stringValue.lowercased())"
         }
         
         if spell.canCastAsRitual {
             levelSchoolString += " (ritual)"
         }
         
-        text.appendAttributedString(NSAttributedString(string: "\(levelSchoolString)\n", attributes: levelSchoolAttributes))
+        text.append(NSAttributedString(string: "\(levelSchoolString)\n", attributes: levelSchoolAttributes))
         
         
-        text.appendAttributedString(NSAttributedString(string: "Casting Time: ", attributes: statsLabelAttributes))
+        text.append(NSAttributedString(string: "Casting Time: ", attributes: statsLabelAttributes))
         
         var castingTimeString = ""
         if spell.canCastAsAction {
@@ -145,14 +145,14 @@ class SpellViewController : UIViewController {
             }
         }
         
-        text.appendAttributedString(markupParser.parseText(castingTimeString, attributes: statsValueAttributes, features: .All, appendNewline: true))
+        text.append(markupParser.parseText(castingTimeString, attributes: statsValueAttributes, features: .All, appendNewline: true))
         
         
-        text.appendAttributedString(NSAttributedString(string: "Range: ", attributes: statsLabelAttributes))
+        text.append(NSAttributedString(string: "Range: ", attributes: statsLabelAttributes))
         
         var rangeString = ""
         switch spell.range {
-        case .Distance:
+        case .distance:
             if let distance = spell.rangeDistance {
                 if distance > 5280 {
                     rangeString = "\(distance / 5280) miles"
@@ -164,9 +164,9 @@ class SpellViewController : UIViewController {
                     rangeString = "\(distance) foot"
                 }
             }
-        case .CenteredOnSelf:
+        case .centeredOnSelf:
             rangeString = "Self"
-            if let distance = spell.rangeDistance, shape = spell.rangeShape {
+            if let distance = spell.rangeDistance, let shape = spell.rangeShape {
                 if distance >= 5280 {
                     rangeString += " (\(distance / 5280)-mile"
                 } else {
@@ -174,34 +174,34 @@ class SpellViewController : UIViewController {
                 }
                 
                 switch shape {
-                case .Radius:
+                case .radius:
                     rangeString += " radius)"
-                case .Sphere:
+                case .sphere:
                     rangeString += "-radius sphere)"
-                case .Hemisphere:
+                case .hemisphere:
                     rangeString += "-radius hemisphere)"
-                case .Cube:
+                case .cube:
                     rangeString += " cube)"
-                case .Cone:
+                case .cone:
                     rangeString += " cone)"
-                case .Line:
+                case .line:
                     rangeString += " line)"
                 }
             }
-        case .Touch:
+        case .touch:
             rangeString = "Touch"
-        case .Sight:
+        case .sight:
             rangeString = "Sight"
-        case .Special:
+        case .special:
             rangeString = "Special"
-        case .Unlimited:
+        case .unlimited:
             rangeString = "Unlimited"
         }
         
-        text.appendAttributedString(NSAttributedString(string: "\(rangeString)\n", attributes: statsValueAttributes))
+        text.append(NSAttributedString(string: "\(rangeString)\n", attributes: statsValueAttributes))
         
         
-        text.appendAttributedString(NSAttributedString(string: "Components: ", attributes: statsLabelAttributes))
+        text.append(NSAttributedString(string: "Components: ", attributes: statsLabelAttributes))
         
         var componentsStrings: [String] = []
         if spell.hasVerbalComponent {
@@ -214,23 +214,23 @@ class SpellViewController : UIViewController {
             componentsStrings.append("M (\(spell.materialComponent!))")
         }
         
-        text.appendAttributedString(markupParser.parseText(componentsStrings.joinWithSeparator(", "), attributes: statsValueAttributes, features: .All, appendNewline: true))
+        text.append(markupParser.parseText(componentsStrings.joined(separator: ", "), attributes: statsValueAttributes, features: .All, appendNewline: true))
     
         
-        text.appendAttributedString(NSAttributedString(string: "Duration: ", attributes: statsLabelAttributes))
+        text.append(NSAttributedString(string: "Duration: ", attributes: statsLabelAttributes))
         
         var durationString = ""
         switch spell.duration {
-        case .Instantaneous:
+        case .instantaneous:
             durationString = "Instantaneous"
-        case .MaxTime:
+        case .maxTime:
             if spell.requiresConcentration {
                 durationString = "Concentration, up to "
             } else {
                 durationString = "Up to "
             }
             fallthrough
-        case .Time:
+        case .time:
             if let durationTime = spell.durationTime {
                 if durationTime > 1440 {
                     durationString += "\(durationTime / 1440) days"
@@ -246,14 +246,14 @@ class SpellViewController : UIViewController {
                     durationString += "\(durationTime) minute"
                 }
             }
-        case .MaxRounds:
+        case .maxRounds:
             if spell.requiresConcentration {
                 durationString = "Concentration, up to "
             } else {
                 durationString = "Up to "
             }
             fallthrough
-        case .Rounds:
+        case .rounds:
             if let durationTime = spell.durationTime {
                 if durationTime > 1 {
                     durationString += "\(durationTime) rounds"
@@ -261,40 +261,40 @@ class SpellViewController : UIViewController {
                     durationString += "\(durationTime) round"
                 }
             }
-        case .UntilDispelled:
+        case .untilDispelled:
             durationString = "Until dispelled"
-        case .UntilDispelledOrTriggered:
+        case .untilDispelledOrTriggered:
             durationString = "Until dispelled or triggered"
-        case .Special:
+        case .special:
             durationString = "Special"
         }
         
-        text.appendAttributedString(NSAttributedString(string: "\(durationString)\n", attributes: statsValueAttributes))
+        text.append(NSAttributedString(string: "\(durationString)\n", attributes: statsValueAttributes))
         
         
         markupParser.parse(spell.text)
-        text.appendAttributedString(markupParser.text)
+        text.append(markupParser.text)
         
         textView.attributedText = text
     }
     
     // MARK: Actions
     
-    @IBAction func textViewTapped(sender: UITapGestureRecognizer) {
+    @IBAction func textViewTapped(_ sender: UITapGestureRecognizer) {
         let textView = sender.view! as! UITextView
         
-        var location = sender.locationInView(textView)
+        var location = sender.location(in: textView)
         location.x -= textView.textContainerInset.left
         location.y -= textView.textContainerInset.top
         
-        let index = textView.layoutManager.characterIndexForPoint(location, inTextContainer: textView.textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
-        if let linkName = textView.attributedText.attribute(MarkupParser.linkAttributeName, atIndex: index, effectiveRange: nil) as? String {
-            let fetchRequest = NSFetchRequest(entity: Model.Spell)
+        let index = textView.layoutManager.characterIndex(for: location, in: textView.textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
+        if let linkName = textView.attributedText.attribute(MarkupParser.linkAttributeName, at: index, effectiveRange: nil) as? String {
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entity: Model.Spell)
             fetchRequest.predicate = NSPredicate(format: "name LIKE[cd] %@", linkName)
             
-            let spells = try! managedObjectContext.executeFetchRequest(fetchRequest) as! [Spell]
+            let spells = try! managedObjectContext.fetch(fetchRequest) as! [Spell]
             if spells.count > 0 {
-                let viewController = storyboard?.instantiateViewControllerWithIdentifier("SpellViewController") as! SpellViewController
+                let viewController = storyboard?.instantiateViewController(withIdentifier: "SpellViewController") as! SpellViewController
                 viewController.spell = spells.first
                 navigationController?.pushViewController(viewController, animated: true)
             }

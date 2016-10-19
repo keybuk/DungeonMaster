@@ -17,12 +17,12 @@ class GameDateViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        datePicker.date = game.date
+        datePicker.date = game.date as Date
     }
     
     // MARK: Actions
 
-    @IBAction func datePickerValueChanged(sender: UIDatePicker) {
+    @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
         game.date = sender.date
         // This is only visible when the game view is editing, and that view handles saving the context and updating the Adventure `lastModified` when editing finishes.
     }

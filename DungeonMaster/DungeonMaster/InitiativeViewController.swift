@@ -41,31 +41,31 @@ class InitiativeViewController : UITableViewController, NSFetchedResultsControll
     func validateEncounter() {
         for case let combatant as Combatant in encounter.combatants {
             if combatant.initiative == nil {
-                doneButtonItem.enabled = false
+                doneButtonItem.isEnabled = false
                 return
             }
         }
         
-        doneButtonItem.enabled = true
+        doneButtonItem.isEnabled = true
     }
     
     // MARK: Actions
     
-    @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
+    @IBAction func doneButtonTapped(_ sender: UIBarButtonItem) {
         if nextTurnOnDone {
             encounter.nextTurn()
         }
         
-        encounter.lastModified = NSDate()
+        encounter.lastModified = Date()
         try! managedObjectContext.save()
 
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     
     // MARK: Fetched results controller
     
-    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] in
+    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] -> <<error type>> in
         let fetchRequest = self.encounter.fetchRequestForCombatants()
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
@@ -86,14 +86,14 @@ class InitiativeViewController : UITableViewController, NSFetchedResultsControll
             }
             
             // Ideally we'd use something like "NONE combatants.encounter == %@" here, but that doesn't work.
-            let fetchRequest = NSFetchRequest(entity: Model.Player)
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entity: Model.Player)
             let players = fetchedResultsController.fetchedObjects!.flatMap({ ($0 as! Combatant).player })
             fetchRequest.predicate = NSPredicate(format: "ANY playedGames.game == %@ AND NOT SELF IN %@", game, players)
 
             let nameSortDescriptor = NSSortDescriptor(key: "name", ascending: true)
             fetchRequest.sortDescriptors = [nameSortDescriptor]
             
-            _missingPlayers = try! managedObjectContext.executeFetchRequest(fetchRequest) as! [Player]
+            _missingPlayers = try! managedObjectContext.fetch(fetchRequest) as! [Player]
             return _missingPlayers!
         }
         
@@ -101,15 +101,15 @@ class InitiativeViewController : UITableViewController, NSFetchedResultsControll
             _missingPlayers = newMissingPlayers
         }
     }
-    private var _missingPlayers: [Player]?
+    fileprivate var _missingPlayers: [Player]?
     
     // MARK: UITableViewDataSource
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return (fetchedResultsController.sections?.count ?? 0) + 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let addSection = fetchedResultsController.sections?.count ?? 0
         if section < addSection {
             let sectionInfo = fetchedResultsController.sections![section]
@@ -119,18 +119,18 @@ class InitiativeViewController : UITableViewController, NSFetchedResultsControll
         }
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let addSection = fetchedResultsController.sections?.count ?? 0
-        if indexPath.section < addSection {
+        if (indexPath as NSIndexPath).section < addSection {
             // Combatant in the encounter.
-            let cell = tableView.dequeueReusableCellWithIdentifier("InitiativeCombatantCell", forIndexPath: indexPath) as! InitiativeCombatantCell
-            let combatant = fetchedResultsController.objectAtIndexPath(indexPath) as! Combatant
+            let cell = tableView.dequeueReusableCell(withIdentifier: "InitiativeCombatantCell", for: indexPath) as! InitiativeCombatantCell
+            let combatant = fetchedResultsController.object(at: indexPath) as! Combatant
             cell.combatant = combatant
             return cell
         } else {
             // Player not in the encounter.
-            let cell = tableView.dequeueReusableCellWithIdentifier("InitiativeMissingPlayerCell", forIndexPath: indexPath) as! InitiativeMissingPlayerCell
-            let player = missingPlayers[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "InitiativeMissingPlayerCell", for: indexPath) as! InitiativeMissingPlayerCell
+            let player = missingPlayers[(indexPath as NSIndexPath).row]
             cell.player = player
             return cell
         }
@@ -139,29 +139,29 @@ class InitiativeViewController : UITableViewController, NSFetchedResultsControll
 
     // MARK: Edit support
     
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
 
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            let combatant = fetchedResultsController.objectAtIndexPath(indexPath) as! Combatant
-            managedObjectContext.deleteObject(combatant)
-        } else if editingStyle == .Insert {
-            let player = missingPlayers[indexPath.row]
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let combatant = fetchedResultsController.object(at: indexPath) as! Combatant
+            managedObjectContext.delete(combatant)
+        } else if editingStyle == .insert {
+            let player = missingPlayers[(indexPath as NSIndexPath).row]
             let _ = Combatant(encounter: encounter, player: player, inManagedObjectContext: managedObjectContext)
         }
         
-        encounter.lastModified = NSDate()
+        encounter.lastModified = Date()
         try! managedObjectContext.save()
     }
     
     // MARK: Move support
     
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         let addSection = fetchedResultsController.sections?.count ?? 0
-        if indexPath.section < addSection {
-            let combatant = fetchedResultsController.objectAtIndexPath(indexPath) as! Combatant
+        if (indexPath as NSIndexPath).section < addSection {
+            let combatant = fetchedResultsController.object(at: indexPath) as! Combatant
             return combatant.initiative != nil
         } else {
             return false
@@ -170,20 +170,20 @@ class InitiativeViewController : UITableViewController, NSFetchedResultsControll
     
     var changeIsUserDriven = false
     
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-        let combatant = fetchedResultsController.objectAtIndexPath(fromIndexPath) as! Combatant
-        let displacedCombatant = fetchedResultsController.objectAtIndexPath(toIndexPath) as! Combatant
+    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to toIndexPath: IndexPath) {
+        let combatant = fetchedResultsController.object(at: fromIndexPath) as! Combatant
+        let displacedCombatant = fetchedResultsController.object(at: toIndexPath) as! Combatant
 
         combatant.initiativeOrder = displacedCombatant.initiativeOrder! + 1
     
-        var startRow = toIndexPath.row
-        if fromIndexPath.row < toIndexPath.row {
+        var startRow = (toIndexPath as NSIndexPath).row
+        if (fromIndexPath as NSIndexPath).row < (toIndexPath as NSIndexPath).row {
             startRow += 1
         }
         
-        for row in startRow..<fetchedResultsController.sections![toIndexPath.section].numberOfObjects {
-            let indexPath = NSIndexPath(forRow: row, inSection: toIndexPath.section)
-            let adjustCombatant = fetchedResultsController.objectAtIndexPath(indexPath) as! Combatant
+        for row in startRow..<fetchedResultsController.sections![(toIndexPath as NSIndexPath).section].numberOfObjects {
+            let indexPath = IndexPath(row: row, section: (toIndexPath as NSIndexPath).section)
+            let adjustCombatant = fetchedResultsController.object(at: indexPath) as! Combatant
             
             // Only adjust combatants with the same initiative value, and skip the combatant we're moving!
             guard adjustCombatant.initiative == combatant.initiative else { break }
@@ -194,34 +194,34 @@ class InitiativeViewController : UITableViewController, NSFetchedResultsControll
         
         changeIsUserDriven = true
         
-        encounter.lastModified = NSDate()
+        encounter.lastModified = Date()
         try! managedObjectContext.save()
     }
     
     // MARK: UITableViewDelegate
     
-    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         let addSection = fetchedResultsController.sections?.count ?? 0
-        if indexPath.section < addSection {
-            let combatant = fetchedResultsController.objectAtIndexPath(indexPath) as! Combatant
-            return combatant.player != nil ? .Delete : .None
+        if (indexPath as NSIndexPath).section < addSection {
+            let combatant = fetchedResultsController.object(at: indexPath) as! Combatant
+            return combatant.player != nil ? .delete : .none
         } else {
-            return .Insert
+            return .insert
         }
     }
 
-    override func tableView(tableView: UITableView, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
-        let combatant = fetchedResultsController.objectAtIndexPath(sourceIndexPath) as! Combatant
+    override func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+        let combatant = fetchedResultsController.object(at: sourceIndexPath) as! Combatant
         let appendRow = fetchedResultsController.sections![0].numberOfObjects
 
         // First make sure we're not trying to move into the "missing players" section, and adjust the destination to the end of the combatants section if that's the case.
         var indexPath = proposedDestinationIndexPath
-        if indexPath.section != 0 || indexPath.row == appendRow {
-            indexPath = NSIndexPath(forRow: appendRow - 1, inSection: 0)
+        if (indexPath as NSIndexPath).section != 0 || (indexPath as NSIndexPath).row == appendRow {
+            indexPath = IndexPath(row: appendRow - 1, section: 0)
         }
         
         // It's okay to move to an index path that's occupied by a combatant with the same initiative.
-        let displacedCombatant = fetchedResultsController.objectAtIndexPath(indexPath) as! Combatant
+        let displacedCombatant = fetchedResultsController.object(at: indexPath) as! Combatant
         if combatant.initiative == displacedCombatant.initiative {
             return indexPath
         } else {
@@ -232,73 +232,73 @@ class InitiativeViewController : UITableViewController, NSFetchedResultsControll
     // MARK: NSFetchedResultsControllerDelegate
     
     var oldMissingPlayers: [Player]?
-    var selectIndexPath: NSIndexPath?
+    var selectIndexPath: IndexPath?
     
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         guard !changeIsUserDriven else { return }
 
         // Clear or reset the cache of missing players, keeping the old cache around for insertion checking.
-        oldMissingPlayers = editing ? missingPlayers : nil
+        oldMissingPlayers = isEditing ? missingPlayers : nil
         missingPlayers = nil
         
         tableView.beginUpdates()
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
         guard !changeIsUserDriven else { return }
 
         switch type {
-        case .Insert:
-            tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
-        case .Delete:
-            tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
+        case .insert:
+            tableView.insertSections(IndexSet(integer: sectionIndex), with: .automatic)
+        case .delete:
+            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .automatic)
         default:
             return
         }
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         guard !changeIsUserDriven else { return }
     
         switch type {
-        case .Insert:
+        case .insert:
             let combatant = anObject as! Combatant
-            if let player = combatant.player, oldIndex = oldMissingPlayers?.indexOf(player) {
-                let oldIndexPath = NSIndexPath(forRow: oldIndex, inSection: 1)
-                tableView.deleteRowsAtIndexPaths([ oldIndexPath ], withRowAnimation: .Top)
+            if let player = combatant.player, let oldIndex = oldMissingPlayers?.index(of: player) {
+                let oldIndexPath = IndexPath(row: oldIndex, section: 1)
+                tableView.deleteRows(at: [ oldIndexPath ], with: .top)
                 
                 if combatant.initiative == nil {
                     selectIndexPath = newIndexPath
                 }
             }
             
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Bottom)
-        case .Delete:
+            tableView.insertRows(at: [newIndexPath!], with: .bottom)
+        case .delete:
             // The combatant object will have already had its player relationship invalidated, so we cheat and store it in the cell.
-            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! InitiativeCombatantCell
-            if let player = cell.player, newIndex = missingPlayers.indexOf(player) {
-                let newIndexPath = NSIndexPath(forRow: newIndex, inSection: 1)
-                tableView.insertRowsAtIndexPaths([ newIndexPath ], withRowAnimation: .Top)
+            let cell = tableView.cellForRow(at: indexPath!) as! InitiativeCombatantCell
+            if let player = cell.player, let newIndex = missingPlayers.index(of: player) {
+                let newIndexPath = IndexPath(row: newIndex, section: 1)
+                tableView.insertRows(at: [ newIndexPath ], with: .top)
             }
             
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Bottom)
-        case .Move:
+            tableView.deleteRows(at: [indexPath!], with: .bottom)
+        case .move:
             // If the move is on the cell that's currently the first responder, it's probably as a result of the user editing; we don't want to pop the keyboard down and up, so just move the cell.
-            if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? InitiativeCombatantCell where cell.initiativeTextField.isFirstResponder() {
-                tableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!)
+            if let cell = tableView.cellForRow(at: indexPath!) as? InitiativeCombatantCell, cell.initiativeTextField.isFirstResponder {
+                tableView.moveRow(at: indexPath!, to: newIndexPath!)
             } else {
-                tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
-                tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
+                tableView.deleteRows(at: [indexPath!], with: .automatic)
+                tableView.insertRows(at: [newIndexPath!], with: .automatic)
             }
-        case .Update:
-            if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? InitiativeCombatantCell {
+        case .update:
+            if let cell = tableView.cellForRow(at: indexPath!) as? InitiativeCombatantCell {
                 let combatant = anObject as! Combatant
                 cell.combatant = combatant
             }
         }
     }
     
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         guard !changeIsUserDriven else {
             changeIsUserDriven = false
             return
@@ -306,7 +306,7 @@ class InitiativeViewController : UITableViewController, NSFetchedResultsControll
 
         tableView.endUpdates()
         
-        if let indexPath = selectIndexPath, cell = tableView.cellForRowAtIndexPath(indexPath) as? InitiativeCombatantCell {
+        if let indexPath = selectIndexPath, let cell = tableView.cellForRow(at: indexPath) as? InitiativeCombatantCell {
             cell.initiativeTextField.becomeFirstResponder()
             selectIndexPath = nil
         }
@@ -338,8 +338,8 @@ class InitiativeCombatantCell : UITableViewCell, UITextFieldDelegate {
     }
     var player: Player?
     
-    @IBAction func textFieldEditingChanged(sender: UITextField) {
-        if let text = sender.text where text != "" {
+    @IBAction func textFieldEditingChanged(_ sender: UITextField) {
+        if let text = sender.text, text != "" {
             if text != "-" {
                 combatant.initiative = Int(text)!
             }
@@ -350,16 +350,16 @@ class InitiativeCombatantCell : UITableViewCell, UITextFieldDelegate {
     
     // MARK: UITextFieldDelegate
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         // A hyphen is valid at the start of an empty string, or where replacing the start of the string.
         if string.hasPrefix("-") {
             return range.location == 0
         }
         
         // Otherwise only digits are valid.1
-        let validSet = NSCharacterSet.decimalDigitCharacterSet()
+        let validSet = CharacterSet.decimalDigits
         for character in string.unicodeScalars {
-            if !validSet.longCharacterIsMember(character.value) {
+            if !validSet.contains(UnicodeScalar(character.value)!) {
                 return false
             }
         }

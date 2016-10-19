@@ -18,13 +18,13 @@ final class AlignmentOption : NSManagedObject {
     /// The specific alignment that can be chosen.
     var alignment: Alignment {
         get {
-            return Alignment(rawValue: rawAlignment.integerValue)!
+            return Alignment(rawValue: rawAlignment.intValue)!
         }
         set(newAlignment) {
-            rawAlignment = NSNumber(integer: newAlignment.rawValue)
+            rawAlignment = NSNumber(value: newAlignment.rawValue as Int)
         }
     }
-    @NSManaged private var rawAlignment: NSNumber
+    @NSManaged fileprivate var rawAlignment: NSNumber
     
     /// Weight that should be applied when randomly choosing an alignment from the complete set.
     ///
@@ -34,14 +34,14 @@ final class AlignmentOption : NSManagedObject {
             return rawWeight?.floatValue
         }
         set(newWeight) {
-            rawWeight = newWeight.map({ NSNumber(float: $0) })
+            rawWeight = newWeight.map({ NSNumber(value: $0 as Float) })
         }
     }
-    @NSManaged private var rawWeight: NSNumber?
+    @NSManaged fileprivate var rawWeight: NSNumber?
 
     convenience init(monster: Monster, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.AlignmentOption, inManagedObjectContext: context)
-        self.init(entity: entity, insertIntoManagedObjectContext: context)
+        self.init(entity: entity, insertInto: context)
         
         self.monster = monster
     }

@@ -8,6 +8,26 @@
 
 import CoreData
 import Foundation
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func <= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l <= r
+  default:
+    return !(rhs < lhs)
+  }
+}
+
 
 /// Encounter represents a combat encounter with one or more players participating, generally against one or more monsters.
 ///
@@ -23,7 +43,7 @@ final class Encounter : NSManagedObject {
     @NSManaged var games: NSSet
     
     /// Timestamp when the Encounter object was last modified.
-    @NSManaged var lastModified: NSDate
+    @NSManaged var lastModified: Date
     
     /// Optionally provided name of the encounter.
     ///
@@ -37,7 +57,7 @@ final class Encounter : NSManagedObject {
         }
         
         let sortDescriptor = NSSortDescriptor(key: "monster.challenge", ascending: false)
-        let sortedCombatants = (combatants.sortedArrayUsingDescriptors([sortDescriptor]) as! [Combatant]).filter({ $0.role == .Foe })
+        let sortedCombatants = (combatants.sortedArray(using: [sortDescriptor]) as! [Combatant]).filter({ $0.role == .foe })
         if sortedCombatants.count > 0 {
             if let monster = sortedCombatants[0].monster {
                 let count = sortedCombatants.filter({ return $0.monster == monster }).count
@@ -73,13 +93,13 @@ final class Encounter : NSManagedObject {
     /// Rounds are intended to last six seconds, the first round will have the value 1 so a round of 0 indicates an encounter still being created.
     var round: Int {
         get {
-            return rawRound.integerValue
+            return rawRound.intValue
         }
         set(newRound) {
-            rawRound = NSNumber(integer: newRound)
+            rawRound = NSNumber(value: newRound as Int)
         }
     }
-    @NSManaged private var rawRound: NSNumber
+    @NSManaged fileprivate var rawRound: NSNumber
     
     /// XP awarded from this Encounter.
     ///
@@ -88,26 +108,26 @@ final class Encounter : NSManagedObject {
     
     convenience init(adventure: Adventure, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Encounter, inManagedObjectContext: context)
-        self.init(entity: entity, insertIntoManagedObjectContext: context)
+        self.init(entity: entity, insertInto: context)
         
         self.adventure = adventure
     
-        lastModified = NSDate()
+        lastModified = Date()
     }
 
     /// Adds `game` to the encounter.
-    func addGame(game: Game) {
-        mutableSetValueForKey("games").addObject(game)
+    func addGame(_ game: Game) {
+        mutableSetValue(forKey: "games").add(game)
     }
     
     /// Removes `game` from the encounter.
-    func removeGame(game: Game) {
-        mutableSetValueForKey("games").removeObject(game)
+    func removeGame(_ game: Game) {
+        mutableSetValue(forKey: "games").remove(game)
     }
 
     /// Returns the total XP for all monsters in the encounter.
     func totalXP() -> Int {
-        return combatants.filter({ ($0 as! Combatant).role == .Foe }).map({ ($0 as! Combatant).monster!.xp }).reduce(0, combine: +)
+        return combatants.filter({ ($0 as! Combatant).role == .foe }).map({ ($0 as! Combatant).monster!.xp }).reduce(0, +)
     }
     
     /// Calculate the difficulty of the encounter.
@@ -130,9 +150,9 @@ final class Encounter : NSManagedObject {
                 guard monster.xp > 0 else { continue }
 
                 switch combatant.role {
-                case .Foe:
+                case .foe:
                     monsterLevels.append(monster.challenge)
-                case .Friend, .Player:
+                case .friend, .player:
                     // The DMG doesnt say how to adjust encounter difficulty to account for NPCs that are friendly to the characters, the simplest solution is to add up their XP and subtract that from the monster XP (ie. 500 XP of allies needs 500 XP of monsters added to the adventure to be equivalent to one without any allies).
                     if allyAdjusted {
                         allyXP += monster.xp
@@ -162,10 +182,10 @@ final class Encounter : NSManagedObject {
         }
 
         // Ignore monters with a level "significantly lower" than the average; I'm choosing to mean less than 5.
-        let meanLevel = monsterLevels.map({ Float($0) }).reduce(0.0, combine: +) / Float(monsterLevels.count)
+        let meanLevel = monsterLevels.map({ Float($0) }).reduce(0.0, +) / Float(monsterLevels.count)
         let monsterXPs = monsterLevels.filter({ $0.floatValue >= meanLevel - 5.0 }).map({ sharedRules.challengeXP[$0]! })
 
-        var index = sharedRules.monsterXPMultiplier.indexOf({ $0.0 <= monsterXPs.count })!
+        var index = sharedRules.monsterXPMultiplier.index(where: { $0.0 <= monsterXPs.count })!
         if (players.count + allyCount) < 3 {
             index -= 1
         } else if (players.count + allyCount) > 5 {
@@ -173,7 +193,7 @@ final class Encounter : NSManagedObject {
         }
 
         let multiplier = sharedRules.monsterXPMultiplier[index].1
-        let modifiedXP = Int(Float(monsterXPs.reduce(-allyXP, combine: +)) * multiplier)
+        let modifiedXP = Int(Float(monsterXPs.reduce(-allyXP, +)) * multiplier)
         
         // Calculate thresholds for players.
         var easyThreshold = 0, mediumThreshold = 0, hardThreshold = 0, deadlyThreshold = 0
@@ -187,15 +207,15 @@ final class Encounter : NSManagedObject {
         }
         
         if deadlyThreshold < modifiedXP {
-            return .Deadly
+            return .deadly
         } else if hardThreshold < modifiedXP {
-            return .Hard
+            return .hard
         } else if mediumThreshold < modifiedXP {
-            return .Medium
+            return .medium
         } else if easyThreshold < modifiedXP {
-            return .Easy
+            return .easy
         } else {
-            return EncounterDifficulty.None
+            return EncounterDifficulty.none
         }
     }
     
@@ -204,12 +224,12 @@ final class Encounter : NSManagedObject {
     /// The returned fetch request is sorted correctly for the combat initiative order.
     ///
     /// - parameter role: optional combat role to filter on.
-    func fetchRequestForCombatants(withRole role: CombatRole? = nil) -> NSFetchRequest {
-        let fetchRequest = NSFetchRequest(entity: Model.Combatant)
+    func fetchRequestForCombatants(withRole role: CombatRole? = nil) -> NSFetchRequest<NSFetchRequestResult> {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entity: Model.Combatant)
         
         let encounterPredicate = NSPredicate(format: "encounter == %@", self)
         if let role = role {
-            let rolePredicate = NSPredicate(format: "rawRole == %@", NSNumber(integer: role.rawValue))
+            let rolePredicate = NSPredicate(format: "rawRole == %@", NSNumber(value: role.rawValue as Int))
             
             fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [encounterPredicate, rolePredicate])
         } else {
@@ -234,7 +254,7 @@ final class Encounter : NSManagedObject {
         // Gather the pre-rolled initiative values for monsters.
         var prerolledInitiative: [Monster: Int] = [:]
         for case let combatant as Combatant in combatants {
-            guard combatant.role != .Player else { continue }
+            guard combatant.role != .player else { continue }
             guard let monster = combatant.monster else { continue }
             guard let initiative = combatant.initiative else { continue }
             
@@ -244,7 +264,7 @@ final class Encounter : NSManagedObject {
         // Now go back and roll initiative where we need to, making sure we use the same new roll for all monsters of the same type too.
         var initiativeDice: [Monster: DiceCombo] = [:]
         for case let combatant as Combatant in combatants {
-            guard combatant.role != .Player else { continue }
+            guard combatant.role != .player else { continue }
             guard let monster = combatant.monster else { continue }
             guard combatant.initiative == nil else { continue }
             
@@ -268,12 +288,12 @@ final class Encounter : NSManagedObject {
     /// Updates the `currentTurn` of combatants in the encounter, and may update `round`.
     func nextTurn() {
         let fetchRequest = fetchRequestForCombatants()
-        let combatants = try! managedObjectContext!.executeFetchRequest(fetchRequest) as! [Combatant]
+        let combatants = try! managedObjectContext!.fetch(fetchRequest) as! [Combatant]
         
         // First clear the turn of the current combatants, remembering the first and last combatant whose turn it was.
-        let turnIndex = combatants.indexOf({ $0.isCurrentTurn })
+        let turnIndex = combatants.index(where: { $0.isCurrentTurn })
         var lastTurnIndex = turnIndex
-        for (index, combatant) in combatants.enumerate() {
+        for (index, combatant) in combatants.enumerated() {
             if combatant.isCurrentTurn {
                 combatant.isCurrentTurn = false
                 lastTurnIndex = index
@@ -282,7 +302,7 @@ final class Encounter : NSManagedObject {
 
         // Rotate the list so that the combatant who just took a turn is right at the end, this gives us an order to consider them in. Filter out non-player characters that are dead (we don't track player deaths).
         let nextTurnIndex = lastTurnIndex.map({ $0 + 1 }) ?? 0
-        let nextCombatants = (combatants.suffixFrom(nextTurnIndex) + combatants.prefixUpTo(nextTurnIndex)).filter({ $0.isAlive })
+        let nextCombatants = (combatants.suffix(from: nextTurnIndex) + combatants.prefix(upTo: nextTurnIndex)).filter({ $0.isAlive })
         for nextCombatant in nextCombatants {
             // Only consider combatants with the same initiative, role, underlying monster/player, etc.
             guard nextCombatant.initiative == nextCombatants.first?.initiative &&  nextCombatant.role == nextCombatants.first?.role && nextCombatant.monster == nextCombatants.first?.monster && nextCombatant.player == nextCombatants.first?.player else { break }
@@ -291,7 +311,7 @@ final class Encounter : NSManagedObject {
         }
 
         // Check whether we began a new round.
-        if let newTurnIndex = combatants.indexOf({ $0.isCurrentTurn }) where newTurnIndex <= turnIndex {
+        if let newTurnIndex = combatants.index(where: { $0.isCurrentTurn }), newTurnIndex <= turnIndex {
             round += 1
         }
     }

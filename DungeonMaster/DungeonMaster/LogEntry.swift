@@ -18,17 +18,17 @@ class LogEntry : NSManagedObject {
     /// Index of this entry in the set for the player.
     var index: Int {
         get {
-            return rawIndex.integerValue
+            return rawIndex.intValue
         }
         set(newIndex) {
-            rawIndex = NSNumber(integer: newIndex)
+            rawIndex = NSNumber(value: newIndex as Int)
         }
     }
-    @NSManaged private var rawIndex: NSNumber
+    @NSManaged fileprivate var rawIndex: NSNumber
     
     convenience init(model: Model, playedGame: PlayedGame, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(model, inManagedObjectContext: context)
-        self.init(entity: entity, insertIntoManagedObjectContext: context)
+        self.init(entity: entity, insertInto: context)
         
         self.playedGame = playedGame
         self.index = playedGame.logEntries.count + 1

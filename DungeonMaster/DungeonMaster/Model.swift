@@ -52,22 +52,22 @@ enum Model : String {
 
     static let name = "DungeonMaster"
     
-    static var url: NSURL {
+    static var url: URL {
         get {
-            return NSBundle.mainBundle().URLForResource(Model.name, withExtension: "momd")!
+            return Bundle.main.url(forResource: Model.name, withExtension: "momd")!
         }
     }
     
-    static var storeURL: NSURL {
+    static var storeURL: URL {
         get {
-            let documentsDirectoryURLs = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-            return documentsDirectoryURLs.last!.URLByAppendingPathComponent(Model.name).URLByAppendingPathExtension("sqlite")
+            let documentsDirectoryURLs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+            return documentsDirectoryURLs.last!.appendingPathComponent(Model.name).appendingPathExtension("sqlite")
         }
     }
     
     static var managedObjectModel: NSManagedObjectModel {
         get {
-            return NSManagedObjectModel(contentsOfURL: Model.url)!
+            return NSManagedObjectModel(contentsOf: Model.url)!
         }
     }
 
@@ -75,8 +75,8 @@ enum Model : String {
 
 extension NSEntityDescription {
     
-    class func entity(model: Model, inManagedObjectContext context: NSManagedObjectContext) -> NSEntityDescription {
-        return NSEntityDescription.entityForName(model.rawValue, inManagedObjectContext: context)!
+    class func entity(_ model: Model, inManagedObjectContext context: NSManagedObjectContext) -> NSEntityDescription {
+        return NSEntityDescription.entity(forEntityName: model.rawValue, in: context)!
     }
     
 }
@@ -90,27 +90,27 @@ extension NSFetchRequest {
 }
 
 let persistentStoreCoordinator: NSPersistentStoreCoordinator = {
-    let options: [NSObject: AnyObject]? = [
+    let options: [AnyHashable: Any]? = [
         NSMigratePersistentStoresAutomaticallyOption : true,
         NSInferMappingModelAutomaticallyOption : true
     ]
     
     let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: Model.managedObjectModel)
-    try! persistentStoreCoordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: Model.storeURL, options: options)
+    try! persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: Model.storeURL, options: options)
 
     return persistentStoreCoordinator
 }()
 
 let managedObjectContext: NSManagedObjectContext = {
-    let managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+    let managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
     managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator
     return managedObjectContext
 }()
 
 
-func childManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType = .MainQueueConcurrencyType, mergeType: NSMergePolicyType = .MergeByPropertyObjectTrumpMergePolicyType) -> NSManagedObjectContext {
+func childManagedObjectContext(_ concurrencyType: NSManagedObjectContextConcurrencyType = .mainQueueConcurrencyType, mergeType: NSMergePolicyType = .mergeByPropertyObjectTrumpMergePolicyType) -> NSManagedObjectContext {
     let context = NSManagedObjectContext(concurrencyType: concurrencyType)
-    context.parentContext = managedObjectContext
-    context.mergePolicy = NSMergePolicy(mergeType: mergeType)
+    context.parent = managedObjectContext
+    context.mergePolicy = NSMergePolicy(merge: mergeType)
     return context
 }

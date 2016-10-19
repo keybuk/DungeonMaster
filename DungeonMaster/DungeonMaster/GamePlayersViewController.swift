@@ -19,19 +19,19 @@ class GamePlayersViewController : UITableViewController, NSFetchedResultsControl
         // Do any additional setup after loading the view.
     }
 
-    override func setEditing(editing: Bool, animated: Bool) {
+    override func setEditing(_ editing: Bool, animated: Bool) {
         // Clear the cache of missing players.
         missingPlayers = nil
         
-        let oldEditing = self.editing, tableViewLoaded = self.tableViewLoaded
+        let oldEditing = self.isEditing, tableViewLoaded = self.tableViewLoaded
         super.setEditing(editing, animated: animated)
         
         if editing != oldEditing && tableViewLoaded {
             let addSection = fetchedResultsController.sections?.count ?? 0
             if editing {
-                tableView.insertSections(NSIndexSet(index: addSection), withRowAnimation: .Automatic)
+                tableView.insertSections(IndexSet(integer: addSection), with: .automatic)
             } else {
-                tableView.deleteSections(NSIndexSet(index: addSection), withRowAnimation: .Automatic)
+                tableView.deleteSections(IndexSet(integer: addSection), with: .automatic)
             }
         }
         
@@ -40,44 +40,44 @@ class GamePlayersViewController : UITableViewController, NSFetchedResultsControl
             // We don't do the inverse, because "removing a player from the adventure" just means they won't take part anymore. We leave their old game records.
             game.adventure.addPlayers(fromGame: game)
             
-            game.adventure.lastModified = NSDate()
+            game.adventure.lastModified = Date()
             try! managedObjectContext.save()
         }
     }
     
     // MARK: Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PlayerSegue" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let playedGame = fetchedResultsController.objectAtIndexPath(indexPath) as! PlayedGame
+                let playedGame = fetchedResultsController.object(at: indexPath) as! PlayedGame
                 
-                let viewController = segue.destinationViewController as! PlayerRootViewController
+                let viewController = segue.destination as! PlayerRootViewController
                 viewController.playedGame = playedGame
             }
             
         } else if segue.identifier == "AddPlayerSegue" {
             let player = Player(inManagedObjectContext: managedObjectContext)
             
-            let viewController = (segue.destinationViewController as! UINavigationController).topViewController as! PlayerViewController
+            let viewController = (segue.destination as! UINavigationController).topViewController as! PlayerViewController
             viewController.player = player
             
             viewController.completionBlock = { cancelled, player in
-                if let player = player where !cancelled {
+                if let player = player, !cancelled {
                     let _ = PlayedGame(game: self.game, player: player, inManagedObjectContext: managedObjectContext)
 
-                    self.game.adventure.lastModified = NSDate()
+                    self.game.adventure.lastModified = Date()
                     try! managedObjectContext.save()
                 }
                 
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.dismiss(animated: true, completion: nil)
                 if let indexPath = self.tableView.indexPathForSelectedRow {
-                    self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+                    self.tableView.deselectRow(at: indexPath, animated: true)
                 }
             }
             
         } else if segue.identifier == "AddLogEntrySegue" {
-            let viewController = segue.destinationViewController as! AddLogEntryViewController
+            let viewController = segue.destination as! AddLogEntryViewController
             viewController.game = game
 
         }
@@ -85,8 +85,8 @@ class GamePlayersViewController : UITableViewController, NSFetchedResultsControl
 
     // MARK: Fetched results controller
     
-    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] in
-        let fetchRequest = NSFetchRequest(entity: Model.PlayedGame)
+    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] -> <<error type>> in
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entity: Model.PlayedGame)
         fetchRequest.predicate = NSPredicate(format: "game == %@", self.game)
         
         let nameSortDescriptor = NSSortDescriptor(key: "player.name", ascending: true)
@@ -110,14 +110,14 @@ class GamePlayersViewController : UITableViewController, NSFetchedResultsControl
             }
             
             // Ideally we'd use something like "NONE adventures == %@" here, but that doesn't work.
-            let fetchRequest = NSFetchRequest(entity: Model.Player)
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entity: Model.Player)
             let players = fetchedResultsController.fetchedObjects!.map({ ($0 as! PlayedGame).player })
             fetchRequest.predicate = NSPredicate(format: "NOT SELF IN %@", players)
             
             let nameSortDescriptor = NSSortDescriptor(key: "name", ascending: true)
             fetchRequest.sortDescriptors = [nameSortDescriptor]
             
-            _missingPlayers = try! managedObjectContext.executeFetchRequest(fetchRequest) as! [Player]
+            _missingPlayers = try! managedObjectContext.fetch(fetchRequest) as! [Player]
             return _missingPlayers!
         }
         
@@ -125,18 +125,18 @@ class GamePlayersViewController : UITableViewController, NSFetchedResultsControl
             _missingPlayers = newMissingPlayers
         }
     }
-    private var _missingPlayers: [Player]?
+    fileprivate var _missingPlayers: [Player]?
     
     // MARK: UITableViewDataSource
     
     var tableViewLoaded = false
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         tableViewLoaded = true
-        return (fetchedResultsController.sections?.count ?? 0) + (editing ? 1 : 0)
+        return (fetchedResultsController.sections?.count ?? 0) + (isEditing ? 1 : 0)
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let addSection = fetchedResultsController.sections?.count ?? 0
         if section < addSection {
             let sectionInfo = fetchedResultsController.sections![section]
@@ -146,75 +146,75 @@ class GamePlayersViewController : UITableViewController, NSFetchedResultsControl
         }
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let addSection = fetchedResultsController.sections?.count ?? 0
-        if indexPath.section < addSection {
+        if (indexPath as NSIndexPath).section < addSection {
             // Player in the adventure, referenced through a PlayedGame object.
-            let cell = tableView.dequeueReusableCellWithIdentifier("GamePlayerCell", forIndexPath: indexPath) as! GamePlayerCell
-            let playedGame = fetchedResultsController.objectAtIndexPath(indexPath) as! PlayedGame
+            let cell = tableView.dequeueReusableCell(withIdentifier: "GamePlayerCell", for: indexPath) as! GamePlayerCell
+            let playedGame = fetchedResultsController.object(at: indexPath) as! PlayedGame
             cell.player = playedGame.player
             return cell
-        } else if indexPath.row < missingPlayers.count {
+        } else if (indexPath as NSIndexPath).row < missingPlayers.count {
             // Player not yet in the adventure, as a Player directly.
-            let cell = tableView.dequeueReusableCellWithIdentifier("GamePlayerCell", forIndexPath: indexPath) as! GamePlayerCell
-            let player = missingPlayers[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "GamePlayerCell", for: indexPath) as! GamePlayerCell
+            let player = missingPlayers[(indexPath as NSIndexPath).row]
             cell.player = player
             return cell
         } else {
             // Cell to create a new player.
-            let cell = tableView.dequeueReusableCellWithIdentifier("GameAddPlayerCell", forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "GameAddPlayerCell", for: indexPath)
             return cell
         }
     }
     
     // MARK: Edit support
     
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            let playedGame = fetchedResultsController.objectAtIndexPath(indexPath) as! PlayedGame
-            managedObjectContext.deleteObject(playedGame)
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let playedGame = fetchedResultsController.object(at: indexPath) as! PlayedGame
+            managedObjectContext.delete(playedGame)
             
-            game.adventure.lastModified = NSDate()
+            game.adventure.lastModified = Date()
             try! managedObjectContext.save()
             
-        } else if editingStyle == .Insert {
-            if indexPath.row < missingPlayers.count {
-                let player = missingPlayers[indexPath.row]
+        } else if editingStyle == .insert {
+            if (indexPath as NSIndexPath).row < missingPlayers.count {
+                let player = missingPlayers[(indexPath as NSIndexPath).row]
                 let _ = PlayedGame(game: game, player: player, inManagedObjectContext: managedObjectContext)
                 
-                game.adventure.lastModified = NSDate()
+                game.adventure.lastModified = Date()
                 try! managedObjectContext.save()
             } else {
-                performSegueWithIdentifier("AddPlayerSegue", sender: self)
+                performSegue(withIdentifier: "AddPlayerSegue", sender: self)
             }
         }
     }
     
     // MARK: UITableViewDelegate
     
-    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         let addSection = fetchedResultsController.sections?.count ?? 0
-        if indexPath.section < addSection {
-            return editing ? nil : indexPath
-        } else if indexPath.row < missingPlayers.count {
+        if (indexPath as NSIndexPath).section < addSection {
+            return isEditing ? nil : indexPath
+        } else if (indexPath as NSIndexPath).row < missingPlayers.count {
             return nil
         } else {
             return indexPath
         }
     }
     
-    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         let addSection = fetchedResultsController.sections?.count ?? 0
-        if indexPath.section < addSection {
-            return .Delete
-        } else if indexPath.row < missingPlayers.count {
-            return .Insert
+        if (indexPath as NSIndexPath).section < addSection {
+            return .delete
+        } else if (indexPath as NSIndexPath).row < missingPlayers.count {
+            return .insert
         } else {
-            return .Insert
+            return .insert
         }
     }
     
@@ -222,56 +222,56 @@ class GamePlayersViewController : UITableViewController, NSFetchedResultsControl
     
     var oldMissingPlayers: [Player]?
     
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         // Clear or reset the cache of missing players, keeping the old cache around for insertion checking.
-        oldMissingPlayers = editing ? missingPlayers : nil
+        oldMissingPlayers = isEditing ? missingPlayers : nil
         missingPlayers = nil
         
         tableView.beginUpdates()
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
         switch type {
-        case .Insert:
-            tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
-        case .Delete:
-            tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
+        case .insert:
+            tableView.insertSections(IndexSet(integer: sectionIndex), with: .automatic)
+        case .delete:
+            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .automatic)
         default:
             return
         }
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
-        case .Insert:
+        case .insert:
             let playedGame = anObject as! PlayedGame
-            if let oldIndex = oldMissingPlayers?.indexOf(playedGame.player) {
-                let oldIndexPath = NSIndexPath(forRow: oldIndex, inSection: 1)
-                tableView.deleteRowsAtIndexPaths([ oldIndexPath ], withRowAnimation: .Top)
+            if let oldIndex = oldMissingPlayers?.index(of: playedGame.player) {
+                let oldIndexPath = IndexPath(row: oldIndex, section: 1)
+                tableView.deleteRows(at: [ oldIndexPath ], with: .top)
             }
             
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Bottom)
-        case .Delete:
+            tableView.insertRows(at: [newIndexPath!], with: .bottom)
+        case .delete:
             // Since we're using an intermediate relationship object in the query, but a relationship target in the cell, we can't just use `anObject` because that has already had its relationshiped nillified. Look up the Player in the cell we're about to remove instead.
-            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! GamePlayerCell
-            if let newIndex = missingPlayers.indexOf(cell.player) {
-                let newIndexPath = NSIndexPath(forRow: newIndex, inSection: 1)
-                tableView.insertRowsAtIndexPaths([ newIndexPath ], withRowAnimation: .Top)
+            let cell = tableView.cellForRow(at: indexPath!) as! GamePlayerCell
+            if let newIndex = missingPlayers.index(of: cell.player) {
+                let newIndexPath = IndexPath(row: newIndex, section: 1)
+                tableView.insertRows(at: [ newIndexPath ], with: .top)
             }
             
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Bottom)
-        case .Move:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
-        case .Update:
-            if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? GamePlayerCell {
+            tableView.deleteRows(at: [indexPath!], with: .bottom)
+        case .move:
+            tableView.deleteRows(at: [indexPath!], with: .automatic)
+            tableView.insertRows(at: [newIndexPath!], with: .automatic)
+        case .update:
+            if let cell = tableView.cellForRow(at: indexPath!) as? GamePlayerCell {
                 let playedGame = anObject as! PlayedGame
                 cell.player = playedGame.player
             }
         }
     }
     
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
 
@@ -301,17 +301,17 @@ class GamePlayerCell : UITableViewCell {
         }
     }
  
-    override func setEditing(editing: Bool, animated: Bool) {
+    override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         
-        selectionStyle = editing ? .None : .Default
+        selectionStyle = editing ? .none : .default
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        ppCaptionLabel.transform = CGAffineTransformMakeRotation(-CGFloat(π / 2.0))
-        leadingConstraint.constant = editing ? 0.0 : (separatorInset.left - layoutMargins.left)
+        ppCaptionLabel.transform = CGAffineTransform(rotationAngle: -CGFloat(π / 2.0))
+        leadingConstraint.constant = isEditing ? 0.0 : (separatorInset.left - layoutMargins.left)
     }
 
 }

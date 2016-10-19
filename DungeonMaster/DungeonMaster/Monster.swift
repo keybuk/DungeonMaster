@@ -38,35 +38,35 @@ final class Monster : NSManagedObject {
     /// The size of the individual monsters in the swarm can be found in the usual `size` property.
     var swarmSize: Size? {
         get {
-            return rawSwarmSize.map({ Size(rawValue: $0.integerValue)! })
+            return rawSwarmSize.map({ Size(rawValue: $0.intValue)! })
         }
         set(newSwarmSize) {
-            rawSwarmSize = newSwarmSize.map({ NSNumber(integer: $0.rawValue) })
+            rawSwarmSize = newSwarmSize.map({ NSNumber(value: $0.rawValue as Int) })
         }
     }
-    @NSManaged private var rawSwarmSize: NSNumber?
+    @NSManaged fileprivate var rawSwarmSize: NSNumber?
 
     /// Size of the monster.
     var size: Size {
         get {
-            return Size(rawValue: rawSize.integerValue)!
+            return Size(rawValue: rawSize.intValue)!
         }
         set(newSize) {
-            rawSize = NSNumber(integer: newSize.rawValue)
+            rawSize = NSNumber(value: newSize.rawValue as Int)
         }
     }
-    @NSManaged private var rawSize: NSNumber
+    @NSManaged fileprivate var rawSize: NSNumber
 
     /// Type of the monster.
     var type: MonsterType {
         get {
-            return MonsterType(rawValue: rawType.integerValue)!
+            return MonsterType(rawValue: rawType.intValue)!
         }
         set(newType) {
-            rawType = NSNumber(integer: newType.rawValue)
+            rawType = NSNumber(value: newType.rawValue as Int)
         }
     }
-    @NSManaged private var rawType: NSNumber
+    @NSManaged fileprivate var rawType: NSNumber
     
     /// Some monster stats are templates for classes of NPCs and don't have race-specific information; those have `true` for this property.
     @NSManaged var requiresRace: Bool
@@ -81,13 +81,13 @@ final class Monster : NSManagedObject {
     /// When this value is nil, check `alignmentOptions` for the possible alignments that this monster may have. If the monster has neither alignment or alignment options, then it has no alignment ("unaligned" in the Monster Manual).
     var alignment: Alignment? {
         get {
-            return rawAlignment.map({ Alignment(rawValue: $0.integerValue)! })
+            return rawAlignment.map({ Alignment(rawValue: $0.intValue)! })
         }
         set(newAlignment) {
-            rawAlignment = newAlignment.map({ NSNumber(integer: $0.rawValue) })
+            rawAlignment = newAlignment.map({ NSNumber(value: $0.rawValue as Int) })
         }
     }
-    @NSManaged private var rawAlignment: NSNumber?
+    @NSManaged fileprivate var rawAlignment: NSNumber?
 
     /// Options for alignment of the monster.
     ///
@@ -104,13 +104,13 @@ final class Monster : NSManagedObject {
     /// This is almost always nil, and the `averageValue` from `hitDice` should be used; the exception is the *Demilich* which has a special trait giving it the maximum hit points, which is contained in this value.
     var hitPoints: Int? {
         get {
-            return rawHitPoints?.integerValue
+            return rawHitPoints?.intValue
         }
         set(newHitPoints) {
-            rawHitPoints = newHitPoints.map({ NSNumber(integer: $0) })
+            rawHitPoints = newHitPoints.map({ NSNumber(value: $0 as Int) })
         }
     }
-    @NSManaged private var rawHitPoints: NSNumber?
+    @NSManaged fileprivate var rawHitPoints: NSNumber?
 
     /// Dice to roll to generate hit points for the monster.
     ///
@@ -123,51 +123,51 @@ final class Monster : NSManagedObject {
             rawHitDice = newHitDice.description
         }
     }
-    @NSManaged private var rawHitDice: String
+    @NSManaged fileprivate var rawHitDice: String
     
     /// Monster's movement speed (in feet).
     var speed: Int {
         get {
-            return rawSpeed.integerValue
+            return rawSpeed.intValue
         }
         set(newSpeed) {
-            rawSpeed = NSNumber(integer: newSpeed)
+            rawSpeed = NSNumber(value: newSpeed as Int)
         }
     }
-    @NSManaged private var rawSpeed: NSNumber
+    @NSManaged fileprivate var rawSpeed: NSNumber
     
     /// Monster's movement speed (in feet) while burrowing, if the monster is capable of this.
     var burrowSpeed: Int? {
         get {
-            return rawBurrowSpeed?.integerValue
+            return rawBurrowSpeed?.intValue
         }
         set(newBurrowSpeed) {
-            rawBurrowSpeed = newBurrowSpeed.map({ NSNumber(integer: $0) })
+            rawBurrowSpeed = newBurrowSpeed.map({ NSNumber(value: $0 as Int) })
         }
     }
-    @NSManaged private var rawBurrowSpeed: NSNumber?
+    @NSManaged fileprivate var rawBurrowSpeed: NSNumber?
 
     /// Monster's movement speed (in feet) while climbing, if the monster is capable of this.
     var climbSpeed: Int? {
         get {
-            return rawClimbSpeed?.integerValue
+            return rawClimbSpeed?.intValue
         }
         set(newClimbSpeed) {
-            rawClimbSpeed = newClimbSpeed.map({ NSNumber(integer: $0) })
+            rawClimbSpeed = newClimbSpeed.map({ NSNumber(value: $0 as Int) })
         }
     }
-    @NSManaged private var rawClimbSpeed: NSNumber?
+    @NSManaged fileprivate var rawClimbSpeed: NSNumber?
     
     /// Monster's movement speed (in feet) while flying, if the monster is capable of this.
     var flySpeed: Int? {
         get {
-            return rawFlySpeed?.integerValue
+            return rawFlySpeed?.intValue
         }
         set(newFlySpeed) {
-            rawFlySpeed = newFlySpeed.map({ NSNumber(integer: $0) })
+            rawFlySpeed = newFlySpeed.map({ NSNumber(value: $0 as Int) })
         }
     }
-    @NSManaged private var rawFlySpeed: NSNumber?
+    @NSManaged fileprivate var rawFlySpeed: NSNumber?
     
     /// Whether the monster can hover.
     ///
@@ -177,79 +177,79 @@ final class Monster : NSManagedObject {
     /// Monster's movement speed (in feet) while swimming, if the monster is capable of this.
     var swimSpeed: Int? {
         get {
-            return rawSwimSpeed?.integerValue
+            return rawSwimSpeed?.intValue
         }
         set(newSwimSpeed) {
-            rawSwimSpeed = newSwimSpeed.map({ NSNumber(integer: $0) })
+            rawSwimSpeed = newSwimSpeed.map({ NSNumber(value: $0 as Int) })
         }
     }
-    @NSManaged private var rawSwimSpeed: NSNumber?
+    @NSManaged fileprivate var rawSwimSpeed: NSNumber?
 
     /// Strength score, used as base to calculcate modifiers for Strength actions, saving throws, and skills.
     var strengthScore: Int {
         get {
-            return rawStrengthScore.integerValue
+            return rawStrengthScore.intValue
         }
         set(newStrengthScore) {
-            rawStrengthScore = NSNumber(integer: newStrengthScore)
+            rawStrengthScore = NSNumber(value: newStrengthScore as Int)
         }
     }
-    @NSManaged private var rawStrengthScore: NSNumber
+    @NSManaged fileprivate var rawStrengthScore: NSNumber
 
     /// Dexterity score, used as base to calculcate modifiers for Dexterity actions, saving throws, and skills.
     var dexterityScore: Int {
         get {
-            return rawDexterityScore.integerValue
+            return rawDexterityScore.intValue
         }
         set(newDexterityScore) {
-            rawDexterityScore = NSNumber(integer: newDexterityScore)
+            rawDexterityScore = NSNumber(value: newDexterityScore as Int)
         }
     }
-    @NSManaged private var rawDexterityScore: NSNumber
+    @NSManaged fileprivate var rawDexterityScore: NSNumber
 
     /// Constitution score, used as base to calculcate modifiers for Constitution actions, saving throws, and skills.
     var constitutionScore: Int {
         get {
-            return rawConstitutionScore.integerValue
+            return rawConstitutionScore.intValue
         }
         set(newConstitutionScore) {
-            rawConstitutionScore = NSNumber(integer: newConstitutionScore)
+            rawConstitutionScore = NSNumber(value: newConstitutionScore as Int)
         }
     }
-    @NSManaged private var rawConstitutionScore: NSNumber
+    @NSManaged fileprivate var rawConstitutionScore: NSNumber
 
     /// Intelligence score, used as base to calculcate modifiers for Intelligence actions, saving throws, and skills.
     var intelligenceScore: Int {
         get {
-            return rawIntelligenceScore.integerValue
+            return rawIntelligenceScore.intValue
         }
         set(newIntelligenceScore) {
-            rawIntelligenceScore = NSNumber(integer: newIntelligenceScore)
+            rawIntelligenceScore = NSNumber(value: newIntelligenceScore as Int)
         }
     }
-    @NSManaged private var rawIntelligenceScore: NSNumber
+    @NSManaged fileprivate var rawIntelligenceScore: NSNumber
 
     /// Wisdom score, used as base to calculcate modifiers for Wisdom actions, saving throws, and skills.
     var wisdomScore: Int {
         get {
-            return rawWisdomScore.integerValue
+            return rawWisdomScore.intValue
         }
         set(newWisdomScore) {
-            rawWisdomScore = NSNumber(integer: newWisdomScore)
+            rawWisdomScore = NSNumber(value: newWisdomScore as Int)
         }
     }
-    @NSManaged private var rawWisdomScore: NSNumber
+    @NSManaged fileprivate var rawWisdomScore: NSNumber
 
     /// Charisma score, used as base to calculcate modifiers for Charisma actions, saving throws, and skills.
     var charismaScore: Int {
         get {
-            return rawCharismaScore.integerValue
+            return rawCharismaScore.intValue
         }
         set(newCharismaScore) {
-            rawCharismaScore = NSNumber(integer: newCharismaScore)
+            rawCharismaScore = NSNumber(value: newCharismaScore as Int)
         }
     }
-    @NSManaged private var rawCharismaScore: NSNumber
+    @NSManaged fileprivate var rawCharismaScore: NSNumber
 
     /// Set of saving throws that the monster is proficient in.
     ///
@@ -297,48 +297,48 @@ final class Monster : NSManagedObject {
     /// Distance (in feet) within which the monster can perceive surroundings without relying on sight.
     var blindsight: Int? {
         get {
-            return rawBlindsight?.integerValue
+            return rawBlindsight?.intValue
         }
         set(newBlindsight) {
-            rawBlindsight = newBlindsight.map({ NSNumber(integer: $0) })
+            rawBlindsight = newBlindsight.map({ NSNumber(value: $0 as Int) })
         }
     }
-    @NSManaged private var rawBlindsight: NSNumber?
+    @NSManaged fileprivate var rawBlindsight: NSNumber?
     
     /// Distance (in feet) within which the monster can see in the dark.
     ///
     /// In darkness the monster perceives as in dim light, and in dim light as if in bright light.
     var darkvision: Int? {
         get {
-            return rawDarkvision?.integerValue
+            return rawDarkvision?.intValue
         }
         set(newDarkvision) {
-            rawDarkvision = newDarkvision.map({ NSNumber(integer: $0) })
+            rawDarkvision = newDarkvision.map({ NSNumber(value: $0 as Int) })
         }
     }
-    @NSManaged private var rawDarkvision: NSNumber?
+    @NSManaged fileprivate var rawDarkvision: NSNumber?
     
     /// Distance (in feet) within which the monster can detect and pinpoint vibrations.
     var tremorsense: Int? {
         get {
-            return rawTremorsense?.integerValue
+            return rawTremorsense?.intValue
         }
         set(newTremorsense) {
-            rawTremorsense = newTremorsense.map({ NSNumber(integer: $0) })
+            rawTremorsense = newTremorsense.map({ NSNumber(value: $0 as Int) })
         }
     }
-    @NSManaged private var rawTremorsense: NSNumber?
+    @NSManaged fileprivate var rawTremorsense: NSNumber?
     
     /// Distance (in feet) within which the monster can see in darkness, and see invisible creatures.
     var truesight: Int? {
         get {
-            return rawTruesight?.integerValue
+            return rawTruesight?.intValue
         }
         set(newTruesight) {
-            rawTruesight = newTruesight.map({ NSNumber(integer: $0) })
+            rawTruesight = newTruesight.map({ NSNumber(value: $0 as Int) })
         }
     }
-    @NSManaged private var rawTruesight: NSNumber?
+    @NSManaged fileprivate var rawTruesight: NSNumber?
     
     /// Whether this monster is capable of speaking all languages.
     @NSManaged var canSpeakAllLanguages: Bool
@@ -351,13 +351,13 @@ final class Monster : NSManagedObject {
     /// Languages that monsters created from this stat block can speak.
     var languagesSpokenOption: LanguageOption? {
         get {
-            return rawLanguagesSpokenOption.map({ LanguageOption(rawValue: $0.integerValue)! })
+            return rawLanguagesSpokenOption.map({ LanguageOption(rawValue: $0.intValue)! })
         }
         set(newLanguagesSpokenOption) {
-            rawLanguagesSpokenOption = newLanguagesSpokenOption.map({ NSNumber(integer: $0.rawValue) })
+            rawLanguagesSpokenOption = newLanguagesSpokenOption.map({ NSNumber(value: $0.rawValue as Int) })
         }
     }
-    @NSManaged private var rawLanguagesSpokenOption: NSNumber?
+    @NSManaged fileprivate var rawLanguagesSpokenOption: NSNumber?
     
     /// Whether this monster can understand all languages (usually for the purpose of commands).
     @NSManaged var canUnderstandAllLanguages: Bool
@@ -370,24 +370,24 @@ final class Monster : NSManagedObject {
     /// Languages that monsters created from this stat block can understand.
     var languagesUnderstoodOption: LanguageOption? {
         get {
-            return rawLanguagesUnderstoodOption.map({ LanguageOption(rawValue: $0.integerValue)! })
+            return rawLanguagesUnderstoodOption.map({ LanguageOption(rawValue: $0.intValue)! })
         }
         set(newLanguagesUnderstoodOption) {
-            rawLanguagesUnderstoodOption = newLanguagesUnderstoodOption.map({ NSNumber(integer: $0.rawValue) })
+            rawLanguagesUnderstoodOption = newLanguagesUnderstoodOption.map({ NSNumber(value: $0.rawValue as Int) })
         }
     }
-    @NSManaged private var rawLanguagesUnderstoodOption: NSNumber?
+    @NSManaged fileprivate var rawLanguagesUnderstoodOption: NSNumber?
 
     /// Distance (in feet) within which the monster can communicate telepathically.
     var telepathy: Int? {
         get {
-            return rawTelepathy?.integerValue
+            return rawTelepathy?.intValue
         }
         set(newTelepathy) {
-            rawTelepathy = newTelepathy.map({ NSNumber(integer: $0) })
+            rawTelepathy = newTelepathy.map({ NSNumber(value: $0 as Int) })
         }
     }
-    @NSManaged private var rawTelepathy: NSNumber?
+    @NSManaged fileprivate var rawTelepathy: NSNumber?
     
     /// Whether the monster's telepathy ability is limited to the languages it can speak.
     @NSManaged var telepathyIsLimited: Bool
@@ -410,10 +410,10 @@ final class Monster : NSManagedObject {
     ///
     /// Formatted as "12,345 XP".
     var xpString: String {
-        let xpFormatter = NSNumberFormatter()
-        xpFormatter.numberStyle = .DecimalStyle
+        let xpFormatter = NumberFormatter()
+        xpFormatter.numberStyle = .decimal
         
-        let xpString = xpFormatter.stringFromNumber(xp)!
+        let xpString = xpFormatter.string(from: NSNumber(xp))!
         return "\(xpString) XP"
     }
     
@@ -454,7 +454,7 @@ final class Monster : NSManagedObject {
 
     convenience init(name: String, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Monster, inManagedObjectContext: context)
-        self.init(entity: entity, insertIntoManagedObjectContext: context)
+        self.init(entity: entity, insertInto: context)
         
         self.name = name
     }
@@ -463,17 +463,17 @@ final class Monster : NSManagedObject {
     func modifier(forAbility ability: Ability) -> Int {
         let score: Int
         switch ability {
-        case .Strength:
+        case .strength:
             score = strengthScore
-        case .Dexterity:
+        case .dexterity:
             score = dexterityScore
-        case .Constitution:
+        case .constitution:
             score = constitutionScore
-        case .Intelligence:
+        case .intelligence:
             score = intelligenceScore
-        case .Wisdom:
+        case .wisdom:
             score = wisdomScore
-        case .Charisma:
+        case .charisma:
             score = charismaScore
         }
         
@@ -504,12 +504,12 @@ final class Monster : NSManagedObject {
 
     /// Dice to roll to generate initiative for the monster.
     var initiativeDice: DiceCombo {
-        return try! DiceCombo(sides: 20, modifier: modifier(forAbility: .Dexterity))
+        return try! DiceCombo(sides: 20, modifier: modifier(forAbility: .dexterity))
     }
     
     /// Passive perception score.
     var passivePerception: Int {
-        return 10 + modifier(forSkill: .Wisdom(.Perception))
+        return 10 + modifier(forSkill: .wisdom(.perception))
     }
     
 }

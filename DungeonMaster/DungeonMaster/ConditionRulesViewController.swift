@@ -22,15 +22,15 @@ class ConditionRulesViewController : UIViewController {
         super.viewDidLoad()
 
         // Disable scrolling, otherwise we end up at the bottom.
-        textView.scrollEnabled = false
+        textView.isScrollEnabled = false
         configureView()
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
         // Enable scrolling, doing this earlier just scrolls to the bottom again.
-        textView.scrollEnabled = true
+        textView.isScrollEnabled = true
     }
     
     override func viewDidLayoutSubviews() {

@@ -14,7 +14,7 @@ struct Rules {
     let data: NSDictionary
 
     init() {
-        let filename = NSBundle.mainBundle().pathForResource("Rules", ofType: "plist")!
+        let filename = Bundle.main.path(forResource: "Rules", ofType: "plist")!
         data = NSDictionary(contentsOfFile: filename)!
     }
     
@@ -45,7 +45,7 @@ struct Rules {
     
     /// Array, index matching sizes, of hit dice sides to calculate hit points.
     var sizeHitDiceSides: [Int] {
-        return (data["sizeHitDiceSides"]! as! [NSNumber]).map { $0.integerValue }
+        return (data["sizeHitDiceSides"]! as! [NSNumber]).map { $0.intValue }
     }
     
     /// Array of alignment names.
@@ -75,7 +75,7 @@ struct Rules {
     
     /// Array mapping races to sizes.
     var raceSize: [Int] {
-        return (data["raceSize"]! as! [NSNumber]).map { $0.integerValue }
+        return (data["raceSize"]! as! [NSNumber]).map { $0.intValue }
     }
     
     /// Array of character class names.
@@ -92,7 +92,7 @@ struct Rules {
     var levelXP: [Int: Int] {
         var result: [Int: Int] = [:]
         for (level, xp) in data["levelXP"]! as! [String: NSNumber] {
-            result[Int(level)!] = xp.integerValue
+            result[Int(level)!] = xp.intValue
         }
         return result
     }
@@ -102,7 +102,7 @@ struct Rules {
         var result: [Int: [Int]] = [:]
         for (level, thresholds) in data["levelXPThreshold"]! as! [String: [NSNumber]] {
             
-            result[Int(level)!] = thresholds.map({ $0.integerValue })
+            result[Int(level)!] = thresholds.map({ $0.intValue })
         }
         return result
     }
@@ -115,7 +115,7 @@ struct Rules {
     /// Array of base armor class for each armor type.
     var armorClass: [Int?] {
         return (data["armorClass"]! as! [NSNumber]).map {
-            $0.integerValue > 0 ? $0.integerValue : nil
+            $0.intValue > 0 ? $0.intValue : nil
         }
     }
     
@@ -124,13 +124,13 @@ struct Rules {
     /// The first value in the tuple, `add`, indicates whether the dexterity modifier should be applied; the second, `max` indicates a maximum value if appropriate.
     var armorDexterityModifierMax: [(add: Bool, max: Int?)] {
         return (data["armorDexterityModifierMax"]! as! [NSNumber]).map { 
-            switch $0.integerValue {
+            switch $0.intValue {
             case 0:
                 return (false, nil)
             case 10:
                 return (true, nil)
             default:
-                return (true, $0.integerValue)
+                return (true, $0.intValue)
             }
         }
     }
@@ -138,7 +138,7 @@ struct Rules {
     /// Array of minimum strength requirements for each armor type.
     var armorMinimumStrength: [Int?] {
         return (data["armorMinimumStrength"]! as! [NSNumber]).map {
-            $0.integerValue > 0 ? $0.integerValue : nil
+            $0.intValue > 0 ? $0.intValue : nil
         }
     }
     
@@ -171,7 +171,7 @@ struct Rules {
     var challengeXP: [NSDecimalNumber: Int] {
         var result: [NSDecimalNumber: Int] = [:]
         for (challenge, xp) in data["challengeXP"]! as! [String: NSNumber] {
-            result[NSDecimalNumber(string: challenge)] = xp.integerValue
+            result[NSDecimalNumber(string: challenge)] = xp.intValue
         }
         return result
     }
@@ -180,7 +180,7 @@ struct Rules {
     var challengeProficiencyBonus: [NSDecimalNumber: Int] {
         var result: [NSDecimalNumber: Int] = [:]
         for (challenge, proficiencyBonus) in data["challengeProficiencyBonus"]! as! [String: NSNumber] {
-            result[NSDecimalNumber(string: challenge)] = proficiencyBonus.integerValue
+            result[NSDecimalNumber(string: challenge)] = proficiencyBonus.intValue
         }
         return result
     }
@@ -191,7 +191,7 @@ struct Rules {
         for (number, multiplier) in data["monsterXPMultiplier"]! as! [String: NSNumber] {
             result.append((Int(number)!, multiplier.floatValue))
         }
-        return result.sort({ $0.0 > $1.0 })
+        return result.sorted(by: { $0.0 > $1.0 })
     }
 
 }

@@ -17,8 +17,8 @@ class AddLogEntryViewController : UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let encounter = encounter, game = game {
-            let viewController = storyboard?.instantiateViewControllerWithIdentifier("LogEntryCombatantsViewController") as! LogEntryCombatantsViewController
+        if let encounter = encounter, let game = game {
+            let viewController = storyboard?.instantiateViewController(withIdentifier: "LogEntryCombatantsViewController") as! LogEntryCombatantsViewController
             viewController.logEntryType = XPAward.self
             viewController.encounter = encounter
             viewController.game = game

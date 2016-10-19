@@ -18,13 +18,13 @@ final class Game : NSManagedObject {
     /// The number in sequence of this game in the adventure.
     var number: Int {
         get {
-            return rawNumber.integerValue
+            return rawNumber.intValue
         }
         set(newNumber) {
-            rawNumber = NSNumber(integer: newNumber)
+            rawNumber = NSNumber(value: newNumber as Int)
         }
     }
-    @NSManaged private var rawNumber: NSNumber
+    @NSManaged fileprivate var rawNumber: NSNumber
     
     /// Title of the game, including the `adventure` name.
     ///
@@ -36,7 +36,7 @@ final class Game : NSManagedObject {
     }
     
     /// The date of this Game.
-    @NSManaged var date: NSDate
+    @NSManaged var date: Date
     
     /// Players that participated in this game.
     ///
@@ -50,12 +50,12 @@ final class Game : NSManagedObject {
     
     convenience init(adventure: Adventure, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Game, inManagedObjectContext: context)
-        self.init(entity: entity, insertIntoManagedObjectContext: context)
+        self.init(entity: entity, insertInto: context)
         
         self.adventure = adventure
         
         number = adventure.games.count
-        date = NSDate()
+        date = Date()
         
         for case let player as Player in adventure.players {
             let _ = PlayedGame(game: self, player: player, inManagedObjectContext: context)
@@ -68,7 +68,7 @@ final class Game : NSManagedObject {
         string += "<Version:11.2>\n"
 
         let nameSortDescriptor = NSSortDescriptor(key: "player.name", ascending: true)
-        for case let playedGame as PlayedGame in playedGames.sortedArrayUsingDescriptors([nameSortDescriptor]) {
+        for case let playedGame as PlayedGame in playedGames.sortedArray(using: [nameSortDescriptor]) {
             string += playedGame.descriptionForExport()
         }
         

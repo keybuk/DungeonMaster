@@ -18,17 +18,17 @@ final class SpellClass : NSManagedObject {
     /// Class of characters that may cast this spell.
     var characterClass: CharacterClass {
         get {
-            return CharacterClass(rawValue: rawCharacterClass.integerValue)!
+            return CharacterClass(rawValue: rawCharacterClass.intValue)!
         }
         set(newCharacterClass) {
-            rawCharacterClass = NSNumber(integer: newCharacterClass.rawValue)
+            rawCharacterClass = NSNumber(value: newCharacterClass.rawValue as Int)
         }
     }
-    @NSManaged private var rawCharacterClass: NSNumber
+    @NSManaged fileprivate var rawCharacterClass: NSNumber
 
     convenience init(spell: Spell, characterClass: CharacterClass, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.SpellClass, inManagedObjectContext: context)
-        self.init(entity: entity, insertIntoManagedObjectContext: context)
+        self.init(entity: entity, insertInto: context)
         
         self.spell = spell
         self.characterClass = characterClass

@@ -22,23 +22,23 @@ class FetchedResultsControllerTests : XCTestCase {
     ]
     var sampleObjects: [String:NSManagedObject] = [:]
     
-    func makeEntityDescription(name: String) -> NSEntityDescription {
+    func makeEntityDescription(_ name: String) -> NSEntityDescription {
         let entity = NSEntityDescription()
         entity.name = name
         
         let nameAttribute = NSAttributeDescription()
         nameAttribute.name = "name"
-        nameAttribute.attributeType = .StringAttributeType
+        nameAttribute.attributeType = .stringAttributeType
         entity.properties.append(nameAttribute)
         
         let ageAttribute = NSAttributeDescription()
         ageAttribute.name = "age"
-        ageAttribute.attributeType = .Integer16AttributeType
+        ageAttribute.attributeType = .integer16AttributeType
         entity.properties.append(ageAttribute)
         
         let sexAttribute = NSAttributeDescription()
         sexAttribute.name = "sex"
-        sexAttribute.attributeType = .Integer16AttributeType
+        sexAttribute.attributeType = .integer16AttributeType
         entity.properties.append(sexAttribute)
 
         return entity
@@ -58,10 +58,10 @@ class FetchedResultsControllerTests : XCTestCase {
     
     var managedObjectContext: NSManagedObjectContext!
     
-    func makePerson(name name: String, age: Int, sex: Int) -> NSManagedObject {
-        let personEntity = NSEntityDescription.entityForName("Person", inManagedObjectContext: managedObjectContext)!
+    func makePerson(name: String, age: Int, sex: Int) -> NSManagedObject {
+        let personEntity = NSEntityDescription.entity(forEntityName: "Person", in: managedObjectContext)!
         
-        let person = NSManagedObject(entity: personEntity, insertIntoManagedObjectContext: managedObjectContext)
+        let person = NSManagedObject(entity: personEntity, insertInto: managedObjectContext)
         person.setValue(name, forKey: "name")
         person.setValue(age, forKey: "age")
         person.setValue(sex, forKey: "sex")
@@ -71,36 +71,36 @@ class FetchedResultsControllerTests : XCTestCase {
         return person
     }
     
-    func removePerson(name: String) -> NSManagedObject {
+    func removePerson(_ name: String) -> NSManagedObject {
         let person = sampleObjects[name]!
         
         sampleObjects[name] = nil
         
-        managedObjectContext.deleteObject(person)
+        managedObjectContext.delete(person)
         
         return person
     }
     
-    func checkResults<T>(controller: FetchedResultsController<T, NSManagedObject>, predicate: NSPredicate?, sortDescriptors: [NSSortDescriptor]?, sections: [(T, NSPredicate?)]) {
+    func checkResults<T>(_ controller: FetchedResultsController<T, NSManagedObject>, predicate: NSPredicate?, sortDescriptors: [NSSortDescriptor]?, sections: [(T, NSPredicate?)]) {
         var expectedObjects: [NSManagedObject] = Array(sampleObjects.values)
         if let predicate = predicate {
-            expectedObjects = (expectedObjects as NSArray).filteredArrayUsingPredicate(predicate) as! [NSManagedObject]
+            expectedObjects = (expectedObjects as NSArray).filtered(using: predicate) as! [NSManagedObject]
         }
         if let sortDescriptors = sortDescriptors {
-            expectedObjects = (expectedObjects as NSArray).sortedArrayUsingDescriptors(sortDescriptors) as! [NSManagedObject]
+            expectedObjects = (expectedObjects as NSArray).sortedArray(using: sortDescriptors) as! [NSManagedObject]
         }
         
         XCTAssertNotNil(controller.fetchedObjects, "Expected fetched objects after performing fetch.")
         XCTAssertEqual(controller.fetchedObjects.count, expectedObjects.count, "Count of fetched objects was incorrect.")
         
         if let _ = sortDescriptors {
-            let expectedNames = expectedObjects.map({ $0.valueForKey("name") as! String })
-            let fetchedNames = controller.fetchedObjects.map({ $0.valueForKey("name") as! String })
+            let expectedNames = expectedObjects.map({ $0.value(forKey: "name") as! String })
+            let fetchedNames = controller.fetchedObjects.map({ $0.value(forKey: "name") as! String })
             
             XCTAssertEqual(expectedNames, fetchedNames, "List of fetched objects was incorrect.")
         } else {
-            let expectedNames = Set(expectedObjects.map({ $0.valueForKey("name") as! String }))
-            let fetchedNames = Set(controller.fetchedObjects.map({ $0.valueForKey("name") as! String }))
+            let expectedNames = Set(expectedObjects.map({ $0.value(forKey: "name") as! String }))
+            let fetchedNames = Set(controller.fetchedObjects.map({ $0.value(forKey: "name") as! String }))
             
             XCTAssertEqual(expectedNames, fetchedNames, "Set of fetched objects was incorrect.")
         }
@@ -108,13 +108,13 @@ class FetchedResultsControllerTests : XCTestCase {
         XCTAssertNotNil(controller.sections, "Expected list of sections after performing fetch.")
         XCTAssertEqual(controller.sections.count, sections.count, "Count of sections was incorrect.")
         
-        for (sectionIndex, sectionInfo) in sections.enumerate() {
+        for (sectionIndex, sectionInfo) in sections.enumerated() {
             let (name, sectionPredicate) = sectionInfo
             let section = controller.sections[sectionIndex]
             
             var sectionObjects = expectedObjects
             if let sectionPredicate = sectionPredicate {
-                sectionObjects = (sectionObjects as NSArray).filteredArrayUsingPredicate(sectionPredicate) as! [NSManagedObject]
+                sectionObjects = (sectionObjects as NSArray).filtered(using: sectionPredicate) as! [NSManagedObject]
             }
             
             XCTAssertEqual(section.name, name, "Section name was incorrect.")
@@ -122,19 +122,19 @@ class FetchedResultsControllerTests : XCTestCase {
             XCTAssertNotNil(section.objects, "Expected objects list for section.")
             
             if let _ = sortDescriptors {
-                let expectedNames = sectionObjects.map({ $0.valueForKey("name") as! String })
-                let fetchedNames = section.objects.map({ $0.valueForKey("name") as! String })
+                let expectedNames = sectionObjects.map({ $0.value(forKey: "name") as! String })
+                let fetchedNames = section.objects.map({ $0.value(forKey: "name") as! String })
                 
                 XCTAssertEqual(expectedNames, fetchedNames, "List of objects in section incorrect.")
             } else {
-                let expectedNames = Set(sectionObjects.map({ $0.valueForKey("name")  as! String }))
-                let fetchedNames = Set(section.objects.map({ $0.valueForKey("name") as! String }))
+                let expectedNames = Set(sectionObjects.map({ $0.value(forKey: "name")  as! String }))
+                let fetchedNames = Set(section.objects.map({ $0.value(forKey: "name") as! String }))
                 
                 XCTAssertEqual(expectedNames, fetchedNames, "Set of objects in section was incorrect.")
             }
             
-            for (index, object) in section.objects.enumerate() {
-                let indexPath = NSIndexPath(forRow: index, inSection: sectionIndex)
+            for (index, object) in section.objects.enumerated() {
+                let indexPath = IndexPath(row: index, section: sectionIndex)
                 XCTAssertEqual(controller.indexPath(of: object), indexPath, "Index path of object was incorrect.")
                 XCTAssert(controller.object(at: indexPath) === object, "Object at index path was incorrect.")
             }
@@ -146,9 +146,9 @@ class FetchedResultsControllerTests : XCTestCase {
         
         // Set up the in-memory store.
         let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        try! persistentStoreCoordinator.addPersistentStoreWithType(NSInMemoryStoreType, configuration: nil, URL: nil, options: nil)
+        try! persistentStoreCoordinator.addPersistentStore(ofType: NSInMemoryStoreType, configurationName: nil, at: nil, options: nil)
         
-        managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+        managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator
         
         // Set up the sample data.
@@ -169,7 +169,7 @@ class FetchedResultsControllerTests : XCTestCase {
 
     func testSingleSection() {
         // Make the simplest fetch request that we can.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         
         // Create the controller, return the same value for all sections.
         let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { _ in "" }, sectionKeys: nil, handleChanges: nil)
@@ -181,7 +181,7 @@ class FetchedResultsControllerTests : XCTestCase {
     
     func testSingleSectionWithPredicate() {
         // Make a fetch request with a predicate.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.predicate = NSPredicate(format: "age > 30")
 
         // Create the controller, return the same value for all sections.
@@ -194,7 +194,7 @@ class FetchedResultsControllerTests : XCTestCase {
     
     func testSingleSectionWithSort() {
         // Make a fetch request with sort descriptors.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
 
         // Create the controller, return the same value for all sections.
@@ -207,7 +207,7 @@ class FetchedResultsControllerTests : XCTestCase {
 
     func testSingleSectionWithPredicateAndSort() {
         // Make a fetch request with a predicate and sort descriptors.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.predicate = NSPredicate(format: "age > 30")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
@@ -221,10 +221,10 @@ class FetchedResultsControllerTests : XCTestCase {
 
     func testMultipleSection() {
         // Make the simplest fetch request that we can.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         
         // Create the controller, section the results by sex.
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: nil)
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: nil)
         try! controller.performFetch()
         
         // Expect all of the objects to be returned, divided into two sections each with a subset of the objects.
@@ -233,11 +233,11 @@ class FetchedResultsControllerTests : XCTestCase {
     
     func testMultipleSectionsWithPredicate() {
         // Make a fetch request with a predicate.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.predicate = NSPredicate(format: "age > 30")
         
         // Create the controller, section the results by sex.
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: nil)
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: nil)
         try! controller.performFetch()
         
         // Expect the matching subset of objects to be returned, divided into two sections each with a subset of the objects.
@@ -246,11 +246,11 @@ class FetchedResultsControllerTests : XCTestCase {
     
     func testMultipleSectionsWithSort() {
         // Make a fetch request with sort descriptors.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex.
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: nil)
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: nil)
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -259,12 +259,12 @@ class FetchedResultsControllerTests : XCTestCase {
     
     func testMultipleSectionsWithPredicateAndSort() {
         // Make a fetch request with a predicate and sort descriptors.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.predicate = NSPredicate(format: "age > 30")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex.
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: nil)
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: nil)
         try! controller.performFetch()
         
         // Expect the matching subset of objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -275,12 +275,12 @@ class FetchedResultsControllerTests : XCTestCase {
     
     func testInsertSingleItem() {
         // Make a fetch request, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
 
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -296,14 +296,14 @@ class FetchedResultsControllerTests : XCTestCase {
         XCTAssertEqual(controller.fetchedObjects.count, oldFetchedObjects.count + 1, "Expected increase in object count.")
         XCTAssertEqual(controller.sections[0].objects.count, oldSectionObjects.count + 1, "Expected increase in section object count.")
 
-        let newFetchedObjects = Set(controller.fetchedObjects).subtract(oldFetchedObjects)
-        let newSectionObjects = Set(controller.sections[0].objects).subtract(oldSectionObjects)
+        let newFetchedObjects = Set(controller.fetchedObjects).subtracting(oldFetchedObjects)
+        let newSectionObjects = Set(controller.sections[0].objects).subtracting(oldSectionObjects)
         
         XCTAssertEqual(newFetchedObjects, Set([newObject]), "Expected object was not present in fetched objects list.")
         XCTAssertEqual(newSectionObjects, Set([newObject]), "Expected object was not present in section objects list.")
         
         switch changes.removeFirst() {
-        case .Insert(newObject, NSIndexPath(forRow: 1, inSection: 0)):
+        case .insert(newObject, IndexPath(row: 1, section: 0)):
             break
         default:
             XCTFail("Incorrect change.")
@@ -317,12 +317,12 @@ class FetchedResultsControllerTests : XCTestCase {
     
     func testInsertTwoItemsIntoSameSection() {
         // Make a fetch request, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -339,17 +339,17 @@ class FetchedResultsControllerTests : XCTestCase {
         XCTAssertEqual(controller.fetchedObjects.count, oldFetchedObjects.count + 2, "Expected increase in object count.")
         XCTAssertEqual(controller.sections[0].objects.count, oldSectionObjects.count + 2, "Expected increase in section object count.")
         
-        let newFetchedObjects = Set(controller.fetchedObjects).subtract(oldFetchedObjects)
-        let newSectionObjects = Set(controller.sections[0].objects).subtract(oldSectionObjects)
+        let newFetchedObjects = Set(controller.fetchedObjects).subtracting(oldFetchedObjects)
+        let newSectionObjects = Set(controller.sections[0].objects).subtracting(oldSectionObjects)
         
         XCTAssertEqual(newFetchedObjects, Set([newObject1, newObject2]), "Expected object was not present in fetched objects list.")
         XCTAssertEqual(newSectionObjects, Set([newObject1, newObject2]), "Expected object was not present in section objects list.")
         
         for _ in 0..<2 {
             switch changes.removeFirst() {
-            case .Insert(newObject1, NSIndexPath(forRow: 1, inSection: 0)):
+            case .insert(newObject1, IndexPath(row: 1, section: 0)):
                 break
-            case .Insert(newObject2, NSIndexPath(forRow: 2, inSection: 0)):
+            case .insert(newObject2, IndexPath(row: 2, section: 0)):
                 break
             default:
                 XCTFail("Incorrect change.")
@@ -364,12 +364,12 @@ class FetchedResultsControllerTests : XCTestCase {
 
     func testInsertTwoItemsIntoDifferentSections() {
         // Make a fetch request, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -388,9 +388,9 @@ class FetchedResultsControllerTests : XCTestCase {
         XCTAssertEqual(controller.sections[0].objects.count, oldSection0Objects.count + 1, "Expected increase in section object count.")
         XCTAssertEqual(controller.sections[1].objects.count, oldSection1Objects.count + 1, "Expected increase in section object count.")
 
-        let newFetchedObjects = Set(controller.fetchedObjects).subtract(oldFetchedObjects)
-        let newSection0Objects = Set(controller.sections[0].objects).subtract(oldSection0Objects)
-        let newSection1Objects = Set(controller.sections[1].objects).subtract(oldSection1Objects)
+        let newFetchedObjects = Set(controller.fetchedObjects).subtracting(oldFetchedObjects)
+        let newSection0Objects = Set(controller.sections[0].objects).subtracting(oldSection0Objects)
+        let newSection1Objects = Set(controller.sections[1].objects).subtracting(oldSection1Objects)
 
         XCTAssertEqual(newFetchedObjects, Set([newObject1, newObject2]), "Expected object was not present in fetched objects list.")
         XCTAssertEqual(newSection0Objects, Set([newObject1]), "Expected object was not present in section objects list.")
@@ -398,9 +398,9 @@ class FetchedResultsControllerTests : XCTestCase {
 
         for _ in 0..<2 {
             switch changes.removeFirst() {
-            case .Insert(newObject1, NSIndexPath(forRow: 1, inSection: 0)):
+            case .insert(newObject1, IndexPath(row: 1, section: 0)):
                 break
-            case .Insert(newObject2, NSIndexPath(forRow: 3, inSection: 1)):
+            case .insert(newObject2, IndexPath(row: 3, section: 1)):
                 break
             default:
                 XCTFail("Incorrect change.")
@@ -415,13 +415,13 @@ class FetchedResultsControllerTests : XCTestCase {
 
     func testInsertItemMatchingPredicate() {
         // Make a fetch request with a predicate, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.predicate = NSPredicate(format: "age > 30")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect the matching subset of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -437,14 +437,14 @@ class FetchedResultsControllerTests : XCTestCase {
         XCTAssertEqual(controller.fetchedObjects.count, oldFetchedObjects.count + 1, "Expected increase in object count.")
         XCTAssertEqual(controller.sections[0].objects.count, oldSectionObjects.count + 1, "Expected increase in section object count.")
         
-        let newFetchedObjects = Set(controller.fetchedObjects).subtract(oldFetchedObjects)
-        let newSectionObjects = Set(controller.sections[0].objects).subtract(oldSectionObjects)
+        let newFetchedObjects = Set(controller.fetchedObjects).subtracting(oldFetchedObjects)
+        let newSectionObjects = Set(controller.sections[0].objects).subtracting(oldSectionObjects)
         
         XCTAssertEqual(newFetchedObjects, Set([newObject]), "Expected object was not present in fetched objects list.")
         XCTAssertEqual(newSectionObjects, Set([newObject]), "Expected object was not present in section objects list.")
         
         switch changes.removeFirst() {
-        case .Insert(newObject, NSIndexPath(forRow: 0, inSection: 0)):
+        case .insert(newObject, IndexPath(row: 0, section: 0)):
             break
         default:
             XCTFail("Incorrect change.")
@@ -458,13 +458,13 @@ class FetchedResultsControllerTests : XCTestCase {
 
     func testInsertItemNotMatchingPredicate() {
         // Make a fetch request with a predicate, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.predicate = NSPredicate(format: "age > 30")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect the matching subset of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -488,12 +488,12 @@ class FetchedResultsControllerTests : XCTestCase {
 
     func testInsertSingleItemIntoNewSection() {
         // Make a fetch request, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -509,21 +509,21 @@ class FetchedResultsControllerTests : XCTestCase {
         XCTAssertEqual(controller.fetchedObjects.count, oldFetchedObjects.count + 1, "Expected increase in object count.")
         XCTAssertEqual(controller.sections.count, oldSectionCount + 1, "Expected increase in section count.")
         
-        let newFetchedObjects = Set(controller.fetchedObjects).subtract(oldFetchedObjects)
+        let newFetchedObjects = Set(controller.fetchedObjects).subtracting(oldFetchedObjects)
         let newSectionObjects = Set(controller.sections[2].objects)
         
         XCTAssertEqual(newFetchedObjects, Set([newObject]), "Expected object was not present in fetched objects list.")
         XCTAssertEqual(newSectionObjects, Set([newObject]), "Expected object was not present in objects list for new section.")
         
         switch changes.removeFirst() {
-        case .InsertSection(sectionInfo: _, newIndex: 2):
+        case .insertSection(sectionInfo: _, newIndex: 2):
             break
         default:
             XCTFail("Incorrect change.")
         }
 
         switch changes.removeFirst() {
-        case .Insert(newObject, NSIndexPath(forRow: 0, inSection: 2)):
+        case .insert(newObject, IndexPath(row: 0, section: 2)):
             break
         default:
             XCTFail("Incorrect change.")
@@ -537,12 +537,12 @@ class FetchedResultsControllerTests : XCTestCase {
     
     func testInsertTwoItemsIntoNewSection() {
         // Make a fetch request, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -559,14 +559,14 @@ class FetchedResultsControllerTests : XCTestCase {
         XCTAssertEqual(controller.fetchedObjects.count, oldFetchedObjects.count + 2, "Expected increase in object count.")
         XCTAssertEqual(controller.sections.count, oldSectionCount + 1, "Expected increase in section count.")
         
-        let newFetchedObjects = Set(controller.fetchedObjects).subtract(oldFetchedObjects)
+        let newFetchedObjects = Set(controller.fetchedObjects).subtracting(oldFetchedObjects)
         let newSectionObjects = Set(controller.sections[2].objects)
         
         XCTAssertEqual(newFetchedObjects, Set([newObject1, newObject2]), "Expected object was not present in fetched objects list.")
         XCTAssertEqual(newSectionObjects, Set([newObject1, newObject2]), "Expected object was not present in objects list for new section.")
         
         switch changes.removeFirst() {
-        case .InsertSection(sectionInfo: _, newIndex: 2):
+        case .insertSection(sectionInfo: _, newIndex: 2):
             break
         default:
             XCTFail("Incorrect change.")
@@ -574,9 +574,9 @@ class FetchedResultsControllerTests : XCTestCase {
 
         for _ in 0..<2 {
             switch changes.removeFirst() {
-            case .Insert(newObject1, NSIndexPath(forRow: 0, inSection: 2)):
+            case .insert(newObject1, IndexPath(row: 0, section: 2)):
                 break
-            case .Insert(newObject2, NSIndexPath(forRow: 1, inSection: 2)):
+            case .insert(newObject2, IndexPath(row: 1, section: 2)):
                 break
             default:
                 XCTFail("Incorrect change.")
@@ -591,12 +591,12 @@ class FetchedResultsControllerTests : XCTestCase {
     
     func testInsertOtherItem() {
         // Make a fetch request, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -606,9 +606,9 @@ class FetchedResultsControllerTests : XCTestCase {
         let oldFetchedObjects = Set(controller.fetchedObjects)
         let oldSectionObjects = Set(controller.sections[0].objects)
 
-        let entity = NSEntityDescription.entityForName("NPC", inManagedObjectContext: managedObjectContext)!
+        let entity = NSEntityDescription.entity(forEntityName: "NPC", in: managedObjectContext)!
         
-        let object = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedObjectContext)
+        let object = NSManagedObject(entity: entity, insertInto: managedObjectContext)
         object.setValue("Jordan", forKey: "name")
         object.setValue(30, forKey: "age")
         object.setValue(0, forKey: "sex")
@@ -628,12 +628,12 @@ class FetchedResultsControllerTests : XCTestCase {
 
     func testDeleteSingleItem() {
         // Make a fetch request, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -649,14 +649,14 @@ class FetchedResultsControllerTests : XCTestCase {
         XCTAssertEqual(controller.fetchedObjects.count, oldFetchedObjects.count - 1, "Expected decrease in object count.")
         XCTAssertEqual(controller.sections[1].objects.count, oldSectionObjects.count - 1, "Expected decrease in section object count.")
         
-        let deletedFetchedObjects = oldFetchedObjects.subtract(controller.fetchedObjects)
-        let deletedSectionObjects = oldSectionObjects.subtract(controller.sections[1].objects)
+        let deletedFetchedObjects = oldFetchedObjects.subtracting(controller.fetchedObjects)
+        let deletedSectionObjects = oldSectionObjects.subtracting(controller.sections[1].objects)
         
         XCTAssertEqual(deletedFetchedObjects, Set([deletedObject]), "Expected object was present in fetched objects list.")
         XCTAssertEqual(deletedSectionObjects, Set([deletedObject]), "Expected object was present in section objects list.")
         
         switch changes.removeFirst() {
-        case .Delete(object: deletedObject, indexPath: NSIndexPath(forRow: 2, inSection: 1)):
+        case .delete(object: deletedObject, indexPath: IndexPath(row: 2, section: 1)):
             break
         default:
             XCTFail("Incorrect change.")
@@ -670,12 +670,12 @@ class FetchedResultsControllerTests : XCTestCase {
 
     func testDeleteTwoItemsFromSameSection() {
         // Make a fetch request, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -692,17 +692,17 @@ class FetchedResultsControllerTests : XCTestCase {
         XCTAssertEqual(controller.fetchedObjects.count, oldFetchedObjects.count - 2, "Expected decrease in object count.")
         XCTAssertEqual(controller.sections[1].objects.count, oldSectionObjects.count - 2, "Expected decrease in section object count.")
         
-        let deletedFetchedObjects = oldFetchedObjects.subtract(controller.fetchedObjects)
-        let deletedSectionObjects = oldSectionObjects.subtract(controller.sections[1].objects)
+        let deletedFetchedObjects = oldFetchedObjects.subtracting(controller.fetchedObjects)
+        let deletedSectionObjects = oldSectionObjects.subtracting(controller.sections[1].objects)
         
         XCTAssertEqual(deletedFetchedObjects, Set([deletedObject1, deletedObject2]), "Expected object was present in fetched objects list.")
         XCTAssertEqual(deletedSectionObjects, Set([deletedObject1, deletedObject2]), "Expected object was present in section objects list.")
         
         for _ in 0..<2 {
             switch changes.removeFirst() {
-            case .Delete(object: deletedObject1, indexPath: NSIndexPath(forRow: 2, inSection: 1)):
+            case .delete(object: deletedObject1, indexPath: IndexPath(row: 2, section: 1)):
                 break
-            case .Delete(object: deletedObject2, indexPath: NSIndexPath(forRow: 0, inSection: 1)):
+            case .delete(object: deletedObject2, indexPath: IndexPath(row: 0, section: 1)):
                 break
             default:
                 XCTFail("Incorrect change.")
@@ -717,12 +717,12 @@ class FetchedResultsControllerTests : XCTestCase {
 
     func testDeleteTwoItemsFromDifferentSections() {
         // Make a fetch request, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -741,9 +741,9 @@ class FetchedResultsControllerTests : XCTestCase {
         XCTAssertEqual(controller.sections[0].objects.count, oldSection0Objects.count - 1, "Expected decrease in section object count.")
         XCTAssertEqual(controller.sections[1].objects.count, oldSection1Objects.count - 1, "Expected decrease in section object count.")
         
-        let deletedFetchedObjects = oldFetchedObjects.subtract(controller.fetchedObjects)
-        let deletedSection0Objects = oldSection0Objects.subtract(controller.sections[0].objects)
-        let deletedSection1Objects = oldSection1Objects.subtract(controller.sections[1].objects)
+        let deletedFetchedObjects = oldFetchedObjects.subtracting(controller.fetchedObjects)
+        let deletedSection0Objects = oldSection0Objects.subtracting(controller.sections[0].objects)
+        let deletedSection1Objects = oldSection1Objects.subtracting(controller.sections[1].objects)
 
         XCTAssertEqual(deletedFetchedObjects, Set([deletedObject1, deletedObject2]), "Expected object was present in fetched objects list.")
         XCTAssertEqual(deletedSection0Objects, Set([deletedObject1]), "Expected object was present in section objects list.")
@@ -751,9 +751,9 @@ class FetchedResultsControllerTests : XCTestCase {
 
         for _ in 0..<2 {
             switch changes.removeFirst() {
-            case .Delete(object: deletedObject1, indexPath: NSIndexPath(forRow: 0, inSection: 0)):
+            case .delete(object: deletedObject1, indexPath: IndexPath(row: 0, section: 0)):
                 break
-            case .Delete(object: deletedObject2, indexPath: NSIndexPath(forRow: 0, inSection: 1)):
+            case .delete(object: deletedObject2, indexPath: IndexPath(row: 0, section: 1)):
                 break
             default:
                 XCTFail("Incorrect change.")
@@ -768,13 +768,13 @@ class FetchedResultsControllerTests : XCTestCase {
 
     func testDeleteItemMatchingPredicate() {
         // Make a fetch request with a predicate, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.predicate = NSPredicate(format: "age > 30")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -790,14 +790,14 @@ class FetchedResultsControllerTests : XCTestCase {
         XCTAssertEqual(controller.fetchedObjects.count, oldFetchedObjects.count - 1, "Expected decrease in object count.")
         XCTAssertEqual(controller.sections[0].objects.count, oldSectionObjects.count - 1, "Expected decrease in section object count.")
         
-        let deletedFetchedObjects = oldFetchedObjects.subtract(controller.fetchedObjects)
-        let deletedSectionObjects = oldSectionObjects.subtract(controller.sections[0].objects)
+        let deletedFetchedObjects = oldFetchedObjects.subtracting(controller.fetchedObjects)
+        let deletedSectionObjects = oldSectionObjects.subtracting(controller.sections[0].objects)
         
         XCTAssertEqual(deletedFetchedObjects, Set([deletedObject]), "Expected object was present in fetched objects list.")
         XCTAssertEqual(deletedSectionObjects, Set([deletedObject]), "Expected object was present in section objects list.")
         
         switch changes.removeFirst() {
-        case .Delete(object: deletedObject, indexPath: NSIndexPath(forRow: 0, inSection: 0)):
+        case .delete(object: deletedObject, indexPath: IndexPath(row: 0, section: 0)):
             break
         default:
             XCTFail("Incorrect change.")
@@ -811,13 +811,13 @@ class FetchedResultsControllerTests : XCTestCase {
 
     func testDeleteItemNotMatchingPredicate() {
         // Make a fetch request with a predicate, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.predicate = NSPredicate(format: "age > 30")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -845,12 +845,12 @@ class FetchedResultsControllerTests : XCTestCase {
         try! managedObjectContext.save()
 
         // Make a fetch request, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -866,19 +866,19 @@ class FetchedResultsControllerTests : XCTestCase {
         XCTAssertEqual(controller.fetchedObjects.count, oldFetchedObjects.count - 1, "Expected decrease in object count.")
         XCTAssertEqual(controller.sections.count, oldSectionCount - 1, "Expected decrease in section count.")
         
-        let deletedFetchedObjects = oldFetchedObjects.subtract(controller.fetchedObjects)
+        let deletedFetchedObjects = oldFetchedObjects.subtracting(controller.fetchedObjects)
         
         XCTAssertEqual(deletedFetchedObjects, Set([deletedObject]), "Expected object was present in fetched objects list.")
         
         switch changes.removeFirst() {
-        case .Delete(object: deletedObject, indexPath: NSIndexPath(forRow: 0, inSection: 2)):
+        case .delete(object: deletedObject, indexPath: IndexPath(row: 0, section: 2)):
             break
         default:
             XCTFail("Incorrect change.")
         }
         
         switch changes.removeFirst() {
-        case .DeleteSection(sectionInfo: _, index: 2):
+        case .deleteSection(sectionInfo: _, index: 2):
             break
         default:
             XCTFail("Incorrect change.")
@@ -897,12 +897,12 @@ class FetchedResultsControllerTests : XCTestCase {
         try! managedObjectContext.save()
         
         // Make a fetch request, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -919,15 +919,15 @@ class FetchedResultsControllerTests : XCTestCase {
         XCTAssertEqual(controller.fetchedObjects.count, oldFetchedObjects.count - 2, "Expected decrease in object count.")
         XCTAssertEqual(controller.sections.count, oldSectionCount - 1, "Expected decrease in section count.")
         
-        let deletedFetchedObjects = oldFetchedObjects.subtract(controller.fetchedObjects)
+        let deletedFetchedObjects = oldFetchedObjects.subtracting(controller.fetchedObjects)
         
         XCTAssertEqual(deletedFetchedObjects, Set([deletedObject1, deletedObject2]), "Expected object was present in fetched objects list.")
         
         for _ in 0..<2 {
             switch changes.removeFirst() {
-            case .Delete(object: deletedObject1, indexPath: NSIndexPath(forRow: 0, inSection: 2)):
+            case .delete(object: deletedObject1, indexPath: IndexPath(row: 0, section: 2)):
                 break
-            case .Delete(object: deletedObject2, indexPath: NSIndexPath(forRow: 1, inSection: 2)):
+            case .delete(object: deletedObject2, indexPath: IndexPath(row: 1, section: 2)):
                 break
             default:
                 XCTFail("Incorrect change.")
@@ -935,7 +935,7 @@ class FetchedResultsControllerTests : XCTestCase {
         }
     
         switch changes.removeFirst() {
-        case .DeleteSection(sectionInfo: _, index: 2):
+        case .deleteSection(sectionInfo: _, index: 2):
             break
         default:
             XCTFail("Incorrect change.")
@@ -949,9 +949,9 @@ class FetchedResultsControllerTests : XCTestCase {
     
     func testDeleteOtherItem() {
         // Create an item of the other type so we have something to delete.
-        let entity = NSEntityDescription.entityForName("NPC", inManagedObjectContext: managedObjectContext)!
+        let entity = NSEntityDescription.entity(forEntityName: "NPC", in: managedObjectContext)!
         
-        let object = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedObjectContext)
+        let object = NSManagedObject(entity: entity, insertInto: managedObjectContext)
         object.setValue("Jordan", forKey: "name")
         object.setValue(30, forKey: "age")
         object.setValue(0, forKey: "sex")
@@ -959,12 +959,12 @@ class FetchedResultsControllerTests : XCTestCase {
         try! managedObjectContext.save()
 
         // Make a fetch request, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -974,7 +974,7 @@ class FetchedResultsControllerTests : XCTestCase {
         let oldFetchedObjects = Set(controller.fetchedObjects)
         let oldSectionObjects = Set(controller.sections[1].objects)
         
-        managedObjectContext.deleteObject(object)
+        managedObjectContext.delete(object)
         try! managedObjectContext.save()
         
         XCTAssertEqual(controller.fetchedObjects.count, oldFetchedObjects.count, "Expected no change in object count.")
@@ -990,12 +990,12 @@ class FetchedResultsControllerTests : XCTestCase {
 
     func testMoveItemWithinSection() {
         // Make a fetch request, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -1006,7 +1006,7 @@ class FetchedResultsControllerTests : XCTestCase {
         try! managedObjectContext.save()
         
         switch changes.removeFirst() {
-        case .Move(object: sampleObjects["Shane"]!, indexPath: NSIndexPath(forRow: 0, inSection: 0), newIndexPath: NSIndexPath(forRow: 1, inSection: 0)):
+        case .move(object: sampleObjects["Shane"]!, indexPath: IndexPath(row: 0, section: 0), newIndexPath: IndexPath(row: 1, section: 0)):
             break
         default:
             XCTFail("Incorrect change.")
@@ -1020,12 +1020,12 @@ class FetchedResultsControllerTests : XCTestCase {
 
     func testMoveTwoItemsWithinSection() {
         // Make a fetch request, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -1038,9 +1038,9 @@ class FetchedResultsControllerTests : XCTestCase {
         
         for _ in 0..<2 {
             switch changes.removeFirst() {
-            case .Move(object: sampleObjects["Shane"]!, indexPath: NSIndexPath(forRow: 0, inSection: 0), newIndexPath: NSIndexPath(forRow: 2, inSection: 0)):
+            case .move(object: sampleObjects["Shane"]!, indexPath: IndexPath(row: 0, section: 0), newIndexPath: IndexPath(row: 2, section: 0)):
                 break
-            case .Move(object: sampleObjects["Scott"]!, indexPath: NSIndexPath(forRow: 1, inSection: 0), newIndexPath: NSIndexPath(forRow: 1, inSection: 0)):
+            case .move(object: sampleObjects["Scott"]!, indexPath: IndexPath(row: 1, section: 0), newIndexPath: IndexPath(row: 1, section: 0)):
                 break
             default:
                 XCTFail("Incorrect change.")
@@ -1055,12 +1055,12 @@ class FetchedResultsControllerTests : XCTestCase {
 
     func testMoveItemWithinSectionWithoutKeys() {
         // Make a fetch request, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes; don't use section keys tough.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: nil, handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: nil, handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -1071,7 +1071,7 @@ class FetchedResultsControllerTests : XCTestCase {
         try! managedObjectContext.save()
         
         switch changes.removeFirst() {
-        case .Move(object: sampleObjects["Shane"]!, indexPath: NSIndexPath(forRow: 0, inSection: 0), newIndexPath: NSIndexPath(forRow: 1, inSection: 0)):
+        case .move(object: sampleObjects["Shane"]!, indexPath: IndexPath(row: 0, section: 0), newIndexPath: IndexPath(row: 1, section: 0)):
             break
         default:
             XCTFail("Incorrect change.")
@@ -1085,12 +1085,12 @@ class FetchedResultsControllerTests : XCTestCase {
 
     func testMoveItemBetweenSections() {
         // Make a fetch request, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -1101,7 +1101,7 @@ class FetchedResultsControllerTests : XCTestCase {
         try! managedObjectContext.save()
         
         switch changes.removeFirst() {
-        case .Move(object: sampleObjects["Shane"]!, indexPath: NSIndexPath(forRow: 0, inSection: 0), newIndexPath: NSIndexPath(forRow: 1, inSection: 1)):
+        case .move(object: sampleObjects["Shane"]!, indexPath: IndexPath(row: 0, section: 0), newIndexPath: IndexPath(row: 1, section: 1)):
             break
         default:
             XCTFail("Incorrect change.")
@@ -1115,12 +1115,12 @@ class FetchedResultsControllerTests : XCTestCase {
 
     func testMoveTwoItemsBetweenSections() {
         // Make a fetch request, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -1133,9 +1133,9 @@ class FetchedResultsControllerTests : XCTestCase {
         
         for _ in 0..<2 {
             switch changes.removeFirst() {
-            case .Move(object: sampleObjects["Shane"]!, indexPath: NSIndexPath(forRow: 0, inSection: 0), newIndexPath: NSIndexPath(forRow: 1, inSection: 1)):
+            case .move(object: sampleObjects["Shane"]!, indexPath: IndexPath(row: 0, section: 0), newIndexPath: IndexPath(row: 1, section: 1)):
                 break
-            case .Move(object: sampleObjects["Tague"]!, indexPath: NSIndexPath(forRow: 2, inSection: 0), newIndexPath: NSIndexPath(forRow: 4, inSection: 1)):
+            case .move(object: sampleObjects["Tague"]!, indexPath: IndexPath(row: 2, section: 0), newIndexPath: IndexPath(row: 4, section: 1)):
                 break
             default:
                 XCTFail("Incorrect change.")
@@ -1150,12 +1150,12 @@ class FetchedResultsControllerTests : XCTestCase {
 
     func testMoveItemBetweenSectionsWithoutKeys() {
         // Make a fetch request, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes; but don't use section keys.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: nil, handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: nil, handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -1166,7 +1166,7 @@ class FetchedResultsControllerTests : XCTestCase {
         try! managedObjectContext.save()
         
         switch changes.removeFirst() {
-        case .Move(object: sampleObjects["Shane"]!, indexPath: NSIndexPath(forRow: 0, inSection: 0), newIndexPath: NSIndexPath(forRow: 1, inSection: 1)):
+        case .move(object: sampleObjects["Shane"]!, indexPath: IndexPath(row: 0, section: 0), newIndexPath: IndexPath(row: 1, section: 1)):
             break
         default:
             XCTFail("Incorrect change.")
@@ -1180,12 +1180,12 @@ class FetchedResultsControllerTests : XCTestCase {
 
     func testMoveTwoItemsSwappingSections() {
         // Make a fetch request, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -1198,9 +1198,9 @@ class FetchedResultsControllerTests : XCTestCase {
         
         for _ in 0..<2 {
             switch changes.removeFirst() {
-            case .Move(object: sampleObjects["Shane"]!, indexPath: NSIndexPath(forRow: 0, inSection: 0), newIndexPath: NSIndexPath(forRow: 1, inSection: 1)):
+            case .move(object: sampleObjects["Shane"]!, indexPath: IndexPath(row: 0, section: 0), newIndexPath: IndexPath(row: 1, section: 1)):
                 break
-            case .Move(object: sampleObjects["Jinger"]!, indexPath: NSIndexPath(forRow: 1, inSection: 1), newIndexPath: NSIndexPath(forRow: 0, inSection: 0)):
+            case .move(object: sampleObjects["Jinger"]!, indexPath: IndexPath(row: 1, section: 1), newIndexPath: IndexPath(row: 0, section: 0)):
                 break
             default:
                 XCTFail("Incorrect change.")
@@ -1219,12 +1219,12 @@ class FetchedResultsControllerTests : XCTestCase {
         try! managedObjectContext.save()
 
         // Make a fetch request, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -1236,14 +1236,14 @@ class FetchedResultsControllerTests : XCTestCase {
         try! managedObjectContext.save()
         
         switch changes.removeFirst() {
-        case .DeleteSection(sectionInfo: _, index: 2):
+        case .deleteSection(sectionInfo: _, index: 2):
             break
         default:
             XCTFail("Incorrect change.")
         }
 
         switch changes.removeFirst() {
-        case .Move(object: movedObject, indexPath: NSIndexPath(forRow: 0, inSection: 2), newIndexPath: NSIndexPath(forRow: 1, inSection: 1)):
+        case .move(object: movedObject, indexPath: IndexPath(row: 0, section: 2), newIndexPath: IndexPath(row: 1, section: 1)):
             break
         default:
             XCTFail("Incorrect change.")
@@ -1262,12 +1262,12 @@ class FetchedResultsControllerTests : XCTestCase {
         try! managedObjectContext.save()
         
         // Make a fetch request, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -1280,7 +1280,7 @@ class FetchedResultsControllerTests : XCTestCase {
         try! managedObjectContext.save()
         
         switch changes.removeFirst() {
-        case .DeleteSection(sectionInfo: _, index: 2):
+        case .deleteSection(sectionInfo: _, index: 2):
             break
         default:
             XCTFail("Incorrect change.")
@@ -1288,9 +1288,9 @@ class FetchedResultsControllerTests : XCTestCase {
         
         for _ in 0..<2 {
             switch changes.removeFirst() {
-            case .Move(object: movedObject1, indexPath: NSIndexPath(forRow: 0, inSection: 2), newIndexPath: NSIndexPath(forRow: 1, inSection: 1)):
+            case .move(object: movedObject1, indexPath: IndexPath(row: 0, section: 2), newIndexPath: IndexPath(row: 1, section: 1)):
                 break
-            case .Move(object: movedObject2, indexPath: NSIndexPath(forRow: 1, inSection: 2), newIndexPath: NSIndexPath(forRow: 4, inSection: 1)):
+            case .move(object: movedObject2, indexPath: IndexPath(row: 1, section: 2), newIndexPath: IndexPath(row: 4, section: 1)):
                 break
             default:
                 XCTFail("Incorrect change.")
@@ -1305,12 +1305,12 @@ class FetchedResultsControllerTests : XCTestCase {
 
     func testMoveItemIntoNewSection() {
         // Make a fetch request, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -1321,14 +1321,14 @@ class FetchedResultsControllerTests : XCTestCase {
         try! managedObjectContext.save()
         
         switch changes.removeFirst() {
-        case .InsertSection(sectionInfo: _, newIndex: 2):
+        case .insertSection(sectionInfo: _, newIndex: 2):
             break
         default:
             XCTFail("Incorrect change.")
         }
         
         switch changes.removeFirst() {
-        case .Move(object: sampleObjects["Tague"]!, indexPath: NSIndexPath(forRow: 2, inSection: 0), newIndexPath: NSIndexPath(forRow: 0, inSection: 2)):
+        case .move(object: sampleObjects["Tague"]!, indexPath: IndexPath(row: 2, section: 0), newIndexPath: IndexPath(row: 0, section: 2)):
             break
         default:
             XCTFail("Incorrect change.")
@@ -1342,12 +1342,12 @@ class FetchedResultsControllerTests : XCTestCase {
     
     func testMoveTwoItemsIntoNewSection() {
         // Make a fetch request, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -1359,7 +1359,7 @@ class FetchedResultsControllerTests : XCTestCase {
         try! managedObjectContext.save()
         
         switch changes.removeFirst() {
-        case .InsertSection(sectionInfo: _, newIndex: 2):
+        case .insertSection(sectionInfo: _, newIndex: 2):
             break
         default:
             XCTFail("Incorrect change.")
@@ -1367,9 +1367,9 @@ class FetchedResultsControllerTests : XCTestCase {
         
         for _ in 0..<2 {
             switch changes.removeFirst() {
-            case .Move(object: sampleObjects["Tague"]!, indexPath: NSIndexPath(forRow: 2, inSection: 0), newIndexPath: NSIndexPath(forRow: 1, inSection: 2)):
+            case .move(object: sampleObjects["Tague"]!, indexPath: IndexPath(row: 2, section: 0), newIndexPath: IndexPath(row: 1, section: 2)):
                 break
-            case .Move(object: sampleObjects["Shane"]!, indexPath: NSIndexPath(forRow: 0, inSection: 0), newIndexPath: NSIndexPath(forRow: 0, inSection: 2)):
+            case .move(object: sampleObjects["Shane"]!, indexPath: IndexPath(row: 0, section: 0), newIndexPath: IndexPath(row: 0, section: 2)):
                 break
             default:
                 XCTFail("Incorrect change.")
@@ -1388,12 +1388,12 @@ class FetchedResultsControllerTests : XCTestCase {
         try! managedObjectContext.save()
         
         // Make a fetch request, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -1405,21 +1405,21 @@ class FetchedResultsControllerTests : XCTestCase {
         try! managedObjectContext.save()
         
         switch changes.removeFirst() {
-        case .DeleteSection(sectionInfo: _, index: 2):
+        case .deleteSection(sectionInfo: _, index: 2):
             break
         default:
             XCTFail("Incorrect change.")
         }
         
         switch changes.removeFirst() {
-        case .InsertSection(sectionInfo: _, newIndex: 0):
+        case .insertSection(sectionInfo: _, newIndex: 0):
             break
         default:
             XCTFail("Incorrect change.")
         }
         
         switch changes.removeFirst() {
-        case .Move(object: movedObject, indexPath: NSIndexPath(forRow: 0, inSection: 2), newIndexPath: NSIndexPath(forRow: 0, inSection: 0)):
+        case .move(object: movedObject, indexPath: IndexPath(row: 0, section: 2), newIndexPath: IndexPath(row: 0, section: 0)):
             break
         default:
             XCTFail("Incorrect change.")
@@ -1438,12 +1438,12 @@ class FetchedResultsControllerTests : XCTestCase {
         try! managedObjectContext.save()
         
         // Make a fetch request, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -1456,14 +1456,14 @@ class FetchedResultsControllerTests : XCTestCase {
         try! managedObjectContext.save()
         
         switch changes.removeFirst() {
-        case .DeleteSection(sectionInfo: _, index: 2):
+        case .deleteSection(sectionInfo: _, index: 2):
             break
         default:
             XCTFail("Incorrect change.")
         }
         
         switch changes.removeFirst() {
-        case .InsertSection(sectionInfo: _, newIndex: 0):
+        case .insertSection(sectionInfo: _, newIndex: 0):
             break
         default:
             XCTFail("Incorrect change.")
@@ -1471,9 +1471,9 @@ class FetchedResultsControllerTests : XCTestCase {
         
         for _ in 0..<2 {
             switch changes.removeFirst() {
-            case .Move(object: movedObject1, indexPath: NSIndexPath(forRow: 0, inSection: 2), newIndexPath: NSIndexPath(forRow: 0, inSection: 0)):
+            case .move(object: movedObject1, indexPath: IndexPath(row: 0, section: 2), newIndexPath: IndexPath(row: 0, section: 0)):
                 break
-            case .Move(object: movedObject2, indexPath: NSIndexPath(forRow: 1, inSection: 2), newIndexPath: NSIndexPath(forRow: 1, inSection: 0)):
+            case .move(object: movedObject2, indexPath: IndexPath(row: 1, section: 2), newIndexPath: IndexPath(row: 1, section: 0)):
                 break
             default:
                 XCTFail("Incorrect change.")
@@ -1492,12 +1492,12 @@ class FetchedResultsControllerTests : XCTestCase {
         try! managedObjectContext.save()
         
         // Make a fetch request, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -1509,21 +1509,21 @@ class FetchedResultsControllerTests : XCTestCase {
         try! managedObjectContext.save()
         
         switch changes.removeFirst() {
-        case .DeleteSection(sectionInfo: _, index: 2):
+        case .deleteSection(sectionInfo: _, index: 2):
             break
         default:
             XCTFail("Incorrect change.")
         }
         
         switch changes.removeFirst() {
-        case .InsertSection(sectionInfo: _, newIndex: 2):
+        case .insertSection(sectionInfo: _, newIndex: 2):
             break
         default:
             XCTFail("Incorrect change.")
         }
         
         switch changes.removeFirst() {
-        case .Move(object: movedObject, indexPath: NSIndexPath(forRow: 0, inSection: 2), newIndexPath: NSIndexPath(forRow: 0, inSection: 2)):
+        case .move(object: movedObject, indexPath: IndexPath(row: 0, section: 2), newIndexPath: IndexPath(row: 0, section: 2)):
             break
         default:
             XCTFail("Incorrect change.")
@@ -1542,12 +1542,12 @@ class FetchedResultsControllerTests : XCTestCase {
         try! managedObjectContext.save()
         
         // Make a fetch request, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -1560,14 +1560,14 @@ class FetchedResultsControllerTests : XCTestCase {
         try! managedObjectContext.save()
         
         switch changes.removeFirst() {
-        case .DeleteSection(sectionInfo: _, index: 2):
+        case .deleteSection(sectionInfo: _, index: 2):
             break
         default:
             XCTFail("Incorrect change.")
         }
         
         switch changes.removeFirst() {
-        case .InsertSection(sectionInfo: _, newIndex: 2):
+        case .insertSection(sectionInfo: _, newIndex: 2):
             break
         default:
             XCTFail("Incorrect change.")
@@ -1575,9 +1575,9 @@ class FetchedResultsControllerTests : XCTestCase {
         
         for _ in 0..<2 {
             switch changes.removeFirst() {
-            case .Move(object: movedObject1, indexPath: NSIndexPath(forRow: 0, inSection: 2), newIndexPath: NSIndexPath(forRow: 0, inSection: 2)):
+            case .move(object: movedObject1, indexPath: IndexPath(row: 0, section: 2), newIndexPath: IndexPath(row: 0, section: 2)):
                 break
-            case .Move(object: movedObject2, indexPath: NSIndexPath(forRow: 1, inSection: 2), newIndexPath: NSIndexPath(forRow: 1, inSection: 2)):
+            case .move(object: movedObject2, indexPath: IndexPath(row: 1, section: 2), newIndexPath: IndexPath(row: 1, section: 2)):
                 break
             default:
                 XCTFail("Incorrect change.")
@@ -1592,12 +1592,12 @@ class FetchedResultsControllerTests : XCTestCase {
     
     func testMoveItemWithinAndBetweenSections() {
         // Make a fetch request, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -1609,7 +1609,7 @@ class FetchedResultsControllerTests : XCTestCase {
         try! managedObjectContext.save()
         
         switch changes.removeFirst() {
-        case .Move(object: sampleObjects["Shane"]!, indexPath: NSIndexPath(forRow: 0, inSection: 0), newIndexPath: NSIndexPath(forRow: 3, inSection: 1)):
+        case .move(object: sampleObjects["Shane"]!, indexPath: IndexPath(row: 0, section: 0), newIndexPath: IndexPath(row: 3, section: 1)):
             break
         default:
             XCTFail("Incorrect change.")
@@ -1623,12 +1623,12 @@ class FetchedResultsControllerTests : XCTestCase {
 
     func testMoveThatDoesntMove() {
         // Make a fetch request, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -1639,7 +1639,7 @@ class FetchedResultsControllerTests : XCTestCase {
         try! managedObjectContext.save()
         
         switch changes.removeFirst() {
-        case .Move(object: sampleObjects["Shane"]!, indexPath: NSIndexPath(forRow: 0, inSection: 0), newIndexPath: NSIndexPath(forRow: 0, inSection: 0)):
+        case .move(object: sampleObjects["Shane"]!, indexPath: IndexPath(row: 0, section: 0), newIndexPath: IndexPath(row: 0, section: 0)):
             break
         default:
             XCTFail("Incorrect change.")
@@ -1653,9 +1653,9 @@ class FetchedResultsControllerTests : XCTestCase {
    
     func testMoveOtherItemBySortKey() {
         // Create an item of the other type so we have something to move.
-        let entity = NSEntityDescription.entityForName("NPC", inManagedObjectContext: managedObjectContext)!
+        let entity = NSEntityDescription.entity(forEntityName: "NPC", in: managedObjectContext)!
         
-        let object = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedObjectContext)
+        let object = NSManagedObject(entity: entity, insertInto: managedObjectContext)
         object.setValue("Jordan", forKey: "name")
         object.setValue(30, forKey: "age")
         object.setValue(0, forKey: "sex")
@@ -1663,12 +1663,12 @@ class FetchedResultsControllerTests : XCTestCase {
         try! managedObjectContext.save()
 
         // Make a fetch request, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -1686,9 +1686,9 @@ class FetchedResultsControllerTests : XCTestCase {
 
     func testMoveOtherItemBySectionKey() {
         // Create an item of the other type so we have something to move.
-        let entity = NSEntityDescription.entityForName("NPC", inManagedObjectContext: managedObjectContext)!
+        let entity = NSEntityDescription.entity(forEntityName: "NPC", in: managedObjectContext)!
         
-        let object = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedObjectContext)
+        let object = NSManagedObject(entity: entity, insertInto: managedObjectContext)
         object.setValue("Jordan", forKey: "name")
         object.setValue(30, forKey: "age")
         object.setValue(0, forKey: "sex")
@@ -1696,12 +1696,12 @@ class FetchedResultsControllerTests : XCTestCase {
         try! managedObjectContext.save()
         
         // Make a fetch request, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -1721,12 +1721,12 @@ class FetchedResultsControllerTests : XCTestCase {
     
     func testUpdateItem() {
         // Make a fetch request, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -1737,7 +1737,7 @@ class FetchedResultsControllerTests : XCTestCase {
         try! managedObjectContext.save()
         
         switch changes.removeFirst() {
-        case .Update(object: sampleObjects["Shane"]!, indexPath: NSIndexPath(forRow: 0, inSection: 0)):
+        case .update(object: sampleObjects["Shane"]!, indexPath: IndexPath(row: 0, section: 0)):
             break
         default:
             XCTFail("Incorrect change.")
@@ -1751,12 +1751,12 @@ class FetchedResultsControllerTests : XCTestCase {
 
     func testUpdateItemWithoutKeys() {
         // Make a fetch request, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes; don't use section keys.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: nil, handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: nil, handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -1767,7 +1767,7 @@ class FetchedResultsControllerTests : XCTestCase {
         try! managedObjectContext.save()
         
         switch changes.removeFirst() {
-        case .Update(object: sampleObjects["Shane"]!, indexPath: NSIndexPath(forRow: 0, inSection: 0)):
+        case .update(object: sampleObjects["Shane"]!, indexPath: IndexPath(row: 0, section: 0)):
             break
         default:
             XCTFail("Incorrect change.")
@@ -1792,13 +1792,13 @@ class FetchedResultsControllerTests : XCTestCase {
     
     func testChangePredicateWithoutNotification() {
         // Make a fetch request with a predicate, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.predicate = NSPredicate(format: "age > 30")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
 
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect the matching subset of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -1816,13 +1816,13 @@ class FetchedResultsControllerTests : XCTestCase {
     
     func testNotifyInsertAtStartChange() {
         // Make a fetch request with a predicate, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.predicate = NSPredicate(format: "age > 30")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect the matching subset of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -1835,9 +1835,9 @@ class FetchedResultsControllerTests : XCTestCase {
         
         for _ in 0..<2 {
             switch changes.removeFirst() {
-            case .Insert(object: sampleObjects["Shane"]!, newIndexPath: NSIndexPath(forRow: 0, inSection: 0)):
+            case .insert(object: sampleObjects["Shane"]!, newIndexPath: IndexPath(row: 0, section: 0)):
                 break
-            case .Insert(object: sampleObjects["Jinger"]!, newIndexPath: NSIndexPath(forRow: 0, inSection: 1)):
+            case .insert(object: sampleObjects["Jinger"]!, newIndexPath: IndexPath(row: 0, section: 1)):
                 break
             default:
                 XCTFail("Incorrect change.")
@@ -1851,13 +1851,13 @@ class FetchedResultsControllerTests : XCTestCase {
 
     func testNotifyInsertAtEndChange() {
         // Make a fetch request with a predicate, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.predicate = NSPredicate(format: "age < 35")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect the matching subset of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -1870,9 +1870,9 @@ class FetchedResultsControllerTests : XCTestCase {
         
         for _ in 0..<2 {
             switch changes.removeFirst() {
-            case .Insert(object: sampleObjects["Scott"]!, newIndexPath: NSIndexPath(forRow: 1, inSection: 0)):
+            case .insert(object: sampleObjects["Scott"]!, newIndexPath: IndexPath(row: 1, section: 0)):
                 break
-            case .Insert(object: sampleObjects["Tague"]!, newIndexPath: NSIndexPath(forRow: 2, inSection: 0)):
+            case .insert(object: sampleObjects["Tague"]!, newIndexPath: IndexPath(row: 2, section: 0)):
                 break
             default:
                 XCTFail("Incorrect change.")
@@ -1886,13 +1886,13 @@ class FetchedResultsControllerTests : XCTestCase {
 
     func testNotifyDeleteFromStartChange() {
         // Make a fetch request with a predicate, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.predicate = NSPredicate(format: "age > 20")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect the matching subset of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -1905,9 +1905,9 @@ class FetchedResultsControllerTests : XCTestCase {
         
         for _ in 0..<2 {
             switch changes.removeFirst() {
-            case .Delete(object: sampleObjects["Shane"]!, indexPath: NSIndexPath(forRow: 0, inSection: 0)):
+            case .delete(object: sampleObjects["Shane"]!, indexPath: IndexPath(row: 0, section: 0)):
                 break
-            case .Delete(object: sampleObjects["Jinger"]!, indexPath: NSIndexPath(forRow: 0, inSection: 1)):
+            case .delete(object: sampleObjects["Jinger"]!, indexPath: IndexPath(row: 0, section: 1)):
                 break
             default:
                 XCTFail("Incorrect change.")
@@ -1921,13 +1921,13 @@ class FetchedResultsControllerTests : XCTestCase {
 
     func testNotifyDeleteFromEndChange() {
         // Make a fetch request with a predicate, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.predicate = NSPredicate(format: "age < 50")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect the matching subset of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -1940,9 +1940,9 @@ class FetchedResultsControllerTests : XCTestCase {
         
         for _ in 0..<2 {
             switch changes.removeFirst() {
-            case .Delete(object: sampleObjects["Scott"]!, indexPath: NSIndexPath(forRow: 1, inSection: 0)):
+            case .delete(object: sampleObjects["Scott"]!, indexPath: IndexPath(row: 1, section: 0)):
                 break
-            case .Delete(object: sampleObjects["Tague"]!, indexPath: NSIndexPath(forRow: 2, inSection: 0)):
+            case .delete(object: sampleObjects["Tague"]!, indexPath: IndexPath(row: 2, section: 0)):
                 break
             default:
                 XCTFail("Incorrect change.")
@@ -1956,25 +1956,25 @@ class FetchedResultsControllerTests : XCTestCase {
 
     func testNotifyInsertSectionChange() {
         // Make a fetch request, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, place all of the results in a single section, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { _ in 0 }, sectionKeys: nil, handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { _ in 0 }, sectionKeys: nil, handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, in a single section.
         checkResults(controller, predicate: fetchRequest.predicate, sortDescriptors: fetchRequest.sortDescriptors, sections: [ (0, nil) ])
         
         // Change the sectioning key to instead place everything in the same section, and then call perform fetch again, with notification. Expect all objects in the one section, and notification of moves and deletion of the extra section.
-        controller.sectionForObject = { $0.valueForKey("sex")!.integerValue }
+        controller.sectionForObject = { $0.value(forKey: "sex")!.intValue }
         controller.sectionKeys = ["sex"]
         
         try! controller.performFetch(notifyChanges: true)
         
         switch changes.removeFirst() {
-        case .InsertSection(sectionInfo: _, newIndex: 1):
+        case .insertSection(sectionInfo: _, newIndex: 1):
             break
         default:
             XCTFail("Incorrect change.")
@@ -1982,11 +1982,11 @@ class FetchedResultsControllerTests : XCTestCase {
         
         for _ in 0..<3 {
             switch changes.removeFirst() {
-            case .Move(object: sampleObjects["Caitlin"]!, indexPath: NSIndexPath(forRow: 0, inSection: 0), newIndexPath: NSIndexPath(forRow: 0, inSection: 1)):
+            case .move(object: sampleObjects["Caitlin"]!, indexPath: IndexPath(row: 0, section: 0), newIndexPath: IndexPath(row: 0, section: 1)):
                 break
-            case .Move(object: sampleObjects["Jinger"]!, indexPath: NSIndexPath(forRow: 2, inSection: 0), newIndexPath: NSIndexPath(forRow: 1, inSection: 1)):
+            case .move(object: sampleObjects["Jinger"]!, indexPath: IndexPath(row: 2, section: 0), newIndexPath: IndexPath(row: 1, section: 1)):
                 break
-            case .Move(object: sampleObjects["Sam"]!, indexPath: NSIndexPath(forRow: 3, inSection: 0), newIndexPath: NSIndexPath(forRow: 2, inSection: 1)):
+            case .move(object: sampleObjects["Sam"]!, indexPath: IndexPath(row: 3, section: 0), newIndexPath: IndexPath(row: 2, section: 1)):
                 break
             default:
                 XCTFail("Incorrect change.")
@@ -2000,12 +2000,12 @@ class FetchedResultsControllerTests : XCTestCase {
     
     func testNotifyDeleteSectionChange() {
         // Make a fetch request, provide sort descriptors to make the test results consistent.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect the matching subset of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -2018,7 +2018,7 @@ class FetchedResultsControllerTests : XCTestCase {
         try! controller.performFetch(notifyChanges: true)
         
         switch changes.removeFirst() {
-        case .DeleteSection(sectionInfo: _, index: 1):
+        case .deleteSection(sectionInfo: _, index: 1):
             break
         default:
             XCTFail("Incorrect change.")
@@ -2026,11 +2026,11 @@ class FetchedResultsControllerTests : XCTestCase {
         
         for _ in 0..<3 {
             switch changes.removeFirst() {
-            case .Move(object: sampleObjects["Caitlin"]!, indexPath: NSIndexPath(forRow: 0, inSection: 1), newIndexPath: NSIndexPath(forRow: 0, inSection: 0)):
+            case .move(object: sampleObjects["Caitlin"]!, indexPath: IndexPath(row: 0, section: 1), newIndexPath: IndexPath(row: 0, section: 0)):
                 break
-            case .Move(object: sampleObjects["Jinger"]!, indexPath: NSIndexPath(forRow: 1, inSection: 1), newIndexPath: NSIndexPath(forRow: 2, inSection: 0)):
+            case .move(object: sampleObjects["Jinger"]!, indexPath: IndexPath(row: 1, section: 1), newIndexPath: IndexPath(row: 2, section: 0)):
                 break
-            case .Move(object: sampleObjects["Sam"]!, indexPath: NSIndexPath(forRow: 2, inSection: 1), newIndexPath: NSIndexPath(forRow: 3, inSection: 0)):
+            case .move(object: sampleObjects["Sam"]!, indexPath: IndexPath(row: 2, section: 1), newIndexPath: IndexPath(row: 3, section: 0)):
                 break
             default:
                 XCTFail("Incorrect change.")
@@ -2044,12 +2044,12 @@ class FetchedResultsControllerTests : XCTestCase {
     
     func testNotifyMoveChange() {
         // Make a fetch request, provide sort descriptors to use to force movement.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex, and collect changes.
         var changes: [FetchedResultsChange<Int, NSManagedObject>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: { changes.append(contentsOf: $0) })
         try! controller.performFetch()
         
         // Expect all of the objects to be returned in the right order, divided into two sections each with a subset of the objects.
@@ -2062,13 +2062,13 @@ class FetchedResultsControllerTests : XCTestCase {
         
         for _ in 0..<4 {
             switch changes.removeFirst() {
-            case .Move(object: sampleObjects["Caitlin"]!, indexPath: NSIndexPath(forRow: 0, inSection: 1), newIndexPath: NSIndexPath(forRow: 2, inSection: 1)):
+            case .move(object: sampleObjects["Caitlin"]!, indexPath: IndexPath(row: 0, section: 1), newIndexPath: IndexPath(row: 2, section: 1)):
                 break
-            case .Move(object: sampleObjects["Sam"]!, indexPath: NSIndexPath(forRow: 2, inSection: 1), newIndexPath: NSIndexPath(forRow: 0, inSection: 1)):
+            case .move(object: sampleObjects["Sam"]!, indexPath: IndexPath(row: 2, section: 1), newIndexPath: IndexPath(row: 0, section: 1)):
                 break
-            case .Move(object: sampleObjects["Shane"]!, indexPath: NSIndexPath(forRow: 0, inSection: 0), newIndexPath: NSIndexPath(forRow: 2, inSection: 0)):
+            case .move(object: sampleObjects["Shane"]!, indexPath: IndexPath(row: 0, section: 0), newIndexPath: IndexPath(row: 2, section: 0)):
                 break
-            case .Move(object: sampleObjects["Tague"]!, indexPath: NSIndexPath(forRow: 2, inSection: 0), newIndexPath: NSIndexPath(forRow: 0, inSection: 0)):
+            case .move(object: sampleObjects["Tague"]!, indexPath: IndexPath(row: 2, section: 0), newIndexPath: IndexPath(row: 0, section: 0)):
                 break
             default:
                 XCTFail("Incorrect change.")
@@ -2084,26 +2084,26 @@ class FetchedResultsControllerTests : XCTestCase {
     
     func testIndexPathOfObject() {
         // Make a fetch request with a predicate and sort descriptors.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.predicate = NSPredicate(format: "age > 30")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex.
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: nil)
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: nil)
         try! controller.performFetch()
         
         // Expect the index path of the object to be correct.
-        XCTAssertEqual(controller.indexPath(of: sampleObjects["Tague"]!), NSIndexPath(forRow: 1, inSection: 0), "Index path of object was incorrect.")
+        XCTAssertEqual(controller.indexPath(of: sampleObjects["Tague"]!), IndexPath(row: 1, section: 0), "Index path of object was incorrect.")
     }
     
     func testIndexPathOfMissingObject() {
         // Make a fetch request with a predicate and sort descriptors.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.predicate = NSPredicate(format: "age > 30")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex.
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: nil)
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: nil)
         try! controller.performFetch()
         
         // Expect the index path of an object not in the results to be nil.
@@ -2112,39 +2112,39 @@ class FetchedResultsControllerTests : XCTestCase {
     
     func testObjectAtIndexPath() {
         // Make a fetch request with a predicate and sort descriptors.
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
         fetchRequest.predicate = NSPredicate(format: "age > 30")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "age", ascending: true) ]
         
         // Create the controller, section the results by sex.
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.valueForKey("sex")!.integerValue }, sectionKeys: ["sex"], handleChanges: nil)
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionForObject: { $0.value(forKey: "sex")!.intValue }, sectionKeys: ["sex"], handleChanges: nil)
         try! controller.performFetch()
         
         // Expect the object at an index path to be correct.
-        XCTAssert(controller.object(at: NSIndexPath(forRow: 1, inSection: 0)) === sampleObjects["Tague"]!, "Object at index path was incorrect.")
+        XCTAssert(controller.object(at: IndexPath(row: 1, section: 0)) === sampleObjects["Tague"]!, "Object at index path was incorrect.")
     }
 
     // MARK: - Performance tests
     
     func testPerformance() {
-        let fetchRequest = NSFetchRequest(entityName: "Monster")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Monster")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "name", ascending: true) ]
         
         var changes: [FetchedResultsChange<Character, DungeonMaster.Monster>] = []
-        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: DungeonMaster.managedObjectContext, sectionForObject: { (monster: DungeonMaster.Monster) -> Character in monster.name.characters[monster.name.startIndex] }, sectionKeys: ["name"], handleChanges: { changes.appendContentsOf($0) })
+        let controller = FetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: DungeonMaster.managedObjectContext, sectionForObject: { (monster: DungeonMaster.Monster) -> Character in monster.name.characters[monster.name.startIndex] }, sectionKeys: ["name"], handleChanges: { changes.append(contentsOf: $0) })
 
-        measureBlock {
+        measure {
             try! controller.performFetch()
         }
     }
 
     func testCoreDataPerformance() {
-        let fetchRequest = NSFetchRequest(entityName: "Monster")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Monster")
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "name", ascending: true) ]
         
         let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: DungeonMaster.managedObjectContext, sectionNameKeyPath: "nameInitial", cacheName: nil)
         
-        measureBlock {
+        measure {
             try! controller.performFetch()
         }
     }

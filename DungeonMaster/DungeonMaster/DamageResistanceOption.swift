@@ -18,17 +18,17 @@ final class DamageResistanceOption : NSManagedObject {
     /// Type of damage that the monster can be resistant to.
     var damageType: DamageType {
         get {
-            return DamageType(rawValue: rawDamageType.integerValue)!
+            return DamageType(rawValue: rawDamageType.intValue)!
         }
         set(newDamageType) {
-            rawDamageType = NSNumber(integer: newDamageType.rawValue)
+            rawDamageType = NSNumber(value: newDamageType.rawValue as Int)
         }
     }
-    @NSManaged private var rawDamageType: NSNumber
+    @NSManaged fileprivate var rawDamageType: NSNumber
     
     convenience init(monster: Monster, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.DamageResistanceOption, inManagedObjectContext: context)
-        self.init(entity: entity, insertIntoManagedObjectContext: context)
+        self.init(entity: entity, insertInto: context)
         
         self.monster = monster
     }

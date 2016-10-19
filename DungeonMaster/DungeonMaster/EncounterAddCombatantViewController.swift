@@ -14,7 +14,7 @@ class EncounterAddCombatantViewController : UIViewController {
     
     var quantity = 1
 
-    var completionBlock: ((cancelled: Bool, monster: Monster?, quantity: Int) -> Void)?
+    var completionBlock: ((_ cancelled: Bool, _ monster: Monster?, _ quantity: Int) -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,21 +27,21 @@ class EncounterAddCombatantViewController : UIViewController {
     var monstersViewController: MonstersViewController!
     var addButtonItem: UIBarButtonItem!
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CompendiumMonstersEmbedSegue" {
-            let splitViewController = segue.destinationViewController as! UISplitViewController
+            let splitViewController = segue.destination as! UISplitViewController
 
             monstersViewController = (splitViewController.viewControllers.first as! UINavigationController).topViewController as! MonstersViewController
             monstersViewController.books = encounter.adventure.books.allObjects as! [Book]
             
-            let cancelButtonItem = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: #selector(cancelButtonTapped(_:)))
+            let cancelButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonTapped(_:)))
             monstersViewController.navigationItem.leftBarButtonItem = cancelButtonItem
             
-            addButtonItem = UIBarButtonItem(title: "Add 1", style: .Done, target: self, action: #selector(addButtonTapped(_:)))
+            addButtonItem = UIBarButtonItem(title: "Add 1", style: .done, target: self, action: #selector(addButtonTapped(_:)))
 
             let stepper = UIStepper()
             stepper.minimumValue = 1.0
-            stepper.addTarget(self, action: #selector(stepperValueChanged(_:)), forControlEvents: .ValueChanged)
+            stepper.addTarget(self, action: #selector(stepperValueChanged(_:)), for: .valueChanged)
             stepper.value = 1.0
             let stepperButtonItem = UIBarButtonItem(customView: stepper)
 
@@ -51,19 +51,19 @@ class EncounterAddCombatantViewController : UIViewController {
 
     // MARK: Actions
     
-    @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
-        completionBlock?(cancelled: true, monster: nil, quantity: 0)
+    @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
+        completionBlock?(true, nil, 0)
     }
 
-    @IBAction func addButtonTapped(sender: UIBarButtonItem) {
+    @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
         // FIXME continued very hacky
         if let indexPath = monstersViewController.tableView.indexPathForSelectedRow {
-            let monster = monstersViewController.fetchedResultsController.objectAtIndexPath(indexPath) as! Monster
+            let monster = monstersViewController.fetchedResultsController.object(at: indexPath) as! Monster
             completionBlock?(cancelled: false, monster: monster, quantity: quantity)
         }
     }
     
-    @IBAction func stepperValueChanged(sender: UIStepper) {
+    @IBAction func stepperValueChanged(_ sender: UIStepper) {
         quantity = Int(sender.value)
         addButtonItem.title = "Add \(quantity)"
     }

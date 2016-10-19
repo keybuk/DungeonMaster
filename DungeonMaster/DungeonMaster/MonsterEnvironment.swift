@@ -18,17 +18,17 @@ final class MonsterEnvironment : NSManagedObject {
     /// The environment in which the monster can be found.
     var environment: Environment {
         get {
-            return Environment(rawValue: rawEnvironment.integerValue)!
+            return Environment(rawValue: rawEnvironment.intValue)!
         }
         set(newEnvironment) {
-            rawEnvironment = NSNumber(integer: newEnvironment.rawValue)
+            rawEnvironment = NSNumber(value: newEnvironment.rawValue as Int)
         }
     }
-    @NSManaged private var rawEnvironment: NSNumber
+    @NSManaged fileprivate var rawEnvironment: NSNumber
     
     convenience init(monster: Monster, environment: Environment, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.MonsterEnvironment, inManagedObjectContext: context)
-        self.init(entity: entity, insertIntoManagedObjectContext: context)
+        self.init(entity: entity, insertInto: context)
         
         self.monster = monster
         self.environment = environment

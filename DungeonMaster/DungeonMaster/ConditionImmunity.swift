@@ -18,17 +18,17 @@ final class ConditionImmunity : NSManagedObject {
     /// Condition that the monster is immune to.
     var condition: Condition {
         get {
-            return Condition(rawValue: rawCondition.integerValue)!
+            return Condition(rawValue: rawCondition.intValue)!
         }
         set(newCondition) {
-            rawCondition = NSNumber(integer: newCondition.rawValue)
+            rawCondition = NSNumber(value: newCondition.rawValue as Int)
         }
     }
-    @NSManaged private var rawCondition: NSNumber
+    @NSManaged fileprivate var rawCondition: NSNumber
     
     convenience init(monster: Monster, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.ConditionImmunity, inManagedObjectContext: context)
-        self.init(entity: entity, insertIntoManagedObjectContext: context)
+        self.init(entity: entity, insertInto: context)
         
         self.monster = monster
     }

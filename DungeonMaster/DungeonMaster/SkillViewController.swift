@@ -21,34 +21,34 @@ class SkillViewController : UITableViewController {
 
     // MARK: UITableViewDataSource
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return Ability.cases.count
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Skill.cases.filter({ $0.rawAbilityValue == section }).count
     }
 
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return Ability(rawValue: section)!.stringValue
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("SkillCell", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SkillCell", for: indexPath)
         
-        let skill = Skill(rawAbilityValue: indexPath.section, rawSkillValue: indexPath.row)!
+        let skill = Skill(rawAbilityValue: (indexPath as NSIndexPath).section, rawSkillValue: (indexPath as NSIndexPath).row)!
 
         cell.textLabel?.text = skill.stringValue
         
         if existingSkills.contains(skill) {
-            cell.accessoryType = .Checkmark
-            cell.textLabel?.enabled = false
+            cell.accessoryType = .checkmark
+            cell.textLabel?.isEnabled = false
         } else if selectedSkills.contains(skill) {
-            cell.accessoryType = .Checkmark
-            cell.textLabel?.enabled = true
+            cell.accessoryType = .checkmark
+            cell.textLabel?.isEnabled = true
         } else {
-            cell.accessoryType = .None
-            cell.textLabel?.enabled = true
+            cell.accessoryType = .none
+            cell.textLabel?.isEnabled = true
         }
 
         return cell
@@ -56,9 +56,9 @@ class SkillViewController : UITableViewController {
     
     // MARK: UITableViewDelegate
     
-    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         // Will select, rather than did, so we update before the exit segue.
-        let skill = Skill(rawAbilityValue: indexPath.section, rawSkillValue: indexPath.row)!
+        let skill = Skill(rawAbilityValue: (indexPath as NSIndexPath).section, rawSkillValue: (indexPath as NSIndexPath).row)!
         if existingSkills.contains(skill) {
             return nil
         } else {
@@ -66,23 +66,23 @@ class SkillViewController : UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let skill = Skill(rawAbilityValue: indexPath.section, rawSkillValue: indexPath.row)!
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let skill = Skill(rawAbilityValue: (indexPath as NSIndexPath).section, rawSkillValue: (indexPath as NSIndexPath).row)!
         if existingSkills.contains(skill) {
             return
-        } else if let index = selectedSkills.indexOf(skill) {
-            selectedSkills.removeAtIndex(index)
-            if let cell = tableView.cellForRowAtIndexPath(indexPath) {
-                cell.accessoryType = .None
+        } else if let index = selectedSkills.index(of: skill) {
+            selectedSkills.remove(at: index)
+            if let cell = tableView.cellForRow(at: indexPath) {
+                cell.accessoryType = .none
             }
         } else {
             selectedSkills.append(skill)
-            if let cell = tableView.cellForRowAtIndexPath(indexPath) {
-                cell.accessoryType = .Checkmark
+            if let cell = tableView.cellForRow(at: indexPath) {
+                cell.accessoryType = .checkmark
             }
         }
 
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }

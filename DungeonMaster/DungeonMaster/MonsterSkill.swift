@@ -20,30 +20,30 @@ final class MonsterSkill : NSManagedObject {
     /// Skill that the monster is proficient in.
     var skill: Skill {
         get {
-            return Skill(rawAbilityValue: rawAbility.integerValue, rawSkillValue: rawSkill.integerValue)!
+            return Skill(rawAbilityValue: rawAbility.intValue, rawSkillValue: rawSkill.intValue)!
         }
         set(newSkill) {
-            rawAbility = NSNumber(integer: newSkill.rawAbilityValue)
-            rawSkill = NSNumber(integer: newSkill.rawSkillValue)
+            rawAbility = NSNumber(value: newSkill.rawAbilityValue as Int)
+            rawSkill = NSNumber(value: newSkill.rawSkillValue as Int)
         }
     }
-    @NSManaged private var rawAbility: NSNumber
-    @NSManaged private var rawSkill: NSNumber
+    @NSManaged fileprivate var rawAbility: NSNumber
+    @NSManaged fileprivate var rawSkill: NSNumber
     
     /// Modifier for this skill.
     var modifier: Int {
         get {
-            return rawModifier.integerValue
+            return rawModifier.intValue
         }
         set(newModifier) {
-            rawModifier = NSNumber(integer: newModifier)
+            rawModifier = NSNumber(value: newModifier as Int)
         }
     }
-    @NSManaged private var rawModifier: NSNumber
+    @NSManaged fileprivate var rawModifier: NSNumber
     
     convenience init(monster: Monster, skill: Skill, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.MonsterSkill, inManagedObjectContext: context)
-        self.init(entity: entity, insertIntoManagedObjectContext: context)
+        self.init(entity: entity, insertInto: context)
         
         self.monster = monster
         self.skill = skill

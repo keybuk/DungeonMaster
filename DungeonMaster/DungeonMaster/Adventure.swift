@@ -15,7 +15,7 @@ import Foundation
 final class Adventure : NSManagedObject {
     
     /// Timestamp when the Adventure object was last modified.
-    @NSManaged var lastModified: NSDate
+    @NSManaged var lastModified: Date
 
     /// Name of the adventure.
     @NSManaged var name: String
@@ -45,21 +45,21 @@ final class Adventure : NSManagedObject {
 
     convenience init(inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Adventure, inManagedObjectContext: context)
-        self.init(entity: entity, insertIntoManagedObjectContext: context)
+        self.init(entity: entity, insertInto: context)
         
         name = ""
         
-        lastModified = NSDate()
+        lastModified = Date()
         image = AdventureImage(adventure: self, inManagedObjectContext: context)
         
-        books = NSSet(array: try! context.executeFetchRequest(NSFetchRequest(entity: Model.Book)) as! [Book])
-        players = NSSet(array: try! context.executeFetchRequest(NSFetchRequest(entity: Model.Player)) as! [Player])
+        books = NSSet(array: try! context.fetch(NSFetchRequest(entity: Model.Book)) )
+        players = NSSet(array: try! context.fetch(NSFetchRequest(entity: Model.Player)) )
     }
 
     // MARK: Validation
     
-    func validateName(ioObject: AutoreleasingUnsafeMutablePointer<AnyObject?>) throws {
-        guard let name = ioObject.memory as? String where name != "" else {
+    func validateName(_ ioObject: AutoreleasingUnsafeMutablePointer<AnyObject?>) throws {
+        guard let name = ioObject.pointee as? String, name != "" else {
             let errorString = "Name can't be empty"
             let userDict = [ NSLocalizedDescriptionKey: errorString ]
             throw NSError(domain: "Adventure", code: NSManagedObjectValidationError, userInfo: userDict)
@@ -67,19 +67,19 @@ final class Adventure : NSManagedObject {
     }
     
     /// Adds `player` to the adventure.
-    func addPlayer(player: Player) {
-        mutableSetValueForKey("players").addObject(player)
+    func addPlayer(_ player: Player) {
+        mutableSetValue(forKey: "players").add(player)
     }
     
     /// Removes `player` from the adventure.
-    func removePlayer(player: Player) {
-        mutableSetValueForKey("players").removeObject(player)
+    func removePlayer(_ player: Player) {
+        mutableSetValue(forKey: "players").remove(player)
     }
 
     /// Adds missing players from `game` to the adventure.
     func addPlayers(fromGame game: Game) {
-        let adventurePlayers = mutableSetValueForKey("players")
-        adventurePlayers.addObjectsFromArray(game.playedGames.map({ ($0 as! PlayedGame).player }))
+        let adventurePlayers = mutableSetValue(forKey: "players")
+        adventurePlayers.addObjects(from: game.playedGames.map({ ($0 as! PlayedGame).player }))
     }
     
 }

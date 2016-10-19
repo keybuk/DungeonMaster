@@ -21,68 +21,68 @@ final class Player : NSManagedObject {
     /// Race of the character.
     var race: Race {
         get {
-            return Race(rawRaceValue: rawRace.integerValue, rawSubraceValue: rawSubrace?.integerValue)!
+            return Race(rawRaceValue: rawRace.intValue, rawSubraceValue: rawSubrace?.intValue)!
         }
         set(newRace) {
-            rawRace = NSNumber(integer: newRace.rawRaceValue)
-            rawSubrace = newRace.rawSubraceValue.map({ NSNumber(integer: $0) })
+            rawRace = NSNumber(value: newRace.rawRaceValue as Int)
+            rawSubrace = newRace.rawSubraceValue.map({ NSNumber(value: $0 as Int) })
         }
     }
-    @NSManaged private var rawRace: NSNumber
-    @NSManaged private var rawSubrace: NSNumber?
+    @NSManaged fileprivate var rawRace: NSNumber
+    @NSManaged fileprivate var rawSubrace: NSNumber?
     
     /// Class of the character.
     var characterClass: CharacterClass {
         get {
-            return CharacterClass(rawValue: rawCharacterClass.integerValue)!
+            return CharacterClass(rawValue: rawCharacterClass.intValue)!
         }
         set(newCharacterClass) {
-            rawCharacterClass = NSNumber(integer: newCharacterClass.rawValue)
+            rawCharacterClass = NSNumber(value: newCharacterClass.rawValue as Int)
         }
     }
-    @NSManaged private var rawCharacterClass: NSNumber
+    @NSManaged fileprivate var rawCharacterClass: NSNumber
     
     /// Background of the character.
     var background: Background {
         get {
-            return Background(rawValue: rawBackground.integerValue)!
+            return Background(rawValue: rawBackground.intValue)!
         }
         set(newBackground) {
-            rawBackground = NSNumber(integer: newBackground.rawValue)
+            rawBackground = NSNumber(value: newBackground.rawValue as Int)
         }
     }
-    @NSManaged private var rawBackground: NSNumber
+    @NSManaged fileprivate var rawBackground: NSNumber
 
     /// Alignment of the character
     var alignment: Alignment {
         get {
-            return Alignment(rawValue: rawAlignment.integerValue)!
+            return Alignment(rawValue: rawAlignment.intValue)!
         }
         set(newAlignment) {
-            rawAlignment = NSNumber(integer: newAlignment.rawValue)
+            rawAlignment = NSNumber(value: newAlignment.rawValue as Int)
         }
     }
-    @NSManaged private var rawAlignment: NSNumber
+    @NSManaged fileprivate var rawAlignment: NSNumber
     
     /// Experience points earned by the character.
     var xp: Int {
         get {
-            return rawXP.integerValue
+            return rawXP.intValue
         }
         set(newXP) {
-            rawXP = NSNumber(integer: newXP)
+            rawXP = NSNumber(value: newXP as Int)
         }
     }
-    @NSManaged private var rawXP: NSNumber
+    @NSManaged fileprivate var rawXP: NSNumber
     
     /// String-formatted version of `xp`.
     ///
     /// Formatted as "12,345 XP".
     var xpString: String {
-        let xpFormatter = NSNumberFormatter()
-        xpFormatter.numberStyle = .DecimalStyle
+        let xpFormatter = NumberFormatter()
+        xpFormatter.numberStyle = .decimal
         
-        let xpString = xpFormatter.stringFromNumber(xp)!
+        let xpString = xpFormatter.string(from: NSNumber(xp))!
         return "\(xpString) XP"
     }
     
@@ -90,7 +90,7 @@ final class Player : NSManagedObject {
     ///
     /// Based on the character's current XP.
     var level: Int {
-        return sharedRules.levelXP.filter({ $0.1 <= xp }).map({ $0.0 }).maxElement()!
+        return sharedRules.levelXP.filter({ $0.1 <= xp }).map({ $0.0 }).max()!
     }
     
     /// Passive perception score for the character.
@@ -98,13 +98,13 @@ final class Player : NSManagedObject {
     /// Unlike `Monster` this is a static value stored for the player's character, rather than calculated from player's stats. This is because we don't want to track all the player's stats, both for effort, and to avoid meta-gaming.
     var passivePerception: Int {
         get {
-            return rawPassivePerception.integerValue
+            return rawPassivePerception.intValue
         }
         set(newPassivePerception) {
-            rawPassivePerception = NSNumber(integer: newPassivePerception)
+            rawPassivePerception = NSNumber(value: newPassivePerception as Int)
         }
     }
-    @NSManaged private var rawPassivePerception: NSNumber
+    @NSManaged fileprivate var rawPassivePerception: NSNumber
     
     /// Set of saving throws that the character if proficient in.
     ///
@@ -133,7 +133,7 @@ final class Player : NSManagedObject {
 
     convenience init(inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Player, inManagedObjectContext: context)
-        self.init(entity: entity, insertIntoManagedObjectContext: context)
+        self.init(entity: entity, insertInto: context)
         
         name = ""
         playerName = ""
@@ -151,8 +151,8 @@ final class Player : NSManagedObject {
     
     // MARK: Validation
     
-    func validateName(ioObject: AutoreleasingUnsafeMutablePointer<AnyObject?>) throws {
-        guard let name = ioObject.memory as? String where name != "" else {
+    func validateName(_ ioObject: AutoreleasingUnsafeMutablePointer<AnyObject?>) throws {
+        guard let name = ioObject.pointee as? String, name != "" else {
             let errorString = "Name can't be empty"
             let userDict = [ NSLocalizedDescriptionKey: errorString ]
             throw NSError(domain: "Player", code: NSManagedObjectValidationError, userInfo: userDict)

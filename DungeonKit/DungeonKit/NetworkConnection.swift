@@ -11,30 +11,30 @@ import Foundation
 /// NetworkConnection objects are created both by `NetworkServer` and `NetworkClient` and represent a bi-directional communication channel between devices.
 ///
 /// Messages can be exchanged between the devices in the form of `NetworkMessage` objects, and incoming and outgoing queue of those is maintained within the connection object.
-public class NetworkConnection: NSObject, NSStreamDelegate {
+open class NetworkConnection: NSObject, StreamDelegate {
     
     /// Peer that established or accepted this connection.
-    public weak var peer: NetworkPeer?
+    open weak var peer: NetworkPeer?
     
     /// Underlying input stream.
-    public let inputStream: NSInputStream
+    open let inputStream: InputStream
     
     /// Underlying output stream.
-    public let outputStream: NSOutputStream
+    open let outputStream: OutputStream
     
     /// Underlying service that we are connected to.
     ///
     /// This is only present where the connection was established to an advertising peer, rather than accepted as a result of our advertising. It's used to (hopefully) track the loss of the service.
-    public let service: NSNetService?
+    open let service: NetService?
     
     /// Delegate object that receives notifications about new messages, and the connection being closed.
-    public var delegate: NetworkConnectionDelegate?
+    open var delegate: NetworkConnectionDelegate?
     
     var opened = true
     var inputBuffer: [UInt8] = []
     var outgoingMessages: [NetworkMessage] = []
     
-    public required init(peer: NetworkPeer, inputStream: NSInputStream, outputStream: NSOutputStream, service: NSNetService? = nil) {
+    public required init(peer: NetworkPeer, inputStream: InputStream, outputStream: OutputStream, service: NetService? = nil) {
         self.peer = peer
         self.inputStream = inputStream
         self.outputStream = outputStream
@@ -44,10 +44,10 @@ public class NetworkConnection: NSObject, NSStreamDelegate {
         inputStream.delegate = self
         outputStream.delegate = self
         
-        inputStream.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
-        outputStream.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+        inputStream.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
+        outputStream.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
 
-        service?.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+        service?.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
     }
     
     deinit {
@@ -55,21 +55,21 @@ public class NetworkConnection: NSObject, NSStreamDelegate {
     }
 
     /// Closes the network stream, removing it from the run loop and disassociating it from the peer.
-    public func close() {
+    open func close() {
         guard opened else { return }
         
         print("NET: Closing connection.")
         peer?.removeConnection(self)
         
-        inputStream.removeFromRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
-        outputStream.removeFromRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+        inputStream.remove(from: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
+        outputStream.remove(from: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
 
-        service?.removeFromRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+        service?.remove(from: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
 
         inputStream.close()
         outputStream.close()
         
-        NSOperationQueue.mainQueue().addOperationWithBlock {
+        OperationQueue.main.addOperation {
             self.delegate?.connectionDidClose(self)
         }
 
@@ -79,7 +79,7 @@ public class NetworkConnection: NSObject, NSStreamDelegate {
     /// Send a message to the remote peer.
     ///
     /// The message is only immediately sent if there is space available on the output stream, otherwise it is queued.
-    public func sendMessage(message: NetworkMessage) {
+    open func sendMessage(_ message: NetworkMessage) {
         print("NET: Queued message.\n     \(message)")
         outgoingMessages.append(message)
         if outputStream.hasSpaceAvailable {
@@ -91,24 +91,24 @@ public class NetworkConnection: NSObject, NSStreamDelegate {
     func readIncomingMessages() {
         // Drain the input buffer.
         while inputStream.hasBytesAvailable {
-            var buffer: [UInt8] = Array(count: 1024, repeatedValue: 0)
+            var buffer: [UInt8] = Array(repeating: 0, count: 1024)
             let bytesRead = inputStream.read(&buffer, maxLength: buffer.count)
             if bytesRead < 0 {
                 print("NET: Error in input stream: \(inputStream.streamError!.localizedDescription)")
                 continue
             }
 
-            inputBuffer.appendContentsOf(buffer.prefixUpTo(bytesRead))
+            inputBuffer.append(contentsOf: buffer.prefix(upTo: bytesRead))
         }
         
         // Parse messages from the buffer, each is prefixed by the size of the message so we know when we have complete messages.
-        while inputBuffer.count > sizeof(Int) {
-            let length = UnsafePointer<Int>(inputBuffer).memory
-            guard inputBuffer.count >= sizeof(Int) + length else { break }
+        while inputBuffer.count > MemoryLayout<Int>.size {
+            let length = UnsafePointer<Int>(inputBuffer).pointee
+            guard inputBuffer.count >= MemoryLayout<Int>.size + length else { break }
             
             // Complete message in the buffer.
-            inputBuffer.removeFirst(sizeof(Int))
-            let bytes: [UInt8] = Array(inputBuffer.prefixUpTo(length))
+            inputBuffer.removeFirst(MemoryLayout<Int>.size)
+            let bytes: [UInt8] = Array(inputBuffer.prefix(upTo: length))
             guard let message = NetworkMessage(bytes: bytes) else {
                 print("NET: Received unparseable message, closing connection.")
                 close()
@@ -129,11 +129,11 @@ public class NetworkConnection: NSObject, NSStreamDelegate {
             var bytes = message.toBytes()
             
             var count = bytes.count
-            let length = withUnsafePointer(&count) { p in
-                return UnsafeBufferPointer(start: UnsafePointer<UInt8>(p), count: sizeofValue(count))
+            let length = withUnsafePointer(to: &count) { p in
+                return UnsafeBufferPointer(start: UnsafePointer<UInt8>(p), count: MemoryLayout.size(ofValue: count))
             }
             
-            bytes.insertContentsOf(length, at: 0)
+            bytes.insert(contentsOf: length, at: 0)
             let bytesWritten = outputStream.write(bytes, maxLength: bytes.count)
             guard bytesWritten == bytes.count else {
                 print("NET: Short write while sending message, closing connection.")
@@ -145,19 +145,19 @@ public class NetworkConnection: NSObject, NSStreamDelegate {
     
     // MARK: NSStreamDelegate
     
-    public func stream(aStream: NSStream, handleEvent eventCode: NSStreamEvent) {
+    open func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
         let stream = aStream == inputStream ? "Input" : aStream == outputStream ? "Output" : "Unknown"
         switch eventCode {
-        case NSStreamEvent.OpenCompleted:
+        case Stream.Event.openCompleted:
             print("NET: \(stream): Open completed.")
-        case NSStreamEvent.HasBytesAvailable:
+        case Stream.Event.hasBytesAvailable:
             readIncomingMessages()
-        case NSStreamEvent.HasSpaceAvailable:
+        case Stream.Event.hasSpaceAvailable:
             writeOutgoingMessages()
-        case NSStreamEvent.ErrorOccurred:
+        case Stream.Event.errorOccurred:
             print("NET: \(stream): An error occurred.\n     \(aStream.streamError!)")
             close()
-        case NSStreamEvent.EndEncountered:
+        case Stream.Event.endEncountered:
             print("NET: \(stream): End of stream encountered.")
             close()
         default:
@@ -172,9 +172,9 @@ public class NetworkConnection: NSObject, NSStreamDelegate {
 public protocol NetworkConnectionDelegate {
     
     /// A message was received on the connection.
-    func connection(connection: NetworkConnection, didReceiveMessage message: NetworkMessage)
+    func connection(_ connection: NetworkConnection, didReceiveMessage message: NetworkMessage)
     
     /// The connection was closed.
-    func connectionDidClose(connection: NetworkConnection)
+    func connectionDidClose(_ connection: NetworkConnection)
     
 }

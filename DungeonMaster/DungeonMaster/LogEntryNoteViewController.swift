@@ -21,14 +21,14 @@ class LogEntryNoteViewController : UITableViewController, UITextViewDelegate {
         configureView()
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         textView.becomeFirstResponder()
     }
     
     func configureView() {
-        doneButtonItem.enabled = textView.text != ""
+        doneButtonItem.isEnabled = textView.text != ""
     }
     
     func createLogEntry() {
@@ -39,25 +39,25 @@ class LogEntryNoteViewController : UITableViewController, UITextViewDelegate {
         
         try! managedObjectContext.save()
 
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     // MARK: Actions
 
-    @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
+    @IBAction func doneButtonTapped(_ sender: UIBarButtonItem) {
         createLogEntry()
     }
     
     // MARK: UITextViewDelegate
 
-    func textViewDidChange(textView: UITextView) {
+    func textViewDidChange(_ textView: UITextView) {
         configureView()
     }
     
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
             if textView.text != "" {
-                textView.editable = false
+                textView.isEditable = false
                 createLogEntry()
             }
             return false

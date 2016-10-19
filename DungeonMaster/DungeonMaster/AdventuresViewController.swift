@@ -8,6 +8,26 @@
 
 import CoreData
 import UIKit
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class AdventuresViewController : UICollectionViewController, NSFetchedResultsControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -19,17 +39,17 @@ class AdventuresViewController : UICollectionViewController, NSFetchedResultsCon
         super.viewDidLoad()
 
         // Remove the saved adventure, so next time we come back to the adventures view again.
-        NSUserDefaults.standardUserDefaults().removeObjectForKey("Adventure")
+        UserDefaults.standard.removeObject(forKey: "Adventure")
     }
 
     // MARK: Navigation
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AdventureSegue" {
-            if let indexPaths = collectionView?.indexPathsForSelectedItems() {
-                let adventure = fetchedResultsController.objectAtIndexPath(indexPaths[0]) as! Adventure
+            if let indexPaths = collectionView?.indexPathsForSelectedItems {
+                let adventure = fetchedResultsController.object(at: indexPaths[0]) as! Adventure
                 
-                let viewController = segue.destinationViewController as! AdventureViewController
+                let viewController = segue.destination as! AdventureViewController
                 viewController.adventure = adventure
             }
         }
@@ -39,66 +59,66 @@ class AdventuresViewController : UICollectionViewController, NSFetchedResultsCon
     
     var oldLeftItemsSupplementBackButton: Bool!
     
-    @IBAction func addButtonTapped(sender: UIBarButtonItem) {
-        if let index = navigationItem.rightBarButtonItems?.indexOf(addButtonItem) {
-            navigationItem.rightBarButtonItems?.removeAtIndex(index)
-            navigationItem.rightBarButtonItems?.insert(doneButtonItem, atIndex: index)
+    @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
+        if let index = navigationItem.rightBarButtonItems?.index(of: addButtonItem) {
+            navigationItem.rightBarButtonItems?.remove(at: index)
+            navigationItem.rightBarButtonItems?.insert(doneButtonItem, at: index)
         }
         oldLeftItemsSupplementBackButton = navigationItem.leftItemsSupplementBackButton
         navigationItem.leftBarButtonItem = cancelButtonItem
         navigationItem.leftItemsSupplementBackButton = false
         
         collectionView?.allowsSelection = false
-        collectionView?.scrollEnabled = false
+        collectionView?.isScrollEnabled = false
         
-        doneButtonItem.enabled = false
+        doneButtonItem.isEnabled = false
         
         let _ = Adventure(inManagedObjectContext: managedObjectContext)
         
         // We can reasonably assume that the cell is going to be going in at the top, so scroll there.
-        if collectionView?.numberOfItemsInSection(0) > 0 {
-            collectionView?.scrollToItemAtIndexPath(NSIndexPath(forItem: 0, inSection: 0), atScrollPosition: .Top, animated: true)
+        if collectionView?.numberOfItems(inSection: 0) > 0 {
+            collectionView?.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
         }
     }
     
-    func finishAdding(cancel cancel: Bool) {
-        if let index = navigationItem.rightBarButtonItems?.indexOf(doneButtonItem) {
-            navigationItem.rightBarButtonItems?.removeAtIndex(index)
-            navigationItem.rightBarButtonItems?.insert(addButtonItem, atIndex: index)
+    func finishAdding(cancel: Bool) {
+        if let index = navigationItem.rightBarButtonItems?.index(of: doneButtonItem) {
+            navigationItem.rightBarButtonItems?.remove(at: index)
+            navigationItem.rightBarButtonItems?.insert(addButtonItem, at: index)
         }
         navigationItem.leftBarButtonItem = nil
         navigationItem.leftItemsSupplementBackButton = oldLeftItemsSupplementBackButton
         oldLeftItemsSupplementBackButton = nil
         
         collectionView?.allowsSelection = true
-        collectionView?.scrollEnabled = true
+        collectionView?.isScrollEnabled = true
         
-        guard let insertedAdventures = fetchedResultsController.fetchedObjects?.map({ $0 as! Adventure }).filter({ $0.inserted }) else { return }
+        guard let insertedAdventures = fetchedResultsController.fetchedObjects?.map({ $0 as! Adventure }).filter({ $0.isInserted }) else { return }
         for adventure in insertedAdventures {
-            if let indexPath = fetchedResultsController.indexPathForObject(adventure),
-                cell = collectionView?.cellForItemAtIndexPath(indexPath) as? AdventureCell {
+            if let indexPath = fetchedResultsController.indexPath(forObject: adventure),
+                let cell = collectionView?.cellForItem(at: indexPath) as? AdventureCell {
                 cell.editing = false
             }
             
             if cancel {
-                managedObjectContext.deleteObject(adventure)
+                managedObjectContext.delete(adventure)
             }
         }
         
         try! managedObjectContext.save()
     }
 
-    @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
+    @IBAction func doneButtonTapped(_ sender: UIBarButtonItem) {
         finishAdding(cancel: false)
     }
     
-    @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
+    @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
         finishAdding(cancel: true)
     }
     
     /// Returns true if all newly inserted adventures are valid.
     func validateAdventures() -> Bool {
-        guard let insertedAdventures = fetchedResultsController.fetchedObjects?.map({ $0 as! Adventure }).filter({ $0.inserted }) else { return true }
+        guard let insertedAdventures = fetchedResultsController.fetchedObjects?.map({ $0 as! Adventure }).filter({ $0.isInserted }) else { return true }
         for adventure in insertedAdventures {
             do {
                 try adventure.validateForInsert()
@@ -114,7 +134,7 @@ class AdventuresViewController : UICollectionViewController, NSFetchedResultsCon
     ///
     /// Part of the informal protocol between the table and the cell; this updates the status of the Done button based on the validity of the inserted adventures.
     func adventureCellDidChange() {
-        doneButtonItem.enabled = validateAdventures()
+        doneButtonItem.isEnabled = validateAdventures()
     }
     
     /// Called when Return is pressed during cell text editing.
@@ -128,8 +148,8 @@ class AdventuresViewController : UICollectionViewController, NSFetchedResultsCon
 
     // MARK: Fetched results controller
     
-    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] in
-        let fetchRequest = NSFetchRequest(entity: Model.Adventure)
+    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] -> <<error type>> in
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entity: Model.Adventure)
         
         let sortDescriptor = NSSortDescriptor(key: "lastModified", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
@@ -144,27 +164,27 @@ class AdventuresViewController : UICollectionViewController, NSFetchedResultsCon
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return fetchedResultsController.sections?.count ?? 0
     }
     
     var noAdventuresLabel: UILabel!
 
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let sectionInfo = fetchedResultsController.sections![section]
         
         if sectionInfo.numberOfObjects == 0 {
             noAdventuresLabel = UILabel()
             noAdventuresLabel.text = "Tap ‘+’ to create an Adventure."
-            noAdventuresLabel.textColor = UIColor.lightGrayColor()
-            noAdventuresLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+            noAdventuresLabel.textColor = UIColor.lightGray
+            noAdventuresLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
             noAdventuresLabel.translatesAutoresizingMaskIntoConstraints = false
             noAdventuresLabel.sizeToFit()
             
             collectionView.addSubview(noAdventuresLabel)
             
-            noAdventuresLabel.centerXAnchor.constraintEqualToAnchor(collectionView.centerXAnchor).active = true
-            noAdventuresLabel.centerYAnchor.constraintEqualToAnchor(collectionView.centerYAnchor).active = true
+            noAdventuresLabel.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor).isActive = true
+            noAdventuresLabel.centerYAnchor.constraint(equalTo: collectionView.centerYAnchor).isActive = true
         } else if let label = noAdventuresLabel {
             label.removeFromSuperview()
             noAdventuresLabel = nil
@@ -173,12 +193,12 @@ class AdventuresViewController : UICollectionViewController, NSFetchedResultsCon
         return sectionInfo.numberOfObjects
     }
 
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("AdventureCell", forIndexPath: indexPath) as! AdventureCell
-        let adventure = fetchedResultsController.objectAtIndexPath(indexPath) as! Adventure
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AdventureCell", for: indexPath) as! AdventureCell
+        let adventure = fetchedResultsController.object(at: indexPath) as! Adventure
         cell.adventure = adventure
 
-        if adventure.inserted {
+        if adventure.isInserted {
             cell.editing = true
             cell.didChange = self.adventureCellDidChange
             cell.didSubmit = self.adventureCellDidSubmit
@@ -195,54 +215,54 @@ class AdventuresViewController : UICollectionViewController, NSFetchedResultsCon
 
     var changeBlocks: [() -> Void]!
     
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         changeBlocks = []
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
         switch type {
-        case .Insert:
+        case .insert:
             changeBlocks.append {
-                self.collectionView?.insertSections(NSIndexSet(index: sectionIndex))
+                self.collectionView?.insertSections(IndexSet(integer: sectionIndex))
             }
-        case .Delete:
+        case .delete:
             changeBlocks.append {
-                self.collectionView?.deleteSections(NSIndexSet(index: sectionIndex))
+                self.collectionView?.deleteSections(IndexSet(integer: sectionIndex))
             }
         default:
             break
         }
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
-        case .Insert:
+        case .insert:
             changeBlocks.append {
-                self.collectionView?.insertItemsAtIndexPaths([ newIndexPath! ])
+                self.collectionView?.insertItems(at: [ newIndexPath! ])
             }
-        case .Delete:
+        case .delete:
             changeBlocks.append {
-                self.collectionView?.deleteItemsAtIndexPaths([ indexPath! ])
+                self.collectionView?.deleteItems(at: [ indexPath! ])
             }
-        case .Update:
-            if let cell = collectionView?.cellForItemAtIndexPath(indexPath!) as? AdventureCell where !cell.editing {
+        case .update:
+            if let cell = collectionView?.cellForItem(at: indexPath!) as? AdventureCell, !cell.editing {
                 let adventure = anObject as! Adventure
                 cell.adventure = adventure
             }
-        case .Move:
+        case .move:
             // .Move implies .Update; update the cell at the old index, and then move it.
-            if let cell = collectionView?.cellForItemAtIndexPath(indexPath!) as? AdventureCell where !cell.editing {
+            if let cell = collectionView?.cellForItem(at: indexPath!) as? AdventureCell, !cell.editing {
                 let adventure = anObject as! Adventure
                 cell.adventure = adventure
             }
 
             changeBlocks.append {
-                self.collectionView?.moveItemAtIndexPath(indexPath!, toIndexPath: newIndexPath!)
+                self.collectionView?.moveItem(at: indexPath!, to: newIndexPath!)
             }
         }
     }
     
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         collectionView?.performBatchUpdates({
             for changeBlock in self.changeBlocks {
                 changeBlock()
@@ -259,10 +279,10 @@ class AdventuresViewController : UICollectionViewController, NSFetchedResultsCon
     /// Called when the image view in the cell is tapped.
     ///
     /// Part of the informal protocol between the table and the cell; this displays an image picker and calls the provided closure when a new image is selected.
-    func showImagePicker(sourceView: UIView, setImage: (UIImage) -> Void) {
+    func showImagePicker(_ sourceView: UIView, setImage: @escaping (UIImage) -> Void) {
         let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = .PhotoLibrary
-        imagePicker.modalPresentationStyle = .Popover
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.modalPresentationStyle = .popover
         imagePicker.delegate = self
         
         if let presentation = imagePicker.popoverPresentationController {
@@ -271,16 +291,16 @@ class AdventuresViewController : UICollectionViewController, NSFetchedResultsCon
         }
         
         self.setImage = setImage
-        presentViewController(imagePicker, animated: true, completion: nil)
+        present(imagePicker, animated: true, completion: nil)
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             setImage(image)
         }
         
         setImage = nil
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
 }
@@ -306,15 +326,15 @@ class AdventureCell : UICollectionViewCell, UITextViewDelegate, AdjustableImageV
         didSet {
             adjustableImageView.editing = editing
 
-            textView.editable = editing
-            textView.selectable = editing
+            textView.isEditable = editing
+            textView.isSelectable = editing
             
             if editing {
                 if textView.text == "" {
                     addPlaceholder()
                 }
                 // Give the cell a chance to be added to the view in case it's a reused cell.
-                dispatch_async(dispatch_get_main_queue()) {
+                DispatchQueue.main.async {
                     self.textView.becomeFirstResponder()
                 }
             } else {
@@ -332,18 +352,18 @@ class AdventureCell : UICollectionViewCell, UITextViewDelegate, AdjustableImageV
 
         placeholderLabel = UILabel()
         placeholderLabel!.text = "Adventure"
-        placeholderLabel!.textColor = UIColor.lightGrayColor()
-        placeholderLabel!.textAlignment = .Center
-        placeholderLabel!.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+        placeholderLabel!.textColor = UIColor.lightGray
+        placeholderLabel!.textAlignment = .center
+        placeholderLabel!.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
         placeholderLabel!.translatesAutoresizingMaskIntoConstraints = false
         placeholderLabel!.sizeToFit()
         
         textView.addSubview(placeholderLabel!)
-        textView.sendSubviewToBack(placeholderLabel!)
+        textView.sendSubview(toBack: placeholderLabel!)
         
         // No idea why this -5.5 fudge constant is necessary.
-        placeholderLabel!.centerXAnchor.constraintEqualToAnchor(textView.centerXAnchor).active = true
-        placeholderLabel!.centerYAnchor.constraintEqualToAnchor(textView.centerYAnchor, constant: -5.5).active = true
+        placeholderLabel!.centerXAnchor.constraint(equalTo: textView.centerXAnchor).isActive = true
+        placeholderLabel!.centerYAnchor.constraint(equalTo: textView.centerYAnchor, constant: -5.5).isActive = true
     }
     
     func removePlaceholder() {
@@ -355,7 +375,7 @@ class AdventureCell : UICollectionViewCell, UITextViewDelegate, AdjustableImageV
     
     // MARK: UITextViewDelegate
     
-    func textViewDidChange(textView: UITextView) {
+    func textViewDidChange(_ textView: UITextView) {
         adventure.name = textView.text
         if textView.text == "" {
             addPlaceholder()
@@ -365,7 +385,7 @@ class AdventureCell : UICollectionViewCell, UITextViewDelegate, AdjustableImageV
         didChange?()
     }
     
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         guard text == "\n" else { return true }
         
         didSubmit?()
@@ -376,7 +396,7 @@ class AdventureCell : UICollectionViewCell, UITextViewDelegate, AdjustableImageV
     
     var showImagePicker: ((UIView, (UIImage) -> Void) -> Void)!
     
-    func adjustableImageViewShouldChangeImage(adjustableImageView: AdjustableImageView) {
+    func adjustableImageViewShouldChangeImage(_ adjustableImageView: AdjustableImageView) {
         showImagePicker(adjustableImageView) { image in
             self.adjustableImageView.image = image
 
@@ -389,7 +409,7 @@ class AdventureCell : UICollectionViewCell, UITextViewDelegate, AdjustableImageV
         }
     }
     
-    func adjustableImageViewDidChangeArea(adjustableImageView: AdjustableImageView) {
+    func adjustableImageViewDidChangeArea(_ adjustableImageView: AdjustableImageView) {
         adventure.image.fraction = adjustableImageView.fraction
         adventure.image.origin = adjustableImageView.origin
         didChange?()

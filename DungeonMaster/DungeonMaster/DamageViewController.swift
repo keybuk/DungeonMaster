@@ -21,47 +21,47 @@ class DamageViewController : UITableViewController, UIPickerViewDataSource, UIPi
         // Do any additional setup after loading the view.
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let pointsCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! PointsCell
+        let pointsCell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! PointsCell
         pointsCell.textField.becomeFirstResponder()
     }
     
     // MARK: Actions
     
-    @IBAction func textFieldEditingChanged(sender: UITextField) {
+    @IBAction func textFieldEditingChanged(_ sender: UITextField) {
         points = Int(sender.text!)
         if points == nil {
-            sender.textColor = UIColor.redColor()
+            sender.textColor = UIColor.red
         } else {
             sender.textColor = nil
         }
-        addButton.enabled = (points != nil && type != nil)
+        addButton.isEnabled = (points != nil && type != nil)
     }
 
     // MARK: UIPickerViewDataSource
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return DamageType.cases.count + 1
     }
     
     // MARK: UIPickerViewDelegate
     
-    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         switch row {
         case 0:
-            return NSAttributedString(string: "Damage Type", attributes: [NSForegroundColorAttributeName: UIColor.lightGrayColor()])
+            return NSAttributedString(string: "Damage Type", attributes: [NSForegroundColorAttributeName: UIColor.lightGray])
         default:
             return NSAttributedString(string: DamageType(rawValue: row - 1)!.stringValue)
         }
     }
 
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch row {
         case 0:
             type = nil
@@ -69,7 +69,7 @@ class DamageViewController : UITableViewController, UIPickerViewDataSource, UIPi
             type = DamageType(rawValue: row - 1)
         }
         
-        addButton.enabled = (points != nil && type != nil)
+        addButton.isEnabled = (points != nil && type != nil)
     }
     
 }

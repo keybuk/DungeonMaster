@@ -15,29 +15,29 @@ typealias TabletopLocation = CGPoint
 @objc protocol TabletopViewDataSource {
     
     /// Returns the number of items to display on the table top.
-    func numberOfItemsInTabletopView(tabletopView: TabletopView) -> Int
+    func numberOfItemsInTabletopView(_ tabletopView: TabletopView) -> Int
     
     /// Returns the location on the table top of the item with the given index.
-    func tabletopView(tabletopView: TabletopView, locationForItem index: Int) -> TabletopLocation
+    func tabletopView(_ tabletopView: TabletopView, locationForItem index: Int) -> TabletopLocation
     
     /// Returns whether an item on the table top can be controlled by the DM.
-    func tabletopView(tabletopView: TabletopView, isItemPlayerControlled index: Int) -> Bool
+    func tabletopView(_ tabletopView: TabletopView, isItemPlayerControlled index: Int) -> Bool
     
     /// Returns the name of the item with the given index on the table top.
-    func tabletopView(tabletopView: TabletopView, nameForItem index: Int) -> String
+    func tabletopView(_ tabletopView: TabletopView, nameForItem index: Int) -> String
     
     /// Returns the health of the item with the given index on the table top. Health should be in the range 0.0–1.0.
-    func tabletopView(tabletopView: TabletopView, healthForItem index: Int) -> Float
+    func tabletopView(_ tabletopView: TabletopView, healthForItem index: Int) -> Float
     
 }
 
 @objc protocol TabletopViewDelegate {
     
     /// Informs the delegate that an item was moved on the table top to a new location.
-    func tabletopView(tabletopView: TabletopView, moveItem index: Int, to location: TabletopLocation)
+    func tabletopView(_ tabletopView: TabletopView, moveItem index: Int, to location: TabletopLocation)
     
     /// Informs the delegate that an item was selected on the table top.
-    func tabletopView(tabletopView: TabletopView, didSelectItem index: Int)
+    func tabletopView(_ tabletopView: TabletopView, didSelectItem index: Int)
 
 }
 
@@ -51,13 +51,13 @@ typealias TabletopLocation = CGPoint
     @IBOutlet weak var delegate: TabletopViewDelegate?
     
     /// Color used for line around items on the table top.
-    @IBInspectable var itemStrokeColor: UIColor = UIColor.blackColor()
+    @IBInspectable var itemStrokeColor: UIColor = UIColor.black
     
     /// Color used to fill items on the table top.
-    @IBInspectable var itemFillColor: UIColor = UIColor.whiteColor()
+    @IBInspectable var itemFillColor: UIColor = UIColor.white
     
     /// Color used for line around the selected item on the table top.
-    @IBInspectable var selectedItemStrokeColor: UIColor = UIColor.blackColor()
+    @IBInspectable var selectedItemStrokeColor: UIColor = UIColor.black
     
     /// Color used to fill the selected item on the table top.
     @IBInspectable var selectedItemFillColor: UIColor = UIColor(white: 0.8, alpha: 1.0)
@@ -94,13 +94,13 @@ typealias TabletopLocation = CGPoint
     override init(frame: CGRect) {
         super.init(frame: frame)
         clearsContextBeforeDrawing = false
-        contentMode = .Redraw
+        contentMode = .redraw
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         clearsContextBeforeDrawing = false
-        contentMode = .Redraw
+        contentMode = .redraw
     }
     
     override func didMoveToWindow() {
@@ -114,7 +114,7 @@ typealias TabletopLocation = CGPoint
     }
     
     override func layoutSubviews() {
-        for (index, location) in locations.enumerate() {
+        for (index, location) in locations.enumerated() {
             let view = statsViews[index]
             let point = locationToPoint(location)
             
@@ -172,9 +172,9 @@ typealias TabletopLocation = CGPoint
     }
     
     /// Inserts a new item, with the given index, onto the table top.
-    func insertItemAtIndex(index: Int) {
+    func insertItemAtIndex(_ index: Int) {
         if let batchInserts = batchInserts {
-            batchInserts.addIndex(index)
+            batchInserts.add(index)
         } else {
             doInsertItemAtIndex(index)
 
@@ -184,9 +184,9 @@ typealias TabletopLocation = CGPoint
     }
     
     /// Updates an item, with the given index, refreshing its location and display.
-    func updateItemAtIndex(index: Int) {
+    func updateItemAtIndex(_ index: Int) {
         if let batchUpdates = batchUpdates {
-            batchUpdates.addIndex(index)
+            batchUpdates.add(index)
         } else {
             doUpdateItemAtIndex(index)
             
@@ -196,9 +196,9 @@ typealias TabletopLocation = CGPoint
     }
     
     /// Deletes an item, with the given index, and removes it from the table top.
-    func deleteItemAtIndex(index: Int) {
+    func deleteItemAtIndex(_ index: Int) {
         if let batchDeletes = batchDeletes {
-            batchDeletes.addIndex(index)
+            batchDeletes.add(index)
         } else {
             doDeleteItemAtIndex(index)
             
@@ -209,7 +209,7 @@ typealias TabletopLocation = CGPoint
     
     /// End a batch update set.
     func endUpdates() {
-        for index in batchDeletes!.reverse() {
+        for index in batchDeletes!.reversed() {
             doDeleteItemAtIndex(index)
         }
         for index in batchInserts! {
@@ -227,15 +227,15 @@ typealias TabletopLocation = CGPoint
         batchDeletes = nil
     }
     
-    func doInsertItemAtIndex(index: Int) {
+    func doInsertItemAtIndex(_ index: Int) {
         let playerControl = dataSource!.tabletopView(self, isItemPlayerControlled: index)
-        playerControlled.insert(playerControl, atIndex: index)
+        playerControlled.insert(playerControl, at: index)
 
         let location = dataSource!.tabletopView(self, locationForItem: index)
         let statsView = statsViewForItem(index)
     
-        locations.insert(location, atIndex: index)
-        statsViews.insert(statsView, atIndex: index)
+        locations.insert(location, at: index)
+        statsViews.insert(statsView, at: index)
 
         if let touchingIndex = touchingIndex {
             if touchingIndex >= index {
@@ -247,7 +247,7 @@ typealias TabletopLocation = CGPoint
         setNeedsLayout()
     }
     
-    func doUpdateItemAtIndex(index: Int) {
+    func doUpdateItemAtIndex(_ index: Int) {
         let playerControl = dataSource!.tabletopView(self, isItemPlayerControlled: index)
         playerControlled[index] = playerControl
 
@@ -255,7 +255,7 @@ typealias TabletopLocation = CGPoint
         let location = dataSource!.tabletopView(self, locationForItem: index)
         locations[index] = location
         
-        if let touchingIndex = touchingIndex where touchingIndex == index {
+        if let touchingIndex = touchingIndex, touchingIndex == index {
             self.touchingIndex = nil
             startingLocation = nil
         }
@@ -268,7 +268,7 @@ typealias TabletopLocation = CGPoint
     }
     
     /// Deletes an item, with the given index, and removes it from the table top.
-    func doDeleteItemAtIndex(index: Int) {
+    func doDeleteItemAtIndex(_ index: Int) {
         if let touchingIndex = touchingIndex {
             if touchingIndex > index {
                 self.touchingIndex = touchingIndex - 1
@@ -278,9 +278,9 @@ typealias TabletopLocation = CGPoint
             }
         }
 
-        let location = locations.removeAtIndex(index)
-        let statsView = statsViews.removeAtIndex(index)
-        playerControlled.removeAtIndex(index)
+        let location = locations.remove(at: index)
+        let statsView = statsViews.remove(at: index)
+        playerControlled.remove(at: index)
 
         setNeedsDisplayForLocation(location)
         statsView.removeFromSuperview()
@@ -311,7 +311,7 @@ typealias TabletopLocation = CGPoint
             
             // If an item is too close, skip this point.
             let squareRadius = itemRadius * 1.5 * itemRadius * 1.5
-            if let minimumDistance = minimumDistance where minimumDistance < squareRadius {
+            if let minimumDistance = minimumDistance, minimumDistance < squareRadius {
                 continue
             }
             
@@ -321,17 +321,17 @@ typealias TabletopLocation = CGPoint
         return nil
     }
 
-    func locationToPoint(location: TabletopLocation) -> CGPoint {
+    func locationToPoint(_ location: TabletopLocation) -> CGPoint {
         return CGPoint(x: (frame.size.width / 2.0) + location.x * boxWidth, y: (frame.size.height / 2.0) + location.y * boxWidth)
     }
     
-    func pointToLocation(point: CGPoint) -> TabletopLocation {
+    func pointToLocation(_ point: CGPoint) -> TabletopLocation {
         return TabletopLocation(x: (point.x - frame.size.width / 2.0) / boxWidth, y: (point.y - frame.size.height / 2.0) / boxWidth)
     }
     
-    func indexOfItemNearTouch(touch: UITouch) -> Int? {
-        let touchLocation = touch.locationInView(self)
-        for (index, location) in locations.enumerate() {
+    func indexOfItemNearTouch(_ touch: UITouch) -> Int? {
+        let touchLocation = touch.location(in: self)
+        for (index, location) in locations.enumerated() {
             let point = locationToPoint(location)
             let squareDistance = (touchLocation.x - point.x) * (touchLocation.x - point.x) + (touchLocation.y - point.y) * (touchLocation.y - point.y)
             let squareRadius = (itemRadius + itemStrokeWidth + touch.majorRadius + touch.majorRadiusTolerance) * (itemRadius + itemStrokeWidth + touch.majorRadius + touch.majorRadiusTolerance)
@@ -346,79 +346,79 @@ typealias TabletopLocation = CGPoint
 
     // MARK: Drawing
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
         
-        CGContextSetFillColorWithColor(context, backgroundColor!.CGColor)
-        CGContextFillRect(context, rect)
+        context?.setFillColor(backgroundColor!.cgColor)
+        context?.fill(rect)
         
-        CGContextSetStrokeColorWithColor(context, gridColor.CGColor)
-        CGContextSetLineWidth(context, 1.0 / contentScaleFactor)
+        context?.setStrokeColor(gridColor.cgColor)
+        context?.setLineWidth(1.0 / contentScaleFactor)
 
         let center = CGPoint(x: frame.size.width / 2.0, y: frame.size.height / 2.0)
         var gridLine: CGFloat = itemRadius
         while gridLine <= frame.size.width {
-            CGContextMoveToPoint(context, 0.0, center.y - gridLine)
-            CGContextAddLineToPoint(context, frame.size.width, center.y - gridLine)
-            CGContextStrokePath(context)
+            context?.move(to: CGPoint(x: 0.0, y: center.y - gridLine))
+            context?.addLine(to: CGPoint(x: frame.size.width, y: center.y - gridLine))
+            context?.strokePath()
             
-            CGContextMoveToPoint(context, 0.0, center.y + gridLine)
-            CGContextAddLineToPoint(context, frame.size.width, center.y + gridLine)
-            CGContextStrokePath(context)
+            context?.move(to: CGPoint(x: 0.0, y: center.y + gridLine))
+            context?.addLine(to: CGPoint(x: frame.size.width, y: center.y + gridLine))
+            context?.strokePath()
 
-            CGContextMoveToPoint(context, center.x - gridLine, 0.0)
-            CGContextAddLineToPoint(context, center.x - gridLine, frame.size.height)
-            CGContextStrokePath(context)
+            context?.move(to: CGPoint(x: center.x - gridLine, y: 0.0))
+            context?.addLine(to: CGPoint(x: center.x - gridLine, y: frame.size.height))
+            context?.strokePath()
             
-            CGContextMoveToPoint(context, center.x + gridLine, 0.0)
-            CGContextAddLineToPoint(context, center.x + gridLine, frame.size.height)
-            CGContextStrokePath(context)
+            context?.move(to: CGPoint(x: center.x + gridLine, y: 0.0))
+            context?.addLine(to: CGPoint(x: center.x + gridLine, y: frame.size.height))
+            context?.strokePath()
 
             gridLine += itemRadius * 2
         }
         
         
-        CGContextSetLineWidth(context, itemStrokeWidth)
+        context?.setLineWidth(itemStrokeWidth)
 
-        for (index, location) in locations.enumerate() {
+        for (index, location) in locations.enumerated() {
             if touchingIndex == index {
-                CGContextSetStrokeColorWithColor(context, selectedItemStrokeColor.CGColor)
-                CGContextSetFillColorWithColor(context, selectedItemFillColor.CGColor)
+                context?.setStrokeColor(selectedItemStrokeColor.cgColor)
+                context?.setFillColor(selectedItemFillColor.cgColor)
             } else {
-                CGContextSetStrokeColorWithColor(context, itemStrokeColor.CGColor)
-                CGContextSetFillColorWithColor(context, itemFillColor.CGColor)
+                context?.setStrokeColor(itemStrokeColor.cgColor)
+                context?.setFillColor(itemFillColor.cgColor)
             }
             
             if playerControlled[index] {
                 let angle = CGFloat(π / 3.0)
                 
                 let point = locationToPoint(location)
-                CGContextMoveToPoint(context, point.x - itemRadius, point.y)
+                context?.move(to: CGPoint(x: point.x - itemRadius, y: point.y))
                 
-                CGContextAddLineToPoint(context, point.x - cos(angle) * itemRadius, point.y + sin(angle) * itemRadius)
-                CGContextAddLineToPoint(context, point.x + cos(angle) * itemRadius, point.y + sin(angle) * itemRadius)
-                CGContextAddLineToPoint(context, point.x + itemRadius, point.y)
-                CGContextAddLineToPoint(context, point.x + cos(angle) * itemRadius, point.y - sin(angle) * itemRadius)
-                CGContextAddLineToPoint(context, point.x - cos(angle) * itemRadius, point.y - sin(angle) * itemRadius)
-                CGContextClosePath(context)
+                context?.addLine(to: CGPoint(x: point.x - cos(angle) * itemRadius, y: point.y + sin(angle) * itemRadius))
+                context?.addLine(to: CGPoint(x: point.x + cos(angle) * itemRadius, y: point.y + sin(angle) * itemRadius))
+                context?.addLine(to: CGPoint(x: point.x + itemRadius, y: point.y))
+                context?.addLine(to: CGPoint(x: point.x + cos(angle) * itemRadius, y: point.y - sin(angle) * itemRadius))
+                context?.addLine(to: CGPoint(x: point.x - cos(angle) * itemRadius, y: point.y - sin(angle) * itemRadius))
+                context?.closePath()
             } else {
                 let point = locationToPoint(location)
                 CGContextAddArc(context, point.x, point.y, itemRadius, 0.0, CGFloat(2.0 * π), 0)
             }
 
-            CGContextDrawPath(context, .FillStroke)
+            context?.drawPath(using: .fillStroke)
         }
     }
     
-    func setNeedsDisplayForLocation(location: TabletopLocation) {
+    func setNeedsDisplayForLocation(_ location: TabletopLocation) {
         let point = locationToPoint(location)
-        let rect = CGRectInset(CGRect(origin: point, size: CGSizeZero), -(itemRadius + itemStrokeWidth), -(itemRadius + itemStrokeWidth))
-        setNeedsDisplayInRect(rect)
+        let rect = CGRect(origin: point, size: CGSize.zero).insetBy(dx: -(itemRadius + itemStrokeWidth), dy: -(itemRadius + itemStrokeWidth))
+        setNeedsDisplay(rect)
     }
 
     // MARK: Touch handling
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         guard let index = indexOfItemNearTouch(touch) else { return }
         
@@ -430,14 +430,14 @@ typealias TabletopLocation = CGPoint
         setNeedsDisplayForLocation(location)
     }
     
-    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         guard let index = touchingIndex else { return }
 
-        statsViews[index].hidden = true
+        statsViews[index].isHidden = true
         
-        let previousTouchLocation = touch.previousLocationInView(self)
-        let touchLocation = touch.locationInView(self)
+        let previousTouchLocation = touch.previousLocation(in: self)
+        let touchLocation = touch.location(in: self)
 
         let location = locations[index]
         let point = locationToPoint(location)
@@ -450,14 +450,14 @@ typealias TabletopLocation = CGPoint
         setNeedsDisplayForLocation(newLocation)
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         guard let index = touchingIndex else { return }
         
         touchingIndex = nil
         startingLocation = nil
         
-        statsViews[index].hidden = false
+        statsViews[index].isHidden = false
 
         let location = locations[index]
         
@@ -471,7 +471,7 @@ typealias TabletopLocation = CGPoint
         }
     }
     
-    override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let index = touchingIndex else { return }
         
         let movedLocation = locations[index]
@@ -479,7 +479,7 @@ typealias TabletopLocation = CGPoint
         
         locations[index] = location
         
-        statsViews[index].hidden = false
+        statsViews[index].isHidden = false
 
         touchingIndex = nil
         startingLocation = nil
@@ -491,7 +491,7 @@ typealias TabletopLocation = CGPoint
     
     // MARK: Stats popup.
     
-    func statsViewForItem(index: Int) -> TabletopStatsView {
+    func statsViewForItem(_ index: Int) -> TabletopStatsView {
         let view = TabletopStatsView()
         updateStatsView(view, index: index)
         
@@ -504,12 +504,12 @@ typealias TabletopLocation = CGPoint
         return view
     }
     
-    func updateStatsForItem(index: Int) {
+    func updateStatsForItem(_ index: Int) {
         let view = statsViews[index]
         updateStatsView(view, index: index)
     }
     
-    func updateStatsView(view: TabletopStatsView, index: Int) {
+    func updateStatsView(_ view: TabletopStatsView, index: Int) {
         view.name = dataSource!.tabletopView(self, nameForItem: index)
         
         if !playerControlled[index] {

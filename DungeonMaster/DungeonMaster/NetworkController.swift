@@ -21,9 +21,9 @@ class NetworkController : NSObject, NetworkPeerDelegate, NetworkConnectionDelega
     ///
     /// This yields a set of Encounter objects that have been started (the round is greater than 0), and are members of games on today's date, reverse sorted by when they were last modified.
     lazy var encounterResultsController: NSFetchedResultsController = { [unowned self] in
-        let calendar = NSCalendar.currentCalendar()
-        let today = calendar.startOfDayForDate(NSDate())
-        let tomorrow = calendar.dateByAddingUnit(.Day, value: 1, toDate: today, options: [])!
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+        let tomorrow = (calendar as NSCalendar).date(byAdding: .day, value: 1, to: today, options: [])!
         
         let fetchRequest = NSFetchRequest(entity: Model.Encounter)
         fetchRequest.predicate = NSPredicate(format: "rawRound > 0 AND SUBQUERY(games, $g, $g.date >= %@ AND $g.date < %@).@count > 0", today, tomorrow)
@@ -64,7 +64,7 @@ class NetworkController : NSObject, NetworkPeerDelegate, NetworkConnectionDelega
             _combatantResultsController = newCombatantResultsController
         }
     }
-    private var _combatantResultsController: NSFetchedResultsController? = nil
+    fileprivate var _combatantResultsController: NSFetchedResultsController? = nil
 
     /// Current encounter.
     var encounter: Encounter? {
@@ -72,7 +72,7 @@ class NetworkController : NSObject, NetworkPeerDelegate, NetworkConnectionDelega
     }
 
     override init() {
-        networkPeer = NetworkPeer(type: .DungeonMaster, name: "Dungeon Master", acceptedTypes: [ .InitiativeOrder ])
+        networkPeer = NetworkPeer(type: .dungeonMaster, name: "Dungeon Master", acceptedTypes: [ .initiativeOrder ])
         
         super.init()
 
@@ -94,46 +94,46 @@ class NetworkController : NSObject, NetworkPeerDelegate, NetworkConnectionDelega
         networkPeer.start()
     }
     
-    func sendEncounterTo(connection: NetworkConnection) {
+    func sendEncounterTo(_ connection: NetworkConnection) {
         guard let encounter = encounter else { return }
         guard let combatants = combatantResultsController?.fetchedObjects else { return }
         
         // We don't send the real encounter title, but the adventure, or game title.
         var title = encounter.adventure.name
         
-        let calendar = NSCalendar.currentCalendar()
-        let today = calendar.startOfDayForDate(NSDate())
-        let tomorrow = calendar.dateByAddingUnit(.Day, value: 1, toDate: today, options: [])!
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+        let tomorrow = (calendar as NSCalendar).date(byAdding: .day, value: 1, to: today, options: [])!
         
         for case let game as Game in encounter.games {
-            if game.date.compare(today) != .OrderedAscending && game.date.compare(tomorrow) == .OrderedAscending {
+            if game.date.compare(today) != .orderedAscending && game.date.compare(tomorrow) == .orderedAscending {
                 title = game.title
             }
         }
         
-        connection.sendMessage(.BeginEncounter(title: title))
+        connection.sendMessage(.beginEncounter(title: title))
         
         var index = 0
         for case let combatant as Combatant in combatants {
             if let monster = combatant.monster {
-                connection.sendMessage(.InsertCombatant(toIndex: index, name: monster.name, initiative: combatant.initiative, isCurrentTurn: combatant.isCurrentTurn, isAlive: combatant.isAlive))
+                connection.sendMessage(.insertCombatant(toIndex: index, name: monster.name, initiative: combatant.initiative, isCurrentTurn: combatant.isCurrentTurn, isAlive: combatant.isAlive))
             } else if let player = combatant.player {
-                connection.sendMessage(.InsertCombatant(toIndex: index, name: player.name, initiative: combatant.initiative, isCurrentTurn: combatant.isCurrentTurn, isAlive: combatant.isAlive))
+                connection.sendMessage(.insertCombatant(toIndex: index, name: player.name, initiative: combatant.initiative, isCurrentTurn: combatant.isCurrentTurn, isAlive: combatant.isAlive))
             }
             
             index += 1
         }
         
-        connection.sendMessage(.Round(round: encounter.round))
+        connection.sendMessage(.round(round: encounter.round))
     }
 
     // MARK: NetworkPeerDelegate
     
-    func networkPeer(peer: NetworkPeer, didEstablishConnection connection: NetworkConnection) {
+    func networkPeer(_ peer: NetworkPeer, didEstablishConnection connection: NetworkConnection) {
         connection.delegate = self
         
         // After establishing a connection, send the version, and the current encounter to it.
-        connection.sendMessage(.Hello(version: NetworkMessage.version))
+        connection.sendMessage(.hello(version: NetworkMessage.version))
         sendEncounterTo(connection)
     }
     
@@ -156,19 +156,19 @@ class NetworkController : NSObject, NetworkPeerDelegate, NetworkConnectionDelega
     }
     
     
-    func connection(connection: NetworkConnection, didReceiveMessage message: NetworkMessage) {
+    func connection(_ connection: NetworkConnection, didReceiveMessage message: NetworkMessage) {
         switch message {
-        case let .Hello(version):
+        case let .hello(version):
             if version != NetworkMessage.version {
                 print("Dropping connection with bad version")
                 connection.close()
             }
-        case let .Initiative(name, initiative):
+        case let .initiative(name, initiative):
             for combatant in combatants(withName: name) {
                 combatant.initiative = initiative
             }
-        case let .EndTurn(name):
-            if let combatant = combatants(withName: name).first where combatant.role == .Player && combatant.isCurrentTurn {
+        case let .endTurn(name):
+            if let combatant = combatants(withName: name).first where combatant.role == .player && combatant.isCurrentTurn {
                 encounter?.nextTurn()
             }
         default:
@@ -176,63 +176,63 @@ class NetworkController : NSObject, NetworkPeerDelegate, NetworkConnectionDelega
         }
     }
     
-    func connectionDidClose(connection: NetworkConnection) {
+    func connectionDidClose(_ connection: NetworkConnection) {
     }
 
     // MARK: NSFetchedResultsControllerDelegate
     
     var currentEncounter: Encounter?
 
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         // Stash the current encounter to see if it changes.
         if controller === encounterResultsController {
             currentEncounter = encounter
         }
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         // We're only interested in detailed changes from the combatant results controller, since those result in list-wise changes to the peers.
         guard controller === combatantResultsController else { return }
         
         switch type {
-        case .Insert:
+        case .insert:
             let combatant = anObject as! Combatant
             if let monster = combatant.monster {
-                networkPeer.broadcastMessage(.InsertCombatant(toIndex: newIndexPath!.row, name: monster.name, initiative: combatant.initiative, isCurrentTurn: combatant.isCurrentTurn, isAlive: combatant.isAlive))
+                networkPeer.broadcastMessage(.insertCombatant(toIndex: (newIndexPath! as NSIndexPath).row, name: monster.name, initiative: combatant.initiative, isCurrentTurn: combatant.isCurrentTurn, isAlive: combatant.isAlive))
             } else if let player = combatant.player {
-                networkPeer.broadcastMessage(.InsertCombatant(toIndex: newIndexPath!.row, name: player.name, initiative: combatant.initiative, isCurrentTurn: combatant.isCurrentTurn, isAlive: combatant.isAlive))
+                networkPeer.broadcastMessage(.insertCombatant(toIndex: (newIndexPath! as NSIndexPath).row, name: player.name, initiative: combatant.initiative, isCurrentTurn: combatant.isCurrentTurn, isAlive: combatant.isAlive))
             }
-        case .Delete:
-            networkPeer.broadcastMessage(.DeleteCombatant(fromIndex: indexPath!.row))
-        case .Update:
+        case .delete:
+            networkPeer.broadcastMessage(.deleteCombatant(fromIndex: (indexPath! as NSIndexPath).row))
+        case .update:
             let combatant = anObject as! Combatant
             if let monster = combatant.monster {
-                networkPeer.broadcastMessage(.UpdateCombatant(index: indexPath!.row, name: monster.name, initiative: combatant.initiative, isCurrentTurn: combatant.isCurrentTurn, isAlive: combatant.isAlive))
+                networkPeer.broadcastMessage(.updateCombatant(index: (indexPath! as NSIndexPath).row, name: monster.name, initiative: combatant.initiative, isCurrentTurn: combatant.isCurrentTurn, isAlive: combatant.isAlive))
             } else if let player = combatant.player {
-                networkPeer.broadcastMessage(.UpdateCombatant(index: indexPath!.row, name: player.name, initiative: combatant.initiative, isCurrentTurn: combatant.isCurrentTurn, isAlive: combatant.isAlive))
+                networkPeer.broadcastMessage(.updateCombatant(index: (indexPath! as NSIndexPath).row, name: player.name, initiative: combatant.initiative, isCurrentTurn: combatant.isCurrentTurn, isAlive: combatant.isAlive))
             }
-        case .Move:
-            networkPeer.broadcastMessage(.MoveCombatant(fromIndex: indexPath!.row, toIndex: newIndexPath!.row))
+        case .move:
+            networkPeer.broadcastMessage(.moveCombatant(fromIndex: (indexPath! as NSIndexPath).row, toIndex: (newIndexPath! as NSIndexPath).row))
 
             let combatant = anObject as! Combatant
             if let monster = combatant.monster {
-                networkPeer.broadcastMessage(.UpdateCombatant(index: newIndexPath!.row, name: monster.name, initiative: combatant.initiative, isCurrentTurn: combatant.isCurrentTurn, isAlive: combatant.isAlive))
+                networkPeer.broadcastMessage(.updateCombatant(index: (newIndexPath! as NSIndexPath).row, name: monster.name, initiative: combatant.initiative, isCurrentTurn: combatant.isCurrentTurn, isAlive: combatant.isAlive))
             } else if let player = combatant.player {
-                networkPeer.broadcastMessage(.UpdateCombatant(index: newIndexPath!.row, name: player.name, initiative: combatant.initiative, isCurrentTurn: combatant.isCurrentTurn, isAlive: combatant.isAlive))
+                networkPeer.broadcastMessage(.updateCombatant(index: (newIndexPath! as NSIndexPath).row, name: player.name, initiative: combatant.initiative, isCurrentTurn: combatant.isCurrentTurn, isAlive: combatant.isAlive))
             }
         }
     }
     
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         // Check to see if the current encounter is no longer the stashed one.
         if controller === encounterResultsController {
             if encounter == currentEncounter {
                 if let encounter = encounter {
                     // Current encounter did not change, rebroadcast the Round.
-                    networkPeer.broadcastMessage(.Round(round: encounter.round))
+                    networkPeer.broadcastMessage(.round(round: encounter.round))
                 }
             } else {
                 // Encounter changed, invalidate the set of combatants, and then send the new encounter out.

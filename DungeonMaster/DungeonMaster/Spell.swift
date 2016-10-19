@@ -35,24 +35,24 @@ final class Spell : NSManagedObject {
     /// Cantrips have a level of 0 (consistent with the lists created by WotC).
     var level: Int {
         get {
-            return rawLevel.integerValue
+            return rawLevel.intValue
         }
         set(newLevel) {
-            rawLevel = NSNumber(integer: newLevel)
+            rawLevel = NSNumber(value: newLevel as Int)
         }
     }
-    @NSManaged private var rawLevel: NSNumber
+    @NSManaged fileprivate var rawLevel: NSNumber
     
     /// School of magic the spell is associated with.
     var school: MagicSchool {
         get {
-            return MagicSchool(rawValue: rawSchool.integerValue)!
+            return MagicSchool(rawValue: rawSchool.intValue)!
         }
         set(newSchool) {
-            rawSchool = NSNumber(integer: newSchool.rawValue)
+            rawSchool = NSNumber(value: newSchool.rawValue as Int)
         }
     }
-    @NSManaged private var rawSchool: NSNumber
+    @NSManaged fileprivate var rawSchool: NSNumber
     
     /// True if the spell can be cast as a ritual.
     @NSManaged var canCastAsRitual: Bool
@@ -76,53 +76,53 @@ final class Spell : NSManagedObject {
     /// This is usually present when the spell can otherwise not be cast during an action, bonus action, or reaction; but it may be present as an alternative to an action.
     var castingTime: Int? {
         get {
-            return rawCastingTime?.integerValue
+            return rawCastingTime?.intValue
         }
         set(newCastingTime) {
-            rawCastingTime = newCastingTime.map({ NSNumber(integer: $0) })
+            rawCastingTime = newCastingTime.map({ NSNumber(value: $0 as Int) })
         }
     }
-    @NSManaged private var rawCastingTime: NSNumber?
+    @NSManaged fileprivate var rawCastingTime: NSNumber?
     
     /// General category of the range of the spell.
     ///
     /// When this is `Distance` or `CenteredOnSelf`, further details are given in `rangeDistance` and `rangeShape`.
     var range: SpellRange {
         get {
-            return SpellRange(rawValue: rawRange.integerValue)!
+            return SpellRange(rawValue: rawRange.intValue)!
         }
         set(newRange) {
-            rawRange = NSNumber(integer: newRange.rawValue)
+            rawRange = NSNumber(value: newRange.rawValue as Int)
         }
     }
-    @NSManaged private var rawRange: NSNumber
+    @NSManaged fileprivate var rawRange: NSNumber
     
     /// Range of the spell (in feet).
     ///
     /// This is present when `range` is `.Distance` or `.CenteredOnSelf`.
     var rangeDistance: Int? {
         get {
-            return rawRangeDistance?.integerValue
+            return rawRangeDistance?.intValue
         }
         set(newRangeDistance) {
-            rawRangeDistance = newRangeDistance.map({ NSNumber(integer: $0) })
+            rawRangeDistance = newRangeDistance.map({ NSNumber(value: $0 as Int) })
         }
         
     }
-    @NSManaged private var rawRangeDistance: NSNumber?
+    @NSManaged fileprivate var rawRangeDistance: NSNumber?
     
     /// Shape of the spell.
     ///
     /// This is present when `range` is `.CenteredOnSelf` and describes the shape of the effect.
     var rangeShape: SpellRangeShape? {
         get {
-            return rawRangeShape.map({ SpellRangeShape(rawValue: $0.integerValue)! })
+            return rawRangeShape.map({ SpellRangeShape(rawValue: $0.intValue)! })
         }
         set(newRangeShape) {
-            rawRangeShape = newRangeShape.map({ NSNumber(integer: $0.rawValue) })
+            rawRangeShape = newRangeShape.map({ NSNumber(value: $0.rawValue as Int) })
         }
     }
-    @NSManaged private var rawRangeShape: NSNumber?
+    @NSManaged fileprivate var rawRangeShape: NSNumber?
     
     /// True when the spell has a verbal component.
     @NSManaged var hasVerbalComponent: Bool
@@ -141,10 +141,10 @@ final class Spell : NSManagedObject {
     /// General category of the duration of the spell.
     var duration: SpellDuration {
         get {
-            return SpellDuration(rawValue: rawDuration.integerValue)!
+            return SpellDuration(rawValue: rawDuration.intValue)!
         }
         set(newDuration) {
-            rawDuration = NSNumber(integer: newDuration.rawValue)
+            rawDuration = NSNumber(value: newDuration.rawValue as Int)
         }
     }
     @NSManaged var rawDuration: NSNumber
@@ -154,13 +154,13 @@ final class Spell : NSManagedObject {
     /// Present, and in minutes, when `duration` is `.Time` or `.MaxTime`; present, and in rounds, when `duration` is `.Rounds` or `.MaxRounds`.
     var durationTime: Int? {
         get {
-            return rawDurationTime?.integerValue
+            return rawDurationTime?.intValue
         }
         set(newDurationTime) {
-            rawDurationTime = newDurationTime.map({ NSNumber(integer: $0) })
+            rawDurationTime = newDurationTime.map({ NSNumber(value: $0 as Int) })
         }
     }
-    @NSManaged private var rawDurationTime: NSNumber?
+    @NSManaged fileprivate var rawDurationTime: NSNumber?
     
     /// True if the spell requires concentration throughout its duration.
     ///
@@ -172,7 +172,7 @@ final class Spell : NSManagedObject {
 
     convenience init(name: String, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Spell, inManagedObjectContext: context)
-        self.init(entity: entity, insertIntoManagedObjectContext: context)
+        self.init(entity: entity, insertInto: context)
         
         self.name = name
     }

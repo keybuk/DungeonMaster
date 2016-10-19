@@ -20,16 +20,16 @@ class CombatantRoleViewController : UITableViewController {
 
     // MARK: UITableViewDataSource
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
-        cell.accessoryType = indexPath.row == role?.rawValue ? .Checkmark : .None
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+        cell.accessoryType = (indexPath as NSIndexPath).row == role?.rawValue ? .checkmark : .none
         return cell
     }
     
     // MARK: UITableViewDelegate
     
-    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        role = CombatRole(rawValue: indexPath.row)
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        role = CombatRole(rawValue: (indexPath as NSIndexPath).row)
         return indexPath
     }
     

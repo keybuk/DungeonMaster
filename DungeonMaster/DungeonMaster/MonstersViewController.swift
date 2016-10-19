@@ -23,8 +23,8 @@ class MonstersViewController : UIViewController, UITableViewDataSource, UITableV
     var searchController: UISearchController!
 
     enum MonstersSort: Int {
-        case ByName
-        case ByCrXp
+        case byName
+        case byCrXp
     }
 
     override func viewDidLoad() {
@@ -45,13 +45,13 @@ class MonstersViewController : UIViewController, UITableViewDataSource, UITableV
     
     var contentOffsetIncludesSearchBar = false
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         // Deselect the row when we reappear in collapsed mode, or when not using a split view controller.
-        if splitViewController == nil || splitViewController!.collapsed {
+        if splitViewController == nil || splitViewController!.isCollapsed {
             if let indexPath = tableView.indexPathForSelectedRow {
-                tableView.deselectRowAtIndexPath(indexPath, animated: true)
+                tableView.deselectRow(at: indexPath, animated: true)
             }
         }
         
@@ -62,7 +62,7 @@ class MonstersViewController : UIViewController, UITableViewDataSource, UITableV
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
         tableView.flashScrollIndicators()
@@ -70,13 +70,13 @@ class MonstersViewController : UIViewController, UITableViewDataSource, UITableV
     
     // MARK: Navigation
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "MonsterDetailSegue" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let monster = fetchedResultsController.objectAtIndexPath(indexPath) as! Monster
-                let viewController = (segue.destinationViewController as! UINavigationController).topViewController as! MonsterViewController
+                let monster = fetchedResultsController.object(at: indexPath) as! Monster
+                let viewController = (segue.destination as! UINavigationController).topViewController as! MonsterViewController
                 viewController.monster = monster
-                viewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
+                viewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 viewController.navigationItem.leftItemsSupplementBackButton = true
                 if let rightBarButtonItems = detailBarButtonItems {
                     viewController.navigationItem.rightBarButtonItems = rightBarButtonItems
@@ -87,32 +87,32 @@ class MonstersViewController : UIViewController, UITableViewDataSource, UITableV
     
     // MARK: Actions
     
-    @IBAction func sortControlValueChanged(sortControl: UISegmentedControl) {
+    @IBAction func sortControlValueChanged(_ sortControl: UISegmentedControl) {
         fetchedResultsController = nil
         tableView.reloadData()
     }
 
     // MARK: Fetched results controller
     
-    var fetchedResultsController: NSFetchedResultsController! {
+    var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>! {
         get {
             if let fetchedResultsController = _fetchedResultsController {
                 return fetchedResultsController
             }
             
-            let fetchRequest = NSFetchRequest(entity: Model.Monster)
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entity: Model.Monster)
             fetchRequest.fetchBatchSize = 20
             
             let sectionNameKeyPath: String
             let sort = MonstersSort(rawValue: sortControl.selectedSegmentIndex)!
             switch sort {
-            case .ByName:
+            case .byName:
                 // Sorting by name is enough for section handling by initial to work.
                 let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
                 fetchRequest.sortDescriptors = [sortDescriptor]
                 
                 sectionNameKeyPath = "nameInitial"
-            case .ByCrXp:
+            case .byCrXp:
                 let primarySortDescriptor = NSSortDescriptor(key: "challenge", ascending: true)
                 let secondarySortDescriptor = NSSortDescriptor(key: "name", ascending: true)
                 fetchRequest.sortDescriptors = [primarySortDescriptor, secondarySortDescriptor]
@@ -123,8 +123,8 @@ class MonstersViewController : UIViewController, UITableViewDataSource, UITableV
             // Set the filter based on both the set of books, and the search pattern.
             let booksPredicate = NSPredicate(format: "ANY sources.book IN %@", books)
 
-            if let search = searchController.searchBar.text where searchController.active {
-                let typeList = MonsterType.cases.filter({ $0.stringValue.lowercaseString.containsString(search.lowercaseString) }).map({ $0.rawValue })
+            if let search = searchController.searchBar.text, searchController.isActive {
+                let typeList = MonsterType.cases.filter({ $0.stringValue.lowercased().contains(search.lowercased()) }).map({ $0.rawValue })
                 
                 let searchPredicate = NSPredicate(format: "rawType IN %@ OR name CONTAINS[cd] %@ OR ANY tags.name CONTAINS[cd] %@", typeList as NSArray, search, search)
                 fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [booksPredicate, searchPredicate])
@@ -145,30 +145,30 @@ class MonstersViewController : UIViewController, UITableViewDataSource, UITableV
             _fetchedResultsController = newFetchedResultsController
         }
     }
-    private var _fetchedResultsController: NSFetchedResultsController?
+    fileprivate var _fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>?
     
     // MARK: UITableViewDataSource
     
     // MARK: Sections
 
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return fetchedResultsController.sections?.count ?? 0
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionInfo = fetchedResultsController.sections![section]
         return sectionInfo.numberOfObjects
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        guard !searchController.active else { return nil }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard !searchController.isActive else { return nil }
         let sectionInfo = fetchedResultsController.sections![section]
         
         let sort = MonstersSort(rawValue: sortControl.selectedSegmentIndex)!
         switch sort {
-        case .ByName:
+        case .byName:
             return sectionInfo.name
-        case .ByCrXp:
+        case .byCrXp:
             let challenge = NSDecimalNumber(string: sectionInfo.name)
             let challengeString: String
             if challenge == NSDecimalNumber(string: "0.125") {
@@ -183,10 +183,10 @@ class MonstersViewController : UIViewController, UITableViewDataSource, UITableV
 
             let xpString: String
             if challenge != 0 {
-                let xpFormatter = NSNumberFormatter()
-                xpFormatter.numberStyle = .DecimalStyle
+                let xpFormatter = NumberFormatter()
+                xpFormatter.numberStyle = .decimal
                 
-                xpString = xpFormatter.stringFromNumber(sharedRules.challengeXP[challenge]!)!
+                xpString = xpFormatter.string(from: NSNumber(sharedRules.challengeXP[challenge]!))!
             } else {
                 xpString = "0–10"
             }
@@ -195,65 +195,65 @@ class MonstersViewController : UIViewController, UITableViewDataSource, UITableV
         }
     }
     
-    func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
-        guard !searchController.active else { return nil }
+    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        guard !searchController.isActive else { return nil }
         return fetchedResultsController.sectionIndexTitles
     }
     
     // MARK: Rows
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MonsterCell", forIndexPath: indexPath) as! MonsterCell
-        let monster = fetchedResultsController.objectAtIndexPath(indexPath) as! Monster
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MonsterCell", for: indexPath) as! MonsterCell
+        let monster = fetchedResultsController.object(at: indexPath) as! Monster
         cell.monster = monster        
         return cell
     }
 
     // MARK: NSFetchedResultsControllerDelegate
 
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
         switch type {
-        case .Insert:
-            tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
-        case .Delete:
-            tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
+        case .insert:
+            tableView.insertSections(IndexSet(integer: sectionIndex), with: .automatic)
+        case .delete:
+            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .automatic)
         default:
             return
         }
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
-        case .Insert:
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
-        case .Delete:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
-        case .Move:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
-        case .Update:
-            if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? MonsterCell {
+        case .insert:
+            tableView.insertRows(at: [newIndexPath!], with: .automatic)
+        case .delete:
+            tableView.deleteRows(at: [indexPath!], with: .automatic)
+        case .move:
+            tableView.deleteRows(at: [indexPath!], with: .automatic)
+            tableView.insertRows(at: [newIndexPath!], with: .automatic)
+        case .update:
+            if let cell = tableView.cellForRow(at: indexPath!) as? MonsterCell {
                 let monster = anObject as! Monster
                 cell.monster = monster
             }
         }
     }
     
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
     
-    func controller(controller: NSFetchedResultsController, sectionIndexTitleForSectionName sectionName: String) -> String? {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, sectionIndexTitleForSectionName sectionName: String) -> String? {
         let sort = MonstersSort(rawValue: sortControl.selectedSegmentIndex)!
         
         switch sort {
-        case .ByName:
+        case .byName:
             return sectionName
-        case .ByCrXp:
+        case .byCrXp:
             if sectionName == "0.125" {
                 return "⅛"
             } else if sectionName == "0.25" {
@@ -268,22 +268,22 @@ class MonstersViewController : UIViewController, UITableViewDataSource, UITableV
     
     // MARK: UISearchControllerDelegate
     
-    func willPresentSearchController(searchController: UISearchController) {
+    func willPresentSearchController(_ searchController: UISearchController) {
         // Hide the part of the navigation bar with the sort buttons.
-        extendedNavigationBarView.hidden = true
+        extendedNavigationBarView.isHidden = true
     }
 
-    func didPresentSearchController(searchController: UISearchController) {
+    func didPresentSearchController(_ searchController: UISearchController) {
         // Remove the thumb index when displaying the search controller. This works because the delegate method checks whether the search controller is active before displaying.
         tableView.reloadSectionIndexTitles()
     }
 
-    func willDismissSearchController(searchController: UISearchController) {
+    func willDismissSearchController(_ searchController: UISearchController) {
         // Unhide the part of the navigation bar with the sort button.
-        extendedNavigationBarView.hidden = false
+        extendedNavigationBarView.isHidden = false
     }
     
-    func didDismissSearchController(searchController: UISearchController) {
+    func didDismissSearchController(_ searchController: UISearchController) {
         // Reset the table back to no search predicate, and reload the data.
         _fetchedResultsController = nil
         tableView.reloadData()
@@ -291,16 +291,16 @@ class MonstersViewController : UIViewController, UITableViewDataSource, UITableV
     
     // MARK: UISearchResultsUpdating
     
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
+    func updateSearchResults(for searchController: UISearchController) {
         _fetchedResultsController = nil
         tableView.reloadData()
     }
     
     // MARK: UISplitViewControllerDelegate
     
-    func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController:UIViewController, ontoPrimaryViewController primaryViewController:UIViewController) -> Bool {
+    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController:UIViewController, onto primaryViewController:UIViewController) -> Bool {
         if let secondaryViewController = secondaryViewController as? UINavigationController,
-            monsterViewController = secondaryViewController.topViewController as? MonsterViewController where monsterViewController.monster == nil {
+            let monsterViewController = secondaryViewController.topViewController as? MonsterViewController, monsterViewController.monster == nil {
                 // If we're not yet showing a monster stat block in the secondary view controller, do nothing, and then return 'true' to indicate the automatic behavior should be skipped—thus discarding the empty stat block view.
                 return true
         }

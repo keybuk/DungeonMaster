@@ -14,10 +14,10 @@ enum Sound : String {
     case Initiative = "initiative"
 }
 
-func PlaySound(sound: Sound) {
-    if let soundFileURL = NSBundle.mainBundle().URLForResource(sound.rawValue, withExtension: "caf", subdirectory: "Sounds") {
+func PlaySound(_ sound: Sound) {
+    if let soundFileURL = Bundle.main.url(forResource: sound.rawValue, withExtension: "caf", subdirectory: "Sounds") {
         var soundID: SystemSoundID = 0
-        AudioServicesCreateSystemSoundID(soundFileURL, &soundID)
+        AudioServicesCreateSystemSoundID(soundFileURL as CFURL, &soundID)
         AudioServicesPlaySystemSound(soundID)
     }
 }

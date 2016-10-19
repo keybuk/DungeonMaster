@@ -20,17 +20,17 @@ class GameViewController : UIViewController, ManagedObjectObserverDelegate {
         super.viewDidLoad()
 
         // Put the edit button in, with space between it and the compendium buttons.
-        let fixedSpace = UIBarButtonItem(barButtonSystemItem: .FixedSpace, target: nil, action: nil)
+        let fixedSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
         fixedSpace.width = 40.0
             
-        navigationItem.rightBarButtonItems?.insert(fixedSpace, atIndex: 0)
-        navigationItem.rightBarButtonItems?.insert(editButtonItem(), atIndex: 0)
+        navigationItem.rightBarButtonItems?.insert(fixedSpace, at: 0)
+        navigationItem.rightBarButtonItems?.insert(editButtonItem, at: 0)
 
         configureView()
     
         observer = ManagedObjectObserver(object: game, delegate: self)
 
-        if game.inserted {
+        if game.isInserted {
             setEditing(true, animated: false)
         }
     }
@@ -39,36 +39,36 @@ class GameViewController : UIViewController, ManagedObjectObserverDelegate {
         // Set the view title.
         navigationItem.title = game.title
         
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateStyle = .LongStyle
-        dateFormatter.timeStyle = .NoStyle
-        dateLabel.text = dateFormatter.stringFromDate(game.date)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .none
+        dateLabel.text = dateFormatter.string(from: game.date as Date)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setToolbarHidden(false, animated: animated)
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setToolbarHidden(true, animated: animated)
     }
 
-    override func setEditing(editing: Bool, animated: Bool) {
-        let oldEditing = self.editing
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        let oldEditing = self.isEditing
         super.setEditing(editing, animated: animated)
         
         navigationItem.hidesBackButton = editing
         
-        dateLabel.textColor = editing ? dateLabel.tintColor : UIColor.blackColor()
-        dateLabel.userInteractionEnabled = editing
+        dateLabel.textColor = editing ? dateLabel.tintColor : UIColor.black
+        dateLabel.isUserInteractionEnabled = editing
         
         playersViewController.setEditing(editing, animated: animated)
         encountersViewController.setEditing(editing, animated: animated)
 
         if oldEditing && !editing {
-            game.adventure.lastModified = NSDate()
+            game.adventure.lastModified = Date()
             try! managedObjectContext.save()
         }
     }
@@ -78,30 +78,30 @@ class GameViewController : UIViewController, ManagedObjectObserverDelegate {
     var playersViewController: GamePlayersViewController!
     var encountersViewController: GameEncountersViewController!
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PlayersEmbedSegue" {
-            playersViewController = segue.destinationViewController as! GamePlayersViewController
+            playersViewController = segue.destination as! GamePlayersViewController
             playersViewController.game = game
         } else if segue.identifier == "EncountersEmbedSegue" {
-            encountersViewController = segue.destinationViewController as! GameEncountersViewController
+            encountersViewController = segue.destination as! GameEncountersViewController
             encountersViewController.game = game
         } else if segue.identifier == "CompendiumMonstersSegue" {
-            let viewController = segue.destinationViewController as! CompendiumViewController
+            let viewController = segue.destination as! CompendiumViewController
             viewController.books = game.adventure.books.allObjects as! [Book]
             viewController.showMonsters()
         } else if segue.identifier == "CompendiumSpellsSegue" {
-            let viewController = segue.destinationViewController as! CompendiumViewController
+            let viewController = segue.destination as! CompendiumViewController
             viewController.books = game.adventure.books.allObjects as! [Book]
             viewController.showSpells()
         } else if segue.identifier == "CompendiumMagicItemsSegue" {
-            let viewController = segue.destinationViewController as! CompendiumViewController
+            let viewController = segue.destination as! CompendiumViewController
             viewController.books = game.adventure.books.allObjects as! [Book]
             viewController.showMagicItems()
         } else if segue.identifier == "DatePopoverSegue" {
-            let viewController = segue.destinationViewController as! GameDateViewController
+            let viewController = segue.destination as! GameDateViewController
             viewController.game = game
 
-            if let presentation = viewController.popoverPresentationController, sourceView = presentation.sourceView {
+            if let presentation = viewController.popoverPresentationController, let sourceView = presentation.sourceView {
                 presentation.sourceRect = sourceView.bounds
             }
         }
@@ -109,26 +109,26 @@ class GameViewController : UIViewController, ManagedObjectObserverDelegate {
     
     // MARK: Actions
     
-    @IBAction func shareButtonTapped(sender: UIBarButtonItem) {
-        let fileManager = NSFileManager.defaultManager()
-        if let cachesUrl = try? fileManager.URLForDirectory(.CachesDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true) {
+    @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
+        let fileManager = FileManager.default
+        if let cachesUrl = try? fileManager.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: true) {
             let filename = "\(game.title).txt"
-            let url = cachesUrl.URLByAppendingPathComponent(filename)
+            let url = cachesUrl.appendingPathComponent(filename)
             
             let description = game.descriptionForExport()
             do {
-                try description.writeToURL(url, atomically: false, encoding: NSUTF8StringEncoding)
+                try description.write(to: url, atomically: false, encoding: String.Encoding.utf8)
                 
                 let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
                 activityViewController.completionWithItemsHandler = { activityType, completed, returnedItems, error in
-                    try! fileManager.removeItemAtURL(url)
+                    try! fileManager.removeItem(at: url)
                 }
                 
                 if let presentation = activityViewController.popoverPresentationController {
                     presentation.barButtonItem = sender
                 }
                 
-                presentViewController(activityViewController, animated: true, completion: nil)
+                present(activityViewController, animated: true, completion: nil)
             } catch {
             }
         }
@@ -137,7 +137,7 @@ class GameViewController : UIViewController, ManagedObjectObserverDelegate {
     
     // MARK: ManagedObjectObserverDelegate
     
-    func managedObject(object: Game, changedForType type: ManagedObjectChangeType) {
+    func managedObject(_ object: Game, changedForType type: ManagedObjectChangeType) {
         configureView()
     }
     

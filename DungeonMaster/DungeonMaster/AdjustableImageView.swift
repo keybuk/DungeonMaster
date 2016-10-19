@@ -12,10 +12,10 @@ import UIKit
 @objc protocol AdjustableImageViewDelegate {
     
     /// Reports that the user has tapped on the image. The delegate should respond by displaying a picker and allowing the user to set a new image.
-    func adjustableImageViewShouldChangeImage(adjustableImageView: AdjustableImageView)
+    func adjustableImageViewShouldChangeImage(_ adjustableImageView: AdjustableImageView)
     
     /// Reports that the user has changed the area of the image that is to be used.
-    func adjustableImageViewDidChangeArea(adjustableImageView: AdjustableImageView)
+    func adjustableImageViewDidChangeArea(_ adjustableImageView: AdjustableImageView)
     
 }
 
@@ -55,13 +55,13 @@ import UIKit
     var panGestureRecognizer: UIPanGestureRecognizer!
     
     func configureView() {
-        opaque = true
+        isOpaque = true
         clearsContextBeforeDrawing = false
         
         imageLayer = CALayer()
         imageLayer.frame = layer.bounds
-        imageLayer.opaque = true
-        imageLayer.backgroundColor = UIColor.darkGrayColor().CGColor
+        imageLayer.isOpaque = true
+        imageLayer.backgroundColor = UIColor.darkGray.cgColor
         layer.addSublayer(imageLayer)
         
         tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(_:)))
@@ -74,7 +74,7 @@ import UIKit
         panGestureRecognizer.delegate = self
     }
     
-    override func sizeThatFits(size: CGSize) -> CGSize {
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
         // Restrict to square aspect ratios.
         let axis = min(size.width, size.height)
         return CGSize(width: axis, height: axis)
@@ -115,26 +115,26 @@ import UIKit
         guard editing else { return }
         
         // The top of the instruction view hierarchy is a dark blur effect, horizontally centered, and about 80% vertically down the image.
-        let blurEffect = UIBlurEffect(style: .Dark)
+        let blurEffect = UIBlurEffect(style: .dark)
         let blurView = UIVisualEffectView(effect: blurEffect)
         blurView.translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(blurView)
         
-        blurView.centerXAnchor.constraintEqualToAnchor(centerXAnchor).active = true
-        addConstraint(NSLayoutConstraint(item: blurView, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 0.8, constant: 0.0))
+        blurView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        addConstraint(NSLayoutConstraint(item: blurView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 0.8, constant: 0.0))
 
         // Packed within it is a vibrancy view.
-        let vibrancyEffect = UIVibrancyEffect(forBlurEffect: blurEffect)
+        let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)
         let vibrancyView = UIVisualEffectView(effect: vibrancyEffect)
         vibrancyView.translatesAutoresizingMaskIntoConstraints = false
 
         blurView.contentView.addSubview(vibrancyView)
 
-        vibrancyView.topAnchor.constraintEqualToAnchor(blurView.topAnchor).active = true
-        vibrancyView.leftAnchor.constraintEqualToAnchor(blurView.leftAnchor).active = true
-        vibrancyView.rightAnchor.constraintEqualToAnchor(blurView.rightAnchor).active = true
-        vibrancyView.bottomAnchor.constraintEqualToAnchor(blurView.bottomAnchor).active = true
+        vibrancyView.topAnchor.constraint(equalTo: blurView.topAnchor).isActive = true
+        vibrancyView.leftAnchor.constraint(equalTo: blurView.leftAnchor).isActive = true
+        vibrancyView.rightAnchor.constraint(equalTo: blurView.rightAnchor).isActive = true
+        vibrancyView.bottomAnchor.constraint(equalTo: blurView.bottomAnchor).isActive = true
         
         // And within that is the actual label.
         let label = UILabel()
@@ -143,21 +143,21 @@ import UIKit
         } else {
             label.text = "Tap to select image"
         }
-        label.textColor = UIColor.whiteColor()
-        label.textAlignment = .Center
-        label.font = UIFont(descriptor: UIFontDescriptor.preferredFontDescriptorWithTextStyle(UIFontTextStyleCaption1).fontDescriptorWithSymbolicTraits(.TraitBold), size: 0.0)
+        label.textColor = UIColor.white
+        label.textAlignment = .center
+        label.font = UIFont(descriptor: UIFontDescriptor.preferredFontDescriptor(withTextStyle: UIFontTextStyle.caption1).withSymbolicTraits(.traitBold)!, size: 0.0)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
         
-        label.heightAnchor.constraintEqualToConstant(label.bounds.size.height).active = true
-        label.widthAnchor.constraintEqualToConstant(label.bounds.size.width).active = true
+        label.heightAnchor.constraint(equalToConstant: label.bounds.size.height).isActive = true
+        label.widthAnchor.constraint(equalToConstant: label.bounds.size.width).isActive = true
 
         vibrancyView.contentView.addSubview(label)
         
-        label.topAnchor.constraintEqualToAnchor(vibrancyView.layoutMarginsGuide.topAnchor).active = true
-        label.leftAnchor.constraintEqualToAnchor(vibrancyView.layoutMarginsGuide.leftAnchor).active = true
-        label.rightAnchor.constraintEqualToAnchor(vibrancyView.layoutMarginsGuide.rightAnchor).active = true
-        label.bottomAnchor.constraintEqualToAnchor(vibrancyView.layoutMarginsGuide.bottomAnchor).active = true
+        label.topAnchor.constraint(equalTo: vibrancyView.layoutMarginsGuide.topAnchor).isActive = true
+        label.leftAnchor.constraint(equalTo: vibrancyView.layoutMarginsGuide.leftAnchor).isActive = true
+        label.rightAnchor.constraint(equalTo: vibrancyView.layoutMarginsGuide.rightAnchor).isActive = true
+        label.bottomAnchor.constraint(equalTo: vibrancyView.layoutMarginsGuide.bottomAnchor).isActive = true
 
         // Layout the subviews to avoid an animation as everything moves into place.
         instructionView = blurView
@@ -204,7 +204,7 @@ import UIKit
     /// Origin of the image fraction to be displayed.
     ///
     /// A value of (0.0, 0.0) is anchored to the top-left corner of the image. For an image twice as wide as it is high, that would be the left half; (1.0, 0.0) would represent the right half of the image; and (0.5, 0.0) would be the middle section of the image.
-    @IBInspectable var origin = CGPointZero {
+    @IBInspectable var origin = CGPoint.zero {
         didSet {
             if updateLayerOnChange {
                 updateLayer()
@@ -224,7 +224,7 @@ import UIKit
             origin = CGPoint(x: 0.5 - fraction / (2 * divisor.x), y: 0.5 - fraction / (2 * divisor.y))
         } else {
             fraction = 1.0
-            origin = CGPointZero
+            origin = CGPoint.zero
         }
         updateLayerOnChange = oldUpdateLayerOnChange
     }
@@ -232,7 +232,7 @@ import UIKit
     /// Update the image, fraction, and origin in one setting.
     ///
     /// Causes only a single layer update, while setting the three properties will change them individually.
-    func setImage(image: UIImage?, fraction: CGFloat = 1.0, origin: CGPoint = CGPointZero) {
+    func setImage(_ image: UIImage?, fraction: CGFloat = 1.0, origin: CGPoint = CGPoint.zero) {
         let oldUpdateLayerOnChange = updateLayerOnChange
         updateLayerOnChange = false
         
@@ -249,7 +249,7 @@ import UIKit
     ///
     /// For perfectly square images, this wouldn't be needed since 1.0 would represent 100% of the images in both directions. Since images are rarely square, this instead returns a `CGPoint` where either the `x` or `y` is 1.0, and the other member is a number greater than 1.0 to divide by to get the equivalent scale.
     func divisorForImage() -> CGPoint {
-        guard let image = image ?? placeholderImage else { return CGPointZero }
+        guard let image = image ?? placeholderImage else { return CGPoint.zero }
         
         let aspectRatio = image.size.width / image.size.height
         let divisor: CGPoint
@@ -263,13 +263,13 @@ import UIKit
     }
     
     /// Updates the image layer based on the current state.
-    func updateLayer(changeImage changeImage: Bool = false) {
+    func updateLayer(changeImage: Bool = false) {
         let contents: CGImage?, opacity: Float
         if let image = image {
-            contents = image.CGImage
+            contents = image.cgImage
             opacity = 1.0
         } else if let image = placeholderImage {
-            contents = image.CGImage
+            contents = image.cgImage
             opacity = editing ? 0.5 : 1.0
         } else {
             contents = nil
@@ -295,17 +295,17 @@ import UIKit
     
     // MARK: Gesture handling
     
-    func handleTapGesture(recognizer: UITapGestureRecognizer) {
-        if recognizer.state == .Ended {
+    func handleTapGesture(_ recognizer: UITapGestureRecognizer) {
+        if recognizer.state == .ended {
             delegate?.adjustableImageViewShouldChangeImage(self)
         }
     }
 
-    func handlePinchGesture(recognizer: UIPinchGestureRecognizer) {
+    func handlePinchGesture(_ recognizer: UIPinchGestureRecognizer) {
         guard let _ = image else { return }
 
         switch recognizer.state {
-        case .Began, .Changed:
+        case .began, .changed:
             // Adjust the zoom by the gesture scale factor, without allowing it to go above 1.0.
             let newFraction = min(fraction / recognizer.scale, 1.0)
 
@@ -313,7 +313,7 @@ import UIKit
             // To make that work, we first calculate the difference in scale; we already know that an origin of 0,0 is the top-left, and it makes sense that for a bottom-right effect, when going from 1.0 to 0.2, we would want to shift the box right and down by 0.8.
             // We then need to know how much of a unit between 0 and that we actually want to apply, this is the relative position of the touch location within the view. Multiplying the two together gives us the amount of the scale difference we want to use as an offset.
             // Finally since the image isn't actually square, and this is a square translation, we divide by the divisor.
-            let location = recognizer.locationInView(self)
+            let location = recognizer.location(in: self)
             let divisor = divisorForImage()
 
             var newOrigin = origin
@@ -328,19 +328,19 @@ import UIKit
             
             // Reset the gesture scale so that the next call is relative to this one.
             pinchGestureRecognizer.scale = 1.0
-        case .Ended:
+        case .ended:
             delegate?.adjustableImageViewDidChangeArea(self)
         default:
             break
         }
     }
     
-    func handlePanGesture(recognizer: UIPanGestureRecognizer) {
+    func handlePanGesture(_ recognizer: UIPanGestureRecognizer) {
         guard let image = image else { return }
 
         switch recognizer.state {
-        case .Began, .Changed:
-            let translation = panGestureRecognizer.translationInView(self)
+        case .began, .changed:
+            let translation = panGestureRecognizer.translation(in: self)
             
             // Modify the pan translation by the image fraction and UI contents scale to match the portion of the image currently displayed. The conversion here is UI points, to image pixels, to fraction-relative pixels, and then to unit value.
             var newOrigin = origin
@@ -354,8 +354,8 @@ import UIKit
             origin = newOrigin
             
             // Reset the gesture translation so that the next call is relative to this one.
-            panGestureRecognizer.setTranslation(CGPointZero, inView: self)
-        case .Ended:
+            panGestureRecognizer.setTranslation(CGPoint.zero, in: self)
+        case .ended:
             delegate?.adjustableImageViewDidChangeArea(self)
         default:
             break
@@ -364,7 +364,7 @@ import UIKit
 
    // MARK: UIGestureRecognizerDelegate
     
-    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
 

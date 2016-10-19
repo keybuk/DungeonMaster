@@ -14,17 +14,17 @@ public enum NetworkMessage {
     /// Version number that changes with any non-binary compatible changes to this structure.
     public static let version = 0
 
-    case Hello(version: Int)
+    case hello(version: Int)
     
-    case BeginEncounter(title: String)
-    case InsertCombatant(toIndex: Int, name: String, initiative: Int?, isCurrentTurn: Bool, isAlive: Bool)
-    case DeleteCombatant(fromIndex: Int)
-    case UpdateCombatant(index: Int, name: String, initiative: Int?, isCurrentTurn: Bool, isAlive: Bool)
-    case MoveCombatant(fromIndex: Int, toIndex: Int)
-    case Round(round: Int)
+    case beginEncounter(title: String)
+    case insertCombatant(toIndex: Int, name: String, initiative: Int?, isCurrentTurn: Bool, isAlive: Bool)
+    case deleteCombatant(fromIndex: Int)
+    case updateCombatant(index: Int, name: String, initiative: Int?, isCurrentTurn: Bool, isAlive: Bool)
+    case moveCombatant(fromIndex: Int, toIndex: Int)
+    case round(round: Int)
     
-    case Initiative(name: String, initiative: Int)
-    case EndTurn(name: String)
+    case initiative(name: String, initiative: Int)
+    case endTurn(name: String)
     
     init?(bytes: [UInt8]) {
         guard bytes.count > 0 else { return nil }
@@ -33,14 +33,14 @@ public enum NetworkMessage {
             // Version
             guard bytes.count == 2 else { return nil }
             
-            self = .Hello(version: Int(bytes[1]))
+            self = .hello(version: Int(bytes[1]))
         case 0x01:
             // BeginEncounter
             guard bytes.count >= 1 else { return nil }
 
-            guard let title = String(bytes: bytes.suffixFrom(1), encoding: NSUTF8StringEncoding) else { return nil }
+            guard let title = String(bytes: bytes.suffix(from: 1), encoding: String.Encoding.utf8) else { return nil }
 
-            self = .BeginEncounter(title: title)
+            self = .beginEncounter(title: title)
         case 0x02:
             // InsertCombatant
             guard bytes.count >= 5 else { return nil }
@@ -49,14 +49,14 @@ public enum NetworkMessage {
             let initiative: Int? = bytes[2] == 0x80 ? nil : Int(Int8(bitPattern: bytes[2]))
             let isCurrentTurn = bytes[3] != 0 ? true : false
             let isAlive = bytes[4] != 0 ? true : false
-            guard let name = String(bytes: bytes.suffixFrom(5), encoding: NSUTF8StringEncoding) else { return nil }
+            guard let name = String(bytes: bytes.suffix(from: 5), encoding: String.Encoding.utf8) else { return nil }
 
-            self = .InsertCombatant(toIndex: toIndex, name: name, initiative: initiative, isCurrentTurn: isCurrentTurn, isAlive: isAlive)
+            self = .insertCombatant(toIndex: toIndex, name: name, initiative: initiative, isCurrentTurn: isCurrentTurn, isAlive: isAlive)
         case 0x03:
             // DeleteCombatant
             guard bytes.count == 2 else { return nil }
             
-            self = .DeleteCombatant(fromIndex: Int(bytes[1]))
+            self = .deleteCombatant(fromIndex: Int(bytes[1]))
         case 0x04:
             // UpdateCombatant
             guard bytes.count >= 5 else { return nil }
@@ -65,34 +65,34 @@ public enum NetworkMessage {
             let initiative: Int? = bytes[2] == 0x80 ? nil : Int(Int8(bitPattern: bytes[2]))
             let isCurrentTurn = bytes[3] != 0 ? true : false
             let isAlive = bytes[4] != 0 ? true : false
-            guard let name = String(bytes: bytes.suffixFrom(5), encoding: NSUTF8StringEncoding) else { return nil }
+            guard let name = String(bytes: bytes.suffix(from: 5), encoding: String.Encoding.utf8) else { return nil }
             
-            self = .UpdateCombatant(index: index, name: name, initiative: initiative, isCurrentTurn: isCurrentTurn, isAlive: isAlive)
+            self = .updateCombatant(index: index, name: name, initiative: initiative, isCurrentTurn: isCurrentTurn, isAlive: isAlive)
         case 0x05:
             // MoveCombatant
             guard bytes.count == 3 else { return nil }
 
-            self = .MoveCombatant(fromIndex: Int(bytes[1]), toIndex: Int(bytes[2]))
+            self = .moveCombatant(fromIndex: Int(bytes[1]), toIndex: Int(bytes[2]))
         case 0x06:
             // Round
             guard bytes.count == 2 else { return nil }
             
-            self = .Round(round: Int(bytes[1]))
+            self = .round(round: Int(bytes[1]))
         case 0x07:
             // Initiative
             guard bytes.count >= 2 else { return nil }
             
             let initiative = Int(Int8(bitPattern: bytes[1]))
-            guard let name = String(bytes: bytes.suffixFrom(2), encoding: NSUTF8StringEncoding) else { return nil }
+            guard let name = String(bytes: bytes.suffix(from: 2), encoding: String.Encoding.utf8) else { return nil }
             
-            self = .Initiative(name: name, initiative: initiative)
+            self = .initiative(name: name, initiative: initiative)
         case 0x08:
             // EndTurn
             guard bytes.count >= 1 else { return nil }
             
-            guard let name = String(bytes: bytes.suffixFrom(1), encoding: NSUTF8StringEncoding) else { return nil }
+            guard let name = String(bytes: bytes.suffix(from: 1), encoding: String.Encoding.utf8) else { return nil }
 
-            self = .EndTurn(name: name)
+            self = .endTurn(name: name)
         default:
             return nil
         }
@@ -102,43 +102,43 @@ public enum NetworkMessage {
         var bytes: [UInt8] = []
         
         switch self {
-        case let .Hello(version):
+        case let .hello(version):
             bytes.append(0x00)
             bytes.append(UInt8(version))
-        case let .BeginEncounter(title):
+        case let .beginEncounter(title):
             bytes.append(0x01)
-            bytes.appendContentsOf(title.utf8)
-        case let .InsertCombatant(toIndex, name, initiative, isCurrentTurn, isAlive):
+            bytes.append(contentsOf: title.utf8)
+        case let .insertCombatant(toIndex, name, initiative, isCurrentTurn, isAlive):
             bytes.append(0x02)
             bytes.append(UInt8(toIndex))
             bytes.append(initiative.map({ UInt8(bitPattern: Int8($0)) }) ?? 0x80)
             bytes.append(isCurrentTurn ? 1 : 0)
             bytes.append(isAlive ? 1 : 0)
-            bytes.appendContentsOf(name.utf8)
-        case let .DeleteCombatant(fromIndex):
+            bytes.append(contentsOf: name.utf8)
+        case let .deleteCombatant(fromIndex):
             bytes.append(0x03)
             bytes.append(UInt8(fromIndex))
-        case let .UpdateCombatant(index, name, initiative, isCurrentTurn, isAlive):
+        case let .updateCombatant(index, name, initiative, isCurrentTurn, isAlive):
             bytes.append(0x04)
             bytes.append(UInt8(index))
             bytes.append(initiative.map({ UInt8(bitPattern: Int8($0)) }) ?? 0x80)
             bytes.append(isCurrentTurn ? 1 : 0)
             bytes.append(isAlive ? 1 : 0)
-            bytes.appendContentsOf(name.utf8)
-        case let .MoveCombatant(fromIndex, toIndex):
+            bytes.append(contentsOf: name.utf8)
+        case let .moveCombatant(fromIndex, toIndex):
             bytes.append(0x05)
             bytes.append(UInt8(fromIndex))
             bytes.append(UInt8(toIndex))
-        case let .Round(round):
+        case let .round(round):
             bytes.append(0x06)
             bytes.append(UInt8(round))
-        case let .Initiative(name, initiative):
+        case let .initiative(name, initiative):
             bytes.append(0x07)
             bytes.append(UInt8(bitPattern: Int8(initiative)))
-            bytes.appendContentsOf(name.utf8)
-        case let .EndTurn(name):
+            bytes.append(contentsOf: name.utf8)
+        case let .endTurn(name):
             bytes.append(0x08)
-            bytes.appendContentsOf(name.utf8)
+            bytes.append(contentsOf: name.utf8)
         }
         
         return bytes

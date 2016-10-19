@@ -15,27 +15,27 @@ final class CombatantDamage : NSManagedObject {
     
     var points: Int {
         get {
-            return rawPoints.integerValue
+            return rawPoints.intValue
         }
         set(newPoints) {
-            rawPoints = NSNumber(integer: newPoints)
+            rawPoints = NSNumber(value: newPoints as Int)
         }
     }
-    @NSManaged private var rawPoints: NSNumber
+    @NSManaged fileprivate var rawPoints: NSNumber
 
     var type: DamageType {
         get {
-            return DamageType(rawValue: rawType.integerValue)!
+            return DamageType(rawValue: rawType.intValue)!
         }
         set(newType) {
-            rawType = NSNumber(integer: newType.rawValue)
+            rawType = NSNumber(value: newType.rawValue as Int)
         }
     }
-    @NSManaged private var rawType: NSNumber
+    @NSManaged fileprivate var rawType: NSNumber
 
     convenience init(target: Combatant, points: Int, type: DamageType, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.CombatantDamage, inManagedObjectContext: context)
-        self.init(entity: entity, insertIntoManagedObjectContext: context)
+        self.init(entity: entity, insertInto: context)
         
         self.target = target
         self.points = points

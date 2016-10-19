@@ -85,7 +85,7 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a test\n")
         
         var range = NSRange()
-        let style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        let style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 0, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
@@ -104,7 +104,7 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a test\nand so is this.\n")
         
         var range = NSRange()
-        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 0, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
@@ -113,7 +113,7 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 15)
 
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 15, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 15, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
@@ -132,7 +132,7 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a test\nand so is this.\n")
         
         var range = NSRange()
-        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 0, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
@@ -141,7 +141,7 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 15)
         
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 15, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 15, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, markupParser.paragraphSpacing)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
@@ -161,7 +161,7 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a test\nand so is this.\n")
         
         var range = NSRange()
-        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 0, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, markupParser.paragraphSpacing)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
@@ -170,7 +170,7 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 15)
         
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 15, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 15, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
@@ -191,7 +191,7 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a test\n")
         
         var range = NSRange()
-        let style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        let style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 0, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
@@ -212,7 +212,7 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a test\nAnd this is the text.\n")
         
         var range = NSRange()
-        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 0, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
@@ -221,14 +221,14 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 15)
         
-        var font = markupParser.text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        var font = markupParser.text.attribute(NSFontAttributeName, at: 0, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 15)
         
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 15, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 15, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
@@ -237,10 +237,10 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(range.location, 15)
         XCTAssertEqual(range.length, 22)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 15, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 15, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 15)
         XCTAssertEqual(range.length, 22)
     }
@@ -254,7 +254,7 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "Previous text.\nThis is a test\nAnd this is the text.\n")
         
         var range = NSRange()
-        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 0, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
@@ -263,14 +263,14 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 15)
         
-        var font = markupParser.text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        var font = markupParser.text.attribute(NSFontAttributeName, at: 0, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 15)
         
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 15, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 15, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, markupParser.paragraphSpacing)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
@@ -279,14 +279,14 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(range.location, 15)
         XCTAssertEqual(range.length, 15)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 15, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 15, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 15)
         XCTAssertEqual(range.length, 15)
         
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 30, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 30, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
@@ -295,10 +295,10 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(range.location, 30)
         XCTAssertEqual(range.length, 22)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 30, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 30, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 30)
         XCTAssertEqual(range.length, 22)
     }
@@ -312,7 +312,7 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a test\nAnd so is this.\n")
         
         var range = NSRange()
-        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 0, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
@@ -321,14 +321,14 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 15)
         
-        var font = markupParser.text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        var font = markupParser.text.attribute(NSFontAttributeName, at: 0, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 15)
         
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 15, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 15, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, markupParser.paragraphSpacing)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
@@ -337,10 +337,10 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(range.location, 15)
         XCTAssertEqual(range.length, 16)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 15, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 15, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 15)
         XCTAssertEqual(range.length, 16)
     }
@@ -356,14 +356,14 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "•\tDaddy\n")
 
         var range = NSRange()
-        let style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        let style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 0, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, markupParser.paragraphIndent)
         XCTAssertEqual(style!.tabStops.count, 1)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, markupParser.paragraphIndent)
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 8)
@@ -379,14 +379,14 @@ class MarkupParserTest : XCTestCase {
         
         // The complete bulleted list should end up in a single paragraph block, since there's no change to the attributes.
         var range = NSRange()
-        let style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        let style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 0, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, markupParser.paragraphIndent)
         XCTAssertEqual(style!.tabStops.count, 1)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, markupParser.paragraphIndent)
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 16)
@@ -404,69 +404,69 @@ class MarkupParserTest : XCTestCase {
         
         // The first line of the table is the heading, and should be covered by a single style with a bold font and tab stops for each column.
         var range = NSRange()
-        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 0, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, 0.0)
         XCTAssertEqual(style!.tabStops.count, 2)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, markupParser.tableSpacing)
-        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.left)
         XCTAssertGreaterThan(style!.tabStops[1].location, markupParser.tableSpacing * 2)
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 15)
         
-        var font = markupParser.text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        var font = markupParser.text.attribute(NSFontAttributeName, at: 0, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 15)
         
         let headingTabStops = style!.tabStops
         
         // The next two lines of the table are the body, with a non-bold font. The tab stops must match the heading ones.
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 15, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 15, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, 0.0)
         XCTAssertEqual(style!.tabStops.count, 2)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, headingTabStops[0].location)
-        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[1].location, headingTabStops[1].location)
         XCTAssertEqual(range.location, 15)
         XCTAssertEqual(range.length, 13)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 15, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 15, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 15)
         XCTAssertEqual(range.length, 13)
         
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 28, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 28, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, 0.0)
         XCTAssertEqual(style!.tabStops.count, 2)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, headingTabStops[0].location)
-        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[1].location, headingTabStops[1].location)
         XCTAssertEqual(range.location, 28)
         XCTAssertEqual(range.length, 23)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 28, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 28, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 28)
         XCTAssertEqual(range.length, 23)
     }
@@ -481,75 +481,75 @@ class MarkupParserTest : XCTestCase {
         
         // The first line of the table is the heading, and should be covered by a single style with a bold font and tab stops for each column. The middle column should be centered.
         var range = NSRange()
-        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 0, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, 0.0)
         XCTAssertEqual(style!.tabStops.count, 3)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, markupParser.tableSpacing)
-        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Center)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.center)
         XCTAssertGreaterThan(style!.tabStops[1].location, markupParser.tableSpacing * 2)
-        XCTAssertEqual(style!.tabStops[2].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[2].alignment, NSTextAlignment.left)
         XCTAssertGreaterThan(style!.tabStops[2].location, markupParser.tableSpacing * 3)
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 27)
         
-        var font = markupParser.text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        var font = markupParser.text.attribute(NSFontAttributeName, at: 0, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 27)
         
         let headingTabStops = style!.tabStops
         
         // The next two lines of the table are the body, with a non-bold font. The tab stops must match the heading ones.
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 27, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 27, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, 0.0)
         XCTAssertEqual(style!.tabStops.count, 3)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, headingTabStops[0].location)
-        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Center)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.center)
         XCTAssertEqual(style!.tabStops[1].location, headingTabStops[1].location)
-        XCTAssertEqual(style!.tabStops[2].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[2].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[2].location, headingTabStops[2].location)
         XCTAssertEqual(range.location, 27)
         XCTAssertEqual(range.length, 18)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 27, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 27, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 27)
         XCTAssertEqual(range.length, 18)
         
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 45, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 45, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, 0.0)
         XCTAssertEqual(style!.tabStops.count, 3)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, headingTabStops[0].location)
-        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Center)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.center)
         XCTAssertEqual(style!.tabStops[1].location, headingTabStops[1].location)
-        XCTAssertEqual(style!.tabStops[2].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[2].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[2].location, headingTabStops[2].location)
         XCTAssertEqual(range.location, 45)
         XCTAssertEqual(range.length, 28)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 45, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 45, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 45)
         XCTAssertEqual(range.length, 28)
     }
@@ -565,75 +565,75 @@ class MarkupParserTest : XCTestCase {
         
         // The left and right colum should be equally sized, and the middle column twice the width.
         var range = NSRange()
-        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 0, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, 0.0)
         XCTAssertEqual(style!.tabStops.count, 3)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, markupParser.tableSpacing)
-        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.left)
         XCTAssertGreaterThanOrEqual(style!.tabStops[1].location, markupParser.tableSpacing * 2 + 75.0)
-        XCTAssertEqual(style!.tabStops[2].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[2].alignment, NSTextAlignment.left)
         XCTAssertGreaterThanOrEqual(style!.tabStops[2].location, markupParser.tableSpacing * 3 + 225.0)
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 16)
         
-        var font = markupParser.text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        var font = markupParser.text.attribute(NSFontAttributeName, at: 0, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 16)
         
         let headingTabStops = style!.tabStops
         
         // Body should otherwise match.
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 16, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 16, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, 0.0)
         XCTAssertEqual(style!.tabStops.count, 3)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, headingTabStops[0].location)
-        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[1].location, headingTabStops[1].location)
-        XCTAssertEqual(style!.tabStops[2].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[2].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[2].location, headingTabStops[2].location)
         XCTAssertEqual(range.location, 16)
         XCTAssertEqual(range.length, 16)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 16, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 16, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 16)
         XCTAssertEqual(range.length, 16)
         
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 32, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 32, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, 0.0)
         XCTAssertEqual(style!.tabStops.count, 3)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, headingTabStops[0].location)
-        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[1].location, headingTabStops[1].location)
-        XCTAssertEqual(style!.tabStops[2].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[2].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[2].location, headingTabStops[2].location)
         XCTAssertEqual(range.location, 32)
         XCTAssertEqual(range.length, 16)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 32, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 32, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 32)
         XCTAssertEqual(range.length, 16)
     }
@@ -649,69 +649,69 @@ class MarkupParserTest : XCTestCase {
         
         // Only the right column should be expanded, since the left is numeric.
         var range = NSRange()
-        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 0, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, 0.0)
         XCTAssertEqual(style!.tabStops.count, 2)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Center)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.center)
         XCTAssertGreaterThan(style!.tabStops[0].location, markupParser.tableSpacing)
-        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.left)
         XCTAssertLessThan(style!.tabStops[1].location, markupParser.tableSpacing * 2 + 150.0)
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 9)
         
-        var font = markupParser.text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        var font = markupParser.text.attribute(NSFontAttributeName, at: 0, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 9)
         
         let headingTabStops = style!.tabStops
         
         // Body should otherwise match.
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 9, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 9, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, 0.0)
         XCTAssertEqual(style!.tabStops.count, 2)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Center)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.center)
         XCTAssertEqual(style!.tabStops[0].location, headingTabStops[0].location)
-        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[1].location, headingTabStops[1].location)
         XCTAssertEqual(range.location, 9)
         XCTAssertEqual(range.length, 7)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 9, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 9, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 9)
         XCTAssertEqual(range.length, 7)
         
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 16, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 16, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, 0.0)
         XCTAssertEqual(style!.tabStops.count, 2)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Center)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.center)
         XCTAssertEqual(style!.tabStops[0].location, headingTabStops[0].location)
-        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[1].location, headingTabStops[1].location)
         XCTAssertEqual(range.location, 16)
         XCTAssertEqual(range.length, 7)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 16, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 16, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 16)
         XCTAssertEqual(range.length, 7)
     }
@@ -728,76 +728,76 @@ class MarkupParserTest : XCTestCase {
         
         // The left and right columns should be smaller than the middle
         var range = NSRange()
-        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 0, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, 0.0)
         XCTAssertEqual(style!.tabStops.count, 3)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Center)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.center)
         XCTAssertGreaterThan(style!.tabStops[0].location, markupParser.tableSpacing)
-        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.left)
         XCTAssertLessThanOrEqual(style!.tabStops[1].location, markupParser.tableSpacing * 2 + 75.0)
-        XCTAssertEqual(style!.tabStops[2].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[2].alignment, NSTextAlignment.left)
         XCTAssertGreaterThanOrEqual(style!.tabStops[2].location, markupParser.tableSpacing * 3 + 200.0)
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 21)
         
-        var font = markupParser.text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        var font = markupParser.text.attribute(NSFontAttributeName, at: 0, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 21)
         
         let headingTabStops = style!.tabStops
         
         // The first logical row paragraph style should extend over the entire text, including the broken column on separate physical lines.
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 21, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 21, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, 0.0)
         XCTAssertEqual(style!.tabStops.count, 3)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Center)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.center)
         XCTAssertEqual(style!.tabStops[0].location, headingTabStops[0].location)
-        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[1].location, headingTabStops[1].location)
-        XCTAssertEqual(style!.tabStops[2].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[2].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[2].location, headingTabStops[2].location)
         XCTAssertEqual(range.location, 21)
         XCTAssertEqual(range.length, 110)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 21, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 21, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 21)
         XCTAssertEqual(range.length, 110)
 
         // Second logical row matches the physical one.
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 131, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 131, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, 0.0)
         XCTAssertEqual(style!.tabStops.count, 3)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Center)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.center)
         XCTAssertEqual(style!.tabStops[0].location, headingTabStops[0].location)
-        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[1].location, headingTabStops[1].location)
-        XCTAssertEqual(style!.tabStops[2].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[2].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[2].location, headingTabStops[2].location)
         XCTAssertEqual(range.location, 131)
         XCTAssertEqual(range.length, 11)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 131, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 131, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 131)
         XCTAssertEqual(range.length, 11)
     }
@@ -813,7 +813,7 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a test\nand so is this.\n")
         
         var range = NSRange()
-        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 0, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
@@ -822,7 +822,7 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 15)
         
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 15, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 15, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, markupParser.paragraphSpacing)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
@@ -841,7 +841,7 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a test\nand so is this.\n")
         
         var range = NSRange()
-        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 0, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
@@ -850,7 +850,7 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 15)
         
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 15, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 15, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
@@ -869,7 +869,7 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a test\nand so is this.\nAnd this.\n")
         
         var range = NSRange()
-        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 0, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
@@ -878,7 +878,7 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 15)
         
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 15, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 15, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, markupParser.paragraphSpacing)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
@@ -887,7 +887,7 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(range.location, 15)
         XCTAssertEqual(range.length, 16)
         
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 31, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 31, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, markupParser.paragraphSpacing)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
@@ -906,7 +906,7 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "Choose between:\n•\tDaddy\n•\tChips\n")
         
         var range = NSRange()
-        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 0, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
@@ -916,26 +916,26 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(range.length, 16)
 
         // Bulleted list gets broken in two, because the first item gains paragraph spacing.
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 16, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 16, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, markupParser.paragraphSpacing)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, markupParser.paragraphIndent)
         XCTAssertEqual(style!.tabStops.count, 1)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, markupParser.paragraphIndent)
         XCTAssertEqual(range.location, 16)
         XCTAssertEqual(range.length, 8)
         
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 24, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 24, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, markupParser.paragraphIndent)
         XCTAssertEqual(style!.tabStops.count, 1)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, markupParser.paragraphIndent)
         XCTAssertEqual(range.location, 24)
         XCTAssertEqual(range.length, 8)
@@ -950,7 +950,7 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "Choose between\n•\tDaddy\n•\tChips\n")
         
         var range = NSRange()
-        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 0, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
@@ -960,14 +960,14 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(range.length, 15)
         
         // Bulleted list no longer gets broken in two, because no paragraph spacing after heading.
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 15, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 15, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, markupParser.paragraphIndent)
         XCTAssertEqual(style!.tabStops.count, 1)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, markupParser.paragraphIndent)
         XCTAssertEqual(range.location, 15)
         XCTAssertEqual(range.length, 16)
@@ -982,19 +982,19 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "•\tDaddy\n•\tChips\nThere are no other alternatives.\n")
         
         var range = NSRange()
-        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 0, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, markupParser.paragraphIndent)
         XCTAssertEqual(style!.tabStops.count, 1)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, markupParser.paragraphIndent)
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 16)
         
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 16, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 16, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, markupParser.paragraphSpacing)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
@@ -1013,7 +1013,7 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "Choose between:\n•\tDaddy\n•\tChips\nThere are no other alternatives.\n")
         
         var range = NSRange()
-        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 0, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
@@ -1023,31 +1023,31 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(range.length, 16)
         
         // Bulleted list gets broken in two, because the first item gains paragraph spacing.
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 16, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 16, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, markupParser.paragraphSpacing)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, markupParser.paragraphIndent)
         XCTAssertEqual(style!.tabStops.count, 1)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, markupParser.paragraphIndent)
         XCTAssertEqual(range.location, 16)
         XCTAssertEqual(range.length, 8)
         
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 24, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 24, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, markupParser.paragraphIndent)
         XCTAssertEqual(style!.tabStops.count, 1)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, markupParser.paragraphIndent)
         XCTAssertEqual(range.location, 24)
         XCTAssertEqual(range.length, 8)
         
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 32, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 32, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, markupParser.paragraphSpacing)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
@@ -1066,7 +1066,7 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "Some text\n\tFoo\tBar\n\tfoo\tbar\n")
         
         var range = NSRange()
-        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 0, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
@@ -1075,39 +1075,39 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 10)
         
-        var font = markupParser.text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        var font = markupParser.text.attribute(NSFontAttributeName, at: 0, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 10)
 
         // Table gets broken in two, first for the heading:
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 10, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 10, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, markupParser.paragraphSpacing)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, 0.0)
         XCTAssertEqual(style!.tabStops.count, 2)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, markupParser.tableSpacing)
-        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.left)
         XCTAssertGreaterThan(style!.tabStops[1].location, markupParser.tableSpacing * 2)
         XCTAssertEqual(range.location, 10)
         XCTAssertEqual(range.length, 9)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 10, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 10, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 10)
         XCTAssertEqual(range.length, 9)
         
         let headingTabStops = style!.tabStops
 
         // and then for the body.
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 19, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 19, effectiveRange: &range) as? NSParagraphStyle
 
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
@@ -1115,17 +1115,17 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, 0.0)
         XCTAssertEqual(style!.tabStops.count, 2)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, headingTabStops[0].location)
-        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[1].location, headingTabStops[1].location)
         XCTAssertEqual(range.location, 19)
         XCTAssertEqual(range.length, 9)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 19, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 19, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 19)
         XCTAssertEqual(range.length, 9)
     }
@@ -1139,7 +1139,7 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "Some text\n\tFoo\tBar\n\tfoo\tbar\n")
         
         var range = NSRange()
-        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 0, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
@@ -1148,39 +1148,39 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 10)
         
-        var font = markupParser.text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        var font = markupParser.text.attribute(NSFontAttributeName, at: 0, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 10)
         
         // Table gets broken in two, first for the heading:
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 10, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 10, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, 0.0)
         XCTAssertEqual(style!.tabStops.count, 2)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, markupParser.tableSpacing)
-        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.left)
         XCTAssertGreaterThan(style!.tabStops[1].location, markupParser.tableSpacing * 2)
         XCTAssertEqual(range.location, 10)
         XCTAssertEqual(range.length, 9)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 10, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 10, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 10)
         XCTAssertEqual(range.length, 9)
         
         let headingTabStops = style!.tabStops
         
         // and then for the body.
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 19, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 19, effectiveRange: &range) as? NSParagraphStyle
         
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
@@ -1188,17 +1188,17 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, 0.0)
         XCTAssertEqual(style!.tabStops.count, 2)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, headingTabStops[0].location)
-        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[1].location, headingTabStops[1].location)
         XCTAssertEqual(range.location, 19)
         XCTAssertEqual(range.length, 9)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 19, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 19, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 19)
         XCTAssertEqual(range.length, 9)
     }
@@ -1212,7 +1212,7 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "Some text\n\tFoo\tBar\n\tfoo\tbar\nMore text\n")
         
         var range = NSRange()
-        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 0, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
@@ -1221,39 +1221,39 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 10)
         
-        var font = markupParser.text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        var font = markupParser.text.attribute(NSFontAttributeName, at: 0, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 10)
         
         // Table gets broken in two, first for the heading:
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 10, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 10, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, markupParser.paragraphSpacing)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, 0.0)
         XCTAssertEqual(style!.tabStops.count, 2)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, markupParser.tableSpacing)
-        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.left)
         XCTAssertGreaterThan(style!.tabStops[1].location, markupParser.tableSpacing * 2)
         XCTAssertEqual(range.location, 10)
         XCTAssertEqual(range.length, 9)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 10, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 10, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 10)
         XCTAssertEqual(range.length, 9)
         
         let headingTabStops = style!.tabStops
         
         // and then for the body.
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 19, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 19, effectiveRange: &range) as? NSParagraphStyle
         
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
@@ -1261,22 +1261,22 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, 0.0)
         XCTAssertEqual(style!.tabStops.count, 2)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, headingTabStops[0].location)
-        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[1].location, headingTabStops[1].location)
         XCTAssertEqual(range.location, 19)
         XCTAssertEqual(range.length, 9)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 19, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 19, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 19)
         XCTAssertEqual(range.length, 9)
         
         // Text following table should have paragraph spacing.
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 28, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 28, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, markupParser.paragraphSpacing)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
@@ -1285,10 +1285,10 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(range.location, 28)
         XCTAssertEqual(range.length, 10)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 28, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 28, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 28)
         XCTAssertEqual(range.length, 10)
     }
@@ -1306,17 +1306,17 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "Title, This is a test\n")
 
         var range = NSRange()
-        var font = markupParser.text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        var font = markupParser.text.attribute(NSFontAttributeName, at: 0, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 6)
 
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 6, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 6, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 6)
         XCTAssertEqual(range.length, 16)
     }
@@ -1330,24 +1330,24 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a test\n")
         
         var range = NSRange()
-        var font = markupParser.text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        var font = markupParser.text.attribute(NSFontAttributeName, at: 0, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 5)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 5, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 5, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 5)
         XCTAssertEqual(range.length, 2)
 
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 7, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 7, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 7)
         XCTAssertEqual(range.length, 8)
     }
@@ -1361,25 +1361,25 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a test\n")
         
         var range = NSRange()
-        var font = markupParser.text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        var font = markupParser.text.attribute(NSFontAttributeName, at: 0, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 10)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 10, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 10, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 10)
         XCTAssertEqual(range.length, 4)
         
         // Final attribute for the newline.
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 14, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 14, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 14)
         XCTAssertEqual(range.length, 1)
     }
@@ -1393,10 +1393,10 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a test\n")
 
         var range = NSRange()
-        let font = markupParser.text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        let font = markupParser.text.attribute(NSFontAttributeName, at: 0, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 15)
     }
@@ -1410,17 +1410,17 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "Title. This is a test\n")
         
         var range = NSRange()
-        var font = markupParser.text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        var font = markupParser.text.attribute(NSFontAttributeName, at: 0, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 6)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 6, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 6, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 6)
         XCTAssertEqual(range.length, 16)
     }
@@ -1434,24 +1434,24 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a test\n")
         
         var range = NSRange()
-        var font = markupParser.text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        var font = markupParser.text.attribute(NSFontAttributeName, at: 0, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 5)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 5, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 5, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 5)
         XCTAssertEqual(range.length, 2)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 7, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 7, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 7)
         XCTAssertEqual(range.length, 8)
     }
@@ -1465,25 +1465,25 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a test\n")
         
         var range = NSRange()
-        var font = markupParser.text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        var font = markupParser.text.attribute(NSFontAttributeName, at: 0, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 10)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 10, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 10, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 10)
         XCTAssertEqual(range.length, 4)
         
         // Final attribute for the newline.
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 14, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 14, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 14)
         XCTAssertEqual(range.length, 1)
     }
@@ -1497,10 +1497,10 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a test\n")
         
         var range = NSRange()
-        let font = markupParser.text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        let font = markupParser.text.attribute(NSFontAttributeName, at: 0, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 15)
     }
@@ -1514,17 +1514,17 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "Title. This is a test\n")
         
         var range = NSRange()
-        var font = markupParser.text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        var font = markupParser.text.attribute(NSFontAttributeName, at: 0, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 6)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 6, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 6, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 6)
         XCTAssertEqual(range.length, 16)
     }
@@ -1538,24 +1538,24 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a test\n")
         
         var range = NSRange()
-        var font = markupParser.text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        var font = markupParser.text.attribute(NSFontAttributeName, at: 0, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 5)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 5, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 5, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 5)
         XCTAssertEqual(range.length, 2)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 7, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 7, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 7)
         XCTAssertEqual(range.length, 8)
     }
@@ -1569,25 +1569,25 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a test\n")
         
         var range = NSRange()
-        var font = markupParser.text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        var font = markupParser.text.attribute(NSFontAttributeName, at: 0, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 10)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 10, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 10, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 10)
         XCTAssertEqual(range.length, 4)
         
         // Final attribute for the newline.
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 14, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 14, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 14)
         XCTAssertEqual(range.length, 1)
     }
@@ -1601,10 +1601,10 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a test\n")
         
         var range = NSRange()
-        let font = markupParser.text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        let font = markupParser.text.attribute(NSFontAttributeName, at: 0, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 15)
     }
@@ -1670,12 +1670,12 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a test\n")
         
         var range = NSRange()
-        var link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 0, effectiveRange: &range) as? String
+        var link = markupParser.text.attribute(MarkupParser.linkAttributeName, at: 0, effectiveRange: &range) as? String
         XCTAssertEqual(link, "This is")
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 7)
         
-        link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 7, effectiveRange: &range) as? String
+        link = markupParser.text.attribute(MarkupParser.linkAttributeName, at: 7, effectiveRange: &range) as? String
         XCTAssertNil(link)
         XCTAssertEqual(range.location, 7)
         XCTAssertEqual(range.length, 8)
@@ -1690,17 +1690,17 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a test string containing a link\n")
         
         var range = NSRange()
-        var link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 0, effectiveRange: &range) as? String
+        var link = markupParser.text.attribute(MarkupParser.linkAttributeName, at: 0, effectiveRange: &range) as? String
         XCTAssertNil(link)
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 10)
         
-        link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 10, effectiveRange: &range) as? String
+        link = markupParser.text.attribute(MarkupParser.linkAttributeName, at: 10, effectiveRange: &range) as? String
         XCTAssertEqual(link, "test string")
         XCTAssertEqual(range.location, 10)
         XCTAssertEqual(range.length, 11)
         
-        link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 21, effectiveRange: &range) as? String
+        link = markupParser.text.attribute(MarkupParser.linkAttributeName, at: 21, effectiveRange: &range) as? String
         XCTAssertNil(link)
         XCTAssertEqual(range.location, 21)
         XCTAssertEqual(range.length, 19)
@@ -1715,17 +1715,17 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a test\n")
         
         var range = NSRange()
-        var link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 0, effectiveRange: &range) as? String
+        var link = markupParser.text.attribute(MarkupParser.linkAttributeName, at: 0, effectiveRange: &range) as? String
         XCTAssertNil(link)
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 8)
 
-        link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 8, effectiveRange: &range) as? String
+        link = markupParser.text.attribute(MarkupParser.linkAttributeName, at: 8, effectiveRange: &range) as? String
         XCTAssertEqual(link, "a test")
         XCTAssertEqual(range.location, 8)
         XCTAssertEqual(range.length, 6)
         
-        link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 14, effectiveRange: &range) as? String
+        link = markupParser.text.attribute(MarkupParser.linkAttributeName, at: 14, effectiveRange: &range) as? String
         XCTAssertNil(link)
         XCTAssertEqual(range.location, 14)
         XCTAssertEqual(range.length, 1)
@@ -1740,13 +1740,13 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a test\n")
         
         var range = NSRange()
-        var link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 0, effectiveRange: &range) as? String
-        link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 8, effectiveRange: &range) as? String
+        var link = markupParser.text.attribute(MarkupParser.linkAttributeName, at: 0, effectiveRange: &range) as? String
+        link = markupParser.text.attribute(MarkupParser.linkAttributeName, at: 8, effectiveRange: &range) as? String
         XCTAssertEqual(link, "This is a test")
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 14)
         
-        link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 14, effectiveRange: &range) as? String
+        link = markupParser.text.attribute(MarkupParser.linkAttributeName, at: 14, effectiveRange: &range) as? String
         XCTAssertNil(link)
         XCTAssertEqual(range.location, 14)
         XCTAssertEqual(range.length, 1)
@@ -1761,17 +1761,17 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a thing containing a link\n")
         
         var range = NSRange()
-        var link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 0, effectiveRange: &range) as? String
+        var link = markupParser.text.attribute(MarkupParser.linkAttributeName, at: 0, effectiveRange: &range) as? String
         XCTAssertNil(link)
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 10)
         
-        link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 10, effectiveRange: &range) as? String
+        link = markupParser.text.attribute(MarkupParser.linkAttributeName, at: 10, effectiveRange: &range) as? String
         XCTAssertEqual(link, "test string")
         XCTAssertEqual(range.location, 10)
         XCTAssertEqual(range.length, 5)
         
-        link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 15, effectiveRange: &range) as? String
+        link = markupParser.text.attribute(MarkupParser.linkAttributeName, at: 15, effectiveRange: &range) as? String
         XCTAssertNil(link)
         XCTAssertEqual(range.location, 15)
         XCTAssertEqual(range.length, 19)
@@ -1781,26 +1781,26 @@ class MarkupParserTest : XCTestCase {
         let lines = [ "This is a [test string] containing a link" ]
         
         let markupParser = MarkupParser()
-        markupParser.linkColor = UIColor.redColor()
+        markupParser.linkColor = UIColor.red
         markupParser.parse(lines)
         
         XCTAssertEqual(markupParser.text.string, "This is a test string containing a link\n")
         
         var range = NSRange()
-        var link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 0, effectiveRange: &range) as? String
+        var link = markupParser.text.attribute(MarkupParser.linkAttributeName, at: 0, effectiveRange: &range) as? String
         XCTAssertNil(link)
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 10)
         
-        link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 10, effectiveRange: &range) as? String
+        link = markupParser.text.attribute(MarkupParser.linkAttributeName, at: 10, effectiveRange: &range) as? String
         XCTAssertEqual(link, "test string")
         XCTAssertEqual(range.location, 10)
         XCTAssertEqual(range.length, 11)
         
-        let color = markupParser.text.attribute(NSForegroundColorAttributeName, atIndex: 10, effectiveRange: &range) as? UIColor
+        let color = markupParser.text.attribute(NSForegroundColorAttributeName, at: 10, effectiveRange: &range) as? UIColor
         XCTAssertNotNil(color)
         
-        link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 21, effectiveRange: &range) as? String
+        link = markupParser.text.attribute(MarkupParser.linkAttributeName, at: 21, effectiveRange: &range) as? String
         XCTAssertNil(link)
         XCTAssertEqual(range.location, 21)
         XCTAssertEqual(range.length, 19)
@@ -1817,24 +1817,24 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a “test with emphasis in the quoted” string\n")
 
         var range = NSRange()
-        var font = markupParser.text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        var font = markupParser.text.attribute(NSFontAttributeName, at: 0, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 21)
 
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 21, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 21, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 21)
         XCTAssertEqual(range.length, 8)
 
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 29, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 29, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 29)
         XCTAssertEqual(range.length, 23)
     }
@@ -1849,18 +1849,18 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a test’ string containing a link\n")
         
         var range = NSRange()
-        var link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 0, effectiveRange: &range) as? String
+        var link = markupParser.text.attribute(MarkupParser.linkAttributeName, at: 0, effectiveRange: &range) as? String
         XCTAssertNil(link)
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 10)
         
         // But the link name should be an ordinary apostrophe.
-        link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 10, effectiveRange: &range) as? String
+        link = markupParser.text.attribute(MarkupParser.linkAttributeName, at: 10, effectiveRange: &range) as? String
         XCTAssertEqual(link, "test' string")
         XCTAssertEqual(range.location, 10)
         XCTAssertEqual(range.length, 12)
         
-        link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 22, effectiveRange: &range) as? String
+        link = markupParser.text.attribute(MarkupParser.linkAttributeName, at: 22, effectiveRange: &range) as? String
         XCTAssertNil(link)
         XCTAssertEqual(range.location, 22)
         XCTAssertEqual(range.length, 19)
@@ -1888,7 +1888,7 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This “is” a test\n")
 
         var range = NSRange()
-        let style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        let style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 0, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
@@ -1897,10 +1897,10 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 17)
         
-        let font = markupParser.text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        let font = markupParser.text.attribute(NSFontAttributeName, at: 0, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 17)
     }
@@ -1914,62 +1914,62 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "•\tDaddy and Chips\n")
         
         var range = NSRange()
-        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 0, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, markupParser.paragraphIndent)
         XCTAssertEqual(style!.tabStops.count, 1)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, markupParser.paragraphIndent)
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 8)
         
-        var font = markupParser.text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        var font = markupParser.text.attribute(NSFontAttributeName, at: 0, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 8)
         
         
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 8, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 8, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, markupParser.paragraphIndent)
         XCTAssertEqual(style!.tabStops.count, 1)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, markupParser.paragraphIndent)
         XCTAssertEqual(range.location, 8)
         XCTAssertEqual(range.length, 3)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 8, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 8, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 8)
         XCTAssertEqual(range.length, 3)
         
         
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 11, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 11, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, markupParser.paragraphIndent)
         XCTAssertEqual(style!.tabStops.count, 1)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, markupParser.paragraphIndent)
         XCTAssertEqual(range.location, 11)
         XCTAssertEqual(range.length, 7)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 11, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 11, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 11)
         XCTAssertEqual(range.length, 7)
     }
@@ -1984,158 +1984,158 @@ class MarkupParserTest : XCTestCase {
         
         // The first line of the table is the heading, and should be covered by a single style with a bold font and tab stops for each column.
         var range = NSRange()
-        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 0, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, 0.0)
         XCTAssertEqual(style!.tabStops.count, 2)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, markupParser.tableSpacing)
-        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.left)
         XCTAssertGreaterThan(style!.tabStops[1].location, markupParser.tableSpacing * 2)
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 15)
         
-        var font = markupParser.text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        var font = markupParser.text.attribute(NSFontAttributeName, at: 0, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 15)
         
         let headingTabStops = style!.tabStops
         
         // The next line is the un-emphasised one, with a non-bold font. The tab stops must match the heading ones.
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 15, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 15, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, 0.0)
         XCTAssertEqual(style!.tabStops.count, 2)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, headingTabStops[0].location)
-        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[1].location, headingTabStops[1].location)
         XCTAssertEqual(range.location, 15)
         XCTAssertEqual(range.length, 13)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 15, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 15, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 15)
         XCTAssertEqual(range.length, 13)
         
         // The table row's initial tab should be outside of the emphasis.
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 28, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 28, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, 0.0)
         XCTAssertEqual(style!.tabStops.count, 2)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, headingTabStops[0].location)
-        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[1].location, headingTabStops[1].location)
         XCTAssertEqual(range.location, 28)
         XCTAssertEqual(range.length, 1)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 28, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 28, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 28)
         XCTAssertEqual(range.length, 1)
         
         // The word "California" should be in italics. The tab stops for this paragraph section should still match though.
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 29, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 29, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, 0.0)
         XCTAssertEqual(style!.tabStops.count, 2)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, headingTabStops[0].location)
-        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[1].location, headingTabStops[1].location)
         XCTAssertEqual(range.location, 29)
         XCTAssertEqual(range.length, 10)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 29, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 29, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 29)
         XCTAssertEqual(range.length, 10)
         
         // Column separator.
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 39, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 39, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, 0.0)
         XCTAssertEqual(style!.tabStops.count, 2)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, headingTabStops[0].location)
-        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[1].location, headingTabStops[1].location)
         XCTAssertEqual(range.location, 39)
         XCTAssertEqual(range.length, 1)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 39, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 39, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 39)
         XCTAssertEqual(range.length, 1)
 
         // The word "Sacramento" should be in bold. The tab stops for this paragraph section should still match though.
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 40, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 40, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, 0.0)
         XCTAssertEqual(style!.tabStops.count, 2)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, headingTabStops[0].location)
-        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[1].location, headingTabStops[1].location)
         XCTAssertEqual(range.location, 40)
         XCTAssertEqual(range.length, 10)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 40, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 40, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 40)
         XCTAssertEqual(range.length, 10)
 
         // Final newline.
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 50, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 50, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, 0.0)
         XCTAssertEqual(style!.tabStops.count, 2)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, headingTabStops[0].location)
-        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[1].location, headingTabStops[1].location)
         XCTAssertEqual(range.location, 50)
         XCTAssertEqual(range.length, 1)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 50, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 50, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 50)
         XCTAssertEqual(range.length, 1)
     }
@@ -2151,10 +2151,10 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is *a test\n")
         
         var range = NSRange()
-        let font = markupParser.text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        let font = markupParser.text.attribute(NSFontAttributeName, at: 0, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 16)
     }
@@ -2168,24 +2168,24 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is *a test\n")
         
         var range = NSRange()
-        var font = markupParser.text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        var font = markupParser.text.attribute(NSFontAttributeName, at: 0, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 9)
 
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 9, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 9, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 9)
         XCTAssertEqual(range.length, 1)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 10, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 10, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 10)
         XCTAssertEqual(range.length, 6)
     }
@@ -2199,24 +2199,24 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a* test\n")
         
         var range = NSRange()
-        var font = markupParser.text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        var font = markupParser.text.attribute(NSFontAttributeName, at: 0, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 8)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 8, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 8, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 8)
         XCTAssertEqual(range.length, 1)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 9, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 9, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 9)
         XCTAssertEqual(range.length, 7)
     }
@@ -2266,17 +2266,17 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a test string(test containing a link\n")
         
         var range = NSRange()
-        var link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 0, effectiveRange: &range) as? String
+        var link = markupParser.text.attribute(MarkupParser.linkAttributeName, at: 0, effectiveRange: &range) as? String
         XCTAssertNil(link)
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 10)
         
-        link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 10, effectiveRange: &range) as? String
+        link = markupParser.text.attribute(MarkupParser.linkAttributeName, at: 10, effectiveRange: &range) as? String
         XCTAssertEqual(link, "test string")
         XCTAssertEqual(range.location, 10)
         XCTAssertEqual(range.length, 11)
         
-        link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 21, effectiveRange: &range) as? String
+        link = markupParser.text.attribute(MarkupParser.linkAttributeName, at: 21, effectiveRange: &range) as? String
         XCTAssertNil(link)
         XCTAssertEqual(range.location, 21)
         XCTAssertEqual(range.length, 24)
@@ -2291,17 +2291,17 @@ class MarkupParserTest : XCTestCase {
         XCTAssertEqual(markupParser.text.string, "This is a test stringtest) containing a link\n")
         
         var range = NSRange()
-        var link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 0, effectiveRange: &range) as? String
+        var link = markupParser.text.attribute(MarkupParser.linkAttributeName, at: 0, effectiveRange: &range) as? String
         XCTAssertNil(link)
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 10)
         
-        link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 10, effectiveRange: &range) as? String
+        link = markupParser.text.attribute(MarkupParser.linkAttributeName, at: 10, effectiveRange: &range) as? String
         XCTAssertEqual(link, "test string")
         XCTAssertEqual(range.location, 10)
         XCTAssertEqual(range.length, 11)
         
-        link = markupParser.text.attribute(MarkupParser.linkAttributeName, atIndex: 21, effectiveRange: &range) as? String
+        link = markupParser.text.attribute(MarkupParser.linkAttributeName, at: 21, effectiveRange: &range) as? String
         XCTAssertNil(link)
         XCTAssertEqual(range.location, 21)
         XCTAssertEqual(range.length, 24)
@@ -2318,69 +2318,69 @@ class MarkupParserTest : XCTestCase {
         
         // The first line of the table is the heading, and should be covered by a single style with a bold font and tab stops for each column.
         var range = NSRange()
-        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 0, effectiveRange: &range) as? NSParagraphStyle
+        var style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 0, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, 0.0)
         XCTAssertEqual(style!.tabStops.count, 2)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, markupParser.tableSpacing)
-        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.left)
         XCTAssertGreaterThan(style!.tabStops[1].location, markupParser.tableSpacing * 2)
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 15)
         
-        var font = markupParser.text.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: &range) as? UIFont
+        var font = markupParser.text.attribute(NSFontAttributeName, at: 0, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertTrue(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertTrue(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 0)
         XCTAssertEqual(range.length, 15)
         
         let headingTabStops = style!.tabStops
         
         // The next two lines of the table are the body, with a non-bold font. The tab stops must match the heading ones.
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 15, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 15, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, 0.0)
         XCTAssertEqual(style!.tabStops.count, 2)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, headingTabStops[0].location)
-        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[1].location, headingTabStops[1].location)
         XCTAssertEqual(range.location, 15)
         XCTAssertEqual(range.length, 13)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 15, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 15, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 15)
         XCTAssertEqual(range.length, 13)
         
-        style = markupParser.text.attribute(NSParagraphStyleAttributeName, atIndex: 28, effectiveRange: &range) as? NSParagraphStyle
+        style = markupParser.text.attribute(NSParagraphStyleAttributeName, at: 28, effectiveRange: &range) as? NSParagraphStyle
         XCTAssertNotNil(style)
         XCTAssertEqual(style!.paragraphSpacingBefore, 0.0)
         XCTAssertEqual(style!.paragraphSpacing, 0.0)
         XCTAssertEqual(style!.firstLineHeadIndent, 0.0)
         XCTAssertEqual(style!.headIndent, 0.0)
         XCTAssertEqual(style!.tabStops.count, 2)
-        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[0].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[0].location, headingTabStops[0].location)
-        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.Left)
+        XCTAssertEqual(style!.tabStops[1].alignment, NSTextAlignment.left)
         XCTAssertEqual(style!.tabStops[1].location, headingTabStops[1].location)
         XCTAssertEqual(range.location, 28)
         XCTAssertEqual(range.length, 25)
         
-        font = markupParser.text.attribute(NSFontAttributeName, atIndex: 28, effectiveRange: &range) as? UIFont
+        font = markupParser.text.attribute(NSFontAttributeName, at: 28, effectiveRange: &range) as? UIFont
         XCTAssertNotNil(font)
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitBold))
-        XCTAssertFalse(font!.fontDescriptor().symbolicTraits.contains(.TraitItalic))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitBold))
+        XCTAssertFalse(font!.fontDescriptor.symbolicTraits.contains(.traitItalic))
         XCTAssertEqual(range.location, 28)
         XCTAssertEqual(range.length, 25)
     }

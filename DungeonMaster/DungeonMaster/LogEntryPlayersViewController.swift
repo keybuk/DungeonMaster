@@ -21,17 +21,17 @@ class LogEntryPlayersViewController : UITableViewController, NSFetchedResultsCon
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        playedGames.unionInPlace(fetchedResultsController.fetchedObjects! as! [PlayedGame])
+        playedGames.formUnion(fetchedResultsController.fetchedObjects! as! [PlayedGame])
     }
 
     // MARK: Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "NoteSegue" {
-            let viewController = segue.destinationViewController as! LogEntryNoteViewController
+            let viewController = segue.destination as! LogEntryNoteViewController
             viewController.playedGames = playedGames
         } else if segue.identifier == "XPAwardSegue" {
-            let viewController = segue.destinationViewController as! LogEntryXPAwardViewController
+            let viewController = segue.destination as! LogEntryXPAwardViewController
             viewController.playedGames = playedGames
             viewController.encounter = encounter
             viewController.combatants = combatants
@@ -40,12 +40,12 @@ class LogEntryPlayersViewController : UITableViewController, NSFetchedResultsCon
     
     // MARK: Actions
     
-    @IBAction func nextButtonTapped(sender: UIBarButtonItem) {
+    @IBAction func nextButtonTapped(_ sender: UIBarButtonItem) {
         switch logEntryType {
         case is XPAward.Type:
-            performSegueWithIdentifier("XPAwardSegue", sender: sender)
+            performSegue(withIdentifier: "XPAwardSegue", sender: sender)
         case is LogEntryNote.Type:
-            performSegueWithIdentifier("NoteSegue", sender: sender)
+            performSegue(withIdentifier: "NoteSegue", sender: sender)
         default:
             fatalError("Unknown Log Entry type")
         }
@@ -53,8 +53,8 @@ class LogEntryPlayersViewController : UITableViewController, NSFetchedResultsCon
     
     // MARK: Fetched results controller
     
-    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] in
-        let fetchRequest = NSFetchRequest(entity: Model.PlayedGame)
+    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] -> <<error type>> in
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entity: Model.PlayedGame)
         let gamePredicate = NSPredicate(format: "game == %@", self.game)
         if let encounter = self.encounter {
             let encounterPredicate = NSPredicate(format: "ANY player.combatants.encounter == %@", encounter)
@@ -76,82 +76,82 @@ class LogEntryPlayersViewController : UITableViewController, NSFetchedResultsCon
 
     // MARK: UITableViewDataSource
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return fetchedResultsController.sections?.count ?? 0
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionInfo = fetchedResultsController.sections![section]
         return sectionInfo.numberOfObjects
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("LogEntryPlayerCell", forIndexPath: indexPath) as! LogEntryPlayerCell
-        let playedGame = fetchedResultsController.objectAtIndexPath(indexPath) as! PlayedGame
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LogEntryPlayerCell", for: indexPath) as! LogEntryPlayerCell
+        let playedGame = fetchedResultsController.object(at: indexPath) as! PlayedGame
         cell.player = playedGame.player
-        cell.accessoryType = playedGames.contains(playedGame) ? .Checkmark : .None
+        cell.accessoryType = playedGames.contains(playedGame) ? .checkmark : .none
         return cell
     }
     
     // MARK: UITableViewDelegate
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let playedGame = fetchedResultsController.objectAtIndexPath(indexPath) as! PlayedGame
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let playedGame = fetchedResultsController.object(at: indexPath) as! PlayedGame
         if playedGames.contains(playedGame) {
             playedGames.remove(playedGame)
         } else {
             playedGames.insert(playedGame)
         }
         
-        if let cell = tableView.cellForRowAtIndexPath(indexPath) as? LogEntryPlayerCell {
-            cell.accessoryType = playedGames.contains(playedGame) ? .Checkmark : .None
+        if let cell = tableView.cellForRow(at: indexPath) as? LogEntryPlayerCell {
+            cell.accessoryType = playedGames.contains(playedGame) ? .checkmark : .none
         }
         
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
     // MARK: NSFetchedResultsControllerDelegate
     
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
         switch type {
-        case .Insert:
-            tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
-        case .Delete:
-            tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
+        case .insert:
+            tableView.insertSections(IndexSet(integer: sectionIndex), with: .automatic)
+        case .delete:
+            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .automatic)
         default:
             return
         }
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
-        case .Insert:
+        case .insert:
             let playedGame = anObject as! PlayedGame
             playedGames.insert(playedGame)
             
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
-        case .Delete:
+            tableView.insertRows(at: [newIndexPath!], with: .automatic)
+        case .delete:
             let playedGame = anObject as! PlayedGame
             playedGames.remove(playedGame)
 
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
-        case .Move:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
-        case .Update:
-            if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? LogEntryPlayerCell {
+            tableView.deleteRows(at: [indexPath!], with: .automatic)
+        case .move:
+            tableView.deleteRows(at: [indexPath!], with: .automatic)
+            tableView.insertRows(at: [newIndexPath!], with: .automatic)
+        case .update:
+            if let cell = tableView.cellForRow(at: indexPath!) as? LogEntryPlayerCell {
                 let playedGame = anObject as! PlayedGame
                 cell.player = playedGame.player
-                cell.accessoryType = playedGames.contains(playedGame) ? .Checkmark : .None
+                cell.accessoryType = playedGames.contains(playedGame) ? .checkmark : .none
             }
         }
     }
     
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
 
@@ -174,7 +174,7 @@ class LogEntryPlayerCell : UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        leadingConstraint.constant = editing ? 0.0 : (separatorInset.left - layoutMargins.left)
+        leadingConstraint.constant = isEditing ? 0.0 : (separatorInset.left - layoutMargins.left)
     }
     
 }

@@ -15,22 +15,22 @@ final class XPAward : LogEntry {
     /// Amount of XP that was awarded to the player.
     var xp: Int {
         get {
-            return rawXP.integerValue
+            return rawXP.intValue
         }
         set(newXP) {
-            rawXP = NSNumber(integer: newXP)
+            rawXP = NSNumber(value: newXP as Int)
         }
     }
-    @NSManaged private var rawXP: NSNumber
+    @NSManaged fileprivate var rawXP: NSNumber
     
     /// String-formatted version of `xp`.
     ///
     /// Formatted as "12,345 XP".
     var xpString: String {
-        let xpFormatter = NSNumberFormatter()
-        xpFormatter.numberStyle = .DecimalStyle
+        let xpFormatter = NumberFormatter()
+        xpFormatter.numberStyle = .decimal
         
-        let xpString = xpFormatter.stringFromNumber(xp)!
+        let xpString = xpFormatter.string(from: NSNumber(xp))!
         return "\(xpString) XP"
     }
 
@@ -53,7 +53,7 @@ final class XPAward : LogEntry {
     
     /// Returns InDesign Tagged Text description of the log entry.
     override func descriptionForExport() -> String {
-        return "\(xpString)\t" + reason.stringByReplacingOccurrencesOfString("'", withString: "<0x2019>")
+        return "\(xpString)\t" + reason.replacingOccurrences(of: "'", with: "<0x2019>")
     }
 
 }

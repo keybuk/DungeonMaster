@@ -30,15 +30,15 @@ class TabletopStatsView : UIView {
     
     var health: Float? {
         get {
-            return progress.hidden ? nil : progress.progress
+            return progress.isHidden ? nil : progress.progress
         }
         set(health) {
             if let health = health {
-                progress.hidden = false
+                progress.isHidden = false
                 progress.progress = health
                 frame.size.height = 36.0
             } else {
-                progress.hidden = true
+                progress.isHidden = true
                 frame.size.height = 32.0
             }
         }
@@ -63,35 +63,35 @@ class TabletopStatsView : UIView {
     func configureView() {
         backgroundColor = UIColor(white: 1.0, alpha: 0.8)
         layer.cornerRadius = 8.0
-        opaque = false
+        isOpaque = false
 
         label = UILabel(frame: CGRect(x: 2.0, y: 2.0, width: 100.0, height: 30.0))
-        label.font = UIFont.systemFontOfSize(14.0)
+        label.font = UIFont.systemFont(ofSize: 14.0)
         label.adjustsFontSizeToFitWidth = true
         label.numberOfLines = 0
-        label.textAlignment = .Center
+        label.textAlignment = .center
         addSubview(label)
         
         progress = UIProgressView(frame: CGRect(x: 8.0, y: 32.0, width: 88.0, height: 2.0))
-        progress.progressTintColor = UIColor.greenColor()
-        progress.trackTintColor = UIColor.redColor()
+        progress.progressTintColor = UIColor.green
+        progress.trackTintColor = UIColor.red
         addSubview(progress)
     }
     
     // MARK: Touch handling.
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         backgroundColor = UIColor(white: 0.8, alpha: 0.8)
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         backgroundColor = UIColor(white: 1.0, alpha: 0.8)
         if let tapHandler = tapHandler {
             tapHandler()
         }
     }
     
-    override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         backgroundColor = UIColor(white: 1.0, alpha: 0.8)
     }
 

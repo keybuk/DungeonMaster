@@ -15,17 +15,17 @@ final class CombatantCondition : NSManagedObject {
     
     var type: Condition {
         get {
-            return Condition(rawValue: rawType.integerValue)!
+            return Condition(rawValue: rawType.intValue)!
         }
         set(newType) {
-            rawType = NSNumber(integer: newType.rawValue)
+            rawType = NSNumber(value: newType.rawValue as Int)
         }
     }
-    @NSManaged private var rawType: NSNumber
+    @NSManaged fileprivate var rawType: NSNumber
 
     convenience init(target: Combatant, type: Condition, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.CombatantCondition, inManagedObjectContext: context)
-        self.init(entity: entity, insertIntoManagedObjectContext: context)
+        self.init(entity: entity, insertInto: context)
         
         self.target = target
         self.type = type

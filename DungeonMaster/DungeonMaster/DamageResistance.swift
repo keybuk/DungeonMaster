@@ -18,31 +18,31 @@ final class DamageResistance : NSManagedObject {
     /// Type of damage that the monster is resistant to.
     var damageType: DamageType {
         get {
-            return DamageType(rawValue: rawDamageType.integerValue)!
+            return DamageType(rawValue: rawDamageType.intValue)!
         }
         set(newDamageType) {
-            rawDamageType = NSNumber(integer: newDamageType.rawValue)
+            rawDamageType = NSNumber(value: newDamageType.rawValue as Int)
         }
     }
-    @NSManaged private var rawDamageType: NSNumber
+    @NSManaged fileprivate var rawDamageType: NSNumber
     
     /// Type of attacks that this damage resistance applies to.
     var attackType: AttackType {
         get {
-            return AttackType(rawValue: rawAttackType.integerValue)!
+            return AttackType(rawValue: rawAttackType.intValue)!
         }
         set(newAttackType) {
-            rawAttackType = NSNumber(integer: newAttackType.rawValue)
+            rawAttackType = NSNumber(value: newAttackType.rawValue as Int)
         }
     }
-    @NSManaged private var rawAttackType: NSNumber
+    @NSManaged fileprivate var rawAttackType: NSNumber
     
     // HACK for the time being to parse Archmage
     @NSManaged var spellName: String?
     
     convenience init(monster: Monster, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.DamageResistance, inManagedObjectContext: context)
-        self.init(entity: entity, insertIntoManagedObjectContext: context)
+        self.init(entity: entity, insertInto: context)
         
         self.monster = monster
     }

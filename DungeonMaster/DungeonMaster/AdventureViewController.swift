@@ -24,14 +24,14 @@ class AdventureViewController : UIViewController, ManagedObjectObserverDelegate,
         super.viewDidLoad()
         
         // Put the edit button in, with space between it and the compendium buttons.
-        let fixedSpace = UIBarButtonItem(barButtonSystemItem: .FixedSpace, target: nil, action: nil)
+        let fixedSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
         fixedSpace.width = 40.0
 
-        navigationItem.rightBarButtonItems?.insert(fixedSpace, atIndex: 0)
-        navigationItem.rightBarButtonItems?.insert(editButtonItem(), atIndex: 0)
+        navigationItem.rightBarButtonItems?.insert(fixedSpace, at: 0)
+        navigationItem.rightBarButtonItems?.insert(editButtonItem, at: 0)
         
         // Save the adventure so we come back to it next time.
-        NSUserDefaults.standardUserDefaults().setObject(adventure.name, forKey: "Adventure")
+        UserDefaults.standard.set(adventure.name, forKey: "Adventure")
         
         configureView()
         
@@ -46,14 +46,14 @@ class AdventureViewController : UIViewController, ManagedObjectObserverDelegate,
         adjustableImageView.setImage(adventure.image.image, fraction: adventure.image.fraction, origin: adventure.image.origin)
     }
 
-    override func setEditing(editing: Bool, animated: Bool) {
-        let oldEditing = self.editing
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        let oldEditing = self.isEditing
         super.setEditing(editing, animated: animated)
         
         navigationItem.hidesBackButton = editing
         navigationItem.leftBarButtonItem = editing ? deleteButtonItem : nil
 
-        nameTextView.editable = editing
+        nameTextView.isEditable = editing
         
         adjustableImageView.editing = editing
         
@@ -64,7 +64,7 @@ class AdventureViewController : UIViewController, ManagedObjectObserverDelegate,
         if oldEditing && !editing {
             nameTextView.resignFirstResponder()
             
-            adventure.lastModified = NSDate()
+            adventure.lastModified = Date()
             try! managedObjectContext.save()
         }
     }
@@ -75,26 +75,26 @@ class AdventureViewController : UIViewController, ManagedObjectObserverDelegate,
     var gamesViewController: AdventureGamesViewController!
     var encountersViewController: AdventureEncountersViewController!
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PlayersEmbedSegue" {
-            playersViewController = segue.destinationViewController as! AdventurePlayersViewController
+            playersViewController = segue.destination as! AdventurePlayersViewController
             playersViewController.adventure = adventure
         } else if segue.identifier == "GamesEmbedSegue" {
-            gamesViewController = segue.destinationViewController as! AdventureGamesViewController
+            gamesViewController = segue.destination as! AdventureGamesViewController
             gamesViewController.adventure = adventure
         } else if segue.identifier == "EncountersEmbedSegue" {
-            encountersViewController = segue.destinationViewController as! AdventureEncountersViewController
+            encountersViewController = segue.destination as! AdventureEncountersViewController
             encountersViewController.adventure = adventure
         } else if segue.identifier == "CompendiumMonstersSegue" {
-            let viewController = segue.destinationViewController as! CompendiumViewController
+            let viewController = segue.destination as! CompendiumViewController
             viewController.books = adventure.books.allObjects as! [Book]
             viewController.showMonsters()
         } else if segue.identifier == "CompendiumSpellsSegue" {
-            let viewController = segue.destinationViewController as! CompendiumViewController
+            let viewController = segue.destination as! CompendiumViewController
             viewController.books = adventure.books.allObjects as! [Book]
             viewController.showSpells()
         } else if segue.identifier == "CompendiumMagicItemsSegue" {
-            let viewController = segue.destinationViewController as! CompendiumViewController
+            let viewController = segue.destination as! CompendiumViewController
             viewController.books = adventure.books.allObjects as! [Book]
             viewController.showMagicItems()
         }
@@ -102,43 +102,43 @@ class AdventureViewController : UIViewController, ManagedObjectObserverDelegate,
     
     // MARK: Actions
     
-    @IBAction func deleteButtonTapped(sender: UIBarButtonItem) {
-        let controller = UIAlertController(title: "Delete “\(adventure.name)”?", message: "This will delete all information associated with the adventure, including player records, and cannot be undone.", preferredStyle: .Alert)
+    @IBAction func deleteButtonTapped(_ sender: UIBarButtonItem) {
+        let controller = UIAlertController(title: "Delete “\(adventure.name)”?", message: "This will delete all information associated with the adventure, including player records, and cannot be undone.", preferredStyle: .alert)
 
-        controller.addAction(UIAlertAction(title: "Delete", style: .Destructive, handler: { action in
-            managedObjectContext.deleteObject(self.adventure)
+        controller.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in
+            managedObjectContext.delete(self.adventure)
             try! managedObjectContext.save()
             
-            self.navigationController?.popViewControllerAnimated(true)
+            self.navigationController?.popViewController(animated: true)
         }))
         
         // .Default, not .Cancel, because the other action is destructive and we want the Cancel button to be the "default" and right-most button.
-        controller.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: nil))
+        controller.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
 
-        presentViewController(controller, animated: true, completion: nil)
+        present(controller, animated: true, completion: nil)
     }
     
     // MARK: ManagedObjectObserverDelegate
     
-    func managedObject(object: Adventure, changedForType type: ManagedObjectChangeType) {
-        guard !editing else { return }
+    func managedObject(_ object: Adventure, changedForType type: ManagedObjectChangeType) {
+        guard !isEditing else { return }
         
         configureView()
     }
     
     // MARK: UITextViewDelegate
     
-    func textViewDidChange(textView: UITextView) {
+    func textViewDidChange(_ textView: UITextView) {
         adventure.name = textView.text
         do {
             try adventure.validateForUpdate()
-            navigationItem.rightBarButtonItems?[0].enabled = true
+            navigationItem.rightBarButtonItems?[0].isEnabled = true
         } catch {
-            navigationItem.rightBarButtonItems?[0].enabled = false
+            navigationItem.rightBarButtonItems?[0].isEnabled = false
         }
     }
 
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
             if let _ = try? adventure.validateForUpdate() {
                 setEditing(false, animated: true)
@@ -152,10 +152,10 @@ class AdventureViewController : UIViewController, ManagedObjectObserverDelegate,
     
     // MARK: AdjustableImageViewDelegate
     
-    func adjustableImageViewShouldChangeImage(adjustableImageView: AdjustableImageView) {
+    func adjustableImageViewShouldChangeImage(_ adjustableImageView: AdjustableImageView) {
         let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = .PhotoLibrary
-        imagePicker.modalPresentationStyle = .Popover
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.modalPresentationStyle = .popover
         imagePicker.delegate = self
         
         if let presentation = imagePicker.popoverPresentationController {
@@ -163,17 +163,17 @@ class AdventureViewController : UIViewController, ManagedObjectObserverDelegate,
             presentation.sourceRect = adjustableImageView.bounds
         }
         
-        presentViewController(imagePicker, animated: true, completion: nil)
+        present(imagePicker, animated: true, completion: nil)
     }
     
-    func adjustableImageViewDidChangeArea(adjustableImageView: AdjustableImageView) {
+    func adjustableImageViewDidChangeArea(_ adjustableImageView: AdjustableImageView) {
         adventure.image.fraction = adjustableImageView.fraction
         adventure.image.origin = adjustableImageView.origin
     }
     
     // MARK: UIImagePickerControllerDelegate
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             adjustableImageView.image = image
             
@@ -183,7 +183,7 @@ class AdventureViewController : UIViewController, ManagedObjectObserverDelegate,
             adventure.image.origin = adjustableImageView.origin
         }
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 
 }

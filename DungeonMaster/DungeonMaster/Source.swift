@@ -18,13 +18,13 @@ final class Source : NSManagedObject {
     /// Page number in the book where this reference can be found.
     var page: Int {
         get {
-            return rawPage.integerValue
+            return rawPage.intValue
         }
         set(newPage) {
-            rawPage = NSNumber(integer: newPage)
+            rawPage = NSNumber(value: newPage as Int)
         }
     }
-    @NSManaged private var rawPage: NSNumber
+    @NSManaged fileprivate var rawPage: NSNumber
 
     /// Title of the section that the reference can be found in, if relevant.
     @NSManaged var section: String?
@@ -37,7 +37,7 @@ final class Source : NSManagedObject {
 
     convenience init(book: Book, page: Int, monster: Monster, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Source, inManagedObjectContext: context)
-        self.init(entity: entity, insertIntoManagedObjectContext: context)
+        self.init(entity: entity, insertInto: context)
         
         self.book = book
         self.page = page
@@ -46,7 +46,7 @@ final class Source : NSManagedObject {
     
     convenience init(book: Book, page: Int, spell: Spell, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Source, inManagedObjectContext: context)
-        self.init(entity: entity, insertIntoManagedObjectContext: context)
+        self.init(entity: entity, insertInto: context)
         
         self.book = book
         self.page = page

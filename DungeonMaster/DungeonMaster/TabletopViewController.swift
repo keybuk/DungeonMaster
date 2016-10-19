@@ -26,7 +26,7 @@ class TabletopViewController : UIViewController, TabletopViewDataSource, Tableto
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         navigationItem.title = encounter.title
@@ -34,9 +34,9 @@ class TabletopViewController : UIViewController, TabletopViewDataSource, Tableto
 
     // MARK: Fetched results controller
     
-    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] in
+    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] -> <<error type>> in
         // We use a predicate on the Combatant table, matching against the encounter, rather than just using "encounter.combatants" so that we can be a delegate and get change notifications.
-        let fetchRequest = NSFetchRequest(entity: Model.Combatant)
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entity: Model.Combatant)
         
         let predicate = NSPredicate(format: "encounter == %@", self.encounter)
         fetchRequest.predicate = predicate
@@ -54,11 +54,11 @@ class TabletopViewController : UIViewController, TabletopViewDataSource, Tableto
 
     // MARK: TabletopViewDataSource
     
-    func numberOfItemsInTabletopView(tabletopView: TabletopView) -> Int {
+    func numberOfItemsInTabletopView(_ tabletopView: TabletopView) -> Int {
         return fetchedResultsController.fetchedObjects!.count
     }
     
-    func tabletopView(tabletopView: TabletopView, locationForItem index: Int) -> TabletopLocation {
+    func tabletopView(_ tabletopView: TabletopView, locationForItem index: Int) -> TabletopLocation {
         let combatant = fetchedResultsController.fetchedObjects![index] as! Combatant
         if let location = combatant.location {
             return location
@@ -68,68 +68,68 @@ class TabletopViewController : UIViewController, TabletopViewDataSource, Tableto
         }
     }
     
-    func tabletopView(tabletopView: TabletopView, nameForItem index: Int) -> String {
+    func tabletopView(_ tabletopView: TabletopView, nameForItem index: Int) -> String {
         let combatant = fetchedResultsController.fetchedObjects![index] as! Combatant
         return (combatant.monster?.name ?? combatant.player?.name)!
     }
     
-    func tabletopView(tabletopView: TabletopView, isItemPlayerControlled index: Int) -> Bool {
+    func tabletopView(_ tabletopView: TabletopView, isItemPlayerControlled index: Int) -> Bool {
         let combatant = fetchedResultsController.fetchedObjects![index] as! Combatant
-        return combatant.role == .Player
+        return combatant.role == .player
     }
     
-    func tabletopView(tabletopView: TabletopView, healthForItem index: Int) -> Float {
+    func tabletopView(_ tabletopView: TabletopView, healthForItem index: Int) -> Float {
         let combatant = fetchedResultsController.fetchedObjects![index] as! Combatant
         return combatant.health
     }
 
     // MARK: TabletopViewDelegate
     
-    func tabletopView(tabletopView: TabletopView, moveItem index: Int, to location: TabletopLocation) {
+    func tabletopView(_ tabletopView: TabletopView, moveItem index: Int, to location: TabletopLocation) {
         let combatant = fetchedResultsController.fetchedObjects![index] as! Combatant
         combatant.location = location
         
-        encounter.lastModified = NSDate()
+        encounter.lastModified = Date()
         try! managedObjectContext.save()
     }
     
-    func tabletopView(tabletopView: TabletopView, didSelectItem index: Int) {
+    func tabletopView(_ tabletopView: TabletopView, didSelectItem index: Int) {
         let combatant = fetchedResultsController.fetchedObjects![index] as! Combatant
 
         // This is kind of a hack, but it does what I want for now.
-        navigationController?.popViewControllerAnimated(true)
+        navigationController?.popViewController(animated: true)
         if let encounterViewController = navigationController?.topViewController as? EncounterViewController {
             let combatantsViewController = encounterViewController.combatantsViewController
-            let indexPath = combatantsViewController.fetchedResultsController.indexPathForObject(combatant)
-            combatantsViewController.tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: .Middle)
-            combatantsViewController.performSegueWithIdentifier("CombatantSegue", sender: self)
+            let indexPath = combatantsViewController.fetchedResultsController.indexPath(forObject: combatant)
+            combatantsViewController.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .middle)
+            combatantsViewController?.performSegue(withIdentifier: "CombatantSegue", sender: self)
         }
     }
 
     // MARK: NSFetchedResultsControllerDelegate
     
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tabletopView.beginUpdates()
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
-        case .Insert:
-            tabletopView.insertItemAtIndex(newIndexPath!.row)
-        case .Delete:
-            tabletopView.deleteItemAtIndex(indexPath!.row)
-        case .Update:
-            tabletopView.updateItemAtIndex(indexPath!.row)
-        case .Move:
-            tabletopView.deleteItemAtIndex(indexPath!.row)
-            tabletopView.insertItemAtIndex(newIndexPath!.row)
+        case .insert:
+            tabletopView.insertItemAtIndex((newIndexPath! as NSIndexPath).row)
+        case .delete:
+            tabletopView.deleteItemAtIndex((indexPath! as NSIndexPath).row)
+        case .update:
+            tabletopView.updateItemAtIndex((indexPath! as NSIndexPath).row)
+        case .move:
+            tabletopView.deleteItemAtIndex((indexPath! as NSIndexPath).row)
+            tabletopView.insertItemAtIndex((newIndexPath! as NSIndexPath).row)
         }
     }
     
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tabletopView.endUpdates()
     }
     

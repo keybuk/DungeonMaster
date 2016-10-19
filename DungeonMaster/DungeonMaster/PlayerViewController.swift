@@ -15,7 +15,7 @@ class PlayerViewController : UITableViewController, ManagedObjectObserverDelegat
     var player: Player!
     
     /// Block to execute when editing is complete.
-    var completionBlock: ((cancelled: Bool, player: Player?) -> Void)?
+    var completionBlock: ((_ cancelled: Bool, _ player: Player?) -> Void)?
 
     @IBOutlet var cancelButtonItem: UIBarButtonItem!
 
@@ -24,10 +24,10 @@ class PlayerViewController : UITableViewController, ManagedObjectObserverDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = editButtonItem()
+        navigationItem.rightBarButtonItem = editButtonItem
         
         // When called with a new player, immediately enter editing mode.
-        if player.inserted {
+        if player.isInserted {
             setEditing(true, animated: false)
         }
         
@@ -41,12 +41,12 @@ class PlayerViewController : UITableViewController, ManagedObjectObserverDelegat
     
     var nameBecomesFirstResponder = true
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         // On first appearance with a new player, make the name field the first responder. We only do this once because we don't want to do it coming back from selecting things like race, class, etc.
-        if player.inserted && nameBecomesFirstResponder {
-            if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as? PlayerNameCell {
+        if player.isInserted && nameBecomesFirstResponder {
+            if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? PlayerNameCell {
                 cell.textField.becomeFirstResponder()
                 nameBecomesFirstResponder = false
             }
@@ -57,73 +57,73 @@ class PlayerViewController : UITableViewController, ManagedObjectObserverDelegat
     ///
     /// Updates the "Done" button item to be enabled or disabled appropriately.
     func validatePlayer() {
-        guard editing else { return }
+        guard isEditing else { return }
 
         do {
-            if player.inserted {
+            if player.isInserted {
                 try player.validateForInsert()
             } else {
                 try player.validateForUpdate()
             }
             
-            navigationItem.rightBarButtonItem?.enabled = true
+            navigationItem.rightBarButtonItem?.isEnabled = true
         } catch {
-            navigationItem.rightBarButtonItem?.enabled = false
+            navigationItem.rightBarButtonItem?.isEnabled = false
         }
     }
 
-    override func setEditing(editing: Bool, animated: Bool) {
-        let oldEditing = self.editing, tableViewLoaded = self.tableViewLoaded
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        let oldEditing = self.isEditing, tableViewLoaded = self.tableViewLoaded
         super.setEditing(editing, animated: animated)
 
         // Only update the table when the editing state is actually changing, and if the table view data was loaded prior to the view being set to editing.
         if editing != oldEditing && tableViewLoaded {
             // Insert/remove the "add saving throws/skills" row.
-            let savingThrowsIndexPath = NSIndexPath(forRow: player.savingThrows.count, inSection: 3)
-            let skillsIndexPath = NSIndexPath(forRow: player.skills.count, inSection: 4)
+            let savingThrowsIndexPath = IndexPath(row: player.savingThrows.count, section: 3)
+            let skillsIndexPath = IndexPath(row: player.skills.count, section: 4)
             if editing {
-                tableView.insertRowsAtIndexPaths([savingThrowsIndexPath, skillsIndexPath], withRowAnimation: .Automatic)
+                tableView.insertRows(at: [savingThrowsIndexPath, skillsIndexPath], with: .automatic)
             } else {
-                tableView.deleteRowsAtIndexPaths([savingThrowsIndexPath, skillsIndexPath], withRowAnimation: .Automatic)
+                tableView.deleteRows(at: [savingThrowsIndexPath, skillsIndexPath], with: .automatic)
             }
             
             // Toggle the editingTable state of the text and selection rows.
-            let nameIndexPath = NSIndexPath(forRow: 0, inSection: 0)
-            if let cell = tableView.cellForRowAtIndexPath(nameIndexPath) as? PlayerNameCell {
+            let nameIndexPath = IndexPath(row: 0, section: 0)
+            if let cell = tableView.cellForRow(at: nameIndexPath) as? PlayerNameCell {
                 cell.editingTable = editing
             }
             
-            let playerNameIndexPath = NSIndexPath(forRow: 1, inSection: 0)
-            if let cell = tableView.cellForRowAtIndexPath(playerNameIndexPath) as? PlayerPlayerNameCell {
+            let playerNameIndexPath = IndexPath(row: 1, section: 0)
+            if let cell = tableView.cellForRow(at: playerNameIndexPath) as? PlayerPlayerNameCell {
                 cell.editingTable = editing
             }
 
-            let raceIndexPath = NSIndexPath(forRow: 0, inSection: 1)
-            if let cell = tableView.cellForRowAtIndexPath(raceIndexPath) as? PlayerRaceCell {
+            let raceIndexPath = IndexPath(row: 0, section: 1)
+            if let cell = tableView.cellForRow(at: raceIndexPath) as? PlayerRaceCell {
                 cell.editingTable = editing
             }
 
-            let characterClassIndexPath = NSIndexPath(forRow: 1, inSection: 1)
-            if let cell = tableView.cellForRowAtIndexPath(characterClassIndexPath) as? PlayerCharacterClassCell {
+            let characterClassIndexPath = IndexPath(row: 1, section: 1)
+            if let cell = tableView.cellForRow(at: characterClassIndexPath) as? PlayerCharacterClassCell {
                 cell.editingTable = editing
             }
 
-            let backgroundIndexPath = NSIndexPath(forRow: 2, inSection: 1)
-            if let cell = tableView.cellForRowAtIndexPath(backgroundIndexPath) as? PlayerBackgroundCell {
+            let backgroundIndexPath = IndexPath(row: 2, section: 1)
+            if let cell = tableView.cellForRow(at: backgroundIndexPath) as? PlayerBackgroundCell {
                 cell.editingTable = editing
             }
 
-            let alignmentIndexPath = NSIndexPath(forRow: 3, inSection: 1)
-            if let cell = tableView.cellForRowAtIndexPath(alignmentIndexPath) as? PlayerAlignmentCell {
+            let alignmentIndexPath = IndexPath(row: 3, section: 1)
+            if let cell = tableView.cellForRow(at: alignmentIndexPath) as? PlayerAlignmentCell {
                 cell.editingTable = editing
             }
             
             // Reload the XP/PP section with a fade so that it appears the table is just changing.
             tableView.beginUpdates()
-            let xpIndexPath = NSIndexPath(forRow: 0, inSection: 2)
-            let ppIndexPath = NSIndexPath(forRow: 1, inSection: 2)
-            tableView.deleteRowsAtIndexPaths([xpIndexPath, ppIndexPath], withRowAnimation: .Fade)
-            tableView.insertRowsAtIndexPaths([xpIndexPath, ppIndexPath], withRowAnimation: .Fade)
+            let xpIndexPath = IndexPath(row: 0, section: 2)
+            let ppIndexPath = IndexPath(row: 1, section: 2)
+            tableView.deleteRows(at: [xpIndexPath, ppIndexPath], with: .fade)
+            tableView.insertRows(at: [xpIndexPath, ppIndexPath], with: .fade)
             tableView.endUpdates()
         }
 
@@ -133,87 +133,87 @@ class PlayerViewController : UITableViewController, ManagedObjectObserverDelegat
         }
         if oldEditing && !editing {
             try! managedObjectContext.save()
-            completionBlock?(cancelled: false, player: player)
+            completionBlock?(false, player)
         }
     }
 
     // MARK: Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Selecting one of the options should be equivalent to changing edit field, so resign the responder status from any existing edit field.
         tableView.endEditing(false)
 
         if segue.identifier == "RaceSegue" {
-            let viewController = segue.destinationViewController as! RaceViewController
-            if let _ = player.primitiveValueForKey("rawRace") {
+            let viewController = segue.destination as! RaceViewController
+            if let _ = player.primitiveValue(forKey: "rawRace") {
                 viewController.selectedRace = player.race
             }
         } else if segue.identifier == "CharacterClassSegue" {
-            let viewController = segue.destinationViewController as! CharacterClassViewController
-            if let _ = player.primitiveValueForKey("rawCharacterClass") {
+            let viewController = segue.destination as! CharacterClassViewController
+            if let _ = player.primitiveValue(forKey: "rawCharacterClass") {
                 viewController.selectedCharacterClass = player.characterClass
             }
         } else if segue.identifier == "BackgroundSegue" {
-            let viewController = segue.destinationViewController as! BackgroundViewController
-            if let _ = player.primitiveValueForKey("rawBackground") {
+            let viewController = segue.destination as! BackgroundViewController
+            if let _ = player.primitiveValue(forKey: "rawBackground") {
                 viewController.selectedBackground = player.background
             }
         } else if segue.identifier == "AlignmentSegue" {
-            let viewController = segue.destinationViewController as! AlignmentViewController
-            if let _ = player.primitiveValueForKey("rawAlignment") {
+            let viewController = segue.destination as! AlignmentViewController
+            if let _ = player.primitiveValue(forKey: "rawAlignment") {
                 viewController.selectedAlignment = player.alignment
             }
         } else if segue.identifier == "AddSavingThrowSegue" {
-            let viewController = segue.destinationViewController as! SavingThrowViewController
+            let viewController = segue.destination as! SavingThrowViewController
             viewController.existingSavingThrows = player.savingThrows.map({ ($0 as! PlayerSavingThrow).savingThrow })
         } else if segue.identifier == "AddSkillSegue" {
-            let viewController = segue.destinationViewController as! SkillViewController
+            let viewController = segue.destination as! SkillViewController
             viewController.existingSkills = player.skills.map({ ($0 as! PlayerSkill).skill })
         }
     }
     
-    @IBAction func unwindFromRace(segue: UIStoryboardSegue) {
-        let viewController = segue.sourceViewController as! RaceViewController
+    @IBAction func unwindFromRace(_ segue: UIStoryboardSegue) {
+        let viewController = segue.source as! RaceViewController
         player.race = viewController.selectedRace!
         
-        let indexPath = NSIndexPath(forRow: 0, inSection: 1)
-        if let cell = tableView.cellForRowAtIndexPath(indexPath) as? PlayerRaceCell {
+        let indexPath = IndexPath(row: 0, section: 1)
+        if let cell = tableView.cellForRow(at: indexPath) as? PlayerRaceCell {
             cell.player = player
         }
     }
     
-    @IBAction func unwindFromCharacterClass(segue: UIStoryboardSegue) {
-        let viewController = segue.sourceViewController as! CharacterClassViewController
+    @IBAction func unwindFromCharacterClass(_ segue: UIStoryboardSegue) {
+        let viewController = segue.source as! CharacterClassViewController
         player.characterClass = viewController.selectedCharacterClass!
         
-        let indexPath = NSIndexPath(forRow: 1, inSection: 1)
-        if let cell = tableView.cellForRowAtIndexPath(indexPath) as? PlayerCharacterClassCell {
+        let indexPath = IndexPath(row: 1, section: 1)
+        if let cell = tableView.cellForRow(at: indexPath) as? PlayerCharacterClassCell {
             cell.player = player
         }
     }
     
-    @IBAction func unwindFromBackground(segue: UIStoryboardSegue) {
-        let viewController = segue.sourceViewController as! BackgroundViewController
+    @IBAction func unwindFromBackground(_ segue: UIStoryboardSegue) {
+        let viewController = segue.source as! BackgroundViewController
         player.background = viewController.selectedBackground!
         
-        let indexPath = NSIndexPath(forRow: 2, inSection: 1)
-        if let cell = tableView.cellForRowAtIndexPath(indexPath) as? PlayerBackgroundCell {
+        let indexPath = IndexPath(row: 2, section: 1)
+        if let cell = tableView.cellForRow(at: indexPath) as? PlayerBackgroundCell {
             cell.player = player
         }
     }
     
-    @IBAction func unwindFromAlignment(segue: UIStoryboardSegue) {
-        let viewController = segue.sourceViewController as! AlignmentViewController
+    @IBAction func unwindFromAlignment(_ segue: UIStoryboardSegue) {
+        let viewController = segue.source as! AlignmentViewController
         player.alignment = viewController.selectedAlignment!
         
-        let indexPath = NSIndexPath(forRow: 3, inSection: 1)
-        if let cell = tableView.cellForRowAtIndexPath(indexPath) as? PlayerAlignmentCell {
+        let indexPath = IndexPath(row: 3, section: 1)
+        if let cell = tableView.cellForRow(at: indexPath) as? PlayerAlignmentCell {
             cell.player = player
         }
     }
     
-    @IBAction func unwindFromSavingThrow(segue: UIStoryboardSegue) {
-        let viewController = segue.sourceViewController as! SavingThrowViewController
+    @IBAction func unwindFromSavingThrow(_ segue: UIStoryboardSegue) {
+        let viewController = segue.source as! SavingThrowViewController
         
         var newSavingThrows: [PlayerSavingThrow] = []
         for selectedSavingThrow in viewController.selectedSavingThrows {
@@ -223,12 +223,12 @@ class PlayerViewController : UITableViewController, ManagedObjectObserverDelegat
         
         sortedSavingThrows = nil
 
-        let indexPaths = newSavingThrows.map({ NSIndexPath(forRow: sortedSavingThrows.indexOf($0)!, inSection: 3) })
-        tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Top)
+        let indexPaths = newSavingThrows.map({ IndexPath(row: sortedSavingThrows.index(of: $0)!, section: 3) })
+        tableView.insertRows(at: indexPaths, with: .top)
     }
     
-    @IBAction func unwindFromSkill(segue: UIStoryboardSegue) {
-        let viewController = segue.sourceViewController as! SkillViewController
+    @IBAction func unwindFromSkill(_ segue: UIStoryboardSegue) {
+        let viewController = segue.source as! SkillViewController
         
         var newSkills: [PlayerSkill] = []
         for selectedSkill in viewController.selectedSkills {
@@ -238,20 +238,20 @@ class PlayerViewController : UITableViewController, ManagedObjectObserverDelegat
         
         sortedSkills = nil
         
-        let indexPaths = newSkills.map({ NSIndexPath(forRow: sortedSkills.indexOf($0)!, inSection: 4) })
-        tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Top)
+        let indexPaths = newSkills.map({ IndexPath(row: sortedSkills.index(of: $0)!, section: 4) })
+        tableView.insertRows(at: indexPaths, with: .top)
     }
 
     // MARK: Actions
 
-    @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
-        if player.inserted {
-            managedObjectContext.deleteObject(player)
+    @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
+        if player.isInserted {
+            managedObjectContext.delete(player)
         } else {
-            managedObjectContext.refreshObject(player, mergeChanges: false)
+            managedObjectContext.refresh(player, mergeChanges: false)
         }
 
-        completionBlock?(cancelled: true, player: nil)
+        completionBlock?(true, nil)
     }
     
     // MARK: Caching for relationships
@@ -260,7 +260,7 @@ class PlayerViewController : UITableViewController, ManagedObjectObserverDelegat
         get {
             if _sortedSavingThrows == nil {
                 let sortDescriptor = NSSortDescriptor(key: "rawSavingThrow", ascending: true)
-                _sortedSavingThrows = player.savingThrows.sortedArrayUsingDescriptors([ sortDescriptor ]).map({ $0 as! PlayerSavingThrow })
+                _sortedSavingThrows = player.savingThrows.sortedArray(using: [ sortDescriptor ]).map({ $0 as! PlayerSavingThrow })
             }
             
             return _sortedSavingThrows!
@@ -270,14 +270,14 @@ class PlayerViewController : UITableViewController, ManagedObjectObserverDelegat
             _sortedSavingThrows = newSortedSavingThrows
         }
     }
-    private var _sortedSavingThrows: [PlayerSavingThrow]?
+    fileprivate var _sortedSavingThrows: [PlayerSavingThrow]?
     
     var sortedSkills: [PlayerSkill]! {
         get {
             if _sortedSkills == nil {
                 let abilitySortDescriptor = NSSortDescriptor(key: "rawAbility", ascending: true)
                 let skillSortDescriptor = NSSortDescriptor(key: "rawSkill", ascending: true)
-                _sortedSkills = player.skills.sortedArrayUsingDescriptors([ abilitySortDescriptor, skillSortDescriptor ]).map({ $0 as! PlayerSkill })
+                _sortedSkills = player.skills.sortedArray(using: [ abilitySortDescriptor, skillSortDescriptor ]).map({ $0 as! PlayerSkill })
             }
             
             return _sortedSkills!
@@ -287,18 +287,18 @@ class PlayerViewController : UITableViewController, ManagedObjectObserverDelegat
             _sortedSkills = newSortedSkills
         }
     }
-    private var _sortedSkills: [PlayerSkill]?
+    fileprivate var _sortedSkills: [PlayerSkill]?
     
     // MARK: UITableViewDataSource
     
     var tableViewLoaded = false
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         tableViewLoaded = true
         return 5
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
             // Character name, Player name
@@ -311,16 +311,16 @@ class PlayerViewController : UITableViewController, ManagedObjectObserverDelegat
             return 2
         case 3:
             // Saving Throws
-            return player.savingThrows.count + (editing ? 1 : 0)
+            return player.savingThrows.count + (isEditing ? 1 : 0)
         case 4:
             // Skills
-            return player.skills.count + (editing ? 1 : 0)
+            return player.skills.count + (isEditing ? 1 : 0)
         default:
             abort()
         }
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0, 1, 2:
             return nil
@@ -333,85 +333,85 @@ class PlayerViewController : UITableViewController, ManagedObjectObserverDelegat
         }
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        switch indexPath.section {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch (indexPath as NSIndexPath).section {
         case 0:
-            switch indexPath.row {
+            switch (indexPath as NSIndexPath).row {
             case 0:
-                let cell = tableView.dequeueReusableCellWithIdentifier("PlayerNameCell", forIndexPath: indexPath) as! PlayerNameCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerNameCell", for: indexPath) as! PlayerNameCell
                 cell.player = player
                 // Cell is not editable itself, so inform it whether or not the table is.
-                cell.editingTable = editing
+                cell.editingTable = isEditing
                 return cell
             case 1:
-                let cell = tableView.dequeueReusableCellWithIdentifier("PlayerPlayerNameCell", forIndexPath: indexPath) as! PlayerPlayerNameCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerPlayerNameCell", for: indexPath) as! PlayerPlayerNameCell
                 cell.player = player
                 // Cell is not editable itself, so inform it whether or not the table is.
-                cell.editingTable = editing
+                cell.editingTable = isEditing
                 return cell
             default:
                 abort()
             }
         case 1:
-            switch indexPath.row {
+            switch (indexPath as NSIndexPath).row {
             case 0:
-                let cell = tableView.dequeueReusableCellWithIdentifier("PlayerRaceCell", forIndexPath: indexPath) as! PlayerRaceCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerRaceCell", for: indexPath) as! PlayerRaceCell
                 cell.player = player
                 // Cell is not editable itself, so inform it whether or not the table is.
-                cell.editingTable = editing
+                cell.editingTable = isEditing
                 return cell
             case 1:
-                let cell = tableView.dequeueReusableCellWithIdentifier("PlayerCharacterClassCell", forIndexPath: indexPath) as! PlayerCharacterClassCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerCharacterClassCell", for: indexPath) as! PlayerCharacterClassCell
                 cell.player = player
                 // Cell is not editable itself, so inform it whether or not the table is.
-                cell.editingTable = editing
+                cell.editingTable = isEditing
                 return cell
             case 2:
-                let cell = tableView.dequeueReusableCellWithIdentifier("PlayerBackgroundCell", forIndexPath: indexPath) as! PlayerBackgroundCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerBackgroundCell", for: indexPath) as! PlayerBackgroundCell
                 cell.player = player
                 // Cell is not editable itself, so inform it whether or not the table is.
-                cell.editingTable = editing
+                cell.editingTable = isEditing
                 return cell
             case 3:
-                let cell = tableView.dequeueReusableCellWithIdentifier("PlayerAlignmentCell", forIndexPath: indexPath) as! PlayerAlignmentCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerAlignmentCell", for: indexPath) as! PlayerAlignmentCell
                 cell.player = player
                 // Cell is not editable itself, so inform it whether or not the table is.
-                cell.editingTable = editing
+                cell.editingTable = isEditing
                 return cell
             default:
                 abort()
             }
         case 2:
-            switch indexPath.row {
+            switch (indexPath as NSIndexPath).row {
             case 0:
-                let cell = tableView.dequeueReusableCellWithIdentifier(editing ? "EditPlayerXPCell" : "PlayerXPCell", forIndexPath: indexPath) as! PlayerXPCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: isEditing ? "EditPlayerXPCell" : "PlayerXPCell", for: indexPath) as! PlayerXPCell
                 cell.player = player
                 return cell
             case 1:
-                let cell = tableView.dequeueReusableCellWithIdentifier(editing ? "EditPlayerPassivePerceptionCell" : "PlayerPassivePerceptionCell", forIndexPath: indexPath) as! PlayerPassivePerceptionCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: isEditing ? "EditPlayerPassivePerceptionCell" : "PlayerPassivePerceptionCell", for: indexPath) as! PlayerPassivePerceptionCell
                 cell.player = player
                 return cell
             default:
                 abort()
             }
         case 3:
-            switch indexPath.row {
+            switch (indexPath as NSIndexPath).row {
             case player.savingThrows.count:
-                let cell = tableView.dequeueReusableCellWithIdentifier("AddPlayerSavingThrowCell", forIndexPath: indexPath)
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AddPlayerSavingThrowCell", for: indexPath)
                 return cell
             default:
-                let cell = tableView.dequeueReusableCellWithIdentifier("PlayerSavingThrowCell", forIndexPath: indexPath) as! PlayerSavingThrowCell
-                cell.playerSavingThrow = sortedSavingThrows[indexPath.row]
+                let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerSavingThrowCell", for: indexPath) as! PlayerSavingThrowCell
+                cell.playerSavingThrow = sortedSavingThrows[(indexPath as NSIndexPath).row]
                 return cell
             }
         case 4:
-            switch indexPath.row {
+            switch (indexPath as NSIndexPath).row {
             case player.skills.count:
-                let cell = tableView.dequeueReusableCellWithIdentifier("AddPlayerSkillCell", forIndexPath: indexPath)
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AddPlayerSkillCell", for: indexPath)
                 return cell
             default:
-                let cell = tableView.dequeueReusableCellWithIdentifier("PlayerSkillCell", forIndexPath: indexPath) as! PlayerSkillCell
-                cell.playerSkill = sortedSkills[indexPath.row]
+                let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerSkillCell", for: indexPath) as! PlayerSkillCell
+                cell.playerSkill = sortedSkills[(indexPath as NSIndexPath).row]
                 return cell
             }
         default:
@@ -421,8 +421,8 @@ class PlayerViewController : UITableViewController, ManagedObjectObserverDelegat
     
     // MARK: Editing support
     
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        switch indexPath.section {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        switch (indexPath as NSIndexPath).section {
         case 0, 1, 2:
             // Return false to stop these cells being indented.
             return false
@@ -435,8 +435,8 @@ class PlayerViewController : UITableViewController, ManagedObjectObserverDelegat
     
     // MARK: UITableViewDelegate
     
-    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        if editing {
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if isEditing {
             return indexPath
         } else {
             return nil
@@ -445,62 +445,62 @@ class PlayerViewController : UITableViewController, ManagedObjectObserverDelegat
     
     // MARK: Editing support
     
-    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
-        switch indexPath.section {
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        switch (indexPath as NSIndexPath).section {
         case 0, 1, 2:
-            return .None
+            return .none
         case 3:
-            switch indexPath.row {
+            switch (indexPath as NSIndexPath).row {
             case player.savingThrows.count:
-                return .Insert
+                return .insert
             default:
-                return .Delete
+                return .delete
             }
         case 4:
-            switch indexPath.row {
+            switch (indexPath as NSIndexPath).row {
             case player.skills.count:
-                return .Insert
+                return .insert
             default:
-                return .Delete
+                return .delete
             }
         default:
             abort()
         }
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        guard editingStyle == .Delete else { return }
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        guard editingStyle == .delete else { return }
 
-        switch indexPath.section {
+        switch (indexPath as NSIndexPath).section {
         case 0, 1, 2:
             break
         case 3:
-            switch indexPath.row {
+            switch (indexPath as NSIndexPath).row {
             case player.savingThrows.count:
                 break
             default:
-                let savingThrow = sortedSavingThrows[indexPath.row]
+                let savingThrow = sortedSavingThrows[(indexPath as NSIndexPath).row]
                 
                 // FIXME this is a hack because we're not using a real fetched results controller.
-                player.mutableSetValueForKey("savingThrows").removeObject(savingThrow)
-                managedObjectContext.deleteObject(savingThrow)
+                player.mutableSetValue(forKey: "savingThrows").remove(savingThrow)
+                managedObjectContext.delete(savingThrow)
 
                 sortedSavingThrows = nil
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
             }
         case 4:
-            switch indexPath.row {
+            switch (indexPath as NSIndexPath).row {
             case player.skills.count:
                 break
             default:
-                let skill = sortedSkills[indexPath.row]
+                let skill = sortedSkills[(indexPath as NSIndexPath).row]
                 
                 // FIXME this is a hack because we're not using a real fetched results controller.
-                player.mutableSetValueForKey("skills").removeObject(skill)
-                managedObjectContext.deleteObject(skill)
+                player.mutableSetValue(forKey: "skills").remove(skill)
+                managedObjectContext.delete(skill)
                 
                 sortedSkills = nil
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
             }
         default:
             break
@@ -509,7 +509,7 @@ class PlayerViewController : UITableViewController, ManagedObjectObserverDelegat
 
     // MARK: ManagedObjectObserverDelegate
     
-    func managedObject(object: Player, changedForType type: ManagedObjectChangeType) {
+    func managedObject(_ object: Player, changedForType type: ManagedObjectChangeType) {
         validatePlayer()
     }
 
@@ -529,13 +529,13 @@ class PlayerNameCell : UITableViewCell, UITextFieldDelegate {
     
     var editingTable = false
 
-    @IBAction func textFieldEditingChanged(sender: UITextField) {
+    @IBAction func textFieldEditingChanged(_ sender: UITextField) {
         player.name = sender.text!
     }
     
     // MARK: UITextFieldDelegate
     
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return editingTable
     }
 
@@ -553,13 +553,13 @@ class PlayerPlayerNameCell : UITableViewCell, UITextFieldDelegate {
 
     var editingTable = false
 
-    @IBAction func textFieldEditingChanged(sender: UITextField) {
+    @IBAction func textFieldEditingChanged(_ sender: UITextField) {
         player.playerName = sender.text!
     }
     
     // MARK: UITextFieldDelegate
     
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return editingTable
     }
     
@@ -571,20 +571,20 @@ class PlayerRaceCell : UITableViewCell {
     
     var player: Player! {
         didSet {
-            if let _ = player.primitiveValueForKey("rawRace") {
+            if let _ = player.primitiveValue(forKey: "rawRace") {
                 label.text = player.race.stringValue
-                label.textColor = UIColor.blackColor()
+                label.textColor = UIColor.black
             } else {
                 label.text = "Race"
-                label.textColor = UIColor.lightGrayColor()
+                label.textColor = UIColor.lightGray
             }
         }
     }
     
     var editingTable = false {
         didSet {
-            accessoryType = editingTable ? .DisclosureIndicator : .None
-            selectionStyle = editingTable ? .Default : .None
+            accessoryType = editingTable ? .disclosureIndicator : .none
+            selectionStyle = editingTable ? .default : .none
         }
     }
     
@@ -596,20 +596,20 @@ class PlayerCharacterClassCell : UITableViewCell {
 
     var player: Player! {
         didSet {
-            if let _ = player.primitiveValueForKey("rawCharacterClass") {
+            if let _ = player.primitiveValue(forKey: "rawCharacterClass") {
                 label.text = player.characterClass.stringValue
-                label.textColor = UIColor.blackColor()
+                label.textColor = UIColor.black
             } else {
                 label.text = "Class"
-                label.textColor = UIColor.lightGrayColor()
+                label.textColor = UIColor.lightGray
             }
         }
     }
     
     var editingTable = false {
         didSet {
-            accessoryType = editingTable ? .DisclosureIndicator : .None
-            selectionStyle = editingTable ? .Default : .None
+            accessoryType = editingTable ? .disclosureIndicator : .none
+            selectionStyle = editingTable ? .default : .none
         }
     }
 
@@ -621,20 +621,20 @@ class PlayerBackgroundCell : UITableViewCell {
 
     var player: Player! {
         didSet {
-            if let _ = player.primitiveValueForKey("rawBackground") {
+            if let _ = player.primitiveValue(forKey: "rawBackground") {
                 label.text = player.background.stringValue
-                label.textColor = UIColor.blackColor()
+                label.textColor = UIColor.black
             } else {
                 label.text = "Background"
-                label.textColor = UIColor.lightGrayColor()
+                label.textColor = UIColor.lightGray
             }
         }
     }
     
     var editingTable = false {
         didSet {
-            accessoryType = editingTable ? .DisclosureIndicator : .None
-            selectionStyle = editingTable ? .Default : .None
+            accessoryType = editingTable ? .disclosureIndicator : .none
+            selectionStyle = editingTable ? .default : .none
         }
     }
 
@@ -646,20 +646,20 @@ class PlayerAlignmentCell : UITableViewCell {
 
     var player: Player! {
         didSet {
-            if let _ = player.primitiveValueForKey("rawAlignment") {
+            if let _ = player.primitiveValue(forKey: "rawAlignment") {
                 label?.text = player.alignment.stringValue
-                label?.textColor = UIColor.blackColor()
+                label?.textColor = UIColor.black
             } else {
                 label?.text = "Alignment"
-                label?.textColor = UIColor.lightGrayColor()
+                label?.textColor = UIColor.lightGray
             }
         }
     }
     
     var editingTable = false {
         didSet {
-            accessoryType = editingTable ? .DisclosureIndicator : .None
-            selectionStyle = editingTable ? .Default : .None
+            accessoryType = editingTable ? .disclosureIndicator : .none
+            selectionStyle = editingTable ? .default : .none
         }
     }
 
@@ -697,28 +697,28 @@ class PlayerXPCell : UITableViewCell, UITextFieldDelegate {
         }
     }
     
-    @IBAction func textFieldEditingChanged(sender: UITextField) {
-        if let text = sender.text where text != "" {
+    @IBAction func textFieldEditingChanged(_ sender: UITextField) {
+        if let text = sender.text, text != "" {
             player.xp = Int(text)!
         } else {
             player.xp = 0
         }
     }
     
-    @IBAction func textFieldEditingDidEnd(sender: UITextField) {
+    @IBAction func textFieldEditingDidEnd(_ sender: UITextField) {
         sender.text = "\(player.xp)"
     }
     
     // MARK: UITextFieldDelegate
 
-    func textFieldShouldClear(textField: UITextField) -> Bool {
-        return player.inserted && player.xp == 0
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        return player.isInserted && player.xp == 0
     }
 
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        let validSet = NSCharacterSet.decimalDigitCharacterSet()
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let validSet = CharacterSet.decimalDigits
         for character in string.unicodeScalars {
-            if !validSet.longCharacterIsMember(character.value) {
+            if !validSet.contains(UnicodeScalar(character.value)!) {
                 return false
             }
         }
@@ -746,28 +746,28 @@ class PlayerPassivePerceptionCell : UITableViewCell, UITextFieldDelegate {
         captionLabel.textColor = tintColor
     }
 
-    @IBAction func textFieldEditingChanged(sender: UITextField) {
-        if let text = sender.text where text != "" {
+    @IBAction func textFieldEditingChanged(_ sender: UITextField) {
+        if let text = sender.text, text != "" {
             player.passivePerception = Int(text)!
         } else {
             player.passivePerception = 10
         }
     }
 
-    @IBAction func textFieldEditingDidEnd(sender: UITextField) {
+    @IBAction func textFieldEditingDidEnd(_ sender: UITextField) {
         sender.text = "\(player.passivePerception)"
     }
 
     // MARK: UITextFieldDelegate
 
-    func textFieldShouldClear(textField: UITextField) -> Bool {
-        return player.inserted && player.passivePerception == 10
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        return player.isInserted && player.passivePerception == 10
     }
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        let validSet = NSCharacterSet.decimalDigitCharacterSet()
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let validSet = CharacterSet.decimalDigits
         for character in string.unicodeScalars {
-            if !validSet.longCharacterIsMember(character.value) {
+            if !validSet.contains(UnicodeScalar(character.value)!) {
                 return false
             }
         }
@@ -791,7 +791,7 @@ class PlayerSavingThrowCell : UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        leadingConstraint.constant = editing ? 0.0 : (separatorInset.left - layoutMargins.left)
+        leadingConstraint.constant = isEditing ? 0.0 : (separatorInset.left - layoutMargins.left)
     }
     
 }
@@ -822,7 +822,7 @@ class PlayerSkillCell : UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        leadingConstraint.constant = editing ? 0.0 : (separatorInset.left - layoutMargins.left)
+        leadingConstraint.constant = isEditing ? 0.0 : (separatorInset.left - layoutMargins.left)
     }
     
 }

@@ -8,10 +8,10 @@
 
 import Foundation
 
-enum DieError : ErrorType {
-    case InvalidSides
-    case InvalidString
-    case InvalidMultiplier
+enum DieError : Error {
+    case invalidSides
+    case invalidString
+    case invalidMultiplier
 }
 
 /// 🎲 Single die with rolled value.
@@ -28,7 +28,7 @@ struct Die : Equatable {
         case 4, 6, 8, 10, 12, 20, 100:
             self.sides = sides
         default:
-            throw DieError.InvalidSides
+            throw DieError.invalidSides
         }
         
         value = Int(arc4random_uniform(UInt32(sides)) + 1)
@@ -48,9 +48,9 @@ func ==(lhs: Die, rhs: Die) -> Bool {
 
 /// Sign joining multiple components of a dice roll.
 enum JoiningSign {
-    case None
-    case Plus
-    case Minus
+    case none
+    case plus
+    case minus
 }
 
 /// Multiple dice with rolled values.
@@ -76,8 +76,8 @@ struct Dice : Equatable, CustomStringConvertible {
         }
     }
     
-    init(multiplier: Int, sides: Int, sign: JoiningSign = .None) throws {
-        guard multiplier > 0 else { throw DieError.InvalidMultiplier }
+    init(multiplier: Int, sides: Int, sign: JoiningSign = .none) throws {
+        guard multiplier > 0 else { throw DieError.invalidMultiplier }
         var dice: [Die] = []
         var value = 0
         for _ in 0..<multiplier {
@@ -91,7 +91,7 @@ struct Dice : Equatable, CustomStringConvertible {
         self.averageValue = Int(Double(multiplier) * Double(sides + 1) / 2.0)
     }
     
-    init(value: Int, sign: JoiningSign = .None) {
+    init(value: Int, sign: JoiningSign = .none) {
         self.dice = []
         self.value = value
         self.sign = sign
@@ -145,24 +145,24 @@ struct DiceCombo : Equatable, CustomStringConvertible {
         var parts: [String] = []
         for dice in self.dice {
             switch dice.sign {
-            case .None:
+            case .none:
                 break
-            case .Plus:
+            case .plus:
                 parts.append(" + ")
-            case .Minus:
+            case .minus:
                 parts.append(" - ")
             }
             parts.append(dice.description)
         }
         
-        return parts.joinWithSeparator("")
+        return parts.joined(separator: "")
     }
 
     init(multiplier: Int = 1, sides: Int, modifier: Int? = nil) throws {
         let dice = try Dice(multiplier: multiplier, sides: sides)
         
         if let modifier = modifier {
-            let modifierDice = Dice(value: abs(modifier), sign: modifier >= 0 ? .Plus : .Minus)
+            let modifierDice = Dice(value: abs(modifier), sign: modifier >= 0 ? .plus : .minus)
             self.dice = [dice, modifierDice]
             self.value = dice.value + modifier
             self.averageValue = dice.averageValue
@@ -180,13 +180,13 @@ struct DiceCombo : Equatable, CustomStringConvertible {
         
         var numeric = ""
         var multiplier = 0
-        var sign = JoiningSign.None
+        var sign = JoiningSign.none
 
         func addValue() throws {
-            guard dice.count == 0 || sign != .None else { throw DieError.InvalidString }
-            guard dice.count > 0 || sign == .None else { throw DieError.InvalidString }
+            guard dice.count == 0 || sign != .none else { throw DieError.invalidString }
+            guard dice.count > 0 || sign == .none else { throw DieError.invalidString }
 
-            guard let intValue = Int(numeric) else { throw DieError.InvalidString }
+            guard let intValue = Int(numeric) else { throw DieError.invalidString }
 
             let newDice: Dice
             if multiplier > 0 {
@@ -198,20 +198,20 @@ struct DiceCombo : Equatable, CustomStringConvertible {
             dice.append(newDice)
             
             switch sign {
-            case .None:
+            case .none:
                 value = newDice.value
                 averageValue = newDice.averageValue
-            case .Plus:
+            case .plus:
                 value += newDice.value
                 averageValue += newDice.averageValue
-            case .Minus:
+            case .minus:
                 value -= newDice.value
                 averageValue -= newDice.averageValue
             }
             
             numeric = ""
             multiplier = 0
-            sign = .None
+            sign = .none
         }
         
         var spaceOkayHere = false
@@ -220,38 +220,38 @@ struct DiceCombo : Equatable, CustomStringConvertible {
         for c in description.characters {
             switch c {
             case "0"..."9":
-                guard !lastWasSpace || numeric == "" else { throw DieError.InvalidString }
+                guard !lastWasSpace || numeric == "" else { throw DieError.invalidString }
                 numeric.append(c)
                 spaceOkayHere = true
                 lastWasSpace = false
             case "d":
-                guard !lastWasSpace else { throw DieError.InvalidString }
-                guard multiplier == 0 else { throw DieError.InvalidString }
-                guard let intValue = Int(numeric) else { throw DieError.InvalidString }
-                if intValue == 0 { throw DieError.InvalidMultiplier }
+                guard !lastWasSpace else { throw DieError.invalidString }
+                guard multiplier == 0 else { throw DieError.invalidString }
+                guard let intValue = Int(numeric) else { throw DieError.invalidString }
+                if intValue == 0 { throw DieError.invalidMultiplier }
                 multiplier = intValue
                 numeric = ""
                 spaceOkayHere = false
                 lastWasSpace = false
             case "+":
                 try addValue()
-                sign = .Plus
+                sign = .plus
                 spaceOkayHere = true
                 lastWasSpace = false
             case "-":
                 try addValue()
-                sign = .Minus
+                sign = .minus
                 spaceOkayHere = true
                 lastWasSpace = false
             case " ":
-                guard spaceOkayHere else { throw DieError.InvalidString }
+                guard spaceOkayHere else { throw DieError.invalidString }
                 lastWasSpace = true
             default:
-                throw DieError.InvalidString
+                throw DieError.invalidString
             }
         }
         
-        guard !lastWasSpace else { throw DieError.InvalidString }
+        guard !lastWasSpace else { throw DieError.invalidString }
         try addValue()
 
         self.dice = dice

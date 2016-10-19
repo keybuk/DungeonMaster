@@ -27,15 +27,15 @@ class PlayedGamesViewController : UITableViewController, NSFetchedResultsControl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.registerNib(UINib(nibName: "GameHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "GameHeaderView")
+        tableView.register(UINib(nibName: "GameHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "GameHeaderView")
 
         tableView.sectionHeaderHeight = 60.0
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableViewAutomaticDimension
     }
 
-    override func setEditing(editing: Bool, animated: Bool) {
-        let oldEditing = self.editing
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        let oldEditing = self.isEditing
         super.setEditing(editing, animated: animated)
         
         if editing != oldEditing {
@@ -44,25 +44,25 @@ class PlayedGamesViewController : UITableViewController, NSFetchedResultsControl
 
             // Insert a section where one doesn't exist in the results, otherwise insert a row.
             let sections = NSMutableIndexSet()
-            var indexPaths: [NSIndexPath] = []
+            var indexPaths: [IndexPath] = []
 
-            for (section, playedGame) in playedGames.enumerate() {
+            for (section, playedGame) in playedGames.enumerated() {
                 if let _ = sectionsInResults[section] {
                     // Row insertions seem to get processed after section insertions, so use section rather than sectionsInResults[section] here.
                     let row = playedGame.logEntries.count
-                    indexPaths.append(NSIndexPath(forRow: row, inSection: section))
+                    indexPaths.append(IndexPath(row: row, section: section))
                 } else {
-                    sections.addIndex(section)
+                    sections.add(section)
                 }
             }
             
             tableView.beginUpdates()
             if editing {
-                tableView.insertSections(sections, withRowAnimation: .Automatic)
-                tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
+                tableView.insertSections(sections as IndexSet, with: .automatic)
+                tableView.insertRows(at: indexPaths, with: .automatic)
             } else {
-                tableView.deleteSections(sections, withRowAnimation: .Automatic)
-                tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
+                tableView.deleteSections(sections as IndexSet, with: .automatic)
+                tableView.deleteRows(at: indexPaths, with: .automatic)
             }
             tableView.endUpdates()
         }
@@ -75,13 +75,13 @@ class PlayedGamesViewController : UITableViewController, NSFetchedResultsControl
     
     // MARK: Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AddLogEntrySegue" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let viewController = segue.destinationViewController as! AddLogEntryViewController
-                viewController.playedGame = playedGame(forSectionInTable: indexPath.section)
+                let viewController = segue.destination as! AddLogEntryViewController
+                viewController.playedGame = playedGame(forSectionInTable: (indexPath as NSIndexPath).section)
                 
-                tableView.deselectRowAtIndexPath(indexPath, animated: true)
+                tableView.deselectRow(at: indexPath, animated: true)
             }
         }
     }
@@ -89,8 +89,8 @@ class PlayedGamesViewController : UITableViewController, NSFetchedResultsControl
     // MARK: Fetched results controller
     
     /// Fetched results are the set of `LogEntry` for the player, grouped by the ObjectID of the `PlayedGame` relationship.
-    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] in
-        let fetchRequest = NSFetchRequest(entity: Model.LogEntry)
+    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] -> <<error type>> in
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entity: Model.LogEntry)
         fetchRequest.predicate = NSPredicate(format: "playedGame.player == %@", self.player)
         
         let gameDateSortDescriptor = NSSortDescriptor(key: "playedGame.game.date", ascending: false)
@@ -113,13 +113,13 @@ class PlayedGamesViewController : UITableViewController, NSFetchedResultsControl
                 return playedGames
             }
             
-            let fetchRequest = NSFetchRequest(entity: Model.PlayedGame)
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entity: Model.PlayedGame)
             fetchRequest.predicate = NSPredicate(format: "player == %@", self.player)
             
             let gameDateSortDescriptor = NSSortDescriptor(key: "game.date", ascending: false)
             fetchRequest.sortDescriptors = [gameDateSortDescriptor]
 
-            _playedGames = try! managedObjectContext.executeFetchRequest(fetchRequest) as! [PlayedGame]
+            _playedGames = try! managedObjectContext.fetch(fetchRequest) as! [PlayedGame]
             
             return _playedGames
         }
@@ -128,7 +128,7 @@ class PlayedGamesViewController : UITableViewController, NSFetchedResultsControl
             _playedGames = newPlayedGames
         }
     }
-    private var _playedGames: [PlayedGame]?
+    fileprivate var _playedGames: [PlayedGame]?
     
     /// Map of table sections to the underlying fetched results sections.
     var sectionsInResults: [Int: Int]! {
@@ -141,8 +141,8 @@ class PlayedGamesViewController : UITableViewController, NSFetchedResultsControl
             let existingPlayedGames = fetchedResultsController.sections!.indices.map({ playedGame(forSectionInResults: $0) })
             
             _sectionsInResults = [:]
-            for (section, playedGame) in playedGames.enumerate() {
-                if let existingSection = existingPlayedGames.indexOf(playedGame) {
+            for (section, playedGame) in playedGames.enumerated() {
+                if let existingSection = existingPlayedGames.index(of: playedGame) {
                     _sectionsInResults![section] = existingSection
                 }
             }
@@ -154,20 +154,20 @@ class PlayedGamesViewController : UITableViewController, NSFetchedResultsControl
             _sectionsInResults = newSectionsInResults
         }
     }
-    private var _sectionsInResults: [Int: Int]?
+    fileprivate var _sectionsInResults: [Int: Int]?
 
     /// Returns the `PlayedGame` object for the given `section` in the results.
     func playedGame(forSectionInResults section: Int) -> PlayedGame {
         let sectionInfo = fetchedResultsController.sections![section]
-        let objectID = persistentStoreCoordinator.managedObjectIDForURIRepresentation(NSURL(string: sectionInfo.name)!)!
-        let playedGame = try! managedObjectContext.existingObjectWithID(objectID) as! PlayedGame
+        let objectID = persistentStoreCoordinator.managedObjectID(forURIRepresentation: URL(string: sectionInfo.name)!)!
+        let playedGame = try! managedObjectContext.existingObject(with: objectID) as! PlayedGame
 
         return playedGame
     }
     
     /// Returns the `PlayedGame` object for the given `section` in the table view.
     func playedGame(forSectionInTable section: Int) -> PlayedGame {
-        if editing {
+        if isEditing {
             return playedGames[section]
         } else {
             return playedGame(forSectionInResults: section)
@@ -175,13 +175,13 @@ class PlayedGamesViewController : UITableViewController, NSFetchedResultsControl
     }
     
     /// Returns `indexPath` translated from the table view, to the results.
-    func indexPathInResults(forIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        if editing {
-            let playedGame = playedGames[indexPath.section]
-            if indexPath.row == playedGame.logEntries.count {
+    func indexPathInResults(forIndexPath indexPath: IndexPath) -> IndexPath? {
+        if isEditing {
+            let playedGame = playedGames[(indexPath as NSIndexPath).section]
+            if (indexPath as NSIndexPath).row == playedGame.logEntries.count {
                 return nil
-            } else if let section = sectionsInResults[indexPath.section] {
-                return NSIndexPath(forRow: indexPath.row, inSection: section)
+            } else if let section = sectionsInResults[(indexPath as NSIndexPath).section] {
+                return IndexPath(row: (indexPath as NSIndexPath).row, section: section)
             } else {
                 return nil
             }
@@ -191,10 +191,10 @@ class PlayedGamesViewController : UITableViewController, NSFetchedResultsControl
     }
     
     /// Returns `indexPath` translated from the results, to the table view.
-    func indexPath(forIndexPathInResults indexPath: NSIndexPath) -> NSIndexPath {
-        if editing {
-            let section = sectionsInResults[sectionsInResults.indexOf({ $0.1 == indexPath.section })!].0
-            return NSIndexPath(forRow: indexPath.row, inSection: section)
+    func indexPath(forIndexPathInResults indexPath: IndexPath) -> IndexPath {
+        if isEditing {
+            let section = sectionsInResults[sectionsInResults.index(where: { $0.1 == (indexPath as NSIndexPath).section })!].0
+            return IndexPath(row: (indexPath as NSIndexPath).row, section: section)
         } else {
             return indexPath
         }
@@ -202,16 +202,16 @@ class PlayedGamesViewController : UITableViewController, NSFetchedResultsControl
     
     // MARK: UITableViewDataSource
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if editing {
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        if isEditing {
             return playedGames.count
         } else {
             return fetchedResultsController.sections?.count ?? 0
         }
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if editing {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isEditing {
             let playedGame = playedGames[section]
             return playedGame.logEntries.count + 1
         } else {
@@ -220,42 +220,42 @@ class PlayedGamesViewController : UITableViewController, NSFetchedResultsControl
         }
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let indexPath = indexPathInResults(forIndexPath: indexPath) {
-            switch fetchedResultsController.objectAtIndexPath(indexPath) {
+            switch fetchedResultsController.object(at: indexPath) {
             case let xpAward as XPAward:
-                let cell = tableView.dequeueReusableCellWithIdentifier("XPAwardCell", forIndexPath: indexPath) as! XPAwardCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "XPAwardCell", for: indexPath) as! XPAwardCell
                 cell.xpAward = xpAward
                 return cell
             case let logEntryNote as LogEntryNote:
-                let cell = tableView.dequeueReusableCellWithIdentifier("LogEntryNoteCell", forIndexPath: indexPath) as! LogEntryNoteCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "LogEntryNoteCell", for: indexPath) as! LogEntryNoteCell
                 cell.logEntryNote = logEntryNote
                 return cell
             default:
                 fatalError("Unexpected LogEntry subclass")
             }
         } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("AddLogEntryCell", forIndexPath: indexPath) as! AddLogEntryCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AddLogEntryCell", for: indexPath) as! AddLogEntryCell
             return cell
         }
     }
     
     // MARK: Edit support
     
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
     // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
             guard let indexPath = indexPathInResults(forIndexPath: indexPath) else { fatalError("Unexpected index path outside of results") }
 
-            let logEntry = fetchedResultsController.objectAtIndexPath(indexPath) as! LogEntry
+            let logEntry = fetchedResultsController.object(at: indexPath) as! LogEntry
             let playedGame = logEntry.playedGame
             let index = logEntry.index
             
-            managedObjectContext.deleteObject(logEntry)
+            managedObjectContext.delete(logEntry)
         
             // Reindex the rest of the entries in the same game
             for case let remainingEntry as LogEntry in playedGame.logEntries {
@@ -266,15 +266,15 @@ class PlayedGamesViewController : UITableViewController, NSFetchedResultsControl
             
             try! managedObjectContext.save()
 
-        } else if editingStyle == .Insert {
-            tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: .None)
-            performSegueWithIdentifier("AddLogEntrySegue", sender: self)
+        } else if editingStyle == .insert {
+            tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+            performSegue(withIdentifier: "AddLogEntrySegue", sender: self)
         }
     }
     
     // MARK: Move support
     
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         if let _ = indexPathInResults(forIndexPath: indexPath) {
             return true
         } else {
@@ -282,15 +282,15 @@ class PlayedGamesViewController : UITableViewController, NSFetchedResultsControl
         }
     }
     
-    override func tableView(tableView: UITableView, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
-        let playedGame = self.playedGame(forSectionInTable: proposedDestinationIndexPath.section)
-        if sourceIndexPath.section == proposedDestinationIndexPath.section && proposedDestinationIndexPath.row >= playedGame.logEntries.count {
+    override func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+        let playedGame = self.playedGame(forSectionInTable: (proposedDestinationIndexPath as NSIndexPath).section)
+        if (sourceIndexPath as NSIndexPath).section == (proposedDestinationIndexPath as NSIndexPath).section && (proposedDestinationIndexPath as NSIndexPath).row >= playedGame.logEntries.count {
             // Within the same section, we don't want to even reach the "last row", since it's a re-order, always return the previous.
-            let indexPath = NSIndexPath(forRow: playedGame.logEntries.count - 1, inSection: proposedDestinationIndexPath.section)
+            let indexPath = IndexPath(row: playedGame.logEntries.count - 1, section: (proposedDestinationIndexPath as NSIndexPath).section)
             return indexPath
-        } else if proposedDestinationIndexPath.row > playedGame.logEntries.count {
+        } else if (proposedDestinationIndexPath as NSIndexPath).row > playedGame.logEntries.count {
             // Within different sections, it's okay to reach it and go on the end, but not replace the "add entry" marker.
-            let indexPath = NSIndexPath(forRow: playedGame.logEntries.count, inSection: proposedDestinationIndexPath.section)
+            let indexPath = IndexPath(row: playedGame.logEntries.count, section: (proposedDestinationIndexPath as NSIndexPath).section)
             return indexPath
         } else {
             return proposedDestinationIndexPath
@@ -299,16 +299,16 @@ class PlayedGamesViewController : UITableViewController, NSFetchedResultsControl
     
     var changeIsUserDriven = false
 
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to toIndexPath: IndexPath) {
         guard let fromIndexPath = indexPathInResults(forIndexPath: fromIndexPath) else { fatalError("Index path being moved is not in results") }
-        let logEntry = fetchedResultsController.objectAtIndexPath(fromIndexPath) as! LogEntry
+        let logEntry = fetchedResultsController.object(at: fromIndexPath) as! LogEntry
         let oldPlayedGame = logEntry.playedGame, oldIndex = logEntry.index
 
-        let newPlayedGame = self.playedGame(forSectionInTable: toIndexPath.section)
-        if toIndexPath.row < newPlayedGame.logEntries.count {
+        let newPlayedGame = self.playedGame(forSectionInTable: (toIndexPath as NSIndexPath).section)
+        if (toIndexPath as NSIndexPath).row < newPlayedGame.logEntries.count {
             // Moving within the set of results, which means that we have an existing log entry that we're displacing.
             guard let toIndexPath = indexPathInResults(forIndexPath: toIndexPath) else { fatalError("Destination index path is not in results") }
-            let displacedLogEntry = fetchedResultsController.objectAtIndexPath(toIndexPath) as! LogEntry
+            let displacedLogEntry = fetchedResultsController.object(at: toIndexPath) as! LogEntry
             let newIndex = displacedLogEntry.index
             assert(displacedLogEntry.playedGame == newPlayedGame, "Played game mismatched at destination")
             
@@ -350,27 +350,27 @@ class PlayedGamesViewController : UITableViewController, NSFetchedResultsControl
 
     // MARK: UITableViewDelegate
     
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         // The "section name" is the URI Representation of the Object ID of the PlayedGame object.
         let playedGame = self.playedGame(forSectionInTable: section)
         
-        let header = tableView.dequeueReusableHeaderFooterViewWithIdentifier("GameHeaderView") as! GameHeaderView
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "GameHeaderView") as! GameHeaderView
         header.game = playedGame.game
                 
         return header
     }
     
-    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         if let _ = indexPathInResults(forIndexPath: indexPath) {
-            return .Delete
+            return .delete
         } else {
-            return .Insert
+            return .insert
         }
     }
 
-    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if let indexPath = indexPathInResults(forIndexPath: indexPath) {
-            return editing ? nil : indexPath
+            return isEditing ? nil : indexPath
         } else {
             return indexPath
         }
@@ -378,31 +378,31 @@ class PlayedGamesViewController : UITableViewController, NSFetchedResultsControl
     
     // MARK: NSFetchedResultsControllerDelegate
     
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         guard !changeIsUserDriven else { return }
 
         tableView.beginUpdates()
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
         // Changes to the set of sections requires rebuilding the sectionsInResults map, so invalidate it here.
         sectionsInResults = nil
         
         // Skip the rest of this method if the change was used driven (table already matches the result of the change), or if in editing mode (all sections already exist).
         guard !changeIsUserDriven else { return }
-        guard !editing else { return }
+        guard !isEditing else { return }
         
         switch type {
-        case .Insert:
-            tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
-        case .Delete:
-            tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
+        case .insert:
+            tableView.insertSections(IndexSet(integer: sectionIndex), with: .automatic)
+        case .delete:
+            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .automatic)
         default:
             return
         }
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         guard !changeIsUserDriven else { return }
         
         // Unlike every other case, `indexPath` and `newIndexPath` refer to an index in the results and need to be translated to an index in the table.
@@ -410,21 +410,21 @@ class PlayedGamesViewController : UITableViewController, NSFetchedResultsControl
         let newIndexPath = newIndexPath.map({ self.indexPath(forIndexPathInResults: $0) })
 
         switch type {
-        case .Insert:
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
-        case .Delete:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
-        case .Move:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
-        case .Update:
+        case .insert:
+            tableView.insertRows(at: [newIndexPath!], with: .automatic)
+        case .delete:
+            tableView.deleteRows(at: [indexPath!], with: .automatic)
+        case .move:
+            tableView.deleteRows(at: [indexPath!], with: .automatic)
+            tableView.insertRows(at: [newIndexPath!], with: .automatic)
+        case .update:
             switch anObject {
             case let xpAward as XPAward:
-                if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? XPAwardCell {
+                if let cell = tableView.cellForRow(at: indexPath!) as? XPAwardCell {
                     cell.xpAward = xpAward
                 }
             case let logEntryNote as LogEntryNote:
-                if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? LogEntryNoteCell {
+                if let cell = tableView.cellForRow(at: indexPath!) as? LogEntryNoteCell {
                     cell.logEntryNote = logEntryNote
                 }
             default:
@@ -433,7 +433,7 @@ class PlayedGamesViewController : UITableViewController, NSFetchedResultsControl
         }
     }
     
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         guard !changeIsUserDriven else {
             changeIsUserDriven = false
             return
@@ -455,11 +455,11 @@ class GameHeaderView : UITableViewHeaderFooterView {
         didSet {
             numberLabel.text = game.title
             
-            let dateFormatter = NSDateFormatter()
-            dateFormatter.dateStyle = .LongStyle
-            dateFormatter.timeStyle = .NoStyle
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .long
+            dateFormatter.timeStyle = .none
             
-            dateLabel.text = dateFormatter.stringFromDate(game.date)
+            dateLabel.text = dateFormatter.string(from: game.date as Date)
         }
     }
     
@@ -488,7 +488,7 @@ class XPAwardCell : UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        leadingConstraint.constant = editing ? 0.0 : (separatorInset.left - layoutMargins.left)
+        leadingConstraint.constant = isEditing ? 0.0 : (separatorInset.left - layoutMargins.left)
     }
 
 }
@@ -508,7 +508,7 @@ class LogEntryNoteCell : UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        leadingConstraint.constant = editing ? 0.0 : (separatorInset.left - layoutMargins.left)
+        leadingConstraint.constant = isEditing ? 0.0 : (separatorInset.left - layoutMargins.left)
     }
 
 }

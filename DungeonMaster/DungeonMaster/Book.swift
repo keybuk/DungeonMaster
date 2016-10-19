@@ -18,13 +18,13 @@ final class Book : NSManagedObject {
     /// Type of the book.
     var type: BookType {
         get {
-            return BookType(rawValue: rawType.integerValue)!
+            return BookType(rawValue: rawType.intValue)!
         }
         set(newType) {
-            rawType = NSNumber(integer: newType.rawValue)
+            rawType = NSNumber(value: newType.rawValue as Int)
         }
     }
-    @NSManaged private var rawType: NSNumber
+    @NSManaged fileprivate var rawType: NSNumber
 
     /// References contained within this book.
     ///
@@ -38,7 +38,7 @@ final class Book : NSManagedObject {
 
     convenience init(name: String, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Book, inManagedObjectContext: context)
-        self.init(entity: entity, insertIntoManagedObjectContext: context)
+        self.init(entity: entity, insertInto: context)
         
         self.name = name
     }

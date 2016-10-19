@@ -22,7 +22,7 @@ class LogEntryXPAwardViewController : UITableViewController, UITextFieldDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let encounter = encounter, combatants = combatants {
+        if let encounter = encounter, let combatants = combatants {
             var xp = 0
             
             for combatant in combatants {
@@ -39,7 +39,7 @@ class LogEntryXPAwardViewController : UITableViewController, UITextFieldDelegate
         }
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if xpTextField.text == "" {
@@ -50,7 +50,7 @@ class LogEntryXPAwardViewController : UITableViewController, UITextFieldDelegate
     }
     
     func configureView() {
-        doneButtonItem.enabled = (xpTextField.text != "" && reasonTextView.text != "")
+        doneButtonItem.isEnabled = (xpTextField.text != "" && reasonTextView.text != "")
     }
     
     func createLogEntry() {
@@ -66,26 +66,26 @@ class LogEntryXPAwardViewController : UITableViewController, UITextFieldDelegate
         
         try! managedObjectContext.save()
 
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     // MARK: Actions
     
-    @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
+    @IBAction func doneButtonTapped(_ sender: UIBarButtonItem) {
         createLogEntry()
     }
     
     // MARK: UITextFieldDelegate
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         reasonTextView.becomeFirstResponder()
         return false
     }
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        let validSet = NSCharacterSet.decimalDigitCharacterSet()
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let validSet = CharacterSet.decimalDigits
         for character in string.unicodeScalars {
-            if !validSet.longCharacterIsMember(character.value) {
+            if !validSet.contains(UnicodeScalar(character.value)!) {
                 return false
             }
         }
@@ -94,14 +94,14 @@ class LogEntryXPAwardViewController : UITableViewController, UITextFieldDelegate
     
     // MARK: UITextViewDelegate
     
-    func textViewDidChange(textView: UITextView) {
+    func textViewDidChange(_ textView: UITextView) {
         configureView()
     }
     
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
             if textView.text != "" {
-                textView.editable = false
+                textView.isEditable = false
                 createLogEntry()
             }
             return false

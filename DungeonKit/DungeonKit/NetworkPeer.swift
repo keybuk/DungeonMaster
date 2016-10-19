@@ -11,48 +11,48 @@ import Foundation
 
 /// NetworkPeerType identifies the specific type of peer in the DungeonNet.
 public enum NetworkPeerType {
-    case DungeonMaster
-    case InitiativeOrder
+    case dungeonMaster
+    case initiativeOrder
 }
 
 /// NetworkPeer manages peer relationships between this device, and other DungeonNet devices at the same table.
 ///
 /// Each device both advertises its own network service, and searches for other advertising devices in the area. Connections are established in either direction, with the peer type determining the relationship. Once established the connection is handled by a `NetworkConnection` object, with individual messages represented as `NetworkMessage` instances.
-public class NetworkPeer: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate {
+open class NetworkPeer: NSObject, NetServiceDelegate, NetServiceBrowserDelegate {
     
     static let serviceDomain = "local."
 
     static let serviceType = "_dungeonnet._tcp"
 
     /// Type of this peer.
-    public let type: NetworkPeerType
+    open let type: NetworkPeerType
     
     /// Type of peers this one will accept.
-    public let acceptedTypes: [NetworkPeerType]
+    open let acceptedTypes: [NetworkPeerType]
     
     /// Underlying advertised network service.
-    public let netService: NSNetService
+    open let netService: NetService
     
     /// Underlying network service browser.
-    public let netServiceBrowser: NSNetServiceBrowser
+    open let netServiceBrowser: NetServiceBrowser
     
     /// Unique peer identifier.
-    public let uuid: NSUUID
+    open let uuid: UUID
 
     /// Delegate to receive noitifications of new connections.
-    public var delegate: NetworkPeerDelegate?
+    open var delegate: NetworkPeerDelegate?
     
     public required init(type: NetworkPeerType, name: String, acceptedTypes: [NetworkPeerType]) {
         self.type = type
         self.acceptedTypes = acceptedTypes
         
         // In order for the advertised service name to be easily identifiable, add the device name.
-        let serviceName = "\(name) (\(UIDevice.currentDevice().name))"
-        self.netService = NSNetService(domain: NetworkPeer.serviceDomain, type: NetworkPeer.serviceType, name: serviceName, port: 0)
+        let serviceName = "\(name) (\(UIDevice.current.name))"
+        self.netService = NetService(domain: NetworkPeer.serviceDomain, type: NetworkPeer.serviceType, name: serviceName, port: 0)
         
-        self.netServiceBrowser = NSNetServiceBrowser()
+        self.netServiceBrowser = NetServiceBrowser()
         
-        self.uuid = NSUUID()
+        self.uuid = UUID()
         
         super.init()
         
@@ -70,36 +70,36 @@ public class NetworkPeer: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDel
     var isRunning = false
 
     /// Starts advertising and scanning for connections.
-    public func start() {
+    open func start() {
         guard !isRunning else { return }
         
-        print("NET: Starting peer with identifier \(uuid.UUIDString).")
-        netService.publishWithOptions(.ListenForConnections)
-        netServiceBrowser.searchForServicesOfType(NetworkPeer.serviceType, inDomain: NetworkPeer.serviceDomain)
+        print("NET: Starting peer with identifier \(uuid.uuidString).")
+        netService.publish(options: .listenForConnections)
+        netServiceBrowser.searchForServices(ofType: NetworkPeer.serviceType, inDomain: NetworkPeer.serviceDomain)
 
         isRunning = true
     }
     
-    public var peers: [NSUUID: NetworkConnection] = [:]
+    open var peers: [UUID: NetworkConnection] = [:]
     
     /// Estabished connections with other peers.
-    public var connections: [NetworkConnection] {
+    open var connections: [NetworkConnection] {
         return Array(peers.values)
     }
     
-    func establishConnection(inputStream inputStream: NSInputStream, outputStream: NSOutputStream, service: NSNetService?) {
+    func establishConnection(inputStream: InputStream, outputStream: OutputStream, service: NetService?) {
         // Open the streams.
         inputStream.open()
         outputStream.open()
 
         // Perform an exchange of peer identifiers and types, first send ours.
-        var handshakeBytes: [UInt8] = Array(count: 17, repeatedValue: 0)
-        uuid.getUUIDBytes(&handshakeBytes)
+        var handshakeBytes: [UInt8] = Array(repeating: 0, count: 17)
+        (uuid as NSUUID).getBytes(&handshakeBytes)
         
         switch type {
-        case .DungeonMaster:
+        case .dungeonMaster:
             handshakeBytes[16] = 0x00
-        case .InitiativeOrder:
+        case .initiativeOrder:
             handshakeBytes[16] = 0x01
         }
         
@@ -130,13 +130,13 @@ public class NetworkPeer: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDel
             return
         }
         
-        let remoteUUID = NSUUID(UUIDBytes: &handshakeBytes)
+        let remoteUUID = NSUUID(uuidBytes: &handshakeBytes) as UUID
         let remoteType: NetworkPeerType
         switch handshakeBytes[16] {
         case 0x00:
-            remoteType = .DungeonMaster
+            remoteType = .dungeonMaster
         case 0x01:
-            remoteType = .InitiativeOrder
+            remoteType = .initiativeOrder
         default:
             print("NET: Invalid remote peer type \(handshakeBytes[16]) received.")
             inputStream.close()
@@ -144,7 +144,7 @@ public class NetworkPeer: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDel
             return
         }
         
-        print("NET: Peer identifier \(remoteUUID.UUIDString), type \(remoteType).")
+        print("NET: Peer identifier \(remoteUUID.uuidString), type \(remoteType).")
         if let _ = peers[remoteUUID] {
             print("     Already connected, dropping.")
             inputStream.close()
@@ -166,10 +166,10 @@ public class NetworkPeer: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDel
         self.delegate?.networkPeer(self, didEstablishConnection: connection)
     }
     
-    func removeConnection(connection: NetworkConnection) {
+    func removeConnection(_ connection: NetworkConnection) {
         for (uuid, peerConnection) in peers {
             if peerConnection == connection {
-                print("NET: Removed connection to peer \(uuid.UUIDString).")
+                print("NET: Removed connection to peer \(uuid.uuidString).")
                 peers[uuid] = nil
             }
         }
@@ -178,7 +178,7 @@ public class NetworkPeer: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDel
     /// Stops advertising and scanning for connections, and disconnects all existing connections.
     ///
     /// To resume, call `start()` again.
-    public func stop() {
+    open func stop() {
         guard isRunning else { return }
         
         print("NET: Stopping peer.")
@@ -193,7 +193,7 @@ public class NetworkPeer: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDel
     }
     
     /// Broadcast a message to all connections.
-    public func broadcastMessage(message: NetworkMessage) {
+    open func broadcastMessage(_ message: NetworkMessage) {
         for connection in connections {
             connection.sendMessage(message)
         }
@@ -201,68 +201,68 @@ public class NetworkPeer: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDel
 
     // MARK: NSNetServiceDelegate
     
-    public func netServiceWillPublish(sender: NSNetService) {
+    open func netServiceWillPublish(_ sender: NetService) {
         print("NET: Will publish service.")
         
-        netService.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+        netService.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
     }
     
-    public func netServiceDidPublish(sender: NSNetService) {
+    open func netServiceDidPublish(_ sender: NetService) {
         print("NET: Published service as \(sender.name).")
     }
     
-    public func netService(sender: NSNetService, didNotPublish errorDict: [String : NSNumber]) {
+    open func netService(_ sender: NetService, didNotPublish errorDict: [String : NSNumber]) {
         print("NET: Publishing was not successful.\n     \(errorDict)")
         
-        netService.removeFromRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+        netService.remove(from: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
         
         // Retry once we get back to the main loop.
-        dispatch_async(dispatch_get_main_queue()) {
-            self.netService.publishWithOptions(.ListenForConnections)
+        DispatchQueue.main.async {
+            self.netService.publish(options: .listenForConnections)
         }
     }
     
-    public func netServiceDidStop(sender: NSNetService) {
+    open func netServiceDidStop(_ sender: NetService) {
         print("NET: Publishing has stopped.")
         
-        netService.removeFromRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+        netService.remove(from: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
     }
     
-    public func netService(sender: NSNetService, didAcceptConnectionWithInputStream inputStream: NSInputStream, outputStream: NSOutputStream) {
+    open func netService(_ sender: NetService, didAcceptConnectionWith inputStream: InputStream, outputStream: OutputStream) {
         print("NET: Accepted connection.")
         
         // According to rdar://problem/15626440, this will be called on the wrong queue.
-        dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.main.async {
             self.establishConnection(inputStream: inputStream, outputStream: outputStream, service: nil)
         }
     }
     
     // MARK: NSNetServiceBrowserDelegate
     
-    public func netServiceBrowserWillSearch(browser: NSNetServiceBrowser) {
+    open func netServiceBrowserWillSearch(_ browser: NetServiceBrowser) {
         print("NET: Will search for services.")
     
-        netServiceBrowser.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+        netServiceBrowser.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
     }
     
-    public func netServiceBrowser(browser: NSNetServiceBrowser, didNotSearch errorDict: [String : NSNumber]) {
+    open func netServiceBrowser(_ browser: NetServiceBrowser, didNotSearch errorDict: [String : NSNumber]) {
         print("NET: Search was not successful.\n     \(errorDict)")
     
-        netServiceBrowser.removeFromRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+        netServiceBrowser.remove(from: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
         
         // Retry once we get back to the main loop.
-        dispatch_async(dispatch_get_main_queue()) {
-            self.netServiceBrowser.searchForServicesOfType(NetworkPeer.serviceType, inDomain: NetworkPeer.serviceDomain)
+        DispatchQueue.main.async {
+            self.netServiceBrowser.searchForServices(ofType: NetworkPeer.serviceType, inDomain: NetworkPeer.serviceDomain)
         }
     }
     
-    public func netServiceBrowserDidStopSearch(browser: NSNetServiceBrowser) {
+    open func netServiceBrowserDidStopSearch(_ browser: NetServiceBrowser) {
         print("NET: Searching has stopped.")
 
-        netServiceBrowser.removeFromRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+        netServiceBrowser.remove(from: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
     }
     
-    public func netServiceBrowser(browser: NSNetServiceBrowser, didFindService service: NSNetService, moreComing: Bool) {
+    open func netServiceBrowser(_ browser: NetServiceBrowser, didFind service: NetService, moreComing: Bool) {
         print("NET: Found service \(service.name), moreComing: \(moreComing).")
         
         guard service != netService else {
@@ -271,8 +271,8 @@ public class NetworkPeer: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDel
         }
 
         // Obtain the input and output stream for the service.
-        var inputStream: NSInputStream?
-        var outputStream: NSOutputStream?
+        var inputStream: InputStream?
+        var outputStream: OutputStream?
         guard service.getInputStream(&inputStream, outputStream: &outputStream) else {
             print("NET: Failed to get streams")
             return
@@ -281,10 +281,10 @@ public class NetworkPeer: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDel
         establishConnection(inputStream: inputStream!, outputStream: outputStream!, service: service)
     }
     
-    public func netServiceBrowser(browser: NSNetServiceBrowser, didRemoveService service: NSNetService, moreComing: Bool) {
+    open func netServiceBrowser(_ browser: NetServiceBrowser, didRemove service: NetService, moreComing: Bool) {
         print("NET: Lost service \(service.name), moreComing: \(moreComing).")
         service.stopMonitoring()
-        service.removeFromRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+        service.remove(from: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
     }
     
 }
@@ -295,6 +295,6 @@ public protocol NetworkPeerDelegate {
     /// Called when a connection is established between two peer devices.
     ///
     /// The `connection` is passed already opened, and will be closed if not referenced by the delegate.
-    func networkPeer(peer: NetworkPeer, didEstablishConnection connection: NetworkConnection)
+    func networkPeer(_ peer: NetworkPeer, didEstablishConnection connection: NetworkConnection)
 
 }

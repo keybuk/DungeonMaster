@@ -24,7 +24,7 @@ class PlayerRootViewController : UIViewController, ManagedObjectObserverDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.rightBarButtonItem = editButtonItem()
+        navigationItem.rightBarButtonItem = editButtonItem
 
         observer = ManagedObjectObserver(object: player, delegate: self)
         
@@ -33,8 +33,8 @@ class PlayerRootViewController : UIViewController, ManagedObjectObserverDelegate
 
     func configureView() {
         navigationItem.title = player.name
-        if editing {
-            navigationItem.rightBarButtonItem?.enabled = (try? player.validateForUpdate()) != nil ? true : false
+        if isEditing {
+            navigationItem.rightBarButtonItem?.isEnabled = (try? player.validateForUpdate()) != nil ? true : false
         }
     }
     
@@ -48,7 +48,7 @@ class PlayerRootViewController : UIViewController, ManagedObjectObserverDelegate
         playedGamesTable.scrollIndicatorInsets = playerTable.scrollIndicatorInsets
     }
 
-    override func setEditing(editing: Bool, animated: Bool) {
+    override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         
         navigationItem.hidesBackButton = editing
@@ -62,12 +62,12 @@ class PlayerRootViewController : UIViewController, ManagedObjectObserverDelegate
     var playerViewController: PlayerViewController!
     var playedGamesViewController: PlayedGamesViewController!
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PlayerEmbedSegue" {
-            playerViewController = segue.destinationViewController as! PlayerViewController
+            playerViewController = segue.destination as! PlayerViewController
             playerViewController.player = player
         } else if segue.identifier == "PlayedGamesEmbedSegue" {
-            playedGamesViewController = segue.destinationViewController as! PlayedGamesViewController
+            playedGamesViewController = segue.destination as! PlayedGamesViewController
             playedGamesViewController.player = player
             playedGamesViewController.game = playedGame?.game
         }
@@ -75,7 +75,7 @@ class PlayerRootViewController : UIViewController, ManagedObjectObserverDelegate
     
     // MARK: ManagedObjectObserverDelegate
     
-    func managedObject(object: Player, changedForType type: ManagedObjectChangeType) {
+    func managedObject(_ object: Player, changedForType type: ManagedObjectChangeType) {
         configureView()
     }
 

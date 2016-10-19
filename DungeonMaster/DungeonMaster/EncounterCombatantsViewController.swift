@@ -20,55 +20,55 @@ class EncounterCombatantsViewController : UITableViewController, NSFetchedResult
         clearsSelectionOnViewWillAppear = false
     }
 
-    override func setEditing(editing: Bool, animated: Bool) {
-        let oldEditing = self.editing, tableViewLoaded = self.tableViewLoaded
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        let oldEditing = self.isEditing, tableViewLoaded = self.tableViewLoaded
         super.setEditing(editing, animated: animated)
         
         if editing != oldEditing && tableViewLoaded {
             let addSection = fetchedResultsController.sections?.count ?? 0
             if editing {
-                tableView.insertSections(NSIndexSet(index: addSection), withRowAnimation: .Automatic)
+                tableView.insertSections(IndexSet(integer: addSection), with: .automatic)
             } else {
-                tableView.deleteSections(NSIndexSet(index: addSection), withRowAnimation: .Automatic)
+                tableView.deleteSections(IndexSet(integer: addSection), with: .automatic)
             }
         }
     }
     
     // MARK: Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CombatantSegue" {
-            performSegueWithIdentifier("CombatantMonsterSegue", sender: sender)
+            performSegue(withIdentifier: "CombatantMonsterSegue", sender: sender)
             if let indexPath = tableView.indexPathForSelectedRow {
-                let combatant = fetchedResultsController.objectAtIndexPath(indexPath) as! Combatant
-                let viewController = segue.destinationViewController as! CombatantViewController
+                let combatant = fetchedResultsController.object(at: indexPath) as! Combatant
+                let viewController = segue.destination as! CombatantViewController
                 viewController.combatant = combatant
             }
         } else if segue.identifier == "CombatantMonsterSegue" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let combatant = fetchedResultsController.objectAtIndexPath(indexPath) as! Combatant
-                let viewController = segue.destinationViewController as! MonsterViewController
+                let combatant = fetchedResultsController.object(at: indexPath) as! Combatant
+                let viewController = segue.destination as! MonsterViewController
                 viewController.monster = combatant.monster
             }
         } else if segue.identifier == "AddCombatantSegue" {
             // This is pretty hacky, we're stealing one view and embedding in another just to work around restrictions. The fact this gets complicated, requiring intermediate classes, should show that I shouldn't do things this way and should come up with a better way. I just don't know what that is yet.
-            let viewController = segue.destinationViewController as! EncounterAddCombatantViewController
+            let viewController = segue.destination as! EncounterAddCombatantViewController
             viewController.encounter = encounter
             
             viewController.completionBlock = { cancelled, monster, quantity in
-                if let monster = monster where !cancelled {
+                if let monster = monster, !cancelled {
                     for _ in 1...quantity {
                         let combatant = Combatant(encounter: self.encounter, monster: monster, inManagedObjectContext: managedObjectContext)
-                        combatant.role = .Foe
+                        combatant.role = .foe
                     }
                     
-                    self.encounter.lastModified = NSDate()
+                    self.encounter.lastModified = Date()
                     try! managedObjectContext.save()
                 }
                 
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.dismiss(animated: true, completion: nil)
                 if let indexPath = self.tableView.indexPathForSelectedRow {
-                    self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+                    self.tableView.deselectRow(at: indexPath, animated: true)
                 }
             }
 
@@ -77,7 +77,7 @@ class EncounterCombatantsViewController : UITableViewController, NSFetchedResult
 
     // MARK: Fetched results controller
     
-    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] in
+    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] -> <<error type>> in
         let fetchRequest = self.encounter.fetchRequestForCombatants()
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
@@ -92,12 +92,12 @@ class EncounterCombatantsViewController : UITableViewController, NSFetchedResult
 
     var tableViewLoaded = false
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         tableViewLoaded = true
-        return (fetchedResultsController.sections?.count ?? 0) + (editing ? 1 : 0)
+        return (fetchedResultsController.sections?.count ?? 0) + (isEditing ? 1 : 0)
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let addSection = fetchedResultsController.sections?.count ?? 0
         if section < addSection {
             let sectionInfo = fetchedResultsController.sections![section]
@@ -107,91 +107,91 @@ class EncounterCombatantsViewController : UITableViewController, NSFetchedResult
         }
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let addSection = fetchedResultsController.sections?.count ?? 0
-        if indexPath.section < addSection {
-            let cell = tableView.dequeueReusableCellWithIdentifier("EncounterCombatantCell", forIndexPath: indexPath) as! EncounterCombatantCell
-            let combatant = fetchedResultsController.objectAtIndexPath(indexPath) as! Combatant
+        if (indexPath as NSIndexPath).section < addSection {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EncounterCombatantCell", for: indexPath) as! EncounterCombatantCell
+            let combatant = fetchedResultsController.object(at: indexPath) as! Combatant
             cell.combatant = combatant
             return cell
         } else {
             // Cell to add monsters.
-            let cell = tableView.dequeueReusableCellWithIdentifier("EncounterAddCombatantCell", forIndexPath: indexPath) as! EncounterAddCombatantCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EncounterAddCombatantCell", for: indexPath) as! EncounterAddCombatantCell
             return cell
         }
     }
 
     // MARK: Edit support
     
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
 
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            let combatant = fetchedResultsController.objectAtIndexPath(indexPath) as! Combatant
-            managedObjectContext.deleteObject(combatant)
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let combatant = fetchedResultsController.object(at: indexPath) as! Combatant
+            managedObjectContext.delete(combatant)
         }
         
-        encounter.lastModified = NSDate()
+        encounter.lastModified = Date()
         try! managedObjectContext.save()
     }
     
     // MARK: UITableViewDelegate
     
-    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         let addSection = fetchedResultsController.sections?.count ?? 0
-        if indexPath.section < addSection {
-            return editing ? nil : indexPath
+        if (indexPath as NSIndexPath).section < addSection {
+            return isEditing ? nil : indexPath
         } else {
             return indexPath
         }
     }
     
-    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         let addSection = fetchedResultsController.sections?.count ?? 0
-        if indexPath.section < addSection {
-            return .Delete
+        if (indexPath as NSIndexPath).section < addSection {
+            return .delete
         } else {
-            return .Insert
+            return .insert
         }
     }
 
     // MARK: NSFetchedResultsControllerDelegate
 
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
         switch type {
-        case .Insert:
-            tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
-        case .Delete:
-            tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
+        case .insert:
+            tableView.insertSections(IndexSet(integer: sectionIndex), with: .automatic)
+        case .delete:
+            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .automatic)
         default:
             return
         }
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
-        case .Insert:
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
-        case .Delete:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
-        case .Move:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
-        case .Update:
-            if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? EncounterCombatantCell {
+        case .insert:
+            tableView.insertRows(at: [newIndexPath!], with: .automatic)
+        case .delete:
+            tableView.deleteRows(at: [indexPath!], with: .automatic)
+        case .move:
+            tableView.deleteRows(at: [indexPath!], with: .automatic)
+            tableView.insertRows(at: [newIndexPath!], with: .automatic)
+        case .update:
+            if let cell = tableView.cellForRow(at: indexPath!) as? EncounterCombatantCell {
                 let combatant = anObject as! Combatant
                 cell.combatant = combatant
             }
         }
     }
     
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
 
@@ -211,7 +211,7 @@ class EncounterCombatantCell : UITableViewCell {
     
     var combatant: Combatant! {
         didSet {
-            turnIndicator.hidden = !combatant.isCurrentTurn
+            turnIndicator.isHidden = !combatant.isCurrentTurn
 
             var passivePerception: Int? = nil
             if let monster = combatant.monster {
@@ -223,16 +223,16 @@ class EncounterCombatantCell : UITableViewCell {
             }
             
             switch combatant.role {
-            case .Foe, .Friend:
+            case .foe, .friend:
                 // Foe and Friend both show AC and health, since they are DM-controlled.
-                healthProgress.hidden = false
+                healthProgress.isHidden = false
                 healthProgress.progress = combatant.health
 
                 statCaptionLabel.text = "AC"
                 statLabel.text = "\(combatant.armorClass!)"
-            case .Player:
+            case .player:
                 // Player-controlled characters do not show health or AC, they show PP instead.
-                healthProgress.hidden = true
+                healthProgress.isHidden = true
                 
                 statCaptionLabel.text = "PP"
                 statLabel.text = "\(passivePerception!)"
@@ -240,17 +240,17 @@ class EncounterCombatantCell : UITableViewCell {
         }
     }
     
-    override func setEditing(editing: Bool, animated: Bool) {
+    override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         
-        selectionStyle = editing ? .None : .Default
+        selectionStyle = editing ? .none : .default
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        statCaptionLabel.transform = CGAffineTransformMakeRotation(-CGFloat(π / 2.0))
-        leadingConstraint.constant = editing ? 0.0 : (separatorInset.left - layoutMargins.left)
+        statCaptionLabel.transform = CGAffineTransform(rotationAngle: -CGFloat(π / 2.0))
+        leadingConstraint.constant = isEditing ? 0.0 : (separatorInset.left - layoutMargins.left)
     }
 
 }

@@ -31,23 +31,23 @@ class EncounterViewController : UIViewController, ManagedObjectObserverDelegate 
         super.viewDidLoad()
         
         // Put the edit button in, with space between it and the compendium buttons.
-        let fixedSpace = UIBarButtonItem(barButtonSystemItem: .FixedSpace, target: nil, action: nil)
+        let fixedSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
         fixedSpace.width = 40.0
         
-        navigationItem.rightBarButtonItems?.insert(fixedSpace, atIndex: 0)
-        navigationItem.rightBarButtonItems?.insert(editButtonItem(), atIndex: 0)
+        navigationItem.rightBarButtonItems?.insert(fixedSpace, at: 0)
+        navigationItem.rightBarButtonItems?.insert(editButtonItem, at: 0)
         
         // Another thing IB won't let us do: put labels in toolbars, even though this is perfectly valid UIKit. So we build the toolbar up the hard way.
         roundLabel = UILabel()
         roundLabel.text = "Round 1"
-        roundLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+        roundLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
         roundLabel.sizeToFit()
 
         let roundButtonItem = UIBarButtonItem(customView: roundLabel)
         
         difficultyLabel = UILabel()
         difficultyLabel.text = "No Challenge"
-        difficultyLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+        difficultyLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
         difficultyLabel.sizeToFit()
 
         let labelButtonItem = UIBarButtonItem(customView: difficultyLabel)
@@ -60,9 +60,9 @@ class EncounterViewController : UIViewController, ManagedObjectObserverDelegate 
             toolbarItems?.append(awardXPButtonItem)
         }
         
-        toolbarItems?.append(UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil))
+        toolbarItems?.append(UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil))
         toolbarItems?.append(labelButtonItem)
-        toolbarItems?.append(UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil))
+        toolbarItems?.append(UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil))
         
         toolbarItems?.append(tabletopButtonItem)
 
@@ -71,7 +71,7 @@ class EncounterViewController : UIViewController, ManagedObjectObserverDelegate 
         
         observer = ManagedObjectObserver(object: encounter, delegate: self)
         
-        if encounter.inserted {
+        if encounter.isInserted {
             setEditing(true, animated: false)
         }
     }
@@ -79,34 +79,34 @@ class EncounterViewController : UIViewController, ManagedObjectObserverDelegate 
     func configureView() {
         navigationItem.title = encounter.title
         
-        roundLabel.hidden = false
+        roundLabel.isHidden = false
         roundLabel.text = "Round \(encounter.round)"
         roundLabel.sizeToFit()
         
-        nextButtonItem.enabled = encounter.round > 0
-        initiativeButtonItem.enabled = encounter.combatants.count > 0
-        awardXPButtonItem.enabled = encounter.round > 0
+        nextButtonItem.isEnabled = encounter.round > 0
+        initiativeButtonItem.isEnabled = encounter.combatants.count > 0
+        awardXPButtonItem.isEnabled = encounter.round > 0
         
         if let difficulty = encounter.calculateDifficulty(forGame: game) {
             let difficultyText: String
             switch difficulty {
-            case .Deadly:
+            case .deadly:
                 difficultyText = "Deadly"
-            case .Hard:
+            case .hard:
                 difficultyText = "Hard"
-            case .Medium:
+            case .medium:
                 difficultyText = "Medium"
-            case .Easy:
+            case .easy:
                 difficultyText = "Easy"
-            case .None:
+            case .none:
                 difficultyText = "None"
             }
             
             let xp = encounter.totalXP()
-            let xpFormatter = NSNumberFormatter()
-            xpFormatter.numberStyle = .DecimalStyle
+            let xpFormatter = NumberFormatter()
+            xpFormatter.numberStyle = .decimal
             
-            difficultyLabel.text = "\(difficultyText)—\(xpFormatter.stringFromNumber(xp)!) XP"
+            difficultyLabel.text = "\(difficultyText)—\(xpFormatter.string(from: NSNumber(xp))!) XP"
             difficultyLabel.sizeToFit()
         } else {
             difficultyLabel.text = "Incomplete encounter"
@@ -114,18 +114,18 @@ class EncounterViewController : UIViewController, ManagedObjectObserverDelegate 
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setToolbarHidden(false, animated: animated)
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setToolbarHidden(true, animated: animated)
     }
     
-    override func setEditing(editing: Bool, animated: Bool) {
-        let oldEditing = self.editing
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        let oldEditing = self.isEditing
         super.setEditing(editing, animated: animated)
         
         navigationItem.hidesBackButton = editing
@@ -134,8 +134,8 @@ class EncounterViewController : UIViewController, ManagedObjectObserverDelegate 
         
         if oldEditing && !editing {
             // Adding monsters in the game should immediate show the Initiative view.
-            if encounter.round > 0 && encounter.combatants.filteredSetUsingPredicate(NSPredicate(format: "rawInitiative == nil")).count > 0 {
-                performSegueWithIdentifier("InitiativeSegue", sender: self)
+            if encounter.round > 0 && encounter.combatants.filtered(using: NSPredicate(format: "rawInitiative == nil")).count > 0 {
+                performSegue(withIdentifier: "InitiativeSegue", sender: self)
             }
         }
     }
@@ -144,31 +144,31 @@ class EncounterViewController : UIViewController, ManagedObjectObserverDelegate 
     
     var combatantsViewController: EncounterCombatantsViewController!
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CombatantsEmbedSegue" {
-            combatantsViewController = segue.destinationViewController as! EncounterCombatantsViewController
+            combatantsViewController = segue.destination as! EncounterCombatantsViewController
             combatantsViewController.encounter = encounter
         } else if segue.identifier == "InitiativeSegue" {
-            let viewController = (segue.destinationViewController as! UINavigationController).topViewController as! InitiativeViewController
+            let viewController = (segue.destination as! UINavigationController).topViewController as! InitiativeViewController
             viewController.encounter = encounter
             viewController.game = game!
         } else if segue.identifier == "AwardXPSegue" {
-            let viewController = segue.destinationViewController as! AddLogEntryViewController
+            let viewController = segue.destination as! AddLogEntryViewController
             viewController.encounter = encounter
             viewController.game = game
         } else if segue.identifier == "TabletopSegue" {
-            let viewController = segue.destinationViewController as! TabletopViewController
+            let viewController = segue.destination as! TabletopViewController
             viewController.encounter = encounter
         } else if segue.identifier == "CompendiumMonstersSegue" {
-            let viewController = segue.destinationViewController as! CompendiumViewController
+            let viewController = segue.destination as! CompendiumViewController
             viewController.books = encounter.adventure.books.allObjects as! [Book]
             viewController.showMonsters()
         } else if segue.identifier == "CompendiumSpellsSegue" {
-            let viewController = segue.destinationViewController as! CompendiumViewController
+            let viewController = segue.destination as! CompendiumViewController
             viewController.books = encounter.adventure.books.allObjects as! [Book]
             viewController.showSpells()
         } else if segue.identifier == "CompendiumMagicItemsSegue" {
-            let viewController = segue.destinationViewController as! CompendiumViewController
+            let viewController = segue.destination as! CompendiumViewController
             viewController.books = encounter.adventure.books.allObjects as! [Book]
             viewController.showMagicItems()
         }
@@ -176,16 +176,16 @@ class EncounterViewController : UIViewController, ManagedObjectObserverDelegate 
     
     // MARK: Actions
     
-    @IBAction func nextButtonTapped(sender: UIBarButtonItem) {
+    @IBAction func nextButtonTapped(_ sender: UIBarButtonItem) {
         encounter.nextTurn()
-        encounter.lastModified = NSDate()
+        encounter.lastModified = Date()
         try! managedObjectContext.save()
     }
     
     
     // MARK: ManagedObjectObserverDelegate
     
-    func managedObject(object: Encounter, changedForType type: ManagedObjectChangeType) {
+    func managedObject(_ object: Encounter, changedForType type: ManagedObjectChangeType) {
         configureView()
     }
     
@@ -194,7 +194,7 @@ class EncounterViewController : UIViewController, ManagedObjectObserverDelegate 
     var middleViewController: UIViewController? {
         willSet {
             if let middleViewController = middleViewController {
-                middleViewController.willMoveToParentViewController(nil)
+                middleViewController.willMove(toParentViewController: nil)
                 middleViewController.view.removeFromSuperview()
                 middleViewController.removeFromParentViewController()
             }
@@ -213,7 +213,7 @@ class EncounterViewController : UIViewController, ManagedObjectObserverDelegate 
                     scrollView.contentOffset.y -= (scrollView.contentInset.top - oldTopInset)
                 }
                 
-                middleViewController.didMoveToParentViewController(self)
+                middleViewController.didMove(toParentViewController: self)
             }
         }
     }
@@ -221,7 +221,7 @@ class EncounterViewController : UIViewController, ManagedObjectObserverDelegate 
     var rightViewController: UIViewController? {
         willSet {
             if let rightViewController = rightViewController {
-                rightViewController.willMoveToParentViewController(nil)
+                rightViewController.willMove(toParentViewController: nil)
                 rightViewController.view.removeFromSuperview()
                 rightViewController.removeFromParentViewController()
             }
@@ -238,7 +238,7 @@ class EncounterViewController : UIViewController, ManagedObjectObserverDelegate 
                     scrollView.scrollIndicatorInsets = scrollView.contentInset
                 }
                 
-                rightViewController.didMoveToParentViewController(self)
+                rightViewController.didMove(toParentViewController: self)
             }
         }
     }
@@ -248,8 +248,8 @@ class EncounterViewController : UIViewController, ManagedObjectObserverDelegate 
 class EncounterShowMiddleSegue : UIStoryboardSegue {
     
     override func perform() {
-        let encounterViewController = sourceViewController.parentViewController as! EncounterViewController
-        encounterViewController.middleViewController = destinationViewController
+        let encounterViewController = source.parent as! EncounterViewController
+        encounterViewController.middleViewController = destination
     }
 
 }
@@ -257,8 +257,8 @@ class EncounterShowMiddleSegue : UIStoryboardSegue {
 class EncounterShowRightSegue : UIStoryboardSegue {
     
     override func perform() {
-        let encounterViewController = sourceViewController.parentViewController as! EncounterViewController
-        encounterViewController.rightViewController = destinationViewController
+        let encounterViewController = source.parent as! EncounterViewController
+        encounterViewController.rightViewController = destination
     }
     
 }

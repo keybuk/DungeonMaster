@@ -30,8 +30,8 @@ class ExtendedNavigationBarView : UIView {
         backgroundColor = UIColor(white: 247.0/255.0, alpha: 1.0)
     }
 
-    override func willMoveToWindow(newWindow: UIWindow?) {
-        super.willMoveToWindow(newWindow)
+    override func willMove(toWindow newWindow: UIWindow?) {
+        super.willMove(toWindow: newWindow)
         
         configureLayer()
         
@@ -44,37 +44,37 @@ class ExtendedNavigationBarView : UIView {
     
     func configureLayer() {
         // Use the layer shadow to draw a one pixel hairline under this view.
-        layer.shadowOffset = CGSize(width: 0.0, height: 1.0/UIScreen.mainScreen().scale)
+        layer.shadowOffset = CGSize(width: 0.0, height: 1.0/UIScreen.main.scale)
         layer.shadowRadius = 0.0
         
         // UINavigationBar's hairline is adaptive, its properties change with
         // the contents it overlies.  You may need to experiment with these
         // values to best match your content.
-        layer.shadowColor = UIColor.blackColor().CGColor
+        layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.25
     }
     
     func removeShadowFromNavigationBar() {
         guard let navigationBar = navigationBar else { return }
 
-        navigationBar.translucent = false
+        navigationBar.isTranslucent = false
 
         // Create a transparent image and assign it to the navigation bar's shadow image.
-        let rect = CGRectMake(0.0, 0.0, 1.0, 1.0)
+        let rect = CGRect(x: 0.0, y: 0.0, width: 1.0, height: 1.0)
         UIGraphicsBeginImageContext(rect.size)
         let context = UIGraphicsGetCurrentContext()
         
         let color = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
-        CGContextSetFillColorWithColor(context, color.CGColor)
-        CGContextFillRect(context, rect)
+        context?.setFillColor(color.cgColor)
+        context?.fill(rect)
         
         navigationBar.shadowImage = UIGraphicsGetImageFromCurrentImageContext()
         
         // Re-fill it with the background color and assign it to the navigation bar's background image.
-        CGContextSetFillColorWithColor(context, backgroundColor!.CGColor)
-        CGContextFillRect(context, rect)
+        context?.setFillColor(backgroundColor!.cgColor)
+        context?.fill(rect)
         
-        navigationBar.setBackgroundImage(UIGraphicsGetImageFromCurrentImageContext(), forBarMetrics: .Default)
+        navigationBar.setBackgroundImage(UIGraphicsGetImageFromCurrentImageContext(), for: .default)
         
         UIGraphicsEndImageContext()
     }
@@ -82,9 +82,9 @@ class ExtendedNavigationBarView : UIView {
     func restoreShadowToNavigationBar() {
         guard let navigationBar = navigationBar else { return }
 
-        navigationBar.translucent = true
+        navigationBar.isTranslucent = true
         navigationBar.shadowImage = nil
-        navigationBar.setBackgroundImage(nil, forBarMetrics: .Default)
+        navigationBar.setBackgroundImage(nil, for: .default)
     }
 
     var contentInsetAdjusted = false
@@ -95,7 +95,7 @@ class ExtendedNavigationBarView : UIView {
         // Adjust the insets of the related scroll view to include the height of the extension.
         guard let scrollView = scrollView else { return }
         let oldContentOffset = scrollView.contentOffset
-        if hidden {
+        if isHidden {
             if contentInsetAdjusted {
                 scrollView.contentInset.top -= bounds.size.height
                 if oldContentOffset == scrollView.contentOffset {
@@ -114,13 +114,13 @@ class ExtendedNavigationBarView : UIView {
         }
     }
     
-    override var hidden: Bool {
+    override var isHidden: Bool {
         get {
-            return super.hidden
+            return super.isHidden
         }
         set(newHidden) {
-            let oldHidden = super.hidden
-            super.hidden = newHidden
+            let oldHidden = super.isHidden
+            super.isHidden = newHidden
 
             setNeedsLayout()
             if newHidden && !oldHidden {

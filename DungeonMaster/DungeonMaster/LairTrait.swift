@@ -16,7 +16,7 @@ final class LairTrait : NSManagedObject {
     
     convenience init(lair: Lair, text: String, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.LairTrait, inManagedObjectContext: context)
-        self.init(entity: entity, insertIntoManagedObjectContext: context)
+        self.init(entity: entity, insertInto: context)
         
         self.lair = lair
         self.text = text

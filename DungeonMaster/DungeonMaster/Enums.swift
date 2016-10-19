@@ -13,14 +13,14 @@ import Foundation
 ///  - **OfficialAdventure**: an official adventure published by Wizards of the Coast, e.g. Princes of the Apocalypse.
 ///  - **OnlineSupplement**: freely published online supplements to core rulebooks and official adventures, including the basic rules.
 enum BookType : Int {
-    case CoreRulebook
-    case OfficialAdventure
-    case CampaignSourcebook
-    case OnlineSupplement
+    case coreRulebook
+    case officialAdventure
+    case campaignSourcebook
+    case onlineSupplement
     // TODO: category for Unearthed Arcana?
     
     /// Array of all cases.
-    static let cases: [BookType] = [ .CoreRulebook, .OfficialAdventure, .CampaignSourcebook, .OnlineSupplement ]
+    static let cases: [BookType] = [ .coreRulebook, .officialAdventure, .campaignSourcebook, .onlineSupplement ]
     
     /// Returns the string equivalent of the book type.
     var stringValue: String {
@@ -30,15 +30,15 @@ enum BookType : Int {
 
 /// Ability categorises the six basic abilities of D&D monsters and characters.
 enum Ability : Int {
-    case Strength
-    case Dexterity
-    case Constitution
-    case Intelligence
-    case Wisdom
-    case Charisma
+    case strength
+    case dexterity
+    case constitution
+    case intelligence
+    case wisdom
+    case charisma
     
     /// Array of all cases.
-    static let cases: [Ability] = [ .Strength, .Dexterity, .Constitution, .Intelligence, .Wisdom, .Charisma ]
+    static let cases: [Ability] = [ .strength, .dexterity, .constitution, .intelligence, .wisdom, .charisma ]
     
     /// Returns the string equivalent of the ability.
     var stringValue: String {
@@ -47,7 +47,7 @@ enum Ability : Int {
     
     /// Returns the short string equivalent of the ability.
     var shortStringValue: String {
-        return stringValue.substringToIndex(stringValue.startIndex.advancedBy(3))
+        return stringValue.substring(to: stringValue.characters.index(stringValue.startIndex, offsetBy: 3))
     }
 }
 
@@ -56,70 +56,70 @@ enum Ability : Int {
 /// Skills are grouped according to `Ability`, there are no skills for the `Constitution` ability.
 enum Skill : Equatable, Hashable {
     enum StrengthSkill : Int {
-        case Athletics
+        case athletics
     }
-    case Strength(StrengthSkill)
+    case strength(StrengthSkill)
     
     enum DexteritySkill : Int {
-        case Acrobatics
-        case SleightOfHand
-        case Stealth
+        case acrobatics
+        case sleightOfHand
+        case stealth
     }
-    case Dexterity(DexteritySkill)
+    case dexterity(DexteritySkill)
     
     enum IntelligenceSkill : Int {
-        case Arcana
-        case History
-        case Investigation
-        case Nature
-        case Religion
+        case arcana
+        case history
+        case investigation
+        case nature
+        case religion
     }
-    case Intelligence(IntelligenceSkill)
+    case intelligence(IntelligenceSkill)
     
     enum WisdomSkill : Int {
-        case AnimalHandling
-        case Insight
-        case Medicine
-        case Perception
-        case Survival
+        case animalHandling
+        case insight
+        case medicine
+        case perception
+        case survival
     }
-    case Wisdom(WisdomSkill)
+    case wisdom(WisdomSkill)
     
     enum CharismaSkill : Int {
-        case Deception
-        case Intimidation
-        case Performance
-        case Persuasion
+        case deception
+        case intimidation
+        case performance
+        case persuasion
     }
-    case Charisma(CharismaSkill)
+    case charisma(CharismaSkill)
     
     var rawAbilityValue: Int {
         switch self {
-        case .Strength(_):
+        case .strength(_):
             return 0
-        case .Dexterity(_):
+        case .dexterity(_):
             return 1
         // Constitution would have the value 2, if it had associated skills.
-        case .Intelligence(_):
+        case .intelligence(_):
             return 3
-        case .Wisdom(_):
+        case .wisdom(_):
             return 4
-        case .Charisma(_):
+        case .charisma(_):
             return 5
         }
     }
 
     var rawSkillValue: Int {
         switch self {
-        case .Strength(let skill):
+        case .strength(let skill):
             return skill.rawValue
-        case .Dexterity(let skill):
+        case .dexterity(let skill):
             return skill.rawValue
-        case .Intelligence(let skill):
+        case .intelligence(let skill):
             return skill.rawValue
-        case .Wisdom(let skill):
+        case .wisdom(let skill):
             return skill.rawValue
-        case .Charisma(let skill):
+        case .charisma(let skill):
             return skill.rawValue
         }
     }
@@ -132,27 +132,27 @@ enum Skill : Equatable, Hashable {
         switch rawAbilityValue {
         case 0:
             guard let skill = StrengthSkill(rawValue: rawSkillValue) else { return nil }
-            self = .Strength(skill)
+            self = .strength(skill)
         case 1:
             guard let skill = DexteritySkill(rawValue: rawSkillValue) else { return nil }
-            self = .Dexterity(skill)
+            self = .dexterity(skill)
         // Constitution would have the value 2, if it had associated skills.
         case 3:
             guard let skill = IntelligenceSkill(rawValue: rawSkillValue) else { return nil }
-            self = .Intelligence(skill)
+            self = .intelligence(skill)
         case 4:
             guard let skill = WisdomSkill(rawValue: rawSkillValue) else { return nil }
-            self = .Wisdom(skill)
+            self = .wisdom(skill)
         case 5:
             guard let skill = CharismaSkill(rawValue: rawSkillValue) else { return nil }
-            self = .Charisma(skill)
+            self = .charisma(skill)
         default:
             return nil
         }
     }
     
     /// Array of all cases.
-    static let cases: [Skill] = [ .Strength(.Athletics), .Dexterity(.Acrobatics), .Dexterity(.SleightOfHand), .Dexterity(.Stealth), .Intelligence(.Arcana), .Intelligence(.History), .Intelligence(.Investigation), .Intelligence(.Nature), .Intelligence(.Religion), .Wisdom(.AnimalHandling), .Wisdom(.Insight), .Wisdom(.Medicine), .Wisdom(.Perception), .Wisdom(.Survival), .Charisma(.Deception), .Charisma(.Intimidation), .Charisma(.Performance), .Charisma(.Persuasion) ]
+    static let cases: [Skill] = [ .strength(.athletics), .dexterity(.acrobatics), .dexterity(.sleightOfHand), .dexterity(.stealth), .intelligence(.arcana), .intelligence(.history), .intelligence(.investigation), .intelligence(.nature), .intelligence(.religion), .wisdom(.animalHandling), .wisdom(.insight), .wisdom(.medicine), .wisdom(.perception), .wisdom(.survival), .charisma(.deception), .charisma(.intimidation), .charisma(.performance), .charisma(.persuasion) ]
 
     /// Returns the string equivalent of the skill.
     ///
@@ -180,15 +180,15 @@ func ==(lhs: Skill, rhs: Skill) -> Bool {
 
 /// Size categorises the different range of monster and character sizes.
 enum Size : Int {
-    case Tiny
-    case Small
-    case Medium
-    case Large
-    case Huge
-    case Gargantuan
+    case tiny
+    case small
+    case medium
+    case large
+    case huge
+    case gargantuan
     
     /// Array of all cases.
-    static let cases: [Size] = [ .Tiny, .Small, .Medium, .Large, .Huge, .Gargantuan ]
+    static let cases: [Size] = [ .tiny, .small, .medium, .large, .huge, .gargantuan ]
     
     /// Returns the string equivalent of the size.
     var stringValue: String {
@@ -208,31 +208,31 @@ enum Size : Int {
 
 /// Alignment categorises the different alignments of monsters and characters.
 enum Alignment : Int {
-    case Unaligned
-    case LawfulGood
-    case LawfulNeutral
-    case LawfulEvil
-    case NeutralGood
-    case Neutral
-    case NeutralEvil
-    case ChaoticGood
-    case ChaoticNeutral
-    case ChaoticEvil
+    case unaligned
+    case lawfulGood
+    case lawfulNeutral
+    case lawfulEvil
+    case neutralGood
+    case neutral
+    case neutralEvil
+    case chaoticGood
+    case chaoticNeutral
+    case chaoticEvil
     
     /// Array of all cases.
-    static let cases: [Alignment] = [ .Unaligned, .LawfulGood, .LawfulNeutral, .LawfulEvil, .NeutralGood, .Neutral, .NeutralEvil, .ChaoticGood, .ChaoticNeutral, .ChaoticEvil ]
+    static let cases: [Alignment] = [ .unaligned, .lawfulGood, .lawfulNeutral, .lawfulEvil, .neutralGood, .neutral, .neutralEvil, .chaoticGood, .chaoticNeutral, .chaoticEvil ]
     
     /// The set of lawful alignments.
-    static let lawfulAlignments: Set<Alignment> = [ .LawfulGood, .LawfulNeutral, .LawfulEvil ]
+    static let lawfulAlignments: Set<Alignment> = [ .lawfulGood, .lawfulNeutral, .lawfulEvil ]
     
     /// The set of choatic alignments.
-    static let chaoticAlignments: Set<Alignment> = [ .ChaoticGood, .ChaoticNeutral, .ChaoticEvil ]
+    static let chaoticAlignments: Set<Alignment> = [ .chaoticGood, .chaoticNeutral, .chaoticEvil ]
     
     /// The set of good alignments.
-    static let goodAlignments: Set<Alignment> = [ .LawfulGood, .NeutralGood, .ChaoticGood ]
+    static let goodAlignments: Set<Alignment> = [ .lawfulGood, .neutralGood, .chaoticGood ]
     
     /// The set of evil alignments.
-    static let evilAlignments: Set<Alignment> = [ .LawfulEvil, .NeutralEvil, .ChaoticEvil ]
+    static let evilAlignments: Set<Alignment> = [ .lawfulEvil, .neutralEvil, .chaoticEvil ]
     
     /// Returns the string equivalent of the alignment.
     var stringValue: String {
@@ -242,23 +242,23 @@ enum Alignment : Int {
 
 /// MonsterType categorises the different types of monsters.
 enum MonsterType : Int {
-    case Aberration
-    case Beast
-    case Celestial
-    case Construct
-    case Dragon
-    case Elemental
-    case Fey
-    case Fiend
-    case Giant
-    case Humanoid
-    case Monstrosity
-    case Ooze
-    case Plant
-    case Undead
+    case aberration
+    case beast
+    case celestial
+    case construct
+    case dragon
+    case elemental
+    case fey
+    case fiend
+    case giant
+    case humanoid
+    case monstrosity
+    case ooze
+    case plant
+    case undead
     
     /// Array of all cases.
-    static let cases: [MonsterType] = [ .Aberration, .Beast, .Celestial, .Construct, .Dragon, .Elemental, .Fey, .Fiend, .Giant, .Humanoid, .Monstrosity, .Ooze, .Plant, .Undead ]
+    static let cases: [MonsterType] = [ .aberration, .beast, .celestial, .construct, .dragon, .elemental, .fey, .fiend, .giant, .humanoid, .monstrosity, .ooze, .plant, .undead ]
     
     /// Returns the string equivalent of the monster type.
     var stringValue: String {
@@ -268,20 +268,20 @@ enum MonsterType : Int {
 
 /// Environment categorises the different environments in which monsters can be found.
 enum Environment : Int {
-    case Arctic
-    case Coastal
-    case Desert
-    case Forest
-    case Grassland
-    case Hill
-    case Mountain
-    case Swamp
-    case Underdark
-    case Underwater
-    case Urban
+    case arctic
+    case coastal
+    case desert
+    case forest
+    case grassland
+    case hill
+    case mountain
+    case swamp
+    case underdark
+    case underwater
+    case urban
     
     /// Array of all cases.
-    static let cases: [Environment] = [ .Arctic, .Coastal, .Desert, .Forest, .Grassland, .Hill, .Mountain, .Swamp, .Underdark, .Underwater, .Urban ]
+    static let cases: [Environment] = [ .arctic, .coastal, .desert, .forest, .grassland, .hill, .mountain, .swamp, .underdark, .underwater, .urban ]
     
     /// Returns the string equivalent of the environment.
     var stringValue: String {
@@ -295,120 +295,120 @@ enum Environment : Int {
 enum Race : Equatable, Hashable {
     // Player's Handbook races.
     enum DwarfSubrace : Int {
-        case HillDwarf
-        case MountainDwarf
+        case hillDwarf
+        case mountainDwarf
         
         // Sword Coast Adventurer's Guide subraces.
-        case GrayDwarf
+        case grayDwarf
     }
-    case Dwarf(DwarfSubrace)
+    case dwarf(DwarfSubrace)
     
     enum ElfSubrace : Int {
-        case HighElf
-        case WoodElf
-        case Drow
+        case highElf
+        case woodElf
+        case drow
         
         // Dungeon Master's Guide subraces.
-        case Eladrin
+        case eladrin
     }
-    case Elf(ElfSubrace)
+    case elf(ElfSubrace)
     
     enum HalflingSubrace : Int {
-        case Lightfoot
-        case Stout
+        case lightfoot
+        case stout
     }
-    case Halfling(HalflingSubrace)
+    case halfling(HalflingSubrace)
     
-    case Human
-    case Dragonborn
+    case human
+    case dragonborn
     
     enum GnomeSubrace : Int {
-        case ForestGnome
-        case RockGnome
+        case forestGnome
+        case rockGnome
         
         // Elemental Evil subraces.
-        case DeepGnome
+        case deepGnome
     }
-    case Gnome(GnomeSubrace)
+    case gnome(GnomeSubrace)
     
-    case HalfElf
-    case HalfOrc
-    case Tiefling
+    case halfElf
+    case halfOrc
+    case tiefling
     
     // Dungeon Master's Guide races.
-    case Aasimar
+    case aasimar
     
     // Elemental Evil races.
-    case Aarakocra
+    case aarakocra
     
     enum GenasiSubrace : Int {
-        case AirGenasi
-        case EarthGenasi
-        case FireGenasi
-        case WaterGenasi
+        case airGenasi
+        case earthGenasi
+        case fireGenasi
+        case waterGenasi
     }
-    case Genasi(GenasiSubrace)
+    case genasi(GenasiSubrace)
     
-    case Goliath
+    case goliath
     
     var rawRaceValue: Int {
         switch self {
-        case .Dwarf(_):
+        case .dwarf(_):
             return 0
-        case .Elf(_):
+        case .elf(_):
             return 1
-        case .Halfling(_):
+        case .halfling(_):
             return 2
-        case .Human:
+        case .human:
             return 3
-        case .Dragonborn:
+        case .dragonborn:
             return 4
-        case .Gnome(_):
+        case .gnome(_):
             return 5
-        case .HalfElf:
+        case .halfElf:
             return 6
-        case .HalfOrc:
+        case .halfOrc:
             return 7
-        case .Tiefling:
+        case .tiefling:
             return 8
-        case .Aasimar:
+        case .aasimar:
             return 9
-        case .Aarakocra:
+        case .aarakocra:
             return 10
-        case .Genasi(_):
+        case .genasi(_):
             return 11
-        case .Goliath:
+        case .goliath:
             return 12
         }
     }
     
     var rawSubraceValue: Int? {
         switch self {
-        case .Dwarf(let subrace):
+        case .dwarf(let subrace):
             return subrace.rawValue
-        case .Elf(let subrace):
+        case .elf(let subrace):
             return subrace.rawValue
-        case .Halfling(let subrace):
+        case .halfling(let subrace):
             return subrace.rawValue
-        case .Human:
+        case .human:
             return nil
-        case .Dragonborn:
+        case .dragonborn:
             return nil
-        case .Gnome(let subrace):
+        case .gnome(let subrace):
             return subrace.rawValue
-        case .HalfElf:
+        case .halfElf:
             return nil
-        case .HalfOrc:
+        case .halfOrc:
             return nil
-        case .Tiefling:
+        case .tiefling:
             return nil
-        case .Aasimar:
+        case .aasimar:
             return nil
-        case .Aarakocra:
+        case .aarakocra:
             return nil
-        case .Genasi(let subrace):
+        case .genasi(let subrace):
             return subrace.rawValue
-        case .Goliath:
+        case .goliath:
             return nil
         }
     }
@@ -422,54 +422,54 @@ enum Race : Equatable, Hashable {
         case 0:
             guard let rawSubraceValue = rawSubraceValue else { return nil }
             guard let subrace = DwarfSubrace(rawValue: rawSubraceValue) else { return nil }
-            self = .Dwarf(subrace)
+            self = .dwarf(subrace)
         case 1:
             guard let rawSubraceValue = rawSubraceValue else { return nil }
             guard let subrace = ElfSubrace(rawValue: rawSubraceValue) else { return nil }
-            self = .Elf(subrace)
+            self = .elf(subrace)
         case 2:
             guard let rawSubraceValue = rawSubraceValue else { return nil }
             guard let subrace = HalflingSubrace(rawValue: rawSubraceValue) else { return nil }
-            self = .Halfling(subrace)
+            self = .halfling(subrace)
         case 3:
             guard rawSubraceValue == nil else { return nil }
-            self = .Human
+            self = .human
         case 4:
             guard rawSubraceValue == nil else { return nil }
-            self = .Dragonborn
+            self = .dragonborn
         case 5:
             guard let rawSubraceValue = rawSubraceValue else { return nil }
             guard let subrace = GnomeSubrace(rawValue: rawSubraceValue) else { return nil }
-            self = .Gnome(subrace)
+            self = .gnome(subrace)
         case 6:
             guard rawSubraceValue == nil else { return nil }
-            self = .HalfElf
+            self = .halfElf
         case 7:
             guard rawSubraceValue == nil else { return nil }
-            self = .HalfOrc
+            self = .halfOrc
         case 8:
             guard rawSubraceValue == nil else { return nil }
-            self = .Tiefling
+            self = .tiefling
         case 9:
             guard rawSubraceValue == nil else { return nil }
-            self = .Aasimar
+            self = .aasimar
         case 10:
             guard rawSubraceValue == nil else { return nil }
-            self = .Aarakocra
+            self = .aarakocra
         case 11:
             guard let rawSubraceValue = rawSubraceValue else { return nil }
             guard let subrace = GenasiSubrace(rawValue: rawSubraceValue) else { return nil }
-            self = .Genasi(subrace)
+            self = .genasi(subrace)
         case 12:
             guard rawSubraceValue == nil else { return nil }
-            self = .Goliath
+            self = .goliath
         default:
             return nil
         }
     }
     
     /// Array of all cases.
-    static let cases: [Race] = [ .Dwarf(.HillDwarf), .Dwarf(.MountainDwarf), .Dwarf(.GrayDwarf), .Elf(.HighElf), .Elf(.WoodElf), .Elf(.Drow), .Elf(.Eladrin), .Halfling(.Lightfoot), .Halfling(.Stout), .Human, .Dragonborn, .Gnome(.ForestGnome), .Gnome(.RockGnome), .Gnome(.DeepGnome), .HalfElf, .HalfOrc, .Tiefling, .Aasimar, .Aarakocra, .Genasi(.AirGenasi), .Genasi(.EarthGenasi), .Genasi(.FireGenasi), .Genasi(.WaterGenasi), .Goliath ]
+    static let cases: [Race] = [ .dwarf(.hillDwarf), .dwarf(.mountainDwarf), .dwarf(.grayDwarf), .elf(.highElf), .elf(.woodElf), .elf(.drow), .elf(.eladrin), .halfling(.lightfoot), .halfling(.stout), .human, .dragonborn, .gnome(.forestGnome), .gnome(.rockGnome), .gnome(.deepGnome), .halfElf, .halfOrc, .tiefling, .aasimar, .aarakocra, .genasi(.airGenasi), .genasi(.earthGenasi), .genasi(.fireGenasi), .genasi(.waterGenasi), .goliath ]
 
     /// Returns the string equivalent of the race.
     ///
@@ -504,21 +504,21 @@ func ==(lhs: Race, rhs: Race) -> Bool {
 
 /// CharacterClass organises the different classes of player characters.
 enum CharacterClass : Int {
-    case Barbarian
-    case Bard
-    case Cleric
-    case Druid
-    case Fighter
-    case Monk
-    case Paladin
-    case Ranger
-    case Rogue
-    case Sorcerer
-    case Warlock
-    case Wizard
+    case barbarian
+    case bard
+    case cleric
+    case druid
+    case fighter
+    case monk
+    case paladin
+    case ranger
+    case rogue
+    case sorcerer
+    case warlock
+    case wizard
     
     /// Array of all cases.
-    static let cases: [CharacterClass] = [ .Barbarian, .Bard, .Cleric, .Druid, .Fighter, .Monk, .Paladin, .Ranger, .Rogue, .Sorcerer, .Warlock, .Wizard ]
+    static let cases: [CharacterClass] = [ .barbarian, .bard, .cleric, .druid, .fighter, .monk, .paladin, .ranger, .rogue, .sorcerer, .warlock, .wizard ]
     
     /// Returns the string equivalent of the character class.
     var stringValue: String {
@@ -529,35 +529,35 @@ enum CharacterClass : Int {
 /// Background organises the different possible backgrounds of player characters.
 enum Background : Int {
     // Player's Handbook backgrounds.
-    case Acolyte
-    case Charlatan
-    case Criminal
-    case Entertainer
-    case FolkHero
-    case GuildArtisan
-    case Hermit
-    case Noble
-    case Outlander
-    case Sage
-    case Sailor
-    case Soldier
-    case Urchin
+    case acolyte
+    case charlatan
+    case criminal
+    case entertainer
+    case folkHero
+    case guildArtisan
+    case hermit
+    case noble
+    case outlander
+    case sage
+    case sailor
+    case soldier
+    case urchin
     
     // Sword Coast Adventurer's Guide backgrounds.
-    case CityWatch
-    case ClanCrafter
-    case CloisteredScholar
-    case Courtier
-    case FactionAgent
-    case FarTraveler
-    case Inheritor
-    case KnightOfTheOrder
-    case MercenaryVeteran
-    case UrbanBountyHunter
-    case WaterdhavianNoble
+    case cityWatch
+    case clanCrafter
+    case cloisteredScholar
+    case courtier
+    case factionAgent
+    case farTraveler
+    case inheritor
+    case knightOfTheOrder
+    case mercenaryVeteran
+    case urbanBountyHunter
+    case waterdhavianNoble
     
     /// Array of all cases.
-    static let cases: [Background] = [ .Acolyte, .Charlatan, .Criminal, .Entertainer, .FolkHero, .GuildArtisan, .Hermit, .Noble, .Outlander, .Sage, .Sailor, .Soldier, .Urchin, .CityWatch, .ClanCrafter, .CloisteredScholar, .Courtier, .FactionAgent, .FarTraveler, .Inheritor, .KnightOfTheOrder, .MercenaryVeteran, .UrbanBountyHunter, .WaterdhavianNoble ]
+    static let cases: [Background] = [ .acolyte, .charlatan, .criminal, .entertainer, .folkHero, .guildArtisan, .hermit, .noble, .outlander, .sage, .sailor, .soldier, .urchin, .cityWatch, .clanCrafter, .cloisteredScholar, .courtier, .factionAgent, .farTraveler, .inheritor, .knightOfTheOrder, .mercenaryVeteran, .urbanBountyHunter, .waterdhavianNoble ]
     
     /// Returns the string equivalent of the background.
     var stringValue: String {
@@ -567,34 +567,34 @@ enum Background : Int {
 
 /// Armor that can be worn by players and monsters.
 enum ArmorType : Int {
-    case None
-    case Natural
+    case none
+    case natural
 
     // Light Armor
-    case Padded
-    case Leather
-    case StuddedLeather
+    case padded
+    case leather
+    case studdedLeather
     
     // Medium Armor
-    case Hide
-    case ChainShirt
-    case ScaleMail
-    case Breastplate
-    case HalfPlate
+    case hide
+    case chainShirt
+    case scaleMail
+    case breastplate
+    case halfPlate
     
     // Heavy Armor
-    case RingMail
-    case ChainMail
-    case Splint
-    case Plate
+    case ringMail
+    case chainMail
+    case splint
+    case plate
     
     // Monster-specific Armor.
-    case Scraps
-    case BardingScraps
-    case Patchwork
+    case scraps
+    case bardingScraps
+    case patchwork
     
     /// Array of all cases.
-    static let cases: [ArmorType] = [ .None, .Natural, .Padded, .Leather, .StuddedLeather, .Hide, .ChainShirt, .ScaleMail, .Breastplate, .HalfPlate, .RingMail, .ChainMail, .Splint, .Plate, .Scraps, .BardingScraps, .Patchwork ]
+    static let cases: [ArmorType] = [ .none, .natural, .padded, .leather, .studdedLeather, .hide, .chainShirt, .scaleMail, .breastplate, .halfPlate, .ringMail, .chainMail, .splint, .plate, .scraps, .bardingScraps, .patchwork ]
     
     /// Returns the string equivalent of the armor.
     var stringValue: String {
@@ -634,32 +634,32 @@ enum ArmorType : Int {
 /// - **Magical**: applies to magic weapons.
 /// - **MagicalByGood**: applies to magic weapons wielded by good creatures.
 enum AttackType : Int {
-    case All
-    case Nonmagical
-    case NonmagicalNotAdamantine
-    case NonmagicalNotSilvered
-    case Magical
-    case MagicalByGood
+    case all
+    case nonmagical
+    case nonmagicalNotAdamantine
+    case nonmagicalNotSilvered
+    case magical
+    case magicalByGood
 }
 
 /// Types of damage that can be dealt by attacks.
 enum DamageType : Int {
-    case Acid
-    case Bludgeoning
-    case Cold
-    case Fire
-    case Force
-    case Lightning
-    case Necrotic
-    case Piercing
-    case Poison
-    case Psychic
-    case Radiant
-    case Slashing
-    case Thunder
+    case acid
+    case bludgeoning
+    case cold
+    case fire
+    case force
+    case lightning
+    case necrotic
+    case piercing
+    case poison
+    case psychic
+    case radiant
+    case slashing
+    case thunder
     
     /// Array of all cases.
-    static let cases: [DamageType] = [ .Acid, .Bludgeoning, .Cold, .Fire, .Force, .Lightning, .Necrotic, .Piercing, .Poison, .Psychic, .Radiant, .Slashing, .Thunder ]
+    static let cases: [DamageType] = [ .acid, .bludgeoning, .cold, .fire, .force, .lightning, .necrotic, .piercing, .poison, .psychic, .radiant, .slashing, .thunder ]
     
     /// Returns the string equivalent of the damage type.
     var stringValue: String {
@@ -669,24 +669,24 @@ enum DamageType : Int {
 
 enum Condition : Int {
     // TODO: deal with exhaustion, and its six levels
-    case Blinded
-    case Charmed
-    case Deafened
-    case Exhaustion
-    case Frightened
-    case Grappled
-    case Incapacitated
-    case Invisible
-    case Paralyzed
-    case Petrified
-    case Poisoned
-    case Prone
-    case Restrained
-    case Stunned
-    case Unconcious
+    case blinded
+    case charmed
+    case deafened
+    case exhaustion
+    case frightened
+    case grappled
+    case incapacitated
+    case invisible
+    case paralyzed
+    case petrified
+    case poisoned
+    case prone
+    case restrained
+    case stunned
+    case unconcious
     
     /// Array of all cases.
-    static let cases: [Condition] = [ .Blinded, .Charmed, .Deafened, .Exhaustion, .Frightened, .Grappled, .Incapacitated, .Invisible, .Paralyzed, .Petrified, .Poisoned, .Prone, .Restrained, .Stunned, .Unconcious ]
+    static let cases: [Condition] = [ .blinded, .charmed, .deafened, .exhaustion, .frightened, .grappled, .incapacitated, .invisible, .paralyzed, .petrified, .poisoned, .prone, .restrained, .stunned, .unconcious ]
     
     /// Returns the string equivalent of the condition.
     var stringValue: String {
@@ -710,30 +710,30 @@ enum Condition : Int {
 /// - **UpToFive**: the monster can understand or speak up to five languages.
 /// - **AnySix**: the monster can understand or speak any six languages.
 enum LanguageOption : Int {
-    case UsuallyCommon
-    case KnewInLife
-    case OfItsCreator
-    case OneOfItsCreator
-    case AnyOne
-    case AnyTwo
-    case AnyFour
-    case UpToFive
-    case AnySix
+    case usuallyCommon
+    case knewInLife
+    case ofItsCreator
+    case oneOfItsCreator
+    case anyOne
+    case anyTwo
+    case anyFour
+    case upToFive
+    case anySix
 }
 
 /// MagicSchool categorises the different schools of magic that spells can be categorized under.
 enum MagicSchool : Int {
-    case Abjuration
-    case Conjuration
-    case Divination
-    case Enchantment
-    case Evocation
-    case Illusion
-    case Necromancy
-    case Transmutation
+    case abjuration
+    case conjuration
+    case divination
+    case enchantment
+    case evocation
+    case illusion
+    case necromancy
+    case transmutation
     
     /// Array of all cases.
-    static let cases: [MagicSchool] = [ .Abjuration, .Conjuration, .Divination, .Enchantment, .Evocation, .Illusion, .Necromancy, .Transmutation ]
+    static let cases: [MagicSchool] = [ .abjuration, .conjuration, .divination, .enchantment, .evocation, .illusion, .necromancy, .transmutation ]
     
     /// Returns the string equivalent of the condition.
     var stringValue: String {
@@ -743,34 +743,34 @@ enum MagicSchool : Int {
 
 /// SpellRange represents the base of the range of a spell.
 enum SpellRange : Int {
-    case Distance
-    case CenteredOnSelf
-    case Touch
-    case Sight
-    case Special
-    case Unlimited
+    case distance
+    case centeredOnSelf
+    case touch
+    case sight
+    case special
+    case unlimited
 }
 
 /// SpellRangeShape represents the shape of a spell's effect.
 enum SpellRangeShape : Int {
-    case Radius
-    case Sphere
-    case Hemisphere
-    case Cube
-    case Cone
-    case Line
+    case radius
+    case sphere
+    case hemisphere
+    case cube
+    case cone
+    case line
 }
 
 /// SpellDuration represents the durations of a spell's effect.
 enum SpellDuration : Int {
-    case Instantaneous
-    case Time
-    case MaxTime
-    case Rounds
-    case MaxRounds
-    case UntilDispelled
-    case UntilDispelledOrTriggered
-    case Special
+    case instantaneous
+    case time
+    case maxTime
+    case rounds
+    case maxRounds
+    case untilDispelled
+    case untilDispelledOrTriggered
+    case special
 }
 
 /// Difficulty of an encounter.
@@ -780,11 +780,11 @@ enum SpellDuration : Int {
 /// - **Hard**: a slim chance that one or more characers might die.
 /// - **Deadly**: an encounter that could be lethal for one or more characters.
 enum EncounterDifficulty {
-    case None
-    case Easy
-    case Medium
-    case Hard
-    case Deadly
+    case none
+    case easy
+    case medium
+    case hard
+    case deadly
 }
 
 /// Role of a creature in combat.
@@ -792,7 +792,7 @@ enum EncounterDifficulty {
 /// - **Friend**: a monster controlled by the DM, friendly to the players.
 /// - **Player**: a monster or character controlled by a player.
 enum CombatRole : Int {
-    case Foe
-    case Friend
-    case Player
+    case foe
+    case friend
+    case player
 }

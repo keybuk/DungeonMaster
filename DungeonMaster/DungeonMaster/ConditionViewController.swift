@@ -22,26 +22,26 @@ class ConditionViewController : UITableViewController, UIPickerViewDataSource, U
 
     // MARK: UIPickerViewDataSource
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return Condition.cases.count + 1
     }
 
     // MARK: UIPickerViewDelegate
 
-    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         switch row {
         case 0:
-            return NSAttributedString(string: "Condition", attributes: [NSForegroundColorAttributeName: UIColor.lightGrayColor()])
+            return NSAttributedString(string: "Condition", attributes: [NSForegroundColorAttributeName: UIColor.lightGray])
         default:
             return NSAttributedString(string: Condition(rawValue: row - 1)!.stringValue)
         }
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch row {
         case 0:
             type = nil
@@ -49,7 +49,7 @@ class ConditionViewController : UITableViewController, UIPickerViewDataSource, U
             type = Condition(rawValue: row - 1)
         }
         
-        addButton.enabled = (type != nil)
+        addButton.isEnabled = (type != nil)
     }
 
 }

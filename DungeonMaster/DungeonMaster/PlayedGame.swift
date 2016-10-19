@@ -25,7 +25,7 @@ final class PlayedGame : NSManagedObject {
 
     convenience init(game: Game, player: Player, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.PlayedGame, inManagedObjectContext: context)
-        self.init(entity: entity, insertIntoManagedObjectContext: context)
+        self.init(entity: entity, insertInto: context)
         
         self.game = game
         self.player = player
@@ -35,24 +35,24 @@ final class PlayedGame : NSManagedObject {
     func descriptionForExport() -> String {
         // Identify where this game is in the set of games played by this player.
         let dateSortDescriptor = NSSortDescriptor(key: "game.date", ascending: true)
-        let playedGames = player.playedGames.sortedArrayUsingDescriptors([dateSortDescriptor]) as! [PlayedGame]
-        let gameIndex = playedGames.indexOf(self)!
+        let playedGames = player.playedGames.sortedArray(using: [dateSortDescriptor]) as! [PlayedGame]
+        let gameIndex = playedGames.index(of: self)!
         
         // XP is calculated excluding the XP from this game, and any future game.
         var xp = player.xp
-        for playedGame in playedGames.suffixFrom(gameIndex) {
+        for playedGame in playedGames.suffix(from: gameIndex) {
             for case let xpAward as XPAward in playedGame.logEntries {
                 xp -= xpAward.xp
             }
         }
         
-        let xpFormatter = NSNumberFormatter()
-        xpFormatter.numberStyle = .DecimalStyle
+        let xpFormatter = NumberFormatter()
+        xpFormatter.numberStyle = .decimal
         
-        let xpString = xpFormatter.stringFromNumber(xp)!
+        let xpString = xpFormatter.string(from: NSNumber(xp))!
 
         // Level is based from this starting XP value.
-        let level = sharedRules.levelXP.filter({ $0.1 <= xp }).map({ $0.0 }).maxElement()!
+        let level = sharedRules.levelXP.filter({ $0.1 <= xp }).map({ $0.0 }).max()!
         
         var string = "<ParaStyle:XP Card\\:Character Name>\(player.name)\n"
         string += "<ParaStyle:XP Card\\:Character Level>\(player.race.stringValue)\t\(player.characterClass.stringValue) \(level)\t\(player.background.stringValue)\t\(xpString) XP\n"
@@ -62,8 +62,8 @@ final class PlayedGame : NSManagedObject {
         
         let indexSortDescriptor = NSSortDescriptor(key: "index", ascending: true)
         var lastType: LogEntry.Type? = nil
-        for case let logEntry as LogEntry in logEntries.sortedArrayUsingDescriptors([indexSortDescriptor]) {
-            if logEntry.dynamicType == lastType {
+        for case let logEntry as LogEntry in logEntries.sortedArray(using: [indexSortDescriptor]) {
+            if type(of: logEntry) == lastType {
                 string += "<0x000A>"
             } else {
                 if lastType != nil {
@@ -74,7 +74,7 @@ final class PlayedGame : NSManagedObject {
             
             string += logEntry.descriptionForExport()
 
-            lastType = logEntry.dynamicType
+            lastType = type(of: logEntry)
         }
         
         if lastType != nil {
@@ -82,10 +82,10 @@ final class PlayedGame : NSManagedObject {
         }
         
         // Final line is the game date, and card number for the player.
-        let dateFormatter = NSDateFormatter()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "M/d"
 
-        let dateString = dateFormatter.stringFromDate(game.date)
+        let dateString = dateFormatter.string(from: game.date as Date)
         
         string += "<ParaStyle:XP Card\\:Card Number>\(dateString), #\(gameIndex + 1)\n"
 

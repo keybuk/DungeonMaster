@@ -23,7 +23,7 @@ final class LogEntryNote : LogEntry {
 
     /// Returns InDesign Tagged Text description of the log entry.
     override func descriptionForExport() -> String {
-        return note.stringByReplacingOccurrencesOfString("'", withString: "<0x2019>")
+        return note.replacingOccurrences(of: "'", with: "<0x2019>")
     }
 
 }

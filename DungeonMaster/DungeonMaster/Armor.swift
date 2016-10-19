@@ -20,35 +20,35 @@ final class Armor : NSManagedObject {
     /// Total armor class for the monster while it has this armor set equipped.
     var armorClass: Int {
         get {
-            return rawArmorClass.integerValue
+            return rawArmorClass.intValue
         }
         set(newArmorClass) {
-            rawArmorClass = NSNumber(integer: newArmorClass)
+            rawArmorClass = NSNumber(value: newArmorClass as Int)
         }
     }
-    @NSManaged private var rawArmorClass: NSNumber
+    @NSManaged fileprivate var rawArmorClass: NSNumber
     
     /// The principle type of this armor.
     var type: ArmorType {
         get {
-            return ArmorType(rawValue: rawType.integerValue)!
+            return ArmorType(rawValue: rawType.intValue)!
         }
         set(newType) {
-            rawType = NSNumber(integer: newType.rawValue)
+            rawType = NSNumber(value: newType.rawValue as Int)
         }
     }
-    @NSManaged private var rawType: NSNumber
+    @NSManaged fileprivate var rawType: NSNumber
     
     /// Bonus modifier applied when the armor is magic.
     var magicModifier: Int? {
         get {
-            return rawMagicModifier?.integerValue
+            return rawMagicModifier?.intValue
         }
         set(newMagicModifier) {
-            rawMagicModifier = newMagicModifier.map({ NSNumber(integer: $0) })
+            rawMagicModifier = newMagicModifier.map({ NSNumber(value: $0 as Int) })
         }
     }
-    @NSManaged private var rawMagicModifier: NSNumber?
+    @NSManaged fileprivate var rawMagicModifier: NSNumber?
     
     /// Whether or not this armor includes a shield and its +2 bonus.
     @NSManaged var includesShield: Bool
@@ -56,13 +56,13 @@ final class Armor : NSManagedObject {
     /// Monster condition during which this armor is automatically equipped.
     var condition: Condition? {
         get {
-            return rawCondition.map({ Condition(rawValue: $0.integerValue)! })
+            return rawCondition.map({ Condition(rawValue: $0.intValue)! })
         }
         set(newCondition) {
-            rawCondition = newCondition.map({ NSNumber(integer: $0.rawValue) })
+            rawCondition = newCondition.map({ NSNumber(value: $0.rawValue as Int) })
         }
     }
-    @NSManaged private var rawCondition: NSNumber?
+    @NSManaged fileprivate var rawCondition: NSNumber?
     
     // FIXME these are basically a hack
     @NSManaged var spellName: String?
@@ -70,7 +70,7 @@ final class Armor : NSManagedObject {
     
     convenience init(monster: Monster, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Armor, inManagedObjectContext: context)
-        self.init(entity: entity, insertIntoManagedObjectContext: context)
+        self.init(entity: entity, insertInto: context)
         
         self.monster = monster
     }

@@ -12,18 +12,18 @@ import Foundation
 /// - **Uppercase** produces upper-case numerals such as MCMXCVIII
 /// - **Lowercase** prodcues lower-case numerals such as iv
 enum RomanNumeralFormatterStyle {
-    case Uppercase
-    case Lowercase
+    case uppercase
+    case lowercase
 }
 
 /// RomanNumeralFormatter converts integer numbers into a string containing the roman numeral equivalent.
 class RomanNumeralFormatter {
     
     /// Resulting roman numeral style.
-    var style = RomanNumeralFormatterStyle.Uppercase
+    var style = RomanNumeralFormatterStyle.uppercase
     
     /// Returns a formatted roman numeral string from the number given, or nil if the number cannot be represented.
-    func stringFromNumber(number: Int) -> String? {
+    func stringFromNumber(_ number: Int) -> String? {
         guard number > 0 else { return nil }
 
         let numerals = [ ("M", 1000), ("CM", 900), ("D", 500), ("CD", 400), ("C", 100), ("XC", 90), ("L", 50), ("XL", 40), ("X", 10), ("IX", 9), ("V", 5), ("IV", 4), ("I", 1) ]
@@ -37,7 +37,7 @@ class RomanNumeralFormatter {
             }
         }
         
-        return style == .Uppercase ? string : string.lowercaseString
+        return style == .uppercase ? string : string.lowercased()
     }
 
 }

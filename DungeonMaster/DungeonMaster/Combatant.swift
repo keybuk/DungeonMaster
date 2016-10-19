@@ -16,7 +16,7 @@ final class Combatant : NSManagedObject {
     /// Date that this object was created.
     ///
     /// This exists entirely as a sort criterion so that Encounter.combatants doesn't need to be an OrderedSet.
-    @NSManaged var dateCreated: NSDate
+    @NSManaged var dateCreated: Date
 
     /// The encounter that this combatant is involved in.
     @NSManaged var encounter: Encounter
@@ -30,38 +30,38 @@ final class Combatant : NSManagedObject {
     /// Role of the monster or player.
     var role: CombatRole {
         get {
-            return CombatRole(rawValue: rawRole.integerValue)!
+            return CombatRole(rawValue: rawRole.intValue)!
         }
         set(newRole) {
-            rawRole = newRole.rawValue
+            rawRole = NSNumber(newRole.rawValue)
         }
     }
-    @NSManaged private var rawRole: NSNumber
+    @NSManaged fileprivate var rawRole: NSNumber
 
     /// Combatant's initiative roll.
     ///
     /// This is optional up until the point that initiative has been rolled, at which point it should alway be set; to distinguish from a valid 0 initiative roll.
     var initiative: Int? {
         get {
-            return rawInitiative?.integerValue
+            return rawInitiative?.intValue
         }
         set(newInitiative) {
-            rawInitiative = newInitiative.map({ NSNumber(integer: $0) })
+            rawInitiative = newInitiative.map({ NSNumber(value: $0 as Int) })
             initiativeOrder = newInitiative.map({ _ in 0 })
         }
     }
-    @NSManaged private var rawInitiative: NSNumber?
+    @NSManaged fileprivate var rawInitiative: NSNumber?
     
     /// Ordering of combatant within all those of the same initiative.
     var initiativeOrder: Int? {
         get {
-            return rawInitiativeOrder?.integerValue
+            return rawInitiativeOrder?.intValue
         }
         set(newInitiativeOrder) {
-            rawInitiativeOrder = newInitiativeOrder.map({ NSNumber(integer: $0) })
+            rawInitiativeOrder = newInitiativeOrder.map({ NSNumber(value: $0 as Int) })
         }
     }
-    @NSManaged private var rawInitiativeOrder: NSNumber?
+    @NSManaged fileprivate var rawInitiativeOrder: NSNumber?
     
     /// True when this combatant is up next in the turn order.
     @NSManaged var isCurrentTurn: Bool
@@ -71,26 +71,26 @@ final class Combatant : NSManagedObject {
     /// This is only meaningful for monsters controlled by the DM, it is ignored for those with a `role` of `Player`. It can be initialized from the monster's `hitDice`.
     var hitPoints: Int {
         get {
-            return rawHitPoints.integerValue
+            return rawHitPoints.intValue
         }
         set(newHitPoints) {
-            rawHitPoints = NSNumber(integer: newHitPoints)
+            rawHitPoints = NSNumber(value: newHitPoints as Int)
         }
     }
-    @NSManaged private var rawHitPoints: NSNumber
+    @NSManaged fileprivate var rawHitPoints: NSNumber
     
     /// Total damage points that the combatant has taken.
     ///
     /// This is only meaninful for monsters controlled by the DM, it is ignored for those with a `role` of `Player`.
     var damagePoints: Int {
         get {
-            return rawDamagePoints.integerValue
+            return rawDamagePoints.intValue
         }
         set(newDamagePoints) {
-            rawDamagePoints = NSNumber(integer: newDamagePoints)
+            rawDamagePoints = NSNumber(value: newDamagePoints as Int)
         }
     }
-    @NSManaged private var rawDamagePoints: NSNumber
+    @NSManaged fileprivate var rawDamagePoints: NSNumber
     
     /// Health of the combatant in the range 0.0...1.0.
     ///
@@ -103,7 +103,7 @@ final class Combatant : NSManagedObject {
     ///
     /// Always returns true for player-controlled combatants.
     var isAlive: Bool {
-        return role == .Player || damagePoints < hitPoints
+        return role == .player || damagePoints < hitPoints
     }
 
     /// Armor class of the combatant.
@@ -113,38 +113,38 @@ final class Combatant : NSManagedObject {
         guard let monster = monster else { return nil }
         
         let basicArmorPredicate = NSPredicate(format: "rawCondition == nil")
-        var armors = monster.armor.filteredSetUsingPredicate(basicArmorPredicate)
+        var armors = monster.armor.filtered(using: basicArmorPredicate)
         
         if conditions.count > 0 {
-            let rawConditions = conditions.map({ NSNumber(integer: ($0 as! CombatantCondition).type.rawValue) })
+            let rawConditions = conditions.map({ NSNumber(value: ($0 as! CombatantCondition).type.rawValue as Int) })
             let conditionsPredicate = NSPredicate(format: "rawCondition IN %@", rawConditions)
             
-            let conditionArmors = monster.armor.filteredSetUsingPredicate(conditionsPredicate)
+            let conditionArmors = monster.armor.filtered(using: conditionsPredicate)
             if conditionArmors.count > 0 {
                 armors = conditionArmors
             }
         }
         
         // Return the highest applicable AC.
-        return armors.map({ ($0 as! Armor).armorClass }).maxElement()
+        return armors.map({ ($0 as! Armor).armorClass }).max()
     }
 
     /// Location of the combatant on the table top.
     var location: TabletopLocation? {
         get {
-            if let x = rawLocationX, y = rawLocationY {
+            if let x = rawLocationX, let y = rawLocationY {
                 return TabletopLocation(x: CGFloat(x.floatValue), y: CGFloat(y.floatValue))
             } else {
                 return nil
             }
         }
         set(newLocation) {
-            rawLocationX = newLocation.map({ NSNumber(float: Float($0.x)) })
-            rawLocationY = newLocation.map({ NSNumber(float: Float($0.y)) })
+            rawLocationX = newLocation.map({ NSNumber(value: Float($0.x) as Float) })
+            rawLocationY = newLocation.map({ NSNumber(value: Float($0.y) as Float) })
         }
     }
-    @NSManaged private var rawLocationX: NSNumber?
-    @NSManaged private var rawLocationY: NSNumber?
+    @NSManaged fileprivate var rawLocationX: NSNumber?
+    @NSManaged fileprivate var rawLocationY: NSNumber?
 
     /// Damages that the combatant has taken.
     ///
@@ -166,24 +166,24 @@ final class Combatant : NSManagedObject {
     
     convenience init(encounter: Encounter, monster: Monster, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Combatant, inManagedObjectContext: context)
-        self.init(entity: entity, insertIntoManagedObjectContext: context)
+        self.init(entity: entity, insertInto: context)
         
         self.encounter = encounter
         self.monster = monster
         
-        dateCreated = NSDate()
+        dateCreated = Date()
         hitPoints = monster.hitPoints ?? monster.hitDice.averageValue
     }
     
     convenience init(encounter: Encounter, player: Player, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.Combatant, inManagedObjectContext: context)
-        self.init(entity: entity, insertIntoManagedObjectContext: context)
+        self.init(entity: entity, insertInto: context)
         
         self.encounter = encounter
         self.player = player
-        self.role = .Player
+        self.role = .player
         
-        dateCreated = NSDate()
+        dateCreated = Date()
     }
 
     // MARK: Validation
@@ -207,7 +207,7 @@ final class Combatant : NSManagedObject {
         }
         
         // DM cannot control players directly.
-        guard role == .Player || player == nil else {
+        guard role == .player || player == nil else {
             let errorString = "Player Combatant must not be .Friend or .Foe."
             let userDict = [ NSLocalizedDescriptionKey: errorString ]
             throw NSError(domain: "Combatant", code: NSManagedObjectValidationError, userInfo: userDict)

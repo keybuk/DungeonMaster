@@ -48,46 +48,46 @@ import Foundation
 ///     try! controller.performFetch(notifyChanges: true)
 ///     // handleChanges() has been called from the above method
 ///
-public class FetchedResultsController<Section : protocol<Hashable, Comparable>, Entity : NSManagedObject> : NSObject {
+open class FetchedResultsController<Section : Hashable & Comparable, Entity : NSManagedObject> : NSObject {
     
     /// The fetch request used to do the fetching.
     ///
     /// Changes to the fetch request are not automatically reflected in the fetched results. You must call `performFetch()` to refresh the fetched results.
-    public let fetchRequest: NSFetchRequest
+    open let fetchRequest: NSFetchRequest<NSFetchRequestResult>
     
     /// The managed object context used to fetch objects.
     ///
     /// The controller registers to listen to change notifications on this context in order to update the fetched results.
-    public let managedObjectContext: NSManagedObjectContext
+    open let managedObjectContext: NSManagedObjectContext
 
     /// Returns the section to place the passed object into.
     ///
     /// Where the block examines specific keys of the object, consider providing these keys in `sectionKeys` to avoid calls to the block when these keys haven't changed.
     ///
     /// This block may be replaced with another that returns a different section, if you do so, you must call `performFetch()` to refresh the fetched results.
-    public var sectionForObject: (Entity) -> Section
+    open var sectionForObject: (Entity) -> Section
     
     /// Keys that indicate an object may have changed section.
     ///
     /// When `nil`, `sectionForObject` will be called for every update to an object. When non-`nil`, `sectionForObject` will only be called if the value for a key listed in this set is updated.
-    public var sectionKeys: Set<String>?
+    open var sectionKeys: Set<String>?
     
     /// The results of the fetch.
     ///
     /// The value is empty until `performFetch()` is called.
-    public private(set) var fetchedObjects: [Entity] = []
+    open fileprivate(set) var fetchedObjects: [Entity] = []
     
     /// The sections objects are sored into.
     ///
     /// The value is empty until `performFetch()` is called. Each member is a `FetchedResultsSectionInfo` providing the identifier for the section, along with the objects sorted into it.
-    public private(set) var sections: [FetchedResultsSectionInfo<Section, Entity>] = []
+    open fileprivate(set) var sections: [FetchedResultsSectionInfo<Section, Entity>] = []
     
     /// Called to update a view based on changes to the results.
     ///
     /// Each member of the passed array is a `FetchedResultsChange` detailing the specific change. Index paths (including those for updates) always refer to the index path prior to the changes being applied, while the new index paths always refer to the index path after all changes have been applied.
-    public let handleChanges: (([FetchedResultsChange<Section, Entity>]) -> Void)?
+    open let handleChanges: (([FetchedResultsChange<Section, Entity>]) -> Void)?
 
-    public init(fetchRequest: NSFetchRequest, managedObjectContext: NSManagedObjectContext, sectionForObject: (Entity) -> Section, sectionKeys: Set<String>?, handleChanges: (([FetchedResultsChange<Section, Entity>]) -> Void)?) {
+    public init(fetchRequest: NSFetchRequest<NSFetchRequestResult>, managedObjectContext: NSManagedObjectContext, sectionForObject: @escaping (Entity) -> Section, sectionKeys: Set<String>?, handleChanges: (([FetchedResultsChange<Section, Entity>]) -> Void)?) {
         self.fetchRequest = fetchRequest
         self.managedObjectContext = managedObjectContext
         
@@ -99,22 +99,22 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
         super.init()
     }
     
-    private var fetchPerformed = false
+    fileprivate var fetchPerformed = false
     
     deinit {
         if fetchPerformed {
-            NSNotificationCenter.defaultCenter().removeObserver(self)
+            NotificationCenter.default.removeObserver(self)
         }
     }
     
     /// Cache mapping Section to Index.
-    private var sectionIndexes: [Section: Int] = [:]
+    fileprivate var sectionIndexes: [Section: Int] = [:]
     
     /// Rebuilds the `sectionIndexes` cache.
-    private func rebuildSectionIndexes() {
+    fileprivate func rebuildSectionIndexes() {
         sectionIndexes = [:]
         
-        for (index, sectionInfo) in sections.enumerate() {
+        for (index, sectionInfo) in sections.enumerated() {
             sectionIndexes[sectionInfo.name] = index
         }
     }
@@ -122,7 +122,7 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
     /// Returns a new SectionInfo for `section` containing `object`.
     ///
     /// The object is added to both the `sections` list, and the `sectionIndexes` cache.
-    private func makeSection(section section: Section, object: Entity) -> FetchedResultsSectionInfo<Section, Entity> {
+    fileprivate func makeSection(section: Section, object: Entity) -> FetchedResultsSectionInfo<Section, Entity> {
         var sectionInfo = FetchedResultsSectionInfo<Section, Entity>(name: section)
         
         sectionInfo.objects.append(object)
@@ -134,23 +134,23 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
     }
 
     /// Sorts the sections list.
-    private func sortSections() {
-        sections = sections.sort({ $0.name < $1.name })
+    fileprivate func sortSections() {
+        sections = sections.sorted(by: { $0.name < $1.name })
         rebuildSectionIndexes()
     }
     
     /// Cache of sort descriptor keys used for the previous fetch.
-    private var sortKeys: Set<String>?
+    fileprivate var sortKeys: Set<String>?
     
     /// Cache mapping ObjectIdentifier to Section it can be found within.
-    private var objectSections: [ObjectIdentifier: Section] = [:]
+    fileprivate var objectSections: [ObjectIdentifier: Section] = [:]
     
     /// Returns the object at the given index path in the fetch results.
     ///
     /// - parameter indexPath: An index path in the fetch results.
     /// If indexPath does not describe a valid index path in the fetch results, an exception is raised.
-    func object(at indexPath: NSIndexPath) -> Entity {
-        return sections[indexPath.section].objects[indexPath.row]
+    func object(at indexPath: IndexPath) -> Entity {
+        return sections[(indexPath as NSIndexPath).section].objects[(indexPath as NSIndexPath).row]
     }
 
     /// Returns the index path of a given object.
@@ -158,12 +158,12 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
     /// - parameter object: An object in the fetch results.
     /// - returns `nil` if the object is not present in the fetch results.
     /// - complexity: performs an indexOf() on the objects list for the appropriate section.
-    func indexPath(of object: Entity) -> NSIndexPath? {
+    func indexPath(of object: Entity) -> IndexPath? {
         guard let section = objectSections[ObjectIdentifier(object)] else { return nil }
         let sectionIndex = sectionIndexes[section]!
-        let index = sections[sectionIndex].objects.indexOf(object)!
+        let index = sections[sectionIndex].objects.index(of: object)!
 
-        return NSIndexPath(forRow: index, inSection: sectionIndex)
+        return IndexPath(row: index, section: sectionIndex)
     }
     
     /// Executes the fetch request.
@@ -177,11 +177,11 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
     /// **Note:** this will not include any updates to the object values, since it assumed that merely changing the fetch request cannot change the values of the objects returned.
     ///
     /// - parameter notifyChanges: when `true`, the changes to the fetched results set are analyzed and `handleChanges` called. Default is `false`.
-    public func performFetch(notifyChanges notifyChanges: Bool = false) throws {
-        fetchedObjects = try managedObjectContext.executeFetchRequest(fetchRequest) as! [Entity]
+    open func performFetch(notifyChanges: Bool = false) throws {
+        fetchedObjects = try managedObjectContext.fetch(fetchRequest) as! [Entity]
 
         if !fetchPerformed {
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(managedObjectContextObjectsDidChange(_:)), name: NSManagedObjectContextObjectsDidChangeNotification, object: self.managedObjectContext)
+            NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange(_:)), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: self.managedObjectContext)
             fetchPerformed = true
         }
         
@@ -211,7 +211,7 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
         }
         
         // Make a cache of the top-level keys that we used to sort the objects; when objects are updated later, we'll check the update keys against this set, and only re-sort when an update potentially changes the sort order.
-        if let sortDescriptorKeys = fetchRequest.sortDescriptors?.flatMap({ $0.key?.componentsSeparatedByString(".").first }) {
+        if let sortDescriptorKeys = fetchRequest.sortDescriptors?.flatMap({ $0.key?.components(separatedBy: ".").first }) {
             sortKeys = Set(sortDescriptorKeys)
         } else {
             sortKeys = nil
@@ -221,17 +221,17 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
     /// Calls `handleChanges` with changes from `oldSections` to the current results set.
     ///
     /// - parameter from: section information for prior results set.
-    private func determineChanges(from oldSections: [FetchedResultsSectionInfo<Section, Entity>]) -> [FetchedResultsChange<Section, Entity>] {
+    fileprivate func determineChanges(from oldSections: [FetchedResultsSectionInfo<Section, Entity>]) -> [FetchedResultsChange<Section, Entity>] {
         var changes: [FetchedResultsChange<Section, Entity>] = []
         
         // Iterate over each of the sections from the prior results set, and objects within, checking the newer object cache to determine whether objects have been deleted, or moved out of a section to a new one. We build a map from object identifier to old section information during this process.
         var indexes: [ObjectIdentifier: (oldSection: Section, oldSectionIndex: Int, oldIndex: Int)] = [:]
         var priorDeletes: [Section: [Int]] = [:]
-        for (oldSectionIndex, oldSectionInfo) in oldSections.enumerate() {
+        for (oldSectionIndex, oldSectionInfo) in oldSections.enumerated() {
             let oldSection = oldSectionInfo.name
             
             priorDeletes[oldSection] = []
-            for (oldIndex, object) in oldSectionInfo.objects.enumerate() {
+            for (oldIndex, object) in oldSectionInfo.objects.enumerated() {
                 if let section = objectSections[ObjectIdentifier(object)] {
                     indexes[ObjectIdentifier(object)] = (oldSection: oldSection, oldSectionIndex: oldSectionIndex, oldIndex: oldIndex)
                     if section != oldSection {
@@ -243,7 +243,7 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
                     }
                 } else {
                     // Object has been deleted.
-                    changes.append(.Delete(object: object, indexPath: NSIndexPath(forRow: oldIndex, inSection: oldSectionIndex)))
+                    changes.append(.delete(object: object, indexPath: IndexPath(row: oldIndex, section: oldSectionIndex)))
                     priorDeletes[oldSection]!.append((priorDeletes[oldSection]!.last ?? 0) + 1)
                 }
             }
@@ -251,27 +251,27 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
             // Delete the section if has no index in the new results.
             if sectionIndexes[oldSection] == nil {
                 // Strictly speaking this oldSectionInfo is wrong as it has members.
-                changes.append(.DeleteSection(sectionInfo: oldSectionInfo, index: oldSectionIndex))
+                changes.append(.deleteSection(sectionInfo: oldSectionInfo, index: oldSectionIndex))
             }
         }
         
         // Now we iterate over each of the sections in the new results set, and objects within, using the information from the map we just built to detect inserts, as well as completing the handling of moves between and within sections with the new index paths.
-        for (sectionIndex, sectionInfo) in sections.enumerate() {
+        for (sectionIndex, sectionInfo) in sections.enumerated() {
             let section = sectionInfo.name
             
             // If the section didn't exist in the old results, insert it.
             let priorDeletes = priorDeletes[section]
             if priorDeletes == nil {
                 // Strictly speaking this sectionInfo is wrong as it has members.
-                changes.append(.InsertSection(sectionInfo: sectionInfo, newIndex: sectionIndex))
+                changes.append(.insertSection(sectionInfo: sectionInfo, newIndex: sectionIndex))
             }
             
             var priorInserts = 0
-            for (index, object) in sectionInfo.objects.enumerate() {
+            for (index, object) in sectionInfo.objects.enumerated() {
                 if let (oldSection, oldSectionIndex, oldIndex) = indexes[ObjectIdentifier(object)] {
                     if section != oldSection {
                         // Object has been moved into this section from another.
-                        changes.append(.Move(object: object, indexPath: NSIndexPath(forRow: oldIndex, inSection: oldSectionIndex), newIndexPath: NSIndexPath(forRow: index, inSection: sectionIndex)))
+                        changes.append(.move(object: object, indexPath: IndexPath(row: oldIndex, section: oldSectionIndex), newIndexPath: IndexPath(row: index, section: sectionIndex)))
                         priorInserts += 1
                     } else {
                         // The object has remained in the same section, we need to determine whether it's moved. We want to avoid false-positives caused by other objects moving out or into this section before it, so we create "adjusted indexes" which assume deleted objects never existed before, and inserted objects don't exist after, and compare those indexes instead.
@@ -280,12 +280,12 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
                         
                         if adjustedIndex != adjustedNewIndex {
                             // Moved.
-                            changes.append(.Move(object: object, indexPath: NSIndexPath(forRow: oldIndex, inSection: oldSectionIndex), newIndexPath: NSIndexPath(forRow: index, inSection: sectionIndex)))
+                            changes.append(.move(object: object, indexPath: IndexPath(row: oldIndex, section: oldSectionIndex), newIndexPath: IndexPath(row: index, section: sectionIndex)))
                         }
                     }
                 } else {
                     // Object was inserted.
-                    changes.append(.Insert(object: object, newIndexPath: NSIndexPath(forRow: index, inSection: sectionIndex)))
+                    changes.append(.insert(object: object, newIndexPath: IndexPath(row: index, section: sectionIndex)))
                     priorInserts += 1
                 }
             }
@@ -295,8 +295,8 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
     }
 
     /// Called on changes to the managed object context.
-    @objc private func managedObjectContextObjectsDidChange(notification: NSNotification) {
-        assert(notification.name == NSManagedObjectContextObjectsDidChangeNotification, "Notification method called for wrong notification.")
+    @objc fileprivate func managedObjectContextObjectsDidChange(_ notification: Notification) {
+        assert(notification.name == NSNotification.Name.NSManagedObjectContextObjectsDidChange, "Notification method called for wrong notification.")
         assert(notification.object === managedObjectContext, "Notification called for incorrect managed object context.")
         
         var changes: [FetchedResultsChange<Section, Entity>] = []
@@ -306,7 +306,7 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
 
         // Process all of the update keys together, rather than indvidually, since the handling is the same and only varies on the object itself.
         for key in [NSInsertedObjectsKey, NSDeletedObjectsKey, NSUpdatedObjectsKey] {
-            guard let objects = notification.userInfo?[key] as? NSSet else { continue }
+            guard let objects = (notification as NSNotification).userInfo?[key] as? NSSet else { continue }
             
             for case let object as NSManagedObject in objects {
                 guard object.entity === fetchRequest.entity else { continue }
@@ -315,19 +315,19 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
                 // For each object, we fundamentally check two things: is it in the existing results, and if not, does it match the predicate and thus should be inserted?
                 if let section = objectSections[ObjectIdentifier(object)] {
                     let sectionIndex = sectionIndexes[section]!
-                    let index = sections[sectionIndex].objects.indexOf(object)!
+                    let index = sections[sectionIndex].objects.index(of: object)!
 
-                    if object.deleted || !(fetchRequest.predicate?.evaluateWithObject(object) ?? true) {
+                    if object.isDeleted || !(fetchRequest.predicate?.evaluate(with: object) ?? true) {
                         // Object was deleted, or previously did, but no now longer does, match the predicate.
                         objectSections[ObjectIdentifier(object)] = nil
                         
                         if deleteIndexes[section] == nil { deleteIndexes[section] = NSMutableIndexSet() }
-                        deleteIndexes[section]!.addIndex(index)
+                        deleteIndexes[section]!.add(index)
                         
                         // Since we don't care about the indexes remaining stable, we can directly remove objects here.
-                        fetchedObjects.removeAtIndex(fetchedObjects.indexOf(object)!)
+                        fetchedObjects.remove(at: fetchedObjects.index(of: object)!)
                         
-                        changes.append(.Delete(object: object, indexPath: NSIndexPath(forRow: index, inSection: sectionIndex)))
+                        changes.append(.delete(object: object, indexPath: IndexPath(row: index, section: sectionIndex)))
                         continue
                     }
                     
@@ -335,7 +335,7 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
                     let changedValues = object.changedValuesForCurrentEvent().keys
                     let newSection: Section
                     if let sectionKeys = sectionKeys {
-                        if sectionKeys.isSubsetOf(changedValues) {
+                        if sectionKeys.isSubset(of: changedValues) {
                             newSection = sectionForObject(object)
                         } else {
                             newSection = section
@@ -344,13 +344,13 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
                         newSection = sectionForObject(object)
                     }
                     
-                    let insertRecord = (object: object, sectionIndex: Int?.Some(sectionIndex), index: Int?.Some(index))
+                    let insertRecord = (object: object, sectionIndex: Int?.some(sectionIndex), index: Int?.some(index))
                     if section != newSection {
                         // Object has changed section.
                         objectSections[ObjectIdentifier(object)] = newSection
                         
                         if deleteIndexes[section] == nil { deleteIndexes[section] = NSMutableIndexSet() }
-                        deleteIndexes[section]!.addIndex(index)
+                        deleteIndexes[section]!.add(index)
                         
                         if let newSectionIndex = sectionIndexes[newSection] {
                             sections[newSectionIndex].objects.append(object)
@@ -363,21 +363,21 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
                             insertedSections.append(newSection)
                             insertedObjects[newSection] = [insertRecord]
                         }
-                    } else if let sortKeys = sortKeys where sortKeys.isSubsetOf(changedValues) {
+                    } else if let sortKeys = sortKeys, sortKeys.isSubset(of: changedValues) {
                         // Object may have moved within the sort order.
                         if insertedObjects[section] == nil { insertedObjects[section] = [] }
                         insertedObjects[section]!.append(insertRecord)
                     } else {
                         // Object has changed in some other way.
-                        changes.append(.Update(object: object, indexPath: NSIndexPath(forRow: index, inSection: sectionIndex)))
+                        changes.append(.update(object: object, indexPath: IndexPath(row: index, section: sectionIndex)))
                     }
 
-                } else if fetchRequest.predicate?.evaluateWithObject(object) ?? true {
+                } else if fetchRequest.predicate?.evaluate(with: object) ?? true {
                     // Object previous did not, but now does, match the predicate. This becomes an insert.
                     let section = sectionForObject(object)
                     objectSections[ObjectIdentifier(object)] = section
                     
-                    let insertRecord = (object: object, sectionIndex: Int?.None, index: Int?.None)
+                    let insertRecord = (object: object, sectionIndex: Int?.none, index: Int?.none)
                     if let sectionIndex = sectionIndexes[section] {
                         sections[sectionIndex].objects.append(object)
                         
@@ -401,19 +401,19 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
         for (section, indexes) in deleteIndexes {
             let sectionIndex = sectionIndexes[section]!
             
-            for index in indexes.reverse() {
-                sections[sectionIndex].objects.removeAtIndex(index)
+            for index in indexes.reversed() {
+                sections[sectionIndex].objects.remove(at: index)
             }
             
             if sections[sectionIndex].objects.count == 0 {
-                deleteSectionIndexes.addIndex(sectionIndex)
+                deleteSectionIndexes.add(sectionIndex)
 
-                changes.append(.DeleteSection(sectionInfo: sections[sectionIndex], index: sectionIndex))
+                changes.append(.deleteSection(sectionInfo: sections[sectionIndex], index: sectionIndex))
             }
         }
         
-        for sectionIndex in deleteSectionIndexes.reverse() {
-            sections.removeAtIndex(sectionIndex)
+        for sectionIndex in deleteSectionIndexes.reversed() {
+            sections.remove(at: sectionIndex)
         }
 
         // The sections list now contains the final list of sections, but the indexes are potentially wrong. If we inserted any sections, we re-sort the list and rebuild the cache; if we deleted any, we just rebuild the cache. Section indexes are final after this, so we can build those changes.
@@ -423,7 +423,7 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
             for newSection in insertedSections {
                 let newSectionIndex = sectionIndexes[newSection]!
                 
-                changes.append(.InsertSection(sectionInfo: sections[newSectionIndex], newIndex: newSectionIndex))
+                changes.append(.insertSection(sectionInfo: sections[newSectionIndex], newIndex: newSectionIndex))
             }
         } else if deleteSectionIndexes.count > 0 {
             rebuildSectionIndexes()
@@ -435,22 +435,22 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
                 let newSectionIndex = sectionIndexes[newSection]!
 
                 if let sortDescriptors = fetchRequest.sortDescriptors {
-                    sections[newSectionIndex].objects = (sections[newSectionIndex].objects as NSArray).sortedArrayUsingDescriptors(sortDescriptors) as! [Entity]
+                    sections[newSectionIndex].objects = (sections[newSectionIndex].objects as NSArray).sortedArray(using: sortDescriptors) as! [Entity]
                 }
                 
                 for (object, sectionIndex, index) in insertRecords {
-                    let newIndex = sections[newSectionIndex].objects.indexOf(object)!
+                    let newIndex = sections[newSectionIndex].objects.index(of: object)!
                     
-                    if let index = index, sectionIndex = sectionIndex {
-                        changes.append(.Move(object: object, indexPath: NSIndexPath(forRow: index, inSection: sectionIndex), newIndexPath: NSIndexPath(forRow: newIndex, inSection: newSectionIndex)))
+                    if let index = index, let sectionIndex = sectionIndex {
+                        changes.append(.move(object: object, indexPath: IndexPath(row: index, section: sectionIndex), newIndexPath: IndexPath(row: newIndex, section: newSectionIndex)))
                     } else {
-                        changes.append(.Insert(object: object, newIndexPath: NSIndexPath(forRow: newIndex, inSection: newSectionIndex)))
+                        changes.append(.insert(object: object, newIndexPath: IndexPath(row: newIndex, section: newSectionIndex)))
                     }
                 }
             }
         
             if let sortDescriptors = fetchRequest.sortDescriptors {
-                fetchedObjects = (fetchedObjects as NSArray).sortedArrayUsingDescriptors(sortDescriptors) as! [Entity]
+                fetchedObjects = (fetchedObjects as NSArray).sortedArray(using: sortDescriptors) as! [Entity]
             }
         }
 
@@ -468,24 +468,24 @@ public class FetchedResultsController<Section : protocol<Hashable, Comparable>, 
 /// - `Move`: the object `object` was moved from `indexPath` to `newIndexPath`.
 /// - `Update`: the object `object` at `indexPath` was updated.
 public enum FetchedResultsChange<Section, Entity : NSManagedObject> {
-    case InsertSection(sectionInfo: FetchedResultsSectionInfo<Section, Entity>, newIndex: Int)
-    case DeleteSection(sectionInfo: FetchedResultsSectionInfo<Section, Entity>, index: Int)
+    case insertSection(sectionInfo: FetchedResultsSectionInfo<Section, Entity>, newIndex: Int)
+    case deleteSection(sectionInfo: FetchedResultsSectionInfo<Section, Entity>, index: Int)
 
-    case Insert(object: Entity, newIndexPath: NSIndexPath)
-    case Delete(object: Entity, indexPath: NSIndexPath)
-    case Move(object: Entity, indexPath: NSIndexPath, newIndexPath: NSIndexPath)
-    case Update(object: Entity, indexPath: NSIndexPath)
+    case insert(object: Entity, newIndexPath: IndexPath)
+    case delete(object: Entity, indexPath: IndexPath)
+    case move(object: Entity, indexPath: IndexPath, newIndexPath: IndexPath)
+    case update(object: Entity, indexPath: IndexPath)
 }
 
 /// Section information for `FetchedResultsController`.
 public struct FetchedResultsSectionInfo<Section, Entity : NSManagedObject> {
     /// Identifier of the section.
-    public private(set) var name: Section
+    public fileprivate(set) var name: Section
     
     /// Objects sorted into it.
-    public private(set) var objects: [Entity]
+    public fileprivate(set) var objects: [Entity]
     
-    private init(name: Section) {
+    fileprivate init(name: Section) {
         self.name = name
         self.objects = []
     }

@@ -30,9 +30,9 @@ class LogEntryCombatantsViewController : UITableViewController, NSFetchedResults
     
     // MARK: Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PickPlayersSegue" {
-            let viewController = segue.destinationViewController as! LogEntryPlayersViewController
+            let viewController = segue.destination as! LogEntryPlayersViewController
             viewController.logEntryType = logEntryType
             viewController.game = game
             viewController.encounter = encounter
@@ -42,14 +42,14 @@ class LogEntryCombatantsViewController : UITableViewController, NSFetchedResults
     
     // MARK: Actions
     
-    @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
     }
     
     // MARK: Fetched results controller
     
-    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] in
-        let fetchRequest = self.encounter.fetchRequestForCombatants(withRole: .Foe)
+    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] -> <<error type>> in
+        let fetchRequest = self.encounter.fetchRequestForCombatants(withRole: .foe)
 
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
@@ -61,84 +61,84 @@ class LogEntryCombatantsViewController : UITableViewController, NSFetchedResults
 
     // MARK: UITableViewDataSource
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return fetchedResultsController.sections?.count ?? 0
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionInfo = fetchedResultsController.sections![section]
         return sectionInfo.numberOfObjects
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("LogEntryCombatantCell", forIndexPath: indexPath) as! LogEntryCombatantCell
-        let combatant = fetchedResultsController.objectAtIndexPath(indexPath) as! Combatant
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LogEntryCombatantCell", for: indexPath) as! LogEntryCombatantCell
+        let combatant = fetchedResultsController.object(at: indexPath) as! Combatant
         cell.combatant = combatant
-        cell.accessoryType = combatants.contains(combatant) ? .Checkmark : .None
+        cell.accessoryType = combatants.contains(combatant) ? .checkmark : .none
         return cell
     }
 
     // MARK: UITableViewDelegate
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let combatant = fetchedResultsController.objectAtIndexPath(indexPath) as! Combatant
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let combatant = fetchedResultsController.object(at: indexPath) as! Combatant
         if combatants.contains(combatant) {
             combatants.remove(combatant)
         } else {
             combatants.insert(combatant)
         }
         
-        if let cell = tableView.cellForRowAtIndexPath(indexPath) as? LogEntryCombatantCell {
-            cell.accessoryType = combatants.contains(combatant) ? .Checkmark : .None
+        if let cell = tableView.cellForRow(at: indexPath) as? LogEntryCombatantCell {
+            cell.accessoryType = combatants.contains(combatant) ? .checkmark : .none
         }
         
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // MARK: NSFetchedResultsControllerDelegate
     
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
         switch type {
-        case .Insert:
-            tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
-        case .Delete:
-            tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
+        case .insert:
+            tableView.insertSections(IndexSet(integer: sectionIndex), with: .automatic)
+        case .delete:
+            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .automatic)
         default:
             return
         }
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
-        case .Insert:
+        case .insert:
             let combatant = anObject as! Combatant
             if combatant.damagePoints >= combatant.hitPoints {
                 combatants.insert(combatant)
             }
 
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
-        case .Delete:
+            tableView.insertRows(at: [newIndexPath!], with: .automatic)
+        case .delete:
             let combatant = anObject as! Combatant
             combatants.remove(combatant)
 
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
-        case .Move:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
-        case .Update:
-            if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? LogEntryCombatantCell {
+            tableView.deleteRows(at: [indexPath!], with: .automatic)
+        case .move:
+            tableView.deleteRows(at: [indexPath!], with: .automatic)
+            tableView.insertRows(at: [newIndexPath!], with: .automatic)
+        case .update:
+            if let cell = tableView.cellForRow(at: indexPath!) as? LogEntryCombatantCell {
                 let combatant = anObject as! Combatant
                 cell.combatant = combatant
-                cell.accessoryType = combatants.contains(combatant) ? .Checkmark : .None
+                cell.accessoryType = combatants.contains(combatant) ? .checkmark : .none
             }
         }
     }
     
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
 
@@ -165,7 +165,7 @@ class LogEntryCombatantCell : UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        leadingConstraint.constant = editing ? 0.0 : (separatorInset.left - layoutMargins.left)
+        leadingConstraint.constant = isEditing ? 0.0 : (separatorInset.left - layoutMargins.left)
     }
 
 }

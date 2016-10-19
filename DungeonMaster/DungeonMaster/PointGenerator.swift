@@ -11,8 +11,8 @@ import CoreGraphics
 
 /// Box represents an arbitrary box of values denoted by two intervals for those values.
 private struct Box {
-    var width: ClosedInterval<CGFloat>
-    var height: ClosedInterval<CGFloat>
+    var width: ClosedRange<CGFloat>
+    var height: ClosedRange<CGFloat>
     
     var center: CGPoint {
         return CGPoint(x: width.start + (width.end - width.start) / 2.0, y: height.start + (height.end - height.start) / 2.0)
@@ -20,15 +20,15 @@ private struct Box {
 }
 
 /// PointGenerator generates a distributed set of point values in a square box of a given range.
-struct PointGenerator : GeneratorType {
+struct PointGenerator : IteratorProtocol {
     
     typealias Element = CGPoint
 
-    private var boxes: [Box] = []
-    private var points:[CGPoint] = []
-    private var pointIndex = 0
+    fileprivate var boxes: [Box] = []
+    fileprivate var points:[CGPoint] = []
+    fileprivate var pointIndex = 0
 
-    init(range: ClosedInterval<CGFloat>) {
+    init(range: ClosedRange<CGFloat>) {
         boxes.append(Box(width: range, height: range))
         
         points = pointsForBox(boxes[0])
@@ -36,10 +36,10 @@ struct PointGenerator : GeneratorType {
     }
     
     init(start: CGFloat, end: CGFloat) {
-        self.init(range: ClosedInterval<CGFloat>(start, end))
+        self.init(range: (start ... end))
     }
     
-    private func pointsForBox(box: Box, rotate: Int = 0) -> [CGPoint] {
+    fileprivate func pointsForBox(_ box: Box, rotate: Int = 0) -> [CGPoint] {
         var points: [CGPoint] = []
         points.append(CGPoint(x: box.width.start, y: box.center.y))
         points.append(CGPoint(x: box.center.x, y: box.height.start))
@@ -50,12 +50,12 @@ struct PointGenerator : GeneratorType {
             points.append(points.removeFirst())
         }
         
-        points.insert(box.center, atIndex: 0)
+        points.insert(box.center, at: 0)
         
         return points
     }
     
-    private func boxesForBox(box: Box, rotate: Int = 0) -> [Box] {
+    fileprivate func boxesForBox(_ box: Box, rotate: Int = 0) -> [Box] {
         var boxes: [Box] = []
         boxes.append(Box(width: box.width.start...box.center.x, height: box.height.start...box.center.y))
         boxes.append(Box(width: box.center.x...box.width.end, height: box.height.start...box.center.y))
@@ -69,10 +69,10 @@ struct PointGenerator : GeneratorType {
         return boxes
     }
     
-    private mutating func splitBoxes() {
+    fileprivate mutating func splitBoxes() {
         // Split the current set of boxes, rotating each resulting set, and collate back into a single set.
         var allBoxes: [[Box]] = []
-        for (index, box) in boxes.enumerate() {
+        for (index, box) in boxes.enumerated() {
             allBoxes.append(boxesForBox(box, rotate: index % 4))
         }
         
@@ -88,7 +88,7 @@ struct PointGenerator : GeneratorType {
         
         // Iterate the resulting new set of boxes, creating points, rotating each resulting set, and collating back into a single set of points.
         var allPoints: [[CGPoint]] = []
-        for (index, box) in boxes.enumerate() {
+        for (index, box) in boxes.enumerated() {
             allPoints.append(pointsForBox(box, rotate: (index / 4 + index) % 4))
         }
     
@@ -112,7 +112,7 @@ struct PointGenerator : GeneratorType {
         }
 
         let index = pointIndex
-        pointIndex = pointIndex.advancedBy(1)
+        pointIndex = pointIndex.advanced(by: 1)
         return points[index]
     }
     

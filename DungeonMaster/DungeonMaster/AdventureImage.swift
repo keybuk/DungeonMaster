@@ -21,35 +21,35 @@ final class AdventureImage : NSManagedObject {
     var image: UIImage? {
         get {
             if let pathComponent = rawImagePathComponent {
-                let documentsDirectoryURLs = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-                let imagesDirectoryURL = documentsDirectoryURLs.last!.URLByAppendingPathComponent("AdventureImages", isDirectory: true)
+                let documentsDirectoryURLs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+                let imagesDirectoryURL = documentsDirectoryURLs.last!.appendingPathComponent("AdventureImages", isDirectory: true)
 
-                let imageURL = imagesDirectoryURL.URLByAppendingPathComponent(pathComponent).URLByAppendingPathExtension("png")
+                let imageURL = imagesDirectoryURL.appendingPathComponent(pathComponent).appendingPathExtension("png")
 
-                let imageData = try! NSData(contentsOfURL: imageURL, options: [])
+                let imageData = try! Data(contentsOf: imageURL, options: [])
                 return UIImage(data: imageData)
             } else {
                 return nil
             }
         }
         set(newImage) {
-            let fileManager = NSFileManager.defaultManager()
-            let documentsDirectoryURLs = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-            let imagesDirectoryURL = documentsDirectoryURLs.last!.URLByAppendingPathComponent("AdventureImages", isDirectory: true)
+            let fileManager = FileManager.default
+            let documentsDirectoryURLs = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
+            let imagesDirectoryURL = documentsDirectoryURLs.last!.appendingPathComponent("AdventureImages", isDirectory: true)
             
-            try! fileManager.createDirectoryAtURL(imagesDirectoryURL, withIntermediateDirectories: true, attributes: nil)
+            try! fileManager.createDirectory(at: imagesDirectoryURL, withIntermediateDirectories: true, attributes: nil)
 
             if let oldPathComponent = rawImagePathComponent {
-                let oldImageURL = imagesDirectoryURL.URLByAppendingPathComponent(oldPathComponent).URLByAppendingPathExtension("png")
-                try! fileManager.removeItemAtURL(oldImageURL)
+                let oldImageURL = imagesDirectoryURL.appendingPathComponent(oldPathComponent).appendingPathExtension("png")
+                try! fileManager.removeItem(at: oldImageURL)
             }
             
             if let newImage = newImage {
                 let imageData = UIImagePNGRepresentation(newImage)!
     
-                let pathComponent = NSUUID().UUIDString
-                let imageURL = imagesDirectoryURL.URLByAppendingPathComponent(pathComponent).URLByAppendingPathExtension("png")
-                try! imageData.writeToURL(imageURL, options: [])
+                let pathComponent = UUID().uuidString
+                let imageURL = imagesDirectoryURL.appendingPathComponent(pathComponent).appendingPathExtension("png")
+                try! imageData.write(to: imageURL, options: [])
                 
                 rawImagePathComponent = pathComponent
             } else {
@@ -57,7 +57,7 @@ final class AdventureImage : NSManagedObject {
             }
         }
     }
-    @NSManaged private var rawImagePathComponent: String?
+    @NSManaged fileprivate var rawImagePathComponent: String?
 
     /// Fraction of the image, in unit value, to be used.
     ///
@@ -67,10 +67,10 @@ final class AdventureImage : NSManagedObject {
             return CGFloat(rawFraction.floatValue)
         }
         set(newFraction) {
-            rawFraction = NSNumber(float: Float(newFraction))
+            rawFraction = NSNumber(value: Float(newFraction) as Float)
         }
     }
-    @NSManaged private var rawFraction: NSNumber
+    @NSManaged fileprivate var rawFraction: NSNumber
     
     /// Origin of the fraction of the image, in unit value, to be used.
     ///
@@ -80,16 +80,16 @@ final class AdventureImage : NSManagedObject {
             return CGPoint(x: CGFloat(rawOriginX.floatValue), y: CGFloat(rawOriginY.floatValue))
         }
         set(newOrigin) {
-            rawOriginX = NSNumber(float: Float(newOrigin.x))
-            rawOriginY = NSNumber(float: Float(newOrigin.y))
+            rawOriginX = NSNumber(value: Float(newOrigin.x) as Float)
+            rawOriginY = NSNumber(value: Float(newOrigin.y) as Float)
         }
     }
-    @NSManaged private var rawOriginX: NSNumber
-    @NSManaged private var rawOriginY: NSNumber
+    @NSManaged fileprivate var rawOriginX: NSNumber
+    @NSManaged fileprivate var rawOriginY: NSNumber
     
     convenience init(adventure: Adventure, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.AdventureImage, inManagedObjectContext: context)
-        self.init(entity: entity, insertIntoManagedObjectContext: context)
+        self.init(entity: entity, insertInto: context)
         
         self.adventure = adventure
     }

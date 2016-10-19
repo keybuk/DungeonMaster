@@ -18,17 +18,17 @@ final class PlayerSavingThrow : NSManagedObject {
     /// Saving throw that the player is proficient in.
     var savingThrow: Ability {
         get {
-            return Ability(rawValue: rawSavingThrow.integerValue)!
+            return Ability(rawValue: rawSavingThrow.intValue)!
         }
         set(newSavingThrow) {
-            rawSavingThrow = NSNumber(integer: newSavingThrow.rawValue)
+            rawSavingThrow = NSNumber(value: newSavingThrow.rawValue as Int)
         }
     }
-    @NSManaged private var rawSavingThrow: NSNumber
+    @NSManaged fileprivate var rawSavingThrow: NSNumber
     
     convenience init(player: Player, savingThrow: Ability, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.PlayerSavingThrow, inManagedObjectContext: context)
-        self.init(entity: entity, insertIntoManagedObjectContext: context)
+        self.init(entity: entity, insertInto: context)
         
         self.player = player
         self.savingThrow = savingThrow

@@ -20,25 +20,25 @@ class BackgroundViewController : UITableViewController {
 
     // MARK: UITableViewDataSource
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Background.cases.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("BackgroundCell", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BackgroundCell", for: indexPath)
         
-        let background = Background(rawValue: indexPath.row)!
+        let background = Background(rawValue: (indexPath as NSIndexPath).row)!
         
         cell.textLabel?.text = background.stringValue
         
-        if let selectedBackground = selectedBackground where indexPath.row == selectedBackground.rawValue {
-            cell.accessoryType = .Checkmark
+        if let selectedBackground = selectedBackground, (indexPath as NSIndexPath).row == selectedBackground.rawValue {
+            cell.accessoryType = .checkmark
         } else {
-            cell.accessoryType = .None
+            cell.accessoryType = .none
         }
 
         return cell
@@ -46,25 +46,25 @@ class BackgroundViewController : UITableViewController {
     
     // MARK: UITableViewDelegate
     
-    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         // Will select, rather than did, so we update before the exit segue.
-        selectedBackground = Background(rawValue: indexPath.row)!
+        selectedBackground = Background(rawValue: (indexPath as NSIndexPath).row)!
         return indexPath
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
-            cell.accessoryType = .Checkmark
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) {
+            cell.accessoryType = .checkmark
         }
         
         if let selectedBackground = selectedBackground {
-            let oldIndexPath = NSIndexPath(forRow: selectedBackground.rawValue, inSection: 0)
-            if let cell = tableView.cellForRowAtIndexPath(oldIndexPath) {
-                cell.accessoryType = .None
+            let oldIndexPath = IndexPath(row: selectedBackground.rawValue, section: 0)
+            if let cell = tableView.cellForRow(at: oldIndexPath) {
+                cell.accessoryType = .none
             }
         }
         
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
 }

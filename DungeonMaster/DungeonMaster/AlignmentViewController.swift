@@ -20,25 +20,25 @@ class AlignmentViewController : UITableViewController {
 
     // MARK: UITableViewDataSource
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Alignment.cases.count - 1
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("AlignmentCell", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AlignmentCell", for: indexPath)
         
-        let alignment = Alignment(rawValue: indexPath.row + 1)!
+        let alignment = Alignment(rawValue: (indexPath as NSIndexPath).row + 1)!
         
         cell.textLabel?.text = alignment.stringValue
         
-        if let selectedAlignment = selectedAlignment where indexPath.row == selectedAlignment.rawValue - 1 {
-            cell.accessoryType = .Checkmark
+        if let selectedAlignment = selectedAlignment, (indexPath as NSIndexPath).row == selectedAlignment.rawValue - 1 {
+            cell.accessoryType = .checkmark
         } else {
-            cell.accessoryType = .None
+            cell.accessoryType = .none
         }
 
         return cell
@@ -46,25 +46,25 @@ class AlignmentViewController : UITableViewController {
 
     // MARK: UITableViewDelegate
 
-    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         // Will select, rather than did, so we update before the exit segue.
-        selectedAlignment = Alignment(rawValue: indexPath.row + 1)!
+        selectedAlignment = Alignment(rawValue: (indexPath as NSIndexPath).row + 1)!
         return indexPath
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
-            cell.accessoryType = .Checkmark
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) {
+            cell.accessoryType = .checkmark
         }
         
         if let selectedAlignment = selectedAlignment {
-            let oldIndexPath = NSIndexPath(forRow: selectedAlignment.rawValue - 1, inSection: 0)
-            if let cell = tableView.cellForRowAtIndexPath(oldIndexPath) {
-                cell.accessoryType = .None
+            let oldIndexPath = IndexPath(row: selectedAlignment.rawValue - 1, section: 0)
+            if let cell = tableView.cellForRow(at: oldIndexPath) {
+                cell.accessoryType = .none
             }
         }
         
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }

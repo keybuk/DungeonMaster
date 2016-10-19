@@ -20,28 +20,28 @@ final class MonsterSavingThrow : NSManagedObject {
     /// Saving throw that the monster is proficient in.
     var savingThrow: Ability {
         get {
-            return Ability(rawValue: rawSavingThrow.integerValue)!
+            return Ability(rawValue: rawSavingThrow.intValue)!
         }
         set(newSavingThrow) {
-            rawSavingThrow = NSNumber(integer: newSavingThrow.rawValue)
+            rawSavingThrow = NSNumber(value: newSavingThrow.rawValue as Int)
         }
     }
-    @NSManaged private var rawSavingThrow: NSNumber
+    @NSManaged fileprivate var rawSavingThrow: NSNumber
     
     /// Modifier for this saving throw.
     var modifier: Int {
         get {
-            return rawModifier.integerValue
+            return rawModifier.intValue
         }
         set(newModifier) {
-            rawModifier = NSNumber(integer: newModifier)
+            rawModifier = NSNumber(value: newModifier as Int)
         }
     }
-    @NSManaged private var rawModifier: NSNumber
+    @NSManaged fileprivate var rawModifier: NSNumber
 
     convenience init(monster: Monster, savingThrow: Ability, inManagedObjectContext context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entity(Model.MonsterSavingThrow, inManagedObjectContext: context)
-        self.init(entity: entity, insertIntoManagedObjectContext: context)
+        self.init(entity: entity, insertInto: context)
         
         self.monster = monster
         self.savingThrow = savingThrow

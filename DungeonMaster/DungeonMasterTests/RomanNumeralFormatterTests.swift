@@ -31,7 +31,7 @@ class RomanNumeralFormatterTests : XCTestCase {
         ]
         
         let formatter = RomanNumeralFormatter()
-        formatter.style = .Lowercase
+        formatter.style = .lowercase
         for (number, numeral) in representations {
             let string = formatter.stringFromNumber(number)
             
