@@ -103,10 +103,32 @@ public class NetworkPeer: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDel
             handshakeBytes[16] = 0x01
         }
         
-        outputStream.write(&handshakeBytes, maxLength: 17)
+        let bytesWritten = outputStream.write(&handshakeBytes, maxLength: 17)
+        guard bytesWritten == 17 else {
+            if bytesWritten < 0 {
+                print("NET: Error in output stream: \(outputStream.streamError?.localizedDescription)")
+            } else {
+                print("NET: Short header write on output stream")
+            }
+
+            inputStream.close()
+            outputStream.close()
+            return
+        }
         
         // And then receive from the other peer.
-        inputStream.read(&handshakeBytes, maxLength: 17)
+        let bytesRead = inputStream.read(&handshakeBytes, maxLength: 17)
+        guard bytesRead == 17 else {
+            if bytesRead < 0 {
+                print("NET: Error in input stream: \(inputStream.streamError?.localizedDescription)")
+            } else {
+                print("NET: Short header read on input stream")
+            }
+            
+            inputStream.close()
+            outputStream.close()
+            return
+        }
         
         let remoteUUID = NSUUID(UUIDBytes: &handshakeBytes)
         let remoteType: NetworkPeerType

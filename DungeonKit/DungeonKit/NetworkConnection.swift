@@ -93,6 +93,10 @@ public class NetworkConnection: NSObject, NSStreamDelegate {
         while inputStream.hasBytesAvailable {
             var buffer: [UInt8] = Array(count: 1024, repeatedValue: 0)
             let bytesRead = inputStream.read(&buffer, maxLength: buffer.count)
+            if bytesRead < 0 {
+                print("NET: Error in input stream: \(inputStream.streamError!.localizedDescription)")
+                continue
+            }
 
             inputBuffer.appendContentsOf(buffer.prefixUpTo(bytesRead))
         }
