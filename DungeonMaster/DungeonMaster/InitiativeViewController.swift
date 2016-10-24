@@ -65,7 +65,7 @@ class InitiativeViewController : UITableViewController, NSFetchedResultsControll
     
     // MARK: Fetched results controller
     
-    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] -> <<error type>> in
+    lazy var fetchedResultsController: NSFetchedResultsController<Combatant> = { [unowned self] in
         let fetchRequest = self.encounter.fetchRequestForCombatants()
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
@@ -86,14 +86,14 @@ class InitiativeViewController : UITableViewController, NSFetchedResultsControll
             }
             
             // Ideally we'd use something like "NONE combatants.encounter == %@" here, but that doesn't work.
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entity: Model.Player)
-            let players = fetchedResultsController.fetchedObjects!.flatMap({ ($0 as! Combatant).player })
+            let fetchRequest = NSFetchRequest<Player>(entity: Model.Player)
+            let players = fetchedResultsController.fetchedObjects!.flatMap({ $0.player })
             fetchRequest.predicate = NSPredicate(format: "ANY playedGames.game == %@ AND NOT SELF IN %@", game, players)
 
             let nameSortDescriptor = NSSortDescriptor(key: "name", ascending: true)
             fetchRequest.sortDescriptors = [nameSortDescriptor]
             
-            _missingPlayers = try! managedObjectContext.fetch(fetchRequest) as! [Player]
+            _missingPlayers = try! managedObjectContext.fetch(fetchRequest)
             return _missingPlayers!
         }
         
@@ -124,7 +124,7 @@ class InitiativeViewController : UITableViewController, NSFetchedResultsControll
         if (indexPath as NSIndexPath).section < addSection {
             // Combatant in the encounter.
             let cell = tableView.dequeueReusableCell(withIdentifier: "InitiativeCombatantCell", for: indexPath) as! InitiativeCombatantCell
-            let combatant = fetchedResultsController.object(at: indexPath) as! Combatant
+            let combatant = fetchedResultsController.object(at: indexPath)
             cell.combatant = combatant
             return cell
         } else {
@@ -145,7 +145,7 @@ class InitiativeViewController : UITableViewController, NSFetchedResultsControll
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let combatant = fetchedResultsController.object(at: indexPath) as! Combatant
+            let combatant = fetchedResultsController.object(at: indexPath) 
             managedObjectContext.delete(combatant)
         } else if editingStyle == .insert {
             let player = missingPlayers[(indexPath as NSIndexPath).row]
@@ -161,7 +161,7 @@ class InitiativeViewController : UITableViewController, NSFetchedResultsControll
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         let addSection = fetchedResultsController.sections?.count ?? 0
         if (indexPath as NSIndexPath).section < addSection {
-            let combatant = fetchedResultsController.object(at: indexPath) as! Combatant
+            let combatant = fetchedResultsController.object(at: indexPath)
             return combatant.initiative != nil
         } else {
             return false
@@ -171,8 +171,8 @@ class InitiativeViewController : UITableViewController, NSFetchedResultsControll
     var changeIsUserDriven = false
     
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to toIndexPath: IndexPath) {
-        let combatant = fetchedResultsController.object(at: fromIndexPath) as! Combatant
-        let displacedCombatant = fetchedResultsController.object(at: toIndexPath) as! Combatant
+        let combatant = fetchedResultsController.object(at: fromIndexPath)
+        let displacedCombatant = fetchedResultsController.object(at: toIndexPath)
 
         combatant.initiativeOrder = displacedCombatant.initiativeOrder! + 1
     
@@ -183,7 +183,7 @@ class InitiativeViewController : UITableViewController, NSFetchedResultsControll
         
         for row in startRow..<fetchedResultsController.sections![(toIndexPath as NSIndexPath).section].numberOfObjects {
             let indexPath = IndexPath(row: row, section: (toIndexPath as NSIndexPath).section)
-            let adjustCombatant = fetchedResultsController.object(at: indexPath) as! Combatant
+            let adjustCombatant = fetchedResultsController.object(at: indexPath)
             
             // Only adjust combatants with the same initiative value, and skip the combatant we're moving!
             guard adjustCombatant.initiative == combatant.initiative else { break }
@@ -203,7 +203,7 @@ class InitiativeViewController : UITableViewController, NSFetchedResultsControll
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         let addSection = fetchedResultsController.sections?.count ?? 0
         if (indexPath as NSIndexPath).section < addSection {
-            let combatant = fetchedResultsController.object(at: indexPath) as! Combatant
+            let combatant = fetchedResultsController.object(at: indexPath) 
             return combatant.player != nil ? .delete : .none
         } else {
             return .insert
@@ -211,7 +211,7 @@ class InitiativeViewController : UITableViewController, NSFetchedResultsControll
     }
 
     override func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
-        let combatant = fetchedResultsController.object(at: sourceIndexPath) as! Combatant
+        let combatant = fetchedResultsController.object(at: sourceIndexPath) 
         let appendRow = fetchedResultsController.sections![0].numberOfObjects
 
         // First make sure we're not trying to move into the "missing players" section, and adjust the destination to the end of the combatants section if that's the case.
@@ -221,7 +221,7 @@ class InitiativeViewController : UITableViewController, NSFetchedResultsControll
         }
         
         // It's okay to move to an index path that's occupied by a combatant with the same initiative.
-        let displacedCombatant = fetchedResultsController.object(at: indexPath) as! Combatant
+        let displacedCombatant = fetchedResultsController.object(at: indexPath) 
         if combatant.initiative == displacedCombatant.initiative {
             return indexPath
         } else {

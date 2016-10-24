@@ -40,13 +40,13 @@ class EncounterCombatantsViewController : UITableViewController, NSFetchedResult
         if segue.identifier == "CombatantSegue" {
             performSegue(withIdentifier: "CombatantMonsterSegue", sender: sender)
             if let indexPath = tableView.indexPathForSelectedRow {
-                let combatant = fetchedResultsController.object(at: indexPath) as! Combatant
+                let combatant = fetchedResultsController.object(at: indexPath)
                 let viewController = segue.destination as! CombatantViewController
                 viewController.combatant = combatant
             }
         } else if segue.identifier == "CombatantMonsterSegue" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let combatant = fetchedResultsController.object(at: indexPath) as! Combatant
+                let combatant = fetchedResultsController.object(at: indexPath)
                 let viewController = segue.destination as! MonsterViewController
                 viewController.monster = combatant.monster
             }
@@ -77,7 +77,7 @@ class EncounterCombatantsViewController : UITableViewController, NSFetchedResult
 
     // MARK: Fetched results controller
     
-    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] -> <<error type>> in
+    lazy var fetchedResultsController: NSFetchedResultsController<Combatant> = { [unowned self] in
         let fetchRequest = self.encounter.fetchRequestForCombatants()
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
@@ -111,7 +111,7 @@ class EncounterCombatantsViewController : UITableViewController, NSFetchedResult
         let addSection = fetchedResultsController.sections?.count ?? 0
         if (indexPath as NSIndexPath).section < addSection {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EncounterCombatantCell", for: indexPath) as! EncounterCombatantCell
-            let combatant = fetchedResultsController.object(at: indexPath) as! Combatant
+            let combatant = fetchedResultsController.object(at: indexPath)
             cell.combatant = combatant
             return cell
         } else {
@@ -129,7 +129,7 @@ class EncounterCombatantsViewController : UITableViewController, NSFetchedResult
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let combatant = fetchedResultsController.object(at: indexPath) as! Combatant
+            let combatant = fetchedResultsController.object(at: indexPath)
             managedObjectContext.delete(combatant)
         }
         

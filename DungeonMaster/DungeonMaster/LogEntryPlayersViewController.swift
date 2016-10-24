@@ -21,7 +21,7 @@ class LogEntryPlayersViewController : UITableViewController, NSFetchedResultsCon
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        playedGames.formUnion(fetchedResultsController.fetchedObjects! as! [PlayedGame])
+        playedGames.formUnion(fetchedResultsController.fetchedObjects!)
     }
 
     // MARK: Navigation
@@ -53,8 +53,8 @@ class LogEntryPlayersViewController : UITableViewController, NSFetchedResultsCon
     
     // MARK: Fetched results controller
     
-    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] -> <<error type>> in
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entity: Model.PlayedGame)
+    lazy var fetchedResultsController: NSFetchedResultsController<PlayedGame> = { [unowned self] in
+        let fetchRequest = NSFetchRequest<PlayedGame>(entity: Model.PlayedGame)
         let gamePredicate = NSPredicate(format: "game == %@", self.game)
         if let encounter = self.encounter {
             let encounterPredicate = NSPredicate(format: "ANY player.combatants.encounter == %@", encounter)
@@ -87,7 +87,7 @@ class LogEntryPlayersViewController : UITableViewController, NSFetchedResultsCon
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LogEntryPlayerCell", for: indexPath) as! LogEntryPlayerCell
-        let playedGame = fetchedResultsController.object(at: indexPath) as! PlayedGame
+        let playedGame = fetchedResultsController.object(at: indexPath)
         cell.player = playedGame.player
         cell.accessoryType = playedGames.contains(playedGame) ? .checkmark : .none
         return cell
@@ -96,7 +96,7 @@ class LogEntryPlayersViewController : UITableViewController, NSFetchedResultsCon
     // MARK: UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let playedGame = fetchedResultsController.object(at: indexPath) as! PlayedGame
+        let playedGame = fetchedResultsController.object(at: indexPath)
         if playedGames.contains(playedGame) {
             playedGames.remove(playedGame)
         } else {

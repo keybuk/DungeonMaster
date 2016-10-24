@@ -41,7 +41,7 @@ class AdventurePlayersViewController : UITableViewController, NSFetchedResultsCo
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PlayerSegue" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let player = fetchedResultsController.object(at: indexPath) as! Player
+                let player = fetchedResultsController.object(at: indexPath) 
                 
                 let viewController = segue.destination as! PlayerRootViewController
                 viewController.player = player
@@ -71,8 +71,8 @@ class AdventurePlayersViewController : UITableViewController, NSFetchedResultsCo
     
     // MARK: Fetched results controller
     
-    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] -> <<error type>> in
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entity: Model.Player)
+    lazy var fetchedResultsController: NSFetchedResultsController<Player> = { [unowned self] in
+        let fetchRequest = NSFetchRequest<Player>(entity: Model.Player)
         fetchRequest.predicate = NSPredicate(format: "ANY adventures == %@", self.adventure)
         
         let nameSortDescriptor = NSSortDescriptor(key: "name", ascending: true)
@@ -96,13 +96,13 @@ class AdventurePlayersViewController : UITableViewController, NSFetchedResultsCo
             }
 
             // Ideally we'd use something like "NONE adventures == %@" here, but that doesn't work.
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entity: Model.Player)
+            let fetchRequest = NSFetchRequest<Player>(entity: Model.Player)
             fetchRequest.predicate = NSPredicate(format: "NOT SELF IN %@", fetchedResultsController.fetchedObjects!)
             
             let nameSortDescriptor = NSSortDescriptor(key: "name", ascending: true)
             fetchRequest.sortDescriptors = [nameSortDescriptor]
 
-            _missingPlayers = try! managedObjectContext.fetch(fetchRequest) as! [Player]
+            _missingPlayers = try! managedObjectContext.fetch(fetchRequest)
             return _missingPlayers!
         }
         
@@ -133,7 +133,7 @@ class AdventurePlayersViewController : UITableViewController, NSFetchedResultsCo
         if (indexPath as NSIndexPath).section < addSection {
             // Player in the adventure.
             let cell = tableView.dequeueReusableCell(withIdentifier: "AdventurePlayerCell", for: indexPath) as! AdventurePlayerCell
-            let player = fetchedResultsController.object(at: indexPath) as! Player
+            let player = fetchedResultsController.object(at: indexPath) 
             cell.player = player
             return cell
         } else if (indexPath as NSIndexPath).row < missingPlayers.count {
@@ -157,7 +157,7 @@ class AdventurePlayersViewController : UITableViewController, NSFetchedResultsCo
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let player = fetchedResultsController.object(at: indexPath) as! Player
+            let player = fetchedResultsController.object(at: indexPath) 
             adventure.removePlayer(player)
             
             adventure.lastModified = Date()

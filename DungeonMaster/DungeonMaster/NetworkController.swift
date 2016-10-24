@@ -20,12 +20,12 @@ class NetworkController : NSObject, NetworkPeerDelegate, NetworkConnectionDelega
     /// Controller that monitors the set of encounters.
     ///
     /// This yields a set of Encounter objects that have been started (the round is greater than 0), and are members of games on today's date, reverse sorted by when they were last modified.
-    lazy var encounterResultsController: NSFetchedResultsController = { [unowned self] in
+    lazy var encounterResultsController: NSFetchedResultsController<Encounter> = { [unowned self] in
         let calendar = Calendar.current
         let today = calendar.startOfDay(for: Date())
         let tomorrow = (calendar as NSCalendar).date(byAdding: .day, value: 1, to: today, options: [])!
         
-        let fetchRequest = NSFetchRequest(entity: Model.Encounter)
+        let fetchRequest = NSFetchRequest<Encounter>(entity: Model.Encounter)
         fetchRequest.predicate = NSPredicate(format: "rawRound > 0 AND SUBQUERY(games, $g, $g.date >= %@ AND $g.date < %@).@count > 0", today, tomorrow)
         
         let lastModifiedSortDescriptor = NSSortDescriptor(key: "lastModified", ascending: false)
@@ -41,7 +41,7 @@ class NetworkController : NSObject, NetworkPeerDelegate, NetworkConnectionDelega
     /// Controller that monitors the set of combatants in the encounter.
     ///
     /// This yields the correctly sorted set of Combatant objects for the first encounter in the encounter results controller.
-    var combatantResultsController: NSFetchedResultsController? {
+    var combatantResultsController: NSFetchedResultsController<Combatant>? {
         // Can't use lazy, this has to be able to be re-fetched after being set to nil (invalidated). Maybe in Swift 3.
         get {
             if let combatantResultsController = _combatantResultsController {
@@ -64,11 +64,11 @@ class NetworkController : NSObject, NetworkPeerDelegate, NetworkConnectionDelega
             _combatantResultsController = newCombatantResultsController
         }
     }
-    fileprivate var _combatantResultsController: NSFetchedResultsController? = nil
+    fileprivate var _combatantResultsController: NSFetchedResultsController<Combatant>? = nil
 
     /// Current encounter.
     var encounter: Encounter? {
-        return encounterResultsController.fetchedObjects?.first as? Encounter
+        return encounterResultsController.fetchedObjects?.first
     }
 
     override init() {
@@ -114,7 +114,7 @@ class NetworkController : NSObject, NetworkPeerDelegate, NetworkConnectionDelega
         connection.sendMessage(.beginEncounter(title: title))
         
         var index = 0
-        for case let combatant as Combatant in combatants {
+        for combatant in combatants {
             if let monster = combatant.monster {
                 connection.sendMessage(.insertCombatant(toIndex: index, name: monster.name, initiative: combatant.initiative, isCurrentTurn: combatant.isCurrentTurn, isAlive: combatant.isAlive))
             } else if let player = combatant.player {
@@ -141,7 +141,7 @@ class NetworkController : NSObject, NetworkPeerDelegate, NetworkConnectionDelega
 
     func combatants(withName name: String) -> [Combatant] {
         var combatantsWithName: [Combatant] = []
-        if let combatants = combatantResultsController?.fetchedObjects as? [Combatant] {
+        if let combatants = combatantResultsController?.fetchedObjects {
             for combatant in combatants {
                 if let monster = combatant.monster {
                     guard monster.name == name else { continue }

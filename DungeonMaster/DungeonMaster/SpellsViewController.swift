@@ -60,7 +60,7 @@ class SpellsViewController : UIViewController, UITableViewDataSource, UITableVie
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SpellDetailSegue" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let spell = fetchedResultsController.object(at: indexPath) as! Spell
+                let spell = fetchedResultsController.object(at: indexPath)
                 let viewController = (segue.destination as! UINavigationController).topViewController as! SpellViewController
                 viewController.spell = spell
                 viewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
@@ -71,13 +71,13 @@ class SpellsViewController : UIViewController, UITableViewDataSource, UITableVie
     
     // MARK: Fetched results controller
     
-    var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>! {
+    var fetchedResultsController: NSFetchedResultsController<Spell>! {
         get {
             if let fetchedResultsController = _fetchedResultsController {
                 return fetchedResultsController
             }
             
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entity: Model.Spell)
+            let fetchRequest = NSFetchRequest<Spell>(entity: Model.Spell)
             fetchRequest.fetchBatchSize = 20
 
             // Sorting by name is enough for section handling by initial to work.
@@ -109,7 +109,7 @@ class SpellsViewController : UIViewController, UITableViewDataSource, UITableVie
             _fetchedResultsController = newFetchedResultsController
         }
     }
-    fileprivate var _fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>?
+    fileprivate var _fetchedResultsController: NSFetchedResultsController<Spell>?
  
     // MARK: UITableViewDataSource
 
@@ -138,7 +138,7 @@ class SpellsViewController : UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SpellCell", for: indexPath) as! SpellCell
-        let spell = fetchedResultsController.object(at: indexPath) as! Spell
+        let spell = fetchedResultsController.object(at: indexPath)
         cell.spell = spell
         return cell
     }

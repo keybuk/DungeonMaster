@@ -35,8 +35,8 @@ func importIfNeeded() {
     
     // Combatants can reference monsters, which may be about to be deleted. Collect the names of these monsters so we can find them again later.
     var combatants: [String:[Combatant]] = [:]
-    let combatantFetchRequest = NSFetchRequest<NSFetchRequestResult>(entity: Model.Combatant)
-    for combatant in try! managedObjectContext.fetch(combatantFetchRequest) as! [Combatant] {
+    let combatantFetchRequest = NSFetchRequest<Combatant>(entity: Model.Combatant)
+    for combatant in try! managedObjectContext.fetch(combatantFetchRequest) {
         guard let count = combatant.monster?.sources.count, count > 0 else { continue }
 
         if let referingCombatants = combatants[combatant.monster!.name] {
@@ -48,8 +48,8 @@ func importIfNeeded() {
     
     // Delete all books. The delete will cascade and remove all information sourced from the books.
     var adventures: [String:[Adventure]] = [:]
-    let bookFetchRequest = NSFetchRequest<NSFetchRequestResult>(entity: Model.Book)
-    for book in try! managedObjectContext.fetch(bookFetchRequest) as! [Book] {
+    let bookFetchRequest = NSFetchRequest<Book>(entity: Model.Book)
+    for book in try! managedObjectContext.fetch(bookFetchRequest) {
         // Save the set of adventures that this book refers to, so we can reconnect them again later.
         for case let adventure as Adventure in book.adventures {
             if let referingAdventures = adventures[book.name] {
@@ -64,14 +64,14 @@ func importIfNeeded() {
     
     // Collect the set of tags and languages so we can re-use them on the next import.
     var tags: [String:Tag] = [:]
-    let tagFetchRequest = NSFetchRequest<NSFetchRequestResult>(entity: Model.Tag)
-    for tag in try! managedObjectContext.fetch(tagFetchRequest) as! [Tag] {
+    let tagFetchRequest = NSFetchRequest<Tag>(entity: Model.Tag)
+    for tag in try! managedObjectContext.fetch(tagFetchRequest) {
         tags[tag.name] = tag
     }
     
     var languages: [String:Language] = [:]
-    let languageFetchRequest = NSFetchRequest<NSFetchRequestResult>(entity: Model.Language)
-    for language in try! managedObjectContext.fetch(languageFetchRequest) as! [Language] {
+    let languageFetchRequest = NSFetchRequest<Language>(entity: Model.Language)
+    for language in try! managedObjectContext.fetch(languageFetchRequest) {
         languages[language.name] = language
     }
     

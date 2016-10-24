@@ -73,7 +73,7 @@ class MonstersViewController : UIViewController, UITableViewDataSource, UITableV
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "MonsterDetailSegue" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let monster = fetchedResultsController.object(at: indexPath) as! Monster
+                let monster = fetchedResultsController.object(at: indexPath)
                 let viewController = (segue.destination as! UINavigationController).topViewController as! MonsterViewController
                 viewController.monster = monster
                 viewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
@@ -94,13 +94,13 @@ class MonstersViewController : UIViewController, UITableViewDataSource, UITableV
 
     // MARK: Fetched results controller
     
-    var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>! {
+    var fetchedResultsController: NSFetchedResultsController<Monster>! {
         get {
             if let fetchedResultsController = _fetchedResultsController {
                 return fetchedResultsController
             }
             
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entity: Model.Monster)
+            let fetchRequest = NSFetchRequest<Monster>(entity: Model.Monster)
             fetchRequest.fetchBatchSize = 20
             
             let sectionNameKeyPath: String
@@ -145,7 +145,7 @@ class MonstersViewController : UIViewController, UITableViewDataSource, UITableV
             _fetchedResultsController = newFetchedResultsController
         }
     }
-    fileprivate var _fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>?
+    fileprivate var _fetchedResultsController: NSFetchedResultsController<Monster>?
     
     // MARK: UITableViewDataSource
     
@@ -204,7 +204,7 @@ class MonstersViewController : UIViewController, UITableViewDataSource, UITableV
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MonsterCell", for: indexPath) as! MonsterCell
-        let monster = fetchedResultsController.object(at: indexPath) as! Monster
+        let monster = fetchedResultsController.object(at: indexPath)
         cell.monster = monster        
         return cell
     }

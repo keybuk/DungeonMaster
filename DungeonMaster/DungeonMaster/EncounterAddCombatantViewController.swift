@@ -58,7 +58,7 @@ class EncounterAddCombatantViewController : UIViewController {
     @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
         // FIXME continued very hacky
         if let indexPath = monstersViewController.tableView.indexPathForSelectedRow {
-            let monster = monstersViewController.fetchedResultsController.object(at: indexPath) as! Monster
+            let monster = monstersViewController.fetchedResultsController.object(at: indexPath)
             completionBlock?(cancelled: false, monster: monster, quantity: quantity)
         }
     }

@@ -47,7 +47,7 @@ class AdventuresViewController : UICollectionViewController, NSFetchedResultsCon
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AdventureSegue" {
             if let indexPaths = collectionView?.indexPathsForSelectedItems {
-                let adventure = fetchedResultsController.object(at: indexPaths[0]) as! Adventure
+                let adventure = fetchedResultsController.object(at: indexPaths[0])
                 
                 let viewController = segue.destination as! AdventureViewController
                 viewController.adventure = adventure
@@ -93,7 +93,7 @@ class AdventuresViewController : UICollectionViewController, NSFetchedResultsCon
         collectionView?.allowsSelection = true
         collectionView?.isScrollEnabled = true
         
-        guard let insertedAdventures = fetchedResultsController.fetchedObjects?.map({ $0 as! Adventure }).filter({ $0.isInserted }) else { return }
+        guard let insertedAdventures = fetchedResultsController.fetchedObjects?.filter({ $0.isInserted }) else { return }
         for adventure in insertedAdventures {
             if let indexPath = fetchedResultsController.indexPath(forObject: adventure),
                 let cell = collectionView?.cellForItem(at: indexPath) as? AdventureCell {
@@ -118,7 +118,7 @@ class AdventuresViewController : UICollectionViewController, NSFetchedResultsCon
     
     /// Returns true if all newly inserted adventures are valid.
     func validateAdventures() -> Bool {
-        guard let insertedAdventures = fetchedResultsController.fetchedObjects?.map({ $0 as! Adventure }).filter({ $0.isInserted }) else { return true }
+        guard let insertedAdventures = fetchedResultsController.fetchedObjects?.filter({ $0.isInserted }) else { return true }
         for adventure in insertedAdventures {
             do {
                 try adventure.validateForInsert()
@@ -148,8 +148,8 @@ class AdventuresViewController : UICollectionViewController, NSFetchedResultsCon
 
     // MARK: Fetched results controller
     
-    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] -> <<error type>> in
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entity: Model.Adventure)
+    lazy var fetchedResultsController: NSFetchedResultsController<Adventure> = { [unowned self] in
+        let fetchRequest = NSFetchRequest<Adventure>(entity: Model.Adventure)
         
         let sortDescriptor = NSSortDescriptor(key: "lastModified", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
@@ -195,7 +195,7 @@ class AdventuresViewController : UICollectionViewController, NSFetchedResultsCon
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AdventureCell", for: indexPath) as! AdventureCell
-        let adventure = fetchedResultsController.object(at: indexPath) as! Adventure
+        let adventure = fetchedResultsController.object(at: indexPath)
         cell.adventure = adventure
 
         if adventure.isInserted {

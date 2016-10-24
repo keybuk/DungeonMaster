@@ -34,9 +34,9 @@ class TabletopViewController : UIViewController, TabletopViewDataSource, Tableto
 
     // MARK: Fetched results controller
     
-    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] -> <<error type>> in
+    lazy var fetchedResultsController: NSFetchedResultsController<Combatant> = { [unowned self] in
         // We use a predicate on the Combatant table, matching against the encounter, rather than just using "encounter.combatants" so that we can be a delegate and get change notifications.
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entity: Model.Combatant)
+        let fetchRequest = NSFetchRequest<Combatant>(entity: Model.Combatant)
         
         let predicate = NSPredicate(format: "encounter == %@", self.encounter)
         fetchRequest.predicate = predicate
@@ -59,7 +59,7 @@ class TabletopViewController : UIViewController, TabletopViewDataSource, Tableto
     }
     
     func tabletopView(_ tabletopView: TabletopView, locationForItem index: Int) -> TabletopLocation {
-        let combatant = fetchedResultsController.fetchedObjects![index] as! Combatant
+        let combatant = fetchedResultsController.fetchedObjects![index]
         if let location = combatant.location {
             return location
         } else {
@@ -69,24 +69,24 @@ class TabletopViewController : UIViewController, TabletopViewDataSource, Tableto
     }
     
     func tabletopView(_ tabletopView: TabletopView, nameForItem index: Int) -> String {
-        let combatant = fetchedResultsController.fetchedObjects![index] as! Combatant
+        let combatant = fetchedResultsController.fetchedObjects![index]
         return (combatant.monster?.name ?? combatant.player?.name)!
     }
     
     func tabletopView(_ tabletopView: TabletopView, isItemPlayerControlled index: Int) -> Bool {
-        let combatant = fetchedResultsController.fetchedObjects![index] as! Combatant
+        let combatant = fetchedResultsController.fetchedObjects![index]
         return combatant.role == .player
     }
     
     func tabletopView(_ tabletopView: TabletopView, healthForItem index: Int) -> Float {
-        let combatant = fetchedResultsController.fetchedObjects![index] as! Combatant
+        let combatant = fetchedResultsController.fetchedObjects![index]
         return combatant.health
     }
 
     // MARK: TabletopViewDelegate
     
     func tabletopView(_ tabletopView: TabletopView, moveItem index: Int, to location: TabletopLocation) {
-        let combatant = fetchedResultsController.fetchedObjects![index] as! Combatant
+        let combatant = fetchedResultsController.fetchedObjects![index]
         combatant.location = location
         
         encounter.lastModified = Date()
@@ -94,7 +94,7 @@ class TabletopViewController : UIViewController, TabletopViewDataSource, Tableto
     }
     
     func tabletopView(_ tabletopView: TabletopView, didSelectItem index: Int) {
-        let combatant = fetchedResultsController.fetchedObjects![index] as! Combatant
+        let combatant = fetchedResultsController.fetchedObjects![index]
 
         // This is kind of a hack, but it does what I want for now.
         navigationController?.popViewController(animated: true)

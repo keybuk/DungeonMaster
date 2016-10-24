@@ -21,8 +21,8 @@ class BooksViewController : UITableViewController, NSFetchedResultsControllerDel
 
     // MARK: Fetched results controller
     
-    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] -> <<error type>> in
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entity: Model.Book)
+    lazy var fetchedResultsController: NSFetchedResultsController<Book> = { [unowned self] in
+        let fetchRequest = NSFetchRequest<Book>(entity: Model.Book)
         
         let typeSortDescriptor = NSSortDescriptor(key: "rawType", ascending: true)
         let nameSortDescriptor = NSSortDescriptor(key: "name", ascending: true)
@@ -41,7 +41,7 @@ class BooksViewController : UITableViewController, NSFetchedResultsControllerDel
     // MARK: Cell layout
 
     func updateCell(_ cell: UITableViewCell, forIndexPath indexPath: IndexPath) {
-        let book = fetchedResultsController.object(at: indexPath) as! Book
+        let book = fetchedResultsController.object(at: indexPath)
         
         cell.textLabel?.text = book.name
         if let hiddenBooks = hiddenBooks, hiddenBooks.contains(book) {
@@ -78,7 +78,7 @@ class BooksViewController : UITableViewController, NSFetchedResultsControllerDel
     // MARK: UITableViewDelegate
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let book = fetchedResultsController.object(at: indexPath) as! Book
+        let book = fetchedResultsController.object(at: indexPath) 
 
         if hiddenBooks == nil {
             hiddenBooks = [ book ]

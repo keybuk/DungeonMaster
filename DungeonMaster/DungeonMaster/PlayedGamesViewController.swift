@@ -89,8 +89,8 @@ class PlayedGamesViewController : UITableViewController, NSFetchedResultsControl
     // MARK: Fetched results controller
     
     /// Fetched results are the set of `LogEntry` for the player, grouped by the ObjectID of the `PlayedGame` relationship.
-    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] -> <<error type>> in
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entity: Model.LogEntry)
+    lazy var fetchedResultsController: NSFetchedResultsController<LogEntry> = { [unowned self] in
+        let fetchRequest = NSFetchRequest<LogEntry>(entity: Model.LogEntry)
         fetchRequest.predicate = NSPredicate(format: "playedGame.player == %@", self.player)
         
         let gameDateSortDescriptor = NSSortDescriptor(key: "playedGame.game.date", ascending: false)
@@ -113,13 +113,13 @@ class PlayedGamesViewController : UITableViewController, NSFetchedResultsControl
                 return playedGames
             }
             
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entity: Model.PlayedGame)
+            let fetchRequest = NSFetchRequest<PlayedGame>(entity: Model.PlayedGame)
             fetchRequest.predicate = NSPredicate(format: "player == %@", self.player)
             
             let gameDateSortDescriptor = NSSortDescriptor(key: "game.date", ascending: false)
             fetchRequest.sortDescriptors = [gameDateSortDescriptor]
 
-            _playedGames = try! managedObjectContext.fetch(fetchRequest) as! [PlayedGame]
+            _playedGames = try! managedObjectContext.fetch(fetchRequest)
             
             return _playedGames
         }
@@ -251,7 +251,7 @@ class PlayedGamesViewController : UITableViewController, NSFetchedResultsControl
         if editingStyle == .delete {
             guard let indexPath = indexPathInResults(forIndexPath: indexPath) else { fatalError("Unexpected index path outside of results") }
 
-            let logEntry = fetchedResultsController.object(at: indexPath) as! LogEntry
+            let logEntry = fetchedResultsController.object(at: indexPath)
             let playedGame = logEntry.playedGame
             let index = logEntry.index
             
@@ -301,14 +301,14 @@ class PlayedGamesViewController : UITableViewController, NSFetchedResultsControl
 
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to toIndexPath: IndexPath) {
         guard let fromIndexPath = indexPathInResults(forIndexPath: fromIndexPath) else { fatalError("Index path being moved is not in results") }
-        let logEntry = fetchedResultsController.object(at: fromIndexPath) as! LogEntry
+        let logEntry = fetchedResultsController.object(at: fromIndexPath) 
         let oldPlayedGame = logEntry.playedGame, oldIndex = logEntry.index
 
         let newPlayedGame = self.playedGame(forSectionInTable: (toIndexPath as NSIndexPath).section)
         if (toIndexPath as NSIndexPath).row < newPlayedGame.logEntries.count {
             // Moving within the set of results, which means that we have an existing log entry that we're displacing.
             guard let toIndexPath = indexPathInResults(forIndexPath: toIndexPath) else { fatalError("Destination index path is not in results") }
-            let displacedLogEntry = fetchedResultsController.object(at: toIndexPath) as! LogEntry
+            let displacedLogEntry = fetchedResultsController.object(at: toIndexPath) 
             let newIndex = displacedLogEntry.index
             assert(displacedLogEntry.playedGame == newPlayedGame, "Played game mismatched at destination")
             

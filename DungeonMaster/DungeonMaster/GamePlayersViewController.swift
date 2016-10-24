@@ -50,7 +50,7 @@ class GamePlayersViewController : UITableViewController, NSFetchedResultsControl
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PlayerSegue" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let playedGame = fetchedResultsController.object(at: indexPath) as! PlayedGame
+                let playedGame = fetchedResultsController.object(at: indexPath) 
                 
                 let viewController = segue.destination as! PlayerRootViewController
                 viewController.playedGame = playedGame
@@ -85,8 +85,8 @@ class GamePlayersViewController : UITableViewController, NSFetchedResultsControl
 
     // MARK: Fetched results controller
     
-    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] -> <<error type>> in
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entity: Model.PlayedGame)
+    lazy var fetchedResultsController: NSFetchedResultsController<PlayedGame> = { [unowned self] in
+        let fetchRequest = NSFetchRequest<PlayedGame>(entity: Model.PlayedGame)
         fetchRequest.predicate = NSPredicate(format: "game == %@", self.game)
         
         let nameSortDescriptor = NSSortDescriptor(key: "player.name", ascending: true)
@@ -110,14 +110,14 @@ class GamePlayersViewController : UITableViewController, NSFetchedResultsControl
             }
             
             // Ideally we'd use something like "NONE adventures == %@" here, but that doesn't work.
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entity: Model.Player)
-            let players = fetchedResultsController.fetchedObjects!.map({ ($0 as! PlayedGame).player })
+            let fetchRequest = NSFetchRequest<Player>(entity: Model.Player)
+            let players = fetchedResultsController.fetchedObjects!.map({ $0.player })
             fetchRequest.predicate = NSPredicate(format: "NOT SELF IN %@", players)
             
             let nameSortDescriptor = NSSortDescriptor(key: "name", ascending: true)
             fetchRequest.sortDescriptors = [nameSortDescriptor]
             
-            _missingPlayers = try! managedObjectContext.fetch(fetchRequest) as! [Player]
+            _missingPlayers = try! managedObjectContext.fetch(fetchRequest)
             return _missingPlayers!
         }
         
@@ -151,7 +151,7 @@ class GamePlayersViewController : UITableViewController, NSFetchedResultsControl
         if (indexPath as NSIndexPath).section < addSection {
             // Player in the adventure, referenced through a PlayedGame object.
             let cell = tableView.dequeueReusableCell(withIdentifier: "GamePlayerCell", for: indexPath) as! GamePlayerCell
-            let playedGame = fetchedResultsController.object(at: indexPath) as! PlayedGame
+            let playedGame = fetchedResultsController.object(at: indexPath) 
             cell.player = playedGame.player
             return cell
         } else if (indexPath as NSIndexPath).row < missingPlayers.count {
@@ -175,7 +175,7 @@ class GamePlayersViewController : UITableViewController, NSFetchedResultsControl
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let playedGame = fetchedResultsController.object(at: indexPath) as! PlayedGame
+            let playedGame = fetchedResultsController.object(at: indexPath) 
             managedObjectContext.delete(playedGame)
             
             game.adventure.lastModified = Date()

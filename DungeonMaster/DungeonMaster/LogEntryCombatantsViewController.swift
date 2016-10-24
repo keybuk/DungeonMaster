@@ -20,7 +20,7 @@ class LogEntryCombatantsViewController : UITableViewController, NSFetchedResults
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for case let combatant as Combatant in fetchedResultsController.fetchedObjects! {
+        for combatant in fetchedResultsController.fetchedObjects! {
             if combatant.damagePoints >= combatant.hitPoints {
                 combatants.insert(combatant)
             }
@@ -48,7 +48,7 @@ class LogEntryCombatantsViewController : UITableViewController, NSFetchedResults
     
     // MARK: Fetched results controller
     
-    lazy var fetchedResultsController: NSFetchedResultsController = { [unowned self] -> <<error type>> in
+    lazy var fetchedResultsController: NSFetchedResultsController<Combatant> = { [unowned self] in
         let fetchRequest = self.encounter.fetchRequestForCombatants(withRole: .foe)
 
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
@@ -72,7 +72,7 @@ class LogEntryCombatantsViewController : UITableViewController, NSFetchedResults
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LogEntryCombatantCell", for: indexPath) as! LogEntryCombatantCell
-        let combatant = fetchedResultsController.object(at: indexPath) as! Combatant
+        let combatant = fetchedResultsController.object(at: indexPath)
         cell.combatant = combatant
         cell.accessoryType = combatants.contains(combatant) ? .checkmark : .none
         return cell
@@ -81,7 +81,7 @@ class LogEntryCombatantsViewController : UITableViewController, NSFetchedResults
     // MARK: UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let combatant = fetchedResultsController.object(at: indexPath) as! Combatant
+        let combatant = fetchedResultsController.object(at: indexPath)
         if combatants.contains(combatant) {
             combatants.remove(combatant)
         } else {

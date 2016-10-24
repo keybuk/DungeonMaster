@@ -224,8 +224,8 @@ final class Encounter : NSManagedObject {
     /// The returned fetch request is sorted correctly for the combat initiative order.
     ///
     /// - parameter role: optional combat role to filter on.
-    func fetchRequestForCombatants(withRole role: CombatRole? = nil) -> NSFetchRequest<NSFetchRequestResult> {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entity: Model.Combatant)
+    func fetchRequestForCombatants(withRole role: CombatRole? = nil) -> NSFetchRequest<Combatant> {
+        let fetchRequest = NSFetchRequest<Combatant>(entity: Model.Combatant)
         
         let encounterPredicate = NSPredicate(format: "encounter == %@", self)
         if let role = role {
@@ -288,7 +288,7 @@ final class Encounter : NSManagedObject {
     /// Updates the `currentTurn` of combatants in the encounter, and may update `round`.
     func nextTurn() {
         let fetchRequest = fetchRequestForCombatants()
-        let combatants = try! managedObjectContext!.fetch(fetchRequest) as! [Combatant]
+        let combatants = try! managedObjectContext!.fetch(fetchRequest)
         
         // First clear the turn of the current combatants, remembering the first and last combatant whose turn it was.
         let turnIndex = combatants.index(where: { $0.isCurrentTurn })

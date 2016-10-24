@@ -24,10 +24,10 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         if let navigationController = window?.rootViewController as? UINavigationController,
             let adventuresViewController = navigationController.topViewController as? AdventuresViewController,
             let adventureName = UserDefaults.standard.object(forKey: "Adventure") as? String {
-                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entity: Model.Adventure)
+                let fetchRequest = NSFetchRequest<Adventure>(entity: Model.Adventure)
                 fetchRequest.predicate = NSPredicate(format: "name == %@", adventureName)
                 
-                let adventures = try! managedObjectContext.fetch(fetchRequest) as! [Adventure]
+                let adventures = try! managedObjectContext.fetch(fetchRequest)
                 if adventures.count > 0 {
                     let adventureViewController = adventuresViewController.storyboard?.instantiateViewController(withIdentifier: "AdventureViewController") as! AdventureViewController
                     adventureViewController.adventure = adventures[0]

@@ -663,10 +663,10 @@ class MonsterViewController : UIViewController {
         
         let index = textView.layoutManager.characterIndex(for: location, in: textView.textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
         if let linkName = textView.attributedText.attribute(MarkupParser.linkAttributeName, at: index, effectiveRange: nil) as? String {
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entity: Model.Spell)
+            let fetchRequest = NSFetchRequest<Spell>(entity: Model.Spell)
             fetchRequest.predicate = NSPredicate(format: "name LIKE[cd] %@", linkName)
             
-            let spells = try! managedObjectContext.fetch(fetchRequest) as! [Spell]
+            let spells = try! managedObjectContext.fetch(fetchRequest)
             if spells.count > 0 {
                 let viewController = storyboard?.instantiateViewController(withIdentifier: "SpellViewController") as! SpellViewController
                 viewController.spell = spells.first
