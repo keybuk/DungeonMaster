@@ -229,7 +229,9 @@ class CombatantViewController : UITableViewController, ManagedObjectObserverDele
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch (indexPath as NSIndexPath).section {
-        case 0, 1, 2 where combatant.role != .player:
+        case 0, 1:
+            fallthrough
+        case 2 where combatant.role != .player:
             return 44.0
         case 2 where combatant.role == .player, 3 where combatant.role != .player:
             return 144.0
@@ -242,9 +244,13 @@ class CombatantViewController : UITableViewController, ManagedObjectObserverDele
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         switch (indexPath as NSIndexPath).section {
-        case 1, 2 where combatant.role != .player:
+        case 1:
+            fallthrough
+        case 2 where combatant.role != .player:
             return (indexPath as NSIndexPath).row > 0
-        case 0, 2 where combatant.role == .player, 3 where combatant.role != .player:
+        case 0:
+            fallthrough
+        case 2 where combatant.role == .player, 3 where combatant.role != .player:
             return false
         default:
             abort()
