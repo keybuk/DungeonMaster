@@ -106,7 +106,7 @@ class EncounterViewController : UIViewController, ManagedObjectObserverDelegate 
             let xpFormatter = NumberFormatter()
             xpFormatter.numberStyle = .decimal
             
-            difficultyLabel.text = "\(difficultyText)—\(xpFormatter.string(from: NSNumber(xp))!) XP"
+            difficultyLabel.text = "\(difficultyText)—\(xpFormatter.string(from: NSNumber(value: xp))!) XP"
             difficultyLabel.sizeToFit()
         } else {
             difficultyLabel.text = "Incomplete encounter"
