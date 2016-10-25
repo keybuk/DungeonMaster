@@ -26,7 +26,7 @@ class NetworkController : NSObject, NetworkPeerDelegate, NetworkConnectionDelega
         let tomorrow = (calendar as NSCalendar).date(byAdding: .day, value: 1, to: today, options: [])!
         
         let fetchRequest = NSFetchRequest<Encounter>(entity: Model.Encounter)
-        fetchRequest.predicate = NSPredicate(format: "rawRound > 0 AND SUBQUERY(games, $g, $g.date >= %@ AND $g.date < %@).@count > 0", today, tomorrow)
+        fetchRequest.predicate = NSPredicate(format: "rawRound > 0 AND SUBQUERY(games, $g, $g.date >= %@ AND $g.date < %@).@count > 0", today as NSDate, tomorrow as NSDate as CVarArg)
         
         let lastModifiedSortDescriptor = NSSortDescriptor(key: "lastModified", ascending: false)
         fetchRequest.sortDescriptors = [lastModifiedSortDescriptor]
