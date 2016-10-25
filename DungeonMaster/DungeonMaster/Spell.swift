@@ -171,7 +171,7 @@ final class Spell : NSManagedObject {
     @NSManaged var text: String
 
     convenience init(name: String, insertInto context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entity(Model.Spell, in: context)
+        let entity = NSEntityDescription.entity(forModel: Model.Spell, in: context)
         self.init(entity: entity, insertInto: context)
         
         self.name = name
