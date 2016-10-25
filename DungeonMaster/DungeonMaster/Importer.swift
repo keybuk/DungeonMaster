@@ -111,10 +111,10 @@ func importIfNeeded() {
         
         let sourceDatas = monsterData["sources"] as! [NSDictionary]
         for sourceData in sourceDatas {
-            let bookIndex = (sourceData["book"]! as AnyObject).intValue
+            let bookIndex = (sourceData["book"]! as! NSNumber).intValue
             let book = books[bookIndex]
 
-            let page = (sourceData["page"]! as AnyObject).intValue
+            let page = (sourceData["page"]! as! NSNumber).intValue
             
             let source = Source(book: book, page: page, monster: monster, insertInto: managedObjectContext)
             
@@ -398,10 +398,10 @@ func importIfNeeded() {
         
         let sourceDatas = spellData["sources"] as! [NSDictionary]
         for sourceData in sourceDatas {
-            let bookIndex = (sourceData["book"]! as AnyObject).intValue
+            let bookIndex = (sourceData["book"]! as! NSNumber).intValue
             let book = books[bookIndex]
             
-            let page = (sourceData["page"]! as AnyObject).intValue
+            let page = (sourceData["page"]! as! NSNumber).intValue
             
             let source = Source(book: book, page: page, spell: spell, insertInto: managedObjectContext)
             

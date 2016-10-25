@@ -186,7 +186,7 @@ class MonstersViewController : UIViewController, UITableViewDataSource, UITableV
                 let xpFormatter = NumberFormatter()
                 xpFormatter.numberStyle = .decimal
                 
-                xpString = xpFormatter.string(from: NSNumber(sharedRules.challengeXP[challenge]!))!
+                xpString = xpFormatter.string(from: NSNumber(value: sharedRules.challengeXP[challenge]!))!
             } else {
                 xpString = "0–10"
             }

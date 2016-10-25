@@ -413,7 +413,7 @@ final class Monster : NSManagedObject {
         let xpFormatter = NumberFormatter()
         xpFormatter.numberStyle = .decimal
         
-        let xpString = xpFormatter.string(from: NSNumber(xp))!
+        let xpString = xpFormatter.string(from: NSNumber(value: xp))!
         return "\(xpString) XP"
     }
     

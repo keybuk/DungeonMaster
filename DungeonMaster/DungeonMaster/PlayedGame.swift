@@ -49,7 +49,7 @@ final class PlayedGame : NSManagedObject {
         let xpFormatter = NumberFormatter()
         xpFormatter.numberStyle = .decimal
         
-        let xpString = xpFormatter.string(from: NSNumber(xp))!
+        let xpString = xpFormatter.string(from: NSNumber(value: xp))!
 
         // Level is based from this starting XP value.
         let level = sharedRules.levelXP.filter({ $0.1 <= xp }).map({ $0.0 }).max()!

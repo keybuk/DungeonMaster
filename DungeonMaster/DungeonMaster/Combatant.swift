@@ -33,7 +33,7 @@ final class Combatant : NSManagedObject {
             return CombatRole(rawValue: rawRole.intValue)!
         }
         set(newRole) {
-            rawRole = NSNumber(newRole.rawValue)
+            rawRole = NSNumber(value: newRole.rawValue)
         }
     }
     @NSManaged fileprivate var rawRole: NSNumber
