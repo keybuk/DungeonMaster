@@ -307,13 +307,18 @@ class CombatantViewController : UITableViewController, ManagedObjectObserverDele
         switch (indexPath as NSIndexPath).section {
         case 0:
             switch (indexPath as NSIndexPath).row {
-            case 2, 3 where combatant.role != .player:
+            case 2:
+                fallthrough
+            case 3 where combatant.role != .player:
                 let cell = tableView.cellForRow(at: indexPath) as! DiceRollCell
                 cell.textField.becomeFirstResponder()
             default:
                 break
             }
-        case 1, 2 where combatant.role != .player:
+        case 1:
+            fallthrough
+        case 
+             2 where combatant.role != .player:
             // Handled by a segue action in the storyboard.
             break
         case 2 where combatant.role == .player, 3 where combatant.role != .player:
