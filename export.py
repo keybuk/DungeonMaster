@@ -71,12 +71,17 @@ def main():
 		{
 			"name": "Sword Coast Adventurer's Guide",
 			"type": 2,
+		},
+		{
+			"name": "Personal",
+			"type": 1
 		}
 	]
 	bookTags = [
 		"phb", "mm", "dmg", "pbr",  "dmbr",
 		"lmop", "hotdq", "hotdqs", "trot", "trots", "pota", "potas", "eepc", "oota",
-		"scag" ]
+		"scag",
+		"me" ]
 
 	monsters = []
 	for filename in base.local_files('Monsters'):

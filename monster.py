@@ -378,7 +378,7 @@ DAMAGE_RESISTANCES_RE = re.compile(
 		r'(?: from nonmagical attacks' +
 		r'(?: not made with (adamantine|silvered) weapons)?' +
 		r'| from (magic) weapons' + # Demilich
-		r'| from nonmagical weapons that aren\'t (silvered)' + # Old-style nonmagical non-silvered
+		r'| from nonmagical weapons(?: that aren\'t (silvered))?' + # Old-style nonmagical non-silvered
 		r'))?' +
 	r'$'
 	)
