@@ -100,7 +100,8 @@ class MonstersViewController : UIViewController, UITableViewDataSource, UITableV
                 return fetchedResultsController
             }
             
-            let fetchRequest = NSFetchRequest<Monster>(entity: Model.Monster)
+            let fetchRequest = NSFetchRequest<Monster>()
+            fetchRequest.entity = NSEntityDescription.entity(forModel: Model.Monster, in: managedObjectContext)
             fetchRequest.fetchBatchSize = 20
             
             let sectionNameKeyPath: String

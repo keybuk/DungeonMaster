@@ -35,7 +35,8 @@ func importIfNeeded() {
     
     // Combatants can reference monsters, which may be about to be deleted. Collect the names of these monsters so we can find them again later.
     var combatants: [String:[Combatant]] = [:]
-    let combatantFetchRequest = NSFetchRequest<Combatant>(entity: Model.Combatant)
+    let combatantFetchRequest = NSFetchRequest<Combatant>()
+    combatantFetchRequest.entity = NSEntityDescription.entity(forModel: Model.Combatant, in: managedObjectContext)
     for combatant in try! managedObjectContext.fetch(combatantFetchRequest) {
         guard let count = combatant.monster?.sources.count, count > 0 else { continue }
 
@@ -48,7 +49,8 @@ func importIfNeeded() {
     
     // Delete all books. The delete will cascade and remove all information sourced from the books.
     var adventures: [String:[Adventure]] = [:]
-    let bookFetchRequest = NSFetchRequest<Book>(entity: Model.Book)
+    let bookFetchRequest = NSFetchRequest<Book>()
+    bookFetchRequest.entity = NSEntityDescription.entity(forModel: Model.Book, in: managedObjectContext)
     for book in try! managedObjectContext.fetch(bookFetchRequest) {
         // Save the set of adventures that this book refers to, so we can reconnect them again later.
         for case let adventure as Adventure in book.adventures {
@@ -64,13 +66,15 @@ func importIfNeeded() {
     
     // Collect the set of tags and languages so we can re-use them on the next import.
     var tags: [String:Tag] = [:]
-    let tagFetchRequest = NSFetchRequest<Tag>(entity: Model.Tag)
+    let tagFetchRequest = NSFetchRequest<Tag>()
+    tagFetchRequest.entity = NSEntityDescription.entity(forModel: Model.Tag, in: managedObjectContext)
     for tag in try! managedObjectContext.fetch(tagFetchRequest) {
         tags[tag.name] = tag
     }
     
     var languages: [String:Language] = [:]
-    let languageFetchRequest = NSFetchRequest<Language>(entity: Model.Language)
+    let languageFetchRequest = NSFetchRequest<Language>()
+    languageFetchRequest.entity = NSEntityDescription.entity(forModel: Model.Language, in: managedObjectContext)
     for language in try! managedObjectContext.fetch(languageFetchRequest) {
         languages[language.name] = language
     }

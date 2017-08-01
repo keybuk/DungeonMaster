@@ -52,8 +52,12 @@ final class Adventure : NSManagedObject {
         lastModified = Date()
         image = AdventureImage(adventure: self, insertInto: context)
         
-        books = NSSet(array: try! context.fetch(NSFetchRequest(entity: Model.Book)) )
-        players = NSSet(array: try! context.fetch(NSFetchRequest(entity: Model.Player)) )
+        let bookRequest = NSFetchRequest<Book>()
+        let playerRequest = NSFetchRequest<Player>()
+        bookRequest.entity = NSEntityDescription.entity(forModel: Model.Book, in: context)
+        playerRequest.entity = NSEntityDescription.entity(forModel: Model.Player, in: context)
+        books = NSSet(array: try! context.fetch(bookRequest))
+        players = NSSet(array: try! context.fetch(playerRequest))
     }
 
     // MARK: Validation

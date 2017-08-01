@@ -77,7 +77,8 @@ class SpellsViewController : UIViewController, UITableViewDataSource, UITableVie
                 return fetchedResultsController
             }
             
-            let fetchRequest = NSFetchRequest<Spell>(entity: Model.Spell)
+            let fetchRequest = NSFetchRequest<Spell>()
+            fetchRequest.entity = NSEntityDescription.entity(forModel: Model.Spell, in: managedObjectContext)
             fetchRequest.fetchBatchSize = 20
 
             // Sorting by name is enough for section handling by initial to work.

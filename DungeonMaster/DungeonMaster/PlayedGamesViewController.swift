@@ -90,7 +90,8 @@ class PlayedGamesViewController : UITableViewController, NSFetchedResultsControl
     
     /// Fetched results are the set of `LogEntry` for the player, grouped by the ObjectID of the `PlayedGame` relationship.
     lazy var fetchedResultsController: NSFetchedResultsController<LogEntry> = { [unowned self] in
-        let fetchRequest = NSFetchRequest<LogEntry>(entity: Model.LogEntry)
+        let fetchRequest = NSFetchRequest<LogEntry>()
+        fetchRequest.entity = NSEntityDescription.entity(forModel: Model.LogEntry, in: managedObjectContext)
         fetchRequest.predicate = NSPredicate(format: "playedGame.player == %@", self.player)
         
         let gameDateSortDescriptor = NSSortDescriptor(key: "playedGame.game.date", ascending: false)
@@ -113,7 +114,8 @@ class PlayedGamesViewController : UITableViewController, NSFetchedResultsControl
                 return playedGames
             }
             
-            let fetchRequest = NSFetchRequest<PlayedGame>(entity: Model.PlayedGame)
+            let fetchRequest = NSFetchRequest<PlayedGame>()
+            fetchRequest.entity = NSEntityDescription.entity(forModel: Model.PlayedGame, in: managedObjectContext)
             fetchRequest.predicate = NSPredicate(format: "player == %@", self.player)
             
             let gameDateSortDescriptor = NSSortDescriptor(key: "game.date", ascending: false)

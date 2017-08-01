@@ -46,7 +46,8 @@ class AdventureGamesViewController : UITableViewController {
     // MARK: Fetched results controller
     
     lazy var fetchedResultsController: FetchedResultsController<Int, Game> = { [unowned self] in
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entity: Model.Game)
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
+        fetchRequest.entity = NSEntityDescription.entity(forModel: Model.Game, in: managedObjectContext)
         fetchRequest.predicate = NSPredicate(format: "adventure == %@", self.adventure)
         
         let numberSortDescriptor = NSSortDescriptor(key: "rawNumber", ascending: false)

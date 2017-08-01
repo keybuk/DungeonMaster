@@ -149,7 +149,8 @@ class AdventuresViewController : UICollectionViewController, NSFetchedResultsCon
     // MARK: Fetched results controller
     
     lazy var fetchedResultsController: NSFetchedResultsController<Adventure> = { [unowned self] in
-        let fetchRequest = NSFetchRequest<Adventure>(entity: Model.Adventure)
+        let fetchRequest = NSFetchRequest<Adventure>()
+        fetchRequest.entity = NSEntityDescription.entity(forModel: Model.Adventure, in: managedObjectContext)
         
         let sortDescriptor = NSSortDescriptor(key: "lastModified", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
@@ -394,7 +395,7 @@ class AdventureCell : UICollectionViewCell, UITextViewDelegate, AdjustableImageV
     
     // MARK: AdjustableImageViewDelegate
     
-    var showImagePicker: ((UIView, (UIImage) -> Void) -> Void)!
+    var showImagePicker: ((UIView, @escaping (UIImage) -> Void) -> Void)!
     
     func adjustableImageViewShouldChangeImage(_ adjustableImageView: AdjustableImageView) {
         showImagePicker(adjustableImageView) { image in

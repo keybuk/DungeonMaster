@@ -289,7 +289,8 @@ class SpellViewController : UIViewController {
         
         let index = textView.layoutManager.characterIndex(for: location, in: textView.textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
         if let linkName = textView.attributedText.attribute(MarkupParser.linkAttributeName, at: index, effectiveRange: nil) as? String {
-            let fetchRequest = NSFetchRequest<Spell>(entity: Model.Spell)
+            let fetchRequest = NSFetchRequest<Spell>()
+            fetchRequest.entity = NSEntityDescription.entity(forModel: Model.Spell, in: managedObjectContext)
             fetchRequest.predicate = NSPredicate(format: "name LIKE[cd] %@", linkName)
             
             let spells = try! managedObjectContext.fetch(fetchRequest)

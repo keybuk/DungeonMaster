@@ -24,7 +24,8 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         if let navigationController = window?.rootViewController as? UINavigationController,
             let adventuresViewController = navigationController.topViewController as? AdventuresViewController,
             let adventureName = UserDefaults.standard.object(forKey: "Adventure") as? String {
-                let fetchRequest = NSFetchRequest<Adventure>(entity: Model.Adventure)
+                let fetchRequest = NSFetchRequest<Adventure>()
+                fetchRequest.entity = NSEntityDescription.entity(forModel: Model.Adventure, in: managedObjectContext)
                 fetchRequest.predicate = NSPredicate(format: "name == %@", adventureName)
                 
                 let adventures = try! managedObjectContext.fetch(fetchRequest)

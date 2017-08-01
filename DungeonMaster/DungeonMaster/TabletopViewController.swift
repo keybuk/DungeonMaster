@@ -36,7 +36,8 @@ class TabletopViewController : UIViewController, TabletopViewDataSource, Tableto
     
     lazy var fetchedResultsController: NSFetchedResultsController<Combatant> = { [unowned self] in
         // We use a predicate on the Combatant table, matching against the encounter, rather than just using "encounter.combatants" so that we can be a delegate and get change notifications.
-        let fetchRequest = NSFetchRequest<Combatant>(entity: Model.Combatant)
+        let fetchRequest = NSFetchRequest<Combatant>()
+        fetchRequest.entity = NSEntityDescription.entity(forModel: Model.Combatant, in: managedObjectContext)
         
         let predicate = NSPredicate(format: "encounter == %@", self.encounter)
         fetchRequest.predicate = predicate
@@ -99,7 +100,7 @@ class TabletopViewController : UIViewController, TabletopViewDataSource, Tableto
         // This is kind of a hack, but it does what I want for now.
         navigationController?.popViewController(animated: true)
         if let encounterViewController = navigationController?.topViewController as? EncounterViewController {
-            let combatantsViewController = encounterViewController.combatantsViewController
+            let combatantsViewController: EncounterCombatantsViewController! = encounterViewController.combatantsViewController
             let indexPath = combatantsViewController.fetchedResultsController.indexPath(forObject: combatant)
             combatantsViewController.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .middle)
             combatantsViewController?.performSegue(withIdentifier: "CombatantSegue", sender: self)

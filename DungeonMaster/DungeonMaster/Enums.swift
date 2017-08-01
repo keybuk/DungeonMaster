@@ -125,7 +125,7 @@ enum Skill : Equatable, Hashable {
     }
     
     var hashValue: Int {
-        return [ rawAbilityValue, rawSkillValue ].hashValue
+        return "\(rawAbilityValue)\(rawSkillValue)".hashValue
     }
 
     init?(rawAbilityValue: Int, rawSkillValue: Int) {
@@ -414,7 +414,7 @@ enum Race : Equatable, Hashable {
     }
     
     var hashValue: Int {
-        return [ rawRaceValue, rawSubraceValue ?? 0 ].hashValue
+        return "\(rawRaceValue)\(rawSubraceValue ?? 0)".hashValue
     }
     
     init?(rawRaceValue: Int, rawSubraceValue: Int?) {

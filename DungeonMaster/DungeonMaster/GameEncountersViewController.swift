@@ -67,7 +67,8 @@ class GameEncountersViewController : UITableViewController {
     // MARK: Fetched results controller
     
     lazy var fetchedResultsController: FetchedResultsController<Int, Encounter> = { [unowned self] in
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entity: Model.Encounter)
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
+        fetchRequest.entity = NSEntityDescription.entity(forModel: Model.Encounter, in: managedObjectContext)
         
         if self.isEditing {
             fetchRequest.predicate = NSPredicate(format: "ANY games == %@ OR (adventure == %@ AND games.@count == 0)", self.game, self.game.adventure)

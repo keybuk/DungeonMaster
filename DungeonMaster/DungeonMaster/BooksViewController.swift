@@ -22,7 +22,8 @@ class BooksViewController : UITableViewController, NSFetchedResultsControllerDel
     // MARK: Fetched results controller
     
     lazy var fetchedResultsController: NSFetchedResultsController<Book> = { [unowned self] in
-        let fetchRequest = NSFetchRequest<Book>(entity: Model.Book)
+        let fetchRequest = NSFetchRequest<Book>()
+        fetchRequest.entity = NSEntityDescription.entity(forModel: Model.Book, in: managedObjectContext)
         
         let typeSortDescriptor = NSSortDescriptor(key: "rawType", ascending: true)
         let nameSortDescriptor = NSSortDescriptor(key: "name", ascending: true)

@@ -81,14 +81,6 @@ extension NSEntityDescription {
     
 }
 
-extension NSFetchRequest {
-    
-    convenience init(entity: Model) {
-        self.init(entityName: entity.rawValue)
-    }
-    
-}
-
 let persistentStoreCoordinator: NSPersistentStoreCoordinator = {
     let options: [AnyHashable: Any]? = [
         NSMigratePersistentStoresAutomaticallyOption : true,
