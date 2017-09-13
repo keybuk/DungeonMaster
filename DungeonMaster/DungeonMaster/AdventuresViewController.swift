@@ -395,7 +395,7 @@ class AdventureCell : UICollectionViewCell, UITextViewDelegate, AdjustableImageV
     
     // MARK: AdjustableImageViewDelegate
     
-    var showImagePicker: ((UIView, @escaping (UIImage) -> Void) -> Void)!
+    var showImagePicker: ((UIView, (UIImage) -> Void) -> Void)!
     
     func adjustableImageViewShouldChangeImage(_ adjustableImageView: AdjustableImageView) {
         showImagePicker(adjustableImageView) { image in

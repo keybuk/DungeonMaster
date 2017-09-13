@@ -614,11 +614,10 @@ class MarkupParser {
                         }
                         
                         let fontDescriptor = (attributes[NSFontAttributeName] as? UIFont)?.fontDescriptor ?? bodyFontDescriptor
+                        let emphasisedFontDescriptor = fontDescriptor.withSymbolicTraits(emphasisedTraits[emphasisness])
                         
                         var emphasisAttributes = attributes
-                        if let emphasisedFontDescriptor = fontDescriptor.withSymbolicTraits(emphasisedTraits[emphasisness]) {
-                            emphasisAttributes[NSFontAttributeName] = UIFont(descriptor: emphasisedFontDescriptor, size: 0.0)
-                        }
+                        emphasisAttributes[NSFontAttributeName] = UIFont(descriptor: emphasisedFontDescriptor, size: 0.0)
                         
                         text.append(parseText(string, attributes: emphasisAttributes, features: features, appendNewline: false))
                         

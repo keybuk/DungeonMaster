@@ -15,7 +15,7 @@ private struct Box {
     var height: ClosedRange<CGFloat>
     
     var center: CGPoint {
-        return CGPoint(x: width.lowerBound + (width.upperBound - width.lowerBound) / 2.0, y: height.lowerBound + (height.upperBound - height.lowerBound) / 2.0)
+        return CGPoint(x: width.start + (width.end - width.start) / 2.0, y: height.start + (height.end - height.start) / 2.0)
     }
 }
 
@@ -41,10 +41,10 @@ struct PointGenerator : IteratorProtocol {
     
     fileprivate func pointsForBox(_ box: Box, rotate: Int = 0) -> [CGPoint] {
         var points: [CGPoint] = []
-        points.append(CGPoint(x: box.width.lowerBound, y: box.center.y))
-        points.append(CGPoint(x: box.center.x, y: box.height.lowerBound))
-        points.append(CGPoint(x: box.width.upperBound, y: box.center.y))
-        points.append(CGPoint(x: box.center.x, y: box.height.upperBound))
+        points.append(CGPoint(x: box.width.start, y: box.center.y))
+        points.append(CGPoint(x: box.center.x, y: box.height.start))
+        points.append(CGPoint(x: box.width.end, y: box.center.y))
+        points.append(CGPoint(x: box.center.x, y: box.height.end))
         
         for _ in 0..<rotate {
             points.append(points.removeFirst())
@@ -57,10 +57,10 @@ struct PointGenerator : IteratorProtocol {
     
     fileprivate func boxesForBox(_ box: Box, rotate: Int = 0) -> [Box] {
         var boxes: [Box] = []
-        boxes.append(Box(width: box.width.lowerBound...box.center.x, height: box.height.lowerBound...box.center.y))
-        boxes.append(Box(width: box.center.x...box.width.upperBound, height: box.height.lowerBound...box.center.y))
-        boxes.append(Box(width: box.center.x...box.width.upperBound, height: box.center.y...box.height.upperBound))
-        boxes.append(Box(width: box.width.lowerBound...box.center.x, height: box.center.y...box.height.upperBound))
+        boxes.append(Box(width: box.width.start...box.center.x, height: box.height.start...box.center.y))
+        boxes.append(Box(width: box.center.x...box.width.end, height: box.height.start...box.center.y))
+        boxes.append(Box(width: box.center.x...box.width.end, height: box.center.y...box.height.end))
+        boxes.append(Box(width: box.width.start...box.center.x, height: box.center.y...box.height.end))
         
         for _ in 0..<rotate {
             boxes.append(boxes.removeFirst())

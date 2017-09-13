@@ -8,7 +8,7 @@
 
 import UIKit
 
-let π = Double.pi
+let π = M_PI
 
 typealias TabletopLocation = CGPoint
 
@@ -403,7 +403,7 @@ typealias TabletopLocation = CGPoint
                 context?.closePath()
             } else {
                 let point = locationToPoint(location)
-                context?.addArc(center: point, radius: itemRadius, startAngle: 0, endAngle: CGFloat(2.0 * π), clockwise: false)
+                CGContextAddArc(context, point.x, point.y, itemRadius, 0.0, CGFloat(2.0 * π), 0)
             }
 
             context?.drawPath(using: .fillStroke)
