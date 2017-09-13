@@ -72,7 +72,8 @@ class AdventurePlayersViewController : UITableViewController, NSFetchedResultsCo
     // MARK: Fetched results controller
     
     lazy var fetchedResultsController: NSFetchedResultsController<Player> = { [unowned self] in
-        let fetchRequest = NSFetchRequest<Player>(entity: Model.Player)
+        let fetchRequest = NSFetchRequest<Player>()
+        fetchRequest.entity = NSEntityDescription.entity(forModel: Model.Player, in: managedObjectContext)
         fetchRequest.predicate = NSPredicate(format: "ANY adventures == %@", self.adventure)
         
         let nameSortDescriptor = NSSortDescriptor(key: "name", ascending: true)
@@ -96,7 +97,8 @@ class AdventurePlayersViewController : UITableViewController, NSFetchedResultsCo
             }
 
             // Ideally we'd use something like "NONE adventures == %@" here, but that doesn't work.
-            let fetchRequest = NSFetchRequest<Player>(entity: Model.Player)
+            let fetchRequest = NSFetchRequest<Player>()
+            fetchRequest.entity = NSEntityDescription.entity(forModel: Model.Player, in: managedObjectContext)
             fetchRequest.predicate = NSPredicate(format: "NOT SELF IN %@", fetchedResultsController.fetchedObjects!)
             
             let nameSortDescriptor = NSSortDescriptor(key: "name", ascending: true)

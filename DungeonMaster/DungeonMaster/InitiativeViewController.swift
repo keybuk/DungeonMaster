@@ -86,7 +86,8 @@ class InitiativeViewController : UITableViewController, NSFetchedResultsControll
             }
             
             // Ideally we'd use something like "NONE combatants.encounter == %@" here, but that doesn't work.
-            let fetchRequest = NSFetchRequest<Player>(entity: Model.Player)
+            let fetchRequest = NSFetchRequest<Player>()
+            fetchRequest.entity = NSEntityDescription.entity(forModel: Model.Player, in: managedObjectContext)
             let players = fetchedResultsController.fetchedObjects!.flatMap({ $0.player })
             fetchRequest.predicate = NSPredicate(format: "ANY playedGames.game == %@ AND NOT SELF IN %@", game, players)
 

@@ -225,7 +225,8 @@ final class Encounter : NSManagedObject {
     ///
     /// - parameter role: optional combat role to filter on.
     func fetchRequestForCombatants(withRole role: CombatRole? = nil) -> NSFetchRequest<Combatant> {
-        let fetchRequest = NSFetchRequest<Combatant>(entity: Model.Combatant)
+        let fetchRequest = NSFetchRequest<Combatant>()
+        fetchRequest.entity = NSEntityDescription.entity(forModel: Model.Combatant, in: managedObjectContext!)
         
         let encounterPredicate = NSPredicate(format: "encounter == %@", self)
         if let role = role {

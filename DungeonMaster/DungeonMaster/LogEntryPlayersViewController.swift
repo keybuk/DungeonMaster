@@ -54,7 +54,8 @@ class LogEntryPlayersViewController : UITableViewController, NSFetchedResultsCon
     // MARK: Fetched results controller
     
     lazy var fetchedResultsController: NSFetchedResultsController<PlayedGame> = { [unowned self] in
-        let fetchRequest = NSFetchRequest<PlayedGame>(entity: Model.PlayedGame)
+        let fetchRequest = NSFetchRequest<PlayedGame>()
+        fetchRequest.entity = NSEntityDescription.entity(forModel: Model.PlayedGame, in: managedObjectContext)
         let gamePredicate = NSPredicate(format: "game == %@", self.game)
         if let encounter = self.encounter {
             let encounterPredicate = NSPredicate(format: "ANY player.combatants.encounter == %@", encounter)

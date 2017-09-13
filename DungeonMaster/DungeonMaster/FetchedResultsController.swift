@@ -297,7 +297,7 @@ open class FetchedResultsController<Section : Hashable & Comparable, Entity : NS
     /// Called on changes to the managed object context.
     @objc fileprivate func managedObjectContextObjectsDidChange(_ notification: Notification) {
         assert(notification.name == NSNotification.Name.NSManagedObjectContextObjectsDidChange, "Notification method called for wrong notification.")
-        assert(notification.object === managedObjectContext, "Notification called for incorrect managed object context.")
+        assert(notification.object as? NSManagedObjectContext === managedObjectContext, "Notification called for incorrect managed object context.")
         
         var changes: [FetchedResultsChange<Section, Entity>] = []
         var insertedSections: [Section] = []

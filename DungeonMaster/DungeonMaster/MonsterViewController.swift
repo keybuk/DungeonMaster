@@ -296,7 +296,7 @@ class MonsterViewController : UIViewController {
             
             if allAttackDamages.count > 0 {
                 damageList += allAttackDamages.map({
-                    DamageType(rawValue: (($0 as! NSManagedObject).valueForKey("rawDamageType") as! NSNumber).integerValue)!.stringValue.lowercased()
+                    DamageType(rawValue: (($0 as! NSManagedObject).value(forKey: "rawDamageType") as! NSNumber).intValue)!.stringValue.lowercased()
                 }).sorted(by: <).joined(separator: ", ")
                 
                 if allAttackDamages.count < damages.count || spellDamage {
@@ -316,7 +316,7 @@ class MonsterViewController : UIViewController {
                 }
                 
                 var damageStrings = otherAttackDamages.map({
-                    DamageType(rawValue: (($0 as! NSManagedObject).valueForKey("rawDamageType") as! NSNumber).integerValue)!.stringValue.lowercased()
+                    DamageType(rawValue: (($0 as! NSManagedObject).value(forKey: "rawDamageType") as! NSNumber).intValue)!.stringValue.lowercased()
                 }).sorted(by: <)
                 let lastDamageString = damageStrings.removeLast()
                 
@@ -663,7 +663,8 @@ class MonsterViewController : UIViewController {
         
         let index = textView.layoutManager.characterIndex(for: location, in: textView.textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
         if let linkName = textView.attributedText.attribute(MarkupParser.linkAttributeName, at: index, effectiveRange: nil) as? String {
-            let fetchRequest = NSFetchRequest<Spell>(entity: Model.Spell)
+            let fetchRequest = NSFetchRequest<Spell>()
+            fetchRequest.entity = NSEntityDescription.entity(forModel: Model.Spell, in: managedObjectContext)
             fetchRequest.predicate = NSPredicate(format: "name LIKE[cd] %@", linkName)
             
             let spells = try! managedObjectContext.fetch(fetchRequest)
