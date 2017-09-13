@@ -59,7 +59,7 @@ class EncounterAddCombatantViewController : UIViewController {
         // FIXME continued very hacky
         if let indexPath = monstersViewController.tableView.indexPathForSelectedRow {
             let monster = monstersViewController.fetchedResultsController.object(at: indexPath)
-            completionBlock?(cancelled: false, monster: monster, quantity: quantity)
+            completionBlock?(false, monster, quantity)
         }
     }
     
